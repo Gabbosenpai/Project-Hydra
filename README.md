@@ -1,3 +1,3 @@
 # Project Hydra
  
-Mobile Computing Project - 2024-2025
+Mobile Computing Project - 2024/2025
