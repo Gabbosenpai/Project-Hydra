@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds6ncvvmo37nt"]
+
+[ext_resource type="Texture2D" uid="uid://bchf1ba55xito" path="res://Art/Terrain.png" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://2bmswvpvrave" path="res://Art/Wall.png" id="2_btcbx"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4ntmi"]
+points = PackedVector2Array(85.5, -134, -91.5, -136, -86.5, 120, -118.5, 125, -115.5, 209, 88.5, 211, 627.5, 208, 626.5, 125, 86.5, 121)
+
+[node name="Player" type="Area2D"]
+position = Vector2(135, 3)
+
+[node name="Terrain" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4, 236)
+scale = Vector2(1.24896, 1.07969)
+texture = ExtResource("1_4ntmi")
+metadata/_edit_lock_ = true
+
+[node name="Wall" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-228, 23)
+scale = Vector2(8.375, 8.14063)
+texture = ExtResource("2_btcbx")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-227.5, 30)
+shape = SubResource("ConvexPolygonShape2D_4ntmi")
