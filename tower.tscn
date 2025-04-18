@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv6d6te1bbuk6"]
+
+[ext_resource type="Script" uid="uid://chksg5c7fg6po" path="res://tower.gd" id="1_k1sas"]
+[ext_resource type="Texture2D" uid="uid://dlj76avljsfyh" path="res://towerDefense_tile045.png" id="2_vedim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vedim"]
+size = Vector2(130, 372)
+
+[node name="Tower" type="Area2D" groups=["Tower"]]
+script = ExtResource("1_k1sas")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 214)
+scale = Vector2(1, 2.95312)
+texture = ExtResource("2_vedim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+position = Vector2(2, 215)
+shape = SubResource("RectangleShape2D_vedim")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -23.0
+offset_top = -1.0
+offset_right = 23.0
+offset_bottom = 26.0
+value = 100.0

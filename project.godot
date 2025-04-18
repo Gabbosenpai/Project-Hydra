@@ -10,16 +10,18 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
+config/name="tower defense"
+=======
 config/name="Project Hydra"
 run/main_scene="uid://ds6ncvvmo37nt"
+>>>>>>> parent of b217f9b (Turret Shooting Bullets)
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
+[autoload]
 
-window/size/viewport_width=720
-window/size/viewport_height=480
-window/stretch/mode="canvas_items"
+Globals="*res://Globals.gd"
 
 [rendering]
 
