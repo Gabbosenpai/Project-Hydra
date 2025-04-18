@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbnvy3aijsh8i"
-path="res://.godot/imported/Robot_A.png-18e689f5ae7bbc87ebb8440f71cdac28.ctex"
+uid="uid://x5rd41qbfyim"
+path="res://.godot/imported/TurretB.png-63188df4ba045adfe9898ebff657ecab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Robot_A.png"
-dest_files=["res://.godot/imported/Robot_A.png-18e689f5ae7bbc87ebb8440f71cdac28.ctex"]
+source_file="res://Art/TurretB.png"
+dest_files=["res://.godot/imported/TurretB.png-63188df4ba045adfe9898ebff657ecab.ctex"]
 
 [params]
 
