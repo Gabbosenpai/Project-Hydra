@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch2852v1t6rfv"]
+
+[ext_resource type="Texture2D" uid="uid://byg552qab4k8j" path="res://Assets/StdHowitzer.png" id="1_6tf6q"]
+[ext_resource type="Script" uid="uid://bi3ategp3eqae" path="res://Scripts/cannone_b.gd" id="1_704jc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tf6q"]
+radius = 347.036
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_704jc"]
+size = Vector2(132.5, 48.5)
+
+[node name="Cannone_B" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 18
+script = ExtResource("1_704jc")
+
+[node name="Area_Rilevamento" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Rilevamento"]
+position = Vector2(807, 605)
+shape = SubResource("CircleShape2D_6tf6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(526, 627)
+texture = ExtResource("1_6tf6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(525.75, 623)
+shape = SubResource("RectangleShape2D_704jc")
+
+[node name="Posizione_Proiettile" type="Marker2D" parent="."]
+position = Vector2(598, 624)
