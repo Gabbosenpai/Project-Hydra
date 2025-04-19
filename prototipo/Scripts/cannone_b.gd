@@ -3,8 +3,8 @@ extends StaticBody2D
 # Carica la scena del proiettile in anticipo
 const percorsoProiettile = preload("res://Scene/Proiettile/proiettile.tscn")
 
-# Variabile per sapere se un nemico è stato rilevato
-var nemico_rilevato = false
+# Lista per tenere traccia dei nemici rilevati
+var nemici_rilevati = []
 
 # Tempo da attendere tra uno sparo e l'altro (in secondi)
 var tempo_tra_spari = 0.3
@@ -23,9 +23,9 @@ func _ready() -> void:
 	print("Cannone pronto a sparare, timer impostato su:", timer_sparo)
 
 func _process(delta: float) -> void:
-	# Se un nemico è rilevato, gestisci il conto alla rovescia per lo sparo
-	if nemico_rilevato:
-		print("Nemico rilevato! Timer rimasto:", timer_sparo)
+	# Se ci sono nemici rilevati, gestisci il conto alla rovescia per lo sparo
+	if nemici_rilevati.size() > 0:
+		print("Nemici rilevati! Timer rimasto:", timer_sparo)
 		timer_sparo -= delta  # Scala il timer con il tempo reale
 
 		if timer_sparo <= 0:
@@ -59,11 +59,11 @@ func _on_body_entered(body: Node) -> void:
 	print("Corpo entrato:", body.name)
 	if body.is_in_group("Nemico"):
 		print("Nemico entrato nell'area di rilevamento!")
-		nemico_rilevato = true
+		nemici_rilevati.append(body)  # Aggiungi il nemico alla lista dei rilevati
 
 # Funzione chiamata quando un corpo esce dall'area di rilevamento
 func _on_body_exited(body: Node) -> void:
 	print("Corpo uscito dall'area di rilevamento:", body.name)
 	if body.is_in_group("Nemico"):
 		print("Nemico uscito dall'area di rilevamento!")
-		nemico_rilevato = false
+		nemici_rilevati.erase(body)  # Rimuovi il nemico dalla lista dei rilevati
