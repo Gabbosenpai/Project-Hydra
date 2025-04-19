@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://kqan7xr1df8e"]
+
+[ext_resource type="PackedScene" uid="uid://bpagxclawl07n" path="res://Scene/Ambiente/ambiente.tscn" id="1_pw3jx"]
+[ext_resource type="PackedScene" uid="uid://doydhv8ucg1q" path="res://Scene/Cannone_A/cannone_A.tscn" id="2_m5fuk"]
+[ext_resource type="PackedScene" uid="uid://bplyl7tiqstux" path="res://Scene/Nemico_A/nemico_a.tscn" id="3_t4vit"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Ambiente" parent="." instance=ExtResource("1_pw3jx")]
+
+[node name="Cannone_A" parent="." instance=ExtResource("2_m5fuk")]
+position = Vector2(-243, -106)
+
+[node name="Nemico_A" parent="." instance=ExtResource("3_t4vit")]
+position = Vector2(411, -105)

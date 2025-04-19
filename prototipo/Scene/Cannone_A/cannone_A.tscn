@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://doydhv8ucg1q"]
+
+[ext_resource type="Texture2D" uid="uid://ctfn7tlngrv50" path="res://Assets/BaseCannon.png" id="1_b2cjv"]
+[ext_resource type="Script" uid="uid://dyh2l1befihfa" path="res://Scripts/cannone_a.gd" id="1_etfuu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etfuu"]
+radius = 342.118
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etfuu"]
+size = Vector2(127, 41)
+
+[node name="Cannone_A" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_etfuu")
+
+[node name="Area_Rilevamento" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Rilevamento"]
+position = Vector2(825, 625)
+shape = SubResource("CircleShape2D_etfuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(533, 629)
+texture = ExtResource("1_b2cjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(532.5, 627.5)
+shape = SubResource("RectangleShape2D_etfuu")
+
+[node name="Posizione_Proiettile" type="Marker2D" parent="."]
+position = Vector2(598, 624)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch2852v1t6rfv"]
+
+[ext_resource type="Texture2D" uid="uid://byg552qab4k8j" path="res://Assets/StdHowitzer.png" id="1_6tf6q"]
+
+[node name="Cannone_B" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(526, 627)
+texture = ExtResource("1_6tf6q")

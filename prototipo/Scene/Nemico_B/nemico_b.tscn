@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://y50wgarlfrdp"]
+
+[ext_resource type="Texture2D" uid="uid://cj0kqwcetxule" path="res://Assets/Nemico_B.JPG" id="1_m7dxw"]
+[ext_resource type="Script" uid="uid://bb6xqcrkn3ayg" path="res://Scripts/nemico_b.gd" id="2_lh7f6"]
+
+[node name="Nemico_B" type="Node2D" groups=["Nemico"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(499, 609)
+texture = ExtResource("1_m7dxw")
+script = ExtResource("2_lh7f6")
