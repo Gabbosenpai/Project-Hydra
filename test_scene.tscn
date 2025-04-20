@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfnshp3jjxcap"]
+[gd_scene load_steps=5 format=3 uid="uid://bfnshp3jjxcap"]
 
-[ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://Player/player.tscn" id="1_237qn"]
+[ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://Player/wall.tscn" id="1_237qn"]
 [ext_resource type="PackedScene" uid="uid://c63nlpetlyfdi" path="res://turret.tscn" id="2_ia1lp"]
+[ext_resource type="PackedScene" uid="uid://dli3llnr624g8" path="res://robotA.tscn" id="3_sasra"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ia1lp"]
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_237qn")]
-position = Vector2(415, 269)
+[node name="Wall" parent="." instance=ExtResource("1_237qn")]
+position = Vector2(98, 263)
+physics_material_override = SubResource("PhysicsMaterial_ia1lp")
 
 [node name="Turret" parent="." instance=ExtResource("2_ia1lp")]
-position = Vector2(79, 325)
+position = Vector2(271, 331)
+
+[node name="RobotA" parent="." instance=ExtResource("3_sasra")]
+position = Vector2(800, 349)

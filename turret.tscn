@@ -11,12 +11,13 @@ metadata/_edit_group_ = true
 
 [node name="TurretSprite" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-39, 15)
 scale = Vector2(3, 3)
 texture = ExtResource("2_c5apd")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(19, -34)
-target_position = Vector2(500, 0)
+position = Vector2(-9, 0)
+target_position = Vector2(300, 0)
 
 [node name="ReloadTimer" type="Timer" parent="RayCast2D"]
 one_shot = true
