@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://dl6v8hgbpfimh"]
+
+[ext_resource type="Script" uid="uid://bg2iaea5olrpw" path="res://tower.gd" id="1_0f027"]
+[ext_resource type="Texture2D" uid="uid://bfv0n2qmrsdsx" path="res://sprites/ChatGPT Image Apr 18, 2025, 06_21_26 PM.png" id="1_66tet"]
+[ext_resource type="Script" uid="uid://csp7rbkwhfsnq" path="res://cannone_1.gd" id="2_2c62f"]
+[ext_resource type="Texture2D" uid="uid://cab15ygc7pxva" path="res://sprites/tower.png" id="2_nfk4m"]
+[ext_resource type="PackedScene" uid="uid://ckmmopcbtypwm" path="res://bullet.tscn" id="3_gyfs4"]
+[ext_resource type="Texture2D" uid="uid://bmwcvdcr62g0m" path="res://sprites/bullet.png" id="4_7ycvg"]
+[ext_resource type="Script" uid="uid://bddyl6yj4hpo2" path="res://cannone_2.gd" id="4_d5x1h"]
+[ext_resource type="Texture2D" uid="uid://dqf2hrjixjiwb" path="res://sprites/cannon.png" id="4_hq1ik"]
+[ext_resource type="PackedScene" uid="uid://shg1iacmwwpi" path="res://enemy.tscn" id="5_8mm7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3jxj"]
+size = Vector2(73, 236)
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(260, 65)
+scale = Vector2(1.29753, 1.13672)
+texture = ExtResource("1_66tet")
+
+[node name="Tower" type="Area2D" parent="."]
+position = Vector2(223, 324)
+script = ExtResource("1_0f027")
+
+[node name="Sprite" type="Sprite2D" parent="Tower"]
+position = Vector2(0.999997, -94)
+scale = Vector2(2.67187, 4.45312)
+texture = ExtResource("2_nfk4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+position = Vector2(0.5, -76)
+shape = SubResource("RectangleShape2D_o3jxj")
+
+[node name="HealthBar" type="TextureProgressBar" parent="Tower"]
+offset_left = -9.0
+offset_top = -224.0
+offset_right = 9.0
+offset_bottom = -208.0
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("4_7ycvg")
+texture_progress = ExtResource("4_7ycvg")
+tint_under = Color(0.709941, 0.293065, 0.21477, 1)
+tint_over = Color(0.388664, 0.766219, 0.410418, 1)
+
+[node name="Cannone 1" type="Area2D" parent="."]
+position = Vector2(345, 271)
+script = ExtResource("2_2c62f")
+bullet_scene = ExtResource("3_gyfs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannone 1"]
+position = Vector2(-4.76837e-07, 26)
+scale = Vector2(1.79688, 1.67188)
+texture = ExtResource("4_hq1ik")
+
+[node name="Cannone 2" type="Area2D" parent="."]
+position = Vector2(345, 420)
+script = ExtResource("4_d5x1h")
+bullet_scene = ExtResource("3_gyfs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannone 2"]
+position = Vector2(9, -8)
+scale = Vector2(1.85938, 1.5625)
+texture = ExtResource("4_hq1ik")
+
+[node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("5_8mm7a")]
+position = Vector2(1122, 274)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Game Over Label" type="Label" parent="UI"]
+visible = false
+offset_left = 494.0
+offset_top = 285.0
+offset_right = 594.0
+offset_bottom = 314.0
+scale = Vector2(1.90609, 2.27431)
+text = "GAME OVER"
+
+[node name="Enemy 1" parent="." groups=["Enemies"] instance=ExtResource("5_8mm7a")]
+position = Vector2(1094, 524)
+
+[node name="Enemy 2" parent="." groups=["Enemies"] instance=ExtResource("5_8mm7a")]
+position = Vector2(1018, 178)

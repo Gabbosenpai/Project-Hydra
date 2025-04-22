@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://shg1iacmwwpi"]
+
+[ext_resource type="Script" uid="uid://bcmxae15lsoqc" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://csbn4r04gpxf6" path="res://sprites/enemy.png" id="2_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://bmwcvdcr62g0m" path="res://sprites/bullet.png" id="3_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
+size = Vector2(54, 55)
+
+[node name="Enemy 1" type="CharacterBody2D"]
+position = Vector2(43, 20)
+script = ExtResource("1_7k104")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_7xaro")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -49.0
+offset_right = 8.0
+offset_bottom = -32.0
+max_value = 10.0
+fill_mode = 1
+texture_under = ExtResource("3_qi2p4")
+texture_progress = ExtResource("3_qi2p4")
+tint_under = Color(0.0869742, 0.118781, 0.0699516, 1)
+tint_over = Color(0.258578, 0.193221, 0.150667, 1)
+tint_progress = Color(0.146901, 0.410972, 0.258872, 1)
