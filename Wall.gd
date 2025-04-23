@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 @export var max_health = 100
 
@@ -14,3 +14,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func take_damage(amount):
+	health -= amount
+	health_bar.value = health
+	print("Wall:" + str(health))
+	if health <= 0:
+		queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Robot"):
+		self.take_damage(area.damage)

@@ -18,7 +18,7 @@ grow_begin = 0.0
 grow_end = 0.0
 thickness = 3
 
-[node name="Wall" type="StaticBody2D" groups=["Wall"]]
+[node name="Wall" type="Area2D" groups=["Wall"]]
 script = ExtResource("1_y4f30")
 metadata/_edit_group_ = true
 
@@ -41,3 +41,5 @@ theme_override_styles/fill = SubResource("StyleBoxLine_iuee5")
 step = 1.0
 value = 45.0
 show_percentage = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
