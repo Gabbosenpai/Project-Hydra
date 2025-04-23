@@ -8,12 +8,13 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_bar.max_value = max_health
-	health_bar.value = health
+	health_bar.value = health        # Inizializza HealthBar
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
 
 func take_damage(amount):
 	health -= amount
@@ -25,4 +26,4 @@ func take_damage(amount):
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Robot"):
-		self.take_damage(area.damage)
+		self.take_damage(area.damage)     # Quando Robot entra in contatto, muro prende danno

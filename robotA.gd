@@ -9,15 +9,15 @@ extends Area2D
 
 func _ready():
 	health_bar.max_value = max_health
-	health_bar.value = health
+	health_bar.value = health         # Inizializza HealthBar
 
 func _process(delta: float) -> void:
-	position.x -= speed * delta
+	position.x -= speed * delta       # Muove Robot verso il muro
 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Wall"):
-		position.x += 100
+		position.x += 100     # "Rimbalza" sul muro per continuare ad attaccare
 
 
 func take_damage(amount):
