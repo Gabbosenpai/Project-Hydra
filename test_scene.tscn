@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfnshp3jjxcap"]
 
-[ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://Player/wall.tscn" id="1_237qn"]
+[ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://wall.tscn" id="1_237qn"]
 [ext_resource type="PackedScene" uid="uid://c63nlpetlyfdi" path="res://turret.tscn" id="2_ia1lp"]
 [ext_resource type="PackedScene" uid="uid://dli3llnr624g8" path="res://robotA.tscn" id="3_sasra"]
 
@@ -13,7 +13,7 @@ position = Vector2(98, 263)
 physics_material_override = SubResource("PhysicsMaterial_ia1lp")
 
 [node name="Turret" parent="." instance=ExtResource("2_ia1lp")]
-position = Vector2(271, 331)
+position = Vector2(280, 330)
 
 [node name="RobotA" parent="." instance=ExtResource("3_sasra")]
 position = Vector2(800, 349)

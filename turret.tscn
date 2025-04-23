@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4avdmb4efayo" path="res://turret.gd" id="1_tjdg3"]
 [ext_resource type="Texture2D" uid="uid://b6jgxgemnxxvp" path="res://Art/Turret_A.png" id="2_c5apd"]
-[ext_resource type="PackedScene" uid="uid://wswnbf4p8k11" path="res://Player/bullet.tscn" id="2_coqkk"]
+[ext_resource type="PackedScene" uid="uid://wswnbf4p8k11" path="res://bullet.tscn" id="2_coqkk"]
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_tjdg3")

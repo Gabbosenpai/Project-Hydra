@@ -22,8 +22,9 @@ func _on_reload_timer_timeout() -> void:
 	rayCast.enabled = true
 
 func _ready() -> void:
-	await get_tree()
+	pass
+	#await get_tree()
 
-func _physics_process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if reloadTimer.is_stopped():
 		shoot()
