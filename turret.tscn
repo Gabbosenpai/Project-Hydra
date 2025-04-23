@@ -20,6 +20,7 @@ position = Vector2(-9, 0)
 target_position = Vector2(300, 0)
 
 [node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds6ncvvmo37nt"]
+[gd_scene load_steps=6 format=3 uid="uid://ds6ncvvmo37nt"]
 
+[ext_resource type="Script" uid="uid://53yuswsvpyom" path="res://wall.gd" id="1_y4f30"]
 [ext_resource type="Texture2D" uid="uid://2bmswvpvrave" path="res://Art/Wall.png" id="2_btcbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(183, 260)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_y4f30"]
+color = Color(0.831373, 0, 0.286275, 0)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_iuee5"]
+color = Color(0, 0.827451, 0, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 3
+
 [node name="Wall" type="StaticBody2D" groups=["Wall"]]
+script = ExtResource("1_y4f30")
 metadata/_edit_group_ = true
 
 [node name="WallSprite" type="Sprite2D" parent="."]
@@ -16,3 +30,14 @@ texture = ExtResource("2_btcbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_l8h54")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -92.0
+offset_top = -140.0
+offset_right = 92.0
+offset_bottom = -134.0
+theme_override_styles/background = SubResource("StyleBoxLine_y4f30")
+theme_override_styles/fill = SubResource("StyleBoxLine_iuee5")
+step = 1.0
+value = 45.0
+show_percentage = false
