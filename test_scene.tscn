@@ -1,16 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfnshp3jjxcap"]
 
 [ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://wall.tscn" id="1_237qn"]
+[ext_resource type="Texture2D" uid="uid://bchf1ba55xito" path="res://Art/Terrain.png" id="1_coq8p"]
 [ext_resource type="PackedScene" uid="uid://c63nlpetlyfdi" path="res://turret.tscn" id="2_ia1lp"]
 [ext_resource type="PackedScene" uid="uid://dli3llnr624g8" path="res://robotA.tscn" id="3_sasra"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ia1lp"]
-
 [node name="TestScene" type="Node2D"]
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="TerrainSprite" type="Sprite2D" parent="Terrain"]
+position = Vector2(373, 507)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_coq8p")
 
 [node name="Wall" parent="." instance=ExtResource("1_237qn")]
 position = Vector2(98, 263)
-physics_material_override = SubResource("PhysicsMaterial_ia1lp")
 
 [node name="Turret" parent="." instance=ExtResource("2_ia1lp")]
 position = Vector2(280, 330)
