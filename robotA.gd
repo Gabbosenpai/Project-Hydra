@@ -18,3 +18,10 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Wall"):
 		speed = 0
+
+func take_damage(amount):
+	health -= amount
+	health_bar.value = health
+	print(health)
+	if health <= 0:
+		queue_free()

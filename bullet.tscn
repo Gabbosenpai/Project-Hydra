@@ -9,6 +9,7 @@ height = 26.0097
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_tqmay")
+bullet_damage = 25
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
