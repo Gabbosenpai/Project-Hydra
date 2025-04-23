@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(183, 260)
 
-[node name="Wall" type="StaticBody2D" groups=["Player"]]
+[node name="Wall" type="StaticBody2D" groups=["Wall"]]
 metadata/_edit_group_ = true
 
 [node name="WallSprite" type="Sprite2D" parent="."]
