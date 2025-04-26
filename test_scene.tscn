@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfnshp3jjxcap"]
+[gd_scene load_steps=6 format=3 uid="uid://bfnshp3jjxcap"]
 
 [ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://wall.tscn" id="1_237qn"]
 [ext_resource type="Texture2D" uid="uid://bchf1ba55xito" path="res://Art/Terrain.png" id="1_coq8p"]
-[ext_resource type="PackedScene" uid="uid://c63nlpetlyfdi" path="res://turret.tscn" id="2_ia1lp"]
 [ext_resource type="PackedScene" uid="uid://dli3llnr624g8" path="res://robotA.tscn" id="3_sasra"]
+[ext_resource type="PackedScene" uid="uid://d3t4ggc8i6ssg" path="res://turretB.tscn" id="4_2nij2"]
+[ext_resource type="PackedScene" uid="uid://cnxuomugdvl34" path="res://bulletB.tscn" id="6_7cbxl"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -17,8 +18,9 @@ texture = ExtResource("1_coq8p")
 [node name="Wall" parent="." instance=ExtResource("1_237qn")]
 position = Vector2(98, 263)
 
-[node name="Turret" parent="." instance=ExtResource("2_ia1lp")]
-position = Vector2(280, 330)
-
 [node name="RobotA" parent="." instance=ExtResource("3_sasra")]
 position = Vector2(800, 349)
+
+[node name="TurretB" parent="." instance=ExtResource("4_2nij2")]
+position = Vector2(280, 330)
+BULLET = ExtResource("6_7cbxl")

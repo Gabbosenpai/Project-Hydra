@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var speed = 100
-@export var bullet_damage = 5
+@export var speed = 200
+@export var bullet_damage = 2
 
 func _physics_process(delta):
 	var movement = Vector2.RIGHT * speed * delta

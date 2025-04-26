@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3t4ggc8i6ssg"]
+
+[ext_resource type="Script" uid="uid://x0dx7f7c4rwy" path="res://turret_b.gd" id="1_a0it2"]
+[ext_resource type="Texture2D" uid="uid://x5rd41qbfyim" path="res://Art/Turret_B.png" id="2_a0it2"]
+
+[node name="TurretB" type="Node2D"]
+script = ExtResource("1_a0it2")
+metadata/_edit_group_ = true
+
+[node name="TurretSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-39, 15)
+scale = Vector2(3, 3)
+texture = ExtResource("2_a0it2")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-9, 0)
+target_position = Vector2(300, 0)
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 0.111
+one_shot = true
+
+[connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
