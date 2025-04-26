@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cujqgvmipcocu"]
+
+[ext_resource type="Texture2D" uid="uid://x5rd41qbfyim" path="res://Art/Turret_B.png" id="1_0brrw"]
+
+[node name="TowerBPanel" type="Panel"]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TurretB" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(30, 30)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_0brrw")

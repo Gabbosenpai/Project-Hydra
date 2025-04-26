@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnxuomugdvl34"]
+[gd_scene load_steps=4 format=3 uid="uid://wswnbf4p8k11"]
 
-[ext_resource type="Script" uid="uid://c7r20fu4hx8om" path="res://bullet_b.gd" id="1_p0fkf"]
-[ext_resource type="Texture2D" uid="uid://me4jcibw0omq" path="res://Art/Bullet.png" id="2_tu526"]
+[ext_resource type="Script" uid="uid://c8k52auc1dgpv" path="res://Scripts/Bullets/bullet_a.gd" id="1_oduel"]
+[ext_resource type="Texture2D" uid="uid://me4jcibw0omq" path="res://Art/Bullet.png" id="2_ycag2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kxw81"]
 radius = 7.9999
 height = 26.0097
 
-[node name="BulletB" type="Area2D"]
-scale = Vector2(0.5, 0.5)
-script = ExtResource("1_p0fkf")
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_oduel")
+bullet_damage = 25
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_tu526")
+texture = ExtResource("2_ycag2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1)

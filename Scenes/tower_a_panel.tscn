@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2o8obb6efukn"]
+
+[ext_resource type="Texture2D" uid="uid://b6jgxgemnxxvp" path="res://Art/Turret_A.png" id="1_s6pjo"]
+[ext_resource type="Script" uid="uid://cjtagoorj7d8y" path="res://Scenes/tower_a_panel.gd" id="1_sp501"]
+
+[node name="TowerAPanel" type="Panel"]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sp501")
+
+[node name="TurretA" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(30, 30)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_s6pjo")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

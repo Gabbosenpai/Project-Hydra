@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dli3llnr624g8"]
 
-[ext_resource type="Script" uid="uid://wt1yqfn0pitn" path="res://robotA.gd" id="1_7wil1"]
+[ext_resource type="Script" uid="uid://wt1yqfn0pitn" path="res://Scripts/Robots/robot_a.gd" id="1_7wil1"]
 [ext_resource type="Texture2D" uid="uid://cbnvy3aijsh8i" path="res://Art/Robot_A.png" id="2_7ncvc"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_7wil1"]

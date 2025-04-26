@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3t4ggc8i6ssg"]
 
-[ext_resource type="Script" uid="uid://x0dx7f7c4rwy" path="res://turret_b.gd" id="1_a0it2"]
+[ext_resource type="Script" uid="uid://x0dx7f7c4rwy" path="res://Scripts/Turrets/turret_b.gd" id="1_a0it2"]
 [ext_resource type="Texture2D" uid="uid://x5rd41qbfyim" path="res://Art/Turret_B.png" id="2_a0it2"]
 
 [node name="TurretB" type="Node2D"]
