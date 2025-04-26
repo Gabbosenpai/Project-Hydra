@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3t4ggc8i6ssg"]
+[gd_scene load_steps=4 format=3 uid="uid://d3t4ggc8i6ssg"]
 
 [ext_resource type="Script" uid="uid://x0dx7f7c4rwy" path="res://Scripts/Turrets/turret_b.gd" id="1_a0it2"]
 [ext_resource type="Texture2D" uid="uid://x5rd41qbfyim" path="res://Art/Turret_B.png" id="2_a0it2"]
+[ext_resource type="PackedScene" uid="uid://cnxuomugdvl34" path="res://Scenes/Bullets/bullet_b.tscn" id="2_n8o64"]
 
 [node name="TurretB" type="Node2D"]
 script = ExtResource("1_a0it2")
+BULLET = ExtResource("2_n8o64")
 metadata/_edit_group_ = true
 
 [node name="TurretSprite" type="Sprite2D" parent="."]

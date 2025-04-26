@@ -19,5 +19,6 @@ position = Vector2(98, 263)
 
 [node name="RobotA" parent="." instance=ExtResource("3_sasra")]
 position = Vector2(800, 349)
+speed = 150
 
 [node name="UI" parent="." instance=ExtResource("6_x033f")]
