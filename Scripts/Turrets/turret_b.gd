@@ -10,6 +10,7 @@ var target:Node2D = null
 
 func shoot():
 	print("PEW")
+	$TurretSprite.play()
 	rayCast.enabled = false
 	if BULLET:
 		var bullet: Node2D = BULLET.instantiate()

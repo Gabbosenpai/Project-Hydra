@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cujqgvmipcocu"]
 
-[ext_resource type="Texture2D" uid="uid://x5rd41qbfyim" path="res://Art/Turret_B.png" id="1_0brrw"]
 [ext_resource type="Script" uid="uid://b7cf10ucj03q6" path="res://Scenes/tower_b_panel.gd" id="1_6ns8u"]
+[ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Art/Minigun_0001.png" id="2_6ns8u"]
 
 [node name="TowerBPanel" type="Panel"]
 custom_minimum_size = Vector2(60, 60)
@@ -13,6 +13,6 @@ script = ExtResource("1_6ns8u")
 texture_filter = 1
 position = Vector2(30, 30)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_0brrw")
+texture = ExtResource("2_6ns8u")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
