@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvv3kckbytpfm"]
+
+[ext_resource type="Script" uid="uid://dh4d25nxhfk2p" path="res://Scripts/barra_carte.gd" id="1_k4blp"]
+[ext_resource type="Texture2D" uid="uid://ctfn7tlngrv50" path="res://Assets/BaseCannon.png" id="1_y6j3c"]
+[ext_resource type="Texture2D" uid="uid://byg552qab4k8j" path="res://Assets/StdHowitzer.png" id="2_gw4e5"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_k4blp")
+
+[node name="BarraCarte" type="GridContainer" parent="."]
+offset_left = 631.0
+offset_top = 1.0
+offset_right = 761.0
+offset_bottom = 143.0
+
+[node name="Carta" type="VBoxContainer" parent="BarraCarte"]
+layout_mode = 2
+
+[node name="Immagine" type="TextureRect" parent="BarraCarte/Carta"]
+layout_mode = 2
+texture = ExtResource("1_y6j3c")
+
+[node name="Costo" type="Label" parent="BarraCarte/Carta"]
+layout_mode = 2
+text = "costo: 5"
+
+[node name="Carta2" type="VBoxContainer" parent="BarraCarte"]
+layout_mode = 2
+
+[node name="Immagine2" type="TextureRect" parent="BarraCarte/Carta2"]
+layout_mode = 2
+texture = ExtResource("2_gw4e5")
+
+[node name="Costo2" type="Label" parent="BarraCarte/Carta2"]
+layout_mode = 2
+text = "costo: 7"
+
+[node name="Barra_Punti" type="TextureProgressBar" parent="."]
+offset_right = 96.0
+offset_bottom = 40.0
+max_value = 10.0
+value = 10.0
+
+[node name="Punti" type="Label" parent="Barra_Punti"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Punti: 10/10"
+
+[node name="TimerPunti" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="TimerPunti" to="." method="_on_TimerPunti_timeout"]

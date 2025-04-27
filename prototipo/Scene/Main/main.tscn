@@ -1,15 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://kqan7xr1df8e"]
+[gd_scene load_steps=8 format=3 uid="uid://kqan7xr1df8e"]
 
+[ext_resource type="Script" uid="uid://dpvtx6sipt86c" path="res://Assets/main.gd" id="1_frkly"]
 [ext_resource type="PackedScene" uid="uid://bpagxclawl07n" path="res://Scene/Ambiente/ambiente.tscn" id="1_pw3jx"]
 [ext_resource type="PackedScene" uid="uid://doydhv8ucg1q" path="res://Scene/Cannone_A/cannone_A.tscn" id="2_m5fuk"]
 [ext_resource type="PackedScene" uid="uid://bplyl7tiqstux" path="res://Scene/Nemico_A/nemico_a.tscn" id="3_t4vit"]
+[ext_resource type="PackedScene" uid="uid://ch2852v1t6rfv" path="res://Scene/Cannone_B/cannone_b.tscn" id="4_t4vit"]
+[ext_resource type="PackedScene" uid="uid://y50wgarlfrdp" path="res://Scene/Nemico_B/nemico_b.tscn" id="5_frkly"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t4vit"]
+font_size = 80
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_frkly")
 
-[node name="Ambiente" parent="." instance=ExtResource("1_pw3jx")]
+[node name="Ambiente" parent="." groups=["Torre"] instance=ExtResource("1_pw3jx")]
 
 [node name="Cannone_A" parent="." instance=ExtResource("2_m5fuk")]
 position = Vector2(-243, -106)
 
+[node name="Cannone_B" parent="." instance=ExtResource("4_t4vit")]
+position = Vector2(34, -102)
+
 [node name="Nemico_A" parent="." instance=ExtResource("3_t4vit")]
 position = Vector2(411, -105)
+
+[node name="Nemico_B" parent="." instance=ExtResource("5_frkly")]
+position = Vector2(547, -103)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game Over" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_t4vit")
+
+[node name="Riprova" type="Button" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.5
+anchor_right = 0.51
+anchor_bottom = 0.5
+offset_left = -58.5201
+offset_top = 50.0
+offset_right = 58.4799
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+text = "Riprova"
+
+[connection signal="pressed" from="CanvasLayer/Riprova" to="." method="_on_retry_pressed"]
