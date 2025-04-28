@@ -11,6 +11,7 @@ var tempo_tra_spari = 0.3
 var timer_sparo = 0.0  # Timer per controllare il tempo tra gli spari
 
 var danno_proiettile = 40  # Imposta il danno per i proiettili del Cannone B (puoi cambiarlo)
+var attivo: bool = false  # Nuovo - il cannone spara solo se attivo
 
 func _ready() -> void:
 	# Collega i segnali di entrata e uscita all'Area2D usata per il rilevamento
@@ -23,6 +24,8 @@ func _ready() -> void:
 	print("Cannone pronto a sparare, timer impostato su:", timer_sparo)
 
 func _process(delta: float) -> void:
+	if not attivo:
+		return  # Se non attivo, non fa niente
 	# Se ci sono nemici rilevati, gestisci il conto alla rovescia per lo sparo
 	if nemici_rilevati.size() > 0:
 		print("Nemici rilevati! Timer rimasto:", timer_sparo)

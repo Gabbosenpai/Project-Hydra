@@ -9,6 +9,8 @@ var nemici_rilevati = []
 # Tempo da attendere tra uno sparo e l'altro (in secondi)
 var tempo_tra_spari = 1.0
 var timer_sparo = 0.0  # Timer per controllare il tempo tra gli spari
+var attivo: bool = false  # Nuovo - il cannone spara solo se attivo
+
 
 func _ready() -> void:
 	# Collega i segnali di entrata e uscita all'Area2D usata per il rilevamento
@@ -21,6 +23,8 @@ func _ready() -> void:
 	print("Cannone pronto a sparare, timer impostato su:", timer_sparo)
 
 func _process(delta: float) -> void:
+	if not attivo:
+		return  # Se non attivo, non fa niente
 	# Pulisce la lista da eventuali nemici null (morti o rimossi dalla scena)
 	nemici_rilevati = nemici_rilevati.filter(func(n): return is_instance_valid(n))
 

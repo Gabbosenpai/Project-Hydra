@@ -17,16 +17,16 @@ script = ExtResource("1_etfuu")
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Rilevamento"]
-position = Vector2(825, 625)
+position = Vector2(275, -4)
 shape = SubResource("CircleShape2D_etfuu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(533, 629)
+position = Vector2(-3.09482, 1.71994)
 texture = ExtResource("1_b2cjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(532.5, 627.5)
+position = Vector2(-1.14609, 1.71994)
 shape = SubResource("RectangleShape2D_etfuu")
 
 [node name="Posizione_Proiettile" type="Marker2D" parent="."]
-position = Vector2(598, 624)
+position = Vector2(69, -2)

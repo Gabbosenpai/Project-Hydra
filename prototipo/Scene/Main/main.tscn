@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://kqan7xr1df8e"]
+[gd_scene load_steps=7 format=3 uid="uid://kqan7xr1df8e"]
 
 [ext_resource type="Script" uid="uid://dpvtx6sipt86c" path="res://Assets/main.gd" id="1_frkly"]
 [ext_resource type="PackedScene" uid="uid://bpagxclawl07n" path="res://Scene/Ambiente/ambiente.tscn" id="1_pw3jx"]
-[ext_resource type="PackedScene" uid="uid://doydhv8ucg1q" path="res://Scene/Cannone_A/cannone_A.tscn" id="2_m5fuk"]
+[ext_resource type="PackedScene" uid="uid://dvv3kckbytpfm" path="res://Scene/Barra_Carte/barra_carte.tscn" id="3_frkly"]
 [ext_resource type="PackedScene" uid="uid://bplyl7tiqstux" path="res://Scene/Nemico_A/nemico_a.tscn" id="3_t4vit"]
-[ext_resource type="PackedScene" uid="uid://ch2852v1t6rfv" path="res://Scene/Cannone_B/cannone_b.tscn" id="4_t4vit"]
 [ext_resource type="PackedScene" uid="uid://y50wgarlfrdp" path="res://Scene/Nemico_B/nemico_b.tscn" id="5_frkly"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t4vit"]
@@ -15,11 +14,7 @@ script = ExtResource("1_frkly")
 
 [node name="Ambiente" parent="." groups=["Torre"] instance=ExtResource("1_pw3jx")]
 
-[node name="Cannone_A" parent="." instance=ExtResource("2_m5fuk")]
-position = Vector2(-243, -106)
-
-[node name="Cannone_B" parent="." instance=ExtResource("4_t4vit")]
-position = Vector2(34, -102)
+[node name="CanvasLayer2" parent="." instance=ExtResource("3_frkly")]
 
 [node name="Nemico_A" parent="." instance=ExtResource("3_t4vit")]
 position = Vector2(411, -105)

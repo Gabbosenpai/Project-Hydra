@@ -19,16 +19,16 @@ collision_layer = 8
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Rilevamento"]
-position = Vector2(807, 605)
+position = Vector2(282, -10)
 shape = SubResource("CircleShape2D_6tf6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(526, 627)
+position = Vector2(0.84906, -3.02946)
 texture = ExtResource("1_6tf6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(525.75, 623)
+position = Vector2(-1.29456, -3.02946)
 shape = SubResource("RectangleShape2D_704jc")
 
 [node name="Posizione_Proiettile" type="Marker2D" parent="."]
-position = Vector2(598, 624)
+position = Vector2(67, -8)
