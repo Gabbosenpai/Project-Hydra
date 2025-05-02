@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3t4ggc8i6ssg"]
+[gd_scene load_steps=7 format=3 uid="uid://d3t4ggc8i6ssg"]
 
 [ext_resource type="Script" uid="uid://x0dx7f7c4rwy" path="res://Scripts/Turrets/turret_b.gd" id="1_a0it2"]
 [ext_resource type="PackedScene" uid="uid://cnxuomugdvl34" path="res://Scenes/Bullets/bullet_b.tscn" id="2_n8o64"]
@@ -19,10 +19,12 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ycgr"]
+size = Vector2(400, 20)
+
 [node name="TurretB" type="Node2D"]
 script = ExtResource("1_a0it2")
 BULLET = ExtResource("2_n8o64")
-metadata/_edit_group_ = true
 
 [node name="TurretSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -30,7 +32,7 @@ position = Vector2(-46, -10)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cpcge")
 animation = &"shoot"
-frame_progress = 0.732964
+frame_progress = 0.370903
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-9, 0)
@@ -40,4 +42,12 @@ target_position = Vector2(300, 0)
 wait_time = 0.05
 one_shot = true
 
+[node name="TowerRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerRange"]
+position = Vector2(200, 0)
+shape = SubResource("RectangleShape2D_0ycgr")
+
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="area_entered" from="TowerRange" to="." method="_on_tower_range_area_entered"]
+[connection signal="area_exited" from="TowerRange" to="." method="_on_tower_range_area_exited"]

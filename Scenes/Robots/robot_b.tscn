@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dli3llnr624g8"]
+[gd_scene load_steps=5 format=3 uid="uid://cl4l4d33c7j2d"]
 
-[ext_resource type="Script" uid="uid://wt1yqfn0pitn" path="res://Scripts/Robots/robot_a.gd" id="1_7wil1"]
-[ext_resource type="Texture2D" uid="uid://cbnvy3aijsh8i" path="res://Art/Robot_A.png" id="2_7ncvc"]
+[ext_resource type="Script" uid="uid://cugydi4kbwnc2" path="res://Scripts/Robots/robot_b.gd" id="1_lfsm7"]
+[ext_resource type="Texture2D" uid="uid://klvsma3s1esr" path="res://Art/Robot_B.png" id="2_lfsm7"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_7wil1"]
 color = Color(0.831373, 0, 0.286275, 0)
@@ -15,16 +15,15 @@ grow_begin = 0.0
 grow_end = 0.0
 thickness = 3
 
-[node name="RobotA" type="Area2D" groups=["Robot"]]
-scale = Vector2(1.5, 1.5)
-script = ExtResource("1_7wil1")
-speed = 250
+[node name="RobotB" type="Area2D" groups=["Robot"]]
+scale = Vector2(5, 5)
+script = ExtResource("1_lfsm7")
 metadata/_edit_group_ = true
 
-[node name="RobotASprite" type="Sprite2D" parent="."]
+[node name="RobotBSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("2_7ncvc")
+texture = ExtResource("2_lfsm7")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(2, -30, 30, 24.6667, 30, 30, -30, 30, -30, 24, -2, -30)

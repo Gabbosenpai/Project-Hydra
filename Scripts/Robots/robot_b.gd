@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var max_health = 100
-@export var speed = 150
-@export var damage = 25
+@export var max_health = 1000
+@export var speed = 25
+@export var damage = 1000
 
 @onready var health = max_health
 @onready var health_bar = $HealthBar
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Wall"):
-		position.x += randf_range(100, 200)     # "Rimbalza" sul muro per continuare ad attaccare
+		position.x += 100     # "Rimbalza" sul muro per continuare ad attaccare
 
 
 func take_damage(amount):

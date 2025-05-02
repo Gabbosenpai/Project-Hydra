@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfnshp3jjxcap"]
+[gd_scene load_steps=7 format=3 uid="uid://bfnshp3jjxcap"]
 
 [ext_resource type="PackedScene" uid="uid://ds6ncvvmo37nt" path="res://Scenes/wall.tscn" id="1_237qn"]
 [ext_resource type="Texture2D" uid="uid://bchf1ba55xito" path="res://Art/Terrain.png" id="1_coq8p"]
 [ext_resource type="PackedScene" uid="uid://dli3llnr624g8" path="res://Scenes/Robots/robot_a.tscn" id="3_sasra"]
+[ext_resource type="PackedScene" uid="uid://cl4l4d33c7j2d" path="res://Scenes/Robots/robot_b.tscn" id="5_ak5v8"]
+[ext_resource type="PackedScene" uid="uid://bh0ilnhe2gbre" path="res://Scenes/hud.tscn" id="6_rdbpf"]
 [ext_resource type="PackedScene" uid="uid://ba7wxuc2mx1qr" path="res://Scenes/ui.tscn" id="6_x033f"]
 
 [node name="TestScene" type="Node2D"]
@@ -18,7 +20,20 @@ texture = ExtResource("1_coq8p")
 position = Vector2(57, 258)
 
 [node name="RobotA" parent="." instance=ExtResource("3_sasra")]
-position = Vector2(800, 349)
+position = Vector2(1500, 349)
 speed = 150
 
+[node name="RobotA2" parent="." instance=ExtResource("3_sasra")]
+position = Vector2(1600, 349)
+speed = 150
+
+[node name="RobotA3" parent="." instance=ExtResource("3_sasra")]
+position = Vector2(1700, 349)
+speed = 150
+
+[node name="RobotB" parent="." instance=ExtResource("5_ak5v8")]
+position = Vector2(1500, 244)
+
 [node name="UI" parent="." instance=ExtResource("6_x033f")]
+
+[node name="HUD" parent="." instance=ExtResource("6_rdbpf")]

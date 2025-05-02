@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cujqgvmipcocu"]
 
-[ext_resource type="Script" uid="uid://b7cf10ucj03q6" path="res://Scenes/tower_b_panel.gd" id="1_6ns8u"]
+[ext_resource type="Script" uid="uid://b7cf10ucj03q6" path="res://Scripts/tower_b_panel.gd" id="1_6ns8u"]
 [ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Art/Minigun_0001.png" id="2_6ns8u"]
 
 [node name="TowerBPanel" type="Panel"]

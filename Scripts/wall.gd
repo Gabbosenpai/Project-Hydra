@@ -22,6 +22,8 @@ func take_damage(amount):
 	print("Wall:" + str(health))
 	if health <= 0:
 		queue_free()
+		var root = get_tree().get_root().get_node("TestScene")
+		root.get_node("HUD").show_game_over()
 
 
 func _on_area_entered(area: Area2D) -> void:

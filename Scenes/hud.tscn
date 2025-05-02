@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh0ilnhe2gbre"]
+
+[ext_resource type="Script" uid="uid://dfvdmj7w86o5v" path="res://Scripts/hud.gd" id="1_e0onf"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_e0onf")
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -238.5
+offset_right = 240.0
+offset_bottom = 238.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Robots have exterminated all humans...
+It was all your fault..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
