@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1bgqxm6cpgok"
+path="res://.godot/imported/Star Wars- The Imperial March (Darth Vader's Theme).mp3-5c18b36a61c949eb12b21006fceedff3.mp3str"
+
+[deps]
+
+source_file="res://Music/Star Wars- The Imperial March (Darth Vader's Theme).mp3"
+dest_files=["res://.godot/imported/Star Wars- The Imperial March (Darth Vader's Theme).mp3-5c18b36a61c949eb12b21006fceedff3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

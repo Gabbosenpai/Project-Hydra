@@ -20,7 +20,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ycgr"]
-size = Vector2(400, 20)
+size = Vector2(588, 20)
 
 [node name="TurretB" type="Node2D"]
 script = ExtResource("1_a0it2")
@@ -45,7 +45,7 @@ one_shot = true
 [node name="TowerRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerRange"]
-position = Vector2(200, 0)
+position = Vector2(294, 0)
 shape = SubResource("RectangleShape2D_0ycgr")
 
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]

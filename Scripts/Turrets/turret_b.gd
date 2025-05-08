@@ -11,7 +11,6 @@ var robots_coming = []
 @onready var reloadTimer = $RayCast2D/ReloadTimer
 
 func shoot():
-	#print("PEW")
 	$TurretSprite.play()
 	rayCast.enabled = false
 	if BULLET:
@@ -21,14 +20,10 @@ func shoot():
 	
 	reloadTimer.start()
 
-func _on_reload_timer_timeout() -> void:
+func _on_reload_timer_timeout():
 	rayCast.enabled = true
 
-func _ready() -> void:
-	pass
-	#await get_tree()
-
-func _process(_delta: float) -> void:
+func _process(_delta: float):
 	if robots_coming.is_empty():
 		armed = false
 		$TurretSprite.stop()
@@ -38,10 +33,10 @@ func _process(_delta: float) -> void:
 		shoot()
 
 
-func _on_tower_range_area_entered(area: Area2D) -> void:
+func _on_tower_range_area_entered(area: Area2D):
 	if area.is_in_group("Robot"):
 		robots_coming.append(area)
 
-func _on_tower_range_area_exited(area: Area2D) -> void:
+func _on_tower_range_area_exited(area: Area2D):
 	if area.is_in_group("Robot"):
 		robots_coming.erase(area)

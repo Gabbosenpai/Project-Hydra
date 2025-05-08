@@ -2,7 +2,7 @@ extends Panel
 
 @onready var tower = preload("res://Scenes/Turrets/turret_a.tscn")
 
-func _on_gui_input(event: InputEvent) -> void:
+func _on_gui_input(event: InputEvent):
 	var tempTower = tower.instantiate()
 	if event is InputEventMouseButton and event.button_mask == 1:
 		#Left Click Down

@@ -1,8 +1,7 @@
 extends CanvasLayer
 
-
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	$Message.hide()
 
 func show_message(text):
@@ -13,9 +12,7 @@ func show_message(text):
 func show_game_over():
 	$Message.show()
 	$MessageTimer.start()
-	# Wait until the MessageTimer has counted down
-	await $MessageTimer.timeout
+	
 
-
-func _on_message_timer_timeout() -> void:
+func _on_message_timer_timeout():
 	get_tree().quit()

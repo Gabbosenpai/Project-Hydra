@@ -2,7 +2,7 @@ extends Area2D
 
 @export var max_health = 100
 @export var speed = 150
-@export var damage = 25
+@export var damage = 10
 
 @onready var health = max_health
 @onready var health_bar = $HealthBar
@@ -11,11 +11,12 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = health         # Inizializza HealthBar
 
-func _process(delta: float) -> void:
-	position.x -= speed * delta       # Muove Robot verso il muro
+func _process(delta: float):
+	# Muove Robot verso il muro
+	position.x -= speed * delta       
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area2D):
 	if area.is_in_group("Wall"):
 		position.x += randf_range(100, 200)     # "Rimbalza" sul muro per continuare ad attaccare
 
@@ -26,5 +27,5 @@ func take_damage(amount):
 		health = 0
 	health_bar.value = health
 	print("Robot:" + str(health))
-	if health <= 0:
+	if health == 0:
 		queue_free()

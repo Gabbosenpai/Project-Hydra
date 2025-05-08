@@ -18,7 +18,6 @@ thickness = 3
 [node name="RobotA" type="Area2D" groups=["Robot"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_7wil1")
-speed = 250
 metadata/_edit_group_ = true
 
 [node name="RobotASprite" type="Sprite2D" parent="."]
