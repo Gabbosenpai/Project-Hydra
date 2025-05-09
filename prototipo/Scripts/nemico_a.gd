@@ -12,10 +12,6 @@ var health_current = 100
 
 func _ready() -> void:
 	update_health_bar()  # Imposta la barra salute iniziale
-	# Connette i segnali dell'area per sapere quando un corpo entra o esce
-	area_rilevamento.body_entered.connect(_on_body_entered)
-	area_rilevamento.body_exited.connect(_on_body_exited)
-	print("Segnali di rilevamento dei corpi collegati.")
 
 func _process(delta: float) -> void:
 	# Se il nemico è ancora vivo, si muove verso sinistra

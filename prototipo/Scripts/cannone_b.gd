@@ -10,15 +10,10 @@ var nemici_rilevati = []
 var tempo_tra_spari = 0.3
 var timer_sparo = 0.0  # Timer per controllare il tempo tra gli spari
 
-var danno_proiettile = 40  # Imposta il danno per i proiettili del Cannone B (puoi cambiarlo)
+var danno_proiettile = 800  # Imposta il danno per i proiettili del Cannone B (puoi cambiarlo)
 var attivo: bool = false  # Nuovo - il cannone spara solo se attivo
 
 func _ready() -> void:
-	# Collega i segnali di entrata e uscita all'Area2D usata per il rilevamento
-	$Area_Rilevamento.body_entered.connect(_on_body_entered)
-	print("Segnale connesso? Area_Rilevamento valido:", $Area_Rilevamento != null)
-	$Area_Rilevamento.body_exited.connect(_on_body_exited)
-	
 	# Imposta il timer per il primo sparo
 	timer_sparo = tempo_tra_spari
 	print("Cannone pronto a sparare, timer impostato su:", timer_sparo)

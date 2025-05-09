@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://kqan7xr1df8e"]
+[gd_scene load_steps=8 format=3 uid="uid://kqan7xr1df8e"]
 
 [ext_resource type="Script" uid="uid://dpvtx6sipt86c" path="res://Assets/main.gd" id="1_frkly"]
 [ext_resource type="PackedScene" uid="uid://bpagxclawl07n" path="res://Scene/Ambiente/ambiente.tscn" id="1_pw3jx"]
 [ext_resource type="PackedScene" uid="uid://dvv3kckbytpfm" path="res://Scene/Barra_Carte/barra_carte.tscn" id="3_frkly"]
 [ext_resource type="PackedScene" uid="uid://bplyl7tiqstux" path="res://Scene/Nemico_A/nemico_a.tscn" id="3_t4vit"]
 [ext_resource type="PackedScene" uid="uid://y50wgarlfrdp" path="res://Scene/Nemico_B/nemico_b.tscn" id="5_frkly"]
+[ext_resource type="Script" uid="uid://ln348ftmo4n2" path="res://Scripts/gestione_ondate.gd" id="5_t4vit"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t4vit"]
 font_size = 80
@@ -12,15 +13,9 @@ font_size = 80
 [node name="Main" type="Node2D"]
 script = ExtResource("1_frkly")
 
-[node name="Ambiente" parent="." groups=["Torre"] instance=ExtResource("1_pw3jx")]
-
 [node name="CanvasLayer2" parent="." instance=ExtResource("3_frkly")]
 
-[node name="Nemico_A" parent="." instance=ExtResource("3_t4vit")]
-position = Vector2(411, -105)
-
-[node name="Nemico_B" parent="." instance=ExtResource("5_frkly")]
-position = Vector2(547, -103)
+[node name="Ambiente" parent="." groups=["Torre"] instance=ExtResource("1_pw3jx")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -54,5 +49,39 @@ grow_horizontal = 2
 grow_vertical = 2
 action_mode = 0
 text = "Riprova"
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="NumeroOndata" type="Label" parent="CanvasLayer3"]
+offset_left = 497.0
+offset_top = -1.0
+offset_right = 568.0
+offset_bottom = 31.0
+text = "Ondata 1"
+
+[node name="AnnuncioOndata" type="Label" parent="CanvasLayer3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "\"\""
+
+[node name="GestioneOndate" type="Node2D" parent="."]
+script = ExtResource("5_t4vit")
+nemico_a_scene = ExtResource("3_t4vit")
+nemico_b_scene = ExtResource("5_frkly")
+spawn_point = NodePath("../PuntoSpawn")
+wave_label_path = NodePath("../CanvasLayer3/NumeroOndata")
+wave_announcement_path = NodePath("../CanvasLayer3/AnnuncioOndata")
+
+[node name="PuntoSpawn" type="Marker2D" parent="."]
+position = Vector2(1064, 507)
 
 [connection signal="pressed" from="CanvasLayer/Riprova" to="." method="_on_retry_pressed"]

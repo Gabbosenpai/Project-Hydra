@@ -20,6 +20,7 @@ func game_over():
 func _on_retry_pressed():
 	print("🔄 Bottone RIPROVA premuto")
 	get_tree().paused = false
+	await get_tree().create_timer(0.1).timeout 
 	get_tree().reload_current_scene()  # Ricarica la scena corrente
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
