@@ -6,14 +6,10 @@ extends CanvasLayer
 
 func _ready():
 	final_score_label.text = "PUNTEGGIO FINALE: %d" % Globals.score
-
-	# Connette i segnali dei pulsanti alle funzioni
-	retry_button.pressed.connect(on_retry_pressed)
-	menu_button.pressed.connect(on_menu_pressed)
-
-func on_retry_pressed():
+	
+func _on_retry_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/main.tscn")  
 
-func on_menu_pressed():
-	get_tree().change_scene_to_file("res://Scene/menu.tscn")  
- 
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scene/menu.tscn") 

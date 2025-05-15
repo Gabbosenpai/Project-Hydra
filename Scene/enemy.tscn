@@ -8,6 +8,7 @@ size = Vector2(59.75, 57)
 
 [node name="Enemy" type="Area2D" groups=["Enemy"]]
 script = ExtResource("1_7k104")
+damage = 700
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

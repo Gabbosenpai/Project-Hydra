@@ -36,3 +36,6 @@ text = "RIPROVA"
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "TORNA AL MENÙ"
+
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
