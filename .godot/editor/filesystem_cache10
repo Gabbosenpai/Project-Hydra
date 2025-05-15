@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1747304107
+::res://::1747319414
 icon.svg::CompressedTexture2D/CompressedTexture2D::2886670431693264743::1746786129::1746799942::1::::<><><>0<>0<>a4d0b6f13d063c370b2c4e0fd6f74fc6<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 License.txt::TextFile/TextFile::-1::1746786129::0::1::::<><><>0<>0<><>::
 README.md::TextFile/TextFile::-1::1746786129::0::1::::<><><>0<>0<><>::
@@ -7,21 +7,21 @@ towerDefense_tile045.png::CompressedTexture2D/CompressedTexture2D::7951917067217
 towerDefense_tile046.png::CompressedTexture2D/CompressedTexture2D::3214419665135032667::1746786129::1746799942::1::::<><><>0<>0<>400fac48bf2f4f3988f672bc6d4ad9c0<>res://.godot/imported/towerDefense_tile046.png-3f1dac03d507d75f8bd475dd60ea1a16.ctex::
 ::res://OST/::1746801181
 Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background.mp3::AudioStreamMP3/AudioStreamMP3::1660877112788650452::1746786129::1746799942::1::::<><><>0<>0<>cb598aff663784aa4c0bd811875cc186<>res://.godot/imported/Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background.mp3-c59110598565fb21b44838e86f006536.mp3str::
-::res://Scene/::1747302836
+::res://Scene/::1747319399
 bullet.tscn::PackedScene/PackedScene::3415676399556945853::1746786129::0::1::::<><><>0<>0<><>::uid://crhjdxu1sqr7k::::res://Script/bullet.gd
-cannon.tscn::PackedScene::7217827623349453179::1747302811::0::1::::<><><>0<>0<><>::uid://duewjlgfxqbfu::::res://Script/cannon.gd<>uid://bowtxrdpfddx2::::res://Scene/bullet.tscn
-cannon_fast.tscn::PackedScene::6587232544247278540::1747302804::0::1::::<><><>0<>0<><>::uid://duewjlgfxqbfu::::res://Script/cannon.gd<>uid://bowtxrdpfddx2::::res://Scene/bullet.tscn
-enemy.tscn::PackedScene/PackedScene::5697819326685477251::1746786129::0::1::::<><><>0<>0<><>::uid://d20webiih6nqs::::res://Script/enemy.gd<>uid://bl2da0yunnjhr::::res://towerDefense_tile046.png
-gameover.tscn::PackedScene/PackedScene::280627790905530021::1746786129::0::1::::<><><>0<>0<><>::uid://v1egfujiwbt::::res://Script/finalscore.gd
-main.tscn::PackedScene/PackedScene::9112333843840591630::1746786129::0::1::::<><><>0<>0<><>::uid://c084a6xmy5r4j::::res://Script/main.gd<>uid://bv6d6te1bbuk6::::res://Scene/tower.tscn<>uid://cngcitewp6i3d::::res://Scene/enemy.tscn<>uid://xwsnyk4f7obk::::res://OST/Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background.mp3
-menu.tscn::PackedScene::8813581333304782704::1747302836::0::1::::<><><>0<>0<><>::uid://br7aicjgwvyrj::::res://Script/menu.gd
+cannon.tscn::PackedScene::7217827623349453179::1747319394::0::1::::<><><>0<>0<><>::uid://duewjlgfxqbfu::::res://Script/cannon.gd<>uid://bowtxrdpfddx2::::res://Scene/bullet.tscn
+cannon_fast.tscn::PackedScene/PackedScene::6587232544247278540::1747302804::0::1::::<><><>0<>0<><>::uid://duewjlgfxqbfu::::res://Script/cannon.gd<>uid://bowtxrdpfddx2::::res://Scene/bullet.tscn
+enemy.tscn::PackedScene::5697819326685477251::1747319394::0::1::::<><><>0<>0<><>::uid://d20webiih6nqs::::res://Script/enemy.gd<>uid://bl2da0yunnjhr::::res://towerDefense_tile046.png
+gameover.tscn::PackedScene::280627790905530021::1747319394::0::1::::<><><>0<>0<><>::uid://v1egfujiwbt::::res://Script/finalscore.gd
+main.tscn::PackedScene::9112333843840591630::1747319399::0::1::::<><><>0<>0<><>::uid://c084a6xmy5r4j::::res://Script/main.gd<>uid://bv6d6te1bbuk6::::res://Scene/tower.tscn<>uid://cngcitewp6i3d::::res://Scene/enemy.tscn<>uid://xwsnyk4f7obk::::res://OST/Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background.mp3
+menu.tscn::PackedScene::8813581333304782704::1747319394::0::1::::<><><>0<>0<><>::uid://br7aicjgwvyrj::::res://Script/menu.gd
 tower.tscn::PackedScene/PackedScene::3924620626362575899::1746786129::0::1::::<><><>0<>0<><>::uid://chksg5c7fg6po::::res://Script/tower.gd<>uid://dlj76avljsfyh::::res://towerDefense_tile045.png
-::res://Script/::1747302641
+::res://Script/::1747318752
 bullet.gd::GDScript/GDScript::5981055403966950254::1746786129::0::1::::<>Area2D<><>0<>0<><>::
-cannon.gd::GDScript::8572648868126417362::1747302641::0::1::::<>Node2D<><>0<>0<><>::
+cannon.gd::GDScript/GDScript::8572648868126417362::1747302641::0::1::::<>Node2D<><>0<>0<><>::
 enemy.gd::GDScript/GDScript::9107313255430010958::1746786129::0::1::::<>Area2D<><>0<>0<><>::
-finalscore.gd::GDScript/GDScript::44938041608001309::1746786129::0::1::::<>CanvasLayer<><>0<>0<><>::
+finalscore.gd::GDScript/GDScript::44938041608001309::1747305018::0::1::::<>CanvasLayer<><>0<>0<><>::
 Globals.gd::GDScript/GDScript::3050191276690880844::1746786129::0::1::::<>Node<><>0<>0<><>::
-main.gd::GDScript/GDScript::6597449381344064727::1746786129::0::1::::<>Node2D<><>0<>0<><>::
+main.gd::GDScript::6597449381344064727::1747318752::0::1::::<>Node2D<><>0<>0<><>::
 menu.gd::GDScript/GDScript::3645705519273609267::1746786129::0::1::::<>CanvasLayer<><>0<>0<><>::
 tower.gd::GDScript/GDScript::5285912251277252872::1746786129::0::1::::<>Area2D<><>0<>0<><>::

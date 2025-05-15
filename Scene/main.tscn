@@ -45,3 +45,5 @@ offset_right = 312.0
 offset_bottom = 40.0
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer2/PlaceCannonButton1" to="." method="_on_place_cannon_button_1_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PlaceCannonButton2" to="." method="_on_place_cannon_button_2_pressed"]

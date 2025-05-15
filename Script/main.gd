@@ -12,19 +12,11 @@ var placing_cannon = false
 var current_cannon_scene = null
 
 
-func _on_place_cannon_pressed_1():
-	current_cannon_scene = cannon_scene
-	placing_cannon = true
-
-func _on_place_cannon_pressed_2():
-	current_cannon_scene = cannon_fast_scene
-	placing_cannon = true
 
 func _ready():
 	ost_player.play()
 	$ScoreTimer.start()  # Avvia il timer per il punteggio
-	$CanvasLayer2/PlaceCannonButton1.pressed.connect(_on_place_cannon_pressed_1)
-	$CanvasLayer2/PlaceCannonButton2.pressed.connect(_on_place_cannon_pressed_2)
+
 func _on_score_timer_timeout() -> void:
 	
 	score += 1
@@ -39,3 +31,13 @@ func _unhandled_input(event):
 		cannon.bullet_scene = preload("res://Scene/bullet.tscn")  
 		add_child(cannon)
 		placing_cannon = false
+
+
+func _on_place_cannon_button_1_pressed() -> void:
+	current_cannon_scene = cannon_scene
+	placing_cannon = true
+
+
+func _on_place_cannon_button_2_pressed() -> void:
+	current_cannon_scene = cannon_fast_scene
+	placing_cannon = true

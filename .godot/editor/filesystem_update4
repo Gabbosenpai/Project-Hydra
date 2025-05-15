@@ -2,4 +2,5 @@ res://Scene/menu.tscn
 res://Scene/cannon.tscn
 res://Scene/enemy.tscn
 res://Scene/gameover.tscn
-res://Script/finalscore.gd
+res://Scene/main.tscn
+res://Script/menu.gd
