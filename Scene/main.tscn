@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://d23c2o8pjttle"]
+
+[ext_resource type="Script" uid="uid://c084a6xmy5r4j" path="res://Script/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bv6d6te1bbuk6" path="res://Scene/tower.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cngcitewp6i3d" path="res://Scene/enemy.tscn" id="3_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://xwsnyk4f7obk" path="res://OST/Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background.mp3" id="4_1bvp3"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score:0"
+
+[node name="Tower" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(192, 111)
+
+[node name="Enemy" parent="." instance=ExtResource("3_1bvp3")]
+position = Vector2(1030, 448)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="OST" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1bvp3")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PlaceCannonButton1" type="Button" parent="CanvasLayer2"]
+anchors_preset = -1
+anchor_right = 0.003
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 220.544
+offset_bottom = 40.0
+
+[node name="PlaceCannonButton2" type="Button" parent="CanvasLayer2"]
+offset_left = 240.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
