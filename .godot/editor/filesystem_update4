@@ -1,6 +1,9 @@
+res://Scene/enemy.tscn
+res://Scene/main.tscn
+res://Scene/enemy1.tscn
 res://Scene/menu.tscn
 res://Scene/cannon.tscn
-res://Scene/enemy.tscn
 res://Scene/gameover.tscn
-res://Scene/main.tscn
-res://Script/menu.gd
+res://Scene/enemy2.tscn
+res://Script/enemy2.gd
+res://Script/EnemySpawner.gd

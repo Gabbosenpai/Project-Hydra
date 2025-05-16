@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy86xsudrv76b"]
+
+[ext_resource type="Script" uid="uid://8qpd8s6c28hn" path="res://Script/enemy2.gd" id="1_4w621"]
+[ext_resource type="Texture2D" uid="uid://bl2da0yunnjhr" path="res://towerDefense_tile046.png" id="2_fkhb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(59.75, 57)
+
+[node name="Enemy2" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_4w621")
+damage = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 33)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("2_fkhb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.125, 33)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = -16.0
+offset_bottom = -13.0
+max_value = 3.0
+value = 3.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
