@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Project Hydra"
+config/name="The Fall"
+run/main_scene="uid://cyvvrq135uf1p"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,3 +19,4 @@ config/icon="res://icon.svg"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

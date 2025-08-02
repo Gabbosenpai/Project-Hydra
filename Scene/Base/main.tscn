@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyvvrq135uf1p"]
+
+[ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Terrain Texture/images/grass.png" id="1_17lab"]
+[ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Script/Selezionatore_Posizionamento/main.gd" id="1_lpmol"]
+[ext_resource type="PackedScene" uid="uid://cpptk2p22208t" path="res://Scene/Piante/plant.tscn" id="3_wrv6g"]
+[ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scene/Bottoni/Pulsanti.tscn" id="4_eb150"]
+[ext_resource type="PackedScene" uid="uid://b7sglqhpgp7hd" path="res://Scene/Piante/plant_2.tscn" id="5_7ta1x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
+texture = ExtResource("1_17lab")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wrv6g"]
+tile_size = Vector2i(128, 128)
+sources/1 = SubResource("TileSetAtlasSource_lpmol")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_lpmol")
+
+[node name="Highlight" type="ColorRect" parent="."]
+z_index = 1000
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0.658824, 0, 0.164706, 0.454902)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_wrv6g")
+rendering_quadrant_size = 128
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65540, 1, 0, 65539, 1, 0, 65542, 1, 0, 65541, 1, 0, 65543, 1, 0, 65544, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0)
+
+[node name="Plant" parent="." instance=ExtResource("3_wrv6g")]
+visible = false
+
+[node name="UI" parent="." instance=ExtResource("4_eb150")]
+
+[node name="PlantSelector" parent="UI" index="3"]
+visible = false
+
+[node name="Plant2" parent="." instance=ExtResource("5_7ta1x")]
+visible = false
+
+[connection signal="pressed" from="UI/ButtonPlace" to="." method="_on_button_place_pressed"]
+[connection signal="pressed" from="UI/ButtonRemove" to="." method="_on_button_remove_pressed"]
+[connection signal="pressed" from="UI/Abort" to="." method="_on_abort_pressed"]
+[connection signal="pressed" from="UI/PlantSelector/ButtonPlant1" to="." method="_on_button_plant_1_pressed"]
+[connection signal="pressed" from="UI/PlantSelector/ButtonPlant2" to="." method="_on_button_plant_2_pressed"]
+
+[editable path="UI"]
