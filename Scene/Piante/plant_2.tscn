@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7sglqhpgp7hd"]
 
-[ext_resource type="Texture2D" uid="uid://b38kuqj8fu6ka" path="res://SnoopethDuckDuck Crops/1px/64.png" id="1_0g72e"]
+[ext_resource type="Texture2D" uid="uid://b38kuqj8fu6ka" path="res://Plants/SnoopethDuckDuck Crops/1px/64.png" id="1_0g72e"]
 
 [node name="Plant2" type="Node2D"]
 

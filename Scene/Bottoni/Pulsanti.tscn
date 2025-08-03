@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7qojdhekgsee"]
 
-[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://SnoopethDuckDuck Crops/1px/30.png" id="1_64tot"]
-[ext_resource type="Texture2D" uid="uid://b38kuqj8fu6ka" path="res://SnoopethDuckDuck Crops/1px/64.png" id="2_48fc3"]
+[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://Plants/SnoopethDuckDuck Crops/1px/30.png" id="1_64tot"]
+[ext_resource type="Texture2D" uid="uid://b38kuqj8fu6ka" path="res://Plants/SnoopethDuckDuck Crops/1px/64.png" id="2_48fc3"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
