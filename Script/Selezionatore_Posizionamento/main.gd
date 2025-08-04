@@ -9,7 +9,6 @@ extends Node2D
 @onready var plant_selector = $UI/PlantSelector  # UI di selezione della pianta
 @onready var button_plant1 = $UI/PlantSelector/ButtonPlant1  # Bottone per selezionare pianta 1
 @onready var button_plant2 = $UI/PlantSelector/ButtonPlant2  # Bottone per selezionare pianta 2
-@onready var overlay_tilemap = $OverlayTileMap  # Overlay per gestire celle occupate
 
 # Dimensioni della griglia
 const GRID_WIDTH = 10
