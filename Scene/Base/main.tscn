@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=9 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Terrain Texture/images/grass.png" id="1_17lab"]
-[ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Script/Selezionatore_Posizionamento/main.gd" id="1_lpmol"]
+[ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Script/Scena_Base/main.gd" id="1_lpmol"]
 [ext_resource type="PackedScene" uid="uid://cpptk2p22208t" path="res://Scene/Piante/plant.tscn" id="3_wrv6g"]
-[ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scene/Bottoni/Pulsanti.tscn" id="4_eb150"]
+[ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scene/UI/UI.tscn" id="4_eb150"]
 [ext_resource type="PackedScene" uid="uid://b7sglqhpgp7hd" path="res://Scene/Piante/plant_2.tscn" id="5_7ta1x"]
+[ext_resource type="PackedScene" uid="uid://bkx4elb7k2lra" path="res://Scene/Nemici/enemy.tscn" id="6_avcdj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
 texture = ExtResource("1_17lab")
@@ -63,7 +64,25 @@ offset_bottom = 718.0
 [node name="PlantSelector" parent="UI" index="3"]
 visible = false
 
+[node name="StartWaveButton" parent="UI" index="4"]
+offset_left = 620.0
+offset_top = 667.0
+offset_right = 763.0
+offset_bottom = 719.0
+
+[node name="ButtonKillAll" parent="UI" index="7"]
+offset_left = 807.0
+offset_top = 667.0
+offset_right = 948.0
+offset_bottom = 718.0
+
 [node name="Plant2" parent="." instance=ExtResource("5_7ta1x")]
+visible = false
+
+[node name="WaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Enemy" parent="." instance=ExtResource("6_avcdj")]
 visible = false
 
 [connection signal="pressed" from="UI/ButtonPlace" to="." method="_on_button_place_pressed"]
@@ -71,5 +90,8 @@ visible = false
 [connection signal="pressed" from="UI/Abort" to="." method="_on_abort_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/ButtonPlant1" to="." method="_on_button_plant_1_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/ButtonPlant2" to="." method="_on_button_plant_2_pressed"]
+[connection signal="pressed" from="UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
+[connection signal="pressed" from="UI/ButtonKillAll" to="." method="_on_button_kill_all_pressed"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 
 [editable path="UI"]

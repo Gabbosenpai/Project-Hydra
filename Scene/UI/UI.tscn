@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7qojdhekgsee"]
+
+[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://Plants/SnoopethDuckDuck Crops/1px/30.png" id="1_64tot"]
+[ext_resource type="Texture2D" uid="uid://b38kuqj8fu6ka" path="res://Plants/SnoopethDuckDuck Crops/1px/64.png" id="2_48fc3"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonPlace" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 600.0
+offset_right = 194.0
+offset_bottom = 647.0
+text = "Piazza"
+
+[node name="ButtonRemove" type="Button" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 599.0
+offset_right = 393.0
+offset_bottom = 648.0
+text = "Rimuovi"
+
+[node name="Abort" type="Button" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 597.0
+offset_right = 576.0
+offset_bottom = 647.0
+text = "Annulla"
+
+[node name="PlantSelector" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 525.0
+offset_right = 161.0
+offset_bottom = 579.0
+
+[node name="ButtonPlant1" type="Button" parent="PlantSelector"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 90.0
+offset_bottom = 29.0
+icon = ExtResource("1_64tot")
+
+[node name="ButtonPlant2" type="Button" parent="PlantSelector"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 92.0
+offset_bottom = 54.0
+icon = ExtResource("2_48fc3")
+
+[node name="StartWaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 596.0
+offset_right = 749.0
+offset_bottom = 648.0
+text = "Inizia Ondata"
+
+[node name="LabelWave" type="Label" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 2.0
+offset_right = 649.0
+offset_bottom = 32.0
+text = "Ondata 0"
+
+[node name="LabelEnemies" type="Label" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 28.0
+offset_right = 650.0
+offset_bottom = 51.0
+text = "Nemici: 0"
+
+[node name="ButtonKillAll" type="Button" parent="."]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 596.0
+offset_right = 916.0
+offset_bottom = 647.0
+text = "Uccidi i nemici"
