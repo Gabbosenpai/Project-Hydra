@@ -137,22 +137,8 @@ func _on_button_plant_1_pressed() -> void:
 	current_mode = Mode.PLACE
 	plant_selector.visible = false
 
-	# Pulisce l'overlay delle celle occupate
-	for x in range(GRID_WIDTH):
-		for y in range(GRID_HEIGHT):
-			var cell = Vector2i(x, y)
-			if plants.has(cell):
-				overlay_tilemap.set_cell(0, cell, -1)
-
 # Quando si seleziona la pianta 2
 func _on_button_plant_2_pressed() -> void:
 	selected_plant_scene = plant_scenes["plant2"]
 	current_mode = Mode.PLACE
 	plant_selector.visible = false
-
-	# Pulisce l'overlay delle celle occupate
-	for x in range(GRID_WIDTH):
-		for y in range(GRID_HEIGHT):
-			var cell = Vector2i(x, y)
-			if plants.has(cell):
-				overlay_tilemap.set_cell(0, cell, -1)
