@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=11 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Terrain Texture/images/grass.png" id="1_17lab"]
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Script/Scena_Base/main.gd" id="1_lpmol"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scene/UI/UI.tscn" id="4_eb150"]
 [ext_resource type="PackedScene" uid="uid://b7sglqhpgp7hd" path="res://Scene/Piante/plant_2.tscn" id="5_7ta1x"]
 [ext_resource type="PackedScene" uid="uid://bkx4elb7k2lra" path="res://Scene/Nemici/enemy.tscn" id="6_avcdj"]
+[ext_resource type="PackedScene" uid="uid://wswnbf4p8k11" path="res://Scene/Proiettili/base_bullet.tscn" id="7_jhuhr"]
+[ext_resource type="PackedScene" uid="uid://c63nlpetlyfdi" path="res://Scene/Torrette/base_tower.tscn" id="8_4sj78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
 texture = ExtResource("1_17lab")
@@ -85,6 +87,12 @@ one_shot = true
 [node name="Enemy" parent="." instance=ExtResource("6_avcdj")]
 visible = false
 
+[node name="BaseBullet" parent="." instance=ExtResource("7_jhuhr")]
+visible = false
+
+[node name="BaseTower" parent="." instance=ExtResource("8_4sj78")]
+visible = false
+
 [connection signal="pressed" from="UI/ButtonPlace" to="." method="_on_button_place_pressed"]
 [connection signal="pressed" from="UI/ButtonRemove" to="." method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/Abort" to="." method="_on_abort_pressed"]
@@ -95,3 +103,4 @@ visible = false
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 
 [editable path="UI"]
+[editable path="Enemy"]

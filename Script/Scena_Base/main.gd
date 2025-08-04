@@ -43,7 +43,7 @@ var selected_plant_scene: PackedScene = null  # Scena della pianta attualmente s
 # Dizionario con le scene delle piante disponibili
 var plant_scenes = {
 	"plant1": preload("res://Scene/Piante/plant.tscn"),
-	"plant2": preload("res://Scene/Piante/plant_2.tscn")
+	"plant2": preload("res://Scene/Torrette/base_tower.tscn")
 }
 
 # Dizionario che tiene traccia delle piante piazzate, mappate per cella (Vector2i)
