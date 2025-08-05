@@ -5,6 +5,7 @@ signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemic
 @export var health := 10  # Salute iniziale del nemico, modificabile dall'editor
 var speed := 40          # Velocità di movimento del nemico in pixel al secondo
 
+
 # Funzione chiamata ogni frame fisico (frame rate fisso)
 func _physics_process(delta):
 	# Sposta il nemico verso sinistra (diminuisce posizione x) in base alla velocità e al tempo delta

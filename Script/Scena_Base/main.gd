@@ -223,17 +223,26 @@ func _on_wave_timer_timeout() -> void:
 # Funzione per istanziare un nemico e aggiungerlo alla scena
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
-	
-	# Posizione di spawn del nemico (esempio: bordo destro della mappa con y casuale)
-	enemy.global_position = Vector2(1200, 64 + randi() % 300)
-	
+
+	# Scegli una riga casuale nella griglia
+	var row = randi() % GRID_HEIGHT
+	var spawn_cell = Vector2i(GRID_WIDTH, row)  # una cella fuori a destra
+
+	# Ottieni la posizione del centro della cella
+	var tile_top_left = tilemap.map_to_local(spawn_cell)
+	var tile_center = tile_top_left + tilemap.tile_set.tile_size * 0.5
+	var spawn_position = tilemap.to_global(tile_center)
+
+	enemy.global_position = spawn_position
+
 	# Connette il segnale "enemy_defeated" del nemico al metodo di questa scena
 	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
-	
-	add_child(enemy)  # Aggiunge il nemico come figlio della scena principale
+
+	add_child(enemy)
 	
 	enemies_alive += 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
+
 
 # Funzione chiamata quando un nemico viene sconfitto (segno "enemy_defeated")
 func _on_enemy_defeated():
