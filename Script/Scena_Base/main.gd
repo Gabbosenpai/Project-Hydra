@@ -97,51 +97,43 @@ func _process(delta):
 
 # --- GESTIONE INPUT (mouse o tocco) ---
 func _unhandled_input(event):
-	# Se non siamo in nessuna modalità, ignora l'input
 	if current_mode == Mode.NONE:
 		return
 
 	var pointer_pos = null
 
-	# Controlla se è un tocco su mobile e se è premuto
 	if event is InputEventScreenTouch and event.pressed:
 		pointer_pos = event.position
 		last_touch_position = pointer_pos
-	# Controlla se è un click del mouse sinistro su PC
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		pointer_pos = event.position
 
 	if pointer_pos != null:
-		# Converte la posizione del puntatore in locale TileMap e ottiene la cella
 		var local_pos = tilemap.to_local(pointer_pos)
 		var cell = tilemap.local_to_map(local_pos)
-		var cell_key = Vector2i(cell.x, cell.y)  # Crea la chiave per il dizionario piante
+		var cell_key = Vector2i(cell.x, cell.y)
 
 		match current_mode:
-			# --- PIAZZAMENTO PIANTE ---
 			Mode.PLACE:
-				# Se la cella è libera e una pianta è selezionata
 				if not plants.has(cell_key) and selected_plant_scene != null:
-					# Istanzia la pianta selezionata
 					var plant_instance = selected_plant_scene.instantiate()
 					var tile_size = tilemap.tile_set.tile_size
 					var tile_top_left = tilemap.map_to_local(cell)
 					var tile_center = tile_top_left + tile_size * 0.5
-					# Posiziona la pianta nel centro della cella (coordinate globali)
 					plant_instance.global_position = tilemap.to_global(tile_center)
-					# Aggiunge la pianta come figlia del nodo principale
+
+					# Imposta la riga se la pianta ha la variabile
+					if plant_instance.has_method("set_riga"):
+						plant_instance.set_riga(cell.y)
+
 					add_child(plant_instance)
-					# Registra la pianta piazzata nel dizionario con la cella come chiave
 					plants[cell_key] = plant_instance
 					print("Planted at cell: ", cell_key)
 				else:
 					print("Cell already occupied or no plant selected: ", cell_key)
 
-			# --- RIMOZIONE PIANTE ---
 			Mode.REMOVE:
-				# Se nella cella è presente una pianta
 				if plants.has(cell_key):
-					# Rimuove la pianta dalla scena e dal dizionario
 					plants[cell_key].queue_free()
 					plants.erase(cell_key)
 					print("Removed plant at cell: ", cell_key)
@@ -224,22 +216,22 @@ func _on_wave_timer_timeout() -> void:
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 
-	# Scegli una riga casuale nella griglia
 	var row = randi() % GRID_HEIGHT
-	var spawn_cell = Vector2i(GRID_WIDTH, row)  # una cella fuori a destra
+	var spawn_cell = Vector2i(GRID_WIDTH, row)
 
-	# Ottieni la posizione del centro della cella
 	var tile_top_left = tilemap.map_to_local(spawn_cell)
 	var tile_center = tile_top_left + tilemap.tile_set.tile_size * 0.5
 	var spawn_position = tilemap.to_global(tile_center)
 
 	enemy.global_position = spawn_position
 
-	# Connette il segnale "enemy_defeated" del nemico al metodo di questa scena
+	# Imposta la riga e aggiunge al gruppo "Robot"
+	enemy.riga = row
+
 	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 
 	add_child(enemy)
-	
+
 	enemies_alive += 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 

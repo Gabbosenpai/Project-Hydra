@@ -4,6 +4,7 @@ signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemic
 
 @export var health := 10  # Salute iniziale del nemico, modificabile dall'editor
 var speed := 40          # Velocità di movimento del nemico in pixel al secondo
+var riga: int  # Riga su cui si trova il nemico
 
 
 # Funzione chiamata ogni frame fisico (frame rate fisso)

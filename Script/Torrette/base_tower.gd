@@ -10,7 +10,7 @@ var robots_coming = []
 var armed = false
 
 # Variabile che indica la riga in cui si trova la torretta (non usata in questo codice, ma utile per logica di fila)
-var riga
+var riga: int
 
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var rayCast = $RayCast2D                  # Riferimento al nodo RayCast2D, usato per il rilevamento
@@ -50,10 +50,12 @@ func is_valid_robot(robot: Node) -> bool:
 
 # Controlla se il robot è nella stessa riga della torretta (attualmente sempre true)
 func is_same_row(robot: Node) -> bool:
-	# Se vuoi, puoi usare la variabile "riga" per controllare la fila esatta
-	# return robot.riga == riga
-	return true  # Per ora ignora la riga e considera tutti validi
+	return "riga" in robot and robot.riga == riga
+
 
 # Controlla se il robot è attualmente visibile sullo schermo
 func is_robot_visible(robot: Node) -> bool:
 	return robot.is_on_screen()  # Ritorna true se il robot è visibile nella viewport
+
+func set_riga(value: int) -> void:
+	riga = value
