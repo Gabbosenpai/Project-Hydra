@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7qojdhekgsee"]
 
-[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://Plants/SnoopethDuckDuck Crops/1px/30.png" id="1_irbcr"]
+[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://Plants/SnoopethDuckDuck Crops/1px/30.png" id="1_64tot"]
 [ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Base Tower/Minigun_0001.png" id="2_irbcr"]
 
 [node name="UI" type="Control"]
@@ -47,7 +47,7 @@ layout_mode = 0
 offset_top = -1.0
 offset_right = 90.0
 offset_bottom = 29.0
-icon = ExtResource("1_irbcr")
+icon = ExtResource("1_64tot")
 
 [node name="ButtonPlant2" type="Button" parent="PlantSelector"]
 layout_mode = 0

@@ -33,8 +33,8 @@ var enemies_to_spawn = 0  # Numero di nemici rimasti da spawnare nell'ondata cor
 var spawn_interval = 1.0  # Intervallo di tempo tra spawn nemici
 
 # --- GRIGLIA DI GIOCO ---
-const GRID_WIDTH = 10  # Larghezza griglia (numero di celle)
-const GRID_HEIGHT = 6  # Altezza griglia
+const GRID_WIDTH = 9  # Larghezza griglia (numero di celle)
+const GRID_HEIGHT = 5  # Altezza griglia
 
 # --- VARIABILI DI STATO GENERALI ---
 var last_touch_position: Vector2 = Vector2.ZERO  # Ultima posizione del tocco (per dispositivi touch)
