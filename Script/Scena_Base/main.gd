@@ -251,3 +251,4 @@ func _on_button_kill_all_pressed() -> void:
 	for child in get_children():
 		if child.has_method("die"):
 			child.die()
+			
