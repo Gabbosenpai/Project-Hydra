@@ -18,7 +18,7 @@ grow_begin = 0.0
 grow_end = 0.0
 thickness = 3
 
-[node name="Wall" type="Area2D" groups=["Wall"]]
+[node name="Wall" type="Area2D" groups=["Tower"]]
 script = ExtResource("1_y4f30")
 metadata/_edit_group_ = true
 

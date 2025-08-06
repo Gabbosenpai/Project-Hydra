@@ -23,7 +23,6 @@ position = Vector2(800, 350)
 script = ExtResource("3_x033f")
 
 [node name="Timer" type="Timer" parent="RobotSpawner"]
-wait_time = 2.0
 autostart = true
 
 [node name="UI" parent="." instance=ExtResource("6_x033f")]

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var robot_A = preload("res://Scenes/Robots/robot_a.tscn")
+@onready var robot_A = preload("res://Roomba/romba.tscn")
 @onready var robot_B = preload("res://Scenes/Robots/robot_b.tscn")
 @onready var timer = $Timer
 
@@ -10,6 +10,7 @@ extends Node2D
 func _on_timer_timeout() -> void:
 	var tempRobot = robot_A.instantiate()
 	add_child(tempRobot)
+	timer.stop()
 	robot_power -= 1
 	if robot_power == 0:
 		robot_power = 7
