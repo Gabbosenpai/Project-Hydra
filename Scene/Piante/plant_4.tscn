@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3esk352onqiu"]
+
+[ext_resource type="Texture2D" uid="uid://ncdg2vcab82n" path="res://Plants/SnoopethDuckDuck Crops/1px/43.png" id="1_api0o"]
+
+[node name="Plant4" type="Node2D"]
+
+[node name="Pianta4" type="Sprite2D" parent="."]
+position = Vector2(-1, -4)
+scale = Vector2(3.78333, 3.25)
+texture = ExtResource("1_api0o")

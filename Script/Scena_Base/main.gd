@@ -43,7 +43,9 @@ var selected_plant_scene: PackedScene = null  # Pianta attualmente selezionata p
 # Dizionario con le scene delle piante disponibili per piazzamento
 var plant_scenes = {
 	"plant1": preload("res://Scene/Piante/plant.tscn"),
-	"plant2": preload("res://Scene/Torrette/base_tower.tscn")
+	"plant2": preload("res://Scene/Torrette/base_tower.tscn"),
+	"plant3": preload("res://Scene/Piante/plant_3.tscn"),
+	"plant4": preload("res://Scene/Piante/plant_4.tscn")
 }
 
 # Dizionario che tiene traccia delle piante piazzate, con chiave la cella (Vector2i)
@@ -55,6 +57,7 @@ var current_mode = Mode.NONE
 
 # --- FUNZIONE CHIAMATA OGNI FRAME ---
 func _process(delta):
+	button_remove.visible = not plants.is_empty()
 	# Se non siamo in nessuna modalità attiva, nascondi l'highlight e non fare altro
 	if current_mode == Mode.NONE:
 		highlight.visible = false
@@ -84,7 +87,6 @@ func _process(delta):
 		# Posiziona lo sprite highlight centrato sulla cella corrispondente
 		highlight.position = highlight.get_parent().to_local(global_pos - tile_size * 0.5)
 		highlight.visible = true
-
 		# Cambia colore dell'highlight in base alla modalità attiva
 		match current_mode:
 			Mode.PLACE:
@@ -129,6 +131,10 @@ func _unhandled_input(event):
 					add_child(plant_instance)
 					plants[cell_key] = plant_instance
 					print("Planted at cell: ", cell_key)
+					current_mode = Mode.NONE
+					selected_plant_scene = null
+					highlight.visible = false
+
 				else:
 					print("Cell already occupied or no plant selected: ", cell_key)
 
@@ -137,6 +143,9 @@ func _unhandled_input(event):
 					plants[cell_key].queue_free()
 					plants.erase(cell_key)
 					print("Removed plant at cell: ", cell_key)
+					current_mode = Mode.NONE
+					highlight.visible = false
+					button_remove.button_pressed = false  # Disattiva il bottone se è "toggle"
 				else:
 					print("No plant to remove at cell: ", cell_key)
 
@@ -152,18 +161,29 @@ func get_pointer_position() -> Vector2:
 
 # Quando si preme il bottone "Piazza pianta"
 func _on_button_place_pressed() -> void:
-	current_mode = Mode.NONE         # Resetta la modalità per far scegliere la pianta
-	plant_selector.visible = true   # Mostra la finestra per selezionare pianta
-	selected_plant_scene = null     # Nessuna pianta selezionata ancora
+	if plant_selector.visible:
+		# Se è già visibile, nascondilo e torna alla modalità NONE
+		current_mode = Mode.NONE
+		selected_plant_scene = null
+		plant_selector.visible = false
+		highlight.visible = false
+	else:
+		# Altrimenti mostralo
+		current_mode = Mode.NONE
+		plant_selector.visible = true
+		selected_plant_scene = null
+
+
 
 # Quando si preme il bottone "Rimuovi pianta"
 func _on_button_remove_pressed() -> void:
-	current_mode = Mode.REMOVE       # Attiva la modalità rimozione pianta
+	if current_mode == Mode.REMOVE:
+		current_mode = Mode.NONE
+		button_remove.button_pressed = false
+		highlight.visible = false
+	else:
+		current_mode = Mode.REMOVE
 
-# Quando si preme il bottone "Annulla"
-func _on_abort_pressed() -> void:
-	current_mode = Mode.NONE         # Torna alla modalità nessuna azione
-	plant_selector.visible = false  # Nasconde il selettore di piante
 
 # Quando si seleziona la pianta 1 dalla UI
 func _on_button_plant_1_pressed() -> void:
@@ -174,6 +194,16 @@ func _on_button_plant_1_pressed() -> void:
 # Quando si seleziona la pianta 2 dalla UI
 func _on_button_plant_2_pressed() -> void:
 	selected_plant_scene = plant_scenes["plant2"]  # Seleziona la scena della pianta 2 (torretta)
+	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
+	plant_selector.visible = false                 # Nasconde la finestra selettore piante
+
+func _on_button_plant_3_pressed() -> void:
+	selected_plant_scene = plant_scenes["plant3"]  # Seleziona la scena della pianta 3
+	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
+	plant_selector.visible = false                 # Nasconde la finestra selettore piante
+
+func _on_button_plant_4_pressed() -> void:
+	selected_plant_scene = plant_scenes["plant4"]  # Seleziona la scena della pianta 4
 	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
 	plant_selector.visible = false                 # Nasconde la finestra selettore piante
 
@@ -252,4 +282,3 @@ func _on_button_kill_all_pressed() -> void:
 	for child in get_children():
 		if child.has_method("die"):
 			child.die()
-			

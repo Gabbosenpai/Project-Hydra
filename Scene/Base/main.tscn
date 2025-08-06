@@ -41,32 +41,28 @@ visible = false
 offset_left = 13.0
 offset_top = 719.0
 offset_right = 159.0
-offset_bottom = 766.0
+offset_bottom = 768.0
 
 [node name="ButtonRemove" parent="UI" index="1"]
 offset_left = 197.0
 offset_top = 717.0
 offset_right = 353.0
-offset_bottom = 766.0
+offset_bottom = 769.0
 
-[node name="Abort" parent="UI" index="2"]
-offset_left = 403.0
-offset_top = 718.0
-offset_right = 547.0
-offset_bottom = 768.0
-
-[node name="PlantSelector" parent="UI" index="3"]
+[node name="PlantSelector" parent="UI" index="2"]
 visible = false
 
-[node name="StartWaveButton" parent="UI" index="4"]
+[node name="StartWaveButton" parent="UI" index="3"]
+offset_left = 395.0
 offset_top = 715.0
-offset_bottom = 767.0
+offset_right = 538.0
+offset_bottom = 768.0
 
-[node name="ButtonKillAll" parent="UI" index="7"]
-offset_left = 807.0
+[node name="ButtonKillAll" parent="UI" index="6"]
+offset_left = 582.0
 offset_top = 715.0
-offset_right = 948.0
-offset_bottom = 766.0
+offset_right = 723.0
+offset_bottom = 769.0
 
 [node name="Plant2" parent="." instance=ExtResource("5_7ta1x")]
 visible = false
@@ -79,9 +75,10 @@ visible = false
 
 [connection signal="pressed" from="UI/ButtonPlace" to="." method="_on_button_place_pressed"]
 [connection signal="pressed" from="UI/ButtonRemove" to="." method="_on_button_remove_pressed"]
-[connection signal="pressed" from="UI/Abort" to="." method="_on_abort_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/ButtonPlant1" to="." method="_on_button_plant_1_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/ButtonPlant2" to="." method="_on_button_plant_2_pressed"]
+[connection signal="pressed" from="UI/PlantSelector/ButtonPlant3" to="." method="_on_button_plant_3_pressed"]
+[connection signal="pressed" from="UI/PlantSelector/ButtonPlant4" to="." method="_on_button_plant_4_pressed"]
 [connection signal="pressed" from="UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
 [connection signal="pressed" from="UI/ButtonKillAll" to="." method="_on_button_kill_all_pressed"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
