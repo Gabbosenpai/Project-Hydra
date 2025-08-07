@@ -5,7 +5,6 @@ extends Node2D  # Estende Node2D, nodo principale della scena di gioco (es. live
 @onready var highlight = $Highlight  # Sprite trasparente che evidenzia la cella selezionata
 @onready var button_place = $UI/ButtonPlace  # Bottone UI per attivare modalità piazzamento piante
 @onready var button_remove = $UI/ButtonRemove  # Bottone UI per attivare modalità rimozione piante
-@onready var button_cancel = $UI/Abort  # Bottone UI per annullare l'azione corrente
 @onready var plant_selector = $UI/PlantSelector  # Finestra UI per scegliere quale pianta piazzare
 @onready var button_plant1 = $UI/PlantSelector/ButtonPlant1  # Bottone per selezionare pianta 1
 @onready var button_plant2 = $UI/PlantSelector/ButtonPlant2  # Bottone per selezionare pianta 2

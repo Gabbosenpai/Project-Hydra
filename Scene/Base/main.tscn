@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=7 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Terrain Texture/images/grass.png" id="1_17lab"]
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Script/Scena_Base/main.gd" id="1_lpmol"]
-[ext_resource type="PackedScene" uid="uid://cpptk2p22208t" path="res://Scene/Piante/plant.tscn" id="3_wrv6g"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scene/UI/UI.tscn" id="4_eb150"]
-[ext_resource type="PackedScene" uid="uid://b7sglqhpgp7hd" path="res://Scene/Piante/plant_2.tscn" id="5_7ta1x"]
 [ext_resource type="PackedScene" uid="uid://bkx4elb7k2lra" path="res://Scene/Nemici/enemy.tscn" id="6_avcdj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
@@ -31,9 +29,6 @@ tile_set = SubResource("TileSet_wrv6g")
 rendering_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65540, 1, 0, 65539, 1, 0, 65542, 1, 0, 65541, 1, 0, 65543, 1, 0, 65544, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 9, 1, 0, 65545, 1, 0, 131081, 1, 0, 196617, 1, 0, 262153, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0)
-
-[node name="Plant" parent="." instance=ExtResource("3_wrv6g")]
-visible = false
 
 [node name="UI" parent="." instance=ExtResource("4_eb150")]
 
@@ -63,9 +58,6 @@ offset_left = 582.0
 offset_top = 715.0
 offset_right = 723.0
 offset_bottom = 769.0
-
-[node name="Plant2" parent="." instance=ExtResource("5_7ta1x")]
-visible = false
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true

@@ -1,7 +1,7 @@
 extends Node
 
-var music_volume: float = 1.0
-var sfx_volume: float = 1.0
+var music_volume: float = 0.01
+var sfx_volume: float = 0.01
 
 var music_player: AudioStreamPlayer = null
 var sfx_player: AudioStreamPlayer = null

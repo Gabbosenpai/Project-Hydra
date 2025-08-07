@@ -13,6 +13,7 @@ var armed = false
 var riga: int
 
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
+@onready var bulletOrigin = $BulletOrigin
 @onready var rayCast = $RayCast2D                  # Riferimento al nodo RayCast2D, usato per il rilevamento
 @onready var towerSprite = $TowerSprite            # Riferimento allo sprite animato della torretta
 @onready var reloadTimer = $RayCast2D/ReloadTimer # Timer per la ricarica, figlio del RayCast2D
@@ -23,7 +24,7 @@ func shoot():
 	if BULLET:           # Controlla che la scena del proiettile sia assegnata
 		var bullet: Node2D = BULLET.instantiate()  # Istanzia un nuovo proiettile dalla scena PackedScene
 		get_tree().current_scene.add_child(bullet) # Aggiunge il proiettile come figlio della scena corrente, così è visibile
-		bullet.global_position = global_position    # Posiziona il proiettile nella posizione globale della torretta
+		bullet.global_position = bulletOrigin.global_position    # Posiziona il proiettile nella posizione globale della torretta
 	reloadTimer.start()   # Avvia il timer di ricarica per evitare spari continui
 
 # Funzione chiamata quando il timer di ricarica termina

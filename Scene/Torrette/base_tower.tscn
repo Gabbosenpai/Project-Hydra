@@ -29,8 +29,8 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_rel02")
 animation = &"shoot"
 
-[node name="Bullet Origin" type="Marker2D" parent="."]
-position = Vector2(49, 14)
+[node name="BulletOrigin" type="Marker2D" parent="."]
+position = Vector2(54, 11)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
