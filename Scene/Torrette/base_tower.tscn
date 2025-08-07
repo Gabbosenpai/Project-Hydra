@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c63nlpetlyfdi"]
+
+[ext_resource type="Script" uid="uid://c4avdmb4efayo" path="res://Script/Torrette/base_tower.gd" id="1_yuvrt"]
+[ext_resource type="PackedScene" uid="uid://wswnbf4p8k11" path="res://Scene/Proiettili/base_bullet.tscn" id="2_r7s0y"]
+[ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Base Tower/Minigun_0001.png" id="3_jma08"]
+[ext_resource type="Texture2D" uid="uid://c3lnx3e4lwa8r" path="res://Base Tower/Minigun_0002.png" id="4_3fwqc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rel02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jma08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3fwqc")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="BaseTower" type="Node2D"]
+script = ExtResource("1_yuvrt")
+BULLET = ExtResource("2_r7s0y")
+
+[node name="TowerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_rel02")
+animation = &"shoot"
+
+[node name="Bullet Origin" type="Marker2D" parent="."]
+position = Vector2(49, 14)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+one_shot = true
+
+[connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
