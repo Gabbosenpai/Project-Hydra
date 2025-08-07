@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c63nlpetlyfdi"]
+[gd_scene load_steps=7 format=3 uid="uid://c63nlpetlyfdi"]
 
 [ext_resource type="Script" uid="uid://c4avdmb4efayo" path="res://Script/Torrette/base_tower.gd" id="1_yuvrt"]
 [ext_resource type="PackedScene" uid="uid://wswnbf4p8k11" path="res://Scene/Proiettili/base_bullet.tscn" id="2_r7s0y"]
@@ -13,13 +13,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_3fwqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jma08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3fwqc")
 }],
 "loop": false,
 "name": &"shoot",
 "speed": 10.0
 }]
 
-[node name="BaseTower" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flnem"]
+size = Vector2(88, 44)
+
+[node name="BaseTower" type="Area2D" groups=["Tower"]]
 script = ExtResource("1_yuvrt")
 BULLET = ExtResource("2_r7s0y")
 
@@ -28,6 +37,8 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_rel02")
 animation = &"shoot"
+frame = 3
+frame_progress = 1.0
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
 position = Vector2(54, 11)
@@ -35,6 +46,11 @@ position = Vector2(54, 11)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 2.0
 one_shot = true
+
+[node name="TowerHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 12)
+shape = SubResource("RectangleShape2D_flnem")
 
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]

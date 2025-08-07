@@ -129,7 +129,7 @@ func _unhandled_input(event):
 
 					add_child(plant_instance)
 					plants[cell_key] = plant_instance
-					print("Planted at cell: ", cell_key)
+					print("Placed at cell: ", cell_key)
 					current_mode = Mode.NONE
 					selected_plant_scene = null
 					highlight.visible = false

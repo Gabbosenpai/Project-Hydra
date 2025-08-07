@@ -31,6 +31,9 @@ animations = [{
 }, {
 "duration": 5.0,
 "texture": ExtResource("6_h4hds")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_ymans")
 }],
 "loop": false,
 "name": &"attack",
@@ -62,15 +65,14 @@ size = Vector2(77.9999, 54.6667)
 
 [node name="Robot" type="Area2D" groups=["Robot"]]
 script = ExtResource("1_glfoj")
+speed = 165
 metadata/_edit_group_ = true
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w720y")
-animation = &"move"
-frame = 2
-frame_progress = 0.823779
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.33333)
