@@ -19,7 +19,7 @@ var enemies_alive = 0  # Quanti nemici sono attivi/vivi nella scena
 var is_wave_active = false  # Flag che indica se un'ondata è in corso
 
 # Precarica la scena del nemico da instanziare ad ogni spawn
-var enemy_scene = preload("res://Scene/Nemici/enemy.tscn")
+var enemy_scene = preload("res://Roomba/romba.tscn")
 
 # Definizione delle ondate: array di dizionari con numero nemici e intervallo spawn
 var waves = [
@@ -256,8 +256,6 @@ func spawn_enemy():
 
 	# Imposta la riga e aggiunge al gruppo "Robot"
 	enemy.riga = row
-
-	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 
 	add_child(enemy)
 
