@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnkhwdws2sde5"
+path="res://.godot/imported/A Lonely Cherry Tree (GAME OVER MENU).mp3-994fecf8f3c1b1aa017e1b98002b27d8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/OST/A Lonely Cherry Tree (GAME OVER MENU).mp3"
+dest_files=["res://.godot/imported/A Lonely Cherry Tree (GAME OVER MENU).mp3-994fecf8f3c1b1aa017e1b98002b27d8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

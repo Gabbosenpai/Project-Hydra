@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7qojdhekgsee"]
+
+[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/30.png" id="1_hfhsn"]
+[ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="2_qwshj"]
+[ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
+[ext_resource type="Texture2D" uid="uid://ncdg2vcab82n" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/43.png" id="4_xjg7p"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonPlace" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 600.0
+offset_right = 194.0
+offset_bottom = 647.0
+text = "Piazza"
+
+[node name="ButtonRemove" type="Button" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 599.0
+offset_right = 393.0
+offset_bottom = 648.0
+text = "Rimuovi"
+
+[node name="PlantSelector" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 459.0
+offset_right = 161.0
+offset_bottom = 583.0
+
+[node name="ButtonPlant1" type="Button" parent="PlantSelector"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 90.0
+offset_bottom = 29.0
+icon = ExtResource("1_hfhsn")
+
+[node name="ButtonPlant2" type="Button" parent="PlantSelector"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 22.0
+offset_right = 90.0
+offset_bottom = 65.0
+icon = ExtResource("2_qwshj")
+
+[node name="ButtonPlant3" type="Button" parent="PlantSelector"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 91.0
+offset_bottom = 93.0
+icon = ExtResource("3_48q88")
+
+[node name="ButtonPlant4" type="Button" parent="PlantSelector"]
+layout_mode = 0
+offset_top = 91.0
+offset_right = 91.0
+offset_bottom = 120.0
+icon = ExtResource("4_xjg7p")
+
+[node name="StartWaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 595.0
+offset_right = 581.0
+offset_bottom = 647.0
+text = "Inizia Ondata"
+
+[node name="LabelWave" type="Label" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 2.0
+offset_right = 649.0
+offset_bottom = 32.0
+text = "Ondata 0"
+
+[node name="LabelEnemies" type="Label" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 28.0
+offset_right = 650.0
+offset_bottom = 51.0
+text = "Nemici: 0"
+
+[node name="ButtonKillAll" type="Button" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 594.0
+offset_right = 747.0
+offset_bottom = 647.0
+text = "Uccidi i nemici"

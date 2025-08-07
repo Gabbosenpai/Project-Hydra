@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://47vpks885g7d"
+path="res://.godot/imported/[Royalty Free Music] World - Upbeat 8-bit DA CONFERMARE, PARTICOLARE.mp3-d4c60b1359b8ed93a62254ee8b55f91b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/OST/[Royalty Free Music] World - Upbeat 8-bit DA CONFERMARE, PARTICOLARE.mp3"
+dest_files=["res://.godot/imported/[Royalty Free Music] World - Upbeat 8-bit DA CONFERMARE, PARTICOLARE.mp3-d4c60b1359b8ed93a62254ee8b55f91b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
