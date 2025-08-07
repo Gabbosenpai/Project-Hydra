@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkovwi4fbdxcd"
+path="res://.godot/imported/Game Over (8-Bit Music) (GAME OVER SOUND EFFECT).mp3-4fc4a81171f39ae38384906bc7f747bc.mp3str"
+
+[deps]
+
+source_file="res://OST/Game Over (8-Bit Music) (GAME OVER SOUND EFFECT).mp3"
+dest_files=["res://.godot/imported/Game Over (8-Bit Music) (GAME OVER SOUND EFFECT).mp3-4fc4a81171f39ae38384906bc7f747bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
