@@ -71,3 +71,11 @@ func toggle_music_mute() -> void:
 	else:
 		if music_player:
 			music_player.volume_db = linear_to_db(music_volume)
+
+
+func play_music(music_stream: AudioStream) -> void:
+	if music_player:
+		music_player.stop()
+		music_player.stream = music_stream
+		music_player.volume_db = linear_to_db(music_volume)
+		music_player.play()

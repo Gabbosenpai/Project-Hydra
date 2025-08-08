@@ -55,7 +55,7 @@ enum Mode { NONE, PLACE, REMOVE }
 var current_mode = Mode.NONE
 
 # --- FUNZIONE CHIAMATA OGNI FRAME ---
-func _process(delta):
+func _process(_delta):
 	button_remove.visible = not plants.is_empty()
 	# Se non siamo in nessuna modalità attiva, nascondi l'highlight e non fare altro
 	if current_mode == Mode.NONE:

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd41ts1gil5l5"]
+
+[ext_resource type="Script" uid="uid://erjs2kqbx7gu" path="res://Scripts/Main Menu/level_selection.gd" id="1_1m0xv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1m0xv")
+
+[node name="Level1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 115.0
+offset_right = 111.0
+offset_bottom = 183.0
+text = "1"
+
+[node name="Level2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 119.0
+offset_right = 229.0
+offset_bottom = 187.0
+text = "2"
+
+[node name="Level3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 120.0
+offset_right = 362.0
+offset_bottom = 188.0
+text = "3"
+
+[node name="Level4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 121.0
+offset_right = 508.0
+offset_bottom = 189.0
+text = "4"
+
+[node name="Level5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 123.0
+offset_right = 651.0
+offset_bottom = 191.0
+text = "5"
+
+[connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
