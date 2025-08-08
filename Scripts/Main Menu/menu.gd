@@ -6,10 +6,11 @@ extends CanvasLayer
 
 #se clicco gioca ferma l'OST del menù
 func _on_play_button_pressed() -> void:
-	AudioManager.music_player.stop()
+	
   #Ferma la musica del menu
-	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/level_selection.tscn")
+	
+	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
