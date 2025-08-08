@@ -256,6 +256,8 @@ func spawn_enemy():
 
 	# Imposta la riga e aggiunge al gruppo "Robot"
 	enemy.riga = row
+	
+	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 
 	add_child(enemy)
 

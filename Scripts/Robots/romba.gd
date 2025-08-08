@@ -10,6 +10,7 @@ extends Area2D
 
 var riga : int
 var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
+signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
 
 func _process(delta: float):
 	# Finchè il robot non attacca, continua a muoversi
@@ -29,6 +30,7 @@ func move(delta):
 	robotSprite.play("move")   
 
 func die():
+	emit_signal("enemy_defeated")  # Emette il segnale che avvisa che il nemico è stato sconfitto
 	queue_free()
 
 # Se il Robot ha una torretta davanti, inizia ad attaccare
