@@ -34,9 +34,20 @@ func _ready():
 
 # Cambia il volume della musica
 func set_music_volume(vol: float) -> void:
-	music_volume = clamp(vol, 0.0, 1.0)
-	if music_player:
-		music_player.volume_db = linear_to_db(music_volume)
+	vol = clamp(vol, 0.0, 1.0)
+	music_volume = vol  # Sempre aggiorna il valore reale del volume
+
+	if is_music_muted:
+		# Se è mutato, non cambiare il volume del player
+		if music_player:
+			music_player.volume_db = linear_to_db(0.0)
+	else:
+		# Altrimenti aggiorna normalmente
+		if music_player:
+			music_player.volume_db = linear_to_db(music_volume)
+
+
+
 
 # Cambia il volume degli effetti
 func set_sfx_volume(vol: float) -> void:
@@ -52,12 +63,11 @@ func play_sfx(sfx_stream: AudioStream) -> void:
 
 # Mute/unmute musica
 func toggle_music_mute() -> void:
+	is_music_muted = !is_music_muted
+
 	if is_music_muted:
-		# Riattiva il volume precedente
-		set_music_volume(previous_music_volume)
-		is_music_muted = false
+		if music_player:
+			music_player.volume_db = linear_to_db(0.0)
 	else:
-		# Salva il volume corrente e azzera
-		previous_music_volume = music_volume
-		set_music_volume(0.0)
-		is_music_muted = true
+		if music_player:
+			music_player.volume_db = linear_to_db(music_volume)
