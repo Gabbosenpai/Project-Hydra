@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=8 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/images/grass.png" id="1_17lab"]
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/main.gd" id="1_lpmol"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/UI.tscn" id="4_eb150"]
+[ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/GameOverUI.tscn" id="4_ywfrw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
 texture = ExtResource("1_17lab")
@@ -12,6 +13,10 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_wrv6g"]
 tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_lpmol")
+
+[sub_resource type="GDScript" id="GDScript_ywfrw"]
+script/source = "extends Control
+"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lpmol")
@@ -61,6 +66,33 @@ offset_bottom = 769.0
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="GameOverUI" parent="." instance=ExtResource("4_ywfrw")]
+process_mode = 3
+visible = false
+script = SubResource("GDScript_ywfrw")
+
+[node name="Label" parent="GameOverUI" index="1"]
+offset_left = 360.0
+offset_top = 318.0
+offset_right = 903.0
+offset_bottom = 455.0
+
+[node name="RetryButton" parent="GameOverUI" index="2"]
+offset_left = 295.0
+offset_top = 709.0
+offset_right = 506.0
+offset_bottom = 764.0
+toggle_mode = true
+action_mode = 0
+
+[node name="ExitButton" parent="GameOverUI" index="3"]
+offset_left = 720.0
+offset_top = 709.0
+offset_right = 931.0
+offset_bottom = 764.0
+toggle_mode = true
+action_mode = 0
+
 [connection signal="pressed" from="UI/ButtonPlace" to="." method="_on_button_place_pressed"]
 [connection signal="pressed" from="UI/ButtonRemove" to="." method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/ButtonPlant1" to="." method="_on_button_plant_1_pressed"]
@@ -70,5 +102,8 @@ one_shot = true
 [connection signal="pressed" from="UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
 [connection signal="pressed" from="UI/ButtonKillAll" to="." method="_on_button_kill_all_pressed"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="pressed" from="GameOverUI/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverUI/ExitButton" to="." method="_on_exit_button_pressed"]
 
 [editable path="UI"]
+[editable path="GameOverUI"]

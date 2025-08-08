@@ -13,6 +13,7 @@ extends Node2D  # Estende Node2D, nodo principale della scena di gioco (es. live
 @onready var wave_timer = $WaveTimer  # Timer che gestisce il ritmo dello spawn dei nemici
 @onready var label_wave = $UI/LabelWave  # Etichetta UI per mostrare il numero dell'ondata attuale
 @onready var label_enemies = $UI/LabelEnemies  # Etichetta UI per mostrare quanti nemici sono vivi
+@onready var game_over_ui = $GameOverUI # scena di game over
 
 var current_wave = 0  # Numero corrente dell'ondata (parte da 0)
 var enemies_alive = 0  # Quanti nemici sono attivi/vivi nella scena
@@ -281,3 +282,21 @@ func _on_button_kill_all_pressed() -> void:
 	for child in get_children():
 		if child.has_method("die"):
 			child.die()
+
+func show_game_over():
+	is_wave_active = false
+	game_over_ui.visible = true
+	get_tree().paused = true  # Metti in pausa il gioco
+
+
+func _on_retry_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn") 
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")  # Torna al menu
+
+func enemy_reached_base():
+	show_game_over()

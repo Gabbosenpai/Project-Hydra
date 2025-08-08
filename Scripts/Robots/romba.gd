@@ -27,7 +27,13 @@ func take_damage(amount):
 
 func move(delta):
 	position.x -= speed * delta 
-	robotSprite.play("move")   
+	robotSprite.play("move") 
+	# Controllo: se il nemico è arrivato alla colonna x <= 0
+	if position.x <= 0:
+		var main_scene = get_tree().current_scene
+		if main_scene.has_method("enemy_reached_base"):
+			main_scene.enemy_reached_base()
+		queue_free()  # Rimuovi il nemico dallo schermo  
 
 func die():
 	emit_signal("enemy_defeated")  # Emette il segnale che avvisa che il nemico è stato sconfitto
