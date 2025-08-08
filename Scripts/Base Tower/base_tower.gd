@@ -19,10 +19,12 @@ func _process(_delta: float):
 	armed = not robots_coming.is_empty() # True se ci sono robot bersaglio
 	if reloadTimer.is_stopped() and armed: # Spara solo se ci sono bersagli e la torretta è carica
 		shoot()
+	elif towerSprite.animation != "shoot": # Non interrompere lo shoot a metà
+		towerSprite.play("idle")
 
 # Funzione per sparare un proiettile
 func shoot():
-	$TowerSprite.play() 
+	towerSprite.play("shoot")
 	if BULLET:           # Controlla che la scena del proiettile sia assegnata
 		var bullet: Node2D = BULLET.instantiate()  # Istanzia un nuovo bullet
 		get_tree().current_scene.add_child(bullet) # Aggiunge il proiettile come figlio della scena corrente, così è visibile
@@ -62,3 +64,7 @@ func is_robot_visible(robot: Node) -> bool:
 
 func set_riga(value: int) -> void:
 	riga = value
+
+func _on_tower_sprite_animation_finished() -> void:
+	if towerSprite.animation == "shoot":
+		towerSprite.play("idle") # Torna idle solo dopo aver finito lo sparo

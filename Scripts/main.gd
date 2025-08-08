@@ -45,7 +45,7 @@ var selected_plant_scene: PackedScene = null  # Pianta attualmente selezionata p
 # Dizionario con le scene delle piante disponibili per piazzamento
 var plant_scenes = {
 	"plant1": preload("res://Scenes/Plants/plant.tscn"),
-	"plant2": preload("res://Scenes/Base Tower/base_tower.tscn"),
+	"plant2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
 	"plant3": preload("res://Scenes/Plants/plant_3.tscn"),
 	"plant4": preload("res://Scenes/Plants/plant_4.tscn")
 }
