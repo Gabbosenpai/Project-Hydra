@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
 
 [node name="Menu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_lti8b")
 
 [node name="ColorRect" type="ColorRect" parent="."]
