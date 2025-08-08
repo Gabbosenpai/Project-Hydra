@@ -303,6 +303,8 @@ func _on_retry_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")  # Torna al menu
+	AudioManager.set_music_volume(0.01)
+	AudioManager.music_player.play()
 
 func enemy_reached_base():
 	show_game_over()
