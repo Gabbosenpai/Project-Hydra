@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://b05gvrc3mu25p"]
+
+[ext_resource type="Texture2D" uid="uid://cdbxvtyylngje" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0001.png" id="1_fl5ud"]
+[ext_resource type="Script" uid="uid://cchj7a1ftxled" path="res://Scripts/Bullets/bolt_bullet.gd" id="1_oln0k"]
+[ext_resource type="Texture2D" uid="uid://dspncuwxmjv7i" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0002.png" id="2_oln0k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ai5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fl5ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oln0k")
+}],
+"loop": true,
+"name": &"travel",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kxw81"]
+radius = 8.0
+height = 17.0
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_oln0k")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_2ai5s")
+animation = &"travel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kxw81")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.8, 0.85)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
