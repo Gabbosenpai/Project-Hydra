@@ -3,19 +3,20 @@ extends Node2D  # Estende Node2D, nodo principale della scena di gioco (es. live
 # --- RIFERIMENTI AI NODI DELLA SCENA ---
 @onready var tilemap = $TileMap  # TileMap principale che rappresenta la griglia di gioco
 @onready var highlight = $Highlight  # Sprite trasparente che evidenzia la cella selezionata
-@onready var button_place = $UI/ButtonPlace  # Bottone UI per attivare modalità piazzamento piante
 @onready var button_remove = $UI/ButtonRemove  # Bottone UI per attivare modalità rimozione piante
-@onready var button_kill_all = $UI/ButtonKillAll  # Bottone UI per attivare modalità rimozione piante
-@onready var button_start_wave = $UI/StartWaveButton  # Bottone UI per attivare modalità rimozione piante
+@onready var button_kill_all = $UI/ButtonKillAll  # Bottone UI per attivare rimozione piante
+@onready var button_start_wave = $UI/StartWaveButton  # Bottone UI per avviare le ondate
 @onready var plant_selector = $UI/PlantSelector  # Finestra UI per scegliere quale pianta piazzare
-@onready var button_plant1 = $UI/PlantSelector/ButtonPlant1  # Bottone per selezionare pianta 1
-@onready var button_plant2 = $UI/PlantSelector/ButtonPlant2  # Bottone per selezionare pianta 2
 
 # --- SISTEMA AD ONDATE ---
 @onready var wave_timer = $WaveTimer  # Timer che gestisce il ritmo dello spawn dei nemici
 @onready var label_wave = $UI/LabelWave  # Etichetta UI per mostrare il numero dell'ondata attuale
 @onready var label_enemies = $UI/LabelEnemies  # Etichetta UI per mostrare quanti nemici sono vivi
-@onready var game_over_ui = $GameOverUI # scena di game over
+@onready var game_over_ui = $GameOverUI  # Scena di game over
+@onready var pause_menu = $UI/PauseMenu
+@onready var pause_button = $UI/PauseButton
+@onready var resume_button = $UI/PauseMenu/ResumeButton
+@onready var menu_button = $UI/PauseMenu/MenuButton
 
 var current_wave = 0  # Numero corrente dell'ondata (parte da 0)
 var enemies_alive = 0  # Quanti nemici sono attivi/vivi nella scena
@@ -35,8 +36,8 @@ var enemies_to_spawn = 0  # Numero di nemici rimasti da spawnare nell'ondata cor
 var spawn_interval = 1.0  # Intervallo di tempo tra spawn nemici
 
 # --- GRIGLIA DI GIOCO ---
-const GRID_WIDTH = 9  # Larghezza griglia (numero di celle)
-const GRID_HEIGHT = 5  # Altezza griglia
+const GRID_WIDTH = 15  # Larghezza griglia (numero di celle)
+const GRID_HEIGHT = 8  # Altezza griglia
 
 # --- VARIABILI DI STATO GENERALI ---
 var last_touch_position: Vector2 = Vector2.ZERO  # Ultima posizione del tocco (per dispositivi touch)
@@ -44,7 +45,7 @@ var selected_plant_scene: PackedScene = null  # Pianta attualmente selezionata p
 
 # Dizionario con le scene delle piante disponibili per piazzamento
 var plant_scenes = {
-	"plant1": preload("res://Scenes/Plants/plant.tscn"),
+	"plant1": preload("res://Scenes/Base Tower/base_tower.tscn"),
 	"plant2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
 	"plant3": preload("res://Scenes/Plants/plant_3.tscn"),
 	"plant4": preload("res://Scenes/Plants/plant_4.tscn")
@@ -60,7 +61,8 @@ var current_mode = Mode.NONE
 func _ready():
 	var level_music = preload("res://Assets/Sound/OST/The Whole Other - 8-Bit Dreamscape NO COPYRIGHT 8-bit Music( PRIMA WAVE LEVEL).mp3")
 	AudioManager.play_music(level_music)
-	
+	pause_menu.visible = false
+
 # --- FUNZIONE CHIAMATA OGNI FRAME ---
 func _process(_delta):
 	button_remove.visible = not plants.is_empty()
@@ -74,12 +76,12 @@ func _process(_delta):
 	if pointer_pos == null:
 		highlight.visible = false
 		return
-	
+
 	# Converte la posizione globale in locale rispetto alla TileMap
 	var local_pos = tilemap.to_local(pointer_pos)
 	# Ottiene la cella della griglia sotto il puntatore
 	var cell = tilemap.local_to_map(local_pos)
-	
+
 	# Controlla che la cella sia valida dentro i limiti della griglia
 	if cell.x >= 0 and cell.x < GRID_WIDTH and cell.y >= 0 and cell.y < GRID_HEIGHT:
 		var tile_size = tilemap.tile_set.tile_size
@@ -89,7 +91,7 @@ func _process(_delta):
 		var tile_center = tile_top_left + tile_size * 0.5
 		# Converte la posizione locale in globale (coordinate mondo)
 		var global_pos = tilemap.to_global(tile_center)
-		
+
 		# Posiziona lo sprite highlight centrato sulla cella corrispondente
 		highlight.position = highlight.get_parent().to_local(global_pos - tile_size * 0.5)
 		highlight.visible = true
@@ -140,7 +142,6 @@ func _unhandled_input(event):
 					current_mode = Mode.NONE
 					selected_plant_scene = null
 					highlight.visible = false
-
 				else:
 					print("Cell already occupied or no plant selected: ", cell_key)
 
@@ -164,23 +165,6 @@ func get_pointer_position() -> Vector2:
 	return last_touch_position
 
 # --- FUNZIONI COLLEGATE AI BOTTONI UI ---
-
-# Quando si preme il bottone "Piazza pianta"
-func _on_button_place_pressed() -> void:
-	if plant_selector.visible:
-		# Se è già visibile, nascondilo e torna alla modalità NONE
-		current_mode = Mode.NONE
-		selected_plant_scene = null
-		plant_selector.visible = false
-		highlight.visible = false
-	else:
-		# Altrimenti mostralo
-		current_mode = Mode.NONE
-		plant_selector.visible = true
-		selected_plant_scene = null
-
-
-
 # Quando si preme il bottone "Rimuovi pianta"
 func _on_button_remove_pressed() -> void:
 	if current_mode == Mode.REMOVE:
@@ -190,28 +174,27 @@ func _on_button_remove_pressed() -> void:
 	else:
 		current_mode = Mode.REMOVE
 
-
 # Quando si seleziona la pianta 1 dalla UI
 func _on_button_plant_1_pressed() -> void:
-	selected_plant_scene = plant_scenes["plant1"]  # Seleziona la scena della pianta 1
-	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
-	plant_selector.visible = false                 # Nasconde la finestra selettore piante
+	select_plant("plant1")
 
 # Quando si seleziona la pianta 2 dalla UI
 func _on_button_plant_2_pressed() -> void:
-	selected_plant_scene = plant_scenes["plant2"]  # Seleziona la scena della pianta 2 (torretta)
-	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
-	plant_selector.visible = false                 # Nasconde la finestra selettore piante
+	select_plant("plant2")
 
+# Quando si seleziona la pianta 3 dalla UI
 func _on_button_plant_3_pressed() -> void:
-	selected_plant_scene = plant_scenes["plant3"]  # Seleziona la scena della pianta 3
-	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
-	plant_selector.visible = false                 # Nasconde la finestra selettore piante
+	select_plant("plant3")
 
+# Quando si seleziona la pianta 4 dalla UI
 func _on_button_plant_4_pressed() -> void:
-	selected_plant_scene = plant_scenes["plant4"]  # Seleziona la scena della pianta 4
-	current_mode = Mode.PLACE                      # Attiva modalità piazzamento
-	plant_selector.visible = false                 # Nasconde la finestra selettore piante
+	select_plant("plant4")
+
+# Funzione per selezionare una pianta
+func select_plant(plant_key: String) -> void:
+	selected_plant_scene = plant_scenes[plant_key]
+	current_mode = Mode.PLACE
+	highlight.visible = true
 
 # --- GESTIONE DELLE ONDATE DI NEMICI ---
 
@@ -223,18 +206,18 @@ func _on_start_wave_button_pressed() -> void:
 	if current_wave >= waves.size():
 		print("Tutte le ondate completate.")  # Se non ci sono altre ondate, stoppa tutto
 		return
-	
+
 	# Imposta i parametri dell'ondata corrente
 	var wave = waves[current_wave]
 	enemies_to_spawn = wave["count"]
 	spawn_interval = wave["interval"]
 	enemies_alive = 0
 	is_wave_active = true
-	
+
 	# Aggiorna le etichette UI
 	label_wave.text = "Ondata: " + str(current_wave + 1)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	
+
 	# Imposta e avvia il timer per lo spawn dei nemici
 	wave_timer.wait_time = spawn_interval
 	wave_timer.start()
@@ -263,7 +246,7 @@ func spawn_enemy():
 
 	# Imposta la riga e aggiunge al gruppo "Robot"
 	enemy.riga = row
-	
+
 	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 
 	add_child(enemy)
@@ -271,12 +254,11 @@ func spawn_enemy():
 	enemies_alive += 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 
-
 # Funzione chiamata quando un nemico viene sconfitto (segno "enemy_defeated")
 func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	
+
 	# Se tutti i nemici sono stati spawnati e uccisi, termina ondata
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		is_wave_active = false
@@ -293,11 +275,9 @@ func show_game_over():
 	is_wave_active = false
 	game_over_ui.visible = true
 	get_tree().paused = true  # Metti in pausa il gioco
-	button_place.visible = false
 	button_remove.visible = false
 	button_start_wave.visible = false
 	button_kill_all.visible = false
-
 
 func _on_retry_button_pressed() -> void:
 	get_tree().paused = false
@@ -308,16 +288,26 @@ func _on_retry_button_pressed() -> void:
 
 	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn")
 
-
-
-
-
-
 func _on_exit_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")  # Torna al menu
-	
-	
 
 func enemy_reached_base():
 	show_game_over()
+
+
+func _on_pause_button_pressed() -> void:
+	get_tree().paused = true
+	pause_menu.visible = true
+	pause_button.visible = false
+
+
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = false
+	pause_menu.visible = false
+	pause_button.visible = true
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
