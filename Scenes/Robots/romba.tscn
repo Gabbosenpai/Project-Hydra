@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dli3llnr624g8"]
+[gd_scene load_steps=14 format=3 uid="uid://cq2ptlopfwi8l"]
 
 [ext_resource type="Script" uid="uid://wt1yqfn0pitn" path="res://Scripts/Robots/romba.gd" id="1_mrx6w"]
 [ext_resource type="Texture2D" uid="uid://nhepopcrdbak" path="res://Assets/Sprites/Robots/Romba/Attack/Romba-attack_0006.png" id="2_xvuem"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bujufxk53llow" path="res://Assets/Sprites/Robots/Romba/Move/Romba-move_0002.png" id="9_dhcvj"]
 [ext_resource type="Texture2D" uid="uid://dwq70tlojm5b" path="res://Assets/Sprites/Robots/Romba/Move/Romba-move_0003.png" id="10_8jlq0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w720y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8bu2"]
 animations = [{
 "frames": [{
 "duration": 5.0,
@@ -57,39 +57,36 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jmte"]
-size = Vector2(124, 54.6667)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpp"]
+size = Vector2(62, 27)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifear"]
-size = Vector2(77.9999, 54.6667)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvec"]
+size = Vector2(40, 27)
 
 [node name="Robot" type="Area2D" groups=["Robot"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_mrx6w")
 metadata/_edit_group_ = true
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_w720y")
+sprite_frames = SubResource("SpriteFrames_r8bu2")
 animation = &"move"
 frame = 3
-frame_progress = 0.414128
+frame_progress = 0.278175
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.33333)
-shape = SubResource("RectangleShape2D_2jmte")
-one_way_collision_margin = 0.0
+[node name="RobotHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_x2fpp")
 
 [node name="TowerDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(-25.6667, 5.33333)
-shape = SubResource("RectangleShape2D_ifear")
+position = Vector2(-12, 2.5)
+shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="RobotSprite" to="." method="_on_robot_sprite_animation_finished"]
 [connection signal="area_entered" from="TowerDetector" to="." method="_on_tower_detector_area_entered"]
 [connection signal="area_exited" from="TowerDetector" to="." method="_on_tower_detector_area_exited"]

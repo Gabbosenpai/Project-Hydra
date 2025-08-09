@@ -4,7 +4,7 @@ extends Area2D  # Estende la classe Area2D, quindi questo script è per un nodo 
 @export var speed = 200          # Velocità del proiettile
 @export var bullet_damage = 10    # Danno che il proiettile infligge agli nemici
 
-@onready var bulletSprite = $Sprite2D
+@onready var bulletSprite = $BulletSprite
 
 # Funzione chiamata ad ogni frame fisico (numero fisso di frame al secondo)
 func _physics_process(delta):

@@ -1,39 +1,39 @@
-[gd_scene load_steps=16 format=3 uid="uid://dbx4ojee7stsi"]
+[gd_scene load_steps=16 format=3 uid="uid://dfagx182awlxv"]
 
-[ext_resource type="Script" uid="uid://c4avdmb4efayo" path="res://Scripts/Base Tower/base_tower.gd" id="1_yifws"]
-[ext_resource type="PackedScene" uid="uid://b05gvrc3mu25p" path="res://Scenes/Bullets/bolt_bullet.tscn" id="2_lhx2x"]
-[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="3_lhx2x"]
-[ext_resource type="Texture2D" uid="uid://b0xiidl4rg8uq" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0002.png" id="4_d0ib5"]
-[ext_resource type="Texture2D" uid="uid://dpyppupqe10j0" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0003.png" id="5_3d81r"]
-[ext_resource type="Texture2D" uid="uid://ylh8iljmymgb" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0004.png" id="6_5g4ty"]
-[ext_resource type="Texture2D" uid="uid://2lcgpf2vkssv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0005.png" id="7_bk8oq"]
-[ext_resource type="Texture2D" uid="uid://y43uqkwtmahv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0006.png" id="8_ipy0i"]
-[ext_resource type="Texture2D" uid="uid://cvweo1l52fp1k" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0003.png" id="11_wb0jr"]
-[ext_resource type="Texture2D" uid="uid://c78sluu2xpgq3" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0004.png" id="12_j5uy7"]
-[ext_resource type="Texture2D" uid="uid://clk2y7rsh1tls" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0005.png" id="13_i5y0u"]
-[ext_resource type="Texture2D" uid="uid://c7831wklhgb8" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0006.png" id="14_wbusq"]
-[ext_resource type="Texture2D" uid="uid://boga8weksd6i1" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0007.png" id="15_wpje5"]
+[ext_resource type="Script" uid="uid://cjtsr7rcs5dck" path="res://Scripts/Towers/bolt_shooter.gd" id="1_fdpua"]
+[ext_resource type="PackedScene" uid="uid://7oa7wd5nl0lo" path="res://Scenes/Bullets/bolt_bullet.tscn" id="2_fdpua"]
+[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_svg51"]
+[ext_resource type="Texture2D" uid="uid://b0xiidl4rg8uq" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0002.png" id="3_2euwq"]
+[ext_resource type="Texture2D" uid="uid://dpyppupqe10j0" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0003.png" id="4_4pp52"]
+[ext_resource type="Texture2D" uid="uid://ylh8iljmymgb" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0004.png" id="5_60sx0"]
+[ext_resource type="Texture2D" uid="uid://2lcgpf2vkssv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0005.png" id="6_m6obx"]
+[ext_resource type="Texture2D" uid="uid://y43uqkwtmahv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0006.png" id="7_fdpua"]
+[ext_resource type="Texture2D" uid="uid://cvweo1l52fp1k" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0003.png" id="11_gcak0"]
+[ext_resource type="Texture2D" uid="uid://c78sluu2xpgq3" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0004.png" id="12_53c6i"]
+[ext_resource type="Texture2D" uid="uid://clk2y7rsh1tls" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0005.png" id="13_43cgq"]
+[ext_resource type="Texture2D" uid="uid://c7831wklhgb8" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0006.png" id="14_rpl0n"]
+[ext_resource type="Texture2D" uid="uid://boga8weksd6i1" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0007.png" id="15_pad7w"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rel02"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2b6av"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_lhx2x")
+"texture": ExtResource("2_svg51")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_d0ib5")
+"texture": ExtResource("3_2euwq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_3d81r")
+"texture": ExtResource("4_4pp52")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_5g4ty")
+"texture": ExtResource("5_60sx0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_bk8oq")
+"texture": ExtResource("6_m6obx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ipy0i")
+"texture": ExtResource("7_fdpua")
 }],
 "loop": true,
 "name": &"idle",
@@ -41,41 +41,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_wb0jr")
+"texture": ExtResource("11_gcak0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_j5uy7")
+"texture": ExtResource("12_53c6i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_i5y0u")
+"texture": ExtResource("13_43cgq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_wbusq")
+"texture": ExtResource("14_rpl0n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_wpje5")
+"texture": ExtResource("15_pad7w")
 }],
 "loop": false,
 "name": &"shoot",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_flnem"]
-size = Vector2(186, 193)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bndc1"]
+size = Vector2(62, 63)
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
-script = ExtResource("1_yifws")
-BULLET = ExtResource("2_lhx2x")
+scale = Vector2(2, 2)
+script = ExtResource("1_fdpua")
+BULLET = ExtResource("2_fdpua")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_rel02")
+sprite_frames = SubResource("SpriteFrames_2b6av")
 animation = &"idle"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
-position = Vector2(67, -3)
+position = Vector2(22, -1)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
@@ -84,9 +84,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_flnem")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_bndc1")
 
 [connection signal="animation_finished" from="TowerSprite" to="." method="_on_tower_sprite_animation_finished"]
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
