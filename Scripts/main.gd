@@ -22,7 +22,7 @@ var enemies_alive = 0  # Quanti nemici sono attivi/vivi nella scena
 var is_wave_active = false  # Flag che indica se un'ondata è in corso
 
 # Precarica la scena del nemico da instanziare ad ogni spawn
-var enemy_scene = preload("res://Scenes/Robots/new_romba.tscn")
+var enemy_scene = preload("res://Scenes/Robots/romba.tscn")
 
 # Definizione delle ondate: array di dizionari con numero nemici e intervallo spawn
 var waves = [
@@ -45,7 +45,7 @@ var selected_plant_scene: PackedScene = null  # Pianta attualmente selezionata p
 # Dizionario con le scene delle piante disponibili per piazzamento
 var plant_scenes = {
 	"plant1": preload("res://Scenes/Plants/plant.tscn"),
-	"plant2": preload("res://Scenes/Towers/new_bolt_shooter.tscn"),
+	"plant2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
 	"plant3": preload("res://Scenes/Plants/plant_3.tscn"),
 	"plant4": preload("res://Scenes/Plants/plant_4.tscn")
 }
