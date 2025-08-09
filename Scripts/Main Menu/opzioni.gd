@@ -11,9 +11,15 @@ func _ready():
 	music_slider.connect("value_changed", Callable(self, "_on_music_slider_changed"))
 	sfx_slider.connect("value_changed", Callable(self, "_on_sfx_slider_changed"))
 	back_button.connect("pressed", Callable(self, "_on_back_pressed"))
+	# 🔽 Sincronizza il testo del pulsante mute
+	if AudioManager.is_music_muted:
+		$MuteButton.text = "RIATTIVA AUDIO"
+	else:
+		$MuteButton.text = "DISATTIVA AUDIO"
 
 func _on_music_slider_changed(value):
 	AudioManager.set_music_volume(value / 100.0)
+
 
 func _on_sfx_slider_changed(value):
 	AudioManager.set_sfx_volume(value / 100.0)

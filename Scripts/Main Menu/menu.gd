@@ -4,6 +4,12 @@ extends CanvasLayer
 @onready var quit_button = $VBoxContainer/QuitButton
 @onready var credits_button = $VBoxContainer/CreditsButton
 
+func _ready():
+	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
+	AudioManager.play_music(menu_music)
+
+
+
 #se clicco gioca ferma l'OST del menù
 func _on_play_button_pressed() -> void:
 	

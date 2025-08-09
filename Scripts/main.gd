@@ -57,6 +57,10 @@ var plants = {}
 enum Mode { NONE, PLACE, REMOVE }
 var current_mode = Mode.NONE
 
+func _ready():
+	var level_music = preload("res://Assets/Sound/OST/The Whole Other - 8-Bit Dreamscape NO COPYRIGHT 8-bit Music( PRIMA WAVE LEVEL).mp3")
+	AudioManager.play_music(level_music)
+	
 # --- FUNZIONE CHIAMATA OGNI FRAME ---
 func _process(_delta):
 	button_remove.visible = not plants.is_empty()
@@ -297,14 +301,23 @@ func show_game_over():
 
 func _on_retry_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn") 
+
+	# 🔴 Interrompi completamente la musica prima di cambiare scena
+	AudioManager.music_player.stop()
+	AudioManager.music_player.stream = null
+
+	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn")
+
+
+
+
 
 
 func _on_exit_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")  # Torna al menu
-	AudioManager.set_music_volume(0.01)
-	AudioManager.music_player.play()
+	
+	
 
 func enemy_reached_base():
 	show_game_over()

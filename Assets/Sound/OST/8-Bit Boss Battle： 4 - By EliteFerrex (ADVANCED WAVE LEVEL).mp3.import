@@ -2,12 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dnpc7yi4hy1up"
-valid=false
+uid="uid://mn8mu3mk5tnk"
+path="res://.godot/imported/8-Bit Boss Battle： 4 - By EliteFerrex (ADVANCED WAVE LEVEL).mp3-5f713b854f5c8822adae77bfeb08f0ae.mp3str"
 
 [deps]
 
 source_file="res://Assets/Sound/OST/8-Bit Boss Battle： 4 - By EliteFerrex (ADVANCED WAVE LEVEL).mp3"
+dest_files=["res://.godot/imported/8-Bit Boss Battle： 4 - By EliteFerrex (ADVANCED WAVE LEVEL).mp3-5f713b854f5c8822adae77bfeb08f0ae.mp3str"]
 
 [params]
 
