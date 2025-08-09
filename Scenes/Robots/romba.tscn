@@ -72,8 +72,7 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w720y")
 animation = &"move"
-frame = 3
-frame_progress = 0.414128
+frame_progress = 0.0294466
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.33333)
@@ -87,9 +86,9 @@ position = Vector2(-25.6667, 5.33333)
 shape = SubResource("RectangleShape2D_ifear")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-6, 6)
+scale = Vector2(5.8, 2.6)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="RobotSprite" to="." method="_on_robot_sprite_animation_finished"]
 [connection signal="area_entered" from="TowerDetector" to="." method="_on_tower_detector_area_entered"]
 [connection signal="area_exited" from="TowerDetector" to="." method="_on_tower_detector_area_exited"]

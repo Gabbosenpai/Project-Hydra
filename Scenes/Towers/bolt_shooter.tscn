@@ -84,7 +84,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_flnem")
 
