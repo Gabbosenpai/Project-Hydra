@@ -1,76 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=6 format=3 uid="uid://b7qojdhekgsee"]
 
-[ext_resource type="Texture2D" uid="uid://nwkvxctg85hx" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/30.png" id="1_hfhsn"]
+[ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="1_qwshj"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
 [ext_resource type="Texture2D" uid="uid://ncdg2vcab82n" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/43.png" id="4_xjg7p"]
+[ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = -196.0
+offset_right = 79.0
+offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonPlace" type="Button" parent="."]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 600.0
-offset_right = 194.0
-offset_bottom = 647.0
-text = "Piazza"
-
 [node name="ButtonRemove" type="Button" parent="."]
 layout_mode = 0
-offset_left = 237.0
-offset_top = 599.0
-offset_right = 393.0
-offset_bottom = 648.0
+offset_left = 921.0
+offset_top = 1226.0
+offset_right = 1077.0
+offset_bottom = 1275.0
 text = "Rimuovi"
 
 [node name="PlantSelector" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 459.0
-offset_right = 161.0
-offset_bottom = 583.0
+offset_left = 699.0
+offset_top = 1199.0
+offset_right = 879.0
+offset_bottom = 1274.0
 
-[node name="ButtonPlant1" type="Button" parent="PlantSelector"]
-layout_mode = 0
-offset_top = -1.0
-offset_right = 90.0
-offset_bottom = 29.0
-icon = ExtResource("1_hfhsn")
-
-[node name="ButtonPlant2" type="Button" parent="PlantSelector"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlantSelector"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 22.0
-offset_right = 90.0
-offset_bottom = 65.0
+offset_top = 2.0
+offset_right = 159.0
+offset_bottom = 74.0
+
+[node name="ButtonPlant1" type="Button" parent="PlantSelector/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_qwshj")
+
+[node name="ButtonPlant2" type="Button" parent="PlantSelector/HBoxContainer"]
+layout_mode = 2
 icon = ExtResource("2_hfhsn")
 
-[node name="ButtonPlant3" type="Button" parent="PlantSelector"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 91.0
-offset_bottom = 93.0
+[node name="ButtonPlant3" type="Button" parent="PlantSelector/HBoxContainer"]
+layout_mode = 2
 icon = ExtResource("3_48q88")
 
-[node name="ButtonPlant4" type="Button" parent="PlantSelector"]
-layout_mode = 0
-offset_top = 91.0
-offset_right = 91.0
-offset_bottom = 120.0
+[node name="ButtonPlant4" type="Button" parent="PlantSelector/HBoxContainer"]
+layout_mode = 2
 icon = ExtResource("4_xjg7p")
 
 [node name="StartWaveButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 438.0
-offset_top = 595.0
-offset_right = 581.0
-offset_bottom = 647.0
+offset_left = 549.0
+offset_top = 1224.0
+offset_right = 692.0
+offset_bottom = 1276.0
 text = "Inizia Ondata"
 
 [node name="LabelWave" type="Label" parent="."]
@@ -91,8 +82,55 @@ text = "Nemici: 0"
 
 [node name="ButtonKillAll" type="Button" parent="."]
 layout_mode = 0
-offset_left = 606.0
-offset_top = 594.0
-offset_right = 747.0
-offset_bottom = 647.0
+offset_left = 395.0
+offset_top = 1224.0
+offset_right = 536.0
+offset_bottom = 1277.0
 text = "Uccidi i nemici"
+
+[node name="PauseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1705.0
+offset_top = 193.0
+offset_right = 1833.0
+offset_bottom = 321.0
+texture_normal = ExtResource("5_qwshj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PauseMenu" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 304.0
+offset_right = 1422.0
+offset_bottom = 1022.0
+
+[node name="PauseLabel" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 2.0
+offset_right = 547.0
+offset_bottom = 25.0
+text = "Pausa"
+
+[node name="ResumeButton" type="Button" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 271.0
+offset_top = 316.0
+offset_right = 452.0
+offset_bottom = 381.0
+toggle_mode = true
+action_mode = 0
+text = "Riprendi"
+
+[node name="MenuButton" type="Button" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 510.0
+offset_top = 313.0
+offset_right = 736.0
+offset_bottom = 383.0
+toggle_mode = true
+action_mode = 0
+text = "Torna al Menu Principale"
