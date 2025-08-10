@@ -1,10 +1,8 @@
 extends Node2D
 
+signal game_over
 @onready var plant_manager = $PlantManager
 @onready var enemy_spawner = $EnemySpawner
-@onready var game_over_ui = $GameOverUI
-@onready var pause_menu = $UI/PauseMenu
-@onready var pause_button = $UI/PauseButton
 @onready var ui_controller = $UI
 
 func _ready():
@@ -16,6 +14,7 @@ func _ready():
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
 	ui_controller.connect("select_plant", Callable(plant_manager, "select_plant"))
 	ui_controller.connect("remove_mode", Callable(plant_manager, "remove_mode"))
+	connect("game_over", Callable(ui_controller, "show_game_over"))
 
 func _on_plant_removed(cell_key):
 	pass # eventuali azioni extra
@@ -23,9 +22,5 @@ func _on_plant_removed(cell_key):
 func _on_wave_completed():
 	print("Ondata completata.")
 
-func _on_enemy_reached_base():
-	show_game_over()
-
-func show_game_over():
-	game_over_ui.show_game_over()
-	pause_button.visible = false
+func enemy_reached_base():
+	emit_signal("game_over")
