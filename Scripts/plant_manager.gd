@@ -6,9 +6,6 @@ signal plant_removed(cell_key)
 @export var tilemap: TileMap
 @export var highlight: ColorRect
 
-const GRID_WIDTH = 15
-const GRID_HEIGHT = 8
-
 # Dizionario che mappa celle a istanze di piante
 var plants = {}
 # Scena della pianta attualmente selezionata per il piazzamento
@@ -61,7 +58,7 @@ func _process(_delta):
 	var cell = tilemap.local_to_map(local_pos)
 
 	# Verifica se la cella è all'interno della griglia di gioco
-	if cell.x >= 0 and cell.x < GRID_WIDTH and cell.y >= 0 and cell.y < GRID_HEIGHT:
+	if cell.x >= 0 and cell.x < GameConstants.GRID_WIDTH and cell.y >= 0 and cell.y < GameConstants.GRID_HEIGHT:
 		var tile_size = tilemap.tile_set.tile_size
 		var tile_top_left = tilemap.map_to_local(cell)
 		var tile_center = tile_top_left + tile_size * 0.5

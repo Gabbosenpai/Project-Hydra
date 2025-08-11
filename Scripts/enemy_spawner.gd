@@ -54,8 +54,8 @@ func _on_wave_timer_timeout():
 # Crea un nemico, lo posiziona in una riga casuale e lo aggiunge alla scena
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
-	var row = randi() % 8  # seleziona una riga casuale tra 0 e 7
-	var spawn_cell = Vector2i(15, row) # cella di partenza dei nemici
+	var row = randi() % GameConstants.GRID_HEIGHT  # seleziona una riga casuale tra 0 e 7
+	var spawn_cell = Vector2i(GameConstants.GRID_WIDTH, row) # cella di partenza dei nemici
 	var tile_center = tilemap.map_to_local(spawn_cell) + tilemap.tile_set.tile_size * 0.5
 	enemy.global_position = tilemap.to_global(tile_center)
 	enemy.riga = row
