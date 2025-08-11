@@ -1,7 +1,7 @@
 extends Node
 
 signal plant_placed(cell_key)
-signal plant_removed(cell_key)
+signal plant_removed(cell_key, plant_instance)
 
 @export var tilemap: TileMap
 @export var highlight: ColorRect
@@ -26,9 +26,14 @@ var plant_scenes = {
 
 # Seleziona una pianta da piazzare e attiva la modalità piazzamento
 func select_plant(key: String):
-	selected_plant_scene = plant_scenes[key]
-	current_mode = Mode.PLACE
-	highlight.visible = true
+	var point_manager = $"/root/Main/PointManager"
+	if point_manager.can_select_plant(key):
+		selected_plant_scene = plant_scenes[key]
+		current_mode = Mode.PLACE
+		highlight.visible = true
+	else:
+		print("Non hai abbastanza punti per piazzare questa pianta!")
+
 
 # Attiva la modalità rimozione
 func remove_mode():
@@ -115,9 +120,10 @@ func place_plant(cell_key: Vector2i):
 # Rimuove una pianta esistente e invia il segnale corrispondente
 func remove_plant(cell_key: Vector2i):
 	if plants.has(cell_key):
-		plants[cell_key].queue_free()
+		var plant_instance = plants[cell_key]
+		emit_signal("plant_removed", cell_key, plant_instance) # Passiamo anche l’istanza
+		plant_instance.queue_free()
 		plants.erase(cell_key)
-		emit_signal("plant_removed", cell_key)
 		clear_mode()
 
 # Restituisce la posizione del puntatore (mouse o touch)

@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=10 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/images/grass.png" id="1_17lab"]
-[ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/main.gd" id="1_lpmol"]
+[ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/Base Scene Script/Lvl1.gd" id="1_lpmol"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/UI.tscn" id="4_eb150"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/GameOverUI.tscn" id="4_ywfrw"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/plant_manager.tscn" id="5_67fab"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/enemy_spawner.tscn" id="6_cvs21"]
+[ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/point_manager.tscn" id="7_cvs21"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
 texture = ExtResource("1_17lab")
@@ -55,6 +56,24 @@ offset_top = -1.0
 offset_right = 167.0
 offset_bottom = 71.0
 
+[node name="Cost" parent="UI/PlantSelector/HBoxContainer/ButtonPlant1" index="0"]
+offset_left = 2.0
+offset_top = 47.0
+offset_right = 42.0
+offset_bottom = 70.0
+
+[node name="Cost" parent="UI/PlantSelector/HBoxContainer/ButtonPlant2" index="0"]
+offset_top = 47.0
+offset_bottom = 70.0
+
+[node name="Cost" parent="UI/PlantSelector/HBoxContainer/ButtonPlant3" index="0"]
+offset_top = 46.0
+offset_bottom = 69.0
+
+[node name="Cost" parent="UI/PlantSelector/HBoxContainer/ButtonPlant4" index="0"]
+offset_top = 46.0
+offset_bottom = 69.0
+
 [node name="StartWaveButton" parent="UI" index="2"]
 offset_left = 664.0
 offset_top = 1217.0
@@ -81,6 +100,12 @@ offset_bottom = 1273.0
 
 [node name="PauseMenu" parent="UI" index="7"]
 visible = false
+
+[node name="ScrapPoints" parent="UI" index="8"]
+offset_left = -65.0
+offset_top = 194.0
+offset_right = 0.0
+offset_bottom = 217.0
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
@@ -127,6 +152,10 @@ label_wave = NodePath("../UI/LabelWave")
 label_enemies = NodePath("../UI/LabelEnemies")
 wave_timer = NodePath("../WaveTimer")
 
+[node name="PointManager" parent="." node_paths=PackedStringArray("plant_manager", "label_points") instance=ExtResource("7_cvs21")]
+plant_manager = NodePath("../PlantManager")
+label_points = NodePath("../UI/ScrapPoints")
+
 [connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/HBoxContainer/ButtonPlant1" to="UI" method="_on_button_plant_1_pressed"]
 [connection signal="pressed" from="UI/PlantSelector/HBoxContainer/ButtonPlant2" to="UI" method="_on_button_plant_2_pressed"]
@@ -140,6 +169,8 @@ wave_timer = NodePath("../WaveTimer")
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="GameOverUI/RetryButton" to="UI" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOverUI/ExitButton" to="UI" method="_on_exit_button_pressed"]
+[connection signal="plant_placed" from="PlantManager" to="PointManager" method="_on_plant_placed"]
+[connection signal="plant_removed" from="PlantManager" to="PointManager" method="_on_plant_removed"]
 
 [editable path="UI"]
 [editable path="GameOverUI"]
