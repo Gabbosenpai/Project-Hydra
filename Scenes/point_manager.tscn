@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnppbimtf26sx"]
+
+[ext_resource type="Script" uid="uid://cegc50xbtarum" path="res://Scripts/Utility/point_manager.gd" id="1_iv7p8"]
+
+[node name="PointManager" type="Node"]
+script = ExtResource("1_iv7p8")
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
