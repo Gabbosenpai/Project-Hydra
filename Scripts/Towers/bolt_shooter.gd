@@ -37,6 +37,7 @@ func _on_reload_timer_timeout():
 
 func take_damage(amount):
 	health -= amount
+	flash_bright()
 	print("Tower HP:", health)
 	if health < 0:
 		health = 0
@@ -69,3 +70,9 @@ func set_riga(value: int) -> void:
 func _on_tower_sprite_animation_finished() -> void:
 	if towerSprite.animation == "shoot":
 		towerSprite.play("idle") # Torna idle solo dopo aver finito lo sparo
+
+# Modula lo sprite per dare feedback visivo
+func flash_bright():
+	towerSprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
+	await get_tree().create_timer(0.1).timeout
+	towerSprite.modulate = Color(1, 1, 1) # Normale

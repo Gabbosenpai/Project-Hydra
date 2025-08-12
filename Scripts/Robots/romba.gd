@@ -19,6 +19,7 @@ func _process(delta: float):
 
 func take_damage(amount):
 	health -= amount
+	flash_bright() # Fornisce feedback visivo
 	print("Robot HP:",health)
 	if health < 0:
 		health = 0
@@ -72,3 +73,9 @@ func _on_robot_sprite_animation_finished() -> void:
 func is_on_screen() -> bool:
 	# Usa il nodo figlio VisibleOnScreenNotifier2D per verificare la visibilità
 	return $VisNot.is_on_screen()
+
+# Modula lo sprite per dare feedback visivo
+func flash_bright():
+	robotSprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
+	await get_tree().create_timer(0.1).timeout
+	robotSprite.modulate = Color(1, 1, 1) # Normale
