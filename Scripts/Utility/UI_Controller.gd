@@ -2,7 +2,7 @@ extends Control
 
 signal start_wave
 signal kill_all
-signal select_plant(plant_key)
+signal select_turret(turret_key)
 signal remove_mode
 
 # Riferimenti a nodi dell'interfaccia impostati dall'editor
@@ -21,17 +21,17 @@ func _on_button_remove_pressed():
 	emit_signal("remove_mode")
 
 # Selezione rapida di una pianta specifica in base al tasto premuto
-func _on_button_plant_1_pressed():
-	emit_signal("select_plant", "plant1")
+func _on_button_turret_1_pressed():
+	emit_signal("select_turret", "turret1")
 
-func _on_button_plant_2_pressed():
-	emit_signal("select_plant", "plant2")
+func _on_button_turret_2_pressed():
+	emit_signal("select_turret", "turret2")
 
-func _on_button_plant_3_pressed():
-	emit_signal("select_plant", "plant3")
+func _on_button_turret_3_pressed():
+	emit_signal("select_turret", "turret3")
 
-func _on_button_plant_4_pressed():
-	emit_signal("select_plant", "plant4")
+func _on_button_turret_4_pressed():
+	emit_signal("select_turret", "turret4")
 
 # Avvia una nuova ondata di nemici
 func _on_start_wave_button_pressed():

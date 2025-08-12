@@ -3,26 +3,26 @@ extends Node2D
 signal game_over
 
 # Riferimenti ai nodi principali nella scena
-@onready var plant_manager = $PlantManager
+@onready var turret_manager = $TurretManager
 @onready var enemy_spawner = $EnemySpawner
 @onready var ui_controller = $UI
 
 func _ready():
 	# Connessioni dei segnali tra i vari manager e controller.
 	# Questi collegamenti permettono ai diversi componenti del gioco di comunicare tra loro.
-	plant_manager.connect("plant_removed", Callable(self, "_on_plant_removed"))
+	turret_manager.connect("turret_removed", Callable(self, "_on_turret_removed"))
 	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
 	enemy_spawner.connect("enemy_reached_base", Callable(self, "_on_enemy_reached_base"))
 	ui_controller.connect("start_wave", Callable(enemy_spawner, "start_wave"))
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
-	ui_controller.connect("select_plant", Callable(plant_manager, "select_plant"))
-	ui_controller.connect("remove_mode", Callable(plant_manager, "remove_mode"))
+	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
+	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))
 	connect("game_over", Callable(ui_controller, "show_game_over"))
 	var level_music = preload("res://Assets/Sound/OST/The Whole Other - 8-Bit Dreamscape NO COPYRIGHT 8-bit Music( PRIMA WAVE LEVEL).mp3")
 	AudioManager.play_music(level_music)
 # Chiamata quando una pianta viene rimossa dal PlantManager.
 # Può essere usata per aggiornare punteggio, statistiche o altri effetti.
-func _on_plant_removed(cell_key):
+func _on_turret_removed(cell_key):
 	pass # eventuali azioni extra
 
 # Chiamata quando l’ondata di nemici viene completata.
