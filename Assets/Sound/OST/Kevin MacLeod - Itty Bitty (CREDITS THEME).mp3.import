@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://behlkqxo6m32r"
+path="res://.godot/imported/Kevin MacLeod - Itty Bitty (CREDITS THEME).mp3-4a06369b7b5b727a09810f546cc04687.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/OST/Kevin MacLeod - Itty Bitty (CREDITS THEME).mp3"
+dest_files=["res://.godot/imported/Kevin MacLeod - Itty Bitty (CREDITS THEME).mp3-4a06369b7b5b727a09810f546cc04687.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
