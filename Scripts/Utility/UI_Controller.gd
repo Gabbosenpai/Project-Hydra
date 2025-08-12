@@ -63,6 +63,7 @@ func show_game_over():
 	is_wave_active = false
 	game_over_ui.visible = true
 	get_tree().paused = true  # Metti in pausa il gioco
+	AudioManager.play_game_over_music()
 	button_remove.visible = false
 	button_start_wave.visible = false
 	button_kill_all.visible = false
@@ -70,9 +71,9 @@ func show_game_over():
 # Ricarica il livello 1 per riprovare
 func _on_retry_button_pressed():
 	get_tree().paused = false
-	AudioManager.music_player.stop()
+	
 	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn")
-	AudioManager.music_player.play()
+	
 
 # Esce al menu principale dalla schermata di game over
 func _on_exit_button_pressed():

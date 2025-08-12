@@ -5,6 +5,7 @@ var initialized: bool = false
 # Volume attuale
 var music_volume: float = 0.01
 var sfx_volume: float = 0.01
+var game_over_music = preload("res://Assets/Sound/OST/A Lonely Cherry Tree (GAME OVER MENU).mp3")
 
 # Per gestire mute musica
 var previous_music_volume: float = 0.01
@@ -84,3 +85,6 @@ func play_music(music_stream: AudioStream) -> void:
 			music_player.volume_db = linear_to_db(music_volume)
 
 		music_player.play()
+func play_game_over_music():
+	var game_over_music = preload("res://Assets/Sound/OST/A Lonely Cherry Tree (GAME OVER MENU).mp3")
+	play_music(game_over_music)
