@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bujufxk53llow"
-path="res://.godot/imported/Romba-move_0002.png-114e983795f4066743e0629e10f034a0.ctex"
+uid="uid://chsdrqdshjr0w"
+path="res://.godot/imported/Romba Attack.png-8b19b1fc2b24fdbb637dad6065a97db3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Robots/Romba/Move/Romba-move_0002.png"
-dest_files=["res://.godot/imported/Romba-move_0002.png-114e983795f4066743e0629e10f034a0.ctex"]
+source_file="res://Assets/Sprites/Robots/Romba/Romba Attack.png"
+dest_files=["res://.godot/imported/Romba Attack.png-8b19b1fc2b24fdbb637dad6065a97db3.ctex"]
 
 [params]
 

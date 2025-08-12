@@ -27,6 +27,7 @@ func shoot():
 	towerSprite.play("shoot")
 	if BULLET:           # Controlla che la scena del proiettile sia assegnata
 		var bullet: Node2D = BULLET.instantiate()  # Istanzia un nuovo bullet
+		bullet.z_index = 5 # Fa passare il bullet sopra gli sprite
 		get_tree().current_scene.add_child(bullet) # Aggiunge il proiettile come figlio della scena corrente, così è visibile
 		bullet.global_position = bulletOrigin.global_position    # Il proiettile esce da BulletOrigin
 	reloadTimer.start()   # Cooldown starts
