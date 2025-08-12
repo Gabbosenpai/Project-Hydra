@@ -13,89 +13,94 @@ script = ExtResource("1_1m0xv")
 
 [node name="Level1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 114.0
-offset_right = 91.0
-offset_bottom = 182.0
+offset_left = -586.0
+offset_top = 88.0
+offset_right = -343.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 50
 text = "1"
 
 [node name="Level2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 145.0
-offset_top = 119.0
-offset_right = 229.0
-offset_bottom = 187.0
+offset_left = -186.0
+offset_top = 82.0
+offset_right = 91.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 50
 text = "2"
 
 [node name="Level3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 278.0
-offset_top = 120.0
-offset_right = 362.0
-offset_bottom = 188.0
+offset_left = 240.0
+offset_top = 92.0
+offset_right = 493.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 50
 text = "3"
 
 [node name="Level4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 121.0
-offset_right = 508.0
-offset_bottom = 189.0
+offset_left = 622.0
+offset_top = 102.0
+offset_right = 914.0
+offset_bottom = 251.0
+theme_override_font_sizes/font_size = 50
 text = "4"
 
 [node name="Level5" type="Button" parent="."]
 layout_mode = 0
-offset_left = 567.0
-offset_top = 123.0
-offset_right = 651.0
-offset_bottom = 191.0
+offset_left = 642.0
+offset_top = 444.0
+offset_right = 937.0
+offset_bottom = 627.0
+theme_override_font_sizes/font_size = 50
 text = "5"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 104.0
-offset_top = 314.0
-offset_right = 483.0
-offset_bottom = 586.0
+offset_left = -196.0
+offset_top = 461.0
+offset_right = 183.0
+offset_bottom = 612.0
 theme_override_font_sizes/font_size = 80
 text = "Indietro"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 507.0
-offset_top = 148.0
-offset_right = 566.0
-offset_bottom = 158.0
+offset_left = 492.0
+offset_top = 182.0
+offset_right = 619.0
+offset_bottom = 203.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 362.0
-offset_top = 147.0
-offset_right = 423.0
-offset_bottom = 155.0
+offset_left = 774.0
+offset_top = 257.0
+offset_right = 796.0
+offset_bottom = 444.0
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 145.0
-offset_right = 275.0
-offset_bottom = 153.0
+offset_left = 90.0
+offset_top = 168.0
+offset_right = 238.0
+offset_bottom = 186.0
 
 [node name="ColorRect4" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 141.0
-offset_right = 143.0
-offset_bottom = 149.0
+offset_left = -343.0
+offset_top = 160.0
+offset_right = -188.0
+offset_bottom = 176.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 21.0
-offset_top = -118.0
-offset_right = 658.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 80
-text = "Scegli il livello"
+offset_left = -347.0
+offset_top = -159.0
+offset_right = 665.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 60
+text = "Scegli il livello in base alla difficoltà"
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
