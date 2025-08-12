@@ -13,8 +13,8 @@ var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
 signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
 
 func _process(delta: float):
-	# Finchè il robot non attacca, continua a muoversi
-	if !violence:
+	# Finchè il robot non attacca ed è vivo, continua a muoversi
+	if !violence and health>0:
 		move(delta)
 
 func take_damage(amount):
@@ -32,11 +32,18 @@ func move(delta):
 	if position.x <= 0:
 		var main_scene = get_tree().current_scene
 		if main_scene.has_method("enemy_reached_base"):
-			main_scene.enemy_reached_base()
-		queue_free()  # Rimuovi il nemico dallo schermo  
+			main_scene.enemy_reached_base()  
 
 func die():
-	emit_signal("enemy_defeated")  # Emette il segnale che avvisa che il nemico è stato sconfitto
+	var hitbox = $RobotHitbox
+	var detector = $TowerDetector/CollisionShape2D
+	robotSprite.z_as_relative = false # Mette il robot morente in secondo piano
+	robotSprite.stop()
+	robotSprite.play("death")
+	hitbox.set_deferred("disabled", true)
+	detector.set_deferred("disabled", true)
+	emit_signal("enemy_defeated")
+	await robotSprite.animation_finished
 	queue_free()
 
 # Se il Robot ha una torretta davanti, inizia ad attaccare
