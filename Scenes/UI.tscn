@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=9 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="1_qwshj"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
+[ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_mg6lk"]
 [ext_resource type="Texture2D" uid="uid://ncdg2vcab82n" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/43.png" id="4_xjg7p"]
 [ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xjg7p"]
+load_path = "res://.godot/imported/clipart1881371.png-56a281194a3db32d111c70f611b9a527.ctex"
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -20,33 +24,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_48q88")
 
-[node name="ButtonRemove" type="Button" parent="."]
+[node name="ButtonRemove" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 921.0
-offset_top = 1226.0
-offset_right = 1077.0
-offset_bottom = 1275.0
-text = "Rimuovi"
+offset_top = 1201.0
+offset_right = 997.0
+offset_bottom = 1276.0
+texture_normal = SubResource("CompressedTexture2D_xjg7p")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="PlantSelector" type="Panel" parent="."]
+[node name="TurretSelector" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 699.0
-offset_top = 1199.0
-offset_right = 879.0
-offset_bottom = 1274.0
+offset_left = 723.0
+offset_top = 1142.0
+offset_right = 902.0
+offset_bottom = 1217.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlantSelector"]
+[node name="TextureRect" type="TextureRect" parent="TurretSelector"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 159.0
-offset_bottom = 74.0
+offset_left = -18.0
+offset_top = -16.0
+offset_right = 187.0
+offset_bottom = 134.0
+texture = ExtResource("3_mg6lk")
+expand_mode = 1
 
-[node name="ButtonPlant1" type="Button" parent="PlantSelector/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TurretSelector"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 11.0
+offset_right = 194.0
+offset_bottom = 83.0
+
+[node name="ButtonTurret1" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("1_qwshj")
 
-[node name="Cost" type="Label" parent="PlantSelector/HBoxContainer/ButtonPlant1"]
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 53.0
@@ -54,11 +69,11 @@ offset_right = 43.0
 offset_bottom = 76.0
 text = "50"
 
-[node name="ButtonPlant2" type="Button" parent="PlantSelector/HBoxContainer"]
+[node name="ButtonTurret2" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("2_hfhsn")
 
-[node name="Cost" type="Label" parent="PlantSelector/HBoxContainer/ButtonPlant2"]
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
 layout_mode = 0
 offset_left = -2.0
 offset_top = 53.0
@@ -66,11 +81,11 @@ offset_right = 38.0
 offset_bottom = 76.0
 text = "75"
 
-[node name="ButtonPlant3" type="Button" parent="PlantSelector/HBoxContainer"]
+[node name="ButtonTurret3" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("3_48q88")
 
-[node name="Cost" type="Label" parent="PlantSelector/HBoxContainer/ButtonPlant3"]
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 54.0
@@ -78,11 +93,11 @@ offset_right = 39.0
 offset_bottom = 77.0
 text = "100"
 
-[node name="ButtonPlant4" type="Button" parent="PlantSelector/HBoxContainer"]
+[node name="ButtonTurret4" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("4_xjg7p")
 
-[node name="Cost" type="Label" parent="PlantSelector/HBoxContainer/ButtonPlant4"]
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret4"]
 layout_mode = 0
 offset_top = 54.0
 offset_right = 40.0
