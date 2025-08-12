@@ -5,8 +5,10 @@
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 660.0
+offset_top = 388.0
+offset_right = 702.0
+offset_bottom = 428.0
 script = ExtResource("1_1m0xv")
 
 [node name="Level1" type="Button" parent="."]
@@ -51,11 +53,11 @@ text = "5"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 570.0
-offset_top = 297.0
-offset_right = 640.0
-offset_bottom = 328.0
-theme_override_font_sizes/font_size = 40
+offset_left = 104.0
+offset_top = 314.0
+offset_right = 483.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 80
 text = "Indietro"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -66,24 +68,37 @@ offset_right = 566.0
 offset_bottom = 158.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 362.0
 offset_top = 147.0
 offset_right = 423.0
 offset_bottom = 155.0
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 229.0
 offset_top = 145.0
 offset_right = 275.0
 offset_bottom = 153.0
 
 [node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 90.0
 offset_top = 141.0
 offset_right = 143.0
 offset_bottom = 149.0
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -118.0
+offset_right = 658.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 80
+text = "Scegli il livello"
+
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
 [connection signal="pressed" from="Level4" to="." method="_on_level_4_pressed"]
 [connection signal="pressed" from="Level5" to="." method="_on_level_5_pressed"]

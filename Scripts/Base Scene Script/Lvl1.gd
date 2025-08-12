@@ -18,7 +18,8 @@ func _ready():
 	ui_controller.connect("select_plant", Callable(plant_manager, "select_plant"))
 	ui_controller.connect("remove_mode", Callable(plant_manager, "remove_mode"))
 	connect("game_over", Callable(ui_controller, "show_game_over"))
-
+	var level_music = preload("res://Assets/Sound/OST/The Whole Other - 8-Bit Dreamscape NO COPYRIGHT 8-bit Music( PRIMA WAVE LEVEL).mp3")
+	AudioManager.play_music(level_music)
 # Chiamata quando una pianta viene rimossa dal PlantManager.
 # Può essere usata per aggiornare punteggio, statistiche o altri effetti.
 func _on_plant_removed(cell_key):
