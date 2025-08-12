@@ -1,6 +1,6 @@
 extends Node
 
-@export var starting_points: int = 50
+@export var starting_points: int = 5000
 @export var regen_amount: int = 25
 
 #dizionario dei costi delle piante il nome deve combaciare con quello di plant manager
