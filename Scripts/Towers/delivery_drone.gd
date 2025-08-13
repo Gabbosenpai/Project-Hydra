@@ -29,15 +29,17 @@ func _process(delta: float):
 	dropPadSprite.play("idle")
 	if(hasPackage and distanceDronePad > 10):
 		droneSprite.play("fly")
-		dronePosition.y += 1000 * delta
+		dronePosition.y += 200 * delta
 	elif (hasPackage):
 		drop()
-	if(!hasPackage and dronePosition.y > droneStartingPosition.y):
-		dronePosition.y -= 1000 * delta
-		if(dronePosition.y < droneStartingPosition.y):
+	if(!hasPackage and dronePosition.y > -1400):
+		dronePosition.y -= 200 * delta
+		if(dronePosition.y < -1400):
 			hasPackage = true
+			print("Carico")
 
 func drop():
+	print("Scarico")
 	droneSprite.play("drop")
 
 func _on_reload_timer_timeout():
