@@ -14,4 +14,6 @@ menu_credits,Crediti,Credits
 select_back,Indietro,Back
 select,Scegli il livello in base alla difficoltà,Select a level based on its difficulty 
 
-
+#Schermo selezione lingua,,
+select_language,Seleziona lingua,Select language
+back_to_menu,Torna al menù,Back to menu
