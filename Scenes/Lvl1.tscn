@@ -114,21 +114,20 @@ offset_left = 1532.0
 offset_top = 458.0
 offset_right = 2598.0
 offset_bottom = 754.0
+text = "Ondata 0
+"
 
 [node name="PauseMenu" parent="UI/VictoryScreen" index="0"]
-layout_mode = 0
 offset_top = 0.0
 offset_bottom = 718.0
 
 [node name="SelectLevelButton" parent="UI/VictoryScreen" index="2"]
-layout_mode = 0
 offset_left = 281.0
 offset_top = 420.0
 offset_right = 462.0
 offset_bottom = 485.0
 
 [node name="MenuButton" parent="UI/VictoryScreen" index="3"]
-layout_mode = 0
 offset_left = 569.0
 offset_top = 416.0
 offset_right = 795.0
