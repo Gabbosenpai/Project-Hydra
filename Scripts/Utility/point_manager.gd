@@ -17,6 +17,7 @@ var current_points: int
 @export var label_points: Label
 
 @onready var regen_timer: Timer = $RegenTimer
+@export var PointsBar: TextureProgressBar
 
 # Inizializza i punti correnti con quelli di partenza e aggiorna la visualizzazione del punteggio
 func _ready():
@@ -61,6 +62,9 @@ func _on_regen_timer_timeout():
 func update_points_label():
 	if label_points:
 		label_points.text = str("Scrap: ") + str(current_points)
+	if PointsBar:
+		var tween = create_tween()
+		tween.tween_property(PointsBar.material, "shader_parameter/progress_value", float(current_points)/starting_points, 0.3)
 
 # Ricava la chiave della pianta dato un PackedScene della pianta stessa
 # Cerca tra tutte le piantine disponibili in plant_manager per trovare corrispondenza

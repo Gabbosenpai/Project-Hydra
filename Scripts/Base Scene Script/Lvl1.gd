@@ -20,6 +20,7 @@ func _ready():
 	connect("game_over", Callable(ui_controller, "show_game_over"))
 	var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
 	AudioManager.play_music(level_music)
+	enemy_spawner.start_wave()
 
 # Chiamata quando l’ondata di nemici viene completata.
 # Utile per avviare la successiva o mostrare messaggi all’utente.
