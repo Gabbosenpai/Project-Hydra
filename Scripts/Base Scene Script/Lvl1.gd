@@ -18,7 +18,7 @@ func _ready():
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))
 	connect("game_over", Callable(ui_controller, "show_game_over"))
-	var level_music = preload("res://Assets/Sound/OST/The Whole Other - 8-Bit Dreamscape NO COPYRIGHT 8-bit Music( PRIMA WAVE LEVEL).mp3")
+	var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
 	AudioManager.play_music(level_music)
 
 # Chiamata quando l’ondata di nemici viene completata.
