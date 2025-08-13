@@ -18,7 +18,7 @@ var last_touch_position: Vector2 = Vector2.ZERO
 
 # Precaricamento delle scene delle piante disponibili
 var turret_scenes = {
-	"turret1": preload("res://Scenes/Base Tower/base_tower.tscn"),
+	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
 	"turret3": preload("res://Scenes/Plants/plant_3.tscn"),
 	"turret4": preload("res://Scenes/Plants/plant_4.tscn")
