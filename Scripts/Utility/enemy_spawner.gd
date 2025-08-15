@@ -86,6 +86,19 @@ func _on_enemy_defeated():
 
 # Uccide istantaneamente tutti i nemici presenti nella scena
 func kill_all():
+	# Ferma lo spawn futuro
+	enemies_to_spawn = 0
+
 	for child in get_children():
 		if child.has_method("die"):
-			child.die()
+			child.queue_free()  # Rimuove immediatamente
+			enemies_alive -= 1
+
+	# Passa subito all’ondata successiva
+	is_wave_active = false
+	current_wave += 1
+	if current_wave < waves.size():
+		start_wave()
+	else:
+		victory_screen.visible = true
+		get_tree().paused = true

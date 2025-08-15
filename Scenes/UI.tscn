@@ -20,8 +20,10 @@ shader_parameter/edge_glow_strength = 0.3
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_height = 0.02
 shader_parameter/progress_value = 0.0
+shader_parameter/corner_radius = 0.25
 
 [sub_resource type="LabelSettings" id="LabelSettings_mg6lk"]
+font_size = 9
 
 [sub_resource type="Animation" id="Animation_wunin"]
 length = 0.001
@@ -129,23 +131,24 @@ offset_bottom = 134.0
 texture = ExtResource("3_mg6lk")
 expand_mode = 1
 
-[node name="PointsBar" type="TextureProgressBar" parent="TurretSelector"]
+[node name="PointsBar" type="ColorRect" parent="TurretSelector"]
 material = SubResource("ShaderMaterial_j04uc")
 layout_mode = 0
-offset_left = -1.0
-offset_top = 83.0
-offset_right = 175.0
+offset_left = -97.0
+offset_top = 82.0
+offset_right = 267.0
 offset_bottom = 100.0
-max_value = 1.0
 
 [node name="ScrapPoints" type="Label" parent="TurretSelector/PointsBar"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = -5.0
-offset_right = 143.0
-offset_bottom = 18.0
+offset_left = 145.0
+offset_top = -3.0
+offset_right = 230.0
+offset_bottom = 20.0
 text = "Scrap : 0"
 label_settings = SubResource("LabelSettings_mg6lk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TurretSelector"]
 layout_mode = 0
