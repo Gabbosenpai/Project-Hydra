@@ -1,6 +1,5 @@
 extends Control
 
-signal start_wave
 signal kill_all
 signal select_turret(turret_key)
 signal remove_mode
@@ -33,10 +32,6 @@ func _on_button_turret_3_pressed():
 func _on_button_turret_4_pressed():
 	emit_signal("select_turret", "turret4")
 
-# Avvia una nuova ondata di nemici
-func _on_start_wave_button_pressed():
-	emit_signal("start_wave")
-
 # Uccide istantaneamente tutti i nemici in scena
 func _on_button_kill_all_pressed():
 	emit_signal("kill_all")
@@ -65,7 +60,6 @@ func show_game_over():
 	get_tree().paused = true  # Metti in pausa il gioco
 	AudioManager.play_game_over_music()
 	button_remove.visible = false
-	button_start_wave.visible = false
 	button_kill_all.visible = false
 
 # Ricarica il livello 1 per riprovare
