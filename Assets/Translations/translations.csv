@@ -1,0 +1,19 @@
+KEY,it,en
+
+#Menu principale,,
+
+menu_play,Gioca,Play
+menu_quit,Esci,Quit
+menu_option,Opzioni,Options
+menu_credits,Crediti,Credits
+
+
+
+#Menu Selezione livello,,
+
+select_back,Indietro,Back
+select,Scegli il livello in base alla difficoltà,Select a level based on its difficulty 
+
+#Schermo selezione lingua,,
+select_language,Seleziona lingua,Select language
+back_to_menu,Torna al menù,Back to menu
