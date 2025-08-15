@@ -1,6 +1,7 @@
 extends Node
 
 @export var starting_points: int = 5000
+@export var max_points: int = 5000
 @export var regen_amount: int = 25
 
 #dizionario dei costi delle piante il nome deve combaciare con quello di plant manager
@@ -12,11 +13,12 @@ var turret_costs := {
 }
 
 var current_points: int
-
+var current_ratio: float = 0.0 
 @export var turret_manager: Node
 @export var label_points: Label
 
 @onready var regen_timer: Timer = $RegenTimer
+@export var PointsBar: ColorRect
 
 # Inizializza i punti correnti con quelli di partenza e aggiorna la visualizzazione del punteggio
 func _ready():
@@ -61,6 +63,22 @@ func _on_regen_timer_timeout():
 func update_points_label():
 	if label_points:
 		label_points.text = str("Scrap: ") + str(current_points)
+# aggiorna lo shader della barra
+	if PointsBar and PointsBar.material is ShaderMaterial:
+		var mat: ShaderMaterial = PointsBar.material as ShaderMaterial
+		var target_ratio: float = clamp(float(current_points) / float(max_points), 0.0, 1.0)
+		
+		# Calcola differenza percentuale rispetto al massimo
+		var diff = abs(target_ratio - current_ratio)
+		
+		# Imposta durata proporzionale alla differenza, così anche piccoli valori si muovono lentamente
+		var duration = diff * 1.0  # puoi moltiplicare per un fattore per velocità più lenta
+		duration = max(duration, 0.1)  # durata minima per vedere sempre movimento
+		
+		var tween = PointsBar.create_tween()
+		tween.tween_property(mat, "shader_parameter/progress_value", target_ratio, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		
+		current_ratio = target_ratio
 
 # Ricava la chiave della pianta dato un PackedScene della pianta stessa
 # Cerca tra tutte le piantine disponibili in plant_manager per trovare corrispondenza

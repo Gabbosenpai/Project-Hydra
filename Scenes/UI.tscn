@@ -1,15 +1,96 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=17 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="1_qwshj"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
 [ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_mg6lk"]
+[ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/point_bar.gdshader" id="3_wunin"]
 [ext_resource type="Texture2D" uid="uid://ncdg2vcab82n" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/43.png" id="4_xjg7p"]
 [ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xjg7p"]
-load_path = "res://.godot/imported/clipart1881371.png-56a281194a3db32d111c70f611b9a527.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j04uc"]
+shader = ExtResource("3_wunin")
+shader_parameter/background_color = Color(0.1, 0.1, 0.1, 0.5)
+shader_parameter/fill_color = Color(0.26, 0.56, 1, 1)
+shader_parameter/glow_color = Color(0.4, 0.7, 1, 0.4)
+shader_parameter/edge_glow_strength = 0.3
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_height = 0.02
+shader_parameter/progress_value = 0.0
+shader_parameter/corner_radius = 0.25
+
+[sub_resource type="LabelSettings" id="LabelSettings_mg6lk"]
+font_size = 9
+
+[sub_resource type="Animation" id="Animation_wunin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelWaveCenter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelWaveCenter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1532, 458)]
+}
+
+[sub_resource type="Animation" id="Animation_mg6lk"]
+resource_name = "wave_intro"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelWaveCenter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.2, 2, 2.5, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.00784314), Color(1, 1, 1, 0.164706), Color(1, 1, 1, 1), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0.133333), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelWaveCenter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1532, 458), Vector2(358, 452)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wunin"]
+_data = {
+&"RESET": SubResource("Animation_wunin"),
+&"wave_intro": SubResource("Animation_mg6lk")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_j04uc"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_wunin"]
+font_size = 26
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -39,7 +120,7 @@ layout_mode = 0
 offset_left = 723.0
 offset_top = 1142.0
 offset_right = 902.0
-offset_bottom = 1217.0
+offset_bottom = 1229.0
 
 [node name="TextureRect" type="TextureRect" parent="TurretSelector"]
 layout_mode = 0
@@ -49,6 +130,25 @@ offset_right = 187.0
 offset_bottom = 134.0
 texture = ExtResource("3_mg6lk")
 expand_mode = 1
+
+[node name="PointsBar" type="ColorRect" parent="TurretSelector"]
+material = SubResource("ShaderMaterial_j04uc")
+layout_mode = 0
+offset_left = -97.0
+offset_top = 82.0
+offset_right = 267.0
+offset_bottom = 100.0
+
+[node name="ScrapPoints" type="Label" parent="TurretSelector/PointsBar"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = -3.0
+offset_right = 230.0
+offset_bottom = 20.0
+text = "Scrap : 0"
+label_settings = SubResource("LabelSettings_mg6lk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TurretSelector"]
 layout_mode = 0
@@ -183,10 +283,73 @@ toggle_mode = true
 action_mode = 0
 text = "Torna al Menu Principale"
 
-[node name="ScrapPoints" type="Label" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wunin")
+}
+
+[node name="LabelWaveCenter" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -602.0
+offset_top = -88.0
+offset_right = 464.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inizio Ondata 0
+Nemici: 0"
+label_settings = SubResource("LabelSettings_j04uc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VictoryScreen" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 358.0
+offset_top = 298.0
+offset_right = 1418.0
+offset_bottom = 1025.0
+
+[node name="PauseMenu" type="Panel" parent="VictoryScreen"]
 layout_mode = 0
-offset_left = -69.0
-offset_top = 204.0
-offset_right = -4.0
-offset_bottom = 227.0
-text = "Scrap : 0"
+offset_top = -4.0
+offset_right = 1069.0
+offset_bottom = 714.0
+
+[node name="Label" type="Label" parent="VictoryScreen"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 214.0
+offset_right = 1325.0
+offset_bottom = 391.0
+text = "Congratulazioni Ingegnere hai sconfitto i robot che vogliono sterminare gli umani!
+
+"
+label_settings = SubResource("LabelSettings_wunin")
+
+[node name="SelectLevelButton" type="Button" parent="VictoryScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 271.0
+offset_top = 316.0
+offset_right = 452.0
+offset_bottom = 381.0
+toggle_mode = true
+action_mode = 0
+text = "Seleziona Livello"
+
+[node name="MenuButton" type="Button" parent="VictoryScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 510.0
+offset_top = 313.0
+offset_right = 736.0
+offset_bottom = 383.0
+toggle_mode = true
+action_mode = 0
+text = "Torna al Menu Principale"

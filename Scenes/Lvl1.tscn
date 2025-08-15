@@ -58,7 +58,19 @@ offset_top = -67.0
 offset_right = 190.0
 offset_bottom = 83.0
 
-[node name="HBoxContainer" parent="UI/TurretSelector" index="1"]
+[node name="PointsBar" parent="UI/TurretSelector" index="1"]
+offset_left = -92.0
+offset_top = 30.0
+offset_right = 271.0
+offset_bottom = 47.0
+
+[node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
+offset_left = 114.0
+offset_top = -7.0
+offset_right = 258.0
+offset_bottom = 23.0
+
+[node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
 offset_left = 2.0
 offset_top = -42.0
 offset_right = 197.0
@@ -101,11 +113,29 @@ texture_normal = ExtResource("5_1qggr")
 [node name="PauseMenu" parent="UI" index="7"]
 visible = false
 
-[node name="ScrapPoints" parent="UI" index="8"]
-offset_left = -65.0
-offset_top = 194.0
-offset_right = 0.0
-offset_bottom = 217.0
+[node name="LabelWaveCenter" parent="UI" index="9"]
+offset_left = 1532.0
+offset_top = 458.0
+offset_right = 2598.0
+offset_bottom = 754.0
+text = "Ondata 0
+"
+
+[node name="PauseMenu" parent="UI/VictoryScreen" index="0"]
+offset_top = 0.0
+offset_bottom = 718.0
+
+[node name="SelectLevelButton" parent="UI/VictoryScreen" index="2"]
+offset_left = 281.0
+offset_top = 420.0
+offset_right = 462.0
+offset_bottom = 485.0
+
+[node name="MenuButton" parent="UI/VictoryScreen" index="3"]
+offset_left = 569.0
+offset_top = 416.0
+offset_right = 795.0
+offset_bottom = 486.0
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
@@ -146,15 +176,20 @@ action_mode = 0
 tilemap = NodePath("../TileMap")
 highlight = NodePath("../Highlight")
 
-[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer") instance=ExtResource("6_cvs21")]
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "label_wave_center", "animation_player", "victory_screen") instance=ExtResource("6_cvs21")]
 tilemap = NodePath("../TileMap")
 label_wave = NodePath("../UI/LabelWave")
 label_enemies = NodePath("../UI/LabelEnemies")
 wave_timer = NodePath("../WaveTimer")
+label_wave_center = NodePath("../UI/LabelWaveCenter")
+animation_player = NodePath("../UI/AnimationPlayer")
+victory_screen = NodePath("../UI/VictoryScreen")
 
-[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points") instance=ExtResource("7_cvs21")]
+[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("7_cvs21")]
+regen_amount = 500
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/ScrapPoints")
+label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
+PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 
 [connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret1" to="UI" method="_on_button_turret_1_pressed"]
@@ -166,6 +201,8 @@ label_points = NodePath("../UI/ScrapPoints")
 [connection signal="pressed" from="UI/PauseButton" to="UI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/MenuButton" to="UI" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="UI/VictoryScreen/SelectLevelButton" to="UI" method="_on_select_level_button_pressed"]
+[connection signal="pressed" from="UI/VictoryScreen/MenuButton" to="UI" method="_on_menu_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="GameOverUI/RetryButton" to="UI" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOverUI/ExitButton" to="UI" method="_on_exit_button_pressed"]

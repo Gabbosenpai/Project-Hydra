@@ -8,6 +8,9 @@ signal enemy_reached_base
 @export var label_wave: Label
 @export var label_enemies: Label
 @export var wave_timer: Timer
+@export var label_wave_center: Label
+@export var animation_player: AnimationPlayer
+@export var victory_screen: Control
 
 # Scena del nemico da istanziare
 var enemy_scene = preload("res://Scenes/Robots/romba.tscn")
@@ -36,6 +39,9 @@ func start_wave():
 	is_wave_active = true
 	label_wave.text = "Ondata: " + str(current_wave + 1)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
+	label_wave_center.text = "ONDATA " + str(current_wave + 1)
+	label_wave_center.visible = true
+	animation_player.play("wave_intro")
 	wave_timer.start()
 
 # Gestisce lo spawn dei nemici ad ogni timeout del timer
@@ -72,10 +78,27 @@ func _on_enemy_defeated():
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		is_wave_active = false
 		current_wave += 1
-		emit_signal("wave_completed")
+		if current_wave < waves.size():
+			start_wave()
+		else:
+			victory_screen.visible = true
+			get_tree().paused = true
 
 # Uccide istantaneamente tutti i nemici presenti nella scena
 func kill_all():
+	# Ferma lo spawn futuro
+	enemies_to_spawn = 0
+
 	for child in get_children():
 		if child.has_method("die"):
-			child.die()
+			child.queue_free()  # Rimuove immediatamente
+			enemies_alive -= 1
+
+	# Passa subito all’ondata successiva
+	is_wave_active = false
+	current_wave += 1
+	if current_wave < waves.size():
+		start_wave()
+	else:
+		victory_screen.visible = true
+		get_tree().paused = true
