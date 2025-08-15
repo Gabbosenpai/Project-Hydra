@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=21 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="1_qwshj"]
@@ -24,6 +24,30 @@ shader_parameter/corner_radius = 0.25
 
 [sub_resource type="LabelSettings" id="LabelSettings_mg6lk"]
 font_size = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg6lk"]
+bg_color = Color(0.813258, 0.813258, 0.813258, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqx31"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1goy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wunin"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Animation" id="Animation_wunin"]
 length = 0.001
@@ -244,6 +268,7 @@ offset_left = 353.0
 offset_top = 304.0
 offset_right = 1422.0
 offset_bottom = 1022.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mg6lk")
 
 [node name="PauseLabel" type="Label" parent="PauseMenu"]
 layout_mode = 0
@@ -252,6 +277,7 @@ offset_top = 2.0
 offset_right = 547.0
 offset_bottom = 25.0
 text = "Pausa"
+label_settings = SubResource("LabelSettings_vqx31")
 
 [node name="ResumeButton" type="Button" parent="PauseMenu"]
 process_mode = 3
@@ -260,6 +286,8 @@ offset_left = 271.0
 offset_top = 316.0
 offset_right = 452.0
 offset_bottom = 381.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_b1goy")
 toggle_mode = true
 action_mode = 0
 text = "Riprendi"
@@ -268,9 +296,11 @@ text = "Riprendi"
 process_mode = 3
 layout_mode = 0
 offset_left = 510.0
-offset_top = 313.0
-offset_right = 736.0
+offset_top = 315.0
+offset_right = 718.0
 offset_bottom = 383.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wunin")
 toggle_mode = true
 action_mode = 0
 text = "Torna al Menu Principale"
