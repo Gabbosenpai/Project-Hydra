@@ -27,16 +27,22 @@ func _process(delta: float):
 	droneSprite.position = dronePosition
 	var distanceDronePad = dropPadPosition.y - dronePosition.y
 	dropPadSprite.play("idle")
-	if(hasPackage and distanceDronePad > 10):
+	
+	if hasPackage and distanceDronePad > 10:
 		droneSprite.play("fly")
 		dronePosition.y += 200 * delta
-	elif (hasPackage):
+	elif hasPackage:
 		drop()
-	if(!hasPackage and dronePosition.y > -1400):
+	
+	if !hasPackage:
+		droneSprite.play("fly-no-pack")
 		dronePosition.y -= 200 * delta
-		if(dronePosition.y < -1400):
+		# Quando torna in alto, ricarica il pacco
+		if dronePosition.y <= droneStartingPosition.y:
+			dronePosition.y = droneStartingPosition.y
 			hasPackage = true
 			print("Carico")
+
 
 func drop():
 	print("Scarico")
