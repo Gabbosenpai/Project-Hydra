@@ -71,3 +71,23 @@ func _on_drone_animation_finished() -> void:
 	if (current_animation == "drop"):
 		droneSprite.play("fly-no-pack")
 		hasPackage = false
+		spawn_scrap()
+
+func spawn_scrap():
+	var scrap_scene: PackedScene = preload("res://Scenes/Scrap.tscn")
+	var scrap_instance = scrap_scene.instantiate()
+
+	# Aggiungi prima al parent giusto (lo stesso della pedana)
+	dropPadSprite.get_parent().add_child(scrap_instance)
+
+	# Poi assegna la posizione globale
+	scrap_instance.global_position = dropPadSprite.global_position
+
+	# Porta sopra la pedana
+	scrap_instance.z_index = dropPadSprite.z_index + 1
+
+	# Collega il point manager
+	var pm = get_tree().get_first_node_in_group("PointManager")
+	scrap_instance.point_manager = pm
+	print("DropPad at:", dropPadSprite.global_position)
+	print("Scrap at:", scrap_instance.global_position)
