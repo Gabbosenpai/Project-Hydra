@@ -39,13 +39,22 @@ func _on_lifetime_timeout():
 	queue_free()
 
 func play_spawn_animation():
-	scale = Vector2(0.1, 0.1)
 	var tween = create_tween()
-	# Pop iniziale
-	tween.tween_property(self, "scale", Vector2.ONE, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
-	# Poi hop verso in basso a destra con piccolo rimbalzo
-	var target_pos = position + hop_distance
-	tween.tween_property(self, "position", target_pos, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "position", target_pos + Vector2(0, -10), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# Decidi la direzione: 1 = destra, -1 = sinistra
+	var direction = 1
+	if randi() % 2 == 0:
+		direction = -1
+
+	# Calcola il bordo della pista come offset
+	var hop_offset = Vector2(20 * direction, 15) # piccolo spostamento verso destra o sinistra
+	var mid_pos = position + Vector2(hop_offset.x / 2, -20) # punto medio più alto per creare parabola
+	var target_pos = position + hop_offset
+
+	# Tween lungo parabola: salita e discesa
+	tween.tween_property(self, "position", mid_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", target_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+	# Piccolo rimbalzo finale
+	tween.tween_property(self, "position", target_pos + Vector2(0, -5), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", target_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
