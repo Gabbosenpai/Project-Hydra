@@ -10,7 +10,6 @@ signal remove_mode
 @export var game_over_ui : Control
 
 @onready var button_remove = $ButtonRemove
-@onready var button_start_wave = $StartWaveButton
 @onready var button_kill_all = $ButtonKillAll
 
 var is_wave_active = false

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cegc50xbtarum" path="res://Scripts/Utility/point_manager.gd" id="1_iv7p8"]
 
-[node name="PointManager" type="Node"]
+[node name="PointManager" type="Node" groups=["PointManager"]]
 script = ExtResource("1_iv7p8")
 starting_points = 0
 regen_amount = 1000
