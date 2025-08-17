@@ -7,9 +7,13 @@ extends Area2D
 @onready var health = max_health
 @onready var violence: bool = false # Se true, il robot inizia ad attaccare!
 @onready var robotSprite = $RobotSprite
+@onready var starting_speed = speed 
+@onready var jamming_sources = 0
 
 var riga : int
 var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
+var jamming : bool = false
+
 signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
 
 func _process(delta: float):
@@ -46,6 +50,20 @@ func die():
 	emit_signal("enemy_defeated")
 	await robotSprite.animation_finished
 	queue_free()
+
+func jamming_debuff(amount: float, duration: float) -> void:
+	jamming = true
+	jamming_sources += 1
+	# Riduci la velocità
+	speed = max(starting_speed/3, speed - amount)
+	print("New Speed: ", speed)
+	# Timer per ripristinare la velocità
+	var timer = get_tree().create_timer(duration)
+	await timer.timeout
+	jamming_sources -= 1
+	if(jamming_sources <= 0):
+		speed = starting_speed
+		jamming = false
 
 # Se il Robot ha una torretta davanti, inizia ad attaccare
 func _on_tower_detector_area_entered(tower: Area2D) -> void:

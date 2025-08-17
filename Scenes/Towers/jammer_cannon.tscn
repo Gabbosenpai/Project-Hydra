@@ -108,7 +108,7 @@ position = Vector2(36, -2.5)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="ReloadTimer" type="Timer" parent="RayCast2D"]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
