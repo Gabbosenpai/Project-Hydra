@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=14 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/images/grass.png" id="1_17lab"]
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/Base Scene Script/Lvl1.gd" id="1_lpmol"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="5_1qggr"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/turret_manager.tscn" id="5_67fab"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_q0f52"]
+[ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_2gxcp"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/enemy_spawner.tscn" id="6_cvs21"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/point_manager.tscn" id="7_cvs21"]
 
@@ -79,6 +80,9 @@ offset_bottom = 30.0
 
 [node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
 icon = ExtResource("5_q0f52")
+
+[node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
+icon = ExtResource("6_2gxcp")
 
 [node name="LabelWave" parent="UI" index="2"]
 offset_left = 892.0

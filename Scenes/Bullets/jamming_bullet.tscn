@@ -58,9 +58,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eml8c")
 }],
-"loop": true,
+"loop": false,
 "name": &"explosion",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,12 +77,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"travel",
-"speed": 7.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi0dv"]
-radius = 8.5
-height = 18.0
+radius = 8.0
+height = 17.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(2, 2)
@@ -93,8 +93,6 @@ texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_khhbv")
 animation = &"explosion"
-frame = 1
-frame_progress = 0.0460017
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -106,4 +104,5 @@ position = Vector2(-3.8743e-07, -1)
 scale = Vector2(0.8, 0.8)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="BulletSprite" to="." method="_on_bullet_sprite_animation_finished"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

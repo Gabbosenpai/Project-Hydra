@@ -1,28 +1,56 @@
-[gd_scene load_steps=10 format=3 uid="uid://bperhtge0ihtj"]
+[gd_scene load_steps=17 format=3 uid="uid://bperhtge0ihtj"]
 
 [ext_resource type="Script" uid="uid://b7dos4ssxl0wd" path="res://Scripts/Towers/jammer_cannon.gd" id="1_yusc1"]
 [ext_resource type="PackedScene" uid="uid://dyytyliysejrk" path="res://Scenes/Bullets/jamming_bullet.tscn" id="2_n183p"]
-[ext_resource type="Texture2D" uid="uid://3fr0wuv5gssx" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon Idle.png" id="3_n183p"]
+[ext_resource type="Texture2D" uid="uid://ctshfy1hihxo8" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon Idle.png" id="3_n183p"]
+[ext_resource type="Texture2D" uid="uid://div1tyf0ow2k0" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon Shoot.png" id="4_x1bcd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1bcd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n183p"]
 atlas = ExtResource("3_n183p")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmh7r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1bcd"]
 atlas = ExtResource("3_n183p")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dshgj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmh7r"]
 atlas = ExtResource("3_n183p")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ym2yi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dshgj"]
 atlas = ExtResource("3_n183p")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym2yi"]
+atlas = ExtResource("4_x1bcd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pnv"]
+atlas = ExtResource("4_x1bcd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iemr8"]
+atlas = ExtResource("4_x1bcd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyce7"]
+atlas = ExtResource("4_x1bcd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bka0q"]
+atlas = ExtResource("4_x1bcd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdhlx"]
+atlas = ExtResource("4_x1bcd")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2b6av"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n183p")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x1bcd")
 }, {
@@ -31,22 +59,37 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dshgj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ym2yi")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 2.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym2yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4pnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iemr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyce7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bka0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdhlx")
+}],
+"loop": false,
 "name": &"shoot",
-"speed": 5.0
+"speed": 16.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bndc1"]
-size = Vector2(62, 63)
+size = Vector2(63, 63)
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
@@ -57,10 +100,10 @@ metadata/_edit_group_ = true
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2b6av")
-animation = &"idle"
+animation = &"shoot"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
-position = Vector2(34.5, 7.5)
+position = Vector2(36, -2.5)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
@@ -69,7 +112,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bndc1")
 
 [connection signal="animation_finished" from="TowerSprite" to="." method="_on_tower_sprite_animation_finished"]
