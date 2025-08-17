@@ -20,7 +20,7 @@ var last_touch_position: Vector2 = Vector2.ZERO
 var turret_scenes = {
 	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
-	"turret3": preload("res://Scenes/Plants/plant_3.tscn"),
+	"turret3": preload("res://Scenes/Towers/jammer_cannon.tscn"),
 	"turret4": preload("res://Scenes/Plants/plant_4.tscn")
 }
 

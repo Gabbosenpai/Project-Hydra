@@ -200,6 +200,7 @@ size = Vector2(40, 27)
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_mrx6w")
+speed = 150
 metadata/_edit_group_ = true
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
