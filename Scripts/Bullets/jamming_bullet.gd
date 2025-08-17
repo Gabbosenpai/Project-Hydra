@@ -3,7 +3,8 @@ extends Area2D  # Estende la classe Area2D, quindi questo script è per un nodo 
 # Variabili esportate per poterle modificare facilmente dall'editor di Godot
 @export var speed = 200          # Velocità del proiettile
 @export var bullet_damage = 10    # Danno che il proiettile infligge agli nemici
-@export var jamming_value = 15
+@export var jamming_value = 10
+@export var jamming_duration = 10.0
 
 @onready var bulletSprite = $BulletSprite
 @onready var hit = false
@@ -33,7 +34,7 @@ func _on_area_entered(area: Area2D):
 		enemy_node.take_damage(bullet_damage)
 		# Se il robot ha il metodo jamming debuff, lo chiamiamo
 		if enemy_node.has_method("jamming_debuff"):
-			enemy_node.jamming_debuff(jamming_value)
+			enemy_node.jamming_debuff(jamming_value, jamming_duration)
 		bulletSprite.play("explosion")
 
 
