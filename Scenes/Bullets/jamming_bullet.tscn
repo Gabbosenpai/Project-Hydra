@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://dyytyliysejrk"]
+
+[ext_resource type="Script" uid="uid://cyook1mjv0u0j" path="res://Scripts/Bullets/jamming_bullet.gd" id="1_2t81u"]
+[ext_resource type="Texture2D" uid="uid://bq3sa68l2k4gu" path="res://Assets/Sprites/Bullets/Jamming Bullet/Jamming Bullet Travel.png" id="2_7kttd"]
+[ext_resource type="Texture2D" uid="uid://8soe8i82qpjk" path="res://Assets/Sprites/Bullets/Jamming Bullet/Jamming Bullet Explosion.png" id="2_8y4a5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbtij"]
+atlas = ExtResource("2_8y4a5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j25yf"]
+atlas = ExtResource("2_8y4a5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep2cj"]
+atlas = ExtResource("2_8y4a5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8xh5"]
+atlas = ExtResource("2_8y4a5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eml8c"]
+atlas = ExtResource("2_8y4a5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y4a5"]
+atlas = ExtResource("2_7kttd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uqut"]
+atlas = ExtResource("2_7kttd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o6sf"]
+atlas = ExtResource("2_7kttd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi11l"]
+atlas = ExtResource("2_7kttd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khhbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbtij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j25yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep2cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8xh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eml8c")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y4a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uqut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o6sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi11l")
+}],
+"loop": true,
+"name": &"travel",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi0dv"]
+radius = 8.5
+height = 18.0
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_2t81u")
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_khhbv")
+animation = &"explosion"
+frame = 1
+frame_progress = 0.0460017
+
+[node name="BulletHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_oi0dv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3.8743e-07, -1)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,61 +1,46 @@
-[gd_scene load_steps=16 format=3 uid="uid://bperhtge0ihtj"]
+[gd_scene load_steps=10 format=3 uid="uid://bperhtge0ihtj"]
 
 [ext_resource type="Script" uid="uid://b7dos4ssxl0wd" path="res://Scripts/Towers/jammer_cannon.gd" id="1_yusc1"]
-[ext_resource type="PackedScene" uid="uid://7oa7wd5nl0lo" path="res://Scenes/Bullets/bolt_bullet.tscn" id="2_s1mj5"]
-[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="3_w2nvm"]
-[ext_resource type="Texture2D" uid="uid://b0xiidl4rg8uq" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0002.png" id="4_yuyyc"]
-[ext_resource type="Texture2D" uid="uid://dpyppupqe10j0" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0003.png" id="5_kid7o"]
-[ext_resource type="Texture2D" uid="uid://ylh8iljmymgb" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0004.png" id="6_c1ghn"]
-[ext_resource type="Texture2D" uid="uid://2lcgpf2vkssv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0005.png" id="7_p8sao"]
-[ext_resource type="Texture2D" uid="uid://y43uqkwtmahv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0006.png" id="8_0jr7d"]
-[ext_resource type="Texture2D" uid="uid://cvweo1l52fp1k" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0003.png" id="9_5sceu"]
-[ext_resource type="Texture2D" uid="uid://c78sluu2xpgq3" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0004.png" id="10_6tvtc"]
-[ext_resource type="Texture2D" uid="uid://clk2y7rsh1tls" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0005.png" id="11_delc5"]
-[ext_resource type="Texture2D" uid="uid://c7831wklhgb8" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0006.png" id="12_empwl"]
-[ext_resource type="Texture2D" uid="uid://boga8weksd6i1" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0007.png" id="13_q7jts"]
+[ext_resource type="PackedScene" uid="uid://dyytyliysejrk" path="res://Scenes/Bullets/jamming_bullet.tscn" id="2_n183p"]
+[ext_resource type="Texture2D" uid="uid://3fr0wuv5gssx" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon Idle.png" id="3_n183p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1bcd"]
+atlas = ExtResource("3_n183p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmh7r"]
+atlas = ExtResource("3_n183p")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dshgj"]
+atlas = ExtResource("3_n183p")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym2yi"]
+atlas = ExtResource("3_n183p")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2b6av"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_w2nvm")
+"texture": SubResource("AtlasTexture_x1bcd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_yuyyc")
+"texture": SubResource("AtlasTexture_pmh7r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_kid7o")
+"texture": SubResource("AtlasTexture_dshgj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_c1ghn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_p8sao")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_0jr7d")
+"texture": SubResource("AtlasTexture_ym2yi")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 3.0
+"speed": 2.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_5sceu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_6tvtc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_delc5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_empwl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_q7jts")
-}],
-"loop": false,
+"frames": [],
+"loop": true,
 "name": &"shoot",
 "speed": 5.0
 }]
@@ -66,7 +51,7 @@ size = Vector2(62, 63)
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_yusc1")
-BULLET = ExtResource("2_s1mj5")
+BULLET = ExtResource("2_n183p")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
@@ -75,7 +60,7 @@ sprite_frames = SubResource("SpriteFrames_2b6av")
 animation = &"idle"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
-position = Vector2(22, -1)
+position = Vector2(34.5, 7.5)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
