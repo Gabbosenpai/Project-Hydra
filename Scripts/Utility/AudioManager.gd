@@ -9,13 +9,11 @@ var sfx_volume: float = 0.01
 # Musica di game over
 var game_over_music = preload("res://Assets/Sound/OST/A Lonely Cherry Tree (GAME OVER MENU).mp3")
 
-# Suono click bottoni (assegnato da editor o via preload)
-#@export var button_click_sound: AudioStream = preload("res://Assets/Sound/SFX/8bit Click Sound Effect.mp3")
-
 # Per gestire mute musica
 var previous_music_volume: float = 0.01
 var is_music_muted: bool = false
-
+#suono bottoni
+var button_click_sfx = preload("res://Assets/Sound/SFX/8bit Click Sound Effect.mp3")
 # Audio Players
 var music_player: AudioStreamPlayer = null
 var sfx_player: AudioStreamPlayer = null
