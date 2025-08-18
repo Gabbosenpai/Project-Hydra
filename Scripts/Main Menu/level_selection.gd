@@ -2,6 +2,13 @@ extends Control
 
 #tutto da aggiornare con gli altri 4 livelli
 
+func _ready():
+	var selection_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
+
+	# Suona solo se è diversa da quella attualmente in riproduzione
+	if AudioManager.music_player.stream != selection_music:
+		AudioManager.play_music(selection_music)
+
 func _on_level_1_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")

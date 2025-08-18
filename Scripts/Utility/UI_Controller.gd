@@ -48,7 +48,7 @@ func _on_resume_button_pressed():
 	pause_menu.visible = false
 	pause_button.visible = true
 
-# Torna al menu principale
+# Torna al menu principale dalla schermata di vittoria
 func _on_menu_button_pressed():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().paused = false
@@ -75,7 +75,7 @@ func _on_exit_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
-
+#da schermata di vittoria
 func _on_select_level_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/level_selection.tscn")

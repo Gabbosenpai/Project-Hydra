@@ -1,7 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
-[ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="1_qwshj"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
 [ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_mg6lk"]
@@ -113,6 +112,10 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_j04uc"]
 font_size = 50
 
+[sub_resource type="GDScript" id="GDScript_xjg7p"]
+script/source = "extends Control
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j04uc"]
 bg_color = Color(0.811765, 0.811765, 0.811765, 1)
 corner_radius_top_left = 10
@@ -205,7 +208,6 @@ offset_bottom = 83.0
 
 [node name="ButtonTurret1" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("1_qwshj")
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
 layout_mode = 0
@@ -359,6 +361,7 @@ offset_left = 358.0
 offset_top = 298.0
 offset_right = 1418.0
 offset_bottom = 1025.0
+script = SubResource("GDScript_xjg7p")
 
 [node name="PauseMenu" type="Panel" parent="VictoryScreen"]
 layout_mode = 0
@@ -403,3 +406,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_n04ve")
 toggle_mode = true
 action_mode = 0
 text = "Torna al Menu Principale"
+
+[connection signal="pressed" from="VictoryScreen/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
+[connection signal="pressed" from="VictoryScreen/MenuButton" to="." method="_on_menu_button_pressed"]
