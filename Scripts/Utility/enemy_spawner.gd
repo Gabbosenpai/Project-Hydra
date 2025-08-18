@@ -2,6 +2,7 @@ extends Node
 
 signal wave_completed
 signal enemy_reached_base
+signal level_completed
 
 # Nodi della scena passati dall'editor per gestire spawn, UI e timer
 @export var tilemap: TileMap
@@ -83,6 +84,7 @@ func _on_enemy_defeated():
 		else:
 			victory_screen.visible = true
 			get_tree().paused = true
+			emit_signal("level_completed")
 
 # Uccide istantaneamente tutti i nemici presenti nella scena
 func kill_all():
@@ -103,4 +105,5 @@ func kill_all():
 		
 		victory_screen.visible = true
 		AudioManager.play_victory_music()
+		emit_signal("level_completed")
 		

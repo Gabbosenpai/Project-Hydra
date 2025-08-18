@@ -19,8 +19,9 @@ func _ready():
 	connect("game_over", Callable(ui_controller, "show_game_over"))
 	var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
 	AudioManager.play_music(level_music)
+	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
 	enemy_spawner.start_wave()
-
+	
 # Chiamata quando l’ondata di nemici viene completata.
 # Utile per avviare la successiva o mostrare messaggi all’utente.
 func _on_wave_completed():
@@ -30,3 +31,9 @@ func _on_wave_completed():
 # In questo caso emette il segnale "game_over" che avvia la schermata di fine partita.
 func enemy_reached_base():
 	emit_signal("game_over")
+
+func _on_level_completed():
+	var max_level = SaveManager.get_max_unlocked_level()
+	if max_level < 2:
+		SaveManager.unlock_level(2)
+		print("Livello 2 sbloccato!")

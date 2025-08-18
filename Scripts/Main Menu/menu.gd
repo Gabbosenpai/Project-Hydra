@@ -3,14 +3,13 @@ extends CanvasLayer
 @onready var play_button = $VBoxContainer/PlayButton
 @onready var quit_button = $VBoxContainer/QuitButton
 @onready var credits_button = $VBoxContainer/CreditsButton
+@onready var reset_button = $VBoxContainer/ResetButton
 
 
 func _ready():
 	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	AudioManager.play_music(menu_music)
-
-
-
+	reset_button.pressed.connect(_on_reset_button_pressed)
 #se clicco gioca ferma l'OST del menù
 func _on_play_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -39,3 +38,9 @@ func _on_option_button_pressed() -> void:
 func _on_languages_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/language_selection.tscn")
+
+
+func _on_reset_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	SaveManager.reset_progress()
+	print("Progress reset!")
