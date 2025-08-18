@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://b6iiplco8wt2w" path="res://Assets/Sprites/Scrap/Scrap.png" id="2_1exl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1exl5"]
-size = Vector2(172, 166)
+size = Vector2(18, 18)
 
 [node name="Area2D" type="Area2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_5chpn")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0690524, 0.0710114)
+texture_filter = 1
 texture = ExtResource("2_1exl5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_1exl5")
