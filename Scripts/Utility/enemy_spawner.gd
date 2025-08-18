@@ -100,5 +100,7 @@ func kill_all():
 	if current_wave < waves.size():
 		start_wave()
 	else:
+		
 		victory_screen.visible = true
-		get_tree().paused = true
+		AudioManager.play_victory_music()
+		

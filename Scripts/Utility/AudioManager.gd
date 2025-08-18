@@ -9,6 +9,9 @@ var sfx_volume: float = 0.01
 # Musica di game over
 var game_over_music = preload("res://Assets/Sound/OST/A Lonely Cherry Tree (GAME OVER MENU).mp3")
 
+#musica di vittoria
+var victory_music = preload("res://Assets/Sound/OST/8-bit RPG Music ｜ Victory Theme(VICTORY SOUND EFFECT + MENU THEME).mp3")
+
 # Per gestire mute musica
 var previous_music_volume: float = 0.01
 var is_music_muted: bool = false
@@ -100,3 +103,7 @@ func play_music(music_stream: AudioStream) -> void:
 # Suona la musica di game over
 func play_game_over_music():
 	play_music(game_over_music)
+
+#suona la musica di vittoria
+func play_victory_music():
+	play_music(victory_music)
