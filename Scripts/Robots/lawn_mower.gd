@@ -1,0 +1,119 @@
+extends Area2D
+
+@export var max_health = 100 
+@export var speed = 50 
+@export var damage = 25 
+
+@onready var health = max_health
+@onready var violence: bool = false # Se true, il robot inizia ad attaccare!
+@onready var robotSprite = $RobotSprite
+@onready var starting_speed = speed 
+@onready var jamming_sources = 0
+@export var block_chance := 0.3 # probabilità di parare (0.3 = 30%)
+
+var riga : int
+var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
+var jamming : bool = false
+
+signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
+
+func _process(delta: float):
+	# Finchè il robot non attacca ed è vivo, continua a muoversi
+	if !violence and health>0:
+		move(delta)
+
+func take_damage(amount):
+	health -= amount
+	flash_bright() # Fornisce feedback visivo
+	print("Robot HP:",health)
+	if health < 0:
+		health = 0
+	if health == 0:
+		die()
+
+func move(delta):
+	position.x -= speed * delta 
+	robotSprite.play("move") 
+	# Controllo: se il nemico è arrivato alla colonna x <= 0
+	if position.x <= 0:
+		var main_scene = get_tree().current_scene
+		if main_scene.has_method("enemy_reached_base"):
+			main_scene.enemy_reached_base()  
+
+func die():
+	var hitbox = $RobotHitbox
+	var detector = $TowerDetector/CollisionShape2D
+	robotSprite.z_as_relative = false # Mette il robot morente in secondo piano
+	robotSprite.stop()
+	robotSprite.play("death")
+	hitbox.set_deferred("disabled", true)
+	detector.set_deferred("disabled", true)
+	emit_signal("enemy_defeated")
+	await robotSprite.animation_finished
+	queue_free()
+
+func jamming_debuff(amount: float, duration: float) -> void:
+	jamming = true
+	jamming_sources += 1
+	# Riduci la velocità
+	speed = max(starting_speed/3, speed - amount)
+	print("New Speed: ", speed)
+	# Timer per ripristinare la velocità
+	var timer = get_tree().create_timer(duration)
+	await timer.timeout
+	jamming_sources -= 1
+	if(jamming_sources <= 0):
+		speed = starting_speed
+		jamming = false
+
+# Se il Robot ha una torretta davanti, inizia ad attaccare
+func _on_tower_detector_area_entered(tower: Area2D) -> void:
+	if tower.is_in_group("Tower"):
+		violence = true
+		target = tower
+		robotSprite.play("attack")
+
+# Se il Robot non ha più una torretta davanti, smette di attaccare
+func _on_tower_detector_area_exited(tower: Area2D) -> void:
+	if tower.is_in_group("Tower"):
+		violence = false
+		target = null
+
+# Quando finisce l'animazione d'attacco, facciamo un controllo sula validità del bersaglio:
+# se true, il bersaglio subisce danno e il robot ricomincia l'animazione d'attacco
+func _on_robot_sprite_animation_finished() -> void:
+	var current_aniamtion = robotSprite.animation
+	if current_aniamtion == "attack" and violence and target and is_instance_valid(target):
+		if target.has_method("take_damage"):
+			target.take_damage(damage)
+		robotSprite.play("attack")
+
+# Funzione che controlla se il nemico è visibile nella viewport (schermo)
+func is_on_screen() -> bool:
+	# Usa il nodo figlio VisibleOnScreenNotifier2D per verificare la visibilità
+	return $VisNot.is_on_screen()
+
+# Modula lo sprite per dare feedback visivo
+func flash_bright():
+	robotSprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
+	await get_tree().create_timer(0.1).timeout
+	robotSprite.modulate = Color(1, 1, 1) # Normale
+
+
+func _on_robot_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("TowerBullet"):
+		if randf() < block_chance:
+			print("Colpo parato!")
+			flash_blocked() # Feedback visivo giallo
+		else:
+			var dmg = area.get("bullet_damage")
+			take_damage(dmg)
+
+		# Il proiettile sparisce comunque
+		area.queue_free()
+
+
+func flash_blocked():
+	modulate = Color(1, 1, 0) # giallo
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color(1, 1, 1)

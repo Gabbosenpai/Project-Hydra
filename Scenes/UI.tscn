@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=23 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
-[ext_resource type="Texture2D" uid="uid://bri4vpi3nn0a" path="res://Assets/Sprites/Base Tower/Shoot/Minigun_0001.png" id="1_qwshj"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
 [ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_mg6lk"]
@@ -205,7 +204,6 @@ offset_bottom = 83.0
 
 [node name="ButtonTurret1" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("1_qwshj")
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
 layout_mode = 0

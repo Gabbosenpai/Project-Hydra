@@ -22,7 +22,7 @@ animations = [{
 radius = 8.0
 height = 18.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["TowerBullet"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_fxfpm")
 metadata/_edit_group_ = true
