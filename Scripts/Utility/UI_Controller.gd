@@ -43,12 +43,14 @@ func _on_pause_button_pressed():
 
 # Riprende il gioco dopo la pausa
 func _on_resume_button_pressed():
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().paused = false
 	pause_menu.visible = false
 	pause_button.visible = true
 
 # Torna al menu principale
 func _on_menu_button_pressed():
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 

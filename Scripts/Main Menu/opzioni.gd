@@ -25,6 +25,7 @@ func _on_sfx_slider_changed(value):
 	AudioManager.set_sfx_volume(value / 100.0)
 
 func _on_back_pressed():
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 
