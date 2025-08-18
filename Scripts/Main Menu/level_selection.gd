@@ -2,8 +2,8 @@ extends Control
 
 #tutto da aggiornare con gli altri 4 livelli
 
-#massimo livello sbloccato 
-var max_unlocked_level: int = 1
+
+
 
 #prendiamo i bottoni dei livelli
 @onready var level_1_button = $Level1
@@ -14,7 +14,8 @@ var max_unlocked_level: int = 1
 
 func _ready():
 	# Disattiva bottone se il max unlocked è minore del numero del livello
-	
+	#massimo livello sbloccato 
+	var max_unlocked_level: int = SaveManager.get_max_unlocked_level()
 	level_2_button.disabled = max_unlocked_level < 2
 	level_3_button.disabled = max_unlocked_level < 3
 	level_4_button.disabled = max_unlocked_level < 4
