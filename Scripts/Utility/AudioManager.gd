@@ -71,21 +71,26 @@ func play_sfx(sfx_stream: AudioStream) -> void:
 	var new_sfx_player = AudioStreamPlayer.new()
 	new_sfx_player.stream = sfx_stream
 	new_sfx_player.bus = "SFX"
-	new_sfx_player.volume_db = linear_to_db(sfx_volume)
+	
+	if is_music_muted:
+		new_sfx_player.volume_db = linear_to_db(0.0)
+	else:
+		new_sfx_player.volume_db = linear_to_db(sfx_volume)
+
 	add_child(new_sfx_player)
 	new_sfx_player.play()
-
-	# Rimuove il nodo una volta finito
 	new_sfx_player.connect("finished", Callable(new_sfx_player, "queue_free"))
+
 
 # Mute/unmute musica
 func toggle_music_mute() -> void:
 	is_music_muted = !is_music_muted
 	if is_music_muted:
 		music_player.volume_db = linear_to_db(0.0)
+		sfx_player.volume_db = linear_to_db(0.0)
 	else:
 		music_player.volume_db = linear_to_db(music_volume)
-
+		sfx_player.volume_db = linear_to_db(sfx_volume)
 # Cambia la musica
 func play_music(music_stream: AudioStream) -> void:
 	if music_player and (music_player.stream != music_stream or !music_player.playing):
