@@ -82,6 +82,37 @@ offset_bottom = -42.0
 grow_vertical = 0
 texture_normal = ExtResource("2_eas8t")
 
+[node name="ResetConfirm" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = -136.5
+offset_right = 557.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ResetConfirm"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Sicuro di voler cancellare i dati salvati?"
+
+[node name="YesButton" type="Button" parent="ResetConfirm"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Si"
+
+[node name="NoButton" type="Button" parent="ResetConfirm"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "No"
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
