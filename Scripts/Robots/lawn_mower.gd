@@ -9,6 +9,7 @@ extends Area2D
 @onready var robotSprite = $RobotSprite
 @onready var starting_speed = speed 
 @onready var jamming_sources = 0
+@export var block_chance := 0.3 # probabilità di parare (0.3 = 30%)
 
 var riga : int
 var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
@@ -114,3 +115,22 @@ func flash_bright():
 	robotSprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
 	await get_tree().create_timer(0.1).timeout
 	robotSprite.modulate = Color(1, 1, 1) # Normale
+
+
+func _on_robot_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("TowerBullet"):
+		if randf() < block_chance:
+			print("Colpo parato!")
+			flash_blocked() # Feedback visivo giallo
+		else:
+			var dmg = area.get("bullet_damage")
+			take_damage(dmg)
+
+		# Il proiettile sparisce comunque
+		area.queue_free()
+
+
+func flash_blocked():
+	modulate = Color(1, 1, 0) # giallo
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color(1, 1, 1)

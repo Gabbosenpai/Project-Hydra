@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxuc1rbxy0lfx"]
+
+[ext_resource type="Script" uid="uid://cx6dpqhfq7ppk" path="res://Scripts/Robots/ice_robot.gd" id="1_v6n1k"]
+[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_4yvdy"]
+[ext_resource type="PackedScene" uid="uid://cha8vwb0jcere" path="res://Scenes/ice_bullet.tscn" id="2_ypf6s"]
+[ext_resource type="Texture2D" uid="uid://b0xiidl4rg8uq" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0002.png" id="3_ypf6s"]
+[ext_resource type="Texture2D" uid="uid://dpyppupqe10j0" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0003.png" id="4_548b4"]
+[ext_resource type="Texture2D" uid="uid://ylh8iljmymgb" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0004.png" id="5_4y55g"]
+[ext_resource type="Texture2D" uid="uid://2lcgpf2vkssv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0005.png" id="6_oq4r4"]
+[ext_resource type="Texture2D" uid="uid://y43uqkwtmahv" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0006.png" id="7_lcanh"]
+[ext_resource type="Texture2D" uid="uid://cvweo1l52fp1k" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0003.png" id="8_17kq4"]
+[ext_resource type="Texture2D" uid="uid://c78sluu2xpgq3" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0004.png" id="9_js61v"]
+[ext_resource type="Texture2D" uid="uid://clk2y7rsh1tls" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0005.png" id="10_82xgc"]
+[ext_resource type="Texture2D" uid="uid://c7831wklhgb8" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0006.png" id="11_7s7pv"]
+[ext_resource type="Texture2D" uid="uid://boga8weksd6i1" path="res://Assets/Sprites/Towers/Bolt Shooter/Shoot/Bolt Shooter-Shoot_0007.png" id="12_1strq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2b6av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4yvdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ypf6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_548b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4y55g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oq4r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lcanh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_17kq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_js61v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_82xgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7s7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1strq")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bndc1"]
+size = Vector2(62, 63)
+
+[node name="Robot" type="Area2D" groups=["Tower"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_v6n1k")
+BULLET = ExtResource("2_ypf6s")
+metadata/_edit_group_ = true
+
+[node name="TowerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_2b6av")
+animation = &"idle"
+
+[node name="BulletOrigin" type="Marker2D" parent="."]
+position = Vector2(22, -1)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 2.0
+one_shot = true
+
+[node name="TowerHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_bndc1")
+
+[connection signal="animation_finished" from="TowerSprite" to="." method="_on_tower_sprite_animation_finished"]
+[connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
