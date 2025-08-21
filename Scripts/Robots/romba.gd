@@ -64,17 +64,6 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	if(jamming_sources <= 0):
 		speed = starting_speed
 		jamming = false
-
-func freeze(duration: float) -> void:
-	if health <= 0: # non congelare un robot già morto
-		return
-	var old_speed = speed
-	speed = 0
-	robotSprite.modulate = Color(0.5, 0.8, 1.0) # effetto visivo azzurrato
-	print("Robot congelato per ", duration, " secondi")
-	
-	var timer = get_tree().create_timer(duration)
-	await timer.timeout
 	
 	# Ripristina velocità se non ci sono altri debuff
 	if health > 0:
