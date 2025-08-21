@@ -21,7 +21,7 @@ func _ready() -> void:
 	dropPadPosition = dropPadSprite.position
 	droneStartingPosition = droneSprite.position
 	dronePosition = droneStartingPosition
-	print(droneStartingPosition)
+	#print(droneStartingPosition)
 
 func _process(delta: float):
 	droneSprite.position = dronePosition
@@ -41,11 +41,11 @@ func _process(delta: float):
 		if dronePosition.y <= droneStartingPosition.y:
 			dronePosition.y = droneStartingPosition.y
 			hasPackage = true
-			print("Carico")
+			#print("Carico")
 
 
 func drop():
-	print("Scarico")
+	#print("Scarico")
 	droneSprite.play("drop")
 
 func _on_reload_timer_timeout():
@@ -54,7 +54,7 @@ func _on_reload_timer_timeout():
 func take_damage(amount):
 	health -= amount
 	flash_bright()
-	print("Tower HP:", health)
+	#print("Tower HP:", health)
 	if health < 0:
 		health = 0
 	if health == 0:
@@ -95,5 +95,5 @@ func spawn_scrap():
 	# Collega il point manager
 	var pm = get_tree().get_first_node_in_group("PointManager")
 	scrap_instance.point_manager = pm
-	print("DropPad at:", dropPadSprite.global_position)
-	print("Scrap at:", scrap_instance.global_position)
+	#print("DropPad at:", dropPadSprite.global_position)
+	#print("Scrap at:", scrap_instance.global_position)

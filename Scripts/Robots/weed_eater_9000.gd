@@ -1,35 +1,43 @@
 extends Area2D
 
-@export var max_health = 100 
-@export var speed = 50 
-@export var damage = 25 
+@export var max_health = 75 
+@export var speed = 100 
+@export var damage = 2 
+@export var block_chance := 0.33 # probabilità di bloccare (0.33 = 33%)
 
 @onready var health = max_health
 @onready var violence: bool = false # Se true, il robot inizia ad attaccare!
 @onready var robotSprite = $RobotSprite
 @onready var starting_speed = speed 
 @onready var jamming_sources = 0
-@export var block_chance := 0.3 # probabilità di parare (0.3 = 30%)
 
 var riga : int
 var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
 var jamming : bool = false
+var deflected : bool = false # Bool usata per fermare il robot al blocco
 
 signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
 
 func _process(delta: float):
-	# Finchè il robot non attacca ed è vivo, continua a muoversi
-	if !violence and health>0:
+	# Finchè il robot non attacca, è vivo o non sta bloccando, continua a muoversi
+	if !violence and !deflected and health>0:
 		move(delta)
 
 func take_damage(amount):
+	if deflect():  
+		amount = 0  # Setta il danno a zero, dando l'illusione di averlo bloccato
+		robotSprite.play("block")
+		print("NO ONE CAN DEFLECT THE EMERLAD SPLASH!")
+		await robotSprite.animation_finished
 	health -= amount
-	flash_bright() # Fornisce feedback visivo
+	if amount > 0:
+		flash_bright() # Fornisce feedback visivo
 	print("Robot HP:",health)
 	if health < 0:
 		health = 0
 	if health == 0:
 		die()
+	deflected = false
 
 func move(delta):
 	position.x -= speed * delta 
@@ -44,10 +52,10 @@ func die():
 	var hitbox = $RobotHitbox
 	var detector = $TowerDetector/CollisionShape2D
 	robotSprite.z_as_relative = false # Mette il robot morente in secondo piano
-	robotSprite.stop()
-	robotSprite.play("death")
 	hitbox.set_deferred("disabled", true)
 	detector.set_deferred("disabled", true)
+	robotSprite.stop()
+	robotSprite.play("death")
 	emit_signal("enemy_defeated")
 	await robotSprite.animation_finished
 	queue_free()
@@ -56,7 +64,7 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	jamming = true
 	jamming_sources += 1
 	# Riduci la velocità
-	speed = max(starting_speed/3, speed - amount)
+	speed = max(starting_speed/3.0, speed - amount)
 	print("New Speed: ", speed)
 	# Timer per ripristinare la velocità
 	var timer = get_tree().create_timer(duration)
@@ -65,23 +73,6 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	if(jamming_sources <= 0):
 		speed = starting_speed
 		jamming = false
-
-func freeze(duration: float) -> void:
-	if health <= 0: # non congelare un robot già morto
-		return
-	var old_speed = speed
-	speed = 0
-	robotSprite.modulate = Color(0.5, 0.8, 1.0) # effetto visivo azzurrato
-	print("Robot congelato per ", duration, " secondi")
-	
-	var timer = get_tree().create_timer(duration)
-	await timer.timeout
-	
-	# Ripristina velocità se non ci sono altri debuff
-	if health > 0:
-		speed = starting_speed
-		robotSprite.modulate = Color(1, 1, 1)
-
 
 # Se il Robot ha una torretta davanti, inizia ad attaccare
 func _on_tower_detector_area_entered(tower: Area2D) -> void:
@@ -116,21 +107,15 @@ func flash_bright():
 	await get_tree().create_timer(0.1).timeout
 	robotSprite.modulate = Color(1, 1, 1) # Normale
 
-
-func _on_robot_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("TowerBullet"):
-		if randf() < block_chance:
-			print("Colpo parato!")
-			flash_blocked() # Feedback visivo giallo
-		else:
-			var dmg = area.get("bullet_damage")
-			take_damage(dmg)
-
-		# Il proiettile sparisce comunque
-		area.queue_free()
-
-
 func flash_blocked():
 	modulate = Color(1, 1, 0) # giallo
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color(1, 1, 1)
+
+# Calcola con una randf se il robot riesce a bloccare il colpo 
+# quando NON sta attaccando
+func deflect() -> bool:
+	if randf() < block_chance and !violence:
+			deflected = true
+			return true
+	return false
