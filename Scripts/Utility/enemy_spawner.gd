@@ -14,7 +14,7 @@ signal level_completed
 @export var victory_screen: Control
 
 # Scena del nemico da istanziare
-var enemy_scene = preload("res://Scenes/Robots/romba.tscn")
+var enemy_scene = preload("res://Scenes/Robots/weed_eater_9000.tscn")
 
 # Configurazione delle ondate: numero di nemici e intervallo di spawn
 var waves = [

@@ -11,7 +11,7 @@ extends Area2D
 func _ready():
 	input_pickable = true
 	connect("input_event", Callable(self, "_on_input_event"))
-	print("Scrap ready at:", global_position, " z:", z_index)
+	#print("Scrap ready at:", global_position, " z:", z_index)
 
 	# Timer per far scomparire il rottame
 	lifetime_timer.one_shot = true
