@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://btjnexkbsst2"]
+[gd_scene load_steps=6 format=3 uid="uid://cha8vwb0jcere"]
 
-[ext_resource type="Script" uid="uid://c3bvn4ih3bxeh" path="res://Scripts/Bullets/ice_bullet.gd" id="1_nkloc"]
-[ext_resource type="Texture2D" uid="uid://cdbxvtyylngje" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0001.png" id="2_ryd7i"]
-[ext_resource type="Texture2D" uid="uid://dspncuwxmjv7i" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0002.png" id="3_gpcri"]
+[ext_resource type="Script" uid="uid://c3bvn4ih3bxeh" path="res://Scripts/Bullets/ice_bullet.gd" id="1_41pv4"]
+[ext_resource type="Texture2D" uid="uid://cdbxvtyylngje" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0001.png" id="2_k768s"]
+[ext_resource type="Texture2D" uid="uid://dspncuwxmjv7i" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0002.png" id="3_q32c6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_khhbv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ryd7i")
+"texture": ExtResource("2_k768s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gpcri")
+"texture": ExtResource("3_q32c6")
 }],
 "loop": true,
 "name": &"travel",
@@ -24,7 +24,7 @@ height = 18.0
 
 [node name="Bullet" type="Area2D" groups=["TowerBullet"]]
 scale = Vector2(2, 2)
-script = ExtResource("1_nkloc")
+script = ExtResource("1_41pv4")
 metadata/_edit_group_ = true
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxuc1rbxy0lfx"]
+[gd_scene load_steps=16 format=3 uid="uid://bxuc1rbxy0lfx"]
 
 [ext_resource type="Script" uid="uid://cx6dpqhfq7ppk" path="res://Scripts/Robots/ice_robot.gd" id="1_v6n1k"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_4yvdy"]
+[ext_resource type="PackedScene" uid="uid://cha8vwb0jcere" path="res://Scenes/ice_bullet.tscn" id="2_ypf6s"]
 [ext_resource type="Texture2D" uid="uid://b0xiidl4rg8uq" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0002.png" id="3_ypf6s"]
 [ext_resource type="Texture2D" uid="uid://dpyppupqe10j0" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0003.png" id="4_548b4"]
 [ext_resource type="Texture2D" uid="uid://ylh8iljmymgb" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0004.png" id="5_4y55g"]
@@ -65,6 +66,7 @@ size = Vector2(62, 63)
 [node name="Robot" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_v6n1k")
+BULLET = ExtResource("2_ypf6s")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
