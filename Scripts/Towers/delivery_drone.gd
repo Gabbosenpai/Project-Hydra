@@ -7,7 +7,7 @@ var dropPadPosition
 var dronePosition
 var droneStartingPosition
 var current_animation
-
+var drop_sfx = preload("res://Assets/Sound/SFX/rilascio risorse.wav")
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var health = max_health
 @onready var rayCast = $RayCast2D # NON RIMUOVERE, FA FUNZIONARE IL TUTTO
@@ -47,6 +47,7 @@ func _process(delta: float):
 func drop():
 	#print("Scarico")
 	droneSprite.play("drop")
+	AudioManager.play_sfx(drop_sfx)
 
 func _on_reload_timer_timeout():
 	rayCast.enabled = true  # NON RIMUOVERE, NON SO COSA FACCIA MA FA FUNZIONARE TUTTO

@@ -6,7 +6,7 @@ extends Node2D
 var robots_coming = [] # Array con i robot identificati come bersaglio
 var armed = false # Se true, la torretta spara
 var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
-
+var shoot_sfx = preload("res://Assets/Sound/SFX/Robotic-shoot-cut.mp3")
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var health = max_health
 @onready var bulletOrigin = $BulletOrigin
@@ -25,6 +25,7 @@ func _process(_delta: float):
 # Funzione per sparare un proiettile
 func shoot():
 	towerSprite.play("shoot")
+	AudioManager.play_sfx(shoot_sfx)
 	if BULLET:           # Controlla che la scena del proiettile sia assegnata
 		var bullet: Node2D = BULLET.instantiate()  # Istanzia un nuovo bullet
 		bullet.z_index = 5 # Fa passare il bullet sopra gli sprite
