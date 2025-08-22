@@ -11,7 +11,6 @@ extends CanvasLayer
 func _ready():
 	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	AudioManager.play_music(menu_music)
-	reset_button.pressed.connect(_on_reset_button_pressed)
 	# Collegamenti bottoni conferma
 	confirm_box.get_node("YesButton").pressed.connect(_on_confirm_yes)
 	confirm_box.get_node("NoButton").pressed.connect(_on_confirm_no)
