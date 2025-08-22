@@ -80,11 +80,7 @@ func _on_wave_timer_timeout():
 		spawn_enemy()
 		enemies_to_spawn -= 1
 		wave_timer.start()
-	else:
-		if enemies_alive == 0:
-			is_wave_active = false
-			current_wave += 1
-			emit_signal("wave_completed")
+
 
 # Spawn singolo nemico
 func spawn_enemy():
