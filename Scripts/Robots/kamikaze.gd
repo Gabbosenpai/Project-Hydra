@@ -65,7 +65,7 @@ func die():
 func jamming_debuff(amount: float, duration: float):
 	jamming = true
 	jamming_sources += 1
-	speed = max(starting_speed/3, speed - amount)
+	speed = max(starting_speed/3.0, speed - amount)
 	
 	var timer = get_tree().create_timer(duration)
 	await timer.timeout
@@ -101,7 +101,7 @@ func _on_tower_detector_area_entered(tower: Area2D):
 		print("Kamikaze entrato in contatto con torretta")
 		explode(tower)
 
-func _on_tower_detector_area_exited(tower: Area2D):
+func _on_tower_detector_area_exited(_tower: Area2D):
 	pass  # Non necessario con l'esplosione immediata
 
 # Utility

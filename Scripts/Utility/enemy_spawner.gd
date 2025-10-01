@@ -1,7 +1,5 @@
 extends Node
 
-signal wave_completed
-signal enemy_reached_base
 signal level_completed
 
 #Variabili che servono per tenere lo stato delle etichette e delle ondate per poter aggiornare l'UI

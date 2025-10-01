@@ -55,7 +55,7 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	jamming = true
 	jamming_sources += 1
 	# Riduci la velocità
-	speed = max(starting_speed/3, speed - amount)
+	speed = max(starting_speed/3.0, speed - amount)
 	print("New Speed: ", speed)
 	# Timer per ripristinare la velocità
 	var timer = get_tree().create_timer(duration)
