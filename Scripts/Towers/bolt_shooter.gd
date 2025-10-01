@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var BULLET: PackedScene = null # Permette l'assegnazione della scena bullet nell'editor
-@export var max_health = 100 
+@export var max_health = 100  # Salute massima 
 
 var robots_coming = [] # Array con i robot identificati come bersaglio
 var armed = false # Se true, la torretta spara
 var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
-var shoot_sfx = preload("res://Assets/Sound/SFX/8bit-hit-cut.mp3")
+var shoot_sfx = preload("res://Assets/Sound/SFX/8bit-hit-cut.mp3") # Effetto sonoro sparo del proiettile
 
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var health = max_health
@@ -38,6 +38,7 @@ func shoot():
 func _on_reload_timer_timeout():
 	rayCast.enabled = true  # NON RIMUOVERE, NON SO COSA FACCIA MA FA FUNZIONARE TUTTO
 
+#Funzione che fa prendere danno allo sparatore
 func take_damage(amount):
 	health -= amount
 	flash_bright()
@@ -47,6 +48,7 @@ func take_damage(amount):
 	if health == 0:
 		die()
 
+#Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
 	queue_free()
 

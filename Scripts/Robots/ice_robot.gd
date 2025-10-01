@@ -1,9 +1,10 @@
 extends Area2D
 
-@export var max_health = 100 
-@export var speed = 50 
-@export var damage = 25 
+@export var max_health = 100 #Salute massima
+@export var speed = 50 #Velocità Robot
+@export var damage = 25 #Danni che fa il robot ai nemici
 
+#Inizializzazione del robot
 @onready var health = max_health
 @onready var violence: bool = false # Se true, il robot inizia ad attaccare!
 @onready var robotSprite = $RobotSprite
@@ -16,11 +17,13 @@ var jamming : bool = false
 
 signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
 
+#Funzione che si occupa di far muovere il robot
 func _process(delta: float):
 	# Finchè il robot non attacca ed è vivo, continua a muoversi
 	if !violence and health>0:
 		move(delta)
 
+#Funzione che gestisce la presa dei danni da parte del robot
 func take_damage(amount):
 	health -= amount
 	flash_bright() # Fornisce feedback visivo
@@ -30,6 +33,7 @@ func take_damage(amount):
 	if health == 0:
 		die()
 
+#Funzione che si occuopa del movimento del tobot il quale si muove verso sinistra sulla stessa riga in cui si trova spawnando
 func move(delta):
 	position.x -= speed * delta 
 	robotSprite.play("move") 
@@ -39,9 +43,10 @@ func move(delta):
 		if main_scene.has_method("enemy_reached_base"):
 			main_scene.enemy_reached_base()  
 
+#Funzione che si occupa della morte del robot
 func die():
-	var hitbox = $RobotHitbox
-	var detector = $TowerDetector/CollisionShape2D
+	var hitbox = $RobotHitbox #Punto Colpito
+	var detector = $TowerDetector/CollisionShape2D #Rilevatore del colpo subito
 	robotSprite.z_as_relative = false # Mette il robot morente in secondo piano
 	robotSprite.stop()
 	robotSprite.play("death")
@@ -51,11 +56,12 @@ func die():
 	await robotSprite.animation_finished
 	queue_free()
 
+#Funzione che si occupa di rallentare il nemico
 func jamming_debuff(amount: float, duration: float) -> void:
 	jamming = true
 	jamming_sources += 1
 	# Riduci la velocità
-	speed = max(starting_speed/3, speed - amount)
+	speed = max(starting_speed/3.0, speed - amount)
 	print("New Speed: ", speed)
 	# Timer per ripristinare la velocità
 	var timer = get_tree().create_timer(duration)

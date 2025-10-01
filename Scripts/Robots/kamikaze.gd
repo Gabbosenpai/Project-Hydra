@@ -1,11 +1,10 @@
 extends Area2D
 
-# Variabili esportabili (modificabili dall'editor)
-@export var max_health = 100
-@export var speed = 50
+@export var max_health = 100 # Salute massima
+@export var speed = 50  # Velocità
 @export var explosion_damage = 150  # Danno alla torretta quando esplode
 
-# Variabili onready
+#Inizializzazione robot
 @onready var health = max_health
 @onready var robotSprite = $RobotSprite
 @onready var hitbox = $RobotHitbox
@@ -20,20 +19,24 @@ var jamming: bool = false
 # Segnali
 signal enemy_defeated
 
+#Funzione che inizializza la velocità iniziale del robot
 func _ready():
 	starting_speed = speed
 
+#Funzione che fa muovere il robot
 func _process(delta):
 	# Movimento base del robot
 	if health > 0 and not jamming:
 		move(delta)
 
+#Funzione che si occupa della presa del danno da parte del robot
 func take_damage(amount):
 	health -= amount
 	flash_bright()
 	if health <= 0:
 		die()
 
+#Funzione che si occupa del movimento del robot
 func move(delta):
 	position.x -= speed * delta
 	robotSprite.play("move")
@@ -44,6 +47,7 @@ func move(delta):
 		if main_scene.has_method("enemy_reached_base"):
 			main_scene.enemy_reached_base()
 
+#Funzione di morte dove è viene eseguita un'animazione e poi il robot viene deallocato
 func die():
 	# Disabilita collisioni
 	hitbox.set_deferred("disabled", true)
@@ -57,10 +61,11 @@ func die():
 	await robotSprite.animation_finished
 	queue_free()
 
+#Funzione che si occupa di rallentare i nemici 
 func jamming_debuff(amount: float, duration: float):
 	jamming = true
 	jamming_sources += 1
-	speed = max(starting_speed/3, speed - amount)
+	speed = max(starting_speed/3.0, speed - amount)
 	
 	var timer = get_tree().create_timer(duration)
 	await timer.timeout
@@ -70,7 +75,7 @@ func jamming_debuff(amount: float, duration: float):
 		speed = starting_speed
 		jamming = false
 
-
+# Funzione che si occupa dell'esplosione del robot
 func explode(target_tower: Area2D):
 	if health <= 0:
 		return
@@ -96,7 +101,7 @@ func _on_tower_detector_area_entered(tower: Area2D):
 		print("Kamikaze entrato in contatto con torretta")
 		explode(tower)
 
-func _on_tower_detector_area_exited(tower: Area2D):
+func _on_tower_detector_area_exited(_tower: Area2D):
 	pass  # Non necessario con l'esplosione immediata
 
 # Utility

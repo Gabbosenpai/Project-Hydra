@@ -11,8 +11,6 @@ func _ready():
 	# Connessioni dei segnali tra i vari manager e controller.
 	# Questi collegamenti permettono ai diversi componenti del gioco di comunicare tra loro.
 	turret_manager.connect("turret_removed", Callable(self, "_on_turret_removed"))
-	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
-	enemy_spawner.connect("enemy_reached_base", Callable(self, "_on_enemy_reached_base"))
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))

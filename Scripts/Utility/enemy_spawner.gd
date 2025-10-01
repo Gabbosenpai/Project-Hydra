@@ -1,9 +1,8 @@
 extends Node
 
-signal wave_completed
-signal enemy_reached_base
 signal level_completed
 
+#Variabili che servono per tenere lo stato delle etichette e delle ondate per poter aggiornare l'UI
 @export var tilemap: TileMap
 @export var label_wave: Label
 @export var label_enemies: Label
@@ -30,7 +29,7 @@ var level_enemy_pool = {
 }
 
 # Stato corrente
-var current_wave = 0
+var current_wave = 0 
 var enemies_to_spawn = 0
 var enemies_alive = 0
 var is_wave_active = false
@@ -43,13 +42,14 @@ var waves = [
 	{ "count": 7, "interval": 0.6 }
 ]
 
+# Funzione che inizializza lo spawner
 func _ready():
-	randomize()
+	randomize() #utilizzato per randomizzare i nemici da spawnare 
 
-	var path = get_tree().current_scene.scene_file_path
-	var regex = RegEx.new()
+	var path = get_tree().current_scene.scene_file_path #percorso della scena del nemico
+	var regex = RegEx.new() #utilizzato per trovare il nome che corssionde esattamente al livello da utilizzare per il dizionario
 	regex.compile("\\d+")
-	var result = regex.search(path)
+	var result = regex.search(path) #raccoglie il valore del livello in cui ci si trova
 	if result:
 		current_level = int(result.get_string())
 	else:
@@ -58,15 +58,17 @@ func _ready():
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
 
 
-# Avvia un’ondata
+# Funzione che si occupa di avviare un’ondata
 func start_wave():
+	#Se l'ondata è attiva o l'ondata corrente è maggiore alle ondate presenti non devo fare nulla
 	if is_wave_active or current_wave >= waves.size():
 		return
 	var wave = waves[current_wave]
-	enemies_to_spawn = wave["count"]
+	enemies_to_spawn = wave["count"] #Spawno i nemici previsti dal dizionario
 	wave_timer.wait_time = wave["interval"]
 	enemies_alive = 0
 	is_wave_active = true
+	#Aggiorna le etichette 
 	label_wave.text = "Ondata: " + str(current_wave + 1)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	label_wave_center.text = "ONDATA " + str(current_wave + 1)
@@ -82,7 +84,7 @@ func _on_wave_timer_timeout():
 		wave_timer.start()
 
 
-# Spawn singolo nemico
+# Funzione che si occupa di spawnare il nemico
 func spawn_enemy():
 	# Prende i nemici consentiti per questo livello
 	var pool = level_enemy_pool.get(current_level, ["romba"])
@@ -91,7 +93,7 @@ func spawn_enemy():
 	# Sceglie uno casuale dal pool
 	var enemy_scene = all_enemy_scenes[choice]
 	var enemy = enemy_scene.instantiate()
-
+	#Spawna il nemico in una riga causale 
 	var row = randi() % GameConstants.GRID_HEIGHT
 	var spawn_cell = Vector2i(GameConstants.GRID_WIDTH, row)
 	var tile_center = tilemap.map_to_local(spawn_cell) + tilemap.tile_set.tile_size * 0.5
@@ -99,25 +101,28 @@ func spawn_enemy():
 	enemy.riga = row
 	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 	add_child(enemy)
-
+	#Aggiorna etichetta
 	enemies_alive += 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 
-# Quando un nemico muore
+# Funzione che si occupa di verficare la morte del nemico
 func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
+	#Se i nemici in vita sono 0 e i nemici da spawnare è pari a 0 l'ondata attuale è finita per cui passo alla successiva 
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		is_wave_active = false
 		current_wave += 1
+		#Se l'ondata corrente è minore delle ondate previste avvio la nuova ondata
 		if current_wave < waves.size():
 			start_wave()
+		#Altrimenti le ondate sono finite e per cui il livello è completato
 		else:
 			victory_screen.visible = true
 			get_tree().paused = true
 			emit_signal("level_completed")
 
-# Uccide tutti i nemici
+# Funzione di debug che uccide tutti i nemici
 func kill_all():
 	enemies_to_spawn = 0
 	for child in get_children():

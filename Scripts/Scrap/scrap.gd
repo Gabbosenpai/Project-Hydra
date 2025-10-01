@@ -23,7 +23,7 @@ func _ready():
 	# Animazione spawn / hop
 	play_spawn_animation()
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		collect_scrap()
 	if event is InputEventScreenTouch and event.pressed:

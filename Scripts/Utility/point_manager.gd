@@ -33,7 +33,7 @@ func can_select_turret(turret_key: String) -> bool:
 
 # Gestisce la riduzione dei punti quando una pianta viene piazzata
 # Recupera il tipo di pianta dalla scena selezionata e sottrae il suo costo ai punti correnti
-func _on_turret_placed(cell_key):
+func _on_turret_placed(_cell_key):
 	var turret_key = get_turret_key_from_scene(turret_manager.selected_turret_scene)
 	if turret_key and turret_costs.has(turret_key):
 		current_points -= turret_costs[turret_key]
@@ -41,7 +41,7 @@ func _on_turret_placed(cell_key):
 
 # Gestisce il rimborso totale dei punti quando una pianta viene rimossa
 # Identifica la pianta tramite il percorso della scena e aggiunge il costo ai punti correnti
-func _on_turret_removed(cell_key, turret_instance):
+func _on_turret_removed(_cell_key, turret_instance):
 	var turret_key = ""
 	# Cerca la chiave della pianta confrontando il percorso della scena con quella dell'istanza rimossa
 	for key in turret_manager.turret_scenes.keys():

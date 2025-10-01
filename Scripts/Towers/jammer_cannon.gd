@@ -36,6 +36,7 @@ func shoot():
 func _on_reload_timer_timeout():
 	rayCast.enabled = true  # NON RIMUOVERE, NON SO COSA FACCIA MA FA FUNZIONARE TUTTO
 
+#Funzione che si occpua della presa dei danni da parte del jammer
 func take_damage(amount):
 	health -= amount
 	flash_bright()
@@ -45,6 +46,7 @@ func take_damage(amount):
 	if health == 0:
 		die()
 
+#Funzione di morte che per ora dealloca solo il jammer 
 func die():
 	queue_free()
 
