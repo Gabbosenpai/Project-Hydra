@@ -1,9 +1,11 @@
 extends Area2D
 
+#Variabili della salute,velocità e danno
 @export var max_health = 100 
 @export var speed = 50 
 @export var damage = 25 
 
+#Inizializzazione del robot
 @onready var health = max_health
 @onready var violence: bool = false # Se true, il robot inizia ad attaccare!
 @onready var robotSprite = $RobotSprite
@@ -16,11 +18,13 @@ var jamming : bool = false
 
 signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
 
+#Funzione che fa muovere il robot
 func _process(delta: float):
 	# Finchè il robot non attacca ed è vivo, continua a muoversi
 	if !violence and health>0:
 		move(delta)
 
+#Funzione che si occupa della presa dei danni per il robot
 func take_damage(amount):
 	health -= amount
 	flash_bright() # Fornisce feedback visivo
@@ -29,7 +33,7 @@ func take_damage(amount):
 		health = 0
 	if health == 0:
 		die()
-
+#Funzione che si occupa del muovimento del robot
 func move(delta):
 	position.x -= speed * delta 
 	robotSprite.play("move") 
@@ -39,6 +43,7 @@ func move(delta):
 		if main_scene.has_method("enemy_reached_base"):
 			main_scene.enemy_reached_base()  
 
+# Funzione che si occupa di far morire il robot eseguendo l'animazione e poi deallocando il robot dalla scena
 func die():
 	var hitbox = $RobotHitbox
 	var detector = $TowerDetector/CollisionShape2D
@@ -51,6 +56,7 @@ func die():
 	await robotSprite.animation_finished
 	queue_free()
 
+# Funzione che si occupa del jamming cioè se colpito dal jammer il robot viene rallentato
 func jamming_debuff(amount: float, duration: float) -> void:
 	jamming = true
 	jamming_sources += 1

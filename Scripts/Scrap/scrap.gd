@@ -1,5 +1,6 @@
 extends Area2D
 
+# Variabili della Scrap     
 @export var scrap_value: int = 50
 @export var lifetime: float = 10.0   # tempo di vita in secondi
 @export var hop_distance: Vector2 = Vector2(30, 40) # spostamento in basso a destra
@@ -8,6 +9,7 @@ extends Area2D
 
 @onready var lifetime_timer := Timer.new()
 
+# Funzione che inizializza lo scrap e il suo timer affinche poi scompaia  
 func _ready():
 	input_pickable = true
 	connect("input_event", Callable(self, "_on_input_event"))
@@ -23,21 +25,25 @@ func _ready():
 	# Animazione spawn / hop
 	play_spawn_animation()
 
+# Funzione che cattura il clic del mouse e consente di prendere lo scrap   
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		collect_scrap()
 	if event is InputEventScreenTouch and event.pressed:
 		collect_scrap()
 
+# Funzione dopo il clic del mouse fa aumentare i punti che si hanno per posizionare le torrette e poi dealloca la scrap   
 func collect_scrap():
 	if point_manager:
 		point_manager.current_points += scrap_value
 		point_manager.update_points_label()
 	queue_free()
 
+# Funzione che dealloca la scrap a tempo scaduto se non si clicca su di essa
 func _on_lifetime_timeout():
 	queue_free()
 
+# Funzione che si occupa dell'animazione dello spawn della scrap
 func play_spawn_animation():
 	var tween = create_tween()
 
