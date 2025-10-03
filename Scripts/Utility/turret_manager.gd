@@ -5,14 +5,18 @@ signal turret_removed(cell_key, turret_instance)
 
 @export var tilemap: TileMap
 @export var highlight: ColorRect
-var dic = {}
 
+# Dizionario che mappa celle a istanze di piante
+var turrets = {}
+# Scena della pianta attualmente selezionata per il piazzamento
 var selected_turret_scene: PackedScene = null
+# Modalità correnti: nessuna, piazzamento o rimozione
 enum Mode { NONE, PLACE, REMOVE }
 var current_mode = Mode.NONE
+# Ultima posizione del tocco (utile per dispositivi touch)
 var last_touch_position: Vector2 = Vector2.ZERO
 
-# Precarico torrette
+# Precaricamento delle scene delle piante disponibili
 var turret_scenes = {
 	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
@@ -20,20 +24,7 @@ var turret_scenes = {
 	"turret4": preload("res://Scenes/Plants/plant_4.tscn")
 }
 
-func _ready():
-	for x in GameConstants.COLUMN:
-		for y in GameConstants.ROW:
-			var key = str(Vector2i(x,y))
-			dic[key] = {
-				"Type": "Grass",
-				"Instance": null,
-				"Position": Vector2i(x,y)
-			}
-			# disegna terreno su layer 0 del tilemap
-			tilemap.set_cell(0, Vector2i(x,y), 1, Vector2i(0,0))
-
-
-# --- MODALITÀ ---
+# Seleziona una torretta da piazzare e attiva la modalità piazzamento
 func select_turret(key: String):
 	var point_manager = $"/root/Main/PointManager"
 	if point_manager.can_select_turret(key):
@@ -41,20 +32,22 @@ func select_turret(key: String):
 		current_mode = Mode.PLACE
 		highlight.visible = true
 	else:
-		print("Non hai abbastanza punti!")
+		print("Non hai abbastanza punti per piazzare questa pianta!")
 
+
+# Attiva la modalità rimozione
 func remove_mode():
 	current_mode = Mode.REMOVE
-	highlight.visible = true
 
+# Disattiva qualsiasi modalità attiva
 func clear_mode():
 	current_mode = Mode.NONE
 	highlight.visible = false
 
-
-# --- VISIVO ---
+# Gestisce l'aggiornamento visivo dell'highlight e controlla se il puntatore è sopra una cella valida
 func _process(_delta):
-	$"/root/Main/UI/ButtonRemove".visible = has_any_turret()
+	# Mostra il pulsante di rimozione solo se ci sono piante
+	$"/root/Main/UI/ButtonRemove".visible = not turrets.is_empty()
 
 	if current_mode == Mode.NONE:
 		highlight.visible = false
@@ -65,24 +58,29 @@ func _process(_delta):
 		highlight.visible = false
 		return
 
-	var cell = tilemap.local_to_map(tilemap.to_local(pointer_pos))
-	var key = str(cell)
+	# Converte la posizione del puntatore in coordinate cella
+	var local_pos = tilemap.to_local(pointer_pos)
+	var cell = tilemap.local_to_map(local_pos)
 
-	if dic.has(key):
+	# Verifica se la cella è all'interno della griglia di gioco
+	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
 		var tile_size = tilemap.tile_set.tile_size
-		var tile_center = tilemap.map_to_local(cell) + tile_size * 0.5
-		highlight.position = highlight.get_parent().to_local(tilemap.to_global(tile_center) - tile_size * 0.5)
+		var tile_top_left = tilemap.map_to_local(cell)
+		var tile_center = tile_top_left + tile_size * 0.5
+		var global_pos = tilemap.to_global(tile_center)
+		# Posiziona l'highlight centrato sulla cella
+		highlight.position = highlight.get_parent().to_local(global_pos - tile_size * 0.5)
 		highlight.visible = true
 
+		# Cambia colore dell'highlight in base alla modalità
 		if current_mode == Mode.PLACE:
-			highlight.modulate = Color(0.4, 1.0, 0.4, 0.6)
+			highlight.modulate = Color(0.4, 1.0, 0.4, 0.6) # verde trasparente
 		else:
-			highlight.modulate = Color(1.0, 0.4, 0.4, 0.6)
+			highlight.modulate = Color(1.0, 0.4, 0.4, 0.6) # rosso trasparente
 	else:
 		highlight.visible = false
 
-
-# --- INPUT ---
+# Gestisce input di mouse o touch per piazzare o rimuovere piante
 func _unhandled_input(event):
 	if current_mode == Mode.NONE:
 		return
@@ -95,54 +93,40 @@ func _unhandled_input(event):
 		pointer_pos = event.position
 
 	if pointer_pos != null:
-		var cell = tilemap.local_to_map(tilemap.to_local(pointer_pos))
-		var key = str(cell)
+		var local_pos = tilemap.to_local(pointer_pos)
+		var cell = tilemap.local_to_map(local_pos)
+		var cell_key = Vector2i(cell.x, cell.y)
 
 		if current_mode == Mode.PLACE:
-			place_turret(key)
+			place_turret(cell_key)
 		elif current_mode == Mode.REMOVE:
-			remove_turret(key)
+			remove_turret(cell_key)
 
-
-# --- PIAZZAMENTO ---
-func place_turret(key: String):
-	if dic.has(key) and dic[key]["Instance"] == null and selected_turret_scene != null:
-		var cell = dic[key]["Position"]
+# Piazza una pianta in una cella vuota e invia il segnale corrispondente
+func place_turret(cell_key: Vector2i):
+	if not turrets.has(cell_key) and selected_turret_scene != null:
 		var turret_instance = selected_turret_scene.instantiate()
-
 		var tile_size = tilemap.tile_set.tile_size
-		var tile_center = tilemap.map_to_local(cell) + tile_size * 0.5
+		var tile_center = tilemap.map_to_local(cell_key) + tile_size * 0.5
 		turret_instance.global_position = tilemap.to_global(tile_center)
-
+		# Imposta la riga per allineamento dei proiettili o logica interna
 		if turret_instance.has_method("set_riga"):
-			turret_instance.set_riga(cell.y)
-
+			turret_instance.set_riga(cell_key.y)
 		add_child(turret_instance)
-		dic[key]["Type"] = "Turret"
-		dic[key]["Instance"] = turret_instance
-
-		emit_signal("turret_placed", key)
+		turrets[cell_key] = turret_instance
+		emit_signal("turret_placed", cell_key)
 		clear_mode()
 
-
-# --- RIMOZIONE ---
-func remove_turret(key: String):
-	if dic.has(key) and dic[key]["Instance"] != null:
-		var turret_instance = dic[key]["Instance"]
-		emit_signal("turret_removed", key, turret_instance)
+# Rimuove una pianta esistente e invia il segnale corrispondente
+func remove_turret(cell_key: Vector2i):
+	if turrets.has(cell_key):
+		var turret_instance = turrets[cell_key]
+		emit_signal("turret_removed", cell_key, turret_instance) # Passiamo anche l’istanza
 		turret_instance.queue_free()
-		dic[key]["Type"] = "Grass"
-		dic[key]["Instance"] = null
+		turrets.erase(cell_key)
 		clear_mode()
 
-
-# --- UTILS ---
-func has_any_turret() -> bool:
-	for c in dic.values():
-		if c["Instance"] != null:
-			return true
-	return false
-
+# Restituisce la posizione del puntatore (mouse o touch)
 func get_pointer_position() -> Vector2:
 	if OS.get_name() in ["Windows", "Linux", "macOS"]:
 		return get_viewport().get_mouse_position()
