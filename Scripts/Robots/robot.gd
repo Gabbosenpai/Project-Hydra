@@ -8,9 +8,10 @@ extends Area2D
 @export var damage: int
 
 # Nodi-Figlio della scena
-@onready var robot_sprite: Sprite2D = $robot_sprite
+@onready var robot_sprite: AnimatedSprite2D = $robot_sprite
 @onready var robot_hitbox : CollisionShape2D = $RobotHitbox
-@onready var tower_detector : CollisionShape2D = $TowerDetector/CollisionShape2D
+@onready var tower_detector_collision : CollisionShape2D = $TowerDetector/CollisionShape2D
+@onready var tower_detector : Area2D = $TowerDetector
 @onready var visNot : VisibleOnScreenNotifier2D = $VisNot
 
 var health: int
@@ -25,12 +26,17 @@ signal enemy_defeated  # Emesso quando il robot muore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Inizializzo variabili
 	health = max_health
 	violence = false
 	starting_speed = speed
 	jamming = false
 	jamming_sources = 0
 	target = null
+	# Connetto segnali
+	tower_detector.area_entered.connect(_on_tower_detector_area_entered)
+	tower_detector.area_exited.connect(_on_tower_detector_area_exited)
+	robot_sprite.animation_finished.connect(_on_robot_sprite_animation_finished)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -75,7 +81,7 @@ func die() -> void:
 	robot_sprite.stop()
 	robot_sprite.play("death")
 	robot_hitbox.set_deferred("disabled", true)
-	tower_detector.set_deferred("disabled", true)
+	tower_detector_collision.set_deferred("disabled", true)
 	emit_signal("enemy_defeated")
 	await robot_sprite.animation_finished
 	queue_free()
@@ -90,3 +96,26 @@ func flash_bright():
 	robot_sprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
 	await get_tree().create_timer(0.1).timeout
 	robot_sprite.modulate = Color(1, 1, 1) # Normale
+
+# Se il Robot ha una torretta davanti, inizia ad attaccare
+func _on_tower_detector_area_entered(tower: Area2D) -> void:
+	if tower.is_in_group("Tower"):
+		violence = true
+		target = tower
+		robot_sprite.play("attack")
+
+# Se il Robot non ha più una torretta davanti, smette di attaccare
+func _on_tower_detector_area_exited(tower: Area2D) -> void:
+	if tower.is_in_group("Tower"):
+		violence = false
+		target = null
+
+# Quando finisce l'animazione d'attacco, facciamo un controllo sulla validità del 
+# bersaglio: se true, il bersaglio subisce danno e il robot ricomincia l'animazione
+# d'attacco
+func _on_robot_sprite_animation_finished() -> void:
+	var current_animation = robot_sprite.animation
+	if current_animation == "attack" and violence and target and is_instance_valid(target):
+		if target.has_method("take_damage"):
+			target.take_damage(damage)
+		robot_sprite.play("attack")

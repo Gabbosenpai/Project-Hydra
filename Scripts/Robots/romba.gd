@@ -90,11 +90,12 @@ func _on_tower_detector_area_exited(tower: Area2D) -> void:
 		violence = false
 		target = null
 
-# Quando finisce l'animazione d'attacco, facciamo un controllo sula validità del bersaglio:
-# se true, il bersaglio subisce danno e il robot ricomincia l'animazione d'attacco
+# Quando finisce l'animazione d'attacco, facciamo un controllo sulla validità del 
+# bersaglio: se true, il bersaglio subisce danno e il robot ricomincia l'animazione
+# d'attacco
 func _on_robot_sprite_animation_finished() -> void:
-	var current_aniamtion = robotSprite.animation
-	if current_aniamtion == "attack" and violence and target and is_instance_valid(target):
+	var current_animation = robotSprite.animation
+	if current_animation == "attack" and violence and target and is_instance_valid(target):
 		if target.has_method("take_damage"):
 			target.take_damage(damage)
 		robotSprite.play("attack")
