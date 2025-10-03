@@ -63,7 +63,7 @@ func _process(_delta):
 	var cell = tilemap.local_to_map(local_pos)
 
 	# Verifica se la cella è all'interno della griglia di gioco
-	if cell.x >= 0 and cell.x < GameConstants.GRID_WIDTH and cell.y >= 0 and cell.y < GameConstants.GRID_HEIGHT:
+	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
 		var tile_size = tilemap.tile_set.tile_size
 		var tile_top_left = tilemap.map_to_local(cell)
 		var tile_center = tile_top_left + tile_size * 0.5
