@@ -2,19 +2,18 @@
 class_name Robot
 extends Area2D
 
-# Variabili della salute max,velocità e danno
-@export var max_health: int
-@export var speed: float
-@export var damage: int
-
 # Nodi-Figlio della scena
-@onready var robot_sprite: AnimatedSprite2D = $robot_sprite
+@onready var robot_sprite: AnimatedSprite2D = $RobotSprite
 @onready var robot_hitbox : CollisionShape2D = $RobotHitbox
 @onready var tower_detector_collision : CollisionShape2D = $TowerDetector/CollisionShape2D
 @onready var tower_detector : Area2D = $TowerDetector
 @onready var visNot : VisibleOnScreenNotifier2D = $VisNot
 
-var health: int
+# Variabili di un robot standard
+var current_health: int
+var speed: float
+var damage: int
+var max_health: int
 var violence: bool # Se true, il robot inizia ad attaccare!
 var starting_speed: float 
 var jamming : bool
@@ -22,12 +21,13 @@ var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
 
+# Segnali Custom
 signal enemy_defeated  # Emesso quando il robot muore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Inizializzo variabili
-	health = max_health
+	# Inizializzo variabili per tutti i tipi di robot
+	current_health = max_health
 	violence = false
 	starting_speed = speed
 	jamming = false
@@ -37,6 +37,12 @@ func _ready() -> void:
 	tower_detector.area_entered.connect(_on_tower_detector_area_entered)
 	tower_detector.area_exited.connect(_on_tower_detector_area_exited)
 	robot_sprite.animation_finished.connect(_on_robot_sprite_animation_finished)
+
+# Inizializzo variabili per tipologia di robot
+func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int):
+	max_health = robot_max_health
+	speed = robot_speed
+	damage = robot_damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,10 +63,19 @@ func move(delta) -> void:
 		if main_scene.has_method("enemy_reached_base"):
 			main_scene.enemy_reached_base()
 
-@abstract
-func take_damage(amount);
+# Robot prende danno, se la sua salute va a 0, muore.
+func take_damage(amount: int) -> void:
+	current_health -= amount
+	flash_bright() # Fornisce feedback visivo
+	print("Robot HP:",current_health)
+	if current_health < 0:
+		current_health = 0
+	if current_health == 0:
+		die()
 
-# Se colpito dal jammer il robot viene rallentato
+# Se colpito dal jammer il robot viene rallentato, mi creo un timer temporaneo
+# per non scomodare altri nodi figlio, inoltre metto un hard cap al debuff per 
+# non immobilizzare il robot
 func jamming_debuff(amount: float, duration: float) -> void:
 	jamming = true
 	jamming_sources += 1
