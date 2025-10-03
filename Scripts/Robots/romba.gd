@@ -1,6 +1,6 @@
 extends Area2D
 
-#Variabili della salute,velocità e danno
+#Variabili della salute max,velocità e danno
 @export var max_health = 100 
 @export var speed = 50 
 @export var damage = 25 
@@ -13,10 +13,10 @@ extends Area2D
 @onready var jamming_sources = 0
 
 var riga : int
-var target = null # Bersaglio dell'attacco, vienne aggiornata dai signal
+var target : Area2D = null # Bersaglio dell'attacco, vienne aggiornata dai signal
 var jamming : bool = false
 
-signal enemy_defeated  # Segnale personalizzato che viene emesso quando il nemico muore
+signal enemy_defeated  # Emesso quando il robot muore
 
 #Funzione che fa muovere il robot
 func _process(delta: float):
@@ -56,7 +56,7 @@ func die():
 	await robotSprite.animation_finished
 	queue_free()
 
-# Funzione che si occupa del jamming cioè se colpito dal jammer il robot viene rallentato
+# Se colpito dal jammer il robot viene rallentato
 func jamming_debuff(amount: float, duration: float) -> void:
 	jamming = true
 	jamming_sources += 1
