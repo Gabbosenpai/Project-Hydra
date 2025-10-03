@@ -9,7 +9,7 @@ extends Control
 func _ready():
 	music_slider.value = AudioManager.music_volume * 100
 	sfx_slider.value = AudioManager.sfx_volume * 100
-
+	
 	music_slider.connect("value_changed", Callable(self, "_on_music_slider_changed"))
 	sfx_slider.connect("value_changed", Callable(self, "_on_sfx_slider_changed"))
 	back_button.connect("pressed", Callable(self, "_on_back_pressed"))

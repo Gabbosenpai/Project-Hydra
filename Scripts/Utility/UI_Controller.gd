@@ -8,11 +8,22 @@ signal remove_mode
 @export var pause_button: TextureButton
 @export var pause_menu : Panel
 @export var game_over_ui : Control
+@export var music_slider: HSlider
+@export var sfx_slider: HSlider
 
 @onready var button_remove = $ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
 
 var is_wave_active = false
+
+
+#sincronizzo gli slider nel menu di pausa con
+#il livello audio attuale 
+func _sync_sliders_with_audio():
+	music_slider.value = AudioManager.music_volume *100
+	sfx_slider.value = AudioManager.sfx_volume * 100
+
+
 
 # Attiva la modalità rimozione piante
 func _on_button_remove_pressed():
@@ -40,6 +51,8 @@ func _on_pause_button_pressed():
 	get_tree().paused = true
 	pause_menu.visible = true
 	pause_button.visible = false
+	_sync_sliders_with_audio()
+
 
 # Riprende il gioco dopo la pausa
 func _on_resume_button_pressed():
@@ -79,3 +92,11 @@ func _on_exit_button_pressed():
 func _on_select_level_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/level_selection.tscn")
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioManager.set_music_volume(value/100.0)
+
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	AudioManager.set_sfx_volume(value/100.0)
