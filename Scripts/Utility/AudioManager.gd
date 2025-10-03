@@ -1,5 +1,6 @@
 extends Node
 
+#variabile per evitare di inizializzare più volte
 var initialized: bool = false
 
 # Volume attuale
@@ -21,13 +22,18 @@ var button_click_sfx = preload("res://Assets/Sound/SFX/8bit Click Sound Effect.m
 var music_player: AudioStreamPlayer = null
 var sfx_player: AudioStreamPlayer = null
 
+
+#ready andrà istanziato una sola volta per evitare 
+#creazione di nodi duplicati o altri bug.
 func _ready():
+	#essendo singleton potrei evitare il controllo ma
+	#lo lasciamo per ulteriore sicurezza
 	if initialized:
-		return  # Evita di re-inizializzare se già fatto
+		return  # Evita di reinizializzare se già fatto
 
 	initialized = true  # Segna come inizializzato
 
-	# CREA E CONFIGURA IL MUSIC PLAYER
+	# creazione e configurazione music player
 	music_player = AudioStreamPlayer.new()
 	music_player.name = "MusicPlayer"
 	music_player.bus = "Music"
@@ -35,7 +41,7 @@ func _ready():
 	add_child(music_player)
 	
 
-	# CREA E CONFIGURA IL SFX PLAYER
+	# creazione e configurazione effetti sonori
 	sfx_player = AudioStreamPlayer.new()
 	sfx_player.name = "SFXPlayer"
 	sfx_player.bus = "SFX"
