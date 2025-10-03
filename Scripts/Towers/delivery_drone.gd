@@ -1,13 +1,13 @@
 extends Node2D
 
-@export var max_health = 100 # Salute massima
+@export var max_health = 100
 
 var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
-var dropPadPosition # Posizione di scarico 
-var dronePosition   # Posizione del drone
-var droneStartingPosition  # Posizione iniziale del drone
-var current_animation      # Animazione corrente
-var drop_sfx = preload("res://Assets/Sound/SFX/rilascio risorse.wav") # Effetto sonoro del rilascio risorse 
+var dropPadPosition
+var dronePosition
+var droneStartingPosition
+var current_animation
+var drop_sfx = preload("res://Assets/Sound/SFX/rilascio risorse.wav")
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var health = max_health
 @onready var rayCast = $RayCast2D # NON RIMUOVERE, FA FUNZIONARE IL TUTTO
@@ -15,8 +15,9 @@ var drop_sfx = preload("res://Assets/Sound/SFX/rilascio risorse.wav") # Effetto 
 @onready var droneSprite = $Drone
 @onready var reloadTimer = $RayCast2D/ReloadTimer
 @onready var hasPackage = true;
+@onready var hasPlayed = false;
 
-#Funzione che inizializza il drone
+
 func _ready() -> void:
 	droneSprite.z_index = 5
 	dropPadPosition = dropPadSprite.position
@@ -24,20 +25,17 @@ func _ready() -> void:
 	dronePosition = droneStartingPosition
 	#print(droneStartingPosition)
 
-#Funzione che si occupa della logica di movimento del drone e dello scarico delle risorse
 func _process(delta: float):
 	droneSprite.position = dronePosition
-	var distanceDronePad = dropPadPosition.y - dronePosition.y  #misura la distanza del drone dal landing pad
+	var distanceDronePad = dropPadPosition.y - dronePosition.y
 	dropPadSprite.play("idle")
 	
-	#Se il drone ha il pacco e la distanza dal landing pad è maggiore di 10 il drone vola e si dirige al landing pad
 	if hasPackage and distanceDronePad > 10:
 		droneSprite.play("fly")
 		dronePosition.y += 200 * delta
-	#Altrimenti se ha il pacco e la distanza è inferiore a 10 lo droppa
 	elif hasPackage:
 		drop()
-	#Se non ha il pacco vola per prendere un altro pacco
+	
 	if !hasPackage:
 		droneSprite.play("fly-no-pack")
 		dronePosition.y -= 200 * delta
@@ -45,18 +43,20 @@ func _process(delta: float):
 		if dronePosition.y <= droneStartingPosition.y:
 			dronePosition.y = droneStartingPosition.y
 			hasPackage = true
+			hasPlayed = false
 			#print("Carico")
 
-#Funzione di scarico
+
 func drop():
 	#print("Scarico")
 	droneSprite.play("drop")
-	AudioManager.play_sfx(drop_sfx)
+	if !hasPlayed:
+		AudioManager.play_sfx(drop_sfx)
+		hasPlayed = true
 
 func _on_reload_timer_timeout():
 	rayCast.enabled = true  # NON RIMUOVERE, NON SO COSA FACCIA MA FA FUNZIONARE TUTTO
 
-#Funzione che si occupa della presa del danno per il drone
 func take_damage(amount):
 	health -= amount
 	flash_bright()
@@ -66,7 +66,6 @@ func take_damage(amount):
 	if health == 0:
 		die()
 
-#Funzione di morte per ora viene semplicemente deallocato
 func die():
 	queue_free()
 
@@ -79,7 +78,6 @@ func flash_bright():
 	await get_tree().create_timer(0.1).timeout
 	dropPadSprite.modulate = Color(1, 1, 1) # Normale
 
-#Funzione che si occupa di cambiare animazione quando l'animazione di drop è finita
 func _on_drone_animation_finished() -> void:
 	current_animation = droneSprite.animation
 	if (current_animation == "drop"):
@@ -87,7 +85,6 @@ func _on_drone_animation_finished() -> void:
 		hasPackage = false
 		spawn_scrap()
 
-#Funzione che si occupa di spawnare lo scrap
 func spawn_scrap():
 	var scrap_scene: PackedScene = preload("res://Scenes/Scrap.tscn")
 	var scrap_instance = scrap_scene.instantiate()
