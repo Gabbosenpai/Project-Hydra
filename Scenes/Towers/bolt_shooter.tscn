@@ -60,8 +60,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bndc1"]
-size = Vector2(62, 63)
+[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_yo0tb"]
+segments = PackedVector2Array(-31, -17, -18, -31, -18, -31, 3, -31, 3, -31, 9.5, -9.5, 9.5, -9.5, 27, -8.5, 27, -8.5, 27, 5, 27, 5, 1.5, 5, 2, 30.5, 1.5, 5, -31, -17, -20, 14.5, -20, 14.5, -21.5, 30, 2, 30.5, -21.5, 30)
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
@@ -71,11 +71,12 @@ metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2b6av")
 animation = &"idle"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
-position = Vector2(22, -1)
+position = Vector2(22, -2)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
@@ -84,8 +85,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_bndc1")
+position = Vector2(0, -0.5)
+shape = SubResource("ConcavePolygonShape2D_yo0tb")
 
 [connection signal="animation_finished" from="TowerSprite" to="." method="_on_tower_sprite_animation_finished"]
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]

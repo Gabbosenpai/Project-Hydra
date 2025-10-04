@@ -313,7 +313,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bndc1"]
-size = Vector2(62, 63)
+size = Vector2(57, 63)
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
@@ -338,8 +338,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 0.5)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bndc1")
 
 [connection signal="animation_finished" from="Drone" to="." method="_on_drone_animation_finished"]

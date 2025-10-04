@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://cq2ptlopfwi8l"]
 
-[ext_resource type="Script" uid="uid://wt1yqfn0pitn" path="res://Scripts/Robots/romba.gd" id="1_mrx6w"]
+[ext_resource type="Script" uid="uid://bvuy2vwlv054a" path="res://Scripts/Robots/romba.gd" id="1_wtial"]
 [ext_resource type="Texture2D" uid="uid://chsdrqdshjr0w" path="res://Assets/Sprites/Robots/Romba/Romba Attack.png" id="2_ovypp"]
 [ext_resource type="Texture2D" uid="uid://72ltku56psbh" path="res://Assets/Sprites/Robots/Romba/Romba Death.png" id="3_pbxqw"]
 [ext_resource type="Texture2D" uid="uid://crsso4dex5xus" path="res://Assets/Sprites/Robots/Romba/Romba Move.png" id="3_wtial"]
@@ -195,33 +195,30 @@ animations = [{
 size = Vector2(62, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvec"]
-size = Vector2(40, 27)
+size = Vector2(40, 25)
 
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
-script = ExtResource("1_mrx6w")
-speed = 100
+script = ExtResource("1_wtial")
 metadata/_edit_group_ = true
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_r8bu2")
 animation = &"death"
 frame = 12
 frame_progress = 1.0
 
 [node name="RobotHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, 17.5)
 shape = SubResource("RectangleShape2D_x2fpp")
 
 [node name="TowerDetector" type="Area2D" parent="."]
+position = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(-12, 2.5)
+position = Vector2(-12, 3.5)
 shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="animation_finished" from="RobotSprite" to="." method="_on_robot_sprite_animation_finished"]
-[connection signal="area_entered" from="TowerDetector" to="." method="_on_tower_detector_area_entered"]
-[connection signal="area_exited" from="TowerDetector" to="." method="_on_tower_detector_area_exited"]
