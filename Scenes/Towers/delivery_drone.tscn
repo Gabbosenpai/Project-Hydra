@@ -1,6 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://cq5qklq64i74v"]
+[gd_scene load_steps=50 format=3 uid="uid://cq5qklq64i74v"]
 
 [ext_resource type="Script" uid="uid://wmjt36ihny7u" path="res://Scripts/Towers/delivery_drone.gd" id="1_nl7dj"]
+[ext_resource type="PackedScene" uid="uid://f4y1aasrd57" path="res://Scenes/Scrap.tscn" id="2_lao5p"]
 [ext_resource type="Texture2D" uid="uid://d18qla66k8e5e" path="res://Assets/Sprites/Towers/Delivery Drone/Drone Drop Pad.png" id="2_nl7dj"]
 [ext_resource type="Texture2D" uid="uid://bq47e6tfoeqt4" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly.png" id="2_tocmx"]
 [ext_resource type="Texture2D" uid="uid://dpu60qtkk1mbd" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Drop.png" id="2_u8jh4"]
@@ -318,6 +319,7 @@ size = Vector2(57, 63)
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_nl7dj")
+scrap_scene = ExtResource("2_lao5p")
 
 [node name="Drone" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -331,15 +333,8 @@ sprite_frames = SubResource("SpriteFrames_2b6av")
 animation = &"idle"
 frame_progress = 0.482081
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-
-[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
-wait_time = 2.0
-one_shot = true
-
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bndc1")
 
 [connection signal="animation_finished" from="Drone" to="." method="_on_drone_animation_finished"]
-[connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]

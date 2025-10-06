@@ -2,7 +2,7 @@
 class_name Robot
 extends Area2D
 
-# Nodi-Figlio della scena
+# Nodi-Figlio della scena, inizializzati con onready perchè astratta
 @onready var robot_sprite: AnimatedSprite2D = $RobotSprite
 @onready var robot_hitbox : CollisionShape2D = $RobotHitbox
 @onready var tower_detector_collision : CollisionShape2D = $TowerDetector/CollisionShape2D

@@ -66,7 +66,7 @@ segments = PackedVector2Array(-31, -17, -18, -31, -18, -31, 3, -31, 3, -31, 9.5,
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_fdpua")
-BULLET = ExtResource("2_fdpua")
+tower_bullet = ExtResource("2_fdpua")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
@@ -87,6 +87,3 @@ one_shot = true
 [node name="TowerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("ConcavePolygonShape2D_yo0tb")
-
-[connection signal="animation_finished" from="TowerSprite" to="." method="_on_tower_sprite_animation_finished"]
-[connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
