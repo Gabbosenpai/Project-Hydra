@@ -107,10 +107,10 @@ offset_right = 1327.0
 offset_bottom = 1176.0
 
 [node name="PauseButton" parent="UI" index="5"]
-offset_left = 1763.0
-offset_top = 197.0
-offset_right = 1838.0
-offset_bottom = 273.0
+offset_left = 1585.0
+offset_top = 198.0
+offset_right = 1660.0
+offset_bottom = 274.0
 texture_normal = ExtResource("5_1qggr")
 
 [node name="LabelWaveCenter" parent="UI" index="8"]
@@ -186,6 +186,7 @@ animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/VictoryScreen")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("7_cvs21")]
+starting_points = 100
 regen_amount = 500
 turret_manager = NodePath("../TurretManager")
 label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")

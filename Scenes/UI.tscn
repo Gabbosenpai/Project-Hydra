@@ -140,7 +140,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="UI" type="Control" node_paths=PackedStringArray("music_slider", "sfx_slider")]
+[node name="UI" type="Control" node_paths=PackedStringArray("music_slider", "sfx_slider", "mute_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,6 +154,7 @@ grow_vertical = 2
 script = ExtResource("1_48q88")
 music_slider = NodePath("PauseMenu/MusicSlider")
 sfx_slider = NodePath("PauseMenu/SfxSlider")
+mute_button = NodePath("PauseMenu/MuteButton")
 
 [node name="ButtonRemove" type="TextureButton" parent="."]
 layout_mode = 0
@@ -335,18 +336,44 @@ text = "Torna al Menu Principale"
 [node name="MusicSlider" type="HSlider" parent="PauseMenu"]
 process_mode = 3
 layout_mode = 0
-offset_left = 24.0
-offset_top = 5.0
-offset_right = 295.0
-offset_bottom = 21.0
+offset_left = 187.0
+offset_top = 66.0
+offset_right = 458.0
+offset_bottom = 82.0
 
 [node name="SfxSlider" type="HSlider" parent="PauseMenu"]
 process_mode = 3
 layout_mode = 0
-offset_left = 24.0
-offset_top = 20.0
-offset_right = 294.0
-offset_bottom = 36.0
+offset_left = 187.0
+offset_top = 140.0
+offset_right = 457.0
+offset_bottom = 156.0
+
+[node name="MuteButton" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 94.0
+offset_right = 151.0
+offset_bottom = 125.0
+text = "Disattiva Audio"
+
+[node name="Musictext" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 43.0
+offset_right = 342.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
+text = "OST"
+
+[node name="SFXtext" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 114.0
+offset_right = 342.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
+text = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -427,5 +454,6 @@ text = "Torna al Menu Principale"
 
 [connection signal="value_changed" from="PauseMenu/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="PauseMenu/MuteButton" to="." method="_on_mute_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/MenuButton" to="." method="_on_menu_button_pressed"]

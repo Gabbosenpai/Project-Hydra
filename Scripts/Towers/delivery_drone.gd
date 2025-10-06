@@ -4,6 +4,8 @@ extends Area2D
 @export var tower_max_health : int = 100
 @export var scrap_scene : PackedScene
 
+signal died(instance)
+
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var drop_pad_sprite : AnimatedSprite2D = $DropPad
 @onready var drone_sprite : AnimatedSprite2D = $Drone
