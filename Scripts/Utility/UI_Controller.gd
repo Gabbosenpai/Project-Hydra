@@ -65,7 +65,7 @@ func _on_resume_button_pressed():
 func _on_menu_button_pressed():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 # Mostra la schermata di game over e nasconde i pulsanti di gioco
 func show_game_over():
@@ -91,7 +91,7 @@ func _on_exit_button_pressed():
 #da schermata di vittoria
 func _on_select_level_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/level_selection.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 
 func _on_music_slider_value_changed(value: float) -> void:

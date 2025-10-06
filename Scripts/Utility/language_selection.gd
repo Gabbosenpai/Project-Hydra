@@ -20,4 +20,4 @@ func _on_english_button_pressed():
 
 func _on_back_to_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")

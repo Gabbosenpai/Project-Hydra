@@ -30,7 +30,7 @@ func _on_sfx_slider_changed(value):
 #Funzione che consente di tornare alla scena precedente cioè il menu principale e che attiva l'sfx del pulsante indietro
 func _on_back_pressed():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 #Funzione che consente di mutare l'audio
 func _on_mute_button_pressed() -> void:
