@@ -4,7 +4,7 @@ extends Tower
 @export var tower_bullet: PackedScene # Permette l'assegnazione della scena bullet nell'editor
 @export var tower_max_health : int = 100  # Salute massima 
 
-var tower_shoot_sfx : AudioStreamMP3 = preload("res://Assets/Sound/SFX/8bit-hit-cut.mp3") # Effetto sonoro sparo del proiettile
+var tower_shoot_sfx : AudioStream= preload("res://Assets/Sound/SFX/explosion.wav") # Effetto sonoro sparo del proiettile
 
 func _ready() -> void:
 	# Chiamo prima set_up e poi il ready della superclasse per evitare di

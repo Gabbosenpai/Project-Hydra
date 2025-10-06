@@ -15,7 +15,7 @@ var armed : bool # Se true, la torretta spara
 var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
 var current_health : int
 var max_health : int
-var shoot_sfx : AudioStreamMP3
+var shoot_sfx : AudioStream
 var BULLET: PackedScene
 
 # Segnali Custom
@@ -36,7 +36,7 @@ func _ready() -> void:
 
 # Inizializzo variabili per tipologia di torretta
 func tower_set_up(tower_max_health : int, tower_bullet : PackedScene, 
-		tower_shoot_sfx : AudioStreamMP3):
+		tower_shoot_sfx : AudioStream):
 	max_health = tower_max_health
 	BULLET = tower_bullet
 	shoot_sfx = tower_shoot_sfx
