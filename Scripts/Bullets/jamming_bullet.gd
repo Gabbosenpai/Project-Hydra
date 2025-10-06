@@ -1,27 +1,15 @@
-extends Area2D  # Estende la classe Area2D, quindi questo script è per un nodo Area2D (ad esempio un proiettile)
+class_name JammingBullet
+extends Bullet  
 
 # Variabili esportate per poterle modificare facilmente dall'editor di Godot
-@export var speed = 200          # Velocità del proiettile
-@export var bullet_damage = 10    # Danno che il proiettile infligge agli nemici
-@export var jamming_value = 10
+@export var jamming_bullet_speed : float = 200          # Velocità del proiettile
+@export var jamming_bullet_damage : int = 10    # Danno che il proiettile infligge agli nemici
+@export var jamming_value : float = 10
 @export var jamming_duration = 10.0
 
-@onready var bulletSprite = $BulletSprite
-@onready var hit = false
-
-# Funzione chiamata ad ogni frame fisico (numero fisso di frame al secondo)
-func _physics_process(delta):
-	# Calcola il movimento in base alla direzione a destra, alla velocità e al tempo trascorso (delta)
-	if(!hit):
-		var movement = Vector2.RIGHT * speed * delta
-		bulletSprite.play("travel")
-		# Aggiorna la posizione globale del proiettile spostandolo in avanti
-		global_position += movement
-
-# Funzione chiamata quando il nodo esce dallo schermo (usando un VisibleOnScreenNotifier2D collegato)
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	# Distrugge il nodo, liberando la memoria e rimuovendo il proiettile
-	queue_free()
+func _ready() -> void:
+	super.bullet_set_up(jamming_bullet_speed, jamming_bullet_damage)
+	super._ready()
 
 # Funzione chiamata quando questo Area2D entra in collisione con un altro Area2D
 func _on_area_entered(area: Area2D):
@@ -31,14 +19,14 @@ func _on_area_entered(area: Area2D):
 	if enemy_node.is_in_group("Robot") and enemy_node.has_method("take_damage"):
 		# Chiama la funzione take_damage sull'enemy, passando il valore del danno del proiettile
 		hit = true
-		enemy_node.take_damage(bullet_damage)
+		enemy_node.take_damage(jamming_bullet_damage)
 		# Se il robot ha il metodo jamming debuff, lo chiamiamo
 		if enemy_node.has_method("jamming_debuff"):
 			enemy_node.jamming_debuff(jamming_value, jamming_duration)
-		bulletSprite.play("explosion")
+		bullet_sprite.play("explosion")
 
 
 func _on_bullet_sprite_animation_finished() -> void:
-	var current_animation = bulletSprite.animation
+	var current_animation = bullet_sprite.animation
 	if (current_animation == "explosion"):
 		queue_free()

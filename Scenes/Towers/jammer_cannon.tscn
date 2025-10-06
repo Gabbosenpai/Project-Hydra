@@ -95,7 +95,7 @@ b = Vector2(10.5, 26)
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_yusc1")
-tower_bullet = ExtResource("2_n183p")
+jc_bullet = ExtResource("2_n183p")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]

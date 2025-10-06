@@ -1,7 +1,7 @@
 class_name DeliveryDrone
 extends Area2D
 
-@export var tower_max_health : int = 100
+@export var dd_max_health : int = 100
 @export var scrap_scene : PackedScene
 
 signal died(instance)
@@ -21,7 +21,7 @@ var current_animation : StringName
 var drop_sfx : AudioStreamWAV = preload("res://Assets/Sound/SFX/rilascio risorse.wav")
 
 func _ready() -> void:
-	current_health = tower_max_health
+	current_health = dd_max_health
 	hasPackage = true
 	hasPlayed = false
 	drone_sprite.z_index = 5
