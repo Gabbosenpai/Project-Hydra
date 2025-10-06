@@ -1,7 +1,7 @@
 [gd_scene load_steps=50 format=3 uid="uid://cq5qklq64i74v"]
 
 [ext_resource type="Script" uid="uid://wmjt36ihny7u" path="res://Scripts/Towers/delivery_drone.gd" id="1_nl7dj"]
-[ext_resource type="PackedScene" uid="uid://f4y1aasrd57" path="res://Scenes/Scrap.tscn" id="2_lao5p"]
+[ext_resource type="PackedScene" uid="uid://f4y1aasrd57" path="res://Scenes/Utilities/Scrap.tscn" id="2_lao5p"]
 [ext_resource type="Texture2D" uid="uid://d18qla66k8e5e" path="res://Assets/Sprites/Towers/Delivery Drone/Drone Drop Pad.png" id="2_nl7dj"]
 [ext_resource type="Texture2D" uid="uid://bq47e6tfoeqt4" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly.png" id="2_tocmx"]
 [ext_resource type="Texture2D" uid="uid://dpu60qtkk1mbd" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Drop.png" id="2_u8jh4"]

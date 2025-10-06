@@ -24,7 +24,7 @@ func _on_play_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 
   #Ferma la musica del menu
-	get_tree().change_scene_to_file("res://Scenes/level_selection.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 	
 
 #Funzione che dealloca la scena quando si clicca esci e per cui fa terminaare il gioco
@@ -36,19 +36,19 @@ func _on_quit_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 
-	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/Credits.tscn")
 
 #Funzione che mostra le opzioni e avvia la sfx del pulsante opzioni
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 
-	get_tree().change_scene_to_file("res://Scenes/Opzioni.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/Opzioni.tscn")
 
 
 #Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/language_selection.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/language_selection.tscn")
 
 #Funzione che si occupa di resettare i salvataggi fatti e lancia la sfx del pulsante reset
 func _on_reset_button_pressed() -> void:
