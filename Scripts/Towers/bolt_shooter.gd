@@ -1,5 +1,6 @@
 extends Node2D
 
+# Segnale di morte utilizzato per segnalare la morte della torretta affinche la si possa rilevare ed eliminare dalle torrette presenti evitando Null Pointer Exception
 signal died(instance) 
 
 @export var BULLET: PackedScene = null # Permette l'assegnazione della scena bullet nell'editor
