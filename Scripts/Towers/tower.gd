@@ -18,6 +18,12 @@ var max_health : int
 var shoot_sfx : AudioStreamMP3
 var BULLET: PackedScene
 
+# Segnali Custom
+# Segnale di morte utilizzato per segnalare la morte della torretta 
+# affinche la si possa rilevare ed eliminare dalle torrette presenti 
+# evitando Null Pointer Exception
+signal died(instance)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Inizializzo variabili per tutti i tipi di torretta
@@ -39,7 +45,8 @@ func tower_set_up(tower_max_health : int, tower_bullet : PackedScene,
 func _process(_delta: float):
 	robots_coming = get_valid_robots()  # Controlla se ci sono robot bersaglio
 	armed = not robots_coming.is_empty() # True se ci sono robot bersaglio
-	if reload_timer.is_stopped() and armed: # Spara solo se ci sono bersagli e la torretta è carica
+	# Spara solo se ci sono bersagli e la torretta è carica
+	if reload_timer.is_stopped() and armed: 
 		shoot()
 	elif tower_sprite.animation != "shoot": # Non interrompere lo shoot a metà
 		tower_sprite.play("idle")
@@ -51,8 +58,10 @@ func shoot():
 	if BULLET:           # Controlla che la scena del proiettile sia assegnata
 		var bullet: Node2D = BULLET.instantiate()  # Istanzia un nuovo bullet
 		bullet.z_index = 5 # Fa passare il bullet sopra gli sprite
-		get_tree().current_scene.add_child(bullet) # Aggiunge il proiettile come figlio della scena corrente, così è visibile
-		bullet.global_position = bullet_origin.global_position    # Il proiettile esce da BulletOrigin
+		# Aggiunge il proiettile come figlio della scena corrente, così è visibile
+		get_tree().current_scene.add_child(bullet) 
+		# Il proiettile esce da BulletOrigin
+		bullet.global_position = bullet_origin.global_position    
 	reload_timer.start()   # Cooldown starts
 
 #Funzione che fa prendere danno allo torretta
@@ -67,6 +76,7 @@ func take_damage(amount):
 
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
+	emit_signal("died", self) 
 	queue_free()
 
 # Ottiene tutti i robot validi che si trovano nella stessa riga e sono visibili

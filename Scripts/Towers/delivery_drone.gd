@@ -96,6 +96,7 @@ func take_damage(amount):
 
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
+	emit_signal("died", self)
 	queue_free()
 
 # Modula lo sprite per dare feedback visivo

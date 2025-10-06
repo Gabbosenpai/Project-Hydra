@@ -2,7 +2,8 @@ class_name JammerCannon
 extends Tower
 
 @export var tower_bullet: PackedScene # Permette l'assegnazione della scena bullet nell'editor
-@export var tower_max_health = 100 
+@export var tower_max_health : int = 100 
+
 var tower_shoot_sfx : AudioStreamMP3 = preload("res://Assets/Sound/SFX/Robotic-shoot-cut.mp3")
 
 func _ready() -> void:
