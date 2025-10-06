@@ -1,5 +1,7 @@
 extends Node2D
 
+signal died(instance)
+
 @export var max_health = 100
 
 var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
@@ -67,6 +69,7 @@ func take_damage(amount):
 		die()
 
 func die():
+	emit_signal("died", self) 
 	queue_free()
 
 func set_riga(value: int) -> void:

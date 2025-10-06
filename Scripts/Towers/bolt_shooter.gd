@@ -1,5 +1,7 @@
 extends Node2D
 
+signal died(instance) 
+
 @export var BULLET: PackedScene = null # Permette l'assegnazione della scena bullet nell'editor
 @export var max_health = 100  # Salute massima 
 
@@ -50,6 +52,7 @@ func take_damage(amount):
 
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
+	emit_signal("died", self) 
 	queue_free()
 
 # Ottiene tutti i robot validi che si trovano nella stessa riga e sono visibili
