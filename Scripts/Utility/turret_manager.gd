@@ -102,6 +102,11 @@ func _unhandled_input(event):
 func place_turret(cell_key: Vector2i):
 	if not turrets.has(cell_key) and selected_turret_scene != null:
 		var turret_instance = selected_turret_scene.instantiate()
+		
+		# Connette il segnale di morte per la pulizia automatica
+		if turret_instance.has_signal("died"):
+			turret_instance.died.connect(handle_turret_death)
+			
 		var tile_size = tilemap.tile_set.tile_size
 		var tile_center = tilemap.map_to_local(cell_key) + tile_size * 0.5
 		turret_instance.global_position = tilemap.to_global(tile_center)
@@ -113,12 +118,34 @@ func place_turret(cell_key: Vector2i):
 		emit_signal("turret_placed", cell_key)
 		clear_mode()
 
-# Rimuove una pianta esistente e invia il segnale corrispondente
+# Funzione per pulire il dizionario turrets quando una torretta muore automaticamente
+func handle_turret_death(turret_instance: Node2D):
+	# Trova la chiave della cella associata all'istanza
+	var cell_key: Vector2i = Vector2i.ZERO
+	# Si itera per trovare la chiave a partire dal valore (l'istanza)
+	for key in turrets:
+		if turrets[key] == turret_instance:
+			cell_key = key
+			break
+	
+	if cell_key != Vector2i.ZERO:
+		# Emette il segnale per notificare la rimozione ad altri sistemi (es. PointManager)
+		emit_signal("turret_removed", cell_key, turret_instance) 
+		# Pulisce il riferimento dal dizionario
+		turrets.erase(cell_key)
+		# Non è necessario chiamare queue_free() qui, in quanto è chiamato dalla funzione die() della torretta
+
+# Rimuove una pianta esistente e invia il segnale corrispondente (rimozione manuale)
 func remove_turret(cell_key: Vector2i):
 	if turrets.has(cell_key):
 		var turret_instance = turrets[cell_key]
-		emit_signal("turret_removed", cell_key, turret_instance) # Passiamo anche l’istanza
-		turret_instance.queue_free()
+		
+		# Aggiungi la verifica con is_instance_valid() per evitare Null Pointer Exception
+		if is_instance_valid(turret_instance):
+			emit_signal("turret_removed", cell_key, turret_instance) # Passiamo anche l’istanza
+			turret_instance.queue_free()
+		
+		# Rimuovi la chiave dal dizionario per pulire il riferimento, sia che fosse valida o meno
 		turrets.erase(cell_key)
 		clear_mode()
 

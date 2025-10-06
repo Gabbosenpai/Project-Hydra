@@ -1,5 +1,8 @@
 extends Node2D
 
+# Segnale di morte utilizzato per segnalare la morte della torretta affinche la si possa rilevare ed eliminare dalle torrette presenti evitando Null Pointer Exception
+signal died(instance) 
+
 @export var BULLET: PackedScene = null # Permette l'assegnazione della scena bullet nell'editor
 @export var max_health = 100  # Salute massima 
 
@@ -50,6 +53,7 @@ func take_damage(amount):
 
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
+	emit_signal("died", self) 
 	queue_free()
 
 # Ottiene tutti i robot validi che si trovano nella stessa riga e sono visibili
