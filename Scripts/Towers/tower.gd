@@ -13,7 +13,7 @@ extends Area2D
 var robots_coming : Array # Array con i robot identificati come bersaglio
 var armed : bool # Se true, la torretta spara
 var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
-var current_health : int
+var tower_current_health : int
 var max_health : int
 var shoot_sfx : AudioStream
 var BULLET: PackedScene
@@ -29,7 +29,7 @@ func _ready() -> void:
 	# Inizializzo variabili per tutti i tipi di torretta
 	armed = false
 	robots_coming = []
-	current_health = max_health
+	tower_current_health = max_health
 	# Connetto segnali
 	tower_sprite.animation_finished.connect(_on_tower_sprite_animation_finished)
 	reload_timer.timeout.connect(_on_reload_timer_timeout)
@@ -66,12 +66,12 @@ func shoot():
 
 #Funzione che fa prendere danno allo torretta
 func take_damage(amount):
-	current_health -= amount
+	tower_current_health -= amount
 	flash_bright()
-	print("Tower HP:", current_health)
-	if current_health < 0:
-		current_health = 0
-	if current_health == 0:
+	print("Tower HP:", tower_current_health)
+	if tower_current_health < 0:
+		tower_current_health = 0
+	if tower_current_health == 0:
 		die()
 
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
