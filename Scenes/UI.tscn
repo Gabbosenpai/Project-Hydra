@@ -290,6 +290,7 @@ stretch_mode = 0
 
 [node name="PauseMenu" type="Panel" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 0
 offset_left = 353.0
 offset_top = 304.0

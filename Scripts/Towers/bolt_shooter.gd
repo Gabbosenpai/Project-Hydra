@@ -9,7 +9,7 @@ signal died(instance)
 var robots_coming = [] # Array con i robot identificati come bersaglio
 var armed = false # Se true, la torretta spara
 var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
-var shoot_sfx = preload("res://Assets/Sound/SFX/8bit-hit-cut.mp3") # Effetto sonoro sparo del proiettile
+var shoot_sfx = preload("res://Assets/Sound/SFX/explosion.wav") # Effetto sonoro sparo del proiettile
 
 # Riferimenti ai nodi figli, inizializzati al caricamento del nodo
 @onready var health = max_health
