@@ -54,7 +54,7 @@ func _process(_delta: float):
 # Funzione per sparare un proiettile
 func shoot():
 	tower_sprite.play("shoot")
-	AudioManager.play_sfx(shoot_sfx)
+	AudioManager.play_sfx(shoot_sfx,true)
 	if BULLET:           # Controlla che la scena del proiettile sia assegnata
 		var bullet: Node2D = BULLET.instantiate()  # Istanzia un nuovo bullet
 		bullet.z_index = 5 # Fa passare il bullet sopra gli sprite

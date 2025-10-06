@@ -73,7 +73,7 @@ func set_sfx_volume(vol: float) -> void:
 	sfx_player.volume_db = linear_to_db(sfx_volume)
 
 # Suona un effetto sonoro (anche sovrapposto)
-func play_sfx(sfx_stream: AudioStream) -> void:
+func play_sfx(sfx_stream: AudioStream, variate_pitch: bool = false, variate_volume: bool = false) -> void:
 	var new_sfx_player = AudioStreamPlayer.new()
 	new_sfx_player.stream = sfx_stream
 	new_sfx_player.bus = "SFX"
@@ -81,8 +81,16 @@ func play_sfx(sfx_stream: AudioStream) -> void:
 	if is_music_muted:
 		new_sfx_player.volume_db = linear_to_db(0.0)
 	else:
-		new_sfx_player.volume_db = linear_to_db(sfx_volume)
+		# Varia volume se richiesto
+		var volume_to_set = sfx_volume
+		if variate_volume:
+			volume_to_set *= randf_range(0.8, 1.0) # varia il volume tra 80% e 100%
+		new_sfx_player.volume_db = linear_to_db(volume_to_set)
 
+	# Varia pitch se richiesto
+	if variate_pitch:
+		new_sfx_player.pitch_scale = randf_range(0.9, 1.1) # pitch casuale tra 0.9 e 1.1
+		
 	add_child(new_sfx_player)
 	new_sfx_player.play()
 	new_sfx_player.connect("finished", Callable(new_sfx_player, "queue_free"))
