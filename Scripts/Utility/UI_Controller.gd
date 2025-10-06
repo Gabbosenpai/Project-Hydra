@@ -10,7 +10,7 @@ signal remove_mode
 @export var game_over_ui : Control
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
-
+@export var mute_button: Button
 @onready var button_remove = $ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
 
@@ -100,3 +100,11 @@ func _on_music_slider_value_changed(value: float) -> void:
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioManager.set_sfx_volume(value/100.0)
+
+
+func _on_mute_button_pressed() -> void:
+	AudioManager.toggle_music_mute()
+	if AudioManager.is_music_muted:
+		mute_button.text = "RIATTIVA AUDIO"
+	else:
+		mute_button.text = "DISATTIVA AUDIO"
