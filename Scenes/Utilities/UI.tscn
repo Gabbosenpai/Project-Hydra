@@ -1,12 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=22 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://c0vbpknsm315p" path="res://Assets/Sprites/Options/download.png" id="2_mg6lk"]
-[ext_resource type="Texture2D" uid="uid://b8suyftr8std2" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/13.png" id="3_48q88"]
 [ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_mg6lk"]
 [ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/point_bar.gdshader" id="3_wunin"]
-[ext_resource type="Texture2D" uid="uid://ncdg2vcab82n" path="res://Assets/Sprites/Plants/SnoopethDuckDuck Crops/1px/43.png" id="4_xjg7p"]
 [ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j04uc"]
@@ -233,7 +231,6 @@ text = "75"
 
 [node name="ButtonTurret3" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("3_48q88")
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 0
@@ -245,7 +242,6 @@ text = "100"
 
 [node name="ButtonTurret4" type="Button" parent="TurretSelector/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("4_xjg7p")
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret4"]
 layout_mode = 0

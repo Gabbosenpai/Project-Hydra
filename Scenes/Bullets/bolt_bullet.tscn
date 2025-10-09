@@ -19,8 +19,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi0dv"]
-radius = 8.0
-height = 18.0
+radius = 9.5
+height = 19.0
 
 [node name="Bullet" type="Area2D" groups=["TowerBullet"]]
 scale = Vector2(2, 2)
