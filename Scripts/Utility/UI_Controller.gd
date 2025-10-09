@@ -80,13 +80,13 @@ func show_game_over():
 func _on_retry_button_pressed():
 	get_tree().paused = false
 	
-	get_tree().change_scene_to_file("res://Scenes/Lvl1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl1.tscn")
 	
 
 # Esce al menu principale dalla schermata di game over
 func _on_exit_button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 #da schermata di vittoria
 func _on_select_level_button_pressed() -> void:

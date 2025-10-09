@@ -58,12 +58,10 @@ func _process(_delta):
 		highlight.visible = false
 		return
 
-	# Converte la posizione del puntatore in coordinate cella
-	var local_pos = tilemap.to_local(pointer_pos)
-	var cell = tilemap.local_to_map(local_pos)
+	# Ottiene la cella valida (o null se fuori dai limiti)
+	var cell = get_valid_cell_from_position(pointer_pos)
 
-	# Verifica se la cella è all'interno della griglia di gioco
-	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
+	if cell != null:
 		# Posiziona l'highlight centrato sulla cella
 		highlight.position = tilemap.map_to_local(cell)
 		highlight.visible = true
@@ -75,6 +73,16 @@ func _process(_delta):
 			highlight.modulate = Color(1.0, 0.4, 0.4, 0.6) # rosso trasparente
 	else:
 		highlight.visible = false
+
+# Restituisce la chiave della cella (Vector2i) se è all'interno dei limiti della griglia, altrimenti null.
+func get_valid_cell_from_position(position: Vector2) -> Variant:
+	var local_pos = tilemap.to_local(position)
+	var cell = tilemap.local_to_map(local_pos)
+	
+	# Verifica se la cella è all'interno della griglia di gioco
+	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
+		return Vector2i(cell.x, cell.y)
+	return null
 
 # Gestisce input di mouse o touch per piazzare o rimuovere piante
 func _unhandled_input(event):
@@ -89,14 +97,14 @@ func _unhandled_input(event):
 		pointer_pos = event.position
 
 	if pointer_pos != null:
-		var local_pos = tilemap.to_local(pointer_pos)
-		var cell = tilemap.local_to_map(local_pos)
-		var cell_key = Vector2i(cell.x, cell.y)
-
-		if current_mode == Mode.PLACE:
-			place_turret(cell_key)
-		elif current_mode == Mode.REMOVE:
-			remove_turret(cell_key)
+		var cell_key = get_valid_cell_from_position(pointer_pos)
+		
+		# Procede solo se la cella è valida (non è null)
+		if cell_key != null:
+			if current_mode == Mode.PLACE:
+				place_turret(cell_key)
+			elif current_mode == Mode.REMOVE:
+				remove_turret(cell_key)
 
 # Piazza una pianta in una cella vuota e invia il segnale corrispondente
 func place_turret(cell_key: Vector2i):
@@ -130,7 +138,7 @@ func handle_turret_death(turret_instance: Node2D):
 	
 	if cell_key != Vector2i.ZERO:
 		# Emette il segnale per notificare la rimozione ad altri sistemi (es. PointManager)
-		emit_signal("turret_removed", cell_key, turret_instance) 
+		emit_signal("turret_removed", cell_key, turret_instance)
 		# Pulisce il riferimento dal dizionario
 		turrets.erase(cell_key)
 		# Non è necessario chiamare queue_free() qui, in quanto è chiamato dalla funzione die() della torretta
