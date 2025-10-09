@@ -192,10 +192,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpp"]
-size = Vector2(62, 27)
+size = Vector2(63, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvec"]
-size = Vector2(40, 25)
+size = Vector2(26.5, 26)
 
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
@@ -206,19 +206,18 @@ metadata/_edit_group_ = true
 texture_filter = 1
 position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_r8bu2")
-animation = &"death"
-frame = 12
-frame_progress = 1.0
+animation = &"move"
+frame_progress = 0.53829944
 
 [node name="RobotHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 17.5)
+position = Vector2(0.5, 17.5)
 shape = SubResource("RectangleShape2D_x2fpp")
 
 [node name="TowerDetector" type="Area2D" parent="."]
 position = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(-12, 3.5)
+position = Vector2(-18.75, 3)
 shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]

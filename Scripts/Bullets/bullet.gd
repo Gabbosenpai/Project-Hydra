@@ -41,11 +41,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 # Controlla se il proiettile è entrato nell'area del nemico
 func _on_area_entered(area: Area2D):
-	var enemy_node = area.get_parent()
-	
+	var enemy_node = area
 	# Controlla se il nodo genitore appartiene al gruppo "Robot" e ha il metodo "take_damage"
 	if enemy_node.is_in_group("Robot") and enemy_node.has_method("take_damage"):
 		enemy_node.take_damage(damage) #Se nell'area fa danno al nemico
-		
 		# Dopo aver colpito il nemico, il proiettile si distrugge
 		queue_free()
