@@ -4,86 +4,136 @@ signal turret_placed(cell_key)
 signal turret_removed(cell_key, turret_instance)
 
 @export var tilemap: TileMap
-@export var highlight: ColorRect
 
-# Dizionario che mappa celle a istanze di piante
+# --- COSTANTI: Configurazione TileMap ---
+const HIGHLIGHT_LAYER: int = 1
+const HIGHLIGHT_TILE_ID: int = 5
+const HIGHLIGHT_ATLAS_COORDS: Vector2i = Vector2i(0, 0)
+
 var turrets = {}
-# Scena della pianta attualmente selezionata per il piazzamento
 var selected_turret_scene: PackedScene = null
-# Modalità correnti: nessuna, piazzamento o rimozione
 enum Mode { NONE, PLACE, REMOVE }
 var current_mode = Mode.NONE
-# Ultima posizione del tocco (utile per dispositivi touch)
 var last_touch_position: Vector2 = Vector2.ZERO
 
-# Precaricamento delle scene delle piante disponibili
+# Il tuo dizionario 'dic' ORA SARÀ ASSEGNATO ESTERNAMENTE.
+var dic = {} # Inizializzato vuoto, verrà riempito da GridInitializer
+
 var turret_scenes = {
 	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
-	"turret3": preload("res://Scenes/Towers/jammer_cannon.tscn"),
+	"turret3": preload("res://Scenes/Towers/jammer_cannon.tscn")
 }
 
-# Seleziona una torretta da piazzare e attiva la modalità piazzamento
+# ----------------------------------------------------------------------
+
+# Rimuovi _ready() da qui. Il dizionario 'dic' deve essere assegnato dopo che
+# GridInitializer ha eseguito il suo _ready().
+func set_grid_data(data: Dictionary):
+	# Metodo per ricevere il dizionario dal GridInitializer
+	dic = data
+	print("TurretManager ha ricevuto i dati della griglia.")
+
+# Logica di pulizia totale e ridisegno (basata sul tuo codice)
+func _process(_delta):
+	# Controlla se il dizionario è stato inizializzato prima di usarlo
+	if dic.is_empty():
+		return 
+
+	$"/root/Main/UI/ButtonRemove".visible = not turrets.is_empty()
+
+	# 1. Pulizia Totale del Livello Highlight (Logica Semplificata)
+	for x in range(GameConstants.COLUMN):
+		for y in range(GameConstants.ROW):
+			tilemap.erase_cell(HIGHLIGHT_LAYER, Vector2i(x, y))
+
+	if current_mode == Mode.NONE:
+		return
+
+	var pointer_pos = get_pointer_position()
+	var cell: Vector2i = Vector2i.ZERO
+	
+	if pointer_pos != null:
+		# 2. Ottieni la cella usando la conversione CORRETTA (risolve lo sfalsamento)
+		var maybe_cell = get_valid_cell_from_position(pointer_pos)
+		if maybe_cell != null:
+			cell = maybe_cell
+		else:
+			return
+	else:
+		return
+
+	# --- Controllo con il Dizionario e Disegno ---
+	# 3. Verifica se la cella è valida (collegata al cursore)
+	var cell_key = str(cell)
+	if not dic.has(cell_key):
+		return # Cella non valida o non mappata nel dizionario
+
+	var draw_highlight = false
+	var tile_modulate: Color = Color.WHITE
+	var is_occupied = turrets.has(cell)
+	
+	# Logica di colore
+	if current_mode == Mode.PLACE:
+		tile_modulate = Color(1.0, 0.4, 0.4, 0.6) if is_occupied else Color(0.4, 1.0, 0.4, 0.6)
+		draw_highlight = true
+		
+	elif current_mode == Mode.REMOVE:
+		if is_occupied:
+			tile_modulate = Color(1.0, 0.4, 0.4, 0.6)
+			draw_highlight = true
+
+	if draw_highlight:
+		# Disegna il tile sul Livello 1
+		tilemap.set_cell(HIGHLIGHT_LAYER, cell, HIGHLIGHT_TILE_ID, HIGHLIGHT_ATLAS_COORDS)
+		
+		# Modifica il colore usando TileData (Godot 4)
+		var tile_data = tilemap.get_cell_tile_data(HIGHLIGHT_LAYER, cell)
+		if tile_data:
+			tile_data.modulate = tile_modulate
+
+# ----------------------------------------------------------------------
+
 func select_turret(key: String):
 	var point_manager = $"/root/Main/PointManager"
 	if point_manager.can_select_turret(key):
 		selected_turret_scene = turret_scenes[key]
 		current_mode = Mode.PLACE
-		highlight.visible = true
 	else:
 		print("Non hai abbastanza punti per piazzare questa pianta!")
 
-
-# Attiva la modalità rimozione
 func remove_mode():
 	current_mode = Mode.REMOVE
 
-# Disattiva qualsiasi modalità attiva
 func clear_mode():
 	current_mode = Mode.NONE
-	highlight.visible = false
 
-# Gestisce l'aggiornamento visivo dell'highlight e controlla se il puntatore è sopra una cella valida
-func _process(_delta):
-	# Mostra il pulsante di rimozione solo se ci sono piante
-	$"/root/Main/UI/ButtonRemove".visible = not turrets.is_empty()
-
-	if current_mode == Mode.NONE:
-		highlight.visible = false
-		return
-
-	var pointer_pos = get_pointer_position()
-	if pointer_pos == null:
-		highlight.visible = false
-		return
-
-	# Ottiene la cella valida (o null se fuori dai limiti)
-	var cell = get_valid_cell_from_position(pointer_pos)
-
-	if cell != null:
-		# Posiziona l'highlight centrato sulla cella
-		highlight.position = tilemap.map_to_local(cell)
-		highlight.visible = true
-
-		# Cambia colore dell'highlight in base alla modalità
-		if current_mode == Mode.PLACE:
-			highlight.modulate = Color(0.4, 1.0, 0.4, 0.6) # verde trasparente
-		else:
-			highlight.modulate = Color(1.0, 0.4, 0.4, 0.6) # rosso trasparente
-	else:
-		highlight.visible = false
-
-# Restituisce la chiave della cella (Vector2i) se è all'interno dei limiti della griglia, altrimenti null.
-func get_valid_cell_from_position(position: Vector2) -> Variant:
-	var local_pos = tilemap.to_local(position)
-	var cell = tilemap.local_to_map(local_pos)
+# Risolve lo sfalsamento convertendo la posizione globale in coordinate di cella valide.
+func get_valid_cell_from_position(screen_pos: Vector2) -> Vector2i:
+	# Ottieni la trasformazione del canvas
+	var canvas_xform = get_viewport().get_canvas_transform()
 	
-	# Verifica se la cella è all'interno della griglia di gioco
-	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
-		return Vector2i(cell.x, cell.y)
-	return null
+	# Calcola la posizione nel mondo
+	var world_pos = canvas_xform.affine_inverse() * screen_pos
+	
+	# Converte la posizione nel mondo in coordinate locali della TileMap
+	var local_pos = tilemap.to_local(world_pos)
+	var cell = tilemap.local_to_map(local_pos)
 
-# Gestisce input di mouse o touch per piazzare o rimuovere piante
+	# Verifica se la cella è valida
+	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
+		return cell
+	return Vector2i(-1, -1)
+
+
+
+
+
+func get_pointer_position() -> Vector2:
+	if OS.get_name() in ["Windows", "Linux", "macOS"]:
+		return get_viewport().get_mouse_position()
+	return last_touch_position
+
 func _unhandled_input(event):
 	if current_mode == Mode.NONE:
 		return
@@ -98,66 +148,51 @@ func _unhandled_input(event):
 	if pointer_pos != null:
 		var cell_key = get_valid_cell_from_position(pointer_pos)
 		
-		# Procede solo se la cella è valida (non è null)
-		if cell_key != null:
+		# Controlla che la cella sia valida e mappata nel dizionario
+		# Usa 'dic' qui, quindi deve essere stato assegnato prima!
+		if cell_key != null and dic.has(str(cell_key)):
 			if current_mode == Mode.PLACE:
 				place_turret(cell_key)
 			elif current_mode == Mode.REMOVE:
 				remove_turret(cell_key)
 
-# Piazza una pianta in una cella vuota e invia il segnale corrispondente
 func place_turret(cell_key: Vector2i):
 	if not turrets.has(cell_key) and selected_turret_scene != null:
 		var turret_instance = selected_turret_scene.instantiate()
 		
-		# Connette il segnale di morte per la pulizia automatica
 		if turret_instance.has_signal("died"):
 			turret_instance.died.connect(handle_turret_death)
-			
-		var tile_size = tilemap.tile_set.tile_size
-		var tile_center = tilemap.map_to_local(cell_key) + tile_size * 0.5
-		turret_instance.global_position = tilemap.to_global(tile_center)
-		# Imposta la riga per allineamento dei proiettili o logica interna
+
+		turret_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell_key))
+
+
+		
 		if turret_instance.has_method("set_riga"):
 			turret_instance.set_riga(cell_key.y)
+			
 		add_child(turret_instance)
 		turrets[cell_key] = turret_instance
 		emit_signal("turret_placed", cell_key)
 		clear_mode()
 
-# Funzione per pulire il dizionario turrets quando una torretta muore automaticamente
+func remove_turret(cell_key: Vector2i):
+	if turrets.has(cell_key):
+		var turret_instance = turrets[cell_key]
+		
+		if is_instance_valid(turret_instance):
+			emit_signal("turret_removed", cell_key, turret_instance)
+			turret_instance.queue_free()
+		
+		turrets.erase(cell_key)
+		clear_mode()
+
 func handle_turret_death(turret_instance: Node2D):
-	# Trova la chiave della cella associata all'istanza
 	var cell_key: Vector2i = Vector2i.ZERO
-	# Si itera per trovare la chiave a partire dal valore (l'istanza)
 	for key in turrets:
 		if turrets[key] == turret_instance:
 			cell_key = key
 			break
 	
 	if cell_key != Vector2i.ZERO:
-		# Emette il segnale per notificare la rimozione ad altri sistemi (es. PointManager)
 		emit_signal("turret_removed", cell_key, turret_instance)
-		# Pulisce il riferimento dal dizionario
 		turrets.erase(cell_key)
-		# Non è necessario chiamare queue_free() qui, in quanto è chiamato dalla funzione die() della torretta
-
-# Rimuove una pianta esistente e invia il segnale corrispondente (rimozione manuale)
-func remove_turret(cell_key: Vector2i):
-	if turrets.has(cell_key):
-		var turret_instance = turrets[cell_key]
-		
-		# Aggiungi la verifica con is_instance_valid() per evitare Null Pointer Exception
-		if is_instance_valid(turret_instance):
-			emit_signal("turret_removed", cell_key, turret_instance) # Passiamo anche l’istanza
-			turret_instance.queue_free()
-		
-		# Rimuovi la chiave dal dizionario per pulire il riferimento, sia che fosse valida o meno
-		turrets.erase(cell_key)
-		clear_mode()
-
-# Restituisce la posizione del puntatore (mouse o touch)
-func get_pointer_position() -> Vector2:
-	if OS.get_name() in ["Windows", "Linux", "macOS"]:
-		return get_viewport().get_mouse_position()
-	return last_touch_position
