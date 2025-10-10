@@ -195,7 +195,7 @@ animations = [{
 size = Vector2(63, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvec"]
-size = Vector2(26.5, 26)
+size = Vector2(2, 26)
 
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
@@ -217,7 +217,7 @@ shape = SubResource("RectangleShape2D_x2fpp")
 position = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(-18.75, 3)
+position = Vector2(-31, 3)
 shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
