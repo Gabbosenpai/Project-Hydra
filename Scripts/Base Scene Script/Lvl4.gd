@@ -6,18 +6,33 @@ signal game_over
 @onready var turret_manager = $TurretManager
 @onready var enemy_spawner = $EnemySpawner
 @onready var ui_controller = $UI
+@onready var grid_initializer = $GridInitializer # Riferimento al nuovo nodo inizializzatore
+
+@export var tilemap: TileMap
+# Rimosso: var dic = {} (Il dizionario ora è gestito da GridInitializer)
 
 func _ready():
-	# Connessioni dei segnali tra i vari manager e controller.
-	# Questi collegamenti permettono ai diversi componenti del gioco di comunicare tra loro.
+	# IMPORTANTE: Se GridInitializerNode è un figlio del nodo corrente,
+	# il suo _ready() è già stato eseguito a questo punto (se è posizionato prima di TurretManager nell'albero).
+	
+	# 1. Assegna il dizionario inizializzato a TurretManager
+	if grid_initializer:
+		# GridInitializer ha già popolato il suo dizionario 'dic' e la TileMap.
+		turret_manager.set_grid_data(grid_initializer.dic)
+	else:
+		print("ERRORE: Il nodo GridInitializer non è stato trovato o collegato.")
+	
+	# 2. Connessioni dei segnali tra i vari manager e controller.
 	turret_manager.connect("turret_removed", Callable(self, "_on_turret_removed"))
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))
 	connect("game_over", Callable(ui_controller, "show_game_over"))
-	var level_music = preload("res://Assets/Sound/OST/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3")
+	var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
 	AudioManager.play_music(level_music)
 	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
+	
+	# Avvia la prima ondata DOPO che la griglia è stata inizializzata e il TurretManager è pronto.
 	enemy_spawner.start_wave()
 	
 # Chiamata quando l’ondata di nemici viene completata.
@@ -35,3 +50,8 @@ func _on_level_completed():
 	if max_level < 5:
 		SaveManager.unlock_level(5)
 		print("Livello 5 sbloccato!")
+
+# Funzione stub necessaria per la connessione del segnale nel TurretManager
+func _on_turret_removed(_cell_key, _turret_instance):
+	# Aggiungi qui l'eventuale logica specifica della scena Level1 quando una torretta muore/viene rimossa.
+	pass

@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2k7axup34stp"]
+[gd_scene load_steps=16 format=3 uid="uid://b2k7axup34stp"]
 
 [ext_resource type="Script" uid="uid://c3k38umpnqf23" path="res://Scripts/Base Scene Script/Lvl4.gd" id="1_k7kxx"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/images/grass.png" id="2_gbsg3"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_6i180"]
-[ext_resource type="Texture2D" uid="uid://c0vbpknsm315p" path="res://Assets/Sprites/Options/download.png" id="4_gd3ie"]
+[ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="3_xwq6h"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_bwsdr"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_lq7bi"]
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_5m3vc"]
@@ -11,31 +11,33 @@
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_yqgre"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_0yc45"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_62725"]
+[ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scenes/Levels/grid_initializer.gd" id="12_baary"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
 texture = ExtResource("2_gbsg3")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjpki"]
+texture = ExtResource("3_xwq6h")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_wrv6g"]
 tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_lpmol")
+sources/5 = SubResource("TileSetAtlasSource_tjpki")
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_k7kxx")
-
-[node name="Highlight" type="ColorRect" parent="."]
-z_index = 1000
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
-color = Color(0.658824, 0, 0.164706, 0.454902)
+tilemap = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wrv6g")
 rendering_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65540, 1, 0, 65539, 1, 0, 65542, 1, 0, 65541, 1, 0, 65543, 1, 0, 65544, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 9, 1, 0, 65545, 1, 0, 131081, 1, 0, 196617, 1, 0, 262153, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 1, 0, 65550, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458763, 1, 0, 458762, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0)
+layer_1/name = "Layer1"
 
 [node name="UI" parent="." node_paths=PackedStringArray("pause_button", "pause_menu", "game_over_ui") instance=ExtResource("3_6i180")]
 z_index = 100
@@ -47,8 +49,6 @@ game_over_ui = NodePath("../GameOverUI")
 offset_left = 1048.0
 offset_top = 1213.0
 offset_right = 1114.0
-offset_bottom = 1277.0
-texture_normal = ExtResource("4_gd3ie")
 
 [node name="TurretSelector" parent="UI" index="1"]
 offset_left = 822.0
@@ -169,9 +169,8 @@ offset_bottom = 783.0
 toggle_mode = true
 action_mode = 0
 
-[node name="TurretManager" parent="." node_paths=PackedStringArray("tilemap", "highlight") instance=ExtResource("9_yqgre")]
+[node name="TurretManager" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("9_yqgre")]
 tilemap = NodePath("../TileMap")
-highlight = NodePath("../Highlight")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "label_wave_center", "animation_player", "victory_screen") instance=ExtResource("10_0yc45")]
 tilemap = NodePath("../TileMap")
@@ -183,10 +182,15 @@ animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/VictoryScreen")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_62725")]
+starting_points = 100
 regen_amount = 500
 turret_manager = NodePath("../TurretManager")
 label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
 PointsBar = NodePath("../UI/TurretSelector/PointsBar")
+
+[node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
+script = ExtResource("12_baary")
+tilemap = NodePath("../TileMap")
 
 [connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret1" to="UI" method="_on_button_turret_1_pressed"]
