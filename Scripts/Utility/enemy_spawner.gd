@@ -29,11 +29,11 @@ var level_enemy_pool = {
 }
 
 # Stato corrente
-var current_wave = 0 
+var current_wave = 0
 var enemies_to_spawn = 0
 var enemies_alive = 0
 var is_wave_active = false
-var current_level: int = 1   # sarà impostato automaticamente
+var current_level: int = 1 # sarà impostato automaticamente
 
 # Configurazione delle ondate
 var waves = [
@@ -44,7 +44,7 @@ var waves = [
 
 # Funzione che inizializza lo spawner
 func _ready():
-	randomize() #utilizzato per randomizzare i nemici da spawnare 
+	randomize() #utilizzato per randomizzare i nemici da spawnare 
 
 	var path = get_tree().current_scene.scene_file_path #percorso della scena del nemico
 	var regex = RegEx.new() #utilizzato per trovare il nome che corssionde esattamente al livello da utilizzare per il dizionario
@@ -68,7 +68,7 @@ func start_wave():
 	wave_timer.wait_time = wave["interval"]
 	enemies_alive = 0
 	is_wave_active = true
-	#Aggiorna le etichette 
+	#Aggiorna le etichette 
 	label_wave.text = "Ondata: " + str(current_wave + 1)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	label_wave_center.text = "ONDATA " + str(current_wave + 1)
@@ -93,14 +93,28 @@ func spawn_enemy():
 	# Sceglie uno casuale dal pool
 	var enemy_scene = all_enemy_scenes[choice]
 	var enemy = enemy_scene.instantiate()
-	#Spawna il nemico in una riga causale 
+	
+	# === LOGICA DI POSIZIONAMENTO CORRETTA ===
+	
+	# 1. Seleziona una riga casuale
 	var row = randi() % GameConstants.ROW
+	
+	# 2. Definisce la cella di spawn (GameConstants.COLUMN è la colonna appena fuori dallo schermo a destra)
 	var spawn_cell = Vector2i(GameConstants.COLUMN, row)
-	var tile_center = tilemap.map_to_local(spawn_cell) + tilemap.tile_set.tile_size * 0.5
-	enemy.global_position = tilemap.to_global(tile_center)
+	
+	# 3. Ottiene il centro esatto della cella nella TileMap (in coordinate locali della TileMap)
+	# Nota: map_to_local(cell_coords) in Godot 4 restituisce il centro della cella, non l'angolo.
+	var center_position_in_tilemap_local = tilemap.map_to_local(spawn_cell)
+	
+	# 4. Converte la posizione locale della TileMap in posizione globale dello schermo
+	enemy.global_position = tilemap.to_global(center_position_in_tilemap_local)
+	
+	# 5. Imposta la riga del nemico (essenziale per la logica di movimento/corsia).
 	enemy.riga = row
+	
 	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 	add_child(enemy)
+	
 	#Aggiorna etichetta
 	enemies_alive += 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
@@ -109,7 +123,7 @@ func spawn_enemy():
 func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	#Se i nemici in vita sono 0 e i nemici da spawnare è pari a 0 l'ondata attuale è finita per cui passo alla successiva 
+	#Se i nemici in vita sono 0 e i nemici da spawnare è pari a 0 l'ondata attuale è finita per cui passo alla successiva 
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		is_wave_active = false
 		current_wave += 1
@@ -136,5 +150,7 @@ func kill_all():
 		start_wave()
 	else:
 		victory_screen.visible = true
-		AudioManager.play_victory_music()
+		# Assumendo che AudioManager sia un singleton globale
+		if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
+			AudioManager.play_victory_music()
 		emit_signal("level_completed")
