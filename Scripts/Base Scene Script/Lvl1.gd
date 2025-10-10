@@ -9,7 +9,6 @@ signal game_over
 @onready var grid_initializer = $GridInitializer # Riferimento al nuovo nodo inizializzatore
 
 @export var tilemap: TileMap
-# Rimosso: var dic = {} (Il dizionario ora è gestito da GridInitializer)
 
 func _ready():
 	# IMPORTANTE: Se GridInitializerNode è un figlio del nodo corrente,
@@ -17,7 +16,6 @@ func _ready():
 	
 	# 1. Assegna il dizionario inizializzato a TurretManager
 	if grid_initializer:
-		# GridInitializer ha già popolato il suo dizionario 'dic' e la TileMap.
 		turret_manager.set_grid_data(grid_initializer.dic)
 	else:
 		print("ERRORE: Il nodo GridInitializer non è stato trovato o collegato.")
@@ -28,30 +26,32 @@ func _ready():
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))
 	connect("game_over", Callable(ui_controller, "show_game_over"))
+
+	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
+	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
+
 	var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
 	AudioManager.play_music(level_music)
-	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
 	
 	# Avvia la prima ondata DOPO che la griglia è stata inizializzata e il TurretManager è pronto.
 	enemy_spawner.start_wave()
 	
-# Chiamata quando l’ondata di nemici viene completata.
-# Utile per avviare la successiva o mostrare messaggi all’utente.
-func _on_wave_completed():
-	print("Ondata completata.")
 
-# Chiamata quando un nemico raggiunge la base del giocatore.
-# In questo caso emette il segnale "game_over" che avvia la schermata di fine partita.
+# Chiamata quando termina un'ondata
+func _on_wave_completed(_wave_number):
+	print("Ondata completata — sposto indietro le torrette.")
+	if turret_manager:
+		turret_manager.move_turrets_back()
+
+
+# Quando un nemico raggiunge la base del giocatore
 func enemy_reached_base():
 	emit_signal("game_over")
 
+
+# Quando il livello viene completato (tutte le ondate finite)
 func _on_level_completed():
 	var max_level = SaveManager.get_max_unlocked_level()
 	if max_level < 2:
 		SaveManager.unlock_level(2)
 		print("Livello 2 sbloccato!")
-
-# Funzione stub necessaria per la connessione del segnale nel TurretManager
-func _on_turret_removed(_cell_key, _turret_instance):
-	# Aggiungi qui l'eventuale logica specifica della scena Level1 quando una torretta muore/viene rimossa.
-	pass

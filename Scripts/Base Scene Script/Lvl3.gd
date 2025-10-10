@@ -50,8 +50,3 @@ func _on_level_completed():
 	if max_level < 4:
 		SaveManager.unlock_level(4)
 		print("Livello 4 sbloccato!")
-
-# Funzione stub necessaria per la connessione del segnale nel TurretManager
-func _on_turret_removed(_cell_key, _turret_instance):
-	# Aggiungi qui l'eventuale logica specifica della scena Level1 quando una torretta muore/viene rimossa.
-	pass

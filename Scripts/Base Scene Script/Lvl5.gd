@@ -44,8 +44,3 @@ func _on_wave_completed():
 # In questo caso emette il segnale "game_over" che avvia la schermata di fine partita.
 func enemy_reached_base():
 	emit_signal("game_over")
-
-# Funzione stub necessaria per la connessione del segnale nel TurretManager
-func _on_turret_removed(_cell_key, _turret_instance):
-	# Aggiungi qui l'eventuale logica specifica della scena Level1 quando una torretta muore/viene rimossa.
-	pass
