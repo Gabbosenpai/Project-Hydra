@@ -55,8 +55,3 @@ func _on_level_completed():
 	if max_level < 2:
 		SaveManager.unlock_level(2)
 		print("Livello 2 sbloccato!")
-
-
-# Funzione stub necessaria per la connessione del segnale nel TurretManager
-func _on_turret_removed(_cell_key, _turret_instance):
-	pass
