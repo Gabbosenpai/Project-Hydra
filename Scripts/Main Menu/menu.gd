@@ -24,7 +24,7 @@ func _on_play_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 
   #Ferma la musica del menu
-	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/slot_selection.tscn")
 	
 
 #Funzione che dealloca la scena quando si clicca esci e per cui fa terminaare il gioco
