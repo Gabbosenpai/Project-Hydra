@@ -22,19 +22,16 @@ offset_bottom = 798.0
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "File 1"
 
 [node name="File2" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "File 2"
 
 [node name="File3" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "File 3"
 
 [connection signal="pressed" from="VBoxContainer/File1" to="." method="_on_file_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/File2" to="." method="_on_file_2_pressed"]

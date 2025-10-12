@@ -1,7 +1,35 @@
 extends Control
 
+func _ready():
+	update_slot_texts()
 
+func update_slot_texts():
+	var livello1 = SaveManager.get_saved_level(1)
+	var completato1 = 0
+	if livello1 > 1:
+		completato1 = livello1 - 1
+	if completato1 > 0:
+		$VBoxContainer/File1.text = "File 1 - Livello %d completato" % completato1
+	else:
+		$VBoxContainer/File1.text = "File 1 - Vuoto"
 
+	var livello2 = SaveManager.get_saved_level(2)
+	var completato2 = 0
+	if livello2 > 1:
+		completato2 = livello2 - 1
+	if completato2 > 0:
+		$VBoxContainer/File2.text = "File 2 - Livello %d completato" % completato2
+	else:
+		$VBoxContainer/File2.text = "File 2 - Vuoto"
+
+	var livello3 = SaveManager.get_saved_level(3)
+	var completato3 = 0
+	if livello3 > 1:
+		completato3 = livello3 - 1
+	if completato3 > 0:
+		$VBoxContainer/File3.text = "File 3 - Livello %d completato" % completato3
+	else:
+		$VBoxContainer/File3.text = "File 3 - Vuoto"
 
 
 func _on_file_1_pressed() -> void:
