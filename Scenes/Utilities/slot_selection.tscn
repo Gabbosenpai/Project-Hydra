@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8gjqm40lbvk2"]
+[gd_scene load_steps=3 format=3 uid="uid://b8gjqm40lbvk2"]
 
 [ext_resource type="Script" uid="uid://t01jm1v7dol4" path="res://Scripts/Utility/slot_selection.gd" id="1_6qa0o"]
+[ext_resource type="Texture2D" uid="uid://c63g4ta6exmss" path="res://Assets/immagine.png" id="2_ws6yv"]
 
 [node name="SlotSelect" type="Control"]
 layout_mode = 3
@@ -32,6 +33,63 @@ theme_override_font_sizes/font_size = 45
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
+
+[node name="Delete1" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 1366.0
+offset_top = 442.0
+offset_right = 1466.0
+offset_bottom = 542.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Delete1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ws6yv")
+expand_mode = 1
+
+[node name="Delete3" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 1364.0
+offset_top = 646.0
+offset_right = 1464.0
+offset_bottom = 746.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Delete3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ws6yv")
+expand_mode = 1
+
+[node name="Delete2" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 1364.0
+offset_top = 545.0
+offset_right = 1464.0
+offset_bottom = 645.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Delete2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ws6yv")
+expand_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/File1" to="." method="_on_file_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/File2" to="." method="_on_file_2_pressed"]

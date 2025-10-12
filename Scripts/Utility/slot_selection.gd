@@ -1,5 +1,8 @@
 extends Control
 
+
+var slot_to_delete = 0  # salviamo quale slot vogliamo cancellare
+
 func _ready():
 	update_slot_texts()
 
