@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dur5nevu7cin8"]
 
 [ext_resource type="Script" uid="uid://cy841can8xu33" path="res://Scripts/Utility/enemy_spawner.gd" id="1_s53du"]
-[ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/images/grass.png" id="2_v3l1l"]
+[ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_v3l1l"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_gsnel"]
 [ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="3_s53du"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_1ma10"]

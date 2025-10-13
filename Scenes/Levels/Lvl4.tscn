@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b2k7axup34stp"]
 
 [ext_resource type="Script" uid="uid://c3k38umpnqf23" path="res://Scripts/Base Scene Script/Lvl4.gd" id="1_k7kxx"]
-[ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/images/grass.png" id="2_gbsg3"]
+[ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_gbsg3"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_6i180"]
 [ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="3_xwq6h"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_bwsdr"]
