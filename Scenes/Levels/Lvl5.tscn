@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dur5nevu7cin8"]
 
-[ext_resource type="Script" uid="uid://cy841can8xu33" path="res://Scripts/Utility/enemy_spawner.gd" id="1_s53du"]
+[ext_resource type="Script" uid="uid://dsew7m8ngiyqm" path="res://Scripts/Base Scene Script/Lvl5.gd" id="1_s53du"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_v3l1l"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_gsnel"]
 [ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="3_s53du"]
@@ -28,9 +28,8 @@ tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_lpmol")
 sources/5 = SubResource("TileSetAtlasSource_5hwcm")
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap")]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_s53du")
-tilemap = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wrv6g")
