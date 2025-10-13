@@ -57,3 +57,30 @@ func _on_file_3_pressed() -> void:
 	#temporanemante vogliamo andare alla selezione livello
 	#questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
+
+
+func _on_delete_1_pressed() -> void:
+	#setto il current_slot
+	SaveManager.current_slot=1;
+	SaveManager.reset_progress();
+	#aggiorno il testo
+	update_slot_texts()
+	
+	
+	
+
+
+func _on_delete_2_pressed() -> void:
+	#setto il current_slot
+	SaveManager.current_slot=2;
+	SaveManager.reset_progress();
+	#aggiorno il testo
+	update_slot_texts()
+
+
+func _on_delete_3_pressed() -> void:
+	#setto il current_slot
+	SaveManager.current_slot=3;
+	SaveManager.reset_progress();
+	#aggiorno il testo
+	update_slot_texts()
