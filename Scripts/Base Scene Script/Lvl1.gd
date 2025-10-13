@@ -51,6 +51,8 @@ func enemy_reached_base():
 
 # Quando il livello viene completato (tutte le ondate finite)
 func _on_level_completed():
+	AudioManager.play_victory_music()
+
 	var max_level = SaveManager.get_max_unlocked_level()
 	if max_level < 2:
 		SaveManager.unlock_level(2)
