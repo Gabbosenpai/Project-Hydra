@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_yqgre"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_0yc45"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_62725"]
-[ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scenes/Levels/grid_initializer.gd" id="12_baary"]
+[ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_baary"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
 texture = ExtResource("2_gbsg3")
