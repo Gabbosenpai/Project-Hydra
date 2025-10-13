@@ -5,6 +5,7 @@ var slot_to_delete = 0  # salviamo quale slot vogliamo cancellare
 
 func _ready():
 	update_slot_texts()
+	$ConfirmPanel.visible = false
 
 func update_slot_texts():
 	var livello1 = SaveManager.get_saved_level(1)
@@ -36,6 +37,7 @@ func update_slot_texts():
 
 
 func _on_file_1_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = 1
 	SaveManager.load_progress()
 	#temporanemante vogliamo andare alla selezione livello
@@ -44,6 +46,7 @@ func _on_file_1_pressed() -> void:
 
 
 func _on_file_2_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = 2
 	SaveManager.load_progress()
 	#temporanemante vogliamo andare alla selezione livello
@@ -52,35 +55,44 @@ func _on_file_2_pressed() -> void:
 
 
 func _on_file_3_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = 3
 	SaveManager.load_progress()
 	#temporanemante vogliamo andare alla selezione livello
 	#questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
+func show_confirm_panel():
+	$ConfirmPanel.visible = true
+	$ConfirmPanel/Text.text = "Vuoi davvero cancellare il salvataggio nello slot %d?" % slot_to_delete
+
+
 
 func _on_delete_1_pressed() -> void:
-	#setto il current_slot
-	SaveManager.current_slot=1;
-	SaveManager.reset_progress();
-	#aggiorno il testo
-	update_slot_texts()
-	
-	
-	
-
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	slot_to_delete = 1
+	show_confirm_panel()
 
 func _on_delete_2_pressed() -> void:
-	#setto il current_slot
-	SaveManager.current_slot=2;
-	SaveManager.reset_progress();
-	#aggiorno il testo
-	update_slot_texts()
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	slot_to_delete = 1
+	show_confirm_panel()
 
 
 func _on_delete_3_pressed() -> void:
-	#setto il current_slot
-	SaveManager.current_slot=3;
-	SaveManager.reset_progress();
-	#aggiorno il testo
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	slot_to_delete = 1
+	show_confirm_panel()
+
+
+func _on_yes_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	SaveManager.current_slot = slot_to_delete
+	SaveManager.reset_progress()
 	update_slot_texts()
+	$ConfirmPanel.visible = false
+
+
+func _on_no_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	$ConfirmPanel.visible = false

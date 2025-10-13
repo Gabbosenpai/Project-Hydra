@@ -90,9 +90,48 @@ grow_vertical = 2
 texture = ExtResource("2_ws6yv")
 expand_mode = 1
 
+[node name="ConfirmPanel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Label" parent="ConfirmPanel"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 313.0
+offset_right = 1600.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 50
+text = "Sei sicuro di voler cancellare i dati salvati in questo file?"
+
+[node name="YesButton" type="Button" parent="ConfirmPanel"]
+layout_mode = 0
+offset_left = 649.0
+offset_top = 418.0
+offset_right = 699.0
+offset_bottom = 495.0
+theme_override_font_sizes/font_size = 50
+text = "Si"
+
+[node name="NoButton" type="Button" parent="ConfirmPanel"]
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 420.0
+offset_right = 1167.0
+offset_bottom = 497.0
+theme_override_font_sizes/font_size = 50
+text = "No"
+
 [connection signal="pressed" from="VBoxContainer/File1" to="." method="_on_file_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/File2" to="." method="_on_file_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/File3" to="." method="_on_file_3_pressed"]
 [connection signal="pressed" from="Delete1" to="." method="_on_delete_1_pressed"]
 [connection signal="pressed" from="Delete2" to="." method="_on_delete_2_pressed"]
 [connection signal="pressed" from="Delete2/Delete3" to="." method="_on_delete_3_pressed"]
+[connection signal="pressed" from="ConfirmPanel/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="ConfirmPanel/NoButton" to="." method="_on_no_button_pressed"]
