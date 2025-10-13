@@ -46,6 +46,8 @@ func enemy_reached_base():
 	emit_signal("game_over")
 
 func _on_level_completed():
+	AudioManager.play_victory_music()
+
 	var max_level = SaveManager.get_max_unlocked_level()
 	if max_level < 5:
 		SaveManager.unlock_level(5)
