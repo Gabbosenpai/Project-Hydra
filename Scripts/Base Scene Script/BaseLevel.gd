@@ -27,9 +27,6 @@ func _ready():
 	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
 	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
 	
-	# 3. Chiamata ai metodi specifici che verranno implementati dai livelli figli
-	_set_level_music()
-	
 	# Avvia la prima ondata DOPO che la griglia è stata inizializzata
 	enemy_spawner.start_wave()
 

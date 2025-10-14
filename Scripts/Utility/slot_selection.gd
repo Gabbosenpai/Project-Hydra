@@ -75,13 +75,13 @@ func _on_delete_1_pressed() -> void:
 
 func _on_delete_2_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	slot_to_delete = 1
+	slot_to_delete = 2
 	show_confirm_panel()
 
 
 func _on_delete_3_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	slot_to_delete = 1
+	slot_to_delete = 3
 	show_confirm_panel()
 
 
