@@ -13,3 +13,4 @@ func _on_level_completed():
 	if max_level < 2:
 		SaveManager.unlock_level(2)
 		print("Livello 2 sbloccato!")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/tech_tree.tscn")
