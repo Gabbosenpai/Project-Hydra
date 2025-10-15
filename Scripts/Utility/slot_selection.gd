@@ -1,12 +1,16 @@
 extends Control
 
-
-var slot_to_delete = 0  # salviamo quale slot vogliamo cancellare
+# salviamo quale slot vogliamo cancellare
+var slot_to_delete = 0  
 
 func _ready():
 	update_slot_texts()
+	#la schermata di conferma è inizialmente non visibile
 	$ConfirmPanel.visible = false
 
+#funzione che aggiorna dinamicamente il testo dei vari file
+
+#livello1 significa livello del file 1 e così per il file 2 e 3
 func update_slot_texts():
 	var livello1 = SaveManager.get_saved_level(1)
 	var completato1 = 0
@@ -17,6 +21,7 @@ func update_slot_texts():
 	else:
 		$VBoxContainer/File1.text = "File 1 - Vuoto"
 
+#stessa cosa del file 1
 	var livello2 = SaveManager.get_saved_level(2)
 	var completato2 = 0
 	if livello2 > 1:
@@ -26,6 +31,8 @@ func update_slot_texts():
 	else:
 		$VBoxContainer/File2.text = "File 2 - Vuoto"
 
+
+#stessa cosa del file 1
 	var livello3 = SaveManager.get_saved_level(3)
 	var completato3 = 0
 	if livello3 > 1:
@@ -62,6 +69,7 @@ func _on_file_3_pressed() -> void:
 	#questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
+
 func show_confirm_panel():
 	$ConfirmPanel.visible = true
 	$ConfirmPanel/Text.text = "Vuoi davvero cancellare il salvataggio nello slot %d?" % slot_to_delete
@@ -84,7 +92,7 @@ func _on_delete_3_pressed() -> void:
 	slot_to_delete = 3
 	show_confirm_panel()
 
-
+#gestione puslante conferma cancellazione salvataggio
 func _on_yes_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = slot_to_delete
@@ -92,7 +100,7 @@ func _on_yes_button_pressed() -> void:
 	update_slot_texts()
 	$ConfirmPanel.visible = false
 
-
+#gestione pulsante annulla cancellazione salvataggio
 func _on_no_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	$ConfirmPanel.visible = false
