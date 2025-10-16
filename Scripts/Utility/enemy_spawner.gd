@@ -103,19 +103,8 @@ func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 
-	if enemies_alive <= 0 and enemies_to_spawn <= 0:
-		is_wave_active = false
-		current_wave += 1
-		
-		# ✅ Segnale emesso a fine ondata
-		emit_signal("wave_completed", current_wave)
-
-		if current_wave < waves.size():
-			start_wave()
-		else:
-			victory_screen.visible = true
-			get_tree().paused = true
-			emit_signal("level_completed")
+	# ✅ CHIAMA LA FUNZIONE DI CHECK
+	_check_wave_completion()
 
 
 func kill_all():
@@ -137,3 +126,41 @@ func kill_all():
 		if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
 			AudioManager.play_victory_music()
 		emit_signal("level_completed")
+
+# 🔥 Nuovo: Distrugge tutti i robot in una riga specifica (usato dall'Inceneritore)
+# 🔥 Nuovo: Distrugge tutti i robot in una riga specifica (usato dall'Inceneritore)
+func destroy_robots_in_row(row: int):
+	var killed_count = 0
+	
+	for child in get_children():
+		if child.is_in_group("Robot") and child.has_method("die"):
+			if child.riga == row:
+				# Disconnetti per evitare doppio decremento da segnale
+				child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
+				
+				child.queue_free()
+				enemies_alive -= 1 # AGGIORNAMENTO DEL CONTEGGIO
+				killed_count += 1
+				
+	label_enemies.text = "Nemici: " + str(enemies_alive)
+	
+	# ✅ CHIAMA LA FUNZIONE DI CHECK DOPO LA DISTRUZIONE
+	_check_wave_completion() 
+	
+	print("🔥 %d robot inceneriti in riga %d. Nemici rimanenti: %d" % [killed_count, row, enemies_alive])
+
+# ✅ NUOVA FUNZIONE: Controlla se l'ondata è finita e avanza
+func _check_wave_completion():
+	if enemies_alive <= 0 and enemies_to_spawn <= 0:
+		is_wave_active = false
+		current_wave += 1
+		
+		# Segnale emesso a fine ondata
+		emit_signal("wave_completed", current_wave)
+
+		if current_wave < waves.size():
+			start_wave()
+		else:
+			victory_screen.visible = true
+			get_tree().paused = true
+			emit_signal("level_completed")

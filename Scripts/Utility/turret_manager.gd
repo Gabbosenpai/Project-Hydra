@@ -156,7 +156,8 @@ func remove_turret(cell_key: Vector2i):
 		var turret_instance = turrets[cell_key]
 		
 		if is_instance_valid(turret_instance):
-			emit_signal("turret_removed", cell_key, turret_instance)
+			# NON è una distruzione, quindi is_destruction è false (default)
+			emit_signal("turret_removed", cell_key, turret_instance, false) 
 			turret_instance.queue_free()
 		
 		turrets.erase(cell_key)
@@ -171,7 +172,7 @@ func handle_turret_death(turret_instance: Node2D):
 			break
 	
 	if cell_key != Vector2i.ZERO:
-		emit_signal("turret_removed", cell_key, turret_instance)
+		emit_signal("turret_removed", cell_key, turret_instance, false) # false = rimborso totale
 		turrets.erase(cell_key)
 
 
@@ -189,9 +190,9 @@ func move_turrets_back():
 		var new_cell = Vector2i(old_cell.x - 1, old_cell.y)
 
 		if new_cell.x < 0:
-			print("🔥 Torretta nella riga %d distrutta dall'inceneritore!" % old_cell.y)
 			if is_instance_valid(turret_instance):
-				emit_signal("turret_removed", old_cell, turret_instance)
+				# È una distruzione: is_destruction = true
+				emit_signal("turret_removed", old_cell, turret_instance, true) 
 				turret_instance.queue_free()
 			to_destroy.append(old_cell)
 		else:
@@ -205,3 +206,35 @@ func move_turrets_back():
 
 	turrets = new_turrets
 	print("✅ Tutte le torrette sono state spostate indietro di una cella.")
+
+# 🔥 Nuova funzione: distrugge la torretta in colonna 0 (posizione inceneritore)
+func destroy_turret_at_incinerator_pos(row_y: int):
+	var cell_key = Vector2i(0, row_y)
+
+	if turrets.has(cell_key):
+		var turret_instance = turrets[cell_key]
+		
+		if is_instance_valid(turret_instance):
+			# È una distruzione: is_destruction = true
+			emit_signal("turret_removed", cell_key, turret_instance, true) 
+			turret_instance.queue_free()
+		
+		turrets.erase(cell_key)
+
+# 🔥 Nuova funzione: Incenerisce TUTTE le torrette in una riga (dopo l'attivazione)
+func destroy_all_turrets_in_row(row_y: int):
+	var to_destroy = []
+	
+	for cell_key in turrets.keys():
+		if cell_key.y == row_y:
+			to_destroy.append(cell_key)
+			var turret_instance = turrets[cell_key]
+			
+			if is_instance_valid(turret_instance):
+				# Nessun rimborso, queste vengono incenerite
+				turret_instance.queue_free() 
+
+	for cell_key in to_destroy:
+		turrets.erase(cell_key)
+	
+	print("🔥 Tutte le %d torrette in riga %d sono state incenerite." % [to_destroy.size(), row_y])

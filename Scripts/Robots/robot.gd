@@ -61,7 +61,9 @@ func move(delta) -> void:
 	if position.x <= 0:
 		var main_scene = get_tree().current_scene
 		if main_scene.has_method("enemy_reached_base"):
-			main_scene.enemy_reached_base()
+			# Passa l'istanza del robot al main level
+			main_scene.enemy_reached_base(self) # ✅ CORRETTO
+		queue_free()
 
 # Robot prende danno, se la sua salute va a 0, muore.
 func take_damage(amount: int) -> void:
