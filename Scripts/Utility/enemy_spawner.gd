@@ -14,16 +14,16 @@ signal wave_completed(wave_number)
 var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
 	"weed_eater_9000": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
-	"ice_robot": preload("res://Scenes/Robots/ice_robot.tscn"),
+	"mecha_freezer": preload("res://Scenes/Robots/mecha_freezer.tscn"),
 	"kamikaze": preload("res://Scenes/Robots/kamikaze.tscn")
 }
 
 var level_enemy_pool = {
 	1: ["romba"],
 	2: ["romba", "weed_eater_9000"],
-	3: ["romba", "weed_eater_9000", "ice_robot"],
-	4: ["romba", "weed_eater_9000", "ice_robot", "kamikaze"],
-	5: ["romba", "weed_eater_9000", "ice_robot", "kamikaze"]
+	3: ["romba", "weed_eater_9000", "mecha_freezer"],
+	4: ["romba", "weed_eater_9000", "mecha_freezer", "kamikaze"],
+	5: ["romba", "weed_eater_9000", "mecha_freezer", "kamikaze"]
 }
 
 var current_wave = 0
