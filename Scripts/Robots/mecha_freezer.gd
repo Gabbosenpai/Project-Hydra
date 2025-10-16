@@ -17,6 +17,7 @@ func _ready() -> void:
 
 # Congela la torretta rallentando il suo rateo di fuoco
 func freeze_tower(tower: Node, duration: float, slow_factor: float = 2.0) -> void:
+	return
 	if not tower or not is_instance_valid(tower):
 		return
 	
@@ -41,6 +42,8 @@ func _on_tower_detector_area_entered(tower: Area2D) -> void:
 	if tower.is_in_group("Tower"):
 		violence = true
 		target = tower
+		robot_sprite.play("charge")
+		await robot_sprite.animation_finished
 		robot_sprite.play("attack")
 		# Congela/rallenta la torretta per 3 secondi
 		freeze_tower(tower, 3.0, 2.0)
