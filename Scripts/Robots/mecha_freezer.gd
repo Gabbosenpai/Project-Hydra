@@ -1,9 +1,9 @@
 class_name MechaFreezer
 extends Robot
 
-@export var mf_max_health : int = 200
+@export var mf_max_health : int = 300
 @export var mf_speed : float = 25
-@export var mf_damage : int = 25
+@export var mf_damage : int = 10
 
 # Controllo se non sia in fase d'attacco tramite un controllo delle animazioni
 # in questo modo sono sicuro che le faccia tutte prima di tornare a muoversi

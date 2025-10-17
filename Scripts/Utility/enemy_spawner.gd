@@ -21,7 +21,8 @@ var all_enemy_scenes = {
 var level_enemy_pool = {
 	1: ["romba"],
 	2: ["romba", "weed_eater_9000"],
-	3: ["romba", "weed_eater_9000", "mecha_freezer"],
+	#"romba", "weed_eater_9000",
+	3: ["mecha_freezer"],
 	4: ["romba", "weed_eater_9000", "mecha_freezer", "kamikaze"],
 	5: ["romba", "weed_eater_9000", "mecha_freezer", "kamikaze"]
 }
