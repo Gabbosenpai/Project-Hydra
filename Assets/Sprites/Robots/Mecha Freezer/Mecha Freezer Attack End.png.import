@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yg7vbmcy4be7"
-path="res://.godot/imported/Mecha Freezer Attack.png-191943e384bbfd6dd65c5c696a1fd3af.ctex"
+uid="uid://dfa2by6h4pr7g"
+path="res://.godot/imported/Mecha Freezer Attack End.png-7c9c9585bb976186c6608e56a73a9bb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Attack.png"
-dest_files=["res://.godot/imported/Mecha Freezer Attack.png-191943e384bbfd6dd65c5c696a1fd3af.ctex"]
+source_file="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Attack End.png"
+dest_files=["res://.godot/imported/Mecha Freezer Attack End.png-7c9c9585bb976186c6608e56a73a9bb6.ctex"]
 
 [params]
 

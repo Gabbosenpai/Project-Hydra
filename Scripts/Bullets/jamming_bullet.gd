@@ -14,7 +14,7 @@ func _ready() -> void:
 # Funzione chiamata quando questo Area2D entra in collisione con un altro Area2D
 func _on_area_entered(area: Area2D):
 	# Ottiene il nodo genitore dell'area entrata in collisione (di solito l'enemy)
-	var enemy_node = area.get_parent()
+	var enemy_node = area
 	# Controlla se il nodo genitore appartiene al gruppo "Robot" e ha il metodo "take_damage"
 	if enemy_node.is_in_group("Robot") and enemy_node.has_method("take_damage"):
 		# Chiama la funzione take_damage sull'enemy, passando il valore del danno del proiettile
