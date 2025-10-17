@@ -40,7 +40,7 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(872, 646)
+position = Vector2(872, 650)
 zoom = Vector2(1.1, 1.1)
 limit_enabled = false
 
@@ -50,64 +50,82 @@ pause_menu = NodePath("PauseMenu")
 game_over_ui = NodePath("../GameOverUI")
 
 [node name="ButtonRemove" parent="UI" index="0"]
-offset_left = 1093.0
-offset_top = 1114.0
-offset_right = 1159.0
-offset_bottom = 1178.0
+offset_left = 991.0
+offset_top = 1270.0
+offset_right = 1057.0
+offset_bottom = 1334.0
 
 [node name="TurretSelector" parent="UI" index="1"]
-offset_left = 829.0
-offset_top = 1096.0
-offset_right = 1011.0
-offset_bottom = 1132.0
+offset_left = 716.0
+offset_top = 1252.0
+offset_right = 898.0
+offset_bottom = 1288.0
 
 [node name="TextureRect" parent="UI/TurretSelector" index="0"]
 offset_left = -15.0
-offset_top = -68.0
-offset_right = 212.0
+offset_top = -107.0
+offset_right = 266.0
 offset_bottom = 83.0
 
 [node name="PointsBar" parent="UI/TurretSelector" index="1"]
-offset_left = -103.0
-offset_top = 28.0
-offset_right = 304.0
-offset_bottom = 47.0
+offset_left = -117.0
+offset_top = -8.0
+offset_right = 370.0
+offset_bottom = 48.0
 
 [node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
-offset_left = 138.0
-offset_top = -6.0
-offset_right = 282.0
-offset_bottom = 24.0
+offset_left = 172.0
+offset_top = 13.0
+offset_right = 316.0
+offset_bottom = 43.0
 
 [node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
-offset_left = -3.0
-offset_top = -42.0
-offset_right = 203.0
-offset_bottom = 30.0
+offset_left = 8.0
+offset_top = -94.0
+offset_right = 258.0
+offset_bottom = 1.0
 
 [node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
 icon = ExtResource("4_h4611")
 
+[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret1" index="0"]
+offset_left = 28.0
+offset_top = 73.0
+offset_right = 68.0
+offset_bottom = 96.0
+
+[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret2" index="0"]
+offset_left = 20.0
+offset_top = 74.0
+offset_right = 60.0
+offset_bottom = 97.0
+
 [node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
 icon = ExtResource("5_soeiq")
 
+[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret3" index="0"]
+offset_left = 14.0
+offset_top = 75.0
+offset_right = 54.0
+offset_bottom = 98.0
+
 [node name="LabelWave" parent="UI" index="2"]
 offset_left = 747.0
-offset_top = 193.0
+offset_top = 362.0
 offset_right = 818.0
-offset_bottom = 223.0
+offset_bottom = 392.0
 
 [node name="LabelEnemies" parent="UI" index="3"]
 offset_left = 747.0
-offset_top = 220.0
+offset_top = 390.0
 offset_right = 819.0
-offset_bottom = 243.0
+offset_bottom = 413.0
 
 [node name="ButtonKillAll" parent="UI" index="4"]
-offset_left = 1186.0
-offset_top = 1122.0
-offset_right = 1327.0
-offset_bottom = 1176.0
+offset_left = 1073.0
+offset_top = 1277.0
+offset_right = 1214.0
+offset_bottom = 1331.0
 
 [node name="PauseButton" parent="UI" index="5"]
 offset_left = 1585.0
