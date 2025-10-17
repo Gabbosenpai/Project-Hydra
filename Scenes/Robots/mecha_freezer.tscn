@@ -1,7 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://bxuc1rbxy0lfx"]
+[gd_scene load_steps=73 format=3 uid="uid://bxuc1rbxy0lfx"]
 
 [ext_resource type="Script" uid="uid://sjcpbe5vt2vm" path="res://Scripts/Robots/mecha_freezer.gd" id="1_3okb4"]
 [ext_resource type="Texture2D" uid="uid://ctcxgbua0xji6" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Attack.png" id="2_3okb4"]
+[ext_resource type="Texture2D" uid="uid://dfa2by6h4pr7g" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Attack End.png" id="3_1rajn"]
 [ext_resource type="Texture2D" uid="uid://cfgpf28hcystg" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Attack Charge.png" id="3_ay85r"]
 [ext_resource type="Texture2D" uid="uid://72ltku56psbh" path="res://Assets/Sprites/Robots/Romba/Romba Death.png" id="3_ikaim"]
 [ext_resource type="Texture2D" uid="uid://bppbsilgvurni" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Walk.png" id="4_1rajn"]
@@ -37,6 +38,46 @@ region = Rect2(2688, 0, 448, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8swbu"]
 atlas = ExtResource("2_3okb4")
 region = Rect2(3136, 0, 448, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u3lw"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6n5g"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxrpp"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qdec"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f1we"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjx0h"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqanp"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yabj8"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82bnt"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqbt"]
+atlas = ExtResource("3_1rajn")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6er2"]
 atlas = ExtResource("3_ay85r")
@@ -251,6 +292,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8u3lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6n5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxrpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qdec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f1we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjx0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqanp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yabj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82bnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsqbt")
+}],
+"loop": false,
+"name": &"attack_end",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o6er2")
 }, {
 "duration": 1.0,
@@ -413,7 +489,9 @@ script = ExtResource("1_3okb4")
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_r8bu2")
-animation = &"charge"
+animation = &"attack_end"
+frame = 9
+frame_progress = 1.0
 
 [node name="RobotHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
