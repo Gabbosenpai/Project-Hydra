@@ -7,7 +7,8 @@ signal game_over
 @onready var ui_controller = $UI
 @onready var grid_initializer = $GridInitializer
 @export var tilemap: TileMap
-var incinerator_used_this_level: bool = false
+var incinerator_used_in_row: Array = [false, false, false, false, false]
+var is_game_over: bool = false 
 
 func _ready():
 	# 1. Assegna il dizionario inizializzato a TurretManager
@@ -43,25 +44,37 @@ func _on_level_completed():
 
 # Chiamata quando un nemico raggiunge la base del giocatore.
 func enemy_reached_base(robot_instance: Node2D):
+	# *** 0. CONTROLLO DI SICUREZZA ***
+	# Blocca immediatamente se il Game Over è già stato innescato da un altro robot.
+	if is_game_over:
+		return 
+		
 	var row = robot_instance.riga
 	
-	# 1. Distruzione Torretta in Colonna 0 (e recupero materiali)
+	# Assicurati che 'row' sia un indice valido per l'array.
+	if row < 0 or row >= incinerator_used_in_row.size():
+		push_error("ERRORE: Riga robot non valida: " + str(row))
+		return
+
+	# 1. Distruzione Torretta in Colonna 0 (per coerenza)
 	turret_manager.destroy_turret_at_incinerator_pos(row)
 	
-	# 2. Logica Inceneritore
-	if incinerator_used_this_level:
-		# SECONDA VOLTA: GAME OVER
-		print("🔥 GAME OVER: Inceneritore già chiuso, un altro robot è passato in riga ", row)
-		# Aggiungi un piccolo flash di Game Over qui se vuoi, ma la logica è completa
-		emit_signal("game_over")
-	else:
-		# PRIMA VOLTA: Salva la vita
-		print("✅ Inceneritore Attivato! Distrugge il robot e la riga ", row)
-		incinerator_used_this_level = true
+	# 2. Logica Inceneritore PER RIGA
+	if incinerator_used_in_row[row]:
+		# SECONDA VOLTA NELLA STESSA RIGA: GAME OVER
+		print("🔥 GAME OVER: Inceneritore GIA' usato in riga ", row)
 		
-		# Distrugge tutti gli oggetti nella riga (tagliaerba)
-		kill_all_in_row(row) # Questa funzione contiene ora il feedback visivo!
-		# Chiusura inceneritore per il resto dell'ondata corrente.
+		# *** BLOCCO DEL GIOCO E SEGNALE ***
+		is_game_over = true # Imposta lo stato prima di emettere il segnale
+		emit_signal("game_over")
+		
+	else:
+		# PRIMA VOLTA NELLA RIGA: Salva la vita e segna come usata
+		print("✅Inceneritore Attivato in riga ", row)
+		incinerator_used_in_row[row] = true
+		
+		# Distrugge tutti gli oggetti nella riga
+		kill_all_in_row(row)
 	
 # 🔥 Nuova funzione per incenerire tutti gli oggetti in una riga
 func kill_all_in_row(row: int):

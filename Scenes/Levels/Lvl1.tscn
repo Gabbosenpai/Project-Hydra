@@ -40,7 +40,7 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(872, 494)
+position = Vector2(872, 646)
 zoom = Vector2(1.1, 1.1)
 limit_enabled = false
 
