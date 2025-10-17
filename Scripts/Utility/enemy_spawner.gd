@@ -87,7 +87,7 @@ func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	
 	var row = randi() % GameConstants.ROW
-	var spawn_cell = Vector2i(GameConstants.COLUMN, row)
+	var spawn_cell = Vector2i(GameConstants.COLUMN + 4, row)
 	var center_pos = tilemap.map_to_local(spawn_cell)
 	enemy.global_position = tilemap.to_global(center_pos)
 	enemy.riga = row
@@ -154,7 +154,6 @@ func _check_wave_completion():
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		is_wave_active = false
 		current_wave += 1
-		
 		# Segnale emesso a fine ondata
 		emit_signal("wave_completed", current_wave)
 

@@ -42,32 +42,37 @@ func _on_turret_placed(_cell_key):
 
 # Gestisce il rimborso totale dei punti quando una pianta viene rimossa
 # Identifica la pianta tramite il percorso della scena e aggiunge il costo ai punti correnti
-func _on_turret_removed(_cell_key, turret_instance, is_destruction: bool = false): # Modificato per accettare un flag di distruzione
+# point_manager.gd
+
+func _on_turret_removed(_cell_key, turret_instance, is_destruction: bool = false):
 	var turret_key = ""
 	
-	# 1. Trova la chiave della torretta
+	# 1. Trova la chiave della torretta (Logica invariata)
 	for key in turret_manager.turret_scenes.keys():
-		# Il confronto tramite scene_file_path è robusto
 		if turret_manager.turret_scenes[key].resource_path == turret_instance.scene_file_path:
 			turret_key = key
 			break
 			
 	if turret_key != "" and turret_costs.has(turret_key):
 		var cost = turret_costs[turret_key]
-		var refund_amount = cost
+		var refund_amount = 0 # Inizializza a zero
 		
-		# 2. Calcola il rimborso: Totale per rimozione manuale, Parziale per distruzione
+		# 2. Calcola il rimborso basato sul flag is_destruction
 		if is_destruction:
-			# Distruzione (scorrimento o inceneritore): rimborso parziale
-			refund_amount = int(cost * refund_percentage) 
-			print("Rimborso PARZIALE (", refund_percentage * 100, "%): ", refund_amount)
+			# ✅ DISTRUZIONE (Inceneritore/Slide): Punti Parziali
+			# Il segnale viene emesso con 'true' solo da move_turrets_back quando new_cell.x < 0
+			refund_amount = int(cost * refund_percentage)
+			print("Rimborso PARZIALE (", refund_percentage * 100, "%): ", refund_amount, " (Inceneritore)")
 		else:
-			# Rimozione manuale (pulsante 'Rimuovi'): rimborso totale
-			refund_amount = cost
-			print("Rimborso TOTALE: ", refund_amount)
+			# ✅ NON DISTRUZIONE (Manuale/Robot Kill): Zero Punti
+			# Il segnale viene emesso con 'false' da remove_turret e handle_turret_death
+			refund_amount = 0 
+			print("Nessun rimborso: rimozione manuale o torretta distrutta da robot.")
 
-		current_points += refund_amount
-		update_points_label()
+		# 3. Applica i punti solo se > 0
+		if refund_amount > 0:
+			current_points += refund_amount
+			update_points_label()
 
 # Funzione chiamata quando il timer di rigenerazione scade
 # Aggiunge una quantità fissa di punti e aggiorna l'etichetta

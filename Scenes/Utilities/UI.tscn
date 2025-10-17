@@ -19,7 +19,7 @@ shader_parameter/progress_value = 0.0
 shader_parameter/corner_radius = 0.25
 
 [sub_resource type="LabelSettings" id="LabelSettings_mg6lk"]
-font_size = 9
+font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg6lk"]
 bg_color = Color(0.813258, 0.813258, 0.813258, 1)
