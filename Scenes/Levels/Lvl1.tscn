@@ -32,6 +32,7 @@ sources/5 = SubResource("TileSetAtlasSource_h4611")
 script = ExtResource("1_s1ade")
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, 160)
 tile_set = SubResource("TileSet_wrv6g")
 rendering_quadrant_size = 128
 format = 2
@@ -39,7 +40,7 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(872, 491)
+position = Vector2(872, 494)
 zoom = Vector2(1.1, 1.1)
 limit_enabled = false
 
