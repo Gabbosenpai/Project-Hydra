@@ -489,9 +489,7 @@ script = ExtResource("1_3okb4")
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_r8bu2")
-animation = &"attack_end"
-frame = 9
-frame_progress = 1.0
+animation = &"move"
 
 [node name="RobotHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
