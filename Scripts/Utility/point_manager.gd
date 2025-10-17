@@ -42,32 +42,35 @@ func _on_turret_placed(_cell_key):
 
 # Gestisce il rimborso totale dei punti quando una pianta viene rimossa
 # Identifica la pianta tramite il percorso della scena e aggiunge il costo ai punti correnti
-func _on_turret_removed(_cell_key, turret_instance, is_destruction: bool = false): # Modificato per accettare un flag di distruzione
+# point_manager.gd
+
+func _on_turret_removed(_cell_key, turret_instance, is_destruction: bool = false):
 	var turret_key = ""
 	
-	# 1. Trova la chiave della torretta
+	# 1. Trova la chiave della torretta (Logica invariata)
 	for key in turret_manager.turret_scenes.keys():
-		# Il confronto tramite scene_file_path è robusto
 		if turret_manager.turret_scenes[key].resource_path == turret_instance.scene_file_path:
 			turret_key = key
 			break
 			
 	if turret_key != "" and turret_costs.has(turret_key):
 		var cost = turret_costs[turret_key]
-		var refund_amount = cost
+		var refund_amount = 0 # Inizializza a zero
 		
 		# 2. Calcola il rimborso: Totale per rimozione manuale, Parziale per distruzione
 		if is_destruction:
 			# Distruzione (scorrimento o inceneritore): rimborso parziale
-			refund_amount = int(cost * refund_percentage) 
+			refund_amount = int(cost * refund_percentage)
 			print("Rimborso PARZIALE (", refund_percentage * 100, "%): ", refund_amount)
 		else:
-			# Rimozione manuale (pulsante 'Rimuovi'): rimborso totale
-			refund_amount = cost
-			print("Rimborso TOTALE: ", refund_amount)
+			# Rimozione manuale (pulsante 'Rimuovi'): NESSUN rimborso
+			refund_amount = 0 # <-- La chiave è impostare a zero
+			print("Rimozione manuale: NESSUN rimborso punti.")
 
-		current_points += refund_amount
-		update_points_label()
+		# Solo se c'è un rimborso, aggiorna i punti
+		if refund_amount > 0:
+			current_points += refund_amount
+			update_points_label()
 
 # Funzione chiamata quando il timer di rigenerazione scade
 # Aggiunge una quantità fissa di punti e aggiorna l'etichetta
