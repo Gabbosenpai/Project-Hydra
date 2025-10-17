@@ -57,17 +57,19 @@ func _on_turret_removed(_cell_key, turret_instance, is_destruction: bool = false
 		var cost = turret_costs[turret_key]
 		var refund_amount = 0 # Inizializza a zero
 		
-		# 2. Calcola il rimborso: Totale per rimozione manuale, Parziale per distruzione
+		# 2. Calcola il rimborso basato sul flag is_destruction
 		if is_destruction:
-			# Distruzione (scorrimento o inceneritore): rimborso parziale
+			# ✅ DISTRUZIONE (Inceneritore/Slide): Punti Parziali
+			# Il segnale viene emesso con 'true' solo da move_turrets_back quando new_cell.x < 0
 			refund_amount = int(cost * refund_percentage)
-			print("Rimborso PARZIALE (", refund_percentage * 100, "%): ", refund_amount)
+			print("Rimborso PARZIALE (", refund_percentage * 100, "%): ", refund_amount, " (Inceneritore)")
 		else:
-			# Rimozione manuale (pulsante 'Rimuovi'): NESSUN rimborso
-			refund_amount = 0 # <-- La chiave è impostare a zero
-			print("Rimozione manuale: NESSUN rimborso punti.")
+			# ✅ NON DISTRUZIONE (Manuale/Robot Kill): Zero Punti
+			# Il segnale viene emesso con 'false' da remove_turret e handle_turret_death
+			refund_amount = 0 
+			print("Nessun rimborso: rimozione manuale o torretta distrutta da robot.")
 
-		# Solo se c'è un rimborso, aggiorna i punti
+		# 3. Applica i punti solo se > 0
 		if refund_amount > 0:
 			current_points += refund_amount
 			update_points_label()
