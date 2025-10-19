@@ -40,8 +40,8 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1038, 759)
-zoom = Vector2(0.925, 0.71)
+position = Vector2(1038, 630)
+zoom = Vector2(0.925, 0.86)
 limit_enabled = false
 
 [node name="UI" parent="." node_paths=PackedStringArray("pause_button", "pause_menu", "game_over_ui") instance=ExtResource("3_uimwk")]
@@ -51,15 +51,15 @@ game_over_ui = NodePath("../GameOverUI")
 
 [node name="ButtonRemove" parent="UI" index="0"]
 offset_left = 1233.0
-offset_top = 1533.0
+offset_top = 1273.0
 offset_right = 1401.0
-offset_bottom = 1714.0
+offset_bottom = 1454.0
 
 [node name="TurretSelector" parent="UI" index="1"]
 offset_left = 844.0
-offset_top = 1708.0
+offset_top = 1452.0
 offset_right = 1026.0
-offset_bottom = 1712.0
+offset_bottom = 1456.0
 
 [node name="TextureRect" parent="UI/TurretSelector" index="0"]
 offset_left = -86.0
@@ -123,9 +123,9 @@ offset_bottom = 251.0
 
 [node name="ButtonKillAll" parent="UI" index="4"]
 offset_left = 1434.0
-offset_top = 1660.0
+offset_top = 1398.0
 offset_right = 1575.0
-offset_bottom = 1714.0
+offset_bottom = 1452.0
 
 [node name="PauseButton" parent="UI" index="5"]
 offset_left = 1913.0
