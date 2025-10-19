@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="10_tf0td"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_uimwk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lpmol"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uimwk"]
 texture = ExtResource("2_7nfcr")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
@@ -25,14 +25,14 @@ texture_region_size = Vector2i(128, 128)
 
 [sub_resource type="TileSet" id="TileSet_wrv6g"]
 tile_size = Vector2i(160, 160)
-sources/1 = SubResource("TileSetAtlasSource_lpmol")
+sources/1 = SubResource("TileSetAtlasSource_uimwk")
 sources/5 = SubResource("TileSetAtlasSource_h4611")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_s1ade")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(158, 160)
+position = Vector2(160, 160)
 tile_set = SubResource("TileSet_wrv6g")
 rendering_quadrant_size = 128
 format = 2
