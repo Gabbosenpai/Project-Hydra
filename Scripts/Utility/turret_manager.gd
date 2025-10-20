@@ -102,7 +102,7 @@ func get_valid_cell_from_position(screen_pos: Vector2) -> Vector2i:
 	var world_pos = canvas_xform.affine_inverse() * screen_pos
 	var local_pos = tilemap.to_local(world_pos)
 	var cell = tilemap.local_to_map(local_pos)
-	if cell.x >= 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
+	if cell.x > 0 and cell.x < GameConstants.COLUMN and cell.y >= 0 and cell.y < GameConstants.ROW:
 		return cell
 	return Vector2i(-1, -1)
 

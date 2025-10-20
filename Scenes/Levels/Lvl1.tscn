@@ -32,7 +32,7 @@ sources/5 = SubResource("TileSetAtlasSource_h4611")
 script = ExtResource("1_s1ade")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(160, 160)
+position = Vector2(80, 160)
 tile_set = SubResource("TileSet_wrv6g")
 rendering_quadrant_size = 128
 format = 2
