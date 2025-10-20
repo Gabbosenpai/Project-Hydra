@@ -1,4 +1,4 @@
-extends "res://Scripts/Base Scene Script/BaseLevel.gd" 
+extends baseLevel
 
 # Musica unica per il Livello 1
 func _set_level_music():

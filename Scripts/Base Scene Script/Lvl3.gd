@@ -1,4 +1,4 @@
-extends "res://Scripts/Base Scene Script/BaseLevel.gd" 
+extends baseLevel
 
 func _set_level_music():
 	var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
