@@ -25,7 +25,6 @@ func is_in_attack_phase() -> bool:
 
 # Congela la torretta rallentando il suo rateo di fuoco
 func freeze_tower(tower: Node, duration: float, slow_factor: float = 2.0) -> void:
-	return
 	if not tower or not is_instance_valid(tower):
 		return
 	
