@@ -1,4 +1,4 @@
-extends "res://Scripts/Base Scene Script/BaseLevel.gd" 
+extends baseLevel
 
 func _set_level_music():
 	var level_music = preload("res://Assets/Sound/OST/8 BIT RPG BATTLE  Retro Game Music  No Copyright Music.mp3")

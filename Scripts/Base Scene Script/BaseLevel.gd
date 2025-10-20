@@ -1,3 +1,4 @@
+class_name baseLevel
 extends Node2D
 
 signal game_over
