@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr7wktoyca0i7"
-path="res://.godot/imported/factory 3.jpg-a9b49953274475a0f12fe5f1fb35e856.ctex"
+uid="uid://bt18v6wfhuyfn"
+path="res://.godot/imported/Texture nastro trasportare.png-13d886d2cb5a4ce623fcd4fd40b52666.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://factory backgrounds/factory 3.jpg"
-dest_files=["res://.godot/imported/factory 3.jpg-a9b49953274475a0f12fe5f1fb35e856.ctex"]
+source_file="res://sfondi fabbrica e textures nastro trasportatore/Texture nastro trasportare.png"
+dest_files=["res://.godot/imported/Texture nastro trasportare.png-13d886d2cb5a4ce623fcd4fd40b52666.ctex"]
 
 [params]
 
