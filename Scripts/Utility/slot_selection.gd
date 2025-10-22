@@ -69,7 +69,7 @@ func _on_file_3_pressed() -> void:
 	#questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
-
+#schemrata conferma cancellazione salvataggio
 func show_confirm_panel():
 	$ConfirmPanel.visible = true
 	$ConfirmPanel/Text.text = "Vuoi davvero cancellare il salvataggio nello slot %d?" % slot_to_delete
@@ -92,7 +92,7 @@ func _on_delete_3_pressed() -> void:
 	slot_to_delete = 3
 	show_confirm_panel()
 
-#gestione puslante conferma cancellazione salvataggio
+#gestione pulsante conferma cancellazione salvataggio
 func _on_yes_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = slot_to_delete
