@@ -26,8 +26,8 @@ func _ready():
 
 func _on_level_1_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
-	AudioManager.play_music(level_music)
+	#var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
+	#AudioManager.play_music(level_music)
 	#aspetta la fine del click con un breve timer
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl1.tscn")
@@ -35,8 +35,8 @@ func _on_level_1_pressed() -> void:
 #musica da scegliere
 func _on_level_2_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	var level_music = preload("res://Assets/Sound/OST/8 BIT RPG BATTLE  Retro Game Music  No Copyright Music.mp3")
-	AudioManager.play_music(level_music)
+	#var level_music = preload("res://Assets/Sound/OST/8 BIT RPG BATTLE  Retro Game Music  No Copyright Music.mp3")
+	#AudioManager.play_music(level_music)
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl2.tscn")
 # Asset Mancante

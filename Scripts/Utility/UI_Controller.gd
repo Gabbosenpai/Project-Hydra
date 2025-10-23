@@ -13,7 +13,7 @@ signal remove_mode
 @export var mute_button: Button
 @onready var button_remove = $ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
-
+var current_level
 var is_wave_active = false
 
 
@@ -23,7 +23,8 @@ func _sync_sliders_with_audio():
 	music_slider.value = AudioManager.music_volume *100
 	sfx_slider.value = AudioManager.sfx_volume * 100
 
-
+func set_current_level(level):
+	current_level = level
 
 # Attiva la modalità rimozione piante
 func _on_button_remove_pressed():
@@ -79,8 +80,7 @@ func show_game_over():
 # Ricarica il livello 1 per riprovare
 func _on_retry_button_pressed():
 	get_tree().paused = false
-	
-	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl1.tscn")
+	get_tree().change_scene_to_file(current_level)
 	
 
 # Esce al menu principale dalla schermata di game over

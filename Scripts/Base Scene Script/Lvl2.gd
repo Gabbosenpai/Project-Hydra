@@ -1,8 +1,14 @@
 extends baseLevel
 
-func _set_level_music():
-	var level_music = preload("res://Assets/Sound/OST/8 BIT RPG BATTLE  Retro Game Music  No Copyright Music.mp3")
-	AudioManager.play_music(level_music)
+var level_music = preload("res://Assets/Sound/OST/8 BIT RPG BATTLE  Retro Game Music  No Copyright Music.mp3")
+var level2 = "res://Scenes/Levels/Lvl2.tscn"
+
+func _ready():
+	super._set_level_music(level_music)
+	super.set_current_level(level2)
+	super._ready()
+	
+
 
 func _on_level_completed():
 	AudioManager.play_victory_music()

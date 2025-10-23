@@ -1,9 +1,15 @@
 extends baseLevel
 
-# Musica unica per il Livello 1
-func _set_level_music():
-	var level_music = preload("res://Assets/Sound/OST/8 BIT RPG BATTLE  Retro Game Music  No Copyright Music.mp3")
-	AudioManager.play_music(level_music)
+var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
+var level1 = "res://Scenes/Levels/Lvl1.tscn"
+
+
+func _ready():
+	
+	super._set_level_music(level_music)
+	super.set_current_level(level1)
+	super._ready()
+
 
 # Logica di sblocco: sblocca il Livello 2
 func _on_level_completed():
