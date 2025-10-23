@@ -1,8 +1,14 @@
 extends baseLevel
 
-func _set_level_music():
-	var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
-	AudioManager.play_music(level_music)
+var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
+var level4 = "res://Scenes/Levels/Lvl4.tscn"
+
+func _ready():
+	super._set_level_music(level_music)
+	super.set_current_level(level4)
+	super._ready()
+	
+	
 
 func _on_level_completed():
 	AudioManager.play_victory_music()

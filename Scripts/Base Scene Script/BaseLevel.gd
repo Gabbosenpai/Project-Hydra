@@ -10,6 +10,9 @@ signal game_over
 @export var tilemap: TileMap
 var incinerator_used_in_row: Array = [false, false, false, false, false]
 var is_game_over: bool = false 
+var OST: AudioStream
+var current_level
+
 
 func _ready():
 	# 1. Assegna il dizionario inizializzato a TurretManager
@@ -30,12 +33,18 @@ func _ready():
 	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
 	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
 	
+	AudioManager.play_music(OST)
+	
 	# Avvia la prima ondata DOPO che la griglia è stata inizializzata
 	enemy_spawner.start_wave()
-
+	
 # Implementa questo metodo in ogni livello figlio per caricare la musica unica.
-func _set_level_music():
-	push_warning("Il livello figlio non ha implementato _set_level_music(). Nessuna musica verrà riprodotta.")
+func _set_level_music(levelOST: AudioStream):
+	OST = levelOST
+	
+func set_current_level(level):
+	current_level = level
+	ui_controller.current_level=level
 	
 # Implementa questo metodo per specificare quale livello sbloccare.
 func _on_level_completed():
