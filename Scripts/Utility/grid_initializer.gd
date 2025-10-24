@@ -15,15 +15,15 @@ func _ready():
 		return
 		
 	# 1. Inizializzazione del Dizionario 'dic'
-	for x in range(GameConstants.COLUMN):
+	for x in range(1,GameConstants.COLUMN):
 		for y in range(GameConstants.ROW):
 			var pos_key = str(Vector2i(x,y))
 			dic[pos_key] = {
-				"Type" : "Grass",
+				"Type" : "Conveyor_Belt",
 				"Position" : pos_key
 			}
 			# 2. Disegna la cella base sul livello 0
 			# Assicurati che GameConstants.COLUMN e GameConstants.ROW siano disponibili globalmente o passate
-			tilemap.set_cell(0, Vector2i(x,y), 1, Vector2i(0,0), 0)
+			tilemap.set_cell(0, Vector2i(x,y), 4, Vector2i(0,0), 0)
 	
 	print("Griglia TileMap e Dizionario 'dic' inizializzati.")
