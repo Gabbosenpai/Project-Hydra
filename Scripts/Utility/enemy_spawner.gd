@@ -34,9 +34,9 @@ var is_wave_active = false
 var current_level: int = 1
 
 var waves = [
-	{ "count": 3, "interval": 1.0 },
-	{ "count": 5, "interval": 0.8 },
-	{ "count": 7, "interval": 0.6 }
+	{ "count": 3, "interval": 0.4 },
+	{ "count": 5, "interval": 0.2 },
+	{ "count": 7, "interval": 0.1 }
 ]
 
 
@@ -88,7 +88,7 @@ func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	
 	var row = randi() % GameConstants.ROW
-	var spawn_cell = Vector2i(GameConstants.COLUMN + 4, row)
+	var spawn_cell = Vector2i(GameConstants.COLUMN + 2, row)
 	var center_pos = tilemap.map_to_local(spawn_cell)
 	enemy.global_position = tilemap.to_global(center_pos)
 	enemy.riga = row
