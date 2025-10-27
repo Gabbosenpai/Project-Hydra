@@ -24,6 +24,6 @@ func _ready():
 			}
 			# 2. Disegna la cella base sul livello 0
 			# Assicurati che GameConstants.COLUMN e GameConstants.ROW siano disponibili globalmente o passate
-			tilemap.set_cell(0, Vector2i(x,y), 1, Vector2i(0,0), 0)
+			tilemap.set_cell(0, Vector2i(x,y), 0, Vector2i(0,0), 0)
 	
 	print("Griglia TileMap e Dizionario 'dic' inizializzati.")
