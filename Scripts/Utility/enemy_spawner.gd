@@ -20,11 +20,11 @@ var all_enemy_scenes = {
 
 var level_enemy_pool = {
 	1: ["romba"],
-	2: ["romba", "weed_eater_9000"],
+	2: ["weed_eater_9000"],
 	#"romba", "weed_eater_9000",
 	3: ["mecha_freezer"],
-	4: ["romba", "weed_eater_9000", "mecha_freezer", "kamikaze"],
-	5: ["romba", "weed_eater_9000", "mecha_freezer", "kamikaze"]
+	4: ["romba", "weed_eater_9000"],
+	5: ["romba" ,"mecha_freezer"]
 }
 
 var current_wave = 0
@@ -62,7 +62,7 @@ func start_wave():
 	var wave = waves[current_wave]
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
-	enemies_alive = 0
+	
 	is_wave_active = true
 
 	label_wave.text = "Ondata: " + str(current_wave + 1)
@@ -110,11 +110,12 @@ func _on_enemy_defeated():
 
 func kill_all():
 	enemies_to_spawn = 0
+	
 	for child in get_children():
 		if child.has_method("die"):
 			child.queue_free()
 			enemies_alive -= 1
-
+	
 	is_wave_active = false
 	current_wave += 1
 
@@ -161,6 +162,4 @@ func _check_wave_completion():
 		if current_wave < waves.size():
 			start_wave()
 		else:
-			victory_screen.visible = true
-			get_tree().paused = true
 			emit_signal("level_completed")

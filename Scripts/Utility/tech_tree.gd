@@ -3,6 +3,8 @@ extends Control
 
 
 var point_manager = preload("res://Scripts/Utility/point_manager.gd")
+static var total_points := 0
+
 
 
 @onready var TreeScrap: Label = $TreeScrap 
@@ -11,7 +13,7 @@ func _ready():
 	update_slot_texts()
 
 func update_slot_texts():
-	TreeScrap.text = "Risorse disponibili: %d" % point_manager.current_points
+	TreeScrap.text = "Risorse disponibili: %d" % total_points
 
 
 
@@ -49,3 +51,6 @@ func _on_next_level_button_pressed() -> void:
 	AudioManager.play_music(level_music)
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file(level_scene_path)
+
+static func add_level_points_to_total(points):
+	total_points += points

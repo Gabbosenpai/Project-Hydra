@@ -14,6 +14,7 @@ var turret_costs := {
 }
 
 static var current_points: int
+
 var current_ratio: float = 0.0 
 @export var turret_manager: Node
 @export var label_points: Label
@@ -23,7 +24,9 @@ var current_ratio: float = 0.0
 
 # Inizializza i punti correnti con quelli di partenza e aggiorna la visualizzazione del punteggio
 func _ready():
+
 	current_points = starting_points
+	
 	update_points_label()
 
 # Verifica se il giocatore ha abbastanza punti per selezionare una pianta specificata da plant_key

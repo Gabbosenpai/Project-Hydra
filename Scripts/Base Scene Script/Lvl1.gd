@@ -2,7 +2,7 @@ extends baseLevel
 
 var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
 var level1 = "res://Scenes/Levels/Lvl1.tscn"
-
+var point_manager = preload("res://Scripts/Utility/point_manager.gd")
 
 func _ready():
 	
@@ -19,4 +19,9 @@ func _on_level_completed():
 	if max_level < 2:
 		SaveManager.unlock_level(2)
 		print("Livello 2 sbloccato!")
+	
+	# Aggiungi i punti del livello al totale TechTree
+	var level_points = point_manager.current_points
+	var TechTreeScript = preload("res://Scripts/Utility/tech_tree.gd")
+	TechTreeScript.add_level_points_to_total(level_points)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/tech_tree.tscn")
