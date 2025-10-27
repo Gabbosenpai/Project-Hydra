@@ -20,4 +20,12 @@ offset_bottom = 181.0
 theme_override_font_sizes/font_size = 36
 text = "Prossimo Livello"
 
+[node name="TreeScrap" type="Label" parent="."]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 77.0
+offset_right = 1518.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 36
+
 [connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]

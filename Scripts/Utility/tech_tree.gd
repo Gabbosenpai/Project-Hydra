@@ -1,5 +1,21 @@
 extends Control
 
+
+
+var point_manager = preload("res://Scripts/Utility/point_manager.gd")
+
+
+@onready var TreeScrap: Label = $TreeScrap 
+
+func _ready():
+	update_slot_texts()
+
+func update_slot_texts():
+	TreeScrap.text = "Risorse disponibili: %d" % point_manager.current_points
+
+
+
+
 func _on_next_level_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 

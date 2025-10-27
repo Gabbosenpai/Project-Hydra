@@ -13,7 +13,7 @@ var turret_costs := {
 	"turret4": 125
 }
 
-var current_points: int
+static var current_points: int
 var current_ratio: float = 0.0 
 @export var turret_manager: Node
 @export var label_points: Label
