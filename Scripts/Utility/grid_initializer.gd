@@ -10,30 +10,32 @@ extends Node2D
 		debug_draw_grid = value
 		queue_redraw() # Chiede a Godot di chiamare _draw()
 
-# --- Costanti Assunte (Adatta se necessario) ---
-# Assumo che queste costanti esistano in uno script GameConstants.gd o siano definite qui.
-# Se la griglia è 160x160 px totali, con tile 160x160 px,
-# significa che ci sono solo 1 colonna e 1 riga (un solo tile).
-# Se la griglia ha dimensioni multiple, adatta COLUMN e ROW.
-# ESEMPIO: Se la griglia è 1600x1600 px, COLUMN = 10, ROW = 10
-const TILE_SIZE = 160 # La dimensione del tuo singolo tile in pixel (160x160)
-# Se stai usando le costanti globali, puoi rimuovere le seguenti due righe di esempio:
-# const COLUMN = 10 # Esempio
-# const ROW = 10    # Esempio
-# --- FINE Costanti Assunte ---
+
+const TILE_SIZE = 160 # La dimensione del tile in pixel (160x160)
+const FONT_SIZE = 20
 
 # Il tuo dizionario, usato per tracciare le proprietà della cella
 var dic = {} 
-
+var debug_font: SystemFont = SystemFont.new()
 # Funzione che si occupa solo di inizializzare la griglia e il dizionario.
 func _ready():
 	if not tilemap:
 		print("ERRORE: TileMap non assegnata a GridInitializer!")
 		return
 	
-	# Questo nodo deve risiedere nella stessa posizione della TileMap nel mondo
-	# per un disegno corretto, o usiamo tilemap.global_position in _draw().
-	# Per semplicità, ci affidiamo alla posizione locale e la TileMap come child/sibling.
+	var font_settings = ClassDB.instantiate("SystemFontSettings")
+	
+	# Verifica che l'istanziazione sia riuscita (prevenzione)
+	if font_settings:
+		# 2. Imposta la dimensione.
+		font_settings.set_font_size(FONT_SIZE)
+		
+		# 3. Assegna le impostazioni alla proprietà font_data.
+		debug_font.font_data = font_settings
+	else:
+		# Fallback nel caso in cui la classe non sia stata trovata
+		print("ATTENZIONE: SystemFontSettings non trovato. Usa font di default.")
+	
 		
 	# 1. Inizializzazione del Dizionario 'dic' e della TileMap
 	# Assicurati che GameConstants.COLUMN e GameConstants.ROW siano disponibili
@@ -57,40 +59,59 @@ func _draw():
 	# Disegna la griglia solo se la variabile di debug è TRUE
 	if debug_draw_grid:
 		# Colori e spessore per il debug
-		var color = Color(1.0, 0.0, 0.0, 0.7) # Linee della griglia (Rosso semi-trasparente)
+		var line_color = Color(1.0, 0.0, 0.0, 0.7)
 		var line_width = 2.0
+		var text_color = Color.YELLOW
 		
-		# Spostiamo l'origine del disegno alla posizione della TileMap.
 		var tilemap_pos = tilemap.position
 		
-		# 1. NUOVO OFFSET: Sposta l'origine di disegno a destra di 1 TILE_SIZE.
+		# NUOVO OFFSET: Sposta l'origine di disegno a destra di 1 TILE_SIZE (esclude Colonna 0)
 		var offset = tilemap_pos + Vector2(TILE_SIZE, 0)
 		
-		# 2. NUOVA DIMENSIONE: La larghezza è ora (Colonne totali - 1) * TILE_SIZE.
 		var display_columns = GameConstants.COLUMN - 1
 		var grid_width = display_columns * TILE_SIZE
-		var grid_height = GameConstants.ROW * TILE_SIZE # L'altezza rimane invariata
+		var grid_height = GameConstants.ROW * TILE_SIZE
 		
-		# --- Disegno Linee Verticali ---
-		# Il ciclo va da 0 al numero di colonne da visualizzare (display_columns)
+		# --- Linee Verticali (Inizia da Colonna 1) ---
 		for x in range(display_columns + 1):
 			var start_pos = offset + Vector2(x * TILE_SIZE, 0)
 			var end_pos = offset + Vector2(x * TILE_SIZE, grid_height)
-			draw_line(start_pos, end_pos, color, line_width)
+			draw_line(start_pos, end_pos, line_color, line_width)
 
-		# --- Disegno Linee Orizzontali ---
-		# Queste linee ora iniziano all'offset (colonna 1) e finiscono dopo (display_columns)
+		# --- Linee Orizzontali (Inizia da Colonna 1) ---
 		for y in range(GameConstants.ROW + 1):
 			var start_pos = offset + Vector2(0, y * TILE_SIZE)
 			var end_pos = offset + Vector2(grid_width, y * TILE_SIZE)
-			draw_line(start_pos, end_pos, color, line_width)
+			draw_line(start_pos, end_pos, line_color, line_width)
 			
-		# Opzionale: Disegno dei centri delle celle
-		var center_color = Color(0.0, 1.0, 1.0, 1.0) # Centri delle celle (Ciano)
+		# --- DISEGNO NUMERI COLONNA (Sopra) ---
+		for x in range(display_columns):
+			var col_index = x + 1 
+			var text = str(col_index)
+			
+			var center_x = offset.x + x * TILE_SIZE + TILE_SIZE / 2.0
+			var pos = Vector2(center_x, tilemap_pos.y - 20)
+			
+			var text_size = debug_font.get_string_size(text)
+			pos.x -= text_size.x / 2
+			
+			draw_string(debug_font,pos,text,HORIZONTAL_ALIGNMENT_CENTER,-1.0,FONT_SIZE,text_color)
+
+		# --- DISEGNO NUMERI RIGA (A Fianco) ---
+		for y in range(GameConstants.ROW):
+			var row_index = y
+			var text = str(row_index)
+			
+			var center_y = tilemap_pos.y + y * TILE_SIZE + TILE_SIZE / 2.0
+			
+			var pos = Vector2(tilemap_pos.x + TILE_SIZE - 40, center_y + FONT_SIZE / 2.0)
+			
+			draw_string(debug_font,pos,text,HORIZONTAL_ALIGNMENT_CENTER,-1.0,FONT_SIZE,text_color)
 		
-		# Il ciclo parte da 0, ma l'offset gestisce già l'esclusione della Colonna 0
-		for x in range(display_columns): # x va da 0 a display_columns - 1
+		# --- Disegno dei centri delle celle (Esclude Colonna 0) ---
+		var center_color = Color(0.0, 1.0, 1.0, 1.0)
+		
+		for x in range(display_columns):
 			for y in range(GameConstants.ROW):
-				# Il centro viene calcolato rispetto al nuovo offset
-				var cell_center = offset + Vector2(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2)
+				var cell_center = offset + Vector2(x * TILE_SIZE + TILE_SIZE / 2.0, y * TILE_SIZE + TILE_SIZE / 2.0)
 				draw_circle(cell_center, 4, center_color)
