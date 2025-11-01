@@ -39,7 +39,7 @@ func _ready():
 		
 	# 1. Inizializzazione del Dizionario 'dic' e della TileMap
 	# Assicurati che GameConstants.COLUMN e GameConstants.ROW siano disponibili
-	for x in range(GameConstants.COLUMN):
+	for x in range(1,GameConstants.COLUMN):
 		for y in range(GameConstants.ROW):
 			var pos_key = str(Vector2i(x,y))
 			dic[pos_key] = {
