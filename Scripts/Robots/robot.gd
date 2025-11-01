@@ -58,7 +58,7 @@ func move(delta) -> void:
 	position.x -= speed * delta 
 	robot_sprite.play("move") 
 	# Controllo: se il nemico è arrivato alla colonna x <= 0
-	if position.x <= 50:
+	if position.x <= 150:
 		var main_scene = get_tree().current_scene
 		if main_scene.has_method("enemy_reached_base"):
 			# Passa l'istanza del robot al main level
