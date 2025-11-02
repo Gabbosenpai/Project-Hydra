@@ -56,7 +56,7 @@ func _ready():
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
 	
 	if initial_delay_timer:
-		initial_delay_timer.wait_time = 1.0 # Ritardo di 15 secondi
+		initial_delay_timer.wait_time = 15.0 # Ritardo di 15 secondi
 		initial_delay_timer.start()
 		print("Ritardo iniziale di 15 secondi avviato...")
 	else:
