@@ -16,25 +16,11 @@ const FONT_SIZE = 20
 
 # Il tuo dizionario, usato per tracciare le proprietà della cella
 var dic = {} 
-var debug_font: SystemFont = SystemFont.new()
 # Funzione che si occupa solo di inizializzare la griglia e il dizionario.
 func _ready():
 	if not tilemap:
 		print("ERRORE: TileMap non assegnata a GridInitializer!")
 		return
-	
-	var font_settings = ClassDB.instantiate("SystemFontSettings")
-	
-	# Verifica che l'istanziazione sia riuscita (prevenzione)
-	if font_settings:
-		# 2. Imposta la dimensione.
-		font_settings.set_font_size(FONT_SIZE)
-		
-		# 3. Assegna le impostazioni alla proprietà font_data.
-		debug_font.font_data = font_settings
-	else:
-		# Fallback nel caso in cui la classe non sia stata trovata
-		print("ATTENZIONE: SystemFontSettings non trovato. Usa font di default.")
 	
 		
 	# 1. Inizializzazione del Dizionario 'dic' e della TileMap
@@ -92,10 +78,15 @@ func _draw():
 			var center_x = offset.x + x * TILE_SIZE + TILE_SIZE / 2.0
 			var pos = Vector2(center_x, tilemap_pos.y - 20)
 			
-			var text_size = debug_font.get_string_size(text)
+			var default_font = ThemeDB.get_default_theme().default_font
+			# Se il default_font non è null, usalo per ottenere la dimensione
+			var text_size = Vector2.ZERO
+			if default_font:
+				text_size = default_font.get_string_size(text, HORIZONTAL_ALIGNMENT_CENTER, -1.0, FONT_SIZE)
+			
 			pos.x -= text_size.x / 2
 			
-			draw_string(debug_font,pos,text,HORIZONTAL_ALIGNMENT_CENTER,-1.0,FONT_SIZE,text_color)
+			draw_string(default_font, pos, text, HORIZONTAL_ALIGNMENT_CENTER, -1.0, FONT_SIZE, text_color)
 
 		# --- DISEGNO NUMERI RIGA (A Fianco) ---
 		for y in range(GameConstants.ROW):
@@ -106,7 +97,9 @@ func _draw():
 			
 			var pos = Vector2(tilemap_pos.x + TILE_SIZE - 40, center_y + FONT_SIZE / 2.0)
 			
-			draw_string(debug_font,pos,text,HORIZONTAL_ALIGNMENT_CENTER,-1.0,FONT_SIZE,text_color)
+			var default_font = ThemeDB.get_default_theme().default_font
+			
+			draw_string(default_font,pos,text,HORIZONTAL_ALIGNMENT_CENTER,-1.0,FONT_SIZE,text_color)
 		
 		# --- Disegno dei centri delle celle (Esclude Colonna 0) ---
 		var center_color = Color(0.0, 1.0, 1.0, 1.0)
