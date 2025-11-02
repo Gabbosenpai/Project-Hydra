@@ -111,3 +111,30 @@ func get_turret_key_from_scene(scene: PackedScene) -> String:
 		if turret_manager.turret_scenes.has(key) and turret_manager.turret_scenes[key] == scene:
 			return key
 	return ""
+
+static func get_total_points_for_current_slot() -> int:
+	var slot = SaveManager.current_slot
+	var save_path = "user://tech_tree_slot_%d.save" % slot
+	if !FileAccess.file_exists(save_path):
+		return 0
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	if file == null:
+		return 0
+	var points = file.get_var()
+	file.close()
+	return points
+
+static func save_total_points_for_current_slot(points: int) -> void:
+	var slot = SaveManager.current_slot
+	var save_path = "user://tech_tree_slot_%d.save" % slot
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file == null:
+		print("Errore salvataggio punti TechTree!")
+		return
+	file.store_var(points)
+	file.close()
+
+static func add_level_points_to_total(points: int) -> void:
+	var current_total = get_total_points_for_current_slot()
+	current_total += points
+	save_total_points_for_current_slot(current_total)

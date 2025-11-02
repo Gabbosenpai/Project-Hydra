@@ -20,6 +20,5 @@ func _on_level_completed():
 		print("Livello 5 sbloccato!")
 	# Aggiungi i punti del livello al totale TechTree
 	var level_points = point_manager.current_points
-	var TechTreeScript = preload("res://Scripts/Utility/tech_tree.gd")
-	TechTreeScript.add_level_points_to_total(level_points)
+	point_manager.add_level_points_to_total(level_points)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/tech_tree.tscn")
