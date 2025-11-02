@@ -1,7 +1,7 @@
 extends Node
 
-@export var starting_points: int = 5000
-@export var max_points: int = 5000
+@export var starting_points: int = 100
+@export var max_points: int = 500000
 @export var refund_percentage: float = 0.5 # Rimborso del 50% per distruzione
 
 #dizionario dei costi delle piante il nome deve combaciare con quello di plant manager

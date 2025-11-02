@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bxuc1rbxy0lfx"]
+[gd_scene load_steps=75 format=3 uid="uid://bxuc1rbxy0lfx"]
 
 [ext_resource type="Script" uid="uid://sjcpbe5vt2vm" path="res://Scripts/Robots/mecha_freezer.gd" id="1_3okb4"]
 [ext_resource type="Texture2D" uid="uid://yg7vbmcy4be7" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer Attack.png" id="2_3okb4"]
@@ -489,6 +489,9 @@ size = Vector2(41, 55)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvec"]
 size = Vector2(1.5, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikaim"]
+size = Vector2(140.80002, 20)
+
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_3okb4")
@@ -511,3 +514,10 @@ shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-20, -25.5, 39, 53)
+
+[node name="IceStorm" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceStorm"]
+position = Vector2(-95.2, -2.9802315e-08)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_ikaim")
