@@ -233,11 +233,12 @@ action_mode = 0
 [node name="TurretManager" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_gogke")]
 tilemap = NodePath("../TileMap")
 
-[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "label_wave_center", "animation_player", "victory_screen") instance=ExtResource("9_5nqqt")]
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "label_wave_center", "animation_player", "victory_screen") instance=ExtResource("9_5nqqt")]
 tilemap = NodePath("../TileMap")
 label_wave = NodePath("../UI/LabelWave")
 label_enemies = NodePath("../UI/LabelEnemies")
 wave_timer = NodePath("../WaveTimer")
+initial_delay_timer = NodePath("InitialDelayTimer")
 label_wave_center = NodePath("../UI/LabelWaveCenter")
 animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/VictoryScreen")
@@ -270,3 +271,4 @@ debug_draw_grid = true
 
 [editable path="UI"]
 [editable path="GameOverUI"]
+[editable path="EnemySpawner"]
