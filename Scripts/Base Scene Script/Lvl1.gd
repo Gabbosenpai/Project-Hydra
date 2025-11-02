@@ -4,6 +4,7 @@ var level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer
 var level1 = "res://Scenes/Levels/Lvl1.tscn"
 var point_manager = preload("res://Scripts/Utility/point_manager.gd")
 
+
 func _ready():
 	
 	super._set_level_music(level_music)
