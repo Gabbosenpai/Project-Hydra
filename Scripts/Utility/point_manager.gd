@@ -25,7 +25,6 @@ var current_ratio: float = 0.0
 func _ready():
 
 	current_points = starting_points
-	
 	update_points_label()
 
 # Verifica se il giocatore ha abbastanza punti per selezionare una pianta specificata da plant_key
@@ -135,6 +134,7 @@ static func save_total_points_for_current_slot(points: int) -> void:
 	file.store_var(points)
 	file.close()
 
+#funzione per aggiornare i punti del techtree per lo slot corrente
 static func add_level_points_to_total(points: int) -> void:
 	var current_total = get_total_points_for_current_slot()
 	current_total += points
