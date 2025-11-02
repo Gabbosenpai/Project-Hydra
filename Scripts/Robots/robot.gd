@@ -20,7 +20,8 @@ var jamming : bool
 var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
-var points_on_defeat : int
+@export var max_points_on_defeat: int # ⬅️ NUOVO: Valore massimo di punti ottenibili da questo robot
+@export var scrap_drop_chance: float # ⬅️ NUOVO: Probabilità (0.0 a 1.0) di guadagnare punti alla morte
 
 # Segnali Custom
 signal enemy_defeated  # Emesso quando il robot muore
@@ -40,11 +41,12 @@ func _ready() -> void:
 	robot_sprite.animation_finished.connect(_on_robot_sprite_animation_finished)
 
 # Inizializzo variabili per tipologia di robot
-func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int,robot_points_on_defeat: int):
+func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int, robot_max_points: int, robot_drop_chance: float):
 	max_health = robot_max_health
 	speed = robot_speed
 	damage = robot_damage
-	points_on_defeat = robot_points_on_defeat
+	max_points_on_defeat = robot_max_points
+	scrap_drop_chance = robot_drop_chance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -97,9 +99,19 @@ func jamming_debuff(amount: float, duration: float) -> void:
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
 	# ✅ Trova il PointManager e aggiungi i punti
+	# 1. Calcolo Punti Casuali (Probabilità e Ammontare)
+	var points_to_earn = 0
+	
+	# Se il valore randf (0.0 a 1.0) è minore o uguale alla probabilità, guadagna punti
+	if randf() <= scrap_drop_chance:
+		# Punti casuali tra 1 e il valore massimo configurato
+		points_to_earn = randi_range(1, max_points_on_defeat) 
+	
+	# 2. Assegna i punti (solo se ne ha guadagnati)
 	var point_manager = get_tree().get_first_node_in_group("PointManager")
-	if point_manager and point_manager.has_method("earn_points"):
-		point_manager.earn_points(points_on_defeat) # ⬅️ NUOVO
+	if points_to_earn > 0 and point_manager and point_manager.has_method("earn_points"):
+		point_manager.earn_points(points_to_earn)
+
 	robot_sprite.z_as_relative = false # Mette il robot morente in secondo piano
 	robot_sprite.stop()
 	robot_sprite.play("death")
