@@ -32,11 +32,13 @@ func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventScreenTouch and event.pressed:
 		collect_scrap()
 
-# Funzione dopo il clic del mouse fa aumentare i punti che si hanno per posizionare le torrette e poi dealloca la scrap   
+# Funzione dopo il clic del mouse fa aumentare i punti che si hanno per posizionare le torrette e poi dealloca la scrap
 func collect_scrap():
-	if point_manager:
-		point_manager.current_points += scrap_value
-		point_manager.update_points_label()
+	# ✅ Utilizziamo la funzione earn_points() del PointManager
+	if point_manager and point_manager.has_method("earn_points"):
+		# NOTA: Assicurati che 'point_manager' sia un nodo che ha il metodo earn_points
+		point_manager.earn_points(scrap_value)
+		print("Scrap raccolto, punti guadagnati: ", scrap_value)
 	queue_free()
 
 # Funzione che dealloca la scrap a tempo scaduto se non si clicca su di essa
