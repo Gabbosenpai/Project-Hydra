@@ -76,10 +76,10 @@ func reset_progress() -> void:
 		var dir = DirAccess.open("user://")
 		if dir and dir.file_exists(save_path.get_file()):
 			var err = dir.remove(save_path.get_file())
-			#OK è il "valore" restitutio da remove in caso di rimozione con successo
+			#OK è il "valore" restituito da remove in caso di rimozione con successo
 			if err != OK:
 				print("Errore durante la cancellazione del file di salvataggio: ", err)
-	# 🔹 Cancella anche i punti del Tech Tree per questo slot
+	# 🔹 Cancella anche i punti del Tech Tree per lo slot corrente
 	var tech_tree_path = "user://tech_tree_slot_%d.save" % current_slot
 	if FileAccess.file_exists(tech_tree_path):
 		var dir2 = DirAccess.open("user://")
@@ -88,6 +88,6 @@ func reset_progress() -> void:
 			if err2 != OK:
 				print("Errore durante la cancellazione dei punti TechTree: ", err2)
 
-	# Reimposta i progressi base
+	# reset dati
 	max_unlocked_level = 1
 	save_progress()
