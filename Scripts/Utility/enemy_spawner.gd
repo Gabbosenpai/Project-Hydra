@@ -7,6 +7,7 @@ signal wave_completed(wave_number)
 @export var label_wave: Label
 @export var label_enemies: Label
 @export var wave_timer: Timer
+@export var initial_delay_timer: Timer
 @export var label_wave_center: Label
 @export var animation_player: AnimationPlayer
 @export var victory_screen: Control
@@ -53,7 +54,18 @@ func _ready():
 		current_level = 1
 
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
+	
+	if initial_delay_timer:
+		initial_delay_timer.wait_time = 15.0 # Ritardo di 15 secondi
+		initial_delay_timer.start()
+		print("Ritardo iniziale di 15 secondi avviato...")
+	else:
+		# Se il timer non è impostato nell'editor, avvia subito l'ondata
+		start_wave()
 
+func _on_initial_delay_timeout():
+	print("Ritardo iniziale terminato. Avvio prima ondata.")
+	start_wave()
 
 func start_wave():
 	if is_wave_active or current_wave >= waves.size():

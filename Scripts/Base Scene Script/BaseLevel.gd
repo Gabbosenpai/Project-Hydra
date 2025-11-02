@@ -35,9 +35,6 @@ func _ready():
 	
 	AudioManager.play_music(OST)
 	
-	# Avvia la prima ondata DOPO che la griglia è stata inizializzata
-	enemy_spawner.start_wave()
-	
 # Implementa questo metodo in ogni livello figlio per caricare la musica unica.
 func _set_level_music(levelOST: AudioStream):
 	OST = levelOST
