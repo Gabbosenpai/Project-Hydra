@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var play_button = $VBoxContainer/PlayButton
 @onready var quit_button = $VBoxContainer/QuitButton
 @onready var credits_button = $VBoxContainer/CreditsButton
-
+@onready var encyclopedia_button = $VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxContainer
 
@@ -62,3 +62,8 @@ func _on_languages_button_pressed() -> void:
 	#AudioManager.play_sfx(AudioManager.button_click_sfx)
 	#confirm_box.visible = false
 	#main_menu.visible = true
+
+
+func _on_encyclopedia_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	get_tree().change_scene_to_file("res://Scenes/Encyclopedia.tscn")
