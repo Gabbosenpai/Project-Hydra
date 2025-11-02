@@ -1,6 +1,7 @@
 extends Node
 
-@export var starting_points: int = 5000
+@export var starting_points: int = 100
+
 @export var max_points: int = 5000
 @export var refund_percentage: float = 0.5 # Rimborso del 50% per distruzione
 
@@ -25,7 +26,6 @@ var current_ratio: float = 0.0
 func _ready():
 
 	current_points = starting_points
-	
 	update_points_label()
 
 # Verifica se il giocatore ha abbastanza punti per selezionare una pianta specificata da plant_key
