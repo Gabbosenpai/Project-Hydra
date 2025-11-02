@@ -2,7 +2,6 @@ extends Node
 
 @export var starting_points: int = 5000
 @export var max_points: int = 5000
-@export var regen_amount: int = 25
 @export var refund_percentage: float = 0.5 # Rimborso del 50% per distruzione
 
 #dizionario dei costi delle piante il nome deve combaciare con quello di plant manager
@@ -19,7 +18,7 @@ var current_ratio: float = 0.0
 @export var turret_manager: Node
 @export var label_points: Label
 
-@onready var regen_timer: Timer = $RegenTimer
+
 @export var PointsBar: ColorRect
 
 # Inizializza i punti correnti con quelli di partenza e aggiorna la visualizzazione del punteggio
@@ -77,11 +76,13 @@ func _on_turret_removed(_cell_key, turret_instance, is_destruction: bool = false
 			current_points += refund_amount
 			update_points_label()
 
-# Funzione chiamata quando il timer di rigenerazione scade
-# Aggiunge una quantità fissa di punti e aggiorna l'etichetta
-func _on_regen_timer_timeout():
-	current_points += regen_amount
-	update_points_label()
+func earn_points(amount: int):
+	if amount > 0:
+		current_points += amount
+		# Assicurati di non superare il massimo
+		current_points = min(current_points, max_points) 
+		update_points_label()
+		print("Punti guadagnati: ", amount, " (Totale: ", current_points, ")")
 
 # Aggiorna il testo dell'etichetta che mostra i punti attuali al giocatore
 func update_points_label():

@@ -4,6 +4,7 @@ extends Robot
 @export var mf_max_health : int = 300
 @export var mf_speed : float = 25
 @export var mf_damage : int = 10
+@export var mf_on_defeat : int = 100
 
 # Controllo se non sia in fase d'attacco tramite un controllo delle animazioni
 # in questo modo sono sicuro che le faccia tutte prima di tornare a muoversi
@@ -14,7 +15,7 @@ func can_move():
 func _ready() -> void:
 	# Chiamo prima set_up e poi il ready della superclasse per evitare di
 	# inizializzare un robot con valori nulli
-	super.robot_set_up(mf_max_health, mf_speed, mf_damage)
+	super.robot_set_up(mf_max_health, mf_speed, mf_damage, mf_on_defeat)
 	super._ready()
 
 # Se il robot è in fase d'attacco, ovvero sta facendo certe animazioni, ritorna

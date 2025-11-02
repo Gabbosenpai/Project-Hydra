@@ -244,7 +244,6 @@ victory_screen = NodePath("../UI/VictoryScreen")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("10_tf0td")]
 starting_points = 100
-regen_amount = 500
 turret_manager = NodePath("../TurretManager")
 label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
 PointsBar = NodePath("../UI/TurretSelector/PointsBar")

@@ -20,6 +20,7 @@ var jamming : bool
 var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
+var points_on_defeat : int
 
 # Segnali Custom
 signal enemy_defeated  # Emesso quando il robot muore
@@ -39,10 +40,11 @@ func _ready() -> void:
 	robot_sprite.animation_finished.connect(_on_robot_sprite_animation_finished)
 
 # Inizializzo variabili per tipologia di robot
-func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int):
+func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int,robot_points_on_defeat: int):
 	max_health = robot_max_health
 	speed = robot_speed
 	damage = robot_damage
+	points_on_defeat = robot_points_on_defeat
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -94,6 +96,10 @@ func jamming_debuff(amount: float, duration: float) -> void:
 
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
+	# ✅ Trova il PointManager e aggiungi i punti
+	var point_manager = get_tree().get_first_node_in_group("PointManager")
+	if point_manager and point_manager.has_method("earn_points"):
+		point_manager.earn_points(points_on_defeat) # ⬅️ NUOVO
 	robot_sprite.z_as_relative = false # Mette il robot morente in secondo piano
 	robot_sprite.stop()
 	robot_sprite.play("death")
