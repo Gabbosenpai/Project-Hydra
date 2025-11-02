@@ -1,11 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://7oa7wd5nl0lo"]
+[gd_scene load_steps=11 format=3 uid="uid://7oa7wd5nl0lo"]
 
 [ext_resource type="Texture2D" uid="uid://cdbxvtyylngje" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0001.png" id="1_bkkqn"]
 [ext_resource type="Script" uid="uid://cchj7a1ftxled" path="res://Scripts/Bullets/bolt_bullet.gd" id="1_fxfpm"]
+[ext_resource type="Texture2D" uid="uid://tdlu1p2fpxmw" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Explosion.png" id="2_2ai5s"]
 [ext_resource type="Texture2D" uid="uid://dspncuwxmjv7i" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0002.png" id="2_fxfpm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2sv5"]
+atlas = ExtResource("2_2ai5s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcsaf"]
+atlas = ExtResource("2_2ai5s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfr8t"]
+atlas = ExtResource("2_2ai5s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqine"]
+atlas = ExtResource("2_2ai5s")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_khhbv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2sv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcsaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfr8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqine")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_bkkqn")
@@ -31,9 +65,7 @@ metadata/_edit_group_ = true
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_khhbv")
-animation = &"travel"
-frame = 1
-frame_progress = 0.17208095
+animation = &"explosion"
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

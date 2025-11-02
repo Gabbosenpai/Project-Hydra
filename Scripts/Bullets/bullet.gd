@@ -19,6 +19,7 @@ func _ready() -> void:
 	# Connetto segnali
 	vis_on_screen_not.screen_exited.connect(_on_visible_on_screen_notifier_2d_screen_exited)
 	self.area_entered.connect(_on_area_entered)
+	bullet_sprite.animation_finished.connect(_on_bullet_sprite_animation_finished)
 
 func bullet_set_up(bullet_speed : float, bullet_damage : int) -> void:
 	speed = bullet_speed
@@ -44,6 +45,11 @@ func _on_area_entered(area: Area2D):
 	var enemy_node = area
 	# Controlla se il nodo genitore appartiene al gruppo "Robot" e ha il metodo "take_damage"
 	if enemy_node.is_in_group("Robot") and enemy_node.has_method("take_damage"):
+		hit = true
 		enemy_node.take_damage(damage) #Se nell'area fa danno al nemico
-		# Dopo aver colpito il nemico, il proiettile si distrugge
+		bullet_sprite.play("explosion")
+
+func _on_bullet_sprite_animation_finished() -> void:
+	var current_animation = bullet_sprite.animation
+	if (current_animation == "explosion"):
 		queue_free()
