@@ -166,6 +166,13 @@ func spawn_scrap_on_death() -> void:
 	if points_to_earn > 0 and scrap_scene:
 		var scrap_instance = scrap_scene.instantiate()
 		
+		#Trova il nodo Sprite all'interno dell'istanza
+		var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
+	
+		#Ingrandisce lo sprite
+		if scrap_sprite:
+			scrap_sprite.scale = Vector2(2.0, 2.0)
+		
 		# Aggiungi al nodo genitore (di solito Main/Level)
 		get_parent().call_deferred("add_child", scrap_instance)
 
