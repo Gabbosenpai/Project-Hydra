@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=5 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Encyclopedia.gd" id="1_kfvci"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_8svmq"]
+[ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="3_7v4ab"]
+[ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="4_viucg"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -36,23 +38,60 @@ text = "Torna al menù
 layout_mode = 0
 offset_left = 611.0
 offset_top = 479.0
-offset_right = 839.0
+offset_right = 836.0
 offset_bottom = 747.0
+focus_mode = 0
+flat = true
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="BoltShooter"]
 layout_mode = 0
-offset_left = 11.0
 offset_top = -1.0
 offset_right = 222.0
-offset_bottom = 253.0
+offset_bottom = 264.0
 texture = ExtResource("2_8svmq")
+
+[node name="WeedEater" type="Button" parent="."]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 458.0
+offset_right = 1193.0
+offset_bottom = 726.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="WeedEater"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 222.0
+offset_bottom = 264.0
+texture = ExtResource("3_7v4ab")
+
+[node name="WeedEater2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1385.0
+offset_top = 463.0
+offset_right = 1610.0
+offset_bottom = 731.0
+focus_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="WeedEater2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 222.0
+offset_bottom = 264.0
+texture = ExtResource("4_viucg")
 
 [node name="MonsterDescription" type="Label" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="BoltShooter" to="." method="_on_bolt_shooter_pressed"]
+[connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
+[connection signal="pressed" from="WeedEater2" to="." method="_on_weed_eater_2_pressed"]
