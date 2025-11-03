@@ -2,8 +2,8 @@ class_name FireHydrant
 extends Robot
 
 @export var fh_max_health : int = 100
-@export var fh_speed : float = 35
-@export var fh_damage : int = 25
+@export var fh_speed : float = 45
+@export var fh_damage : int = 10
 
 # Called when the node enters the scene tree for pthe first time.
 func _ready() -> void:

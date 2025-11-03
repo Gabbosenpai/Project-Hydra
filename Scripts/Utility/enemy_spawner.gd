@@ -38,8 +38,9 @@ var current_level: int = 1
 
 var waves = [
 	{ "count": 3, "interval": 0.4 },
-	{ "count": 5, "interval": 0.2 },
-	{ "count": 50, "interval": 0.5 }
+	{ "count": 6, "interval": 0.6 },
+	{ "count": 12, "interval": 0.8 },
+	{ "count": 24, "interval": 1.0 }
 ]
 
 
