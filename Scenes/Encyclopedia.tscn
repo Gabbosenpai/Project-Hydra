@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_kfvci")
 
 [node name="Titolo" type="Button" parent="."]
@@ -46,6 +47,12 @@ offset_top = -1.0
 offset_right = 222.0
 offset_bottom = 253.0
 texture = ExtResource("2_8svmq")
+
+[node name="MonsterDescription" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="BoltShooter" to="." method="_on_bolt_shooter_pressed"]
