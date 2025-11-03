@@ -22,6 +22,7 @@ var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
 @export var max_points_on_defeat: int # ⬅️ NUOVO: Valore massimo di punti ottenibili da questo robot
 @export var scrap_drop_chance: float # ⬅️ NUOVO: Probabilità (0.0 a 1.0) di guadagnare punti alla morte
+@export var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
 
 # Segnali Custom
 signal enemy_defeated  # Emesso quando il robot muore
@@ -98,20 +99,7 @@ func jamming_debuff(amount: float, duration: float) -> void:
 
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
-	# ✅ Trova il PointManager e aggiungi i punti
-	# 1. Calcolo Punti Casuali (Probabilità e Ammontare)
-	var points_to_earn = 0
-	
-	# Se il valore randf (0.0 a 1.0) è minore o uguale alla probabilità, guadagna punti
-	if randf() <= scrap_drop_chance:
-		# Punti casuali tra 1 e il valore massimo configurato
-		points_to_earn = randi_range(1, max_points_on_defeat) 
-	
-	# 2. Assegna i punti (solo se ne ha guadagnati)
-	var point_manager = get_tree().get_first_node_in_group("PointManager")
-	if points_to_earn > 0 and point_manager and point_manager.has_method("earn_points"):
-		point_manager.earn_points(points_to_earn)
-
+	spawn_scrap_on_death()
 	robot_sprite.z_as_relative = false # Mette il robot morente in secondo piano
 	robot_sprite.stop()
 	robot_sprite.play("death")
@@ -154,3 +142,35 @@ func _on_robot_sprite_animation_finished() -> void:
 		if target.has_method("take_damage"):
 			target.take_damage(damage)
 		robot_sprite.play("attack")
+
+#Genera la risorsa Scrap con un valore di punti casuale.
+func spawn_scrap_on_death() -> void:
+	# 1. Calcolo Punti Casuali (Probabilità e Ammontare)
+	var points_to_earn = 0
+	
+	# Se il valore randf (0.0 a 1.0) è minore o uguale alla probabilità, guadagna punti
+	if randf() <= scrap_drop_chance:
+		# Punti casuali tra 1 e il valore massimo configurato
+		points_to_earn = randi_range(1, max_points_on_defeat)
+	
+	# 2. Istanzia la Scrap e assegna il valore
+	if points_to_earn > 0 and scrap_scene:
+		var scrap_instance = scrap_scene.instantiate()
+		
+		# Aggiungi al nodo genitore (di solito Main/Level)
+		get_parent().call_deferred("add_child", scrap_instance)
+
+		# Assegna la posizione globale (dove è morto il robot)
+		scrap_instance.global_position = global_position
+		
+		# Assegna il valore dei punti calcolato
+		scrap_instance.scrap_value = points_to_earn
+		
+		# Collega il point manager
+		var pm = get_tree().get_first_node_in_group("PointManager")
+		scrap_instance.point_manager = pm
+		
+		# Facciamo in modo che lo scrap sia sotto gli sprite dei robot in movimento (z_index 4 o meno)
+		scrap_instance.z_index = 1 
+		
+		print("Scrap (", points_to_earn, ") generato alla morte del Robot.")
