@@ -128,8 +128,6 @@ func spawn_enemy():
 func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-
-	# ❌ RIMOSSO: Non chiamare più _check_wave_completion() qui.
 	
 	# ✅ AGGIUNTO: Controllo di vittoria finale.
 	if current_wave >= waves.size() and enemies_alive <= 0:
