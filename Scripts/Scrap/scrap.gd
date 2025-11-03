@@ -43,6 +43,11 @@ func collect_scrap():
 
 # Funzione che dealloca la scrap a tempo scaduto se non si clicca su di essa
 func _on_lifetime_timeout():
+	#ASSEGNA I PUNTI PRIMA DI DEALLOCARE (Raccolta automatica per timeout)
+	if point_manager and point_manager.has_method("earn_points"):
+		# Invece di farla "sparire e basta", la consideriamo "raccolta automaticamente"
+		point_manager.earn_points(scrap_value)
+		print("Scrap scaduto, punti assegnati automaticamente: ", scrap_value)
 	queue_free()
 
 # Funzione che si occupa dell'animazione dello spawn della scrap
