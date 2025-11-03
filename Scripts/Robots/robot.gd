@@ -20,8 +20,8 @@ var jamming : bool
 var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
-@export var max_points_on_defeat: int # ⬅️ NUOVO: Valore massimo di punti ottenibili da questo robot
-@export var scrap_drop_chance: float # ⬅️ NUOVO: Probabilità (0.0 a 1.0) di guadagnare punti alla morte
+var max_points_on_defeat: int  = 25 # Valore max pts ottenibili da questo robot
+var scrap_drop_chance: float = 0.05 # Probabilità (0.0 a 1.0) drop alla morte
 
 # Segnali Custom
 signal enemy_defeated  # Emesso quando il robot muore
@@ -31,7 +31,9 @@ func _ready() -> void:
 	# Inizializzo variabili per tutti i tipi di robot
 	current_health = max_health
 	violence = false
+	randomize_speed()
 	starting_speed = speed
+	print("Robot Starting Speed:", starting_speed)
 	jamming = false
 	jamming_sources = 0
 	target = null
@@ -41,12 +43,10 @@ func _ready() -> void:
 	robot_sprite.animation_finished.connect(_on_robot_sprite_animation_finished)
 
 # Inizializzo variabili per tipologia di robot
-func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int, robot_max_points: int, robot_drop_chance: float):
+func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int):
 	max_health = robot_max_health
 	speed = robot_speed
 	damage = robot_damage
-	max_points_on_defeat = robot_max_points
-	scrap_drop_chance = robot_drop_chance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,6 +56,13 @@ func _process(delta: float) -> void:
 # Ogni Robot potrebbe avere motivi diversi per muoversi e/o fermarsi
 @abstract
 func can_move() -> bool;
+
+# Ogni Robot varia leggermente la sua velocità così che si evitino effetti di
+# sovrapposizione visivamente odiosi
+func randomize_speed():
+	var random_offset = randi_range(-5, +5)
+	print("Robot offset:", random_offset)
+	speed += random_offset
 
 # Movimento del robot
 func move(delta) -> void:
