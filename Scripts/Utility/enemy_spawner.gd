@@ -12,19 +12,19 @@ signal wave_completed(wave_number)
 @export var label_wave_center: Label
 @export var animation_player: AnimationPlayer
 @export var victory_screen: Control
+@export var inter_wave_delay = 5.0 
+@export var next_wave_delay_timer: Timer 
 
 var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
 	"we9k": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
 	"mf": preload("res://Scenes/Robots/mecha_freezer.tscn"),
 	"fh": preload("res://Scenes/Robots/fire_hydrant.tscn")
-	
 }
 
 var level_enemy_pool = {
 	1: ["romba"],
 	2: ["we9k"],
-	#"romba", "weed_eater_9000",
 	3: ["mf"],
 	4: ["fh"],
 	5: ["romba","we9k","mf","fh"]
@@ -39,7 +39,7 @@ var current_level: int = 1
 var waves = [
 	{ "count": 3, "interval": 0.4 },
 	{ "count": 5, "interval": 0.2 },
-	{ "count": 50, "interval": 0.5 }
+	{ "count": 7, "interval": 0.5 }
 ]
 
 
@@ -58,11 +58,10 @@ func _ready():
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
 	
 	if initial_delay_timer:
-		initial_delay_timer.wait_time = grace_time # Ritardo
+		initial_delay_timer.wait_time = grace_time
 		initial_delay_timer.start()
 		print("Ritardo iniziale di 15 secondi avviato...")
 	else:
-		# Se il timer non è impostato nell'editor, avvia subito l'ondata
 		start_wave()
 
 func _on_initial_delay_timeout():
@@ -91,7 +90,19 @@ func _on_wave_timer_timeout():
 	if enemies_to_spawn > 0:
 		spawn_enemy()
 		enemies_to_spawn -= 1
-		wave_timer.start()
+		
+		if enemies_to_spawn > 0:
+			# Se ci sono ancora nemici, riavvia il timer di spawn
+			wave_timer.start()
+		else:
+			# Se l'ultimo nemico è stato spawnato, avvia la transizione
+			print("Spawn completato. Avvio la transizione ondata.")
+			_check_wave_completion()
+		
+
+func _on_next_wave_delay_timeout():
+	print("Ritardo tra ondate terminato. Avvio prossima ondata.")
+	start_wave() 
 
 
 func spawn_enemy():
@@ -118,8 +129,14 @@ func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 
-	# ✅ CHIAMA LA FUNZIONE DI CHECK
-	_check_wave_completion()
+	# ❌ RIMOSSO: Non chiamare più _check_wave_completion() qui.
+	
+	# ✅ AGGIUNTO: Controllo di vittoria finale.
+	if current_wave >= waves.size() and enemies_alive <= 0:
+		victory_screen.visible = true
+		if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
+			AudioManager.play_victory_music()
+		emit_signal("level_completed")
 
 
 func kill_all():
@@ -143,37 +160,44 @@ func kill_all():
 			AudioManager.play_victory_music()
 		emit_signal("level_completed")
 
-# 🔥 Nuovo: Distrugge tutti i robot in una riga specifica (usato dall'Inceneritore)
-# 🔥 Nuovo: Distrugge tutti i robot in una riga specifica (usato dall'Inceneritore)
+
 func destroy_robots_in_row(row: int):
 	var killed_count = 0
 	
 	for child in get_children():
 		if child.is_in_group("Robot") and child.has_method("die"):
 			if child.riga == row:
-				# Disconnetti per evitare doppio decremento da segnale
 				child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
-				
 				child.queue_free()
-				enemies_alive -= 1 # AGGIORNAMENTO DEL CONTEGGIO
+				enemies_alive -= 1 
 				killed_count += 1
 				
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	
-	# ✅ CHIAMA LA FUNZIONE DI CHECK DOPO LA DISTRUZIONE
-	_check_wave_completion() 
+	# ❌ RIMOSSO: Non chiamare più _check_wave_completion() qui.
 	
 	print("🔥 %d robot inceneriti in riga %d. Nemici rimanenti: %d" % [killed_count, row, enemies_alive])
+	
+	# ✅ AGGIUNTO: Controllo di vittoria finale.
+	if current_wave >= waves.size() and enemies_alive <= 0:
+		victory_screen.visible = true
 
-# ✅ NUOVA FUNZIONE: Controlla se l'ondata è finita e avanza
+
 func _check_wave_completion():
-	if enemies_alive <= 0 and enemies_to_spawn <= 0:
+	# Questa funzione viene chiamata SOLO quando lo spawn è terminato (enemies_to_spawn = 0).
+	if enemies_to_spawn <= 0 and is_wave_active:
 		is_wave_active = false
 		current_wave += 1
-		# Segnale emesso a fine ondata
+		
 		emit_signal("wave_completed", current_wave)
 
 		if current_wave < waves.size():
-			start_wave()
+			if next_wave_delay_timer:
+				print("Spawn completato. Avvio timer di ritardo di %s secondi." % inter_wave_delay)
+				next_wave_delay_timer.wait_time = inter_wave_delay
+				next_wave_delay_timer.start()
+			else:
+				start_wave()
 		else:
-			emit_signal("level_completed")
+			# L'ultima ondata ha finito lo spawn.
+			print("Ultima ondata spawnata. Attendo sconfitta nemici per vittoria.")

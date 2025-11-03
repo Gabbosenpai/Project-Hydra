@@ -4,9 +4,12 @@
 
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_4l55s")
-grace_time = 1.0
 
 [node name="InitialDelayTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="NextWaveDelayTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="InitialDelayTimer" to="." method="_on_initial_delay_timeout"]
+[connection signal="timeout" from="NextWaveDelayTimer" to="." method="_on_next_wave_delay_timeout"]
