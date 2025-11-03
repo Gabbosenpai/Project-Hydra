@@ -4,6 +4,7 @@
 
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_4l55s")
+grace_time = 1.0
 
 [node name="InitialDelayTimer" type="Timer" parent="."]
 one_shot = true

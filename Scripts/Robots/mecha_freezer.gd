@@ -4,9 +4,6 @@ extends Robot
 @export var mf_max_health : int = 300
 @export var mf_speed : float = 25
 @export var mf_damage : int = 10
-@export var mf_on_defeat : int = 100
-@export var mf_max_points : int = 100 # ⬅️ NUOVO: Ad esempio, massimo 100 punti
-@export var mf_drop_chance : float = 0.3 # ⬅️ NUOVO: 30% di possibilità
 
 @onready var ice_storm : Area2D = $IceStorm
 @onready var ice_storm_collision : CollisionShape2D = $IceStorm/CollisionShape2D
@@ -22,7 +19,7 @@ func can_move():
 func _ready() -> void:
 	# Chiamo prima set_up e poi il ready della superclasse per evitare di
 	# inizializzare un robot con valori nulli
-	super.robot_set_up(mf_max_health, mf_speed, mf_damage, mf_max_points, mf_drop_chance)
+	super.robot_set_up(mf_max_health, mf_speed, mf_damage)
 	super._ready()
 	ice_storm.area_entered.connect(_on_ice_storm_area_entered)
 

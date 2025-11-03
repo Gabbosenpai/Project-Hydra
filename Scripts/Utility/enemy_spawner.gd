@@ -3,6 +3,7 @@ extends Node
 signal level_completed
 signal wave_completed(wave_number)
 
+@export var grace_time = 15.0
 @export var tilemap: TileMap
 @export var label_wave: Label
 @export var label_enemies: Label
@@ -14,18 +15,19 @@ signal wave_completed(wave_number)
 
 var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
-	"weed_eater_9000": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
-	"mecha_freezer": preload("res://Scenes/Robots/mecha_freezer.tscn"),
-	"kamikaze": preload("res://Scenes/Robots/kamikaze.tscn")
+	"we9k": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
+	"mf": preload("res://Scenes/Robots/mecha_freezer.tscn"),
+	"fh": preload("res://Scenes/Robots/fire_hydrant.tscn")
+	
 }
 
 var level_enemy_pool = {
 	1: ["romba"],
-	2: ["weed_eater_9000"],
+	2: ["we9k"],
 	#"romba", "weed_eater_9000",
-	3: ["mecha_freezer"],
-	4: ["romba", "weed_eater_9000"],
-	5: ["romba" ,"mecha_freezer"]
+	3: ["mf"],
+	4: ["fh"],
+	5: ["romba","we9k","mf","fh"]
 }
 
 var current_wave = 0
@@ -37,7 +39,7 @@ var current_level: int = 1
 var waves = [
 	{ "count": 3, "interval": 0.4 },
 	{ "count": 5, "interval": 0.2 },
-	{ "count": 7, "interval": 0.1 }
+	{ "count": 50, "interval": 0.5 }
 ]
 
 
@@ -56,7 +58,7 @@ func _ready():
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
 	
 	if initial_delay_timer:
-		initial_delay_timer.wait_time = 15.0 # Ritardo di 15 secondi
+		initial_delay_timer.wait_time = grace_time # Ritardo
 		initial_delay_timer.start()
 		print("Ritardo iniziale di 15 secondi avviato...")
 	else:

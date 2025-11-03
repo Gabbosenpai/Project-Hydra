@@ -2,11 +2,9 @@ class_name WeedEater9000
 extends Robot
 
 @export var we9k_max_health : int = 75 
-@export var we9k_speed : float = 100 
+@export var we9k_speed : float = 75 
 @export var we9k_damage : int = 2 
 @export var block_chance : float = 0.33 # probabilità di bloccare (0.33 = 33%)
-@export var we9k_max_points : int = 50 # ⬅️ NUOVO: Ad esempio, massimo 50 punti
-@export var we9k_drop_chance : float = 0.5 # ⬅️ NUOVO: 50% di possibilità
 
 var deflected : bool = false # Bool usata per fermare il robot al blocco
 
@@ -14,7 +12,7 @@ var deflected : bool = false # Bool usata per fermare il robot al blocco
 func _ready() -> void:
 	# Chiamo prima set_up e poi il ready della superclasse per evitare di
 	# inizializzare un robot con valori nulli
-	super.robot_set_up(we9k_max_health, we9k_speed, we9k_damage, we9k_max_points, we9k_drop_chance)
+	super.robot_set_up(we9k_max_health, we9k_speed, we9k_damage)
 	super._ready()
 
 # Un Weed Eater 9000 si ferma anche quando sta bloccando un proiettile 
