@@ -4,6 +4,7 @@
 
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_4l55s")
+inter_wave_delay = 30.0
 
 [node name="InitialDelayTimer" type="Timer" parent="."]
 one_shot = true
