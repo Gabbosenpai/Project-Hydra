@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgc7ym7kh65nn"
-path="res://.godot/imported/Firehydrant Walk.png-eebff35bc4f75a2cba5f10d78bfc81e3.ctex"
+uid="uid://c6btgc4hhy1ww"
+path="res://.godot/imported/Firehydrant Attack.png-fb677391a519ba8174077cf972415f8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant Walk.png"
-dest_files=["res://.godot/imported/Firehydrant Walk.png-eebff35bc4f75a2cba5f10d78bfc81e3.ctex"]
+source_file="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant Attack.png"
+dest_files=["res://.godot/imported/Firehydrant Attack.png-fb677391a519ba8174077cf972415f8f.ctex"]
 
 [params]
 
