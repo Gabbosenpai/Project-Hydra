@@ -233,7 +233,7 @@ action_mode = 0
 [node name="TurretManager" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("9_dwil4")]
 tilemap = NodePath("../TileMap")
 
-[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "label_wave_center", "animation_player", "victory_screen") instance=ExtResource("10_3xa6o")]
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "label_wave_center", "animation_player", "victory_screen", "next_wave_delay_timer") instance=ExtResource("10_3xa6o")]
 tilemap = NodePath("../TileMap")
 label_wave = NodePath("../UI/LabelWave")
 label_enemies = NodePath("../UI/LabelEnemies")
@@ -242,6 +242,7 @@ initial_delay_timer = NodePath("InitialDelayTimer")
 label_wave_center = NodePath("../UI/LabelWaveCenter")
 animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/VictoryScreen")
+next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_k0qwe")]
 turret_manager = NodePath("../TurretManager")
