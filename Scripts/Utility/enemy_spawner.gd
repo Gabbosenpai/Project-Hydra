@@ -102,7 +102,6 @@ func _on_wave_timer_timeout():
 
 func _on_next_wave_delay_timeout():
 	print("Ritardo tra ondate terminato. Avvio prossima ondata.")
-	# ✅ AVANZAMENTO A TEMPO (Lato "Timer scaduto" dell'OR)
 	start_wave()
 
 
@@ -129,8 +128,6 @@ func spawn_enemy():
 func _on_enemy_defeated():
 	enemies_alive -= 1
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	
-	# ✅ AVANZAMENTO ANTICIPATO (Lato "Nemici sconfitti" dell'OR)
 	check_enemies_for_next_wave()
 
 
@@ -173,8 +170,6 @@ func destroy_robots_in_row(row: int):
 	label_enemies.text = "Nemici:" + str(enemies_alive)
 	
 	print("🔥 %d robot inceneriti in riga %d. Nemici rimanenti: %d" % [killed_count, row, enemies_alive])
-	
-	# ✅ Nuova chiamata per gestire l'avanzamento anticipato dopo un'uccisione di massa
 	check_enemies_for_next_wave()
 
 
