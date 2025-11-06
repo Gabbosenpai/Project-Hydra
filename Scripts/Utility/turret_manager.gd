@@ -177,7 +177,12 @@ func handle_turret_death(turret_instance: Node2D):
 
 
 # --- 🔥 Nuova funzione: spostamento torrette dopo ogni ondata ---
-func move_turrets_back():
+func move_turrets_back(_wave_number: int):
+	if _wave_number == 1:
+		print("Salto Movimento Torrette: Ondata 1 è la prima ondata. Non devono indietreggiare le torrette.")
+		return
+
+	
 	if turrets.is_empty():
 		print("Nessuna torretta da spostare.")
 		return
