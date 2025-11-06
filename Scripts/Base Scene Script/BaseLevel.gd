@@ -138,6 +138,6 @@ func flash_sprite_red(node_with_sprite):
 
 # Logica di default per la fine dell'ondata. 
 func _on_wave_completed(_wave_number):
-	print("Ondata completata — sposto indietro le torrette.")
+	print("Ondata completata ", _wave_number, " — sposto indietro le torrette.")
 	if turret_manager:
-		turret_manager.move_turrets_back()
+		turret_manager.move_turrets_back(_wave_number)
