@@ -1,27 +1,44 @@
 extends Control
 
-@onready var desc = $MonsterDescription
+@onready var desc_panel = $MonsterDescriptionPanel
+@onready var desc_label = $MonsterDescriptionPanel/MonsterDescription
 
 # Dizionario dei testi per ogni mostro
 var monster_texts = {
-	"bolt_shooter": "Questo è il Bolt Shooter!",
+	"bolt_shooter": "Questo è il Bolt Shooter! "+
+	"Il suo corpo simile all’elettricità può introdursi "+
+	"in alcuni apparecchi, di cui prende il controllo "+
+	"per combinare guai.",
+	
 	"weed_eater": "Questo è il Weed Eater!",
 	"jammer": "Questo è il Jammer!"
 }
 
 func ready():
-	desc.visible = false
-
+	desc_panel.visible = false
+	
+	
 # Mostra la descrizione del mostro
 func show_description(monster_name: String):
 	if monster_name in monster_texts:
-		desc.text = monster_texts[monster_name]
-		desc.visible = true
-		#desc.position = get_viewport_rect().size / 2 - desc.rect_size / 2
+		desc_label.text = monster_texts[monster_name]
+		desc_panel.modulate.a = 0.0
+		desc_panel.visible = true
+
+		# Aspetta un frame per calcolare bene la dimensione
+		await get_tree().process_frame
+
+		# Centra il pannello sullo schermo
+		desc_panel.position = (get_viewport_rect().size - desc_panel.size) / 2
+
+		# Effetto fade-in morbido
+		var tween = create_tween()
+		tween.tween_property(desc_panel, "modulate:a", 1.0, 0.3)
+
 
 # Nasconde la descrizione
 func hide_description():
-	desc.visible = false
+	desc_panel.visible = false
 
 func _on_back_to_menu_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -39,8 +56,6 @@ func _unhandled_input(event):
 
 func _on_weed_eater_pressed() -> void:
 	show_description("weed_eater")
-
-
 
 
 func _on_weed_eater_2_pressed() -> void:
