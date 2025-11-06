@@ -181,13 +181,13 @@ func move_turrets_back(_wave_number: int):
 	if _wave_number == 1:
 		print("Salto Movimento Torrette: Ondata 1 è la prima ondata. Non devono indietreggiare le torrette.")
 		return
+
 	
 	if turrets.is_empty():
 		print("Nessuna torretta da spostare.")
 		return
 
 	var new_turrets = {}
-	var turrets_to_incinerate = [] # Array per tracciare le torrette in colonna 0
 
 	# 1. Fase di Spostamento e Istruzione Torrette da Incenerire
 	for old_cell in turrets.keys():
@@ -198,34 +198,28 @@ func move_turrets_back(_wave_number: int):
 			
 			var new_pos = tilemap.to_global(tilemap.map_to_local(new_cell))
 			var tween = create_tween()
-			
-			# NON usiamo 'await', avviamo l'animazione e proseguiamo subito
-			tween.tween_property(turret_instance, "global_position", new_pos, 0.3) 
+			tween.tween_property(turret_instance, "global_position", new_pos, 0.3)
 
-			if new_cell.x < 1:
+			if new_cell.x < 1: 
 				# 🛑 Torretta destinata alla Colonna 0 (Inceneritore)
-				turrets_to_incinerate.append(turret_instance)
-				# Non aggiungiamo la torretta a new_turrets, viene incenerita
+				
+				# **CHIAMATA ASINCRONA:** Avvia il processo ritardato, non attendere.
+				# Questo permette a tutte le altre torrette di muoversi senza blocco.
+				_incinerate_with_delay(turret_instance, old_cell, tween)
+				
+				# NON aggiungere a new_turrets (viene rimossa dal dizionario principale)
 			else:
 				# ✅ Caso di Spostamento (Colonna 2 -> Colonna 1, ecc.)
 				
 				# Aggiungere la torretta al nuovo dizionario con la NUOVA cella
 				new_turrets[new_cell] = turret_instance
-				
-				# Aggiorniamo la riga/colonna interna della torretta se necessario (dipende dalla sua implementazione)
-				if turret_instance.has_method("set_riga"):
-					turret_instance.set_riga(new_cell.y)
 		else:
 			print("ATTENZIONE: Trovata istanza torretta non valida in cella: ", old_cell)
 	
 	# 2. Sostituisci il vecchio dizionario con quello delle torrette sopravvissute
 	turrets = new_turrets
 	
-	print("✅ Tutte le torrette hanno iniziato a muoversi indietro di una cella.")
-	
-	# 3. Avvia il processo di incenerimento per tutte le torrette in Colonna 0
-	for turret_instance in turrets_to_incinerate:
-		_incinerate_with_delay(turret_instance)
+	print("✅ Tutte le torrette sono state spostate indietro di una cella. Le torrette in colonna 0 stanno per essere incenerite...")
 
 # 🔥 Nuova funzione: distrugge la torretta in colonna 0 (posizione inceneritore)
 func destroy_turret_at_incinerator_pos(row_y: int):
@@ -260,20 +254,22 @@ func destroy_all_turrets_in_row(row_y: int):
 	print("🔥 Tutte le %d torrette in riga %d sono state incenerite." % [to_destroy.size(), row_y])
 
 # 🔥 NUOVA FUNZIONE: Gestisce l'attesa e la distruzione di una singola torretta
-func _incinerate_with_delay(turret_instance: Node2D):
-	# 1. Non aspettiamo qui il tween, l'animazione di movimento è già partita!
-	
-	var delay_seconds = 0.5 # Ritardo dell'inceneritore
+func _incinerate_with_delay(turret_instance: Node2D, old_cell: Vector2i, tween: Tween):
+	var delay_seconds = 1.0 # Ritardo dell'inceneritore
 
-	# 2. Avvia il timer per il ritardo (per simulare il tempo nell'inceneritore)
+	# 1. Aspetta che l'animazione a colonna 0 sia finita
+	await tween.finished
+	
+	# 2. Avvia il timer per il ritardo
 	var timer = get_tree().create_timer(delay_seconds)
 	await timer.timeout
 	
 	# 3. Distruzione finale
 	if is_instance_valid(turret_instance):
-		print("🔥 Incenerita torretta dopo il ritardo.")
+		print("🔥 Incenerita torretta in riga %d dopo il ritardo." % old_cell.y)
 		
-		# È una distruzione: is_destruction = true
-		# Nota: qui stiamo usando Vector2i.ZERO come chiave fittizia perché l'istanza è già stata rimossa da 'turrets'
-		emit_signal("turret_removed", Vector2i.ZERO, turret_instance, true) 
+		# Non serve rimuoverla da 'turrets' perché è già stata rimossa nella fase 1
+		# (turrets è stato sovrascritto da new_turrets che non la includeva).
+		
+		emit_signal("turret_removed", old_cell, turret_instance, true)
 		turret_instance.queue_free()
