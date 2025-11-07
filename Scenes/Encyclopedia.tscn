@@ -48,6 +48,7 @@ flat = true
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="BoltShooter"]
+texture_filter = 1
 layout_mode = 0
 offset_top = -1.0
 offset_right = 222.0
@@ -65,13 +66,14 @@ flat = true
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="WeedEater"]
+texture_filter = 1
 layout_mode = 0
 offset_top = -1.0
 offset_right = 222.0
 offset_bottom = 264.0
 texture = ExtResource("3_7v4ab")
 
-[node name="WeedEater2" type="Button" parent="."]
+[node name="Jammer" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1385.0
 offset_top = 463.0
@@ -80,7 +82,8 @@ offset_bottom = 731.0
 focus_mode = 0
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="WeedEater2"]
+[node name="TextureRect" type="TextureRect" parent="Jammer"]
+texture_filter = 1
 layout_mode = 0
 offset_top = -1.0
 offset_right = 222.0
@@ -94,16 +97,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 263.0
+offset_top = 126.0
+offset_right = -222.0
+offset_bottom = -86.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_viucg")
 
 [node name="MonsterDescription" type="Label" parent="MonsterDescriptionPanel"]
 layout_mode = 0
-offset_left = 152.0
-offset_top = 403.0
-offset_right = 1859.0
-offset_bottom = 685.0
+offset_left = 157.0
+offset_top = 267.0
+offset_right = 1308.0
+offset_bottom = 549.0
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -112,4 +119,4 @@ autowrap_mode = 3
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="BoltShooter" to="." method="_on_bolt_shooter_pressed"]
 [connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
-[connection signal="pressed" from="WeedEater2" to="." method="_on_weed_eater_2_pressed"]
+[connection signal="pressed" from="Jammer" to="." method="_on_jammer_pressed"]

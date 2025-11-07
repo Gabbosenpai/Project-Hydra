@@ -10,8 +10,16 @@ var monster_texts = {
 	"in alcuni apparecchi, di cui prende il controllo "+
 	"per combinare guai.",
 	
-	"weed_eater": "Questo è il Weed Eater!",
-	"jammer": "Questo è il Jammer!"
+	"weed_eater": "Questo è il Weed Eater! "+
+	"due ruote motrici, tre lame che fanno ognuna 800 rpm "+
+	"e sembrano anche dei bei baffoni utili per tosare l'erba con stile!"
+	
+	
+	
+	,
+	"jammer": "Questo è il Jammer! "+
+	"avevamo progettato questo nuovo tipo di jammer ma le misure "+
+	"invece che in centimetri le abbiamo scritte in metri!"
 }
 
 func ready():
@@ -56,7 +64,6 @@ func _unhandled_input(event):
 
 func _on_weed_eater_pressed() -> void:
 	show_description("weed_eater")
-
-
-func _on_weed_eater_2_pressed() -> void:
+	
+func _on_jammer_pressed() -> void:
 	show_description("jammer")
