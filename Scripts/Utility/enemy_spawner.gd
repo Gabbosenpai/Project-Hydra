@@ -72,16 +72,22 @@ func _on_initial_delay_timeout():
 func start_wave():
 	if is_wave_active or current_wave >= waves.size():
 		return
+		
+	current_wave += 1
+	
+	if current_wave > 1: # Emetti il segnale solo dalla seconda ondata in poi
+		emit_signal("wave_completed", current_wave)
+		print("✅ Segnale 'wave_completed' emesso (Inizio Onda ", current_wave, ").")
 
-	var wave = waves[current_wave]
+	var wave = waves[current_wave - 1]
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
 	
 	is_wave_active = true
 
-	label_wave.text = "Ondata: " + str(current_wave + 1)
+	label_wave.text = "Ondata: " + str(current_wave)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	label_wave_center.text = "ONDATA " + str(current_wave + 1)
+	label_wave_center.text = "ONDATA " + str(current_wave)
 	label_wave_center.visible = true
 	animation_player.play("wave_intro")
 	wave_timer.start()
@@ -178,9 +184,6 @@ func _check_wave_completion():
 	# Questa funzione viene chiamata SOLO quando lo spawn è terminato (enemies_to_spawn = 0).
 	if enemies_to_spawn <= 0 and is_wave_active:
 		is_wave_active = false
-		current_wave += 1
-		
-		emit_signal("wave_completed", current_wave)
 		
 		if current_wave < waves.size():
 			if next_wave_delay_timer:
