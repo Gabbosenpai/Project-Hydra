@@ -4,3 +4,4 @@
 
 [node name="PointManager" type="Node" groups=["PointManager"]]
 script = ExtResource("1_iv7p8")
+starting_points = 500000

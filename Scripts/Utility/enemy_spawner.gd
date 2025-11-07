@@ -107,6 +107,7 @@ func _on_wave_timer_timeout():
 		
 
 func _on_next_wave_delay_timeout():
+	current_wave += 1
 	print("Ritardo tra ondate terminato. Avvio prossima ondata.")
 	start_wave()
 
@@ -186,13 +187,15 @@ func _check_wave_completion():
 		is_wave_active = false
 		
 		if current_wave < waves.size():
+			if enemies_alive <= 0:
+				check_enemies_for_next_wave()
+				return
+				
 			if next_wave_delay_timer:
 				print("Spawn completato. Avvio timer di ritardo di %s secondi." % inter_wave_delay)
 				next_wave_delay_timer.wait_time = inter_wave_delay
 				next_wave_delay_timer.start()
-			
-			# Controlla immediatamente se i nemici sono già zero per avvio anticipato
-			check_enemies_for_next_wave()
+				
 		else:
 			print("Ultima ondata spawnata. Attendo sconfitta nemici per vittoria.")
 			# L'ultima ondata è stata spawnata, chiamiamo il check per la vittoria
