@@ -99,12 +99,13 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	speed = max(starting_speed/3.0, speed - amount)
 	print("New Speed: ", speed)
 	# Timer per ripristinare la velocità
-	var timer = get_tree().create_timer(duration)
-	await timer.timeout
-	jamming_sources -= 1
-	if(jamming_sources <= 0):
-		speed = starting_speed
-		jamming = false
+	if get_tree() != null:
+		var timer = get_tree().create_timer(duration)
+		await timer.timeout
+		jamming_sources -= 1
+		if(jamming_sources <= 0):
+			speed = starting_speed
+			jamming = false
 
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
