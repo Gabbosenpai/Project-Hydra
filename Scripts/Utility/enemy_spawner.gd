@@ -72,11 +72,6 @@ func _on_initial_delay_timeout():
 func start_wave():
 	if is_wave_active or current_wave >= waves.size():
 		return
-	
-	var wave_number = current_wave + 1 
-	emit_signal("wave_completed", wave_number) 
-	
-	print("🚀 Avvio Onda ", wave_number, ". Scorrimento torrette innescato.")
 
 	var wave = waves[current_wave]
 	enemies_to_spawn = wave["count"]
@@ -107,7 +102,6 @@ func _on_wave_timer_timeout():
 		
 
 func _on_next_wave_delay_timeout():
-	current_wave += 1
 	print("Ritardo tra ondate terminato. Avvio prossima ondata.")
 	start_wave()
 
@@ -152,13 +146,12 @@ func kill_all():
 	for child in children_to_kill:
 		child.queue_free()
 	
-	enemies_alive = 0
+	enemies_alive = max(0, enemies_alive)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	
 	# Se l'onda era attiva, forziamo il passaggio alla successiva (incrementando current_wave e avviando il timer)
 	if is_wave_active:
-		is_wave_active = false
-		wave_timer.stop()
+		_check_wave_completion()
 	
 	# La funzione di check gestirà l'avvio immediato dell'onda successiva o la vittoria (poiché enemies_alive = 0).
 	check_enemies_for_next_wave()
@@ -185,17 +178,18 @@ func _check_wave_completion():
 	# Questa funzione viene chiamata SOLO quando lo spawn è terminato (enemies_to_spawn = 0).
 	if enemies_to_spawn <= 0 and is_wave_active:
 		is_wave_active = false
+		current_wave += 1
+		
+		emit_signal("wave_completed", current_wave)
 		
 		if current_wave < waves.size():
-			if enemies_alive <= 0:
-				check_enemies_for_next_wave()
-				return
-				
 			if next_wave_delay_timer:
 				print("Spawn completato. Avvio timer di ritardo di %s secondi." % inter_wave_delay)
 				next_wave_delay_timer.wait_time = inter_wave_delay
 				next_wave_delay_timer.start()
-				
+			
+			# Controlla immediatamente se i nemici sono già zero per avvio anticipato
+			check_enemies_for_next_wave()
 		else:
 			print("Ultima ondata spawnata. Attendo sconfitta nemici per vittoria.")
 			# L'ultima ondata è stata spawnata, chiamiamo il check per la vittoria
@@ -210,7 +204,6 @@ func check_enemies_for_next_wave():
 			print("Avvio prossima ondata anticipato: tutti i nemici sconfitti!")
 			
 		if current_wave < waves.size():
-			current_wave += 1 
 			start_wave()
 		else:
 			# Gestione vittoria finale
