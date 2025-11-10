@@ -49,5 +49,7 @@ func _on_next_level_button_pressed() -> void:
 			return
 
 	AudioManager.play_music(level_music)
-	await get_tree().create_timer(0.1).timeout
+	#await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file(level_scene_path)
+
+var pinco: Node

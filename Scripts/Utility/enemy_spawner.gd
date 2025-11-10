@@ -37,10 +37,10 @@ var is_wave_active = false
 var current_level: int = 1
 
 var waves = [
-	{ "count": 3, "interval": 0.4 },
-	{ "count": 6, "interval": 0.6 },
-	{ "count": 12, "interval": 0.8 },
-	{ "count": 24, "interval": 1.0 }
+	{ "count": 13, "interval": 0.4 },
+	{ "count": 16, "interval": 0.6 },
+	{ "count": 19, "interval": 0.8 },
+	{ "count": 22, "interval": 1.0 }
 ]
 
 
@@ -142,6 +142,8 @@ func kill_all():
 	# Forziamo la fine dello spawn e l'eliminazione dei nemici.
 	enemies_to_spawn = 0
 	
+	
+	
 	var children_to_kill = []
 	for child in get_children():
 		if child.has_method("die"):
@@ -157,7 +159,9 @@ func kill_all():
 	
 	# Se l'onda era attiva, forziamo il passaggio alla successiva (incrementando current_wave e avviando il timer)
 	if is_wave_active:
-		_check_wave_completion()
+		is_wave_active = false
+		wave_timer.stop()
+		#_check_wave_completion()
 	
 	# La funzione di check gestirà l'avvio immediato dell'onda successiva o la vittoria (poiché enemies_alive = 0).
 	check_enemies_for_next_wave()
@@ -211,6 +215,7 @@ func check_enemies_for_next_wave():
 		else:
 			# Gestione vittoria finale
 			victory_screen.visible = true
+			
 			if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
 				AudioManager.play_victory_music()
 			emit_signal("level_completed")
