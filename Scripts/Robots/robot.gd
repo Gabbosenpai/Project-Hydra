@@ -15,6 +15,7 @@ var speed: float
 var damage: int
 var max_health: int
 var violence: bool # Se true, il robot inizia ad attaccare!
+var isDead: bool # Ci aiuta ad evitare che un robot "muoia" più volte
 var starting_speed: float 
 var jamming : bool
 var jamming_sources: int
@@ -40,6 +41,7 @@ func _ready() -> void:
 	jamming = false
 	jamming_sources = 0
 	target = null
+	isDead = false
 	# Connetto segnali
 	tower_detector.area_entered.connect(_on_tower_detector_area_entered)
 	tower_detector.area_exited.connect(_on_tower_detector_area_exited)
@@ -109,6 +111,12 @@ func jamming_debuff(amount: float, duration: float) -> void:
 
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
+	# Controllo per evitare di fare chiamate multiple di die() in caso di molti 
+	# proiettili in viaggio verso il robot -> evito che venga registrata più 
+	# volte la morte dello stesso robot dato che set_deferred non è istantaneo
+	if isDead:
+		return
+	isDead = true
 	spawn_scrap_on_death()
 	robot_sprite.z_as_relative = false # Mette il robot morente in secondo piano
 	robot_sprite.stop()
