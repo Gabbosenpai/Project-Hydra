@@ -14,6 +14,7 @@ var robots_coming : Array # Array con i robot identificati come bersaglio
 var armed : bool # Se true, la torretta spara
 var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
 var tower_current_health : int
+var recharge_time : float
 var max_health : int
 var shoot_sfx : AudioStream
 var BULLET: PackedScene
@@ -30,16 +31,20 @@ func _ready() -> void:
 	armed = false
 	robots_coming = []
 	tower_current_health = max_health
+	reload_timer.wait_time = recharge_time
+	reload_timer.one_shot = true
 	# Connetto segnali
 	tower_sprite.animation_finished.connect(_on_tower_sprite_animation_finished)
 	reload_timer.timeout.connect(_on_reload_timer_timeout)
 
 # Inizializzo variabili per tipologia di torretta
 func tower_set_up(tower_max_health : int, tower_bullet : PackedScene, 
-		tower_shoot_sfx : AudioStream):
+		tower_recharge_time: float, tower_shoot_sfx : AudioStream):
 	max_health = tower_max_health
 	BULLET = tower_bullet
+	recharge_time = tower_recharge_time
 	shoot_sfx = tower_shoot_sfx
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float):
