@@ -121,3 +121,23 @@ func _draw():
 			for y in range(GameConstants.ROW):
 				var cell_center = offset + Vector2(x * TILE_SIZE + TILE_SIZE / 2.0, y * TILE_SIZE + TILE_SIZE / 2.0)
 				draw_circle(cell_center, 4, center_color)
+
+func update_conveyors_phase(phase: int):
+	# Itera solo sulle colonne che contengono conveyor (da 1 a COLUMN-1)
+	for x in range(1, GameConstants.COLUMN):
+		for y in range(GameConstants.ROW):
+			
+			var source_id: int
+			
+			# Utilizza la fase (0 o 1) per invertire la parità e scambiare i tile
+			if (x + y + phase) % 2 == 0:
+				# Se la condizione è VERA, usa il tile Scuro
+				source_id = 0
+			else:
+				# Se la condizione è FALSA, usa il tile Chiaro
+				source_id = 2
+				
+			# Ridisegna la cella, aggiornando solo il Source ID
+			tilemap.set_cell(0, Vector2i(x, y), source_id, Vector2i(0,0), 0)
+			
+	print("Conveyor belts aggiornati alla fase: ", phase)
