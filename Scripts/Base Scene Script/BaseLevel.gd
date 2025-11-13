@@ -20,7 +20,7 @@ var active_shift_rows: Array = []
 # Variabili per le luci intermittenti
 var blackout_light_timer: Timer = null
 const LIGHT_FLASH_DURATION: float = 1.0
-const LIGHT_FLASH_INTERVAL: float = 15.0
+const LIGHT_FLASH_INTERVAL: float = 2.0
 
 # Variabile per tracciare i nodi overlay di blackout (il "buio")
 var blackout_dark_overlays: Array[ColorRect] = [] 
@@ -41,6 +41,7 @@ func _ready():
 		
 	if current_level == "res://Scenes/Levels/Lvl5.tscn":
 		is_blackout_level = true
+		enemy_spawner.is_blackout_level = true
 		_init_blackout_lights()
 		_create_blackout_light_nodes()
 	
