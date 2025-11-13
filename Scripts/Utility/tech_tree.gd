@@ -3,7 +3,7 @@ extends Control
 
 
 var point_manager = preload("res://Scripts/Utility/point_manager.gd")
-
+var bolt_shooter = preload("res://Scripts/Towers/bolt_shooter.gd")
 
 
 
@@ -14,6 +14,9 @@ func _ready():
 
 func update_slot_texts():
 	TreeScrap.text = "Risorse disponibili: %d" % point_manager.get_total_points_for_current_slot()
+
+
+
 
 
 
@@ -53,3 +56,30 @@ func _on_next_level_button_pressed() -> void:
 	get_tree().change_scene_to_file(level_scene_path)
 
 var pinco: Node
+
+
+
+	
+
+
+func _on_back_to_menu_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+
+#funzione di  prova
+#aumentiamo la velocita di fuoco del bolt shooter
+#per ora non c'è un limite se non i punti ma andrà
+#cambiata la condizione
+func _on_upgrade_button_pressed() -> void:
+
+	var current_total = point_manager.get_total_points_for_current_slot()
+
+	if current_total >= 10:
+		current_total -= 10
+		point_manager.save_total_points_for_current_slot(current_total)
+		TreeScrap.text = "Risorse disponibili: %d" % current_total
+
+		bolt_shooter.bs_recharge_time -= 0.2
+		print("Velocità di fuoco aumentata! Nuovo recharge_time: ", bolt_shooter.bs_recharge_time)
+	else:
+		print("Punti insufficienti per upgrade")
