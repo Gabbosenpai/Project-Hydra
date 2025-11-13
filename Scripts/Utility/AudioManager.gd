@@ -1,6 +1,6 @@
 extends Node
 
-const GLOBAL_VOLUME_FACTOR: float = 0.02
+const GLOBAL_VOLUME_FACTOR: float = 0.01
 
 #variabile per evitare di inizializzare più volte
 var initialized: bool = false
@@ -107,8 +107,10 @@ func toggle_music_mute() -> void:
 		music_player.volume_db = linear_to_db(0.0)
 		sfx_player.volume_db = linear_to_db(0.0)
 	else:
-		music_player.volume_db = linear_to_db(music_volume)
-		sfx_player.volume_db = linear_to_db(sfx_volume)
+		music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
+		sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_VOLUME_FACTOR)
+		
+	
 # Cambia la musica
 func play_music(music_stream: AudioStream) -> void:
 	if music_player and (music_player.stream != music_stream or !music_player.playing):
