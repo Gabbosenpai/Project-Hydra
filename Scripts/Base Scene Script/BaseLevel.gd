@@ -22,8 +22,10 @@ var blackout_light_timer: Timer = null
 const LIGHT_FLASH_DURATION: float = 1.0
 const LIGHT_FLASH_INTERVAL: float = 15.0
 
-#variabile per tracciare i nodi luce
-var blackout_lights: Array[ColorRect] = []
+# Variabile per tracciare i nodi overlay di blackout (il "buio")
+var blackout_dark_overlays: Array[ColorRect] = [] 
+# Nuova variabile per tracciare i nodi luce veri e propri (il "flash")
+var blackout_flash_lights: Array[ColorRect] = []
 
 
 func _ready():
@@ -173,35 +175,53 @@ func _on_wave_completed(_wave_number):
 		turret_manager.move_turrets_back(_wave_number)
 
 func _init_blackout_lights():
-	# Inizializza il timer se siamo in LvL5
+	# Inizializza il timer
 	blackout_light_timer = Timer.new()
 	blackout_light_timer.wait_time = LIGHT_FLASH_INTERVAL
 	blackout_light_timer.autostart = true
 	blackout_light_timer.timeout.connect(_on_blackout_light_timer_timeout)
 	add_child(blackout_light_timer)
 	
-	# Simula l'illuminazione iniziale (se non è subito buio)
-	_toggle_blackout_lights(true)
+	# Assicurati che le luci siano SPENTE (buio) all'inizio
+	_toggle_blackout_lights(false) # <-- Chiamata aggiunta per stato iniziale corretto
+	
+	print("Inizializzazione Blackout: La zona è inizialmente buia (Overlay visibile).")
 
 func _on_blackout_light_timer_timeout():
-	# 1. Attiva le luci per LIGHT_FLASH_DURATION secondi
-	_toggle_blackout_lights(true)
+	# 1. Accendi le luci (dark_overlay invisibile, flash_light visibile)
+	_toggle_blackout_lights(true) 
+	
+	# 2. Aspetta la durata del flash (1 secondo)
 	await get_tree().create_timer(LIGHT_FLASH_DURATION).timeout
 	
-	# 2. Disattiva le luci
+	# 3. Spegni le luci (dark_overlay visibile, flash_light invisibile)
 	_toggle_blackout_lights(false)
 	
 
 #Funzione per accendere/spegnere le luci
-func _toggle_blackout_lights(should_be_visible: bool):
-	for light_rect in blackout_lights:
-		if is_instance_valid(light_rect):
-			light_rect.visible = should_be_visible
-	
-	# Opzionale: Aggiungi un Overlay Grafico Globale per scurire l'area non illuminata
-	# (Richiederebbe l'aggiunta di un nodo ColorRect/CanvasModulate sopra l'intero gioco, ma è più complesso)
-	
-	print("🚨 Luci Blackout: ", "ACCESE" if visible else "SPENTE")
+func _toggle_blackout_lights(should_be_lights_on: bool): # Rinominiamo per chiarezza
+	if should_be_lights_on:
+		# Quando le luci sono ACCESE:
+		# - Oscuramento (dark_overlays) diventa invisibile
+		# - Flash di luce (flash_lights) diventa visibile
+		for dark_overlay in blackout_dark_overlays:
+			if is_instance_valid(dark_overlay):
+				dark_overlay.visible = false
+		for flash_light in blackout_flash_lights:
+			if is_instance_valid(flash_light):
+				flash_light.visible = true
+		print("🚨 Luci Blackout: ACCESE")
+	else:
+		# Quando le luci sono SPENTE (Blackout Attivo):
+		# - Oscuramento (dark_overlays) diventa visibile
+		# - Flash di luce (flash_lights) diventa invisibile
+		for dark_overlay in blackout_dark_overlays:
+			if is_instance_valid(dark_overlay):
+				dark_overlay.visible = true
+		for flash_light in blackout_flash_lights:
+			if is_instance_valid(flash_light):
+				flash_light.visible = false
+		print("🚨 Luci Blackout: SPENTE (Blackout Attivo)")
 
 # Funzione per selezionare un sottoinsieme casuale di righe
 func _get_random_rows_to_shift() -> Array:
@@ -217,32 +237,31 @@ func _get_random_rows_to_shift() -> Array:
 
 # NUOVA FUNZIONE: Creazione dinamica dei ColorRect
 func _create_blackout_light_nodes():
-	var tile_size = 160 # La dimensione dei tuoi tile (TILE_SIZE da GridInitializer)
-	var start_col = 7   # Colonna 7
-	var num_cols = 3    # Colonne 7, 8, 9
+	var tile_size = 160 
+	var start_col = 7   
+	var num_cols = 3    
 	
-	# Calcola la posizione globale dell'angolo in alto a sinistra della Colonna 7, Riga 0
-	# Assumendo che il tuo TileMap sia un nodo figlio del Level (o abbia una posizione nota)
 	var tilemap_pos = tilemap.global_position
 	
 	for y in range(GameConstants.ROW):
-		var light_rect = ColorRect.new()
-		
-		# 1. Dimensione (3 colonne di larghezza)
-		light_rect.size = Vector2(tile_size * num_cols, tile_size)
-		
-		# 2. Posizione (Dalla colonna 7 in poi)
-		# Posizione X: (Colonna 7 * Dimensione Tile) + Posizione Globale del TileMap
-		# Posizione Y: (Riga y * Dimensione Tile) + Posizione Globale del TileMap
-		light_rect.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
-		
-		# 3. Aspetto (Colore giallastro/bianco per la luce, semi-trasparente)
-		light_rect.color = Color(1.0, 1.0, 0.7, 0.25) # Giallo chiaro trasparente
-		
-		# 4. Inizialmente invisibile (blackout attivo)
-		light_rect.visible = false
-		
-		add_child(light_rect)
-		blackout_lights.append(light_rect)
+		# --- Nodo per l'Oscuramento (il "buio" permanente del blackout) ---
+		var dark_overlay = ColorRect.new()
+		dark_overlay.size = Vector2(tile_size * num_cols, tile_size)
+		dark_overlay.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
+		dark_overlay.color = Color(0.0, 0.0, 0.0, 0.8) # Nero con 80% di opacità
+		dark_overlay.visible = true # Inizialmente visibile per creare il buio
+		dark_overlay.z_index = 1 # Assicurati che sia sopra il TileMap
+		add_child(dark_overlay)
+		blackout_dark_overlays.append(dark_overlay)
+
+		# --- Nodo per il Flash di Luce (il "chiaro" intermittente) ---
+		var flash_light = ColorRect.new()
+		flash_light.size = Vector2(tile_size * num_cols, tile_size)
+		flash_light.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
+		flash_light.color = Color(1.0, 1.0, 0.7, 0.3) # Giallo chiaro trasparente
+		flash_light.visible = false # Inizialmente invisibile (le luci sono spente)
+		flash_light.z_index = 2 # Assicurati che sia sopra l'overlay scuro
+		add_child(flash_light)
+		blackout_flash_lights.append(flash_light)
 	
-	print("Creati %d nodi ColorRect per le luci del blackout." % blackout_lights.size())
+	print("Creati nodi di overlay e flash per il blackout.")
