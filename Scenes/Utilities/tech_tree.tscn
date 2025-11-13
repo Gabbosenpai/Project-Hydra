@@ -20,6 +20,24 @@ offset_bottom = 181.0
 theme_override_font_sizes/font_size = 36
 text = "Prossimo Livello"
 
+[node name="BackToMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 334.0
+offset_right = 675.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 36
+text = "Torna al Menù"
+
+[node name="UpgradeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 334.0
+offset_right = 1286.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 36
+text = "Prova potenziamento boltshooter"
+
 [node name="TreeScrap" type="Label" parent="."]
 layout_mode = 0
 offset_left = 867.0
@@ -29,3 +47,5 @@ offset_bottom = 235.0
 theme_override_font_sizes/font_size = 36
 
 [connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
