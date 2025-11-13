@@ -117,6 +117,35 @@ func jamming_debuff(amount: float, duration: float) -> void:
 		speed = starting_speed
 		jamming = false
 
+# Gestisce il Damage Over Time del proiettile di caffè bollente
+func burning_coffee_DOT(amount: float, duration: float) -> void:
+	# Variables setUp for DoT dmg
+	var tick_count = 10
+	var tick_interval = duration / tick_count
+	var dmg_tick = amount / tick_count
+	# Timer setUp
+	var coffeeTimer = Timer.new()
+	coffeeTimer.wait_time = tick_interval
+	coffeeTimer.one_shot = true
+	add_child(coffeeTimer)
+	
+	for tick in range(tick_count):
+		# Controllo validità, se nodo muore, interrompi
+		if !is_instance_valid(self):
+			break
+		
+		coffeeTimer.start()
+		await coffeeTimer.timeout
+		
+		if !is_instance_valid(self):
+			break
+		
+		take_damage(dmg_tick)
+	
+	# Pulizia memoria + Ritorno al colore originale
+	if is_instance_valid(coffeeTimer):
+		coffeeTimer.queue_free()
+
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
 	# Controllo per evitare di fare chiamate multiple di die() in caso di molti 
