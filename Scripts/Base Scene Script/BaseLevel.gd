@@ -248,7 +248,7 @@ func _create_blackout_light_nodes():
 		var dark_overlay = ColorRect.new()
 		dark_overlay.size = Vector2(tile_size * num_cols, tile_size)
 		dark_overlay.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
-		dark_overlay.color = Color(0.0, 0.0, 0.0, 0.8) # Nero con 80% di opacità
+		dark_overlay.color = Color(0.0, 0.0, 0.0, 1.0) # Nero con 80% di opacità
 		dark_overlay.visible = true # Inizialmente visibile per creare il buio
 		dark_overlay.z_index = 1 # Assicurati che sia sopra il TileMap
 		add_child(dark_overlay)
