@@ -180,7 +180,7 @@ func handle_turret_death(turret_instance: Node2D):
 
 
 # --- 🔥 Nuova funzione: spostamento torrette dopo ogni ondata ---
-func move_turrets_back(_wave_number: int):
+func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 	if _wave_number == 1:
 		print("Salto Movimento Torrette: Ondata 1 è la prima ondata. Non devono indietreggiare le torrette.")
 		return
@@ -189,12 +189,19 @@ func move_turrets_back(_wave_number: int):
 		print("Nessuna torretta da spostare.")
 		return
 		
+	var is_blackout_mode = !rows_to_shift.is_empty()
+		
+	if is_blackout_mode:
+		print("Movimento torrette limitato alle righe: ", rows_to_shift)
+	else:
+		print("Movimento torrette su tutte le righe (Modalità Standard).")
+		
 	if grid_initializer and grid_initializer.has_method("update_conveyors_phase"):
 		# 1. Aggiorna la variabile di fase del conveyor
 		conveyor_phase_shift = 1 - conveyor_phase_shift
 		
 		# 2. Chiama la funzione nel GridInitializer per ridisegnare i tile
-		grid_initializer.update_conveyors_phase(conveyor_phase_shift)
+		grid_initializer.update_conveyors_phase(conveyor_phase_shift,rows_to_shift)
 
 	var new_turrets = {}
 	var turrets_to_incinerate = [] # Array per tracciare le torrette in colonna 0
@@ -203,6 +210,10 @@ func move_turrets_back(_wave_number: int):
 	for old_cell in turrets.keys():
 		var turret_instance = turrets[old_cell]
 		var new_cell = Vector2i(old_cell.x - 1, old_cell.y)
+		if is_blackout_mode and !rows_to_shift.has(old_cell.y):
+			# Torretta nella riga non selezionata: NON si sposta
+			new_turrets[old_cell] = turret_instance
+			continue # Passa alla prossima torretta
 
 		if is_instance_valid(turret_instance):
 			
