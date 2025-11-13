@@ -28,12 +28,25 @@ func _ready():
 	for x in range(1,GameConstants.COLUMN):
 		for y in range(GameConstants.ROW):
 			var pos_key = str(Vector2i(x,y))
-			dic[pos_key] = {
-				"Type" : "Grass",
+			# 2. Logica per il Motivo a Scacchiera
+			var source_id: int
+		
+		# Se la somma delle coordinate è pari, usa il tile Scuro
+			if (x + y) % 2 == 0:
+				source_id = 0
+				dic[pos_key] = {
+				"Type" : "Conveyor_Belt_Scuro", # Potresti voler cambiare il tipo
 				"Position" : pos_key
-			}
+				}
+			else:
+			# Se la somma delle coordinate è dispari, usa il tile Chiaro
+				source_id = 2
+				dic[pos_key] = {
+				"Type" : "Conveyor_Belt_Chiaro", # Nuovo tipo
+				"Position" : pos_key
+				}
 			# 2. Disegna la cella base sul livello 0
-			tilemap.set_cell(0, Vector2i(x,y), 0, Vector2i(0,0), 0)
+			tilemap.set_cell(0, Vector2i(x,y), source_id, Vector2i(0,0), 0)
 	
 	print("Griglia TileMap e Dizionario 'dic' inizializzati.")
 	
