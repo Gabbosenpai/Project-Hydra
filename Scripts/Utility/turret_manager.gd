@@ -10,6 +10,9 @@ const HIGHLIGHT_LAYER: int = 1
 const HIGHLIGHT_TILE_ID: int = 5
 const HIGHLIGHT_ATLAS_COORDS: Vector2i = Vector2i(0, 0)
 
+var conveyor_phase_shift: int = 0
+const CONVEYOR_SHIFT_DURATION: float = 0.3
+@onready var grid_initializer = get_parent().get_node("GridInitializer")
 var turrets = {}
 var selected_turret_scene: PackedScene = null
 enum Mode { NONE, PLACE, REMOVE }
@@ -185,6 +188,13 @@ func move_turrets_back(_wave_number: int):
 	if turrets.is_empty():
 		print("Nessuna torretta da spostare.")
 		return
+		
+	if grid_initializer and grid_initializer.has_method("update_conveyors_phase"):
+		# 1. Aggiorna la variabile di fase del conveyor
+		conveyor_phase_shift = 1 - conveyor_phase_shift
+		
+		# 2. Chiama la funzione nel GridInitializer per ridisegnare i tile
+		grid_initializer.update_conveyors_phase(conveyor_phase_shift)
 
 	var new_turrets = {}
 	var turrets_to_incinerate = [] # Array per tracciare le torrette in colonna 0
@@ -200,7 +210,7 @@ func move_turrets_back(_wave_number: int):
 			var tween = create_tween()
 			
 			# NON usiamo 'await', avviamo l'animazione e proseguiamo subito
-			tween.tween_property(turret_instance, "global_position", new_pos, 0.3) 
+			tween.tween_property(turret_instance, "global_position", new_pos, CONVEYOR_SHIFT_DURATION) 
 
 			if new_cell.x < 1:
 				# 🛑 Torretta destinata alla Colonna 0 (Inceneritore)
