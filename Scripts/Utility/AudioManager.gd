@@ -1,11 +1,13 @@
 extends Node
 
+const GLOBAL_VOLUME_FACTOR: float = 0.02
+
 #variabile per evitare di inizializzare più volte
 var initialized: bool = false
 
 # Volume attuale
-var music_volume: float = 0.01
-var sfx_volume: float = 0.01
+var music_volume: float = 0.3
+var sfx_volume: float = 0.3
 
 # Musica di game over
 var game_over_music = preload("res://Assets/Sound/OST/A Lonely Cherry Tree (GAME OVER MENU).mp3")
@@ -39,13 +41,13 @@ func _ready():
 	music_player.bus = "Music"
 	music_player.connect("finished", Callable(self, "_on_music_finished"))
 	add_child(music_player)
-	
+	music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
 
 	# creazione e configurazione effetti sonori
 	sfx_player = AudioStreamPlayer.new()
 	sfx_player.name = "SFXPlayer"
 	sfx_player.bus = "SFX"
-	sfx_player.volume_db = linear_to_db(sfx_volume)
+	sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_VOLUME_FACTOR)
 	add_child(sfx_player)
 
 	
@@ -62,15 +64,17 @@ func _on_music_finished():
 func set_music_volume(vol: float) -> void:
 	vol = clamp(vol, 0.0, 1.0)
 	music_volume = vol
+	var adjusted_vol = music_volume * GLOBAL_VOLUME_FACTOR
 	if is_music_muted:
 		music_player.volume_db = linear_to_db(0.0)
 	else:
-		music_player.volume_db = linear_to_db(music_volume)
+		music_player.volume_db = linear_to_db(adjusted_vol)
 
 # Cambia il volume degli effetti
 func set_sfx_volume(vol: float) -> void:
 	sfx_volume = clamp(vol, 0.0, 1.0)
-	sfx_player.volume_db = linear_to_db(sfx_volume)
+	var adjusted_vol = sfx_volume * GLOBAL_VOLUME_FACTOR
+	sfx_player.volume_db = linear_to_db(adjusted_vol)
 
 # Suona un effetto sonoro (anche sovrapposto)
 func play_sfx(sfx_stream: AudioStream, variate_pitch: bool = false, variate_volume: bool = false) -> void:
@@ -82,7 +86,7 @@ func play_sfx(sfx_stream: AudioStream, variate_pitch: bool = false, variate_volu
 		new_sfx_player.volume_db = linear_to_db(0.0)
 	else:
 		# Varia volume se richiesto
-		var volume_to_set = sfx_volume
+		var volume_to_set = sfx_volume * GLOBAL_VOLUME_FACTOR
 		if variate_volume:
 			volume_to_set *= randf_range(0.8, 1.0) # varia il volume tra 80% e 100%
 		new_sfx_player.volume_db = linear_to_db(volume_to_set)
@@ -115,7 +119,7 @@ func play_music(music_stream: AudioStream) -> void:
 		if is_music_muted:
 			music_player.volume_db = linear_to_db(0.0)
 		else:
-			music_player.volume_db = linear_to_db(music_volume)
+			music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
 
 		music_player.play()
 
