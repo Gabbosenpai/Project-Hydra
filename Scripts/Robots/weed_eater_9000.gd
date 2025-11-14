@@ -23,9 +23,10 @@ func can_move() -> bool:
 func take_damage(amount):
 	if deflect():  
 		amount = 0  # Setta il danno a zero, dando l'illusione di averlo bloccato
-		robot_sprite.play("block")
-		print("NO ONE CAN DEFLECT THE EMERLAD SPLASH!")
-		await robot_sprite.animation_finished
+		if !isDead:
+			robot_sprite.play("block")
+			print("NO ONE CAN DEFLECT THE EMERLAD SPLASH!")
+			await robot_sprite.animation_finished
 	super.take_damage(amount)
 	deflected = false
 
@@ -41,5 +42,11 @@ func deflect() -> bool:
 # Modula lo sprite per dare feedback visivo quando blocca con successo
 func flash_blocked():
 	modulate = Color(1, 1, 0) # giallo
-	await get_tree().create_timer(0.1).timeout
+	var timer = Timer.new()
+	timer.wait_time = 0.1
+	timer.one_shot = true
+	add_child(timer)
+	if timer.is_inside_tree():
+		timer.start()
+		await timer.timeout
 	modulate = Color(1, 1, 1)

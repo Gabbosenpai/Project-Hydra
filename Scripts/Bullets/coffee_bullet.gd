@@ -18,9 +18,8 @@ func _on_area_entered(area: Area2D):
 	if enemy_node.is_in_group("Robot") and enemy_node.has_method("take_damage"):
 		# Chiama la funzione take_damage sull'enemy, passando il valore del danno del proiettile
 		hit = true
-		enemy_node.take_damage(coffee_bullet_damage)
-		# Se il robot ha il metodo jamming debuff, lo chiamiamo
-		if enemy_node.has_method("jamming_debuff"):
+		# Se il robot ha il metodo burning_coffee_DOT, lo chiamiamo
+		if enemy_node.has_method("burning_coffee_DOT"):
 			enemy_node.burning_coffee_DOT(coffee_bullet_damage, coffee_duration)
 		bullet_sprite.play("explosion")
 

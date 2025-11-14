@@ -148,21 +148,25 @@ func burning_coffee_DOT(amount: float, duration: float) -> void:
 	coffeeTimer.wait_time = tick_interval
 	coffeeTimer.one_shot = true
 	add_child(coffeeTimer)
-	robot_sprite.modulate = Color(0.55, 0.35, 0.15)
+	flash_coffee()
+	
 	
 	for tick in range(tick_count):
 		# Controllo validità, se nodo muore, interrompi
+		if isDead:
+			break
 		if !is_instance_valid(self):
 			break
 		
-		coffeeTimer.start()
-		await coffeeTimer.timeout
+		if coffeeTimer.is_inside_tree():
+			coffeeTimer.start()
+			await coffeeTimer.timeout
 		
 		if !is_instance_valid(self):
 			break
 		
 		take_damage(dmg_tick)
-		robot_sprite.modulate = Color(0.55, 0.35, 0.15)
+		flash_coffee()
 	
 	# Pulizia memoria + Ritorno al colore originale
 	if is_instance_valid(coffeeTimer):
@@ -195,7 +199,24 @@ func is_on_screen() -> bool:
 # Modula lo sprite per dare feedback visivo
 func flash_bright():
 	robot_sprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
-	await get_tree().create_timer(0.1).timeout
+	var timer = Timer.new()
+	timer.wait_time = 0.1
+	timer.one_shot = true
+	add_child(timer)
+	if timer.is_inside_tree():
+		timer.start()
+		await timer.timeout
+	robot_sprite.modulate = Color(1, 1, 1) # Normale
+
+func flash_coffee():
+	robot_sprite.modulate = Color(0.55, 0.35, 0.15) # Coffee Effect
+	var timer = Timer.new()
+	timer.wait_time = 0.1
+	timer.one_shot = true
+	add_child(timer)
+	if timer.is_inside_tree():
+		timer.start()
+		await timer.timeout
 	robot_sprite.modulate = Color(1, 1, 1) # Normale
 
 # Se il Robot ha una torretta davanti, inizia ad attaccare
