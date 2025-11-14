@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpwd2ie4hw630"]
+[gd_scene load_steps=21 format=3 uid="uid://dpwd2ie4hw630"]
 
 [ext_resource type="Script" uid="uid://doro4771j2o5w" path="res://Scripts/Base Scene Script/Lvl3.gd" id="1_ilo8m"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_mg6tb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_6tdg3"]
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_5plqp"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="8_wimv6"]
+[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="9_cfv47"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_dwil4"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_3xa6o"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="11_at4sb"]
@@ -122,6 +123,15 @@ offset_left = 14.0
 offset_top = 162.0
 offset_right = 54.0
 offset_bottom = 185.0
+
+[node name="ButtonTurret4" parent="UI/TurretSelector/HBoxContainer" index="3"]
+icon = ExtResource("9_cfv47")
+
+[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret4" index="0"]
+offset_left = 8.0
+offset_top = 163.0
+offset_right = 48.0
+offset_bottom = 186.0
 
 [node name="LabelWave" parent="UI" index="2"]
 z_index = 1000
