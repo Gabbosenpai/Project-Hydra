@@ -13,6 +13,20 @@ var is_game_over: bool = false
 var OST: AudioStream
 var current_level
 
+# Variabili per Blackout
+var is_blackout_level: bool = false
+var active_shift_rows: Array = []
+
+# Variabili per le luci intermittenti
+var blackout_light_timer: Timer = null
+const LIGHT_FLASH_DURATION: float = 1.0
+const LIGHT_FLASH_INTERVAL: float = 2.0
+
+# Variabile per tracciare i nodi overlay di blackout (il "buio")
+var blackout_dark_overlays: Array[ColorRect] = [] 
+# Nuova variabile per tracciare i nodi luce veri e propri (il "flash")
+var blackout_flash_lights: Array[ColorRect] = []
+
 
 func _ready():
 	# 1. Assegna il dizionario inizializzato a TurretManager
@@ -22,6 +36,14 @@ func _ready():
 		# Blocca il gioco se il nodo fondamentale non c'è
 		push_error("ERRORE: Il nodo GridInitializer non è stato trovato o collegato.")
 		return
+
+	print("DEBUG: current_level in _ready(): ", current_level)
+		
+	if current_level == "res://Scenes/Levels/Lvl5.tscn":
+		is_blackout_level = true
+		enemy_spawner.is_blackout_level = true
+		_init_blackout_lights()
+		_create_blackout_light_nodes()
 	
 	# 2. Connessioni dei segnali COMUNI
 	turret_manager.connect("turret_removed", Callable(self, "_on_turret_removed"))
@@ -42,6 +64,7 @@ func _set_level_music(levelOST: AudioStream):
 func set_current_level(level):
 	current_level = level
 	ui_controller.current_level=level
+	print("DEBUG: Livello Corrente Impostato su: ", current_level)
 	
 # Implementa questo metodo per specificare quale livello sbloccare.
 func _on_level_completed():
@@ -139,5 +162,107 @@ func flash_sprite_red(node_with_sprite):
 # Logica di default per la fine dell'ondata. 
 func _on_wave_completed(_wave_number):
 	print("Ondata completata ", _wave_number, " — sposto indietro le torrette.")
-	if turret_manager:
+	
+	if is_blackout_level:
+		# Logica LvL5: Seleziona casualmente le righe
+		if _wave_number == 1:
+			active_shift_rows = []
+		else:
+			active_shift_rows = _get_random_rows_to_shift()
+			
+		turret_manager.move_turrets_back(_wave_number, active_shift_rows)
+	else:
+		# Logica Standard per gli altri livelli
 		turret_manager.move_turrets_back(_wave_number)
+
+func _init_blackout_lights():
+	# Inizializza il timer
+	blackout_light_timer = Timer.new()
+	blackout_light_timer.wait_time = LIGHT_FLASH_INTERVAL
+	blackout_light_timer.autostart = true
+	blackout_light_timer.timeout.connect(_on_blackout_light_timer_timeout)
+	add_child(blackout_light_timer)
+	
+	# Assicurati che le luci siano SPENTE (buio) all'inizio
+	_toggle_blackout_lights(false) # <-- Chiamata aggiunta per stato iniziale corretto
+	
+	print("Inizializzazione Blackout: La zona è inizialmente buia (Overlay visibile).")
+
+func _on_blackout_light_timer_timeout():
+	# 1. Accendi le luci (dark_overlay invisibile, flash_light visibile)
+	_toggle_blackout_lights(true) 
+	
+	# 2. Aspetta la durata del flash (1 secondo)
+	await get_tree().create_timer(LIGHT_FLASH_DURATION).timeout
+	
+	# 3. Spegni le luci (dark_overlay visibile, flash_light invisibile)
+	_toggle_blackout_lights(false)
+	
+
+#Funzione per accendere/spegnere le luci
+func _toggle_blackout_lights(should_be_lights_on: bool): # Rinominiamo per chiarezza
+	if should_be_lights_on:
+		# Quando le luci sono ACCESE:
+		# - Oscuramento (dark_overlays) diventa invisibile
+		# - Flash di luce (flash_lights) diventa visibile
+		for dark_overlay in blackout_dark_overlays:
+			if is_instance_valid(dark_overlay):
+				dark_overlay.visible = false
+		for flash_light in blackout_flash_lights:
+			if is_instance_valid(flash_light):
+				flash_light.visible = true
+		print("🚨 Luci Blackout: ACCESE")
+	else:
+		# Quando le luci sono SPENTE (Blackout Attivo):
+		# - Oscuramento (dark_overlays) diventa visibile
+		# - Flash di luce (flash_lights) diventa invisibile
+		for dark_overlay in blackout_dark_overlays:
+			if is_instance_valid(dark_overlay):
+				dark_overlay.visible = true
+		for flash_light in blackout_flash_lights:
+			if is_instance_valid(flash_light):
+				flash_light.visible = false
+		print("🚨 Luci Blackout: SPENTE (Blackout Attivo)")
+
+# Funzione per selezionare un sottoinsieme casuale di righe
+func _get_random_rows_to_shift() -> Array:
+	var all_rows = range(GameConstants.ROW) # Assumendo GameConstants.ROW sia definito e corretto
+	all_rows.shuffle()
+	# Scegli un numero casuale di righe da spostare (es. tra 1 e 4)
+	var num_rows = randi_range(1, min(4, all_rows.size()))
+	var selected_rows = []
+	for i in range(num_rows):
+		selected_rows.append(all_rows[i])
+	
+	return selected_rows.duplicate() # Restituisce una copia pulita
+
+# NUOVA FUNZIONE: Creazione dinamica dei ColorRect
+func _create_blackout_light_nodes():
+	var tile_size = 160 
+	var start_col = 7   
+	var num_cols = 3    
+	
+	var tilemap_pos = tilemap.global_position
+	
+	for y in range(GameConstants.ROW):
+		# --- Nodo per l'Oscuramento (il "buio" permanente del blackout) ---
+		var dark_overlay = ColorRect.new()
+		dark_overlay.size = Vector2(tile_size * num_cols, tile_size)
+		dark_overlay.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
+		dark_overlay.color = Color(0.0, 0.0, 0.0, 1.0) # Nero con 80% di opacità
+		dark_overlay.visible = true # Inizialmente visibile per creare il buio
+		dark_overlay.z_index = 1 # Assicurati che sia sopra il TileMap
+		add_child(dark_overlay)
+		blackout_dark_overlays.append(dark_overlay)
+
+		# --- Nodo per il Flash di Luce (il "chiaro" intermittente) ---
+		var flash_light = ColorRect.new()
+		flash_light.size = Vector2(tile_size * num_cols, tile_size)
+		flash_light.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
+		flash_light.color = Color(1.0, 1.0, 0.7, 0.3) # Giallo chiaro trasparente
+		flash_light.visible = false # Inizialmente invisibile (le luci sono spente)
+		flash_light.z_index = 2 # Assicurati che sia sopra l'overlay scuro
+		add_child(flash_light)
+		blackout_flash_lights.append(flash_light)
+	
+	print("Creati nodi di overlay e flash per il blackout.")

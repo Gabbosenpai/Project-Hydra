@@ -14,6 +14,7 @@ signal wave_completed(wave_number)
 @export var victory_screen: Control
 @export var inter_wave_delay = 5.0
 @export var next_wave_delay_timer: Timer
+@export var is_blackout_level: bool = false
 
 var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
@@ -129,6 +130,11 @@ func spawn_enemy():
 	add_child(enemy)
 	
 	enemies_alive += 1
+	if is_blackout_level:
+		# Devi anche comunicare al robot che il livello è in blackout
+		if enemy.has_method("set_blackout_state"):
+			enemy.set_blackout_state(true)
+			enemy.set_sprite_visibility(false)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 
 

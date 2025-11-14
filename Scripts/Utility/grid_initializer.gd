@@ -122,19 +122,31 @@ func _draw():
 				var cell_center = offset + Vector2(x * TILE_SIZE + TILE_SIZE / 2.0, y * TILE_SIZE + TILE_SIZE / 2.0)
 				draw_circle(cell_center, 4, center_color)
 
-func update_conveyors_phase(phase: int):
-	# Itera solo sulle colonne che contengono conveyor (da 1 a COLUMN-1)
+func update_conveyors_phase(phase: int, rows_to_shift: Array = []):
+	
+	var is_blackout_mode = !rows_to_shift.is_empty()
+	var rows_to_process: Array
+	
+	if is_blackout_mode:
+		rows_to_process = rows_to_shift
+		print("GridInitializer: Aggiorno solo le righe: ", rows_to_shift)
+	else:
+		# Modalità standard: processa tutte le righe
+		rows_to_process = range(GameConstants.ROW)
+		print("GridInitializer: Aggiorno tutte le righe (Modalità Standard).")
+	
 	for x in range(1, GameConstants.COLUMN):
-		for y in range(GameConstants.ROW):
+		# Itera sulle righe da aggiornare
+		for y in rows_to_process:
 			
 			var source_id: int
 			
 			# Utilizza la fase (0 o 1) per invertire la parità e scambiare i tile
 			if (x + y + phase) % 2 == 0:
-				# Se la condizione è VERA, usa il tile Scuro
+				# Se la condizione è VERA, usa il tile Scuro (Source ID 0)
 				source_id = 0
 			else:
-				# Se la condizione è FALSA, usa il tile Chiaro
+				# Se la condizione è FALSA, usa il tile Chiaro (Source ID 2)
 				source_id = 2
 				
 			# Ridisegna la cella, aggiornando solo il Source ID

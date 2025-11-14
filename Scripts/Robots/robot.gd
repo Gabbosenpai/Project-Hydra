@@ -4,6 +4,8 @@ extends Area2D
 
 # Nodi-Figlio della scena, inizializzati con onready perchè astratta
 @onready var robot_sprite: AnimatedSprite2D = $RobotSprite
+const VISIBLE_COLUMN_THRESHOLD = 9
+var in_blackout_level: bool = false
 @onready var robot_hitbox : CollisionShape2D = $RobotHitbox
 @onready var tower_detector_collision : CollisionShape2D = $TowerDetector/CollisionShape2D
 @onready var tower_detector : Area2D = $TowerDetector
@@ -53,10 +55,26 @@ func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int
 	speed = robot_speed
 	damage = robot_damage
 
+func set_blackout_state(is_blackout: bool):
+	in_blackout_level = is_blackout
+
+func set_sprite_visibility(should_visible: bool):
+	if is_instance_valid(robot_sprite):
+		robot_sprite.visible = should_visible
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if can_move():
 		move(delta)
+	if in_blackout_level:
+		# E solo se lo sprite è ancora invisibile (dopo lo spawn)
+		if not robot_sprite.visible: 
+			var tile_size = 160.0 # Assicurati che TILE_SIZE sia definito o 160
+			var current_col = round(global_position.x / tile_size)
+
+			# Se il robot è entrato o ha superato la colonna 9
+			if current_col <= VISIBLE_COLUMN_THRESHOLD:
+				set_sprite_visibility(true)
 
 # Ogni Robot potrebbe avere motivi diversi per muoversi e/o fermarsi
 @abstract
