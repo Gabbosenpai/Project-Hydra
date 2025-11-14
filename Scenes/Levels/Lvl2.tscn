@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_a162t"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="8_ejsqg"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_aco5b"]
-[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="9_pwmuf"]
+[ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="9_pwmuf"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_jti0j"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_nlwmo"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_buj31"]
@@ -101,6 +101,7 @@ offset_right = 252.0
 offset_bottom = -63.0
 
 [node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
+texture_filter = 1
 icon = ExtResource("5_pokxs")
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret1" index="0"]
@@ -109,6 +110,9 @@ offset_top = 160.0
 offset_right = 64.0
 offset_bottom = 183.0
 
+[node name="ButtonTurret2" parent="UI/TurretSelector/HBoxContainer" index="1"]
+texture_filter = 1
+
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret2" index="0"]
 offset_left = 20.0
 offset_top = 161.0
@@ -116,6 +120,7 @@ offset_right = 60.0
 offset_bottom = 184.0
 
 [node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
+texture_filter = 1
 icon = ExtResource("6_m5ddy")
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret3" index="0"]
@@ -125,6 +130,7 @@ offset_right = 54.0
 offset_bottom = 185.0
 
 [node name="ButtonTurret4" parent="UI/TurretSelector/HBoxContainer" index="3"]
+texture_filter = 1
 icon = ExtResource("9_pwmuf")
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret4" index="0"]
