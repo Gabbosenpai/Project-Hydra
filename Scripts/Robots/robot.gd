@@ -2,10 +2,11 @@
 class_name Robot
 extends Area2D
 
+# Costanti
+const VISIBLE_COLUMN_THRESHOLD = 9
+
 # Nodi-Figlio della scena, inizializzati con onready perchè astratta
 @onready var robot_sprite: AnimatedSprite2D = $RobotSprite
-const VISIBLE_COLUMN_THRESHOLD = 9
-var in_blackout_level: bool = false
 @onready var robot_hitbox : CollisionShape2D = $RobotHitbox
 @onready var tower_detector_collision : CollisionShape2D = $TowerDetector/CollisionShape2D
 @onready var tower_detector : Area2D = $TowerDetector
@@ -25,6 +26,7 @@ var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
 var max_points_on_defeat: int  = 25 # Valore max pts ottenibili da questo robot
 var scrap_drop_chance: float = 0.05 # Probabilità (0.0 a 1.0) drop alla morte
+var in_blackout_level: bool = false
 
 @export var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
 
@@ -146,6 +148,7 @@ func burning_coffee_DOT(amount: float, duration: float) -> void:
 	coffeeTimer.wait_time = tick_interval
 	coffeeTimer.one_shot = true
 	add_child(coffeeTimer)
+	robot_sprite.modulate = Color(0.55, 0.35, 0.15)
 	
 	for tick in range(tick_count):
 		# Controllo validità, se nodo muore, interrompi
@@ -159,10 +162,12 @@ func burning_coffee_DOT(amount: float, duration: float) -> void:
 			break
 		
 		take_damage(dmg_tick)
+		robot_sprite.modulate = Color(0.55, 0.35, 0.15)
 	
 	# Pulizia memoria + Ritorno al colore originale
 	if is_instance_valid(coffeeTimer):
 		coffeeTimer.queue_free()
+		robot_sprite.modulate = Color(1, 1, 1)
 
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:

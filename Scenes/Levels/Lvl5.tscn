@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_885wm"]
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_kyfei"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="8_58mf7"]
-[ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="9_lkvta"]
+[ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="9_lkvta"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_py7eb"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_l5mna"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_dpoto"]
@@ -102,6 +102,7 @@ offset_right = 252.0
 offset_bottom = -63.0
 
 [node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
+texture_filter = 1
 icon = ExtResource("5_1ma10")
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret1" index="0"]
@@ -110,6 +111,9 @@ offset_top = 160.0
 offset_right = 64.0
 offset_bottom = 183.0
 
+[node name="ButtonTurret2" parent="UI/TurretSelector/HBoxContainer" index="1"]
+texture_filter = 1
+
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret2" index="0"]
 offset_left = 20.0
 offset_top = 161.0
@@ -117,6 +121,7 @@ offset_right = 60.0
 offset_bottom = 184.0
 
 [node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
+texture_filter = 1
 icon = ExtResource("6_885wm")
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret3" index="0"]
@@ -126,6 +131,7 @@ offset_right = 54.0
 offset_bottom = 185.0
 
 [node name="ButtonTurret4" parent="UI/TurretSelector/HBoxContainer" index="3"]
+texture_filter = 1
 icon = ExtResource("9_lkvta")
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret4" index="0"]

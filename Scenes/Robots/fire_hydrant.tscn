@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://d35qa858vcvqc"]
 
-[ext_resource type="Script" uid="uid://6m7uldw5l342" path="res://Scenes/Robots/fire_hydrant.gd" id="1_4nx7c"]
+[ext_resource type="Script" uid="uid://6m7uldw5l342" path="res://Scripts/Robots/fire_hydrant.gd" id="1_4nx7c"]
 [ext_resource type="Texture2D" uid="uid://c6btgc4hhy1ww" path="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant Attack.png" id="2_4nx7c"]
 [ext_resource type="Texture2D" uid="uid://bvscadbxcne7r" path="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant Death.png" id="3_4nx7c"]
 [ext_resource type="Texture2D" uid="uid://dgc7ym7kh65nn" path="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant Walk.png" id="4_4nx7c"]

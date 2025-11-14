@@ -24,7 +24,7 @@ var turret_scenes = {
 	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
 	"turret3": preload("res://Scenes/Towers/jammer_cannon.tscn"),
-	"turret4": preload("res://Scenes/Towers/bolt_shooter.tscn")
+	"turret4": preload("res://Scenes/Towers/HKCM.tscn")
 }
 
 # Riceve il dizionario della griglia dal GridInitializer
