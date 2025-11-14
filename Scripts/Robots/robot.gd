@@ -207,6 +207,7 @@ func flash_bright():
 		timer.start()
 		await timer.timeout
 	robot_sprite.modulate = Color(1, 1, 1) # Normale
+	timer.queue_free()
 
 func flash_coffee():
 	robot_sprite.modulate = Color(0.55, 0.35, 0.15) # Coffee Effect
@@ -218,6 +219,7 @@ func flash_coffee():
 		timer.start()
 		await timer.timeout
 	robot_sprite.modulate = Color(1, 1, 1) # Normale
+	timer.queue_free()
 
 # Se il Robot ha una torretta davanti, inizia ad attaccare
 func _on_tower_detector_area_entered(tower: Area2D) -> void:
