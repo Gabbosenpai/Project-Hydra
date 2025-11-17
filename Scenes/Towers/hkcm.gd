@@ -7,7 +7,7 @@ extends Tower
 static var  hkcm_recharge_time : float = 8.0 # Tempo di ricarica 
 
 # Effetto sonoro sparo del proiettile
-var hkcm_shoot_sfx : AudioStream = preload("res://Assets/Sound/SFX/explosion.wav") 
+var hkcm_shoot_sfx : AudioStream = preload("res://Assets/Sound/SFX/coffeMachine.wav") 
 
 func _ready() -> void:
 	# Chiamo prima set_up e poi il ready della superclasse per evitare di
