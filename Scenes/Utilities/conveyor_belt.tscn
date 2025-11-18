@@ -1,0 +1,152 @@
+[gd_scene load_steps=23 format=3 uid="uid://6woq22dc8wej"]
+
+[ext_resource type="Script" uid="uid://btc7d3b0skk00" path="res://Scripts/Utility/conveyor_belt.gd" id="1_burqt"]
+[ext_resource type="Texture2D" uid="uid://b3jqojc7y6we6" path="res://Assets/Terrain Texture/Conveyor Belt/ConvBelt 2 to 1.png" id="2_b5gog"]
+[ext_resource type="Texture2D" uid="uid://dfyjvcq844wx6" path="res://Assets/Terrain Texture/ConvBelt 1 to 2.png" id="2_xtq7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0ef7"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cocp"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbxcs"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7s6n"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw56s"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7wri"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt5k4"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id5ow"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12n10"]
+atlas = ExtResource("2_b5gog")
+region = Rect2(1280, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5gog"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbkyf"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g75vg"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5nwi"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx5uv"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rh14"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdov1"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5an8l"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wc6e"]
+atlas = ExtResource("2_xtq7i")
+region = Rect2(1280, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0ef7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0ef7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cocp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbxcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7s6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw56s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7wri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt5k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id5ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12n10")
+}],
+"loop": false,
+"name": &"chiaroToScuro",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5gog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbkyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g75vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5nwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx5uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rh14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdov1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5an8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wc6e")
+}],
+"loop": false,
+"name": &"scuroToChiaro",
+"speed": 5.0
+}]
+
+[node name="ConveyorBelt" type="Node2D"]
+script = ExtResource("1_burqt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f0ef7")
+animation = &"scuroToChiaro"
+speed_scale = 5.0
