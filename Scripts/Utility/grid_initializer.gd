@@ -13,6 +13,7 @@ extends Node2D
 
 const TILE_SIZE = 160 # La dimensione del tile in pixel (160x160)
 const FONT_SIZE = 20
+const CONVEYOR_STEP_SCENE: PackedScene = preload("res://Scenes/Utilities/conveyor_belt.tscn")
 
 # Il tuo dizionario, usato per tracciare le proprietà della cella
 var dic = {} 
@@ -129,27 +130,56 @@ func update_conveyors_phase(phase: int, rows_to_shift: Array = []):
 	
 	if is_blackout_mode:
 		rows_to_process = rows_to_shift
-		print("GridInitializer: Aggiorno solo le righe: ", rows_to_shift)
 	else:
-		# Modalità standard: processa tutte le righe
 		rows_to_process = range(GameConstants.ROW)
-		print("GridInitializer: Aggiorno tutte le righe (Modalità Standard).")
 	
 	for x in range(1, GameConstants.COLUMN):
-		# Itera sulle righe da aggiornare
 		for y in rows_to_process:
 			
-			var source_id: int
+			var cell = Vector2i(x, y)
 			
-			# Utilizza la fase (0 o 1) per invertire la parità e scambiare i tile
-			if (x + y + phase) % 2 == 0:
-				# Se la condizione è VERA, usa il tile Scuro (Source ID 0)
-				source_id = 0
+			# 1. Determina il Source ID attuale per capire lo stato di partenza
+			var current_source_id = tilemap.get_cell_source_id(0, cell)
+			var animation_name: String
+			
+			# 2. DECIDI QUALE ANIMAZIONE ESEGUIRE (in base allo stato attuale del tile)
+			if current_source_id == 0: # Scuro
+				# Se il tile è Scuro e sta per cambiare stato, va a Chiaro
+				animation_name = "scuroToChiaro"
+			elif current_source_id == 2: # Chiaro
+				# Se il tile è Chiaro e sta per cambiare stato, va a Scuro
+				animation_name = "chiaroToScuro"
 			else:
-				# Se la condizione è FALSA, usa il tile Chiaro (Source ID 2)
-				source_id = 2
+				# Salta se il tile non è un conveyor (sicurezza)
+				continue
 				
-			# Ridisegna la cella, aggiornando solo il Source ID
-			tilemap.set_cell(0, Vector2i(x, y), source_id, Vector2i(0,0), 0)
+			# 3. Crea l'istanza dell'animazione
+			var step_instance = CONVEYOR_STEP_SCENE.instantiate()
 			
-	print("Conveyor belts aggiornati alla fase: ", phase)
+			# 4. Imposta i dati per l'animazione e la sincronizzazione
+			step_instance.grid_initializer = self
+			step_instance.cell_position = cell
+			step_instance.next_phase = phase           # La fase finale
+			step_instance.animation_name = animation_name # Il nome dell'animazione
+			
+			# 5. Posiziona l'animazione e aggiungi alla scena
+			step_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell))
+			add_child(step_instance)
+			
+	print("Conveyor step animati istanziati.")
+
+
+func update_tilemap_base(cell: Vector2i, phase: int):
+	# Applica nuovamente la logica a scacchiera per l'ultima fase raggiunta
+	
+	var source_id: int
+	
+	# Usiamo la tua logica a scacchiera per determinare il nuovo stato statico
+	if (cell.x + cell.y + phase) % 2 == 0:
+		source_id = 0 # Tile Scuro
+	else:
+		source_id = 2 # Tile Chiaro
+		
+	# Imposta la cella sulla TileMap al nuovo Source ID permanente.
+	# Le Atlas Coords (0,0) vengono usate per specificare il frame statico iniziale del tile.
+	tilemap.set_cell(0, cell, source_id, Vector2i(0,0), 0)
