@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://1l0nmhmtbvtx"]
 
-[ext_resource type="Script" uid="uid://chi06s8avhxw7" path="res://Scenes/Towers/hkcm.gd" id="1_r7pxe"]
+[ext_resource type="Script" uid="uid://chi06s8avhxw7" path="res://Scripts/Towers/hkcm.gd" id="1_r7pxe"]
 [ext_resource type="PackedScene" uid="uid://bo72svtonm5q5" path="res://Scenes/Bullets/coffee_bullet.tscn" id="2_4qf32"]
 [ext_resource type="Texture2D" uid="uid://5dsy6r5eccmr" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine Idle.png" id="3_r7pxe"]
 [ext_resource type="Texture2D" uid="uid://d2l40kvyfvtn1" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine Shoot.png" id="4_4qf32"]
