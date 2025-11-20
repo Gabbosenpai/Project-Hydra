@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://doro4771j2o5w" path="res://Scripts/Base Scene Script/Lvl3.gd" id="1_ilo8m"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_mg6tb"]
-[ext_resource type="Texture2D" uid="uid://dh02ecmnxlau7" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_pukyc"]
+[ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_pukyc"]
 [ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="3_6pxut"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_jtktl"]
-[ext_resource type="Texture2D" uid="uid://d30i836yhu00a" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 2.png" id="4_phcua"]
+[ext_resource type="Texture2D" uid="uid://d27h1vlrudpmr" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 2.png" id="4_phcua"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_2huvp"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_6tdg3"]
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_5plqp"]
@@ -43,8 +43,9 @@ sources/5 = SubResource("TileSetAtlasSource_xbs6m")
 sources/0 = SubResource("TileSetAtlasSource_phcua")
 sources/2 = SubResource("TileSetAtlasSource_cfv47")
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ilo8m")
+tilemap = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(80, 160)
@@ -77,67 +78,87 @@ offset_right = 1026.0
 offset_bottom = 1456.0
 
 [node name="TextureRect" parent="UI/TurretSelector" index="0"]
-offset_left = -86.0
+offset_left = -273.0
 offset_top = -298.0
-offset_right = 355.0
+offset_right = 397.0
 offset_bottom = 81.0
 
 [node name="PointsBar" parent="UI/TurretSelector" index="1"]
-offset_left = -255.0
+offset_left = -535.0
 offset_top = -84.0
-offset_right = 530.0
+offset_right = 660.0
 offset_bottom = 11.0
 
 [node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
-offset_left = 327.0
-offset_top = 28.0
-offset_right = 471.0
-offset_bottom = 58.0
+offset_left = 526.0
+offset_top = 32.0
+offset_right = 670.0
+offset_bottom = 62.0
 
 [node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
-offset_left = 14.0
+offset_left = -232.0
 offset_top = -261.0
-offset_right = 252.0
+offset_right = 380.0
 offset_bottom = -63.0
 
 [node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
 texture_filter = 1
+custom_minimum_size = Vector2(140, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 icon = ExtResource("5_2huvp")
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret1" index="0"]
-offset_left = 24.0
-offset_top = 160.0
-offset_right = 64.0
-offset_bottom = 183.0
+offset_left = 101.0
+offset_top = -10.0
+offset_right = 141.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 34
 
 [node name="ButtonTurret2" parent="UI/TurretSelector/HBoxContainer" index="1"]
 texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret2" index="0"]
-offset_left = 20.0
-offset_top = 161.0
-offset_right = 60.0
-offset_bottom = 184.0
+offset_left = 112.0
+offset_top = -7.0
+offset_right = 152.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 34
 
 [node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
 texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 icon = ExtResource("6_6tdg3")
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret3" index="0"]
-offset_left = 14.0
-offset_top = 162.0
-offset_right = 54.0
-offset_bottom = 185.0
+offset_left = 87.0
+offset_top = -6.0
+offset_right = 145.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 34
 
 [node name="ButtonTurret4" parent="UI/TurretSelector/HBoxContainer" index="3"]
 texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 icon = ExtResource("9_cfv47")
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret4" index="0"]
-offset_left = 8.0
-offset_top = 163.0
-offset_right = 48.0
-offset_bottom = 186.0
+offset_left = 89.0
+offset_top = -5.0
+offset_right = 147.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 34
 
 [node name="LabelWave" parent="UI" index="2"]
 z_index = 1000
@@ -269,8 +290,8 @@ next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_k0qwe")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
-PointsBar = NodePath("../UI/TurretSelector/PointsBar")
+label_points = NodePath("")
+PointsBar = NodePath("")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("11_at4sb")
@@ -287,8 +308,6 @@ debug_draw_grid = true
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/MenuButton" to="UI" method="_on_menu_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
-[connection signal="pressed" from="GameOverUI/RetryButton" to="UI" method="_on_retry_button_pressed"]
-[connection signal="pressed" from="GameOverUI/ExitButton" to="UI" method="_on_exit_button_pressed"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 [connection signal="turret_removed" from="TurretManager" to="PointManager" method="_on_turret_removed"]
 
