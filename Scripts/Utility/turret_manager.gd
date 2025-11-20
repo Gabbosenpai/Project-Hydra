@@ -9,9 +9,10 @@ signal turret_removed(cell_key, turret_instance)
 const HIGHLIGHT_LAYER: int = 1
 const HIGHLIGHT_TILE_ID: int = 5
 const HIGHLIGHT_ATLAS_COORDS: Vector2i = Vector2i(0, 0)
+const CONVEYOR_SHIFT_DURATION: float = 0.85
 
 var conveyor_phase_shift: int = 0
-const CONVEYOR_SHIFT_DURATION: float = 0.3
+
 @onready var grid_initializer = get_parent().get_node("GridInitializer")
 var turrets = {}
 var selected_turret_scene: PackedScene = null
