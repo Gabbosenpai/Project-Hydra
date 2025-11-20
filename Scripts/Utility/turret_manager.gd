@@ -286,7 +286,7 @@ func destroy_all_turrets_in_row(row_y: int):
 func _incinerate_with_delay(turret_instance: Node2D):
 	# 1. Non aspettiamo qui il tween, l'animazione di movimento è già partita!
 	
-	var delay_seconds = 0.5 # Ritardo dell'inceneritore
+	var delay_seconds = 3 # Ritardo dell'inceneritore
 
 	# 2. Avvia il timer per il ritardo (per simulare il tempo nell'inceneritore)
 	var timer = get_tree().create_timer(delay_seconds)
