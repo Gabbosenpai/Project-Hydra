@@ -50,8 +50,9 @@ sources/0 = SubResource("TileSetAtlasSource_soeiq")
 sources/2 = SubResource("TileSetAtlasSource_tk4nw")
 sources/3 = SubResource("TileSetAtlasSource_gogke")
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_s1ade")
+tilemap = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(80, 160)
@@ -84,67 +85,87 @@ offset_right = 1026.0
 offset_bottom = 1456.0
 
 [node name="TextureRect" parent="UI/TurretSelector" index="0"]
-offset_left = -86.0
+offset_left = -273.0
 offset_top = -298.0
-offset_right = 355.0
+offset_right = 397.0
 offset_bottom = 81.0
 
 [node name="PointsBar" parent="UI/TurretSelector" index="1"]
-offset_left = -255.0
+offset_left = -535.0
 offset_top = -84.0
-offset_right = 530.0
+offset_right = 660.0
 offset_bottom = 11.0
 
 [node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
-offset_left = 327.0
-offset_top = 28.0
-offset_right = 471.0
-offset_bottom = 58.0
+offset_left = 526.0
+offset_top = 32.0
+offset_right = 670.0
+offset_bottom = 62.0
 
 [node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
-offset_left = 14.0
+offset_left = -232.0
 offset_top = -261.0
-offset_right = 252.0
+offset_right = 380.0
 offset_bottom = -63.0
 
 [node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
 texture_filter = 1
+custom_minimum_size = Vector2(140, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 icon = ExtResource("4_h4611")
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret1" index="0"]
-offset_left = 24.0
-offset_top = 160.0
-offset_right = 64.0
-offset_bottom = 183.0
+offset_left = 101.0
+offset_top = -10.0
+offset_right = 141.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 34
 
 [node name="ButtonTurret2" parent="UI/TurretSelector/HBoxContainer" index="1"]
 texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret2" index="0"]
-offset_left = 20.0
-offset_top = 161.0
-offset_right = 60.0
-offset_bottom = 184.0
+offset_left = 112.0
+offset_top = -7.0
+offset_right = 152.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 34
 
 [node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
 texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 icon = ExtResource("5_soeiq")
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret3" index="0"]
-offset_left = 14.0
-offset_top = 162.0
-offset_right = 54.0
-offset_bottom = 185.0
+offset_left = 87.0
+offset_top = -6.0
+offset_right = 145.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 34
 
 [node name="ButtonTurret4" parent="UI/TurretSelector/HBoxContainer" index="3"]
 texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 icon = ExtResource("9_tk4nw")
+expand_icon = true
 
 [node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret4" index="0"]
-offset_left = 9.0
-offset_top = 164.0
-offset_right = 49.0
-offset_bottom = 187.0
+offset_left = 89.0
+offset_top = -5.0
+offset_right = 147.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 34
 
 [node name="LabelWave" parent="UI" index="2"]
 z_index = 1000
