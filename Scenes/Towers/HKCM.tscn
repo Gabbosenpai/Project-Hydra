@@ -217,6 +217,7 @@ hkcm_bullet = ExtResource("2_4qf32")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
+z_index = 100
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2b6av")
