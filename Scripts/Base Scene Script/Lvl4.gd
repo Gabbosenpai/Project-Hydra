@@ -1,6 +1,6 @@
 extends baseLevel
 
-var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
+var level_music = preload("res://Assets/Sound/OST/8 Bit Scrap!  Fun Battle Game Music by HeatleyBros (lvl4).mp3")
 var level4 = "res://Scenes/Levels/Lvl4.tscn"
 var point_manager = preload("res://Scripts/Utility/point_manager.gd")
 
