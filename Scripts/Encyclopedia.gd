@@ -4,6 +4,8 @@ extends Control
 @onready var desc_label = $MonsterDescriptionPanel/MonsterDescription
 
 # Dizionario dei testi per ogni mostro
+
+#per ora sono tutti testi placeholder (descrizioni Pokédex :) "
 var monster_texts = {
 	"bolt_shooter": "Questo è il Bolt Shooter! "+
 	"Il suo corpo simile all’elettricità può introdursi "+
@@ -12,11 +14,18 @@ var monster_texts = {
 	
 	"weed_eater": "Questo è il Weed Eater! "+
 	"due ruote motrici, tre lame che fanno ognuna 800 rpm "+
-	"e sembrano anche dei bei baffoni utili per tosare l'erba con stile!"
+	"e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
+	
+	"delivery_drone": "Questo è il Delivery Drone! " +
+	"il suo corpo elettrico può introdursi in alcuni strumenti" +
+	" prendendone il controllo e creando caos.",
+	
+	"hkcm": "Questo è la Hot Kawaii Coffe Machine! " +
+	"È in grado di avvertire l’aura di tutte le cose. " +
+	" Comprende il linguaggio umano.",
 	
 	
 	
-	,
 	"jammer": "Questo è il Jammer! "+
 	"avevamo progettato questo nuovo tipo di jammer ma le misure "+
 	"invece che in centimetri le abbiamo scritte in metri!"
@@ -67,3 +76,13 @@ func _on_weed_eater_pressed() -> void:
 	
 func _on_jammer_pressed() -> void:
 	show_description("jammer")
+
+
+
+
+func _on_delivery_drone_pressed() -> void:
+	show_description("delivery_drone")
+
+
+func _on_hkcm_pressed() -> void:
+	show_description("hkcm")

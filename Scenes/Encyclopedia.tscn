@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=8 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Encyclopedia.gd" id="1_kfvci"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_8svmq"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="3_7v4ab"]
+[ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="3_b78v6"]
+[ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="4_ibo2e"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="4_viucg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viucg"]
@@ -54,6 +56,42 @@ offset_top = -1.0
 offset_right = 222.0
 offset_bottom = 264.0
 texture = ExtResource("2_8svmq")
+
+[node name="DeliveryDrone" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1374.0
+offset_top = 221.0
+offset_right = 1599.0
+offset_bottom = 489.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="DeliveryDrone"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -1.0
+offset_right = 222.0
+offset_bottom = 264.0
+texture = ExtResource("3_b78v6")
+
+[node name="HKCM" type="Button" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 396.0
+offset_right = 440.0
+offset_bottom = 664.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="HKCM"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -1.0
+offset_right = 222.0
+offset_bottom = 264.0
+texture = ExtResource("4_ibo2e")
 
 [node name="WeedEater" type="Button" parent="."]
 layout_mode = 0
@@ -118,5 +156,7 @@ autowrap_mode = 3
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="BoltShooter" to="." method="_on_bolt_shooter_pressed"]
+[connection signal="pressed" from="DeliveryDrone" to="." method="_on_delivery_drone_pressed"]
+[connection signal="pressed" from="HKCM" to="." method="_on_hkcm_pressed"]
 [connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
 [connection signal="pressed" from="Jammer" to="." method="_on_jammer_pressed"]
