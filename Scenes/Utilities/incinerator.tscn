@@ -1,8 +1,22 @@
 [gd_scene load_steps=27 format=3 uid="uid://u2qsbtf5jqac"]
 
 [ext_resource type="Texture2D" uid="uid://3nc7ye8bbc4t" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Closing.png" id="1_f4dc0"]
-[ext_resource type="Script" uid="uid://bw76ahjqd5g80" path="res://Scripts/Utility/incinerator.gd" id="1_rrkj0"]
 [ext_resource type="Texture2D" uid="uid://4pw2yx6fne2g" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Idle.png" id="2_rrkj0"]
+
+[sub_resource type="GDScript" id="GDScript_f4dc0"]
+script/source = "extends Node2D
+@onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func open_incinerator():
+	animatedSprite.play(\"apertura\") # Assumendo che \"open\" sia la tua animazione di apertura
+	await animatedSprite.animation_finished
+	animatedSprite.play(\"attesa\") # Passa all'animazione di attesa
+
+func close_incinerator():
+	animatedSprite.play(\"chiusura\") # Assumendo che \"close\" sia la tua animazione di chiusura
+	await animatedSprite.animation_finished
+	queue_free() # Rimuove l'istanza animata
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3vvn"]
 atlas = ExtResource("1_f4dc0")
@@ -122,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_umsjk")
 }],
-"loop": true,
+"loop": false,
 "name": &"apertura",
 "speed": 5.0
 }, {
@@ -171,14 +185,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sb613")
 }],
-"loop": true,
+"loop": false,
 "name": &"chiusura",
 "speed": 5.0
 }]
 
 [node name="Incinerator" type="Node2D"]
-script = ExtResource("1_rrkj0")
+script = SubResource("GDScript_f4dc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_loasc")
-animation = &"apertura"
+animation = &"attesa"
