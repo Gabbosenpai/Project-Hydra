@@ -318,6 +318,10 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 		print("🔥 Incenerita torretta dopo il ritardo.")
 		emit_signal("turret_removed", Vector2i.ZERO, turret_instance, true)
 		turret_instance.queue_free()
+	
+	var post_destruction_delay = 3.0
+	var post_timer = get_tree().create_timer(post_destruction_delay)
+	await post_timer.timeout
 
 	# 5. Verifica se ci sono altre torrette che stanno arrivando nella colonna 0
 	# Se il robot è l'ultimo in questa riga: chiudi l'inceneritore
