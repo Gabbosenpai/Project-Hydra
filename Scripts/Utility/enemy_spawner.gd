@@ -20,11 +20,12 @@ var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
 	"we9k": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
 	"mf": preload("res://Scenes/Robots/mecha_freezer.tscn"),
-	"fh": preload("res://Scenes/Robots/fire_hydrant.tscn")
+	"fh": preload("res://Scenes/Robots/fire_hydrant.tscn"),
+	"cs": preload("res://Scenes/Robots/cassa_schierata.tscn")
 }
 
 var level_enemy_pool = {
-	1: ["romba"],
+	1: ["cs"],
 	2: ["we9k"],
 	3: ["mf"],
 	4: ["fh"],
