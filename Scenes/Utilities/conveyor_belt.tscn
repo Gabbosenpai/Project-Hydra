@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btc7d3b0skk00" path="res://Scripts/Utility/conveyor_belt.gd" id="1_burqt"]
 [ext_resource type="Texture2D" uid="uid://b3jqojc7y6we6" path="res://Assets/Terrain Texture/Conveyor Belt/ConvBelt 2 to 1.png" id="2_b5gog"]
-[ext_resource type="Texture2D" uid="uid://dfyjvcq844wx6" path="res://Assets/Terrain Texture/ConvBelt 1 to 2.png" id="2_xtq7i"]
+[ext_resource type="Texture2D" uid="uid://dfyjvcq844wx6" path="res://Assets/Terrain Texture/Conveyor Belt/ConvBelt 1 to 2.png" id="2_xtq7i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f0ef7"]
 atlas = ExtResource("2_b5gog")
