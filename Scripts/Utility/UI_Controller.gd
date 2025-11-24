@@ -3,6 +3,8 @@ extends Control
 signal kill_all
 signal select_turret(turret_key)
 signal remove_mode
+signal retry
+signal exit
 
 # Riferimenti a nodi dell'interfaccia impostati dall'editor
 @export var pause_button: TextureButton
@@ -79,12 +81,14 @@ func show_game_over():
 
 # Ricarica il livello 1 per riprovare
 func _on_retry_button_pressed():
+	emit_signal("retry")
 	get_tree().paused = false
 	get_tree().change_scene_to_file(current_level)
 	
 
 # Esce al menu principale dalla schermata di game over
 func _on_exit_button_pressed():
+	emit_signal("exit")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
