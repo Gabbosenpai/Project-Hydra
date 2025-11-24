@@ -93,7 +93,6 @@ a = Vector2(28.5, -6.5)
 b = Vector2(10.5, 26)
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
-z_index = 100
 scale = Vector2(2, 2)
 script = ExtResource("1_yusc1")
 jc_bullet = ExtResource("2_n183p")

@@ -317,7 +317,6 @@ animations = [{
 size = Vector2(57, 63)
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
-z_index = 100
 scale = Vector2(2, 2)
 script = ExtResource("1_nl7dj")
 scrap_scene = ExtResource("2_lao5p")

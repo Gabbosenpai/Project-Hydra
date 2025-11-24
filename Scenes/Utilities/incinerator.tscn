@@ -177,6 +177,7 @@ animations = [{
 }]
 
 [node name="Incinerator" type="Node2D"]
+z_index = -1
 script = ExtResource("1_rrkj0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
