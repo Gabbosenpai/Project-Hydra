@@ -25,11 +25,11 @@ var all_enemy_scenes = {
 }
 
 var level_enemy_pool = {
-	1: ["cs"],
-	2: ["we9k"],
-	3: ["mf"],
-	4: ["fh"],
-	5: ["romba","we9k","mf","fh"]
+	1: ["romba","we9k"],
+	2: ["mf","fh"],
+	3: ["cs"],
+	4: ["romba","we9k","mf","fh","cs"],
+	5: ["romba","we9k","mf","fh","cs"]
 }
 
 var current_wave = 0
