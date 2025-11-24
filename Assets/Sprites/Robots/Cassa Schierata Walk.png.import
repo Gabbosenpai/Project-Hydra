@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsa8a1oao65i3"
-path="res://.godot/imported/Cassa Schierata Walk.png-c1f78534040114b96814b3e80cfc9205.ctex"
+uid="uid://dcguscat4dj5f"
+path="res://.godot/imported/Cassa Schierata Walk.png-88072d0a636d417e6fec7d5898853b68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata Walk.png"
-dest_files=["res://.godot/imported/Cassa Schierata Walk.png-c1f78534040114b96814b3e80cfc9205.ctex"]
+source_file="res://Assets/Sprites/Robots/Cassa Schierata Walk.png"
+dest_files=["res://.godot/imported/Cassa Schierata Walk.png-88072d0a636d417e6fec7d5898853b68.ctex"]
 
 [params]
 

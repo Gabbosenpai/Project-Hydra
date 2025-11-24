@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://doj8uvh6gbofr" path="res://Scripts/Robots/cassa_schierata.gd" id="1_yr1qe"]
 [ext_resource type="Texture2D" uid="uid://chsdrqdshjr0w" path="res://Assets/Sprites/Robots/Romba/Romba Attack.png" id="2_4f552"]
 [ext_resource type="Texture2D" uid="uid://72ltku56psbh" path="res://Assets/Sprites/Robots/Romba/Romba Death.png" id="3_ixh0l"]
-[ext_resource type="Texture2D" uid="uid://dllrnrcd5ark5" path="res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata Walk.png" id="5_4f552"]
+[ext_resource type="Texture2D" uid="uid://bsa8a1oao65i3" path="res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata Walk.png" id="5_4f552"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvuem"]
 atlas = ExtResource("2_4f552")
@@ -200,6 +200,7 @@ size = Vector2(2, 26)
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_yr1qe")
+metadata/_edit_group_ = true
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -207,15 +208,16 @@ sprite_frames = SubResource("SpriteFrames_r8bu2")
 animation = &"move"
 
 [node name="RobotHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-1.75, -0.25)
+position = Vector2(3.5, -1)
 shape = SubResource("RectangleShape2D_x2fpp")
 
 [node name="TowerDetector" type="Area2D" parent="."]
 position = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(-19, -10.5)
+position = Vector2(-14.5, -10.5)
 shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(6.5, -0.5)
 rect = Rect2(-21, -30, 37, 58.5)
