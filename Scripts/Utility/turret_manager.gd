@@ -25,6 +25,7 @@ var last_touch_position: Vector2 = Vector2.ZERO
 var dic = {} # Inizializzato vuoto, verrà assegnato da GridInitializer
 var incinerator_scene: PackedScene = preload("res://Scenes/Utilities/incinerator.tscn")
 var active_incinerators = {} # Mappa: {row_y: incinerator_instance}
+var row_locked_by_robot = {}
 
 var turret_scenes = {
 	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
@@ -32,6 +33,27 @@ var turret_scenes = {
 	"turret3": preload("res://Scenes/Towers/jammer_cannon.tscn"),
 	"turret4": preload("res://Scenes/Towers/HKCM.tscn")
 }
+
+func initialize_incinerators():
+	if !tilemap: return
+	
+	for y in range(GameConstants.ROW):
+		var cell_key = Vector2i(0, y)
+		
+		# 1. Imposta lo stato iniziale: Inceneritore Aperto / Sicuro
+		row_locked_by_robot[y] = false 
+		
+		# 2. Rimuovi il tile statico e istanzia l'inceneritore animato
+		tilemap.erase_cell(INCINERATOR_LAYER, cell_key) 
+		
+		var incinerator_instance = incinerator_scene.instantiate()
+		incinerator_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell_key))
+		add_child(incinerator_instance)
+		
+		# 3. Inizializza nello stato 'attesa' (aperto)
+		incinerator_instance.open_incinerator() 
+		
+		active_incinerators[y] = incinerator_instance
 
 # Riceve il dizionario della griglia dal GridInitializer
 func set_grid_data(data: Dictionary):
@@ -289,43 +311,52 @@ func destroy_all_turrets_in_row(row_y: int):
 
 # 🔥 NUOVA FUNZIONE: Gestisce l'attesa e la distruzione di una singola torretta
 func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
-	# 1. Trova la posizione (al centro della cella della colonna 0)
 	var cell_key = Vector2i(0, row_y)
 	var incinerator_pos = tilemap.to_global(tilemap.map_to_local(cell_key))
+	
+	# Determina lo stato: L'inceneritore è 'Aperto di Default' (Punto 1 & 2) 
+	# se NON è stato bloccato da un robot.
+	var is_open_by_default = !row_locked_by_robot.get(row_y, false) 
+	
+	var incinerator_instance = active_incinerators.get(row_y)
 
-	# 2. Rimuovi il tile statico e istanzia l'inceneritore animato (Solo se non è già attivo)
-	if not active_incinerators.has(row_y):
-		# A) Rimuovi il tile statico dell'inceneritore (Punto 1: Inceneritore si apre)
+	# --- Gestione Apertura On-Demand (Solo se l'inceneritore è Chiuso/Bloccato - Punto 4) ---
+	if !is_open_by_default and not active_incinerators.has(row_y):
+		# Inceneritore è chiuso (tile statico) e una torretta sta arrivando. Riaprilo.
+		
+		# A) Rimuovi il tile statico dell'inceneritore
 		tilemap.erase_cell(INCINERATOR_LAYER, cell_key) 
 		
-		# B) Istanzia il nodo Inceneritore e avvia l'animazione di apertura
-		var incinerator_instance = incinerator_scene.instantiate()
-		incinerator_instance.global_position = incinerator_pos # Posiziona al centro della cella
+		# B) Istanzia e avvia l'animazione di apertura
+		incinerator_instance = incinerator_scene.instantiate()
+		incinerator_instance.global_position = incinerator_pos
 		add_child(incinerator_instance)
 		active_incinerators[row_y] = incinerator_instance
 
-		# 🚀 Punto 1: L'inceneritore si apre (e va in idle)
+		# 🚀 Inceneritore si apre
 		await incinerator_instance.open_incinerator() 
 	
-	# 3. Avvia il timer per il ritardo (Punto 2: Fino a quando il robot non è morto resta aperto con l'animazione in attesa)
+	# --- Ritardo e Distruzione della Torretta ---
 	var delay_seconds = 3 
 	var timer = get_tree().create_timer(delay_seconds)
 	await timer.timeout
 	
-	# 4. Distruzione finale della torretta
 	if is_instance_valid(turret_instance):
-		# ... la tua logica di distruzione esistente ...
 		print("🔥 Incenerita torretta dopo il ritardo.")
 		emit_signal("turret_removed", Vector2i.ZERO, turret_instance, true)
 		turret_instance.queue_free()
-	
+
 	var post_destruction_delay = 3.0
 	var post_timer = get_tree().create_timer(post_destruction_delay)
 	await post_timer.timeout
 
-	# 5. Verifica se ci sono altre torrette che stanno arrivando nella colonna 0
-	# Se il robot è l'ultimo in questa riga: chiudi l'inceneritore
-	if not _is_any_turret_moving_to_incinerator_in_row(row_y):
+	# --- Gestione Chiusura Finale ---
+	if is_open_by_default:
+		# L'inceneritore resta attivo e aperto (Punto 2)
+		pass 
+	
+	# Se era bloccato (o riaperto on-demand), lo richiudiamo se non ci sono altre torrette in coda
+	elif not _is_any_turret_moving_to_incinerator_in_row(row_y):
 		_close_incinerator(row_y)
 
 func _is_any_turret_moving_to_incinerator_in_row(row_y: int) -> bool:
@@ -338,9 +369,16 @@ func _close_incinerator(row_y: int):
 		active_incinerators.erase(row_y) # Rimuovi dalla mappa degli inceneritori attivi
 
 		if is_instance_valid(incinerator_instance):
-			# 🚀 Punto 3: L'incenertiore si chiude
+			# 🚀 L'incenertiore si chiude
 			await incinerator_instance.close_incinerator()
 
-		# 🚀 Punto 3: ...e viene sostituito con il tile statico dell'inceneritore chiuso
+		# 🚀 Sostituisci con il tile statico dell'inceneritore chiuso
 		var cell_key = Vector2i(0, row_y)
 		tilemap.set_cell(INCINERATOR_LAYER, cell_key, INCINERATOR_TILE_ID, INCINERATOR_ATLAS_COORDS)
+
+func close_incinerator_on_robot_entry(row_y: int):
+	# 1. Imposta lo stato di blocco/pericolo
+	row_locked_by_robot[row_y] = true 
+	
+	# 2. Esegui la chiusura fisica (rimozione istanza e ripristino tile)
+	_close_incinerator(row_y)
