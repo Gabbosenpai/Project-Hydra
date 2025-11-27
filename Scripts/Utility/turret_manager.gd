@@ -169,6 +169,8 @@ func place_turret(cell_key: Vector2i):
 	if not turrets.has(cell_key) and selected_turret_scene != null:
 		var turret_instance = selected_turret_scene.instantiate()
 		
+		var turret_key_to_place = turret_scenes.find_key(selected_turret_scene)
+		
 		if turret_instance.has_signal("died"):
 			turret_instance.died.connect(handle_turret_death)
 
@@ -176,6 +178,10 @@ func place_turret(cell_key: Vector2i):
 
 		if turret_instance.has_method("set_riga"):
 			turret_instance.set_riga(cell_key.y)
+			
+		if turret_key_to_place:
+			turret_instance.turret_key = turret_key_to_place
+			print("Torretta piazzata con chiave: ", turret_key_to_place)
 			
 		add_child(turret_instance)
 		turrets[cell_key] = turret_instance
@@ -341,10 +347,12 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 	var timer = get_tree().create_timer(delay_seconds)
 	await timer.timeout
 	
-	if is_instance_valid(turret_instance):
-		print("🔥 Incenerita torretta dopo il ritardo.")
-		emit_signal("turret_removed", Vector2i.ZERO, turret_instance, true)
-		turret_instance.queue_free()
+	if turret_instance.has_method("spawn_scrap_on_incinerate"):
+			turret_instance.spawn_scrap_on_incinerate()
+	
+	print("🔥 Incenerita torretta dopo il ritardo.")
+	emit_signal("turret_removed", Vector2i.ZERO, turret_instance, true)
+	turret_instance.queue_free()
 
 	var post_destruction_delay = 3.0
 	var post_timer = get_tree().create_timer(post_destruction_delay)

@@ -18,6 +18,9 @@ var recharge_time : float
 var max_health : int
 var shoot_sfx : AudioStream
 var BULLET: PackedScene
+var turret_key: String = ""
+var refund_percentage: float = 0.5
+var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
 
 # Segnali Custom
 # Segnale di morte utilizzato per segnalare la morte della torretta 
@@ -118,3 +121,36 @@ func _on_tower_sprite_animation_finished() -> void:
 
 func _on_reload_timer_timeout():
 	rayCast.enabled = true  # NON RIMUOVERE, NON SO COSA FACCIA MA FA FUNZIONARE TUTTO
+
+func spawn_scrap_on_incinerate() -> void:
+	# 1. Trova il PointManager
+	var pm = get_tree().get_first_node_in_group("PointManager")
+	
+	if pm and scrap_scene and turret_key != "":
+		# Recupera i dati necessari dal PointManager
+		var turret_costs = pm.turret_costs
+		var incinerate_refund_percentage: float = pm.refund_percentage
+		
+		if turret_costs.has(turret_key):
+			var cost = turret_costs[turret_key]
+			# Calcola il valore fisso (50% del costo)
+			var points_to_earn = int(cost * incinerate_refund_percentage) 
+			
+			if points_to_earn > 0:
+				var scrap_instance = scrap_scene.instantiate()
+				
+				
+				var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
+				if scrap_sprite:
+					scrap_sprite.scale = Vector2(1.0, 1.0)
+					
+				# Aggiungi al nodo genitore (Main/Level)
+				get_parent().call_deferred("add_child", scrap_instance)
+
+				# Assegna la posizione globale e i valori
+				scrap_instance.global_position = global_position
+				scrap_instance.scrap_value = points_to_earn
+				scrap_instance.point_manager = pm
+				scrap_instance.z_index = 100 
+				
+				print("Scrap Torretta (", points_to_earn, ") generato dall'inceneritore.")
