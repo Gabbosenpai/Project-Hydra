@@ -66,4 +66,4 @@ func _on_languages_button_pressed() -> void:
 
 func _on_encyclopedia_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Encyclopedia.tscn")
+	get_tree().change_scene_to_file("res://Scenes/EncyclopediaFirstScreen.tscn")
