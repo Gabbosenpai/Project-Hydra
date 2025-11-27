@@ -138,8 +138,6 @@ func spawn_scrap_on_incinerate() -> void:
 			
 			if points_to_earn > 0:
 				var scrap_instance = scrap_scene.instantiate()
-				
-				
 				var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
 				if scrap_sprite:
 					scrap_sprite.scale = Vector2(1.0, 1.0)
