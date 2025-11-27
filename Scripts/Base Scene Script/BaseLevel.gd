@@ -3,7 +3,6 @@ extends Node2D
 
 signal game_over
 
-
 @onready var retry = $GameOverUI/RetryButton
 @onready var exit = $GameOverUI/ExitButton
 @onready var turret_manager = $TurretManager
