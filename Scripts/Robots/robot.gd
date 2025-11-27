@@ -24,6 +24,7 @@ var jamming : bool
 var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga : int
+var arrived: bool
 var max_points_on_defeat: int  = 25 # Valore max pts ottenibili da questo robot
 var scrap_drop_chance: float = 0.05 # Probabilità (0.0 a 1.0) drop alla morte
 var in_blackout_level: bool = false
@@ -39,6 +40,7 @@ func _ready() -> void:
 	# Inizializzo variabili per tutti i tipi di robot
 	current_health = max_health
 	violence = false
+	arrived = false
 	randomize_speed()
 	starting_speed = speed
 	print("Robot Starting Speed:", starting_speed)
@@ -94,12 +96,13 @@ func move(delta) -> void:
 	position.x -= speed * delta 
 	robot_sprite.play("move") 
 	# Controllo: se il nemico è arrivato alla colonna x <= 0
-	if position.x <= 150:
+	if position.x <= 150 and !arrived:
 		var main_scene = get_tree().current_scene
 		if main_scene.has_method("enemy_reached_base"):
 			# Passa l'istanza del robot al main level
 			main_scene.enemy_reached_base(self) # ✅ CORRETTO
-		queue_free()
+			arrived = true
+		speed = 0.0
 
 # Robot prende danno, se la sua salute va a 0, muore.
 func take_damage(amount: int) -> void:
