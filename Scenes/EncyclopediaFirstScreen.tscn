@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://5h4nur0meyjt"]
 
-[ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Encyclopedia.gd" id="1_mxu24"]
+[ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="3_d7oai"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="4_mdt5a"]
