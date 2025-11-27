@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=11 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Encyclopedia.gd" id="1_kfvci"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_8svmq"]
@@ -6,6 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="3_b78v6"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="4_ibo2e"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="4_viucg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo2e"]
+bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0.3889133, 0.21603402, 0.04774279, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1lwu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu672"]
+bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0.627451, 0.627451, 0.627451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viucg"]
 bg_color = Color(0, 0, 0, 0.8666667)
@@ -20,49 +38,123 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kfvci")
 
-[node name="Titolo" type="Button" parent="."]
+[node name="Titolo" type="Label" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 49.0
-offset_right = 1075.0
-offset_bottom = 124.0
+offset_left = 767.0
+offset_top = 120.0
+offset_right = 1036.0
+offset_bottom = 195.0
 theme_override_font_sizes/font_size = 36
-text = "ENCICLOPEDIA TORRETTE E ROBOT"
+text = "ENCICLOPEDIA"
+
+[node name="RiquadroTorrette" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 200.0
+offset_right = 918.0
+offset_bottom = 879.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ibo2e")
+
+[node name="BoltShooter" type="Button" parent="RiquadroTorrette"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 183.0
+offset_right = 360.0
+offset_bottom = 451.0
+focus_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="RiquadroTorrette/BoltShooter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = -77.0
+offset_right = 373.0
+offset_bottom = 188.0
+texture = ExtResource("2_8svmq")
+
+[node name="RiquadroTesto" type="Panel" parent="RiquadroTorrette"]
+modulate = Color(1, 0.654902, 0.20392157, 1)
+layout_mode = 0
+offset_left = 214.0
+offset_top = 476.0
+offset_right = 575.0
+offset_bottom = 581.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1lwu")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="RiquadroTorrette/RiquadroTesto"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 25.0
+offset_right = 355.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
+theme_override_font_sizes/font_size = 36
+text = "ELENCO TORRETTE"
+
+[node name="RiquadroRobot" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 198.0
+offset_right = 1843.0
+offset_bottom = 877.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fu672")
+
+[node name="BoltShooter" type="Button" parent="RiquadroRobot"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 183.0
+offset_right = 360.0
+offset_bottom = 451.0
+focus_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="RiquadroRobot/BoltShooter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 165.0
+offset_top = -98.0
+offset_right = 387.0
+offset_bottom = 167.0
+texture = ExtResource("2_8svmq")
+
+[node name="RiquadroTesto" type="Panel" parent="RiquadroRobot"]
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 0
+offset_left = 214.0
+offset_top = 476.0
+offset_right = 575.0
+offset_bottom = 581.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1lwu")
+
+[node name="Label" type="Label" parent="RiquadroRobot/RiquadroTesto"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 25.0
+offset_right = 320.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
+theme_override_font_sizes/font_size = 36
+text = "ELENCO ROBOT
+"
 
 [node name="BackToMenu" type="Button" parent="."]
 layout_mode = 0
-offset_left = 632.0
-offset_top = 339.0
-offset_right = 920.0
-offset_bottom = 402.0
+offset_left = 98.0
+offset_top = 980.0
+offset_right = 386.0
+offset_bottom = 1043.0
 theme_override_font_sizes/font_size = 40
 text = "Torna al menù
 "
 
-[node name="BoltShooter" type="Button" parent="."]
-layout_mode = 0
-offset_left = 611.0
-offset_top = 479.0
-offset_right = 836.0
-offset_bottom = 747.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="BoltShooter"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("2_8svmq")
-
 [node name="DeliveryDrone" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1374.0
-offset_top = 221.0
-offset_right = 1599.0
-offset_bottom = 489.0
+offset_left = 2143.0
+offset_top = 749.0
+offset_right = 2368.0
+offset_bottom = 1017.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -77,10 +169,10 @@ texture = ExtResource("3_b78v6")
 
 [node name="HKCM" type="Button" parent="."]
 layout_mode = 0
-offset_left = 215.0
-offset_top = 396.0
-offset_right = 440.0
-offset_bottom = 664.0
+offset_left = 2163.0
+offset_top = 1007.0
+offset_right = 2388.0
+offset_bottom = 1275.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -95,10 +187,10 @@ texture = ExtResource("4_ibo2e")
 
 [node name="WeedEater" type="Button" parent="."]
 layout_mode = 0
-offset_left = 968.0
-offset_top = 458.0
-offset_right = 1193.0
-offset_bottom = 726.0
+offset_left = 2354.0
+offset_top = 991.0
+offset_right = 2579.0
+offset_bottom = 1259.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -113,19 +205,21 @@ texture = ExtResource("3_7v4ab")
 
 [node name="Jammer" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1385.0
-offset_top = 463.0
-offset_right = 1610.0
-offset_bottom = 731.0
+offset_left = 2190.0
+offset_top = 343.0
+offset_right = 2415.0
+offset_bottom = 611.0
 focus_mode = 0
 flat = true
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Jammer"]
 texture_filter = 1
 layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
+offset_left = 79.0
+offset_top = 24.0
+offset_right = 301.0
+offset_bottom = 289.0
 texture = ExtResource("4_viucg")
 
 [node name="MonsterDescriptionPanel" type="Panel" parent="."]
@@ -155,8 +249,3 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
-[connection signal="pressed" from="BoltShooter" to="." method="_on_bolt_shooter_pressed"]
-[connection signal="pressed" from="DeliveryDrone" to="." method="_on_delivery_drone_pressed"]
-[connection signal="pressed" from="HKCM" to="." method="_on_hkcm_pressed"]
-[connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
-[connection signal="pressed" from="Jammer" to="." method="_on_jammer_pressed"]
