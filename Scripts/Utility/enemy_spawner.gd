@@ -25,7 +25,7 @@ var all_enemy_scenes = {
 }
 
 var level_enemy_pool = {
-	1: ["romba","we9k"],
+	1: ["romba", "we9k"],
 	2: ["mf","fh"],
 	3: ["cs"],
 	4: ["romba","we9k","mf","fh","cs"],
