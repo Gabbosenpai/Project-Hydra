@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://u2qsbtf5jqac"]
 
-[ext_resource type="Texture2D" uid="uid://3nc7ye8bbc4t" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Closing.png" id="1_f4dc0"]
+[ext_resource type="Texture2D" uid="uid://d4jxwwpeygqnj" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Closing.png" id="1_f4dc0"]
 [ext_resource type="Script" uid="uid://cqptoca2e6qiv" path="res://Scripts/Utility/incinerator.gd" id="1_rrkj0"]
-[ext_resource type="Texture2D" uid="uid://4pw2yx6fne2g" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Idle.png" id="2_rrkj0"]
+[ext_resource type="Texture2D" uid="uid://cfh8p53o33nc2" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Idle.png" id="2_rrkj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3vvn"]
 atlas = ExtResource("1_f4dc0")
@@ -124,7 +124,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"apertura",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -141,7 +141,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attesa",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"chiusura",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Incinerator" type="Node2D"]
@@ -181,5 +181,6 @@ z_index = -1
 script = ExtResource("1_rrkj0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_loasc")
-animation = &"attesa"
+animation = &"chiusura"
