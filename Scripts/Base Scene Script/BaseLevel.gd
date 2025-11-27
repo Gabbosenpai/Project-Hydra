@@ -64,6 +64,7 @@ func _ready():
 	
 	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
 	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
+	$TurretManager.initialize_incinerators()
 	
 	AudioManager.play_music(OST)
 	
@@ -85,35 +86,41 @@ func _on_level_completed():
 # Chiamata quando un nemico raggiunge la base del giocatore.
 func enemy_reached_base(robot_instance: Node2D):
 	# *** 0. CONTROLLO DI SICUREZZA ***
-	# Blocca immediatamente se il Game Over è già stato innescato da un altro robot.
 	if is_game_over:
 		return 
 		
 	var row = robot_instance.riga
 	
-	# Assicurati che 'row' sia un indice valido per l'array.
-	if row < 0 or row >= incinerator_used_in_row.size():
+	# Assicurati che 'row' sia un indice valido.
+	if row < 0 or row >= GameConstants.ROW:
 		push_error("ERRORE: Riga robot non valida: " + str(row))
 		return
-
+	
+	# Determina lo stato di blocco dal TurretManager.
+	var is_row_locked = turret_manager.row_locked_by_robot.get(row, false)
+	
 	# 1. Distruzione Torretta in Colonna 0 (per coerenza)
+	# Questa chiamata è ok, ma non dovrebbe essere strettamente necessaria
+	# perché la torretta in colonna 0 non dovrebbe esistere a questo punto.
 	turret_manager.destroy_turret_at_incinerator_pos(row)
 	
 	# 2. Logica Inceneritore PER RIGA
-	if incinerator_used_in_row[row]:
-		# SECONDA VOLTA NELLA STESSA RIGA: GAME OVER
-		print("🔥 GAME OVER: Inceneritore GIA' usato in riga ", row)
+	if is_row_locked:
+		# SECONDA VOLTA NELLA STESSA RIGA: GAME OVER (Punto 3 del piano)
+		print("🔥 GAME OVER: Inceneritore GIA' bloccato in riga ", row)
 		
 		# *** BLOCCO DEL GIOCO E SEGNALE ***
-		is_game_over = true # Imposta lo stato prima di emettere il segnale
+		is_game_over = true 
 		emit_signal("game_over")
 		
 	else:
-		# PRIMA VOLTA NELLA RIGA: Salva la vita e segna come usata
-		print("✅Inceneritore Attivato in riga ", row)
-		incinerator_used_in_row[row] = true
+		# PRIMA VOLTA NELLA RIGA: Chiude l'inceneritore animato e blocca la riga.
+		print("✅Inceneritore Bloccato in riga ", row)
 		
-		# Distrugge tutti gli oggetti nella riga
+		# ⚡️ Chiama la funzione nel TurretManager che aggiorna lo stato e chiude l'animazione.
+		turret_manager.close_incinerator_on_robot_entry(row)
+		
+		# Distrugge tutti gli oggetti nella riga (il robot è già distrutto da queue_free in move)
 		kill_all_in_row(row)
 	
 # 🔥 Nuova funzione per incenerire tutti gli oggetti in una riga
