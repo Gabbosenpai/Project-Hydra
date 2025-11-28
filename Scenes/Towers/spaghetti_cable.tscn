@@ -43,7 +43,7 @@ animations = [{
 radius = 22.5
 
 [node name="Tower" type="Area2D" groups=["Tower"]]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_8uawk")
 metadata/_edit_group_ = true
 

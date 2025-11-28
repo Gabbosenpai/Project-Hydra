@@ -177,9 +177,9 @@ func destroy_robots_in_row(row: int):
 	var killed_count = 0
 	
 	for child in get_children():
-		if child.is_in_group("Robot") and child.has_method("die"):
+		if child.is_in_group("Robot") and child.has_method("die") and is_instance_valid(child):
 			if child.riga == row:
-				child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
+				#child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 				child.queue_free()
 				enemies_alive -= 1
 				killed_count += 1

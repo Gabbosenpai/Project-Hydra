@@ -5,13 +5,15 @@ extends Area2D
 @onready var tower_sprite : AnimatedSprite2D = $TowerSprite
 @onready var tower_hitbox : CollisionShape2D = $TowerHitbox
 
+
 # % di riduzione danno
 @export var dmg_reduction : float = 0.25
+@export var max_health : float = 200
 
 # Variabili di un torretta standard
 var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
 var tower_current_health : float
-var max_health : float
+
 var turret_key: String = ""
 var refund_percentage: float = 0.5
 var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
