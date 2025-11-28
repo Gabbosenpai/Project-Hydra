@@ -135,7 +135,6 @@ func spawn_enemy():
 		# Devi anche comunicare al robot che il livello è in blackout
 		if enemy.has_method("set_blackout_state"):
 			enemy.set_blackout_state(true)
-			enemy.set_sprite_visibility(false)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 
 
