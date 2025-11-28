@@ -80,9 +80,9 @@ pause_menu = NodePath("PauseMenu")
 game_over_ui = NodePath("../GameOverUI")
 
 [node name="ButtonRemove" parent="UI" index="0"]
-offset_left = 1233.0
+offset_left = 1409.0
 offset_top = 1273.0
-offset_right = 1401.0
+offset_right = 1577.0
 offset_bottom = 1454.0
 
 [node name="TurretSelector" parent="UI" index="1"]
@@ -94,19 +94,19 @@ offset_bottom = 1456.0
 [node name="TextureRect" parent="UI/TurretSelector" index="0"]
 offset_left = -273.0
 offset_top = -298.0
-offset_right = 397.0
+offset_right = 543.0
 offset_bottom = 81.0
 
 [node name="PointsBar" parent="UI/TurretSelector" index="1"]
-offset_left = -535.0
+offset_left = -598.0
 offset_top = -84.0
-offset_right = 660.0
+offset_right = 878.0
 offset_bottom = 11.0
 
 [node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
-offset_left = 526.0
+offset_left = 676.0
 offset_top = 32.0
-offset_right = 670.0
+offset_right = 820.0
 offset_bottom = 62.0
 
 [node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
@@ -189,9 +189,9 @@ offset_right = 989.0
 offset_bottom = 251.0
 
 [node name="ButtonKillAll" parent="UI" index="4"]
-offset_left = 1434.0
+offset_left = 1600.0
 offset_top = 1398.0
-offset_right = 1575.0
+offset_right = 1741.0
 offset_bottom = 1452.0
 
 [node name="PauseButton" parent="UI" index="5"]
@@ -315,6 +315,7 @@ debug_draw_grid = true
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret2" to="UI" method="_on_button_turret_2_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret3" to="UI" method="_on_button_turret_3_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret4" to="UI" method="_on_button_turret_4_pressed"]
+[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret5" to="UI" method="_on_button_turret_5_pressed"]
 [connection signal="pressed" from="UI/ButtonKillAll" to="UI" method="_on_button_kill_all_pressed"]
 [connection signal="pressed" from="UI/PauseButton" to="UI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI" method="_on_resume_button_pressed"]
