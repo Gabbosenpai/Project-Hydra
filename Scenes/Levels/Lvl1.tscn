@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=26 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/Base Scene Script/Lvl1.gd" id="1_s1ade"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_7nfcr"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="9_5nqqt"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="9_tk4nw"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="10_tf0td"]
+[ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="12_5nqqt"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_uimwk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_soeiq"]
@@ -81,9 +82,9 @@ pause_menu = NodePath("PauseMenu")
 game_over_ui = NodePath("../GameOverUI")
 
 [node name="ButtonRemove" parent="UI" index="0"]
-offset_left = 1233.0
+offset_left = 1460.0
 offset_top = 1273.0
-offset_right = 1401.0
+offset_right = 1628.0
 offset_bottom = 1454.0
 
 [node name="TurretSelector" parent="UI" index="1"]
@@ -93,21 +94,21 @@ offset_right = 1026.0
 offset_bottom = 1456.0
 
 [node name="TextureRect" parent="UI/TurretSelector" index="0"]
-offset_left = -273.0
+offset_left = -283.0
 offset_top = -298.0
-offset_right = 397.0
+offset_right = 545.0
 offset_bottom = 81.0
 
 [node name="PointsBar" parent="UI/TurretSelector" index="1"]
-offset_left = -535.0
+offset_left = -607.0
 offset_top = -84.0
-offset_right = 660.0
+offset_right = 884.0
 offset_bottom = 11.0
 
 [node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
-offset_left = 526.0
+offset_left = 656.0
 offset_top = 32.0
-offset_right = 670.0
+offset_right = 800.0
 offset_bottom = 62.0
 
 [node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
@@ -175,6 +176,24 @@ offset_right = 147.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 34
 
+[node name="ButtonTurret5" type="Button" parent="UI/TurretSelector/HBoxContainer" index="4"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("12_5nqqt")
+expand_icon = true
+
+[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret5" index="0"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = -7.0
+offset_right = 141.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 34
+text = "50"
+
 [node name="LabelWave" parent="UI" index="2"]
 z_index = 1000
 offset_left = 917.0
@@ -190,9 +209,9 @@ offset_right = 989.0
 offset_bottom = 251.0
 
 [node name="ButtonKillAll" parent="UI" index="4"]
-offset_left = 1434.0
+offset_left = 1648.0
 offset_top = 1398.0
-offset_right = 1575.0
+offset_right = 1789.0
 offset_bottom = 1452.0
 
 [node name="PauseButton" parent="UI" index="5"]
@@ -318,6 +337,7 @@ debug_draw_grid = true
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret2" to="UI" method="_on_button_turret_2_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret3" to="UI" method="_on_button_turret_3_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret4" to="UI" method="_on_button_turret_4_pressed"]
+[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret5" to="UI" method="_on_button_turret_5_pressed"]
 [connection signal="pressed" from="UI/ButtonKillAll" to="UI" method="_on_button_kill_all_pressed"]
 [connection signal="pressed" from="UI/PauseButton" to="UI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI" method="_on_resume_button_pressed"]

@@ -9,7 +9,8 @@ var turret_costs := {
 	"turret1": 50,
 	"turret2": 75,
 	"turret3": 100,
-	"turret4": 125
+	"turret4": 125,
+	"turret5": 50
 }
 
 static var current_points: int

@@ -45,6 +45,9 @@ func _on_button_turret_3_pressed():
 func _on_button_turret_4_pressed():
 	emit_signal("select_turret", "turret4")
 
+func _on_button_turret_5_pressed() -> void:
+	emit_signal("select_turret", "turret5")
+
 # Uccide istantaneamente tutti i nemici in scena
 func _on_button_kill_all_pressed():
 	emit_signal("kill_all")
