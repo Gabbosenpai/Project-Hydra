@@ -21,6 +21,8 @@ var BULLET: PackedScene
 var turret_key: String = ""
 var refund_percentage: float = 0.5
 var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
+var has_been_activated: bool = false
+var base_level_ref: Node = null
 
 # Segnali Custom
 # Segnale di morte utilizzato per segnalare la morte della torretta 
@@ -30,12 +32,22 @@ signal died(instance)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var levels = get_tree().get_nodes_in_group("Level")
+	if levels.size() > 0:
+		base_level_ref = levels[0]
 	# Inizializzo variabili per tutti i tipi di torretta
 	armed = false
 	robots_coming = []
 	tower_current_health = max_health
 	reload_timer.wait_time = recharge_time
 	reload_timer.one_shot = true
+	
+	var is_blackout_level = false
+	if is_instance_valid(base_level_ref):
+		# Legge lo stato del livello
+		is_blackout_level = base_level_ref.is_blackout_level
+		
+	has_been_activated = not is_blackout_level
 	# Connetto segnali
 	tower_sprite.animation_finished.connect(_on_tower_sprite_animation_finished)
 	reload_timer.timeout.connect(_on_reload_timer_timeout)
@@ -51,12 +63,28 @@ func tower_set_up(tower_max_health : int, tower_bullet : PackedScene,
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float):
-	robots_coming = get_valid_robots()  # Controlla se ci sono robot bersaglio
-	armed = not robots_coming.is_empty() # True se ci sono robot bersaglio
-	# Spara solo se ci sono bersagli e la torretta è carica
-	if reload_timer.is_stopped() and armed: 
+	
+	var is_blackout_level = false
+	if is_instance_valid(base_level_ref):
+		is_blackout_level = base_level_ref.is_blackout_level
+		
+	robots_coming = get_valid_robots()  
+	armed = not robots_coming.is_empty() 
+
+	if is_blackout_level and not has_been_activated:
+		if armed and is_instance_valid(base_level_ref) and base_level_ref.is_blackout_lights_on():
+			has_been_activated = true
+
+	var can_shoot: bool = false
+	
+	if is_blackout_level:
+		can_shoot = armed and has_been_activated
+	else:
+		can_shoot = armed
+
+	if reload_timer.is_stopped() and can_shoot: 
 		shoot()
-	elif tower_sprite.animation != "shoot": # Non interrompere lo shoot a metà
+	elif tower_sprite.animation != "shoot": 
 		tower_sprite.play("idle")
 
 # Funzione per sparare un proiettile
