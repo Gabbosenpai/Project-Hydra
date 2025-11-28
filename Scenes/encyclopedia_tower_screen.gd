@@ -2,6 +2,8 @@ extends Control
 
 @onready var desc_panel = $MonsterDescriptionPanel
 @onready var desc_label = $MonsterDescriptionPanel/MonsterDescription
+@onready var name_label = $MonsterDescriptionPanel/MonsterName
+@onready var monster_image = $MonsterDescriptionPanel/MonsterTexture
 #da modificare con i percorsi giusti
 #var monster_textures = {
 	#"bolt_shooter": preload("res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0002.png"),
@@ -11,8 +13,21 @@ extends Control
 	#"jammer": preload("res://assets/jammer.png")
 #}
 
+
+
+
+
 func ready():
 	desc_panel.visible = false
+
+
+var monster_names = {
+	"bolt_shooter": "BOLT SHOOTER",
+	"weed_eater": "WEED EATER",
+	"delivery_drone": "DELIVERY DRONE",
+	"hkcm": "HOT KAWAII COFFEE MACHINE",
+	"jammer": "JAMMER"
+}
 
 
 var monster_texts = {
@@ -46,6 +61,7 @@ var monster_texts = {
  #Mostra la descrizione del mostro
 func show_description(monster_name: String):
 	if monster_name in monster_texts:
+		name_label.text = monster_names[monster_name]
 		desc_label.text = monster_texts[monster_name]
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
@@ -81,18 +97,16 @@ func _on_back_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/EncyclopediaFirstScreen.tscn")
 
-#func _on_weed_eater_pressed() -> void:
-	#show_description("weed_eater")
-	#
-#func _on_jammer_pressed() -> void:
-	#show_description("jammer")
+	
+func _on_jammer_pressed() -> void:
+	show_description("jammer")
 #
 #
 #
 #
-#func _on_delivery_drone_pressed() -> void:
-	#show_description("delivery_drone")
+func _on_delivery_drone_pressed() -> void:
+	show_description("delivery_drone")
 #
 #
-#func _on_hkcm_pressed() -> void:
-	#show_description("hkcm")
+func _on_hkcm_pressed() -> void:
+	show_description("hkcm")
