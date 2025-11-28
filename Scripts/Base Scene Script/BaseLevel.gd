@@ -281,7 +281,7 @@ func _create_blackout_light_nodes():
 	for y in range(GameConstants.ROW):
 		# --- Nodo per l'Oscuramento (il "buio" permanente del blackout) ---
 		var dark_overlay = ColorRect.new()
-		dark_overlay.size = Vector2(tile_size * num_cols, tile_size)
+		dark_overlay.size = Vector2(tile_size * (num_cols + 4), tile_size)
 		dark_overlay.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
 		dark_overlay.color = Color(0.0, 0.0, 0.0, 1.0) # Nero con 80% di opacità
 		dark_overlay.visible = true # Inizialmente visibile per creare il buio
@@ -291,7 +291,7 @@ func _create_blackout_light_nodes():
 
 		# --- Nodo per il Flash di Luce (il "chiaro" intermittente) ---
 		var flash_light = ColorRect.new()
-		flash_light.size = Vector2(tile_size * num_cols, tile_size)
+		flash_light.size = Vector2(tile_size * (num_cols + 4), tile_size)
 		flash_light.global_position = tilemap_pos + Vector2(start_col * tile_size, y * tile_size)
 		flash_light.color = Color(1.0, 1.0, 0.7, 0.3) # Giallo chiaro trasparente
 		flash_light.visible = false # Inizialmente invisibile (le luci sono spente)
