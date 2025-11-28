@@ -5,13 +5,12 @@ extends Control
 @onready var name_label = $MonsterDescriptionPanel/MonsterName
 @onready var monster_image = $MonsterDescriptionPanel/MonsterTexture
 #da modificare con i percorsi giusti
-#var monster_textures = {
-	#"bolt_shooter": preload("res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Animation_0002.png"),
-	#"weed_eater": preload("res://assets/weed_eater.png"),
-	#"delivery_drone": preload("res://assets/delivery_drone.png"),
-	#"hkcm": preload("res://assets/hkcm.png"),
-	#"jammer": preload("res://assets/jammer.png")
-#}
+var monster_textures = {
+	"bolt_shooter": preload("res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png"),
+	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
+	"hkcm": preload("res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"),
+	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png")
+}
 
 
 
@@ -63,6 +62,11 @@ func show_description(monster_name: String):
 	if monster_name in monster_texts:
 		name_label.text = monster_names[monster_name]
 		desc_label.text = monster_texts[monster_name]
+		if monster_name in monster_textures:
+			monster_image.texture = monster_textures[monster_name]
+		else:
+			monster_image.texture = null
+
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
 
