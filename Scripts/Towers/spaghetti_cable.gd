@@ -5,10 +5,15 @@ extends Area2D
 @onready var tower_sprite : AnimatedSprite2D = $TowerSprite
 @onready var tower_hitbox : CollisionShape2D = $TowerHitbox
 
+
+# % di riduzione danno
+@export var dmg_reduction : float = 0.25
+@export var max_health : float = 200
+
 # Variabili di un torretta standard
 var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
-var tower_current_health : int
-var max_health : int
+var tower_current_health : float
+
 var turret_key: String = ""
 var refund_percentage: float = 0.5
 var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
@@ -29,7 +34,7 @@ func _process(_delta: float) -> void:
 
 #Funzione che fa prendere danno allo torretta
 func take_damage(amount):
-	tower_current_health -= amount
+	tower_current_health -= float(amount) * (1 - dmg_reduction)
 	flash_bright()
 	print("Tower HP:", tower_current_health)
 	if tower_current_health < 0:
