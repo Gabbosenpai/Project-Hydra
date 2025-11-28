@@ -23,7 +23,7 @@ var active_shift_rows: Array = []
 # Variabili per le luci intermittenti
 var blackout_light_timer: Timer = null
 const LIGHT_FLASH_DURATION: float = 1.0
-const LIGHT_FLASH_INTERVAL: float = 2.0
+const LIGHT_FLASH_INTERVAL: float = 10.0
 
 # Variabile per tracciare i nodi overlay di blackout (il "buio")
 var blackout_dark_overlays: Array[ColorRect] = [] 
@@ -32,6 +32,7 @@ var blackout_flash_lights: Array[ColorRect] = []
 
 
 func _ready():
+	self.add_to_group("Level")
 	# 1. Assegna il dizionario inizializzato a TurretManager
 	if grid_initializer:
 		turret_manager.set_grid_data(grid_initializer.dic)
@@ -47,7 +48,8 @@ func _ready():
 		enemy_spawner.is_blackout_level = true
 		_init_blackout_lights()
 		_create_blackout_light_nodes()
-	
+	else:
+		is_blackout_level = false
 	# 2. Connessioni dei segnali COMUNI
 	turret_manager.connect("turret_removed", Callable(self, "_on_turret_removed"))
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
@@ -300,3 +302,13 @@ func _create_blackout_light_nodes():
 		blackout_flash_lights.append(flash_light)
 	
 	print("Creati nodi di overlay e flash per il blackout.")
+
+func is_blackout_lights_on() -> bool:
+	if not is_blackout_level:
+		return true
+		
+	# Controlla la visibilità di uno qualsiasi dei nodi luce flash
+	if blackout_flash_lights.size() > 0 and is_instance_valid(blackout_flash_lights[0]):
+		return blackout_flash_lights[0].visible
+	
+	return false
