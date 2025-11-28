@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwumnek1cnr8u"]
+
+[ext_resource type="Script" uid="uid://bn4wv23nxgtva" path="res://Scripts/Towers/spaghetti_cable.gd" id="1_8uawk"]
+[ext_resource type="Texture2D" uid="uid://bwokjpwotvvoh" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable Idle.png" id="1_w7mvt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uawk"]
+atlas = ExtResource("1_w7mvt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twvto"]
+atlas = ExtResource("1_w7mvt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54ymm"]
+atlas = ExtResource("1_w7mvt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgg7u"]
+atlas = ExtResource("1_w7mvt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2b6av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uawk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twvto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54ymm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgg7u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7mvt"]
+radius = 22.5
+
+[node name="Tower" type="Area2D" groups=["Tower"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_8uawk")
+metadata/_edit_group_ = true
+
+[node name="TowerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_2b6av")
+animation = &"idle"
+frame = 2
+frame_progress = 0.5512293
+
+[node name="TowerHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_w7mvt")
