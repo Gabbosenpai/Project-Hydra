@@ -13,6 +13,7 @@ extends Area2D
 var robots_coming : Array # Array con i robot identificati come bersaglio
 var armed : bool # Se true, la torretta spara
 var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
+var colonna : int
 var tower_current_health : int
 var recharge_time : float
 var max_health : int
@@ -81,6 +82,9 @@ func _process(_delta: float):
 		can_shoot = armed and has_been_activated
 	else:
 		can_shoot = armed
+	
+	if colonna == 0:
+		can_shoot = false
 
 	if reload_timer.is_stopped() and can_shoot: 
 		shoot()
@@ -136,6 +140,9 @@ func is_robot_visible(robot: Node) -> bool:
 
 func set_riga(value: int) -> void:
 	riga = value
+
+func set_colonna(value: int) -> void:
+	colonna = value
 
 # Modula lo sprite per dare feedback visivo
 func flash_bright():

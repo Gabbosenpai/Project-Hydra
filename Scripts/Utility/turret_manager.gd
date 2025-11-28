@@ -178,7 +178,10 @@ func place_turret(cell_key: Vector2i):
 
 		if turret_instance.has_method("set_riga"):
 			turret_instance.set_riga(cell_key.y)
-			
+		
+		if turret_instance.has_method("set_colonna"):
+			turret_instance.set_colonna(cell_key.x)
+		
 		if turret_key_to_place:
 			turret_instance.turret_key = turret_key_to_place
 			print("Torretta piazzata con chiave: ", turret_key_to_place)
@@ -261,6 +264,8 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 			if new_cell.x < 1:
 				# 🛑 Torretta destinata alla Colonna 0 (Inceneritore)
 				turrets_to_incinerate.append({instance = turret_instance, row = old_cell.y})
+				if turret_instance.has_method("set_colonna"):
+					turret_instance.set_colonna(0)
 				# Non aggiungiamo la torretta a new_turrets, viene incenerita
 			else:
 				# ✅ Caso di Spostamento (Colonna 2 -> Colonna 1, ecc.)
@@ -271,6 +276,10 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 				# Aggiorniamo la riga/colonna interna della torretta se necessario (dipende dalla sua implementazione)
 				if turret_instance.has_method("set_riga"):
 					turret_instance.set_riga(new_cell.y)
+				
+				if turret_instance.has_method("set_colonna"):
+					turret_instance.set_colonna(new_cell.x)
+
 		else:
 			print("ATTENZIONE: Trovata istanza torretta non valida in cella: ", old_cell)
 	
