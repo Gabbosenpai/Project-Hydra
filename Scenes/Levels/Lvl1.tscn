@@ -325,7 +325,6 @@ debug_draw_grid = true
 [connection signal="pressed" from="UI/PauseMenu/MenuButton" to="UI" method="_on_menu_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
-[connection signal="turret_removed" from="TurretManager" to="PointManager" method="_on_turret_removed"]
 
 [editable path="UI"]
 [editable path="GameOverUI"]

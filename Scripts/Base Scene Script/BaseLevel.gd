@@ -51,7 +51,6 @@ func _ready():
 	else:
 		is_blackout_level = false
 	# 2. Connessioni dei segnali COMUNI
-	turret_manager.connect("turret_removed", Callable(self, "_on_turret_removed"))
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))

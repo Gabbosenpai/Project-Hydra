@@ -19,6 +19,7 @@ var dronePosition : Vector2
 var droneStartingPosition : Vector2
 var current_animation : StringName
 var drop_sfx : AudioStreamWAV = preload("res://Assets/Sound/SFX/rilascio risorse.wav")
+var turret_key: String = ""
 
 func _ready() -> void:
 	current_health = dd_max_health
@@ -104,3 +105,26 @@ func flash_bright():
 	drop_pad_sprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
 	await get_tree().create_timer(0.1).timeout
 	drop_pad_sprite.modulate = Color(1, 1, 1) # Normale
+
+func spawn_scrap_on_incinerate() -> void:
+	# 1. Trova il PointManager
+	var pm = get_tree().get_first_node_in_group("PointManager")
+	
+	if pm and scrap_scene and turret_key != "":
+		var points_to_earn: int = pm.refund_points
+		if points_to_earn > 0:
+			var scrap_instance = scrap_scene.instantiate()
+			var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
+			if scrap_sprite:
+				scrap_sprite.scale = Vector2(1.0, 1.0)
+					
+				# Aggiungi al nodo genitore (Main/Level)
+				get_parent().call_deferred("add_child", scrap_instance)
+
+				# Assegna la posizione globale e i valori
+				scrap_instance.global_position = global_position
+				scrap_instance.scrap_value = points_to_earn
+				scrap_instance.point_manager = pm
+				scrap_instance.z_index = 100 
+				
+				print("Scrap Torretta (", points_to_earn, ") generato dall'inceneritore.")
