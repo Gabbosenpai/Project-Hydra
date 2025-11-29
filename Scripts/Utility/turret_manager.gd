@@ -1,7 +1,6 @@
 extends Node
 
 signal turret_placed(cell_key)
-signal turret_removed(cell_key, turret_instance)
 
 @export var tilemap: TileMap
 
@@ -212,7 +211,6 @@ func handle_turret_death(turret_instance: Node2D):
 			break
 	
 	if cell_key != Vector2i.ZERO:
-		emit_signal("turret_removed", cell_key, turret_instance, false) # false = rimborso totale
 		turrets.erase(cell_key)
 
 
@@ -299,8 +297,6 @@ func destroy_turret_at_incinerator_pos(row_y: int):
 		var turret_instance = turrets[cell_key]
 		
 		if is_instance_valid(turret_instance):
-			# È una distruzione: is_destruction = true
-			emit_signal("turret_removed", cell_key, turret_instance, true) 
 			turret_instance.queue_free()
 		
 		turrets.erase(cell_key)
@@ -359,7 +355,6 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 			turret_instance.spawn_scrap_on_incinerate()
 	
 	print("🔥 Incenerita torretta dopo il ritardo.")
-	emit_signal("turret_removed", Vector2i.ZERO, turret_instance, true)
 	turret_instance.queue_free()
 
 	var post_destruction_delay = 3.0
