@@ -261,6 +261,7 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 			if new_cell.x < 1:
 				# 🛑 Torretta destinata alla Colonna 0 (Inceneritore)
 				turrets_to_incinerate.append({instance = turret_instance, row = old_cell.y})
+				tween.finished.connect(func():_incinerate_with_delay(turret_instance, old_cell.y))
 				if turret_instance.has_method("set_colonna"):
 					turret_instance.set_colonna(0)
 				# Non aggiungiamo la torretta a new_turrets, viene incenerita
@@ -284,10 +285,6 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 	turrets = new_turrets
 	
 	print("✅ Tutte le torrette hanno iniziato a muoversi indietro di una cella.")
-	
-	# 3. Avvia il processo di incenerimento per tutte le torrette in Colonna 0
-	for data in turrets_to_incinerate:
-		_incinerate_with_delay(data.instance, data.row) # Passa l'istanza e la riga corretta
 
 # 🔥 Nuova funzione: distrugge la torretta in colonna 0 (posizione inceneritore)
 func destroy_turret_at_incinerator_pos(row_y: int):
@@ -346,6 +343,9 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 		# 🚀 Inceneritore si apre
 		await incinerator_instance.open_incinerator() 
 	
+	var tween = get_tree().create_tween()
+	tween.parallel().tween_property(turret_instance, "scale", Vector2(0, 0), 2.0)
+	tween.parallel().tween_property(turret_instance, "rotation", 7.5 , 2.0)
 	# --- Ritardo e Distruzione della Torretta ---
 	var delay_seconds = 3 
 	var timer = get_tree().create_timer(delay_seconds)
