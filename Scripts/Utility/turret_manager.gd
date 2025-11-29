@@ -198,8 +198,6 @@ func remove_turret(cell_key: Vector2i):
 		var turret_instance = turrets[cell_key]
 		
 		if is_instance_valid(turret_instance):
-			# NON è una distruzione, quindi is_destruction è false (default)
-			emit_signal("turret_removed", cell_key, turret_instance, false) 
 			turret_instance.queue_free()
 		
 		turrets.erase(cell_key)

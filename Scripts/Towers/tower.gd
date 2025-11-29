@@ -162,20 +162,12 @@ func spawn_scrap_on_incinerate() -> void:
 	var pm = get_tree().get_first_node_in_group("PointManager")
 	
 	if pm and scrap_scene and turret_key != "":
-		# Recupera i dati necessari dal PointManager
-		var turret_costs = pm.turret_costs
-		var incinerate_refund_percentage: float = pm.refund_percentage
-		
-		if turret_costs.has(turret_key):
-			var cost = turret_costs[turret_key]
-			# Calcola il valore fisso (50% del costo)
-			var points_to_earn = int(cost * incinerate_refund_percentage) 
-			
-			if points_to_earn > 0:
-				var scrap_instance = scrap_scene.instantiate()
-				var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
-				if scrap_sprite:
-					scrap_sprite.scale = Vector2(1.0, 1.0)
+		var points_to_earn: int = pm.refund_points
+		if points_to_earn > 0:
+			var scrap_instance = scrap_scene.instantiate()
+			var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
+			if scrap_sprite:
+				scrap_sprite.scale = Vector2(1.0, 1.0)
 					
 				# Aggiungi al nodo genitore (Main/Level)
 				get_parent().call_deferred("add_child", scrap_instance)
