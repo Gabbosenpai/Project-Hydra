@@ -1,36 +1,37 @@
 class_name SpaghettiCable
 extends Area2D
 
-# Nodi-Figlio della scena
-@onready var tower_sprite : AnimatedSprite2D = $TowerSprite
-@onready var tower_hitbox : CollisionShape2D = $TowerHitbox
-
-
-# % di riduzione danno
-@export var dmg_reduction : float = 0.25
-@export var max_health : float = 200
-
-# Variabili di un torretta standard
-var riga : int # Riga della torretta nella griglia, inizializzata al piazzamento
-var tower_current_health : float
-
-var turret_key: String = ""
-var refund_percentage: float = 0.5
-var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
-
 # Segnali Custom
 # Segnale di morte utilizzato per segnalare la morte della torretta 
 # affinche la si possa rilevare ed eliminare dalle torrette presenti 
 # evitando Null Pointer Exception
 signal died(instance)
 
+# % di riduzione danno
+@export var dmg_reduction: float = 0.25
+@export var max_health: float = 200
+
+# Variabili di un torretta standard
+var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
+var tower_current_health: float
+var turret_key: String = ""
+var refund_percentage: float = 0.5
+var scrap_scene: PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
+
+# Nodi-Figlio della scena
+@onready var tower_sprite: AnimatedSprite2D = $TowerSprite
+@onready var tower_hitbox: CollisionShape2D = $TowerHitbox
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tower_current_health = max_health
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	tower_sprite.play("idle")
+
 
 #Funzione che fa prendere danno allo torretta
 func take_damage(amount):
@@ -42,10 +43,12 @@ func take_damage(amount):
 	if tower_current_health == 0:
 		die()
 
+
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
 	emit_signal("died", self) 
 	queue_free()
+
 
 # Modula lo sprite per dare feedback visivo
 func flash_bright():
@@ -53,8 +56,10 @@ func flash_bright():
 	await get_tree().create_timer(0.1).timeout
 	tower_sprite.modulate = Color(1, 1, 1) # Normale
 
+
 func set_riga(value: int) -> void:
 	riga = value
+
 
 func spawn_scrap_on_incinerate() -> void:
 	# 1. Trova il PointManager
@@ -70,7 +75,7 @@ func spawn_scrap_on_incinerate() -> void:
 					
 				# Aggiungi al nodo genitore (Main/Level)
 				get_parent().call_deferred("add_child", scrap_instance)
-
+				
 				# Assegna la posizione globale e i valori
 				scrap_instance.global_position = global_position
 				scrap_instance.scrap_value = points_to_earn

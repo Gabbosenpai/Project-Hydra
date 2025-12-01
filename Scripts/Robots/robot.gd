@@ -2,15 +2,13 @@
 class_name Robot
 extends Area2D
 
+# Segnali Custom
+signal enemy_defeated  # Emesso quando il robot muore
+
 # Costanti
 const VISIBLE_COLUMN_THRESHOLD = 9
 
-# Nodi-Figlio della scena, inizializzati con onready perchè astratta
-@onready var robot_sprite: AnimatedSprite2D = $RobotSprite
-@onready var robot_hitbox : CollisionShape2D = $RobotHitbox
-@onready var tower_detector_collision : CollisionShape2D = $TowerDetector/CollisionShape2D
-@onready var tower_detector : Area2D = $TowerDetector
-@onready var visNot : VisibleOnScreenNotifier2D = $VisNot
+@export var scrap_scene: PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
 
 # Variabili di un robot standard
 var current_health: int
@@ -20,20 +18,22 @@ var max_health: int
 var violence: bool # Se true, il robot inizia ad attaccare!
 var isDead: bool # Ci aiuta ad evitare che un robot "muoia" più volte
 var starting_speed: float 
-var jamming : bool
+var jamming: bool
 var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
-var riga : int
+var riga: int
 var arrived: bool
 var max_points_on_defeat: int  = 25 # Valore max pts ottenibili da questo robot
 var scrap_drop_chance: float = 0.05 # Probabilità (0.0 a 1.0) drop alla morte
 var in_blackout_level: bool = false
 
-@export var scrap_scene : PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
+# Nodi-Figlio della scena, inizializzati con onready perchè astratta
+@onready var robot_sprite: AnimatedSprite2D = $RobotSprite
+@onready var robot_hitbox: CollisionShape2D = $RobotHitbox
+@onready var tower_detector_collision: CollisionShape2D = $TowerDetector/CollisionShape2D
+@onready var tower_detector: Area2D = $TowerDetector
+@onready var visNot: VisibleOnScreenNotifier2D = $VisNot
 
-
-# Segnali Custom
-signal enemy_defeated  # Emesso quando il robot muore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,18 +53,22 @@ func _ready() -> void:
 	tower_detector.area_exited.connect(_on_tower_detector_area_exited)
 	robot_sprite.animation_finished.connect(_on_robot_sprite_animation_finished)
 
+
 # Inizializzo variabili per tipologia di robot
-func robot_set_up(robot_max_health : int, robot_speed : float, robot_damage: int):
+func robot_set_up(robot_max_health: int, robot_speed: float, robot_damage: int):
 	max_health = robot_max_health
 	speed = robot_speed
 	damage = robot_damage
 
+
 func set_blackout_state(is_blackout: bool):
 	in_blackout_level = is_blackout
+
 
 func set_sprite_visibility(should_visible: bool):
 	if is_instance_valid(robot_sprite):
 		robot_sprite.visible = should_visible
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -75,14 +79,16 @@ func _process(delta: float) -> void:
 		if not robot_sprite.visible: 
 			var tile_size = 160.0 # Assicurati che TILE_SIZE sia definito o 160
 			var current_col = round(global_position.x / tile_size)
-
+			
 			# Se il robot è entrato o ha superato la colonna 9
 			if current_col <= VISIBLE_COLUMN_THRESHOLD:
 				set_sprite_visibility(true)
 
+
 # Ogni Robot potrebbe avere motivi diversi per muoversi e/o fermarsi
 @abstract
 func can_move() -> bool;
+
 
 # Ogni Robot varia leggermente la sua velocità così che si evitino effetti di
 # sovrapposizione visivamente odiosi
@@ -90,6 +96,7 @@ func randomize_speed():
 	var random_offset = randi_range(-5, +5)
 	print("Robot offset:", random_offset)
 	speed += random_offset
+
 
 # Movimento del robot
 func move(delta) -> void:
@@ -104,6 +111,7 @@ func move(delta) -> void:
 			arrived = true
 		speed = 0.0
 
+
 # Robot prende danno, se la sua salute va a 0, muore.
 func take_damage(amount: int) -> void:
 	current_health -= amount
@@ -113,6 +121,7 @@ func take_damage(amount: int) -> void:
 		current_health = 0
 	if current_health == 0:
 		die()
+
 
 # Se colpito dal jammer il robot viene rallentato, mi creo un timer temporaneo
 # per non scomodare altri nodi figlio, inoltre metto un hard cap al debuff per 
@@ -131,6 +140,7 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	timer.autostart = true
 	add_child(timer)
 	
+	#Attendi Timer e liberalo
 	await timer.timeout
 	if is_instance_valid(timer):
 		timer.queue_free()
@@ -139,6 +149,7 @@ func jamming_debuff(amount: float, duration: float) -> void:
 	if(jamming_sources <= 0):
 		speed = starting_speed
 		jamming = false
+
 
 # Gestisce il Damage Over Time del proiettile di caffè bollente
 func burning_coffee_DOT(amount: float, duration: float) -> void:
@@ -152,7 +163,6 @@ func burning_coffee_DOT(amount: float, duration: float) -> void:
 	coffeeTimer.one_shot = true
 	add_child(coffeeTimer)
 	flash_coffee()
-	
 	
 	for tick in range(tick_count):
 		# Controllo validità, se nodo muore, interrompi
@@ -176,6 +186,7 @@ func burning_coffee_DOT(amount: float, duration: float) -> void:
 		coffeeTimer.queue_free()
 		robot_sprite.modulate = Color(1, 1, 1)
 
+
 # Robot muore eseguendo l'animazione, poi è deallocato dalla scena
 func die() -> void:
 	# Controllo per evitare di fare chiamate multiple di die() in caso di molti 
@@ -194,10 +205,12 @@ func die() -> void:
 	await robot_sprite.animation_finished
 	queue_free()
 
+
 # Controlla se il nemico è visibile nella viewport (schermo)
 func is_on_screen() -> bool:
 	# Usa il nodo figlio VisibleOnScreenNotifier2D per verificare la visibilità
 	return visNot.is_on_screen()
+
 
 # Modula lo sprite per dare feedback visivo
 func flash_bright():
@@ -212,6 +225,7 @@ func flash_bright():
 	robot_sprite.modulate = Color(1, 1, 1) # Normale
 	timer.queue_free()
 
+
 func flash_coffee():
 	robot_sprite.modulate = Color(0.55, 0.35, 0.15) # Coffee Effect
 	var timer = Timer.new()
@@ -224,6 +238,7 @@ func flash_coffee():
 	robot_sprite.modulate = Color(1, 1, 1) # Normale
 	timer.queue_free()
 
+
 # Se il Robot ha una torretta davanti, inizia ad attaccare
 func _on_tower_detector_area_entered(tower: Area2D) -> void:
 	if tower.is_in_group("Tower"):
@@ -231,21 +246,29 @@ func _on_tower_detector_area_entered(tower: Area2D) -> void:
 		target = tower
 		robot_sprite.play("attack")
 
+
 # Se il Robot non ha più una torretta davanti, smette di attaccare
 func _on_tower_detector_area_exited(tower: Area2D) -> void:
 	if tower.is_in_group("Tower"):
 		violence = false
 		target = null
 
+
 # Quando finisce l'animazione d'attacco, facciamo un controllo sulla validità del 
 # bersaglio: se true, il bersaglio subisce danno e il robot ricomincia l'animazione
 # d'attacco
 func _on_robot_sprite_animation_finished() -> void:
 	var current_animation = robot_sprite.animation
-	if current_animation == "attack" and violence and target and is_instance_valid(target):
+	if (
+			current_animation == "attack" 
+			and violence 
+			and target 
+			and is_instance_valid(target)
+	):
 		if target.has_method("take_damage"):
 			target.take_damage(damage)
 		robot_sprite.play("attack")
+
 
 #Genera la risorsa Scrap con un valore di punti casuale.
 func spawn_scrap_on_death() -> void:

@@ -2,14 +2,16 @@ class_name JammingBullet
 extends Bullet  
 
 # Variabili esportate per poterle modificare facilmente dall'editor di Godot
-@export var jamming_bullet_speed : float = 200          # Velocità del proiettile
-@export var jamming_bullet_damage : int = 10    # Danno che il proiettile infligge agli nemici
-@export var jamming_value : float = 10
+@export var jamming_bullet_speed: float = 200          # Velocità del proiettile
+@export var jamming_bullet_damage: int = 10    # Danno che il proiettile infligge agli nemici
+@export var jamming_value: float = 10
 @export var jamming_duration = 10.0
+
 
 func _ready() -> void:
 	super.bullet_set_up(jamming_bullet_speed, jamming_bullet_damage)
 	super._ready()
+
 
 # Funzione chiamata quando questo Area2D entra in collisione con un altro Area2D
 func _on_area_entered(area: Area2D):

@@ -2,13 +2,15 @@ class_name CoffeeBullet
 extends Bullet  
 
 # Variabili esportate per poterle modificare facilmente dall'editor di Godot
-@export var coffee_bullet_speed : float = 200          # Velocità del proiettile
-@export var coffee_bullet_damage : int = 50    # Danno che il proiettile infligge agli nemici
+@export var coffee_bullet_speed: float = 200  # Velocità proiettile
+@export var coffee_bullet_damage: int = 50 # Danno proiettile
 @export var coffee_duration = 10.0
+
 
 func _ready() -> void:
 	super.bullet_set_up(coffee_bullet_speed, coffee_bullet_damage)
 	super._ready()
+
 
 # Funzione chiamata quando questo Area2D entra in collisione con un altro Area2D
 func _on_area_entered(area: Area2D):

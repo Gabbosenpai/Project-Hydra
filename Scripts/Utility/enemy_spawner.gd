@@ -23,7 +23,6 @@ var all_enemy_scenes = {
 	"fh": preload("res://Scenes/Robots/fire_hydrant.tscn"),
 	"cs": preload("res://Scenes/Robots/cassa_schierata.tscn")
 }
-
 var level_enemy_pool = {
 	1: ["romba", "we9k"],
 	2: ["mf","fh"],
@@ -31,24 +30,22 @@ var level_enemy_pool = {
 	4: ["romba","we9k","mf","fh","cs"],
 	5: ["romba","we9k","mf","fh","cs"]
 }
-
-var current_wave = 0
-var enemies_to_spawn = 0
-var enemies_alive = 0
-var is_wave_active = false
-var current_level: int = 1
-
 var waves = [
 	{ "count": 13, "interval": 0.4 },
 	{ "count": 16, "interval": 0.6 },
 	{ "count": 19, "interval": 0.8 },
 	{ "count": 22, "interval": 1.0 }
 ]
+var current_wave = 0
+var enemies_to_spawn = 0
+var enemies_alive = 0
+var is_wave_active = false
+var current_level: int = 1
 
 
 func _ready():
 	randomize()
-
+	
 	var path = get_tree().current_scene.scene_file_path
 	var regex = RegEx.new()
 	regex.compile("\\d+")
@@ -57,7 +54,7 @@ func _ready():
 		current_level = int(result.get_string())
 	else:
 		current_level = 1
-
+	
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
 	
 	if initial_delay_timer:
@@ -67,9 +64,11 @@ func _ready():
 	else:
 		start_wave()
 
+
 func _on_initial_delay_timeout():
 	print("Ritardo iniziale terminato. Avvio prima ondata.")
 	start_wave()
+
 
 func start_wave():
 	if is_wave_active or current_wave >= waves.size():
@@ -80,13 +79,13 @@ func start_wave():
 	if current_wave > 1: # Emetti il segnale solo dalla seconda ondata in poi
 		emit_signal("wave_completed", current_wave)
 		print("✅ Segnale 'wave_completed' emesso (Inizio Onda ", current_wave, ").")
-
+	
 	var wave = waves[current_wave - 1]
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
 	
 	is_wave_active = true
-
+	
 	label_wave.text = "Ondata: " + str(current_wave)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	label_wave_center.text = "ONDATA " + str(current_wave)
@@ -107,7 +106,7 @@ func _on_wave_timer_timeout():
 			# Se l'ultimo nemico è stato spawnato, avvia la transizione
 			print("Spawn completato. Avvio la transizione ondata.")
 			_check_wave_completion()
-		
+
 
 func _on_next_wave_delay_timeout():
 	print("Ritardo tra ondate terminato. Avvio prossima ondata.")
@@ -148,8 +147,6 @@ func kill_all():
 	# Forziamo la fine dello spawn e l'eliminazione dei nemici.
 	enemies_to_spawn = 0
 	
-	
-	
 	var children_to_kill = []
 	for child in get_children():
 		if child.has_method("die"):
@@ -163,13 +160,15 @@ func kill_all():
 	enemies_alive = max(0, enemies_alive)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	
-	# Se l'onda era attiva, forziamo il passaggio alla successiva (incrementando current_wave e avviando il timer)
+	# Se l'onda era attiva, forziamo il passaggio 
+	# alla successiva (incrementando current_wave e avviando il timer)
 	if is_wave_active:
 		is_wave_active = false
 		wave_timer.stop()
 		#_check_wave_completion()
 	
-	# La funzione di check gestirà l'avvio immediato dell'onda successiva o la vittoria (poiché enemies_alive = 0).
+	# La funzione di check gestirà l'avvio immediato dell'ondata successiva 
+	# o la vittoria (poiché enemies_alive = 0).
 	check_enemies_for_next_wave()
 
 
@@ -192,7 +191,8 @@ func destroy_robots_in_row(row: int):
 
 
 func _check_wave_completion():
-	# Questa funzione viene chiamata SOLO quando lo spawn è terminato (enemies_to_spawn = 0).
+	# Questa funzione viene chiamata SOLO quando 
+	# lo spawn è terminato (enemies_to_spawn = 0).
 	if enemies_to_spawn <= 0 and is_wave_active:
 		is_wave_active = false
 		
@@ -208,6 +208,7 @@ func _check_wave_completion():
 			print("Ultima ondata spawnata. Attendo sconfitta nemici per vittoria.")
 			# L'ultima ondata è stata spawnata, chiamiamo il check per la vittoria
 			check_enemies_for_next_wave()
+
 
 func check_enemies_for_next_wave():
 	# Avviene se enemies_alive = 0 E siamo in fase di transizione (lo spawn è finito)
