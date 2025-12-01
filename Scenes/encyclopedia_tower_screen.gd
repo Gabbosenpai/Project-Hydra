@@ -51,7 +51,9 @@ var monster_texts = {
 	
 	"jammer": "Questo è il Jammer! "+
 	"avevamo progettato questo nuovo tipo di jammer ma le misure "+
-	"invece che in centimetri le abbiamo scritte in metri!"
+	"invece che in centimetri le abbiamo scritte in metri!",
+	
+	"spaghetti_cable": "Le liane blu che nascondono il suo corpo sono rivestite di peli sottili. Si dice che soffra il solletico."
 }
 
 
@@ -115,3 +117,7 @@ func _on_delivery_drone_pressed() -> void:
 #
 func _on_hkcm_pressed() -> void:
 	show_description("hkcm")
+
+
+func _on_spaghetti_cable_pressed() -> void:
+	show_description("spaghetti_cable")

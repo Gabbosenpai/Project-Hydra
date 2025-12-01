@@ -1,11 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=11 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
-[ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="3_d7oai"]
-[ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="4_mdt5a"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="5_se8tl"]
-[ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_ry6np"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo2e"]
 bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
@@ -18,6 +15,8 @@ border_color = Color(0.3889133, 0.21603402, 0.04774279, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1lwu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibo2e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfxy6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu672"]
 bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
@@ -42,15 +41,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_mxu24")
 
-[node name="Titolo" type="Label" parent="."]
-layout_mode = 0
-offset_left = 767.0
-offset_top = 120.0
-offset_right = 1036.0
-offset_bottom = 195.0
-theme_override_font_sizes/font_size = 36
-text = "ENCICLOPEDIA"
-
 [node name="RiquadroTorrette" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 115.0
@@ -58,25 +48,6 @@ offset_top = 200.0
 offset_right = 918.0
 offset_bottom = 879.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibo2e")
-metadata/_edit_group_ = true
-
-[node name="BoltShooter" type="Button" parent="RiquadroTorrette"]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 183.0
-offset_right = 360.0
-offset_bottom = 451.0
-focus_mode = 0
-flat = true
-
-[node name="TextureRect" type="TextureRect" parent="RiquadroTorrette/BoltShooter"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 151.0
-offset_top = -77.0
-offset_right = 373.0
-offset_bottom = 188.0
-texture = ExtResource("2_i424e")
 
 [node name="RiquadroTesto" type="Panel" parent="RiquadroTorrette"]
 modulate = Color(1, 0.654902, 0.20392157, 1)
@@ -99,9 +70,26 @@ text = "ELENCO TORRETTE"
 
 [node name="TowerButton" type="Button" parent="RiquadroTorrette/RiquadroTesto"]
 layout_mode = 0
+offset_top = -1.0
 offset_right = 361.0
 offset_bottom = 105.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ibo2e")
+
+[node name="TextureRect" type="TextureRect" parent="RiquadroTorrette"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 274.0
+offset_top = 126.0
+offset_right = 496.0
+offset_bottom = 391.0
+texture = ExtResource("2_i424e")
+metadata/_edit_group_ = true
+
+[node name="HandicapButton" type="Button" parent="RiquadroTorrette/TextureRect"]
+layout_mode = 0
+offset_right = 225.0
+offset_bottom = 272.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kfxy6")
 
 [node name="RiquadroRobot" type="Panel" parent="."]
 layout_mode = 0
@@ -110,28 +98,9 @@ offset_top = 198.0
 offset_right = 1843.0
 offset_bottom = 877.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fu672")
-metadata/_edit_group_ = true
-
-[node name="BoltShooter" type="Button" parent="RiquadroRobot"]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 183.0
-offset_right = 360.0
-offset_bottom = 451.0
-focus_mode = 0
-flat = true
-
-[node name="TextureRect" type="TextureRect" parent="RiquadroRobot/BoltShooter"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 165.0
-offset_top = -98.0
-offset_right = 387.0
-offset_bottom = 167.0
-texture = ExtResource("2_i424e")
 
 [node name="RiquadroTesto" type="Panel" parent="RiquadroRobot"]
-modulate = Color(0.6, 0.6, 0.6, 1)
+modulate = Color(0.47312066, 0.5684909, 0.62377065, 1)
 layout_mode = 0
 offset_left = 214.0
 offset_top = 476.0
@@ -145,17 +114,32 @@ offset_left = 36.0
 offset_top = 25.0
 offset_right = 320.0
 offset_bottom = 128.0
-theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
+theme_override_colors/font_color = Color(0.1931151, 0.22935726, 0.2374612, 1)
 theme_override_font_sizes/font_size = 36
 text = "ELENCO ROBOT
 "
 
 [node name="RobotButton" type="Button" parent="RiquadroRobot/RiquadroTesto"]
 layout_mode = 0
+offset_top = -4.0
 offset_right = 359.0
 offset_bottom = 107.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mxu24")
-metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="RiquadroRobot"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 292.0
+offset_top = 122.0
+offset_right = 514.0
+offset_bottom = 387.0
+texture = ExtResource("5_se8tl")
+
+[node name="HandicapButton2" type="Button" parent="RiquadroRobot/TextureRect"]
+layout_mode = 0
+offset_right = 225.0
+offset_bottom = 272.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kfxy6")
 
 [node name="BackToMenu" type="Button" parent="."]
 layout_mode = 0
@@ -166,79 +150,6 @@ offset_bottom = 1043.0
 theme_override_font_sizes/font_size = 40
 text = "Torna al menù
 "
-
-[node name="DeliveryDrone" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2143.0
-offset_top = 749.0
-offset_right = 2368.0
-offset_bottom = 1017.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="DeliveryDrone"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("3_d7oai")
-
-[node name="HKCM" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2163.0
-offset_top = 1007.0
-offset_right = 2388.0
-offset_bottom = 1275.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="HKCM"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("4_mdt5a")
-
-[node name="WeedEater" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2354.0
-offset_top = 991.0
-offset_right = 2579.0
-offset_bottom = 1259.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="WeedEater"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("5_se8tl")
-
-[node name="Jammer" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2190.0
-offset_top = 343.0
-offset_right = 2415.0
-offset_bottom = 611.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Jammer"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 79.0
-offset_top = 24.0
-offset_right = 301.0
-offset_bottom = 289.0
-texture = ExtResource("6_ry6np")
 
 [node name="MonsterDescriptionPanel" type="Panel" parent="."]
 visible = false
@@ -266,6 +177,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="RettangoloTitolo" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 584.0
+offset_top = 42.0
+offset_right = 1395.0
+offset_bottom = 173.0
+color = Color(0.7695294, 0.9673949, 0.94883716, 0.393)
+metadata/_edit_group_ = true
+
+[node name="Titolo" type="Label" parent="RettangoloTitolo"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 27.0
+offset_right = 730.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 60
+text = "ENCICLOPEDIA - INDICE"
+
 [connection signal="pressed" from="RiquadroTorrette/RiquadroTesto/TowerButton" to="." method="_on_tower_button_pressed"]
+[connection signal="pressed" from="RiquadroTorrette/TextureRect/HandicapButton" to="." method="_on_handicap_button_pressed"]
 [connection signal="pressed" from="RiquadroRobot/RiquadroTesto/RobotButton" to="." method="_on_robot_button_pressed"]
+[connection signal="pressed" from="RiquadroRobot/TextureRect/HandicapButton2" to="." method="_on_handicap_button_2_pressed"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

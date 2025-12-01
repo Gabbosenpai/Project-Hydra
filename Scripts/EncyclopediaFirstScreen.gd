@@ -110,3 +110,17 @@ func _on_tower_button_pressed() -> void:
 func _on_robot_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/EncyclopediaRobotScreen.tscn")
+
+
+
+
+
+
+
+func _on_handicap_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	get_tree().change_scene_to_file("res://Scenes/EncyclopediaTowerScreen.tscn")
+
+func _on_handicap_button_2_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	get_tree().change_scene_to_file("res://Scenes/EncyclopediaRobotScreen.tscn")
