@@ -1,9 +1,11 @@
 extends Control
 
+
 #Funzione che inizializza i crediti
 func _ready():
 	var credits_music = preload("res://Assets/Sound/OST/Kevin MacLeod - Itty Bitty (CREDITS THEME).mp3")
 	AudioManager.play_music(credits_music) #Viene avviata la OST
+
 
 #Funzione che rileva quando il pulsante per tonare al menu viene cliccato
 func _on_back_to_menu_button_pressed() -> void:

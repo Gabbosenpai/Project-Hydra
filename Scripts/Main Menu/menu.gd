@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-#Riferimenti ai pulsanti del menu
+# Riferimenti ai pulsanti del menu
 @onready var play_button = $VBoxContainer/PlayButton
 @onready var quit_button = $VBoxContainer/QuitButton
 @onready var credits_button = $VBoxContainer/CreditsButton
@@ -8,37 +8,36 @@ extends CanvasLayer
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxContainer
 
-#Funzione che inizializza il menu principale
+# Funzione che inizializza il menu principale
 func _ready():
 	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	AudioManager.play_music(menu_music)
-	
-#se clicco gioca ferma l'OST del menù
+
+
+# Se clicco gioca ferma l'OST del menù
 func _on_play_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-  #Ferma la musica del menu
+	# Ferma la musica del menu
 	get_tree().change_scene_to_file("res://Scenes/Utilities/slot_selection.tscn")
-	
 
-#Funzione che dealloca la scena quando si clicca esci e per cui fa terminaare il gioco
+
+# Funzione che dealloca la scena quando si clicca esci e per cui fa terminaare il gioco
 func _on_quit_button_pressed() -> void:
-	
 	get_tree().quit()
 
-#Funzione che mostra i crediti e avvia la sfx del pulsante dei crediti
+# Funzione che mostra i crediti e avvia la sfx del pulsante dei crediti
 func _on_credits_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-
 	get_tree().change_scene_to_file("res://Scenes/Utilities/Credits.tscn")
 
-#Funzione che mostra le opzioni e avvia la sfx del pulsante opzioni
+
+# Funzione che mostra le opzioni e avvia la sfx del pulsante opzioni
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-
 	get_tree().change_scene_to_file("res://Scenes/Utilities/Opzioni.tscn")
 
 
-#Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
+# Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/language_selection.tscn")
