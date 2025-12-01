@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://k10m7sae6uup"]
+[gd_scene load_steps=6 format=3 uid="uid://k10m7sae6uup"]
 
 [ext_resource type="Script" uid="uid://cg1pqyhidk1ad" path="res://Scenes/encyclopedia_robot_screen.gd" id="1_v1qki"]
+[ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="2_tjctc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4x86"]
 bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
@@ -98,9 +99,27 @@ horizontal_alignment = 1
 texture_filter = 1
 layout_mode = 0
 offset_left = 160.0
-offset_top = 26.0
+offset_top = 68.0
 offset_right = 636.0
 offset_bottom = 323.0
 stretch_mode = 5
 
+[node name="WeedEater" type="Button" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 263.0
+offset_right = 335.0
+offset_bottom = 515.0
+focus_mode = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="WeedEater"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -22.0
+offset_right = 235.0
+offset_bottom = 239.0
+texture = ExtResource("2_tjctc")
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
