@@ -1,12 +1,13 @@
 class_name WeedEater9000
 extends Robot
 
-@export var we9k_max_health : int = 75 
-@export var we9k_speed : float = 75 
-@export var we9k_damage : int = 2 
-@export var block_chance : float = 0.33 # probabilità di bloccare (0.33 = 33%)
+@export var we9k_max_health: int = 75 
+@export var we9k_speed: float = 75 
+@export var we9k_damage: int = 2 
+@export var block_chance: float = 0.33 # probabilità di bloccare (0.33 = 33%)
 
-var deflected : bool = false # Bool usata per fermare il robot al blocco
+var deflected: bool = false # Bool usata per fermare il robot al blocco
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +16,11 @@ func _ready() -> void:
 	super.robot_set_up(we9k_max_health, we9k_speed, we9k_damage)
 	super._ready()
 
+
 # Un Weed Eater 9000 si ferma anche quando sta bloccando un proiettile 
 func can_move() -> bool:
 	return !violence and !deflected and current_health > 0
+
 
 #Override
 func take_damage(amount):
@@ -30,6 +33,7 @@ func take_damage(amount):
 	super.take_damage(amount)
 	deflected = false
 
+
 # Calcola con una randf se il robot riesce a bloccare il colpo 
 # quando NON sta attaccando
 func deflect() -> bool:
@@ -38,6 +42,7 @@ func deflect() -> bool:
 			flash_blocked()
 			return true
 	return false
+
 
 # Modula lo sprite per dare feedback visivo quando blocca con successo
 func flash_blocked():
