@@ -1,16 +1,16 @@
 extends Control
 
-# salviamo quale slot vogliamo cancellare
+# Salviamo quale slot vogliamo cancellare
 var slot_to_delete = 0  
 
 func _ready():
 	update_slot_texts()
-	#la schermata di conferma è inizialmente non visibile
+	# La schermata di conferma è inizialmente non visibile
 	$ConfirmPanel.visible = false
 
-#funzione che aggiorna dinamicamente il testo dei vari file
 
-#livello1 significa livello del file 1 e così per il file 2 e 3
+# Funzione che aggiorna dinamicamente il testo dei vari file
+# Livello1 significa livello del file 1 e così per il file 2 e 3
 func update_slot_texts():
 	var livello1 = SaveManager.get_saved_level(1)
 	var completato1 = 0
@@ -20,8 +20,8 @@ func update_slot_texts():
 		$VBoxContainer/File1.text = "File 1 - Livello %d completato" % completato1
 	else:
 		$VBoxContainer/File1.text = "File 1 - Vuoto"
-
-#stessa cosa del file 1
+	
+	# Stessa cosa del file 1
 	var livello2 = SaveManager.get_saved_level(2)
 	var completato2 = 0
 	if livello2 > 1:
@@ -30,9 +30,8 @@ func update_slot_texts():
 		$VBoxContainer/File2.text = "File 2 - Livello %d completato" % completato2
 	else:
 		$VBoxContainer/File2.text = "File 2 - Vuoto"
-
-
-#stessa cosa del file 1
+	
+	# Stessa cosa del file 1
 	var livello3 = SaveManager.get_saved_level(3)
 	var completato3 = 0
 	if livello3 > 1:
@@ -47,8 +46,8 @@ func _on_file_1_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = 1
 	SaveManager.load_progress()
-	#temporanemante vogliamo andare alla selezione livello
-	#questa parte andrà successivamente tolta
+	# Temporanemante vogliamo andare alla selezione livello,
+	# questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 
@@ -56,8 +55,8 @@ func _on_file_2_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = 2
 	SaveManager.load_progress()
-	#temporanemante vogliamo andare alla selezione livello
-	#questa parte andrà successivamente tolta
+	# Temporanemante vogliamo andare alla selezione livello,
+	# questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 
@@ -65,21 +64,22 @@ func _on_file_3_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = 3
 	SaveManager.load_progress()
-	#temporanemante vogliamo andare alla selezione livello
-	#questa parte andrà successivamente tolta
+	# Temporanemante vogliamo andare alla selezione livello,
+	# questa parte andrà successivamente tolta
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
-#schemrata conferma cancellazione salvataggio
+
+# Schemrata conferma cancellazione salvataggio
 func show_confirm_panel():
 	$ConfirmPanel.visible = true
 	$ConfirmPanel/Text.text = "Vuoi davvero cancellare il salvataggio nello slot %d?" % slot_to_delete
-
 
 
 func _on_delete_1_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	slot_to_delete = 1
 	show_confirm_panel()
+
 
 func _on_delete_2_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -92,7 +92,8 @@ func _on_delete_3_pressed() -> void:
 	slot_to_delete = 3
 	show_confirm_panel()
 
-#gestione pulsante conferma cancellazione salvataggio
+
+# Gestione pulsante conferma cancellazione salvataggio
 func _on_yes_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	SaveManager.current_slot = slot_to_delete
@@ -100,7 +101,8 @@ func _on_yes_button_pressed() -> void:
 	update_slot_texts()
 	$ConfirmPanel.visible = false
 
-#gestione pulsante annulla cancellazione salvataggio
+
+# Gestione pulsante annulla cancellazione salvataggio
 func _on_no_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	$ConfirmPanel.visible = false

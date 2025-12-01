@@ -1,12 +1,19 @@
 extends Node2D
+
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 
+
 func open_incinerator():
-	animatedSprite.play("apertura") # Assumendo che "open" sia la tua animazione di apertura
+	# Assumendo che "open" sia la tua animazione di apertura
+	animatedSprite.play("apertura") 
 	await animatedSprite.animation_finished
-	animatedSprite.play("attesa") # Passa all'animazione di attesa
+	# Passa all'animazione di attesa
+	animatedSprite.play("attesa") 
+
 
 func close_incinerator():
-	animatedSprite.play("chiusura") # Assumendo che "close" sia la tua animazione di chiusura
+	# Assumendo che "close" sia la tua animazione di chiusura
+	animatedSprite.play("chiusura") 
 	await animatedSprite.animation_finished
-	queue_free() # Rimuove l'istanza animata
+	# Rimuove l'istanza animata
+	queue_free() 

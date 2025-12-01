@@ -2,8 +2,6 @@ extends Node
 
 signal turret_placed(cell_key)
 
-@export var tilemap: TileMap
-
 # --- COSTANTI: Configurazione TileMap ---
 const HIGHLIGHT_LAYER: int = 1
 const HIGHLIGHT_TILE_ID: int = 5
@@ -13,9 +11,9 @@ const INCINERATOR_LAYER: int = 0
 const INCINERATOR_TILE_ID: int = 4
 const INCINERATOR_ATLAS_COORDS: Vector2i = Vector2i(0, 0)
 
-var conveyor_phase_shift: int = 0
+@export var tilemap: TileMap
 
-@onready var grid_initializer = get_parent().get_node("GridInitializer")
+var conveyor_phase_shift: int = 0
 var turrets = {}
 var selected_turret_scene: PackedScene = null
 enum Mode { NONE, PLACE, REMOVE }
@@ -25,7 +23,6 @@ var dic = {} # Inizializzato vuoto, verrà assegnato da GridInitializer
 var incinerator_scene: PackedScene = preload("res://Scenes/Utilities/incinerator.tscn")
 var active_incinerators = {} # Mappa: {row_y: incinerator_instance}
 var row_locked_by_robot = {}
-
 var turret_scenes = {
 	"turret1": preload("res://Scenes/Towers/delivery_drone.tscn"),
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
@@ -33,6 +30,9 @@ var turret_scenes = {
 	"turret4": preload("res://Scenes/Towers/HKCM.tscn"),
 	"turret5": preload("res://Scenes/Towers/spaghetti_cable.tscn")
 }
+
+@onready var grid_initializer = get_parent().get_node("GridInitializer")
+
 
 func initialize_incinerators():
 	if !tilemap: return
@@ -55,26 +55,27 @@ func initialize_incinerators():
 		
 		active_incinerators[y] = incinerator_instance
 
+
 # Riceve il dizionario della griglia dal GridInitializer
 func set_grid_data(data: Dictionary):
 	dic = data
 	print("TurretManager ha ricevuto i dati della griglia.")
 
 
-# --- Aggiornamento visivo del piazzamento e rimozione ---
+# Aggiornamento visivo del piazzamento e rimozione
 func _process(_delta):
 	if dic.is_empty():
 		return 
-
+	
 	$"/root/Main/UI/ButtonRemove".visible = not turrets.is_empty()
-
+	
 	for x in range(GameConstants.COLUMN):
 		for y in range(GameConstants.ROW):
 			tilemap.erase_cell(HIGHLIGHT_LAYER, Vector2i(x, y))
-
+	
 	if current_mode == Mode.NONE:
 		return
-
+	
 	var pointer_pos = get_pointer_position()
 	var cell: Vector2i = Vector2i.ZERO
 	
@@ -86,11 +87,11 @@ func _process(_delta):
 			return
 	else:
 		return
-
+	
 	var cell_key = str(cell)
 	if not dic.has(cell_key):
 		return
-
+	
 	var draw_highlight = false
 	var tile_modulate: Color = Color.WHITE
 	var is_occupied = turrets.has(cell)
@@ -103,7 +104,7 @@ func _process(_delta):
 		if is_occupied:
 			tile_modulate = Color(1.0, 0.4, 0.4, 0.6)
 			draw_highlight = true
-
+	
 	if draw_highlight:
 		tilemap.set_cell(HIGHLIGHT_LAYER, cell, HIGHLIGHT_TILE_ID, HIGHLIGHT_ATLAS_COORDS)
 		var tile_data = tilemap.get_cell_tile_data(HIGHLIGHT_LAYER, cell)
@@ -111,7 +112,7 @@ func _process(_delta):
 			tile_data.modulate = tile_modulate
 
 
-# --- Gestione torrette ---
+# Gestione torrette 
 func select_turret(key: String):
 	var point_manager = $"/root/Main/PointManager"
 	if point_manager.can_select_turret(key):
@@ -123,6 +124,7 @@ func select_turret(key: String):
 
 func remove_mode():
 	current_mode = Mode.REMOVE
+
 
 func clear_mode():
 	current_mode = Mode.NONE
@@ -148,14 +150,14 @@ func get_pointer_position() -> Vector2:
 func _unhandled_input(event):
 	if current_mode == Mode.NONE:
 		return
-
+	
 	var pointer_pos = null
 	if event is InputEventScreenTouch and event.pressed:
 		pointer_pos = event.position
 		last_touch_position = pointer_pos
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		pointer_pos = event.position
-
+	
 	if pointer_pos != null:
 		var cell_key = get_valid_cell_from_position(pointer_pos)
 		if cell_key != null and dic.has(str(cell_key)):
@@ -173,9 +175,9 @@ func place_turret(cell_key: Vector2i):
 		
 		if turret_instance.has_signal("died"):
 			turret_instance.died.connect(handle_turret_death)
-
+		
 		turret_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell_key))
-
+		
 		if turret_instance.has_method("set_riga"):
 			turret_instance.set_riga(cell_key.y)
 		
@@ -214,7 +216,7 @@ func handle_turret_death(turret_instance: Node2D):
 		turrets.erase(cell_key)
 
 
-# --- 🔥 Nuova funzione: spostamento torrette dopo ogni ondata ---
+# Spostamento torrette dopo ogni ondata
 func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 	if _wave_number == 1:
 		print("Salto Movimento Torrette: Ondata 1 è la prima ondata. Non devono indietreggiare le torrette.")
@@ -237,10 +239,10 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 		
 		# 2. Chiama la funzione nel GridInitializer per ridisegnare i tile
 		grid_initializer.update_conveyors_phase(conveyor_phase_shift,rows_to_shift)
-
+	
 	var new_turrets = {}
 	var turrets_to_incinerate = [] # Array per tracciare le torrette in colonna 0
-
+	
 	# 1. Fase di Spostamento e Istruzione Torrette da Incenerire
 	for old_cell in turrets.keys():
 		var turret_instance = turrets[old_cell]
@@ -249,7 +251,7 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 			# Torretta nella riga non selezionata: NON si sposta
 			new_turrets[old_cell] = turret_instance
 			continue # Passa alla prossima torretta
-
+		
 		if is_instance_valid(turret_instance):
 			
 			var new_pos = tilemap.to_global(tilemap.map_to_local(new_cell))
@@ -257,16 +259,16 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 			
 			# NON usiamo 'await', avviamo l'animazione e proseguiamo subito
 			tween.tween_property(turret_instance, "global_position", new_pos, CONVEYOR_SHIFT_DURATION) 
-
+			
 			if new_cell.x < 1:
-				# 🛑 Torretta destinata alla Colonna 0 (Inceneritore)
+				# Torretta destinata alla Colonna 0 (Inceneritore)
 				turrets_to_incinerate.append({instance = turret_instance, row = old_cell.y})
 				tween.finished.connect(func():_incinerate_with_delay(turret_instance, old_cell.y))
 				if turret_instance.has_method("set_colonna"):
 					turret_instance.set_colonna(0)
 				# Non aggiungiamo la torretta a new_turrets, viene incenerita
 			else:
-				# ✅ Caso di Spostamento (Colonna 2 -> Colonna 1, ecc.)
+				# Caso di Spostamento (Colonna 2 -> Colonna 1, ecc.)
 				
 				# Aggiungere la torretta al nuovo dizionario con la NUOVA cella
 				new_turrets[new_cell] = turret_instance
@@ -277,7 +279,7 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 				
 				if turret_instance.has_method("set_colonna"):
 					turret_instance.set_colonna(new_cell.x)
-
+		
 		else:
 			print("ATTENZIONE: Trovata istanza torretta non valida in cella: ", old_cell)
 	
@@ -286,10 +288,11 @@ func move_turrets_back(_wave_number: int, rows_to_shift: Array = []):
 	
 	print("✅ Tutte le torrette hanno iniziato a muoversi indietro di una cella.")
 
-# 🔥 Nuova funzione: distrugge la torretta in colonna 0 (posizione inceneritore)
+
+# Distrugge la torretta in colonna 0 (posizione inceneritore)
 func destroy_turret_at_incinerator_pos(row_y: int):
 	var cell_key = Vector2i(0, row_y)
-
+	
 	if turrets.has(cell_key):
 		var turret_instance = turrets[cell_key]
 		
@@ -298,7 +301,8 @@ func destroy_turret_at_incinerator_pos(row_y: int):
 		
 		turrets.erase(cell_key)
 
-# 🔥 Nuova funzione: Incenerisce TUTTE le torrette in una riga (dopo l'attivazione)
+
+# Incenerisce TUTTE le torrette in una riga (dopo l'attivazione)
 func destroy_all_turrets_in_row(row_y: int):
 	var to_destroy = []
 	
@@ -310,13 +314,14 @@ func destroy_all_turrets_in_row(row_y: int):
 			if is_instance_valid(turret_instance):
 				# Nessun rimborso, queste vengono incenerite
 				turret_instance.queue_free() 
-
+	
 	for cell_key in to_destroy:
 		turrets.erase(cell_key)
 	
 	print("🔥 Tutte le %d torrette in riga %d sono state incenerite." % [to_destroy.size(), row_y])
 
-# 🔥 NUOVA FUNZIONE: Gestisce l'attesa e la distruzione di una singola torretta
+
+# Gestisce l'attesa e la distruzione di una singola torretta
 func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 	var cell_key = Vector2i(0, row_y)
 	var incinerator_pos = tilemap.to_global(tilemap.map_to_local(cell_key))
@@ -327,7 +332,8 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 	
 	var incinerator_instance = active_incinerators.get(row_y)
 
-	# --- Gestione Apertura On-Demand (Solo se l'inceneritore è Chiuso/Bloccato - Punto 4) ---
+	# Gestione Apertura On-Demand 
+	# (Solo se l'inceneritore è Chiuso/Bloccato - Punto 4) 
 	if !is_open_by_default and not active_incinerators.has(row_y):
 		# Inceneritore è chiuso (tile statico) e una torretta sta arrivando. Riaprilo.
 		
@@ -339,14 +345,14 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 		incinerator_instance.global_position = incinerator_pos
 		add_child(incinerator_instance)
 		active_incinerators[row_y] = incinerator_instance
-
-		# 🚀 Inceneritore si apre
+		
+		# Inceneritore si apre
 		await incinerator_instance.open_incinerator() 
 	
 	var tween = get_tree().create_tween()
 	tween.parallel().tween_property(turret_instance, "scale", Vector2(0, 0), 2.0)
 	tween.parallel().tween_property(turret_instance, "rotation", 7.5 , 2.0)
-	# --- Ritardo e Distruzione della Torretta ---
+	# Ritardo e Distruzione della Torretta 
 	var delay_seconds = 3 
 	var timer = get_tree().create_timer(delay_seconds)
 	await timer.timeout
@@ -356,12 +362,12 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 	
 	print("🔥 Incenerita torretta dopo il ritardo.")
 	turret_instance.queue_free()
-
+	
 	var post_destruction_delay = 3.0
 	var post_timer = get_tree().create_timer(post_destruction_delay)
 	await post_timer.timeout
-
-	# --- Gestione Chiusura Finale ---
+	
+	# Gestione Chiusura Finale 
 	if is_open_by_default:
 		# L'inceneritore resta attivo e aperto (Punto 2)
 		pass 
@@ -370,26 +376,28 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 	elif not _is_any_turret_moving_to_incinerator_in_row(row_y):
 		_close_incinerator(row_y)
 
+
 func _is_any_turret_moving_to_incinerator_in_row(row_y: int) -> bool:
 	# Controlliamo il dizionario 'turrets' per vedere se c'è qualcosa in colonna 0
 	return turrets.has(Vector2i(0, row_y))
+
 
 func _close_incinerator(row_y: int):
 	if active_incinerators.has(row_y):
 		var incinerator_instance = active_incinerators[row_y]
 		active_incinerators.erase(row_y) # Rimuovi dalla mappa degli inceneritori attivi
-
+		
 		if is_instance_valid(incinerator_instance):
-			# 🚀 L'incenertiore si chiude
+			# L'incenertiore si chiude
 			await incinerator_instance.close_incinerator()
-
-		# 🚀 Sostituisci con il tile statico dell'inceneritore chiuso
+		
+		# Sostituisci con il tile statico dell'inceneritore chiuso
 		var cell_key = Vector2i(0, row_y)
 		tilemap.set_cell(INCINERATOR_LAYER, cell_key, INCINERATOR_TILE_ID, INCINERATOR_ATLAS_COORDS)
+
 
 func close_incinerator_on_robot_entry(row_y: int):
 	# 1. Imposta lo stato di blocco/pericolo
 	row_locked_by_robot[row_y] = true 
-	
 	# 2. Esegui la chiusura fisica (rimozione istanza e ripristino tile)
 	_close_incinerator(row_y)

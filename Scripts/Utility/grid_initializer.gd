@@ -1,8 +1,11 @@
 extends Node2D
 
-@export var tilemap: TileMap
+const TILE_SIZE = 160 # La dimensione del tile in pixel (160x160)
+const FONT_SIZE = 20
+const CONVEYOR_STEP_SCENE: PackedScene = preload("res://Scenes/Utilities/conveyor_belt.tscn")
 
-# @export booleano per attivare/disattivare la griglia di debug nell'Inspector.
+@export var tilemap: TileMap
+# Export booleano per attivare/disattivare la griglia di debug nell'Inspector.
 @export var debug_draw_grid: bool = false:
 	# Setter personalizzato. Quando il valore cambia (nell'editor o in runtime),
 	# aggiorniamo il valore e chiediamo al nodo di ridisegnare.
@@ -10,20 +13,16 @@ extends Node2D
 		debug_draw_grid = value
 		queue_redraw() # Chiede a Godot di chiamare _draw()
 
-
-const TILE_SIZE = 160 # La dimensione del tile in pixel (160x160)
-const FONT_SIZE = 20
-const CONVEYOR_STEP_SCENE: PackedScene = preload("res://Scenes/Utilities/conveyor_belt.tscn")
-
 # Il tuo dizionario, usato per tracciare le proprietà della cella
 var dic = {} 
+
+
 # Funzione che si occupa solo di inizializzare la griglia e il dizionario.
 func _ready():
 	if not tilemap:
 		print("ERRORE: TileMap non assegnata a GridInitializer!")
 		return
 	
-		
 	# 1. Inizializzazione del Dizionario 'dic' e della TileMap
 	# Assicurati che GameConstants.COLUMN e GameConstants.ROW siano disponibili
 	for x in range(1,GameConstants.COLUMN):
@@ -51,10 +50,13 @@ func _ready():
 	
 	print("Griglia TileMap e Dizionario 'dic' inizializzati.")
 	
-	# Richiedi un disegno iniziale per assicurarti che la griglia appaia se è attiva nell'editor.
+	# Richiedi un disegno iniziale per assicurarti che la griglia 
+	# appaia se è attiva nell'editor.
 	queue_redraw() 
 
-# Funzione di disegno personalizzata chiamata quando il nodo viene aggiornato con queue_redraw()
+
+# Funzione di disegno personalizzata chiamata quando 
+# il nodo viene aggiornato con queue_redraw()
 func _draw():
 	# Disegna la griglia solo se la variabile di debug è TRUE
 	if debug_draw_grid:
@@ -65,7 +67,8 @@ func _draw():
 		
 		var tilemap_pos = tilemap.position
 		
-		# NUOVO OFFSET: Sposta l'origine di disegno a destra di 1 TILE_SIZE (esclude Colonna 0)
+		# NUOVO OFFSET: Sposta l'origine di disegno a destra 
+		# di 1 TILE_SIZE (esclude Colonna 0)
 		var offset = tilemap_pos + Vector2(TILE_SIZE, 0)
 		
 		var display_columns = GameConstants.COLUMN - 1
@@ -77,7 +80,7 @@ func _draw():
 			var start_pos = offset + Vector2(x * TILE_SIZE, 0)
 			var end_pos = offset + Vector2(x * TILE_SIZE, grid_height)
 			draw_line(start_pos, end_pos, line_color, line_width)
-
+			
 		# --- Linee Orizzontali (Inizia da Colonna 1) ---
 		for y in range(GameConstants.ROW + 1):
 			var start_pos = offset + Vector2(0, y * TILE_SIZE)
@@ -101,7 +104,7 @@ func _draw():
 			pos.x -= text_size.x / 2
 			
 			draw_string(default_font, pos, text, HORIZONTAL_ALIGNMENT_CENTER, -1.0, FONT_SIZE, text_color)
-
+			
 		# --- DISEGNO NUMERI RIGA (A Fianco) ---
 		for y in range(GameConstants.ROW):
 			var row_index = y
@@ -122,6 +125,7 @@ func _draw():
 			for y in range(GameConstants.ROW):
 				var cell_center = offset + Vector2(x * TILE_SIZE + TILE_SIZE / 2.0, y * TILE_SIZE + TILE_SIZE / 2.0)
 				draw_circle(cell_center, 4, center_color)
+
 
 func update_conveyors_phase(phase: int, rows_to_shift: Array = []):
 	
@@ -181,5 +185,6 @@ func update_tilemap_base(cell: Vector2i, phase: int):
 		source_id = 2 # Tile Chiaro
 		
 	# Imposta la cella sulla TileMap al nuovo Source ID permanente.
-	# Le Atlas Coords (0,0) vengono usate per specificare il frame statico iniziale del tile.
+	# Le Atlas Coords (0,0) vengono usate per specificare 
+	# il frame statico iniziale del tile.
 	tilemap.set_cell(0, cell, source_id, Vector2i(0,0), 0)
