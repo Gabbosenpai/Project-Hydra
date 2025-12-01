@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=10 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
+[ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="5_se8tl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo2e"]
 bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
@@ -56,24 +57,6 @@ offset_bottom = 879.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibo2e")
 metadata/_edit_group_ = true
 
-[node name="BoltShooter" type="Button" parent="RiquadroTorrette"]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 183.0
-offset_right = 360.0
-offset_bottom = 451.0
-focus_mode = 0
-flat = true
-
-[node name="TextureRect" type="TextureRect" parent="RiquadroTorrette/BoltShooter"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 151.0
-offset_top = -77.0
-offset_right = 373.0
-offset_bottom = 188.0
-texture = ExtResource("2_i424e")
-
 [node name="RiquadroTesto" type="Panel" parent="RiquadroTorrette"]
 modulate = Color(1, 0.654902, 0.20392157, 1)
 layout_mode = 0
@@ -99,6 +82,15 @@ offset_right = 361.0
 offset_bottom = 105.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ibo2e")
 
+[node name="TextureRect" type="TextureRect" parent="RiquadroTorrette"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 286.0
+offset_top = 106.0
+offset_right = 508.0
+offset_bottom = 371.0
+texture = ExtResource("2_i424e")
+
 [node name="RiquadroRobot" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 1009.0
@@ -106,28 +98,9 @@ offset_top = 198.0
 offset_right = 1843.0
 offset_bottom = 877.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fu672")
-metadata/_edit_group_ = true
-
-[node name="BoltShooter" type="Button" parent="RiquadroRobot"]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 183.0
-offset_right = 360.0
-offset_bottom = 451.0
-focus_mode = 0
-flat = true
-
-[node name="TextureRect" type="TextureRect" parent="RiquadroRobot/BoltShooter"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 165.0
-offset_top = -98.0
-offset_right = 387.0
-offset_bottom = 167.0
-texture = ExtResource("2_i424e")
 
 [node name="RiquadroTesto" type="Panel" parent="RiquadroRobot"]
-modulate = Color(0.6, 0.6, 0.6, 1)
+modulate = Color(0.47312066, 0.5684909, 0.62377065, 1)
 layout_mode = 0
 offset_left = 214.0
 offset_top = 476.0
@@ -141,7 +114,7 @@ offset_left = 36.0
 offset_top = 25.0
 offset_right = 320.0
 offset_bottom = 128.0
-theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
+theme_override_colors/font_color = Color(0.1931151, 0.22935726, 0.2374612, 1)
 theme_override_font_sizes/font_size = 36
 text = "ELENCO ROBOT
 "
@@ -151,7 +124,15 @@ layout_mode = 0
 offset_right = 359.0
 offset_bottom = 107.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mxu24")
-metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="RiquadroRobot"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 292.0
+offset_top = 122.0
+offset_right = 514.0
+offset_bottom = 387.0
+texture = ExtResource("5_se8tl")
 
 [node name="BackToMenu" type="Button" parent="."]
 layout_mode = 0
