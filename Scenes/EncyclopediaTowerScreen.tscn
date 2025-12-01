@@ -72,20 +72,19 @@ text = "ENCICLOPEDIA - TORRETTE"
 layout_mode = 0
 offset_left = 89.0
 offset_top = 214.0
-offset_right = 346.0
+offset_right = 328.0
 offset_bottom = 452.0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_56vox")
 flat = true
-metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="BoltShooter"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 58.0
-offset_top = 11.0
-offset_right = 214.0
-offset_bottom = 225.0
+offset_left = 23.0
+offset_top = 59.0
+offset_right = 166.0
+offset_bottom = 231.0
 texture = ExtResource("2_56vox")
 
 [node name="MonsterDescriptionPanel" type="Panel" parent="."]

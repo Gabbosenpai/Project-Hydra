@@ -64,7 +64,7 @@ offset_right = 804.0
 offset_bottom = 97.0
 theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
 theme_override_font_sizes/font_size = 40
-text = "ENCICLOPEDIA - TORRETTE"
+text = "ENCICLOPEDIA - ROBOT"
 
 [node name="MonsterDescriptionPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(200, 0)
