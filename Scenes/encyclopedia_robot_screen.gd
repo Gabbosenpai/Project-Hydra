@@ -13,12 +13,6 @@ var monster_textures = {
 }
 
 
-
-
-
-
-
-
 var monster_names = {
 	"bolt_shooter": "BOLT SHOOTER",
 	"weed_eater": "WEED EATER",
@@ -53,9 +47,9 @@ var monster_texts = {
 	"invece che in centimetri le abbiamo scritte in metri!"
 }
 
-
 func ready():
 	desc_panel.visible = false
+	
 	
  #Mostra la descrizione del mostro
 func show_description(monster_name: String):
