@@ -32,6 +32,7 @@ var blackout_flash_lights: Array[ColorRect] = []
 
 
 func _ready():
+	#Engine.time_scale = 2.0
 	self.add_to_group("Level")
 	# 1. Assegna il dizionario inizializzato a TurretManager
 	if grid_initializer:
