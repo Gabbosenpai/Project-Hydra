@@ -7,15 +7,18 @@ extends Control
 
 #da modificare con i percorsi giusti
 var monster_textures = {
-	"weed_eater": preload("res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png")
+	"weed_eater": preload("res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png"),
 	
 }
 
 
 var monster_names = {
-	"weed_eater": "WEED EATER"
-	
-}
+	"weed_eater": "WEED EATER 9000",
+	"mecha_freezer": "MECHA FREEZER",
+	"fire_hydrant": "FIRE HYDRANT",
+	"romba": "ROMBA", #da verificare copyright
+	"cassa_schierata": "CASSA SCHIERATA"
+}	
 
 
 var monster_texts = {

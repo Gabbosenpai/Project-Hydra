@@ -9,7 +9,8 @@ var monster_textures = {
 	"bolt_shooter": preload("res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png"),
 	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
 	"hkcm": preload("res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"),
-	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png")
+	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png"),
+	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png")
 }
 
 
@@ -21,10 +22,10 @@ var monster_textures = {
 
 var monster_names = {
 	"bolt_shooter": "BOLT SHOOTER",
-	"weed_eater": "WEED EATER",
 	"delivery_drone": "DELIVERY DRONE",
 	"hkcm": "HOT KAWAII COFFEE MACHINE",
-	"jammer": "JAMMER"
+	"jammer": "JAMMER",
+	"spaghetti_cable": "SPAGHETTI CABLE"
 }
 
 
