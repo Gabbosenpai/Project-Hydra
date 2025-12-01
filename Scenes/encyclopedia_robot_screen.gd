@@ -4,59 +4,34 @@ extends Control
 @onready var desc_label = $MonsterDescriptionPanel/MonsterDescription
 @onready var name_label = $MonsterDescriptionPanel/MonsterName
 @onready var monster_image = $MonsterDescriptionPanel/MonsterTexture
+
 #da modificare con i percorsi giusti
 var monster_textures = {
-	"bolt_shooter": preload("res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png"),
-	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
-	"hkcm": preload("res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"),
-	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png"),
-	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png")
+	"weed_eater": preload("res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png"),
+	
 }
-
-
-
-
-
-
 
 
 var monster_names = {
-	"bolt_shooter": "BOLT SHOOTER",
-	"delivery_drone": "DELIVERY DRONE",
-	"hkcm": "HOT KAWAII COFFEE MACHINE",
-	"jammer": "JAMMER",
-	"spaghetti_cable": "SPAGHETTI CABLE"
-}
+	"weed_eater": "WEED EATER 9000",
+	"mecha_freezer": "MECHA FREEZER",
+	"fire_hydrant": "FIRE HYDRANT",
+	"romba": "ROMBA", #da verificare copyright
+	"cassa_schierata": "CASSA SCHIERATA"
+}	
 
 
 var monster_texts = {
-	"bolt_shooter": "Questo è il Bolt Shooter! "+
-	"Il suo corpo simile all’elettricità può introdursi "+
-	"in alcuni apparecchi, di cui prende il controllo "+
-	"per combinare guai.",
 	
 	"weed_eater": "Questo è il Weed Eater! "+
 	"due ruote motrici, tre lame che fanno ognuna 800 rpm "+
 	"e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
 	
-	"delivery_drone": "Questo è il Delivery Drone! " +
-	"il suo corpo elettrico può introdursi in alcuni strumenti" +
-	" prendendone il controllo e creando caos.",
-	
-	"hkcm": "Questo è la Hot Kawaii Coffe Machine! " +
-	"È in grado di avvertire l’aura di tutte le cose. " +
-	" Comprende il linguaggio umano.",
-	
-	
-	
-	"jammer": "Questo è il Jammer! "+
-	"avevamo progettato questo nuovo tipo di jammer ma le misure "+
-	"invece che in centimetri le abbiamo scritte in metri!"
 }
-
 
 func ready():
 	desc_panel.visible = false
+	
 	
  #Mostra la descrizione del mostro
 func show_description(monster_name: String):
@@ -87,12 +62,8 @@ func hide_description():
 	desc_panel.visible = false
 
 
-
-# Esempio di pulsante
-func _on_bolt_shooter_pressed() -> void:
-	show_description("bolt_shooter")
-
-# Nasconde al click
+# per nascondere la descrizione cliccando 
+# al di fuori delle immagini dei robot
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		hide_description()
@@ -102,16 +73,6 @@ func _on_back_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/EncyclopediaFirstScreen.tscn")
 
-	
-func _on_jammer_pressed() -> void:
-	show_description("jammer")
-#
-#
-#
-#
-func _on_delivery_drone_pressed() -> void:
-	show_description("delivery_drone")
-#
-#
-func _on_hkcm_pressed() -> void:
-	show_description("hkcm")
+
+func _on_weed_eater_pressed() -> void:
+	show_description("weed_eater")
