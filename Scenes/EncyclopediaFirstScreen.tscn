@@ -1,11 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=9 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
-[ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="3_d7oai"]
-[ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="4_mdt5a"]
-[ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="5_se8tl"]
-[ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_ry6np"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo2e"]
 bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
@@ -166,79 +162,6 @@ offset_bottom = 1043.0
 theme_override_font_sizes/font_size = 40
 text = "Torna al menù
 "
-
-[node name="DeliveryDrone" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2143.0
-offset_top = 749.0
-offset_right = 2368.0
-offset_bottom = 1017.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="DeliveryDrone"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("3_d7oai")
-
-[node name="HKCM" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2163.0
-offset_top = 1007.0
-offset_right = 2388.0
-offset_bottom = 1275.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="HKCM"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("4_mdt5a")
-
-[node name="WeedEater" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2354.0
-offset_top = 991.0
-offset_right = 2579.0
-offset_bottom = 1259.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="WeedEater"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
-texture = ExtResource("5_se8tl")
-
-[node name="Jammer" type="Button" parent="."]
-layout_mode = 0
-offset_left = 2190.0
-offset_top = 343.0
-offset_right = 2415.0
-offset_bottom = 611.0
-focus_mode = 0
-flat = true
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Jammer"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 79.0
-offset_top = 24.0
-offset_right = 301.0
-offset_bottom = 289.0
-texture = ExtResource("6_ry6np")
 
 [node name="MonsterDescriptionPanel" type="Panel" parent="."]
 visible = false

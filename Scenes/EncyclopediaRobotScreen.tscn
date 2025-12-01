@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://k10m7sae6uup"]
+[gd_scene load_steps=10 format=3 uid="uid://k10m7sae6uup"]
 
 [ext_resource type="Script" uid="uid://cg1pqyhidk1ad" path="res://Scenes/encyclopedia_robot_screen.gd" id="1_v1qki"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="2_tjctc"]
+[ext_resource type="Texture2D" uid="uid://byw4mjba306yh" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer.png" id="3_skn1t"]
+[ext_resource type="Texture2D" uid="uid://dc3j3rmm8h854" path="res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata.png" id="4_s4j6h"]
+[ext_resource type="Texture2D" uid="uid://depj0cpi7kstf" path="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant.png" id="5_m4umy"]
+[ext_resource type="Texture2D" uid="uid://bu71iov4gs1o4" path="res://Assets/Sprites/Robots/Romba/Romba.png" id="6_m4umy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4x86"]
 bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
@@ -44,7 +48,7 @@ offset_bottom = 1017.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h4x86")
 
 [node name="Titolo" type="Panel" parent="."]
-modulate = Color(0.85050595, 0.64685506, 0.49341863, 1)
+modulate = Color(0.71796554, 0.64685506, 0.49341863, 1)
 layout_mode = 0
 offset_left = 414.0
 offset_top = 65.0
@@ -112,6 +116,7 @@ offset_right = 335.0
 offset_bottom = 515.0
 focus_mode = 0
 flat = true
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="WeedEater"]
 texture_filter = 1
@@ -121,5 +126,81 @@ offset_right = 235.0
 offset_bottom = 239.0
 texture = ExtResource("2_tjctc")
 
+[node name="MechaFreezer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 271.0
+offset_right = 665.0
+offset_bottom = 523.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MechaFreezer"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -22.0
+offset_right = 235.0
+offset_bottom = 239.0
+texture = ExtResource("3_skn1t")
+
+[node name="CassaSchierata" type="Button" parent="."]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 527.0
+offset_right = 604.0
+offset_bottom = 779.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CassaSchierata"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -22.0
+offset_right = 235.0
+offset_bottom = 239.0
+texture = ExtResource("4_s4j6h")
+
+[node name="FireHydrant" type="Button" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 528.0
+offset_right = 306.0
+offset_bottom = 780.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="FireHydrant"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -22.0
+offset_right = 235.0
+offset_bottom = 239.0
+texture = ExtResource("5_m4umy")
+
+[node name="Romba" type="Button" parent="."]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 489.0
+offset_right = 879.0
+offset_bottom = 741.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Romba"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -22.0
+offset_right = 235.0
+offset_bottom = 239.0
+texture = ExtResource("6_m4umy")
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
+[connection signal="pressed" from="MechaFreezer" to="." method="_on_mecha_freezer_pressed"]
+[connection signal="pressed" from="CassaSchierata" to="." method="_on_cassa_schierata_pressed"]
+[connection signal="pressed" from="FireHydrant" to="." method="_on_fire_hydrant_pressed"]
+[connection signal="pressed" from="Romba" to="." method="_on_romba_pressed"]

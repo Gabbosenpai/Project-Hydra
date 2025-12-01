@@ -208,3 +208,4 @@ texture = ExtResource("6_g5eb7")
 [connection signal="pressed" from="Jammer" to="." method="_on_jammer_pressed"]
 [connection signal="pressed" from="HKCM" to="." method="_on_hkcm_pressed"]
 [connection signal="pressed" from="DeliveryDrone" to="." method="_on_delivery_drone_pressed"]
+[connection signal="pressed" from="SpaghettiCable" to="." method="_on_spaghetti_cable_pressed"]
