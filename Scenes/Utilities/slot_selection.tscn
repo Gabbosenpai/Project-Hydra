@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8gjqm40lbvk2"]
 
 [ext_resource type="Script" uid="uid://t01jm1v7dol4" path="res://Scripts/Utility/slot_selection.gd" id="1_6qa0o"]
-[ext_resource type="Texture2D" uid="uid://c63g4ta6exmss" path="res://Assets/immagine.png" id="2_ws6yv"]
+[ext_resource type="Texture2D" uid="uid://c63g4ta6exmss" path="res://Assets/DeleteSave.png" id="2_ws6yv"]
 
 [node name="SlotSelect" type="Control"]
 layout_mode = 3

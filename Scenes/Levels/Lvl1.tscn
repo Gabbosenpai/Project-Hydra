@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/Base Scene Script/Lvl1.gd" id="1_s1ade"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_7nfcr"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_h4611"]
-[ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="2_uimwk"]
+[ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Assets/Selettore.png" id="2_uimwk"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_uimwk"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="4_h4611"]
 [ext_resource type="Texture2D" uid="uid://d27h1vlrudpmr" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 2.png" id="4_soeiq"]
