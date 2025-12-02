@@ -57,6 +57,7 @@ static func add_level_points_to_total(points: int) -> void:
 func _ready():
 	current_points = starting_points
 	update_points_label()
+	print("Current points : ", current_points)
 
 
 # Verifica se il giocatore ha abbastanza punti per selezionare 

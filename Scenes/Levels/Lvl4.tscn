@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_baary"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_gbsg3"]
 [ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_6i180"]
-[ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Selettore.png" id="3_xwq6h"]
+[ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Assets/Selettore.png" id="3_xwq6h"]
 [ext_resource type="Texture2D" uid="uid://d27h1vlrudpmr" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 2.png" id="4_tjpki"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_bwsdr"]
 [ext_resource type="Texture2D" uid="uid://d2wwy4s3slqh8" path="res://Assets/Terrain Texture/Industrial Tile Test.png" id="5_jgq3g"]
@@ -302,8 +302,10 @@ animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/VictoryScreen")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
-[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager") instance=ExtResource("11_62725")]
+[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_62725")]
 turret_manager = NodePath("../TurretManager")
+label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
+PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_baary")
@@ -322,7 +324,6 @@ debug_draw_grid = true
 [connection signal="pressed" from="UI/PauseMenu/MenuButton" to="UI" method="_on_menu_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
-[connection signal="turret_removed" from="TurretManager" to="PointManager" method="_on_turret_removed"]
 
 [editable path="UI"]
 [editable path="GameOverUI"]
