@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1tj6sbhdsmhr"]
+[gd_scene load_steps=17 format=3 uid="uid://c1tj6sbhdsmhr"]
 
-[ext_resource type="Script" uid="uid://cml8ie3505fuu" path="res://Scenes/Towers/toilet_silo.gd" id="1_cb1v1"]
+[ext_resource type="Script" uid="uid://cml8ie3505fuu" path="res://Scripts/Towers/toilet_silo.gd" id="1_cb1v1"]
+[ext_resource type="PackedScene" uid="uid://dyh4tnhx7y34t" path="res://Scenes/Bullets/sturamissile.tscn" id="2_uh6fu"]
 [ext_resource type="Texture2D" uid="uid://y065nifsysn" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher Shoot.png" id="3_cb1v1"]
 [ext_resource type="Texture2D" uid="uid://bh6gpygpcveyy" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher Idle.png" id="3_wo2it"]
 
@@ -94,6 +95,7 @@ height = 61.0
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_cb1v1")
+ts_bullet = ExtResource("2_uh6fu")
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
@@ -101,6 +103,7 @@ texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2b6av")
 animation = &"shoot"
+autoplay = "idle"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
 position = Vector2(10, 8.5)

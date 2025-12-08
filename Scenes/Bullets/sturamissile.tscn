@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyh4tnhx7y34t"]
+[gd_scene load_steps=13 format=3 uid="uid://dyh4tnhx7y34t"]
 
-[ext_resource type="Script" uid="uid://r7eyqacpregi" path="res://Scenes/Bullets/sturamissile.gd" id="1_ih2c7"]
+[ext_resource type="Script" uid="uid://r7eyqacpregi" path="res://Scripts/Bullets/sturamissile.gd" id="1_ih2c7"]
 [ext_resource type="Texture2D" uid="uid://tdlu1p2fpxmw" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Explosion.png" id="2_uese3"]
 [ext_resource type="Texture2D" uid="uid://bklitbjug5d85" path="res://Assets/Sprites/Bullets/Sturamissile/Sturamissile Bullet.png" id="3_dwqkv"]
 
@@ -19,6 +19,10 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqine"]
 atlas = ExtResource("2_uese3")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwqkv"]
+atlas = ExtResource("3_dwqkv")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ih2c7"]
 atlas = ExtResource("3_dwqkv")
@@ -49,6 +53,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dwqkv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ih2c7")
 }, {
 "duration": 1.0,
@@ -72,7 +84,8 @@ metadata/_edit_group_ = true
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_khhbv")
-animation = &"explosion"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
