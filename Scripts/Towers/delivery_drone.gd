@@ -5,7 +5,8 @@ signal died(instance)
 signal spawn_animation_finished
 
 const DRONE_FLYING_SPEED: float = 200.0
-const DRONE_FLYING_SPEED_SPAWN_TURRET: float = 2335.0
+const DRONE_FLYING_SPEED_SPAWN_TURRET: float = 500.0
+const SPAWN_DISTANCE: float = 300.0
 
 @export var dd_max_health: int = 100
 @export var scrap_scene: PackedScene
@@ -36,6 +37,8 @@ func _ready() -> void:
 	dronePosition = droneStartingPosition
 
 	if is_spawn_animation:
+		dronePosition.y = dropPadPosition.y - SPAWN_DISTANCE 
+		droneStartingPosition.y = dronePosition.y
 		return
 	
 	current_health = dd_max_health
