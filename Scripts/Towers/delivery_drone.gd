@@ -2,8 +2,10 @@ class_name DeliveryDrone
 extends Area2D
 
 signal died(instance)
+signal spawn_animation_finished
 
 const DRONE_FLYING_SPEED: float = 200.0
+const DRONE_FLYING_SPEED_SPAWN_TURRET: float = 2335.0
 
 @export var dd_max_health: int = 100
 @export var scrap_scene: PackedScene
@@ -49,7 +51,7 @@ func _process(delta: float) -> void:
 		var distanceDronePad = dropPadPosition.y - dronePosition.y
 		if distanceDronePad > 10:
 			drone_sprite.play("fly")
-			dronePosition.y += DRONE_FLYING_SPEED * delta
+			dronePosition.y += DRONE_FLYING_SPEED_SPAWN_TURRET * delta
 		else:
 			drop()
 		return
@@ -85,6 +87,12 @@ func drop() -> void:
 
 func _on_drone_animation_finished() -> void:
 	current_animation = drone_sprite.animation
+	
+	if is_spawn_animation and current_animation == "drop":
+		emit_signal("spawn_animation_finished")
+		is_spawn_animation = false
+		return
+	
 	if (current_animation == "drop"):
 		drone_sprite.play("fly-no-pack")
 		hasPackage = false

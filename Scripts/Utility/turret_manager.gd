@@ -194,12 +194,8 @@ func place_turret(cell_key: Vector2i):
 			drone_sprite.play("fly")
 			drone_sprite.z_index = 999
 		
-			var tween_fly = create_tween()
-			tween_fly.tween_property(drone_visual, "global_position", spawn_point, 0.5).set_ease(Tween.EASE_OUT)
-			await tween_fly.finished
-
-			drone_sprite.play("drop")
-			await drone_sprite.animation_finished 
+			if drone_visual.has_signal("spawn_animation_finished"):
+				await drone_visual.spawn_animation_finished
 		
 		if is_instance_valid(drone_visual):
 			drone_visual.queue_free()
