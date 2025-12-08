@@ -28,7 +28,8 @@ var turret_scenes = {
 	"turret2": preload("res://Scenes/Towers/bolt_shooter.tscn"),
 	"turret3": preload("res://Scenes/Towers/jammer_cannon.tscn"),
 	"turret4": preload("res://Scenes/Towers/HKCM.tscn"),
-	"turret5": preload("res://Scenes/Towers/spaghetti_cable.tscn")
+	"turret5": preload("res://Scenes/Towers/spaghetti_cable.tscn"),
+	"turret6": preload("res://Scenes/Towers/toilet_silo.tscn")
 }
 
 @onready var grid_initializer = get_parent().get_node("GridInitializer")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=24 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/point_bar.gdshader" id="3_wunin"]
 [ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="6_h4kyy"]
+[ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="7_1efrn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j04uc"]
 shader = ExtResource("3_wunin")
@@ -261,6 +262,24 @@ icon = ExtResource("6_h4kyy")
 expand_icon = true
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret5"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = -6.0
+offset_right = 156.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 34
+text = "50"
+
+[node name="ButtonTurret6" type="Button" parent="TurretSelector/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("7_1efrn")
+expand_icon = true
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret6"]
 layout_mode = 0
 offset_left = 98.0
 offset_top = -6.0
