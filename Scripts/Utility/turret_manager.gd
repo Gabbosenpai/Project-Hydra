@@ -170,9 +170,11 @@ func _unhandled_input(event):
 
 func place_turret(cell_key: Vector2i):
 	if not turrets.has(cell_key) and selected_turret_scene != null:
+		var turret_scene_to_place = selected_turret_scene
+		clear_mode()
 		
 		var spawn_point = tilemap.to_global(tilemap.map_to_local(cell_key))
-		var turret_key_to_place = turret_scenes.find_key(selected_turret_scene)
+		var turret_key_to_place = turret_scenes.find_key(turret_scene_to_place)
 		
 		var drone_visual_scene: PackedScene = preload("res://Scenes/Towers/delivery_drone.tscn")
 		var drone_visual: Area2D = drone_visual_scene.instantiate()
@@ -201,7 +203,7 @@ func place_turret(cell_key: Vector2i):
 		if is_instance_valid(drone_visual):
 			drone_visual.queue_free()
 			
-		var turret_instance = selected_turret_scene.instantiate()
+		var turret_instance = turret_scene_to_place.instantiate()
 		
 		if turret_instance.has_signal("died"):
 			turret_instance.died.connect(handle_turret_death)
