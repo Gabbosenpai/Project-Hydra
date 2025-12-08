@@ -2,11 +2,14 @@ class_name DeliveryDrone
 extends Area2D
 
 signal died(instance)
+signal spawn_animation_finished
 
 const DRONE_FLYING_SPEED: float = 200.0
+const DRONE_FLYING_SPEED_SPAWN_TURRET: float = 2335.0
 
 @export var dd_max_health: int = 100
 @export var scrap_scene: PackedScene
+@export var is_spawn_animation: bool = false
 
 # Variabili di un Drone, torretta che genera risorse invece di sparare
 var current_health: int
@@ -26,17 +29,33 @@ var turret_key: String = ""
 
 
 func _ready() -> void:
-	current_health = dd_max_health
-	hasPackage = true
-	hasPlayed = false
+
 	drone_sprite.z_index = 5
 	dropPadPosition = drop_pad_sprite.position
 	droneStartingPosition = drone_sprite.position
 	dronePosition = droneStartingPosition
+
+	if is_spawn_animation:
+		return
+	
+	current_health = dd_max_health
+	hasPackage = true
+	hasPlayed = false
+	
 	#print(droneStartingPosition)
 
 # Override
 func _process(delta: float) -> void:
+	if is_spawn_animation:
+		drone_sprite.position = dronePosition
+		var distanza = dropPadPosition.y - dronePosition.y
+		if distanza > 10:
+			drone_sprite.play("fly")
+			dronePosition.y += DRONE_FLYING_SPEED_SPAWN_TURRET * delta
+		else:
+			drop()
+		return
+
 	drone_sprite.position = dronePosition
 	var distanceDronePad = dropPadPosition.y - dronePosition.y
 	drop_pad_sprite.play("idle")
@@ -68,6 +87,12 @@ func drop() -> void:
 
 func _on_drone_animation_finished() -> void:
 	current_animation = drone_sprite.animation
+	
+	if is_spawn_animation and current_animation == "drop":
+		emit_signal("spawn_animation_finished")
+		is_spawn_animation = false
+		return
+	
 	if (current_animation == "drop"):
 		drone_sprite.play("fly-no-pack")
 		hasPackage = false
