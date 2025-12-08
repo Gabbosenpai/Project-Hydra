@@ -26,10 +26,11 @@ func _ready() -> void:
 # Override
 # Funzione chiamata ad ogni frame fisico (numero fisso di frame al secondo)
 func _physics_process(delta):
-	# Calcola il movimento in base alla direzione a destra, alla velocità e al tempo trascorso (delta)
-	# Quando colpisce, si ferma -> l'animazione successiva non si muove
+	if(!armed):
+		var jump = Vector2.UP * 70.0 * delta
+		global_position += jump
 	if(!hit and armed):
-		var movement = Vector2.RIGHT * speed * delta
+		var movement = Vector2(+1, 5) * Vector2(speed, 1) * delta
 		bullet_sprite.play("travel")
 		# Aggiorna la posizione globale del proiettile spostandolo in avanti
 		global_position += movement
