@@ -48,8 +48,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_spawn_animation:
 		drone_sprite.position = dronePosition
-		var distanceDronePad = dropPadPosition.y - dronePosition.y
-		if distanceDronePad > 10:
+		var distanza = dropPadPosition.y - dronePosition.y
+		if distanza > 10:
 			drone_sprite.play("fly")
 			dronePosition.y += DRONE_FLYING_SPEED_SPAWN_TURRET * delta
 		else:
