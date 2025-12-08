@@ -7,6 +7,7 @@ const DRONE_FLYING_SPEED: float = 200.0
 
 @export var dd_max_health: int = 100
 @export var scrap_scene: PackedScene
+@export var is_spawn_animation: bool = false
 
 # Variabili di un Drone, torretta che genera risorse invece di sparare
 var current_health: int
@@ -26,17 +27,33 @@ var turret_key: String = ""
 
 
 func _ready() -> void:
-	current_health = dd_max_health
-	hasPackage = true
-	hasPlayed = false
+
 	drone_sprite.z_index = 5
 	dropPadPosition = drop_pad_sprite.position
 	droneStartingPosition = drone_sprite.position
 	dronePosition = droneStartingPosition
+
+	if is_spawn_animation:
+		return
+	
+	current_health = dd_max_health
+	hasPackage = true
+	hasPlayed = false
+	
 	#print(droneStartingPosition)
 
 # Override
 func _process(delta: float) -> void:
+	if is_spawn_animation:
+		drone_sprite.position = dronePosition
+		var distanceDronePad = dropPadPosition.y - dronePosition.y
+		if distanceDronePad > 10:
+			drone_sprite.play("fly")
+			dronePosition.y += DRONE_FLYING_SPEED * delta
+		else:
+			drop()
+		return
+
 	drone_sprite.position = dronePosition
 	var distanceDronePad = dropPadPosition.y - dronePosition.y
 	drop_pad_sprite.play("idle")

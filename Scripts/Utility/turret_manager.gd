@@ -169,14 +169,48 @@ func _unhandled_input(event):
 
 func place_turret(cell_key: Vector2i):
 	if not turrets.has(cell_key) and selected_turret_scene != null:
-		var turret_instance = selected_turret_scene.instantiate()
 		
+		var spawn_point = tilemap.to_global(tilemap.map_to_local(cell_key))
 		var turret_key_to_place = turret_scenes.find_key(selected_turret_scene)
+		
+		var drone_visual_scene: PackedScene = preload("res://Scenes/Towers/delivery_drone.tscn")
+		var drone_visual: Area2D = drone_visual_scene.instantiate()
+		
+		drone_visual.is_spawn_animation = true
+		drone_visual.global_position = spawn_point + Vector2(0, -50)
+		
+		
+		var drop_pad = drone_visual.get_node_or_null("DropPad")
+		if drop_pad:
+			drop_pad.visible = false
+		
+		print("DEBUG: Avvio animazione drone, posizione iniziale: ", drone_visual.global_position)
+		add_child(drone_visual)
+		await get_tree().process_frame
+		
+		var drone_sprite: AnimatedSprite2D = drone_visual.get_node("Drone")
+		if drone_sprite:
+			print("DEBUG: Sprite del drone pronto. Avvio animazioni.")
+			drone_sprite.play("fly")
+			drone_sprite.z_index = 999
+		
+			var tween_fly = create_tween()
+			tween_fly.tween_property(drone_visual, "global_position", spawn_point, 0.5).set_ease(Tween.EASE_OUT)
+			await tween_fly.finished
+
+			drone_sprite.play("drop")
+			await drone_sprite.animation_finished 
+		
+		if is_instance_valid(drone_visual):
+			drone_visual.queue_free()
+			
+		var turret_instance = selected_turret_scene.instantiate()
 		
 		if turret_instance.has_signal("died"):
 			turret_instance.died.connect(handle_turret_death)
 		
-		turret_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell_key))
+		
+		turret_instance.global_position = spawn_point
 		
 		if turret_instance.has_method("set_riga"):
 			turret_instance.set_riga(cell_key.y)
