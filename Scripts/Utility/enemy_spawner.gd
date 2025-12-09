@@ -24,8 +24,8 @@ var all_enemy_scenes = {
 	"cs": preload("res://Scenes/Robots/cassa_schierata.tscn")
 }
 var level_enemy_pool = {
-	1: ["romba", "we9k"],
-	2: ["mf","fh"],
+	1: ["romba"],
+	2: ["we9k","mf","fh"],
 	3: ["cs"],
 	4: ["romba","we9k","mf","fh","cs"],
 	5: ["romba","we9k","mf","fh","cs"]
