@@ -180,6 +180,11 @@ func place_turret(cell_key: Vector2i):
 		var drone_visual: Area2D = drone_visual_scene.instantiate()
 		
 		drone_visual.is_spawn_animation = true
+		
+		var collision_shape = drone_visual.get_node_or_null("TowerHitbox")
+		if collision_shape:
+			collision_shape.set_deferred("disabled", true)
+		
 		drone_visual.global_position = spawn_point + Vector2(0, -50)
 		
 		
