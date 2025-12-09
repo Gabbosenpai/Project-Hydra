@@ -17,7 +17,7 @@ var turret_costs := {
 	"turret3": 100,
 	"turret4": 125,
 	"turret5": 50,
-	"turret6": 50
+	"turret6": 200
 }
 var current_ratio: float = 0.0 
 
