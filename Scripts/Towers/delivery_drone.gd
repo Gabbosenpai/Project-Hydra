@@ -123,6 +123,9 @@ func spawn_scrap() -> void:
 
 #Funzione che fa prendere danno allo torretta
 func take_damage(amount):
+	if is_spawn_animation:
+		return
+	
 	current_health -= amount
 	flash_bright()
 	print("Tower HP:", current_health)
