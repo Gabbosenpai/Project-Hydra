@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyh4tnhx7y34t"]
+[gd_scene load_steps=14 format=3 uid="uid://dyh4tnhx7y34t"]
 
 [ext_resource type="Script" uid="uid://r7eyqacpregi" path="res://Scripts/Bullets/sturamissile.gd" id="1_ih2c7"]
 [ext_resource type="Texture2D" uid="uid://tdlu1p2fpxmw" path="res://Assets/Sprites/Bullets/Bolt Bullet-Animation/Bolt Bullet Explosion.png" id="2_uese3"]
@@ -72,19 +72,21 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi0dv"]
-radius = 5.000002
-height = 29.000008
+radius = 19.999998
+height = 39.999996
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwqkv"]
+size = Vector2(70, 40)
 
 [node name="Bullet" type="Area2D" groups=["TowerBullet"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_ih2c7")
-metadata/_edit_group_ = true
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_khhbv")
-animation = &"idle"
+animation = &"travel"
 autoplay = "idle"
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="."]
@@ -95,3 +97,9 @@ shape = SubResource("CapsuleShape2D_oi0dv")
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.500001, 0.5)
 scale = Vector2(0.85, 0.75)
+
+[node name="ExplosionBlast" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionBlast"]
+position = Vector2(35, 20)
+shape = SubResource("RectangleShape2D_dwqkv")
