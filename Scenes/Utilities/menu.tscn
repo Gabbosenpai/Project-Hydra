@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=17 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://b4hjtvvhswqbv" path="res://Assets/Menu Assets/Background Button.jpg" id="2_873nt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cfbpyo6wann6m" path="res://Assets/Menu Assets/image-removebg-preview (2).png" id="8_ixpxt"]
 [ext_resource type="Texture2D" uid="uid://il7acuidkdd1" path="res://Assets/Menu Assets/image-removebg-preview (4).png" id="9_nyop6"]
 [ext_resource type="Texture2D" uid="uid://ciuada7pkdrmn" path="res://Assets/Menu Assets/image-removebg-preview (3).png" id="10_u188u"]
+[ext_resource type="Texture2D" uid="uid://jpcm7hkd2pha" path="res://Assets/Menu Assets/Gemini_Generated_Image_j4tuvuj4tuvuj4tu-removebg-preview.png" id="11_nyop6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pi1c3"]
 texture = ExtResource("2_873nt")
@@ -70,6 +71,8 @@ offset_left = 760.0
 offset_top = 368.0
 offset_right = 1360.0
 offset_bottom = 1099.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pi1c3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
@@ -166,6 +169,14 @@ text = "Si"
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "No"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 742.0
+offset_top = -96.0
+offset_right = 1360.0
+offset_bottom = 488.0
+texture = ExtResource("11_nyop6")
+stretch_mode = 5
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
