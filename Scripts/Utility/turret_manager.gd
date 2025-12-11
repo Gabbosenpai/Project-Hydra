@@ -427,6 +427,7 @@ func _close_incinerator(row_y: int):
 		
 		if is_instance_valid(incinerator_instance):
 			# L'incenertiore si chiude
+			await incinerator_instance.fire_blast()
 			await incinerator_instance.close_incinerator()
 		
 		# Sostituisci con il tile statico dell'inceneritore chiuso

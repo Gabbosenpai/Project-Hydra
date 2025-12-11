@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://u2qsbtf5jqac"]
+[gd_scene load_steps=48 format=3 uid="uid://u2qsbtf5jqac"]
 
 [ext_resource type="Texture2D" uid="uid://d4jxwwpeygqnj" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Closing.png" id="1_f4dc0"]
 [ext_resource type="Script" uid="uid://cqptoca2e6qiv" path="res://Scripts/Utility/incinerator.gd" id="1_rrkj0"]
 [ext_resource type="Texture2D" uid="uid://cfh8p53o33nc2" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Idle.png" id="2_rrkj0"]
+[ext_resource type="Texture2D" uid="uid://dr72coakx38t5" path="res://Assets/Terrain Texture/Incinerator/Incinerator Blast.png" id="4_h3vvn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3vvn"]
 atlas = ExtResource("1_f4dc0")
@@ -176,6 +177,147 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_loasc"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2hpi"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueym6"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdy62"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enieg"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcgsg"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv2fe"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3saj"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m184c"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(1280, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mamok"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(1440, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8gno"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(1600, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ui6"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(1760, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er2wm"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(1920, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbvpv"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(2080, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6tgm"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(2240, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjml6"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(2400, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3jid"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(2560, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufraa"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(2720, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yhfb"]
+atlas = ExtResource("4_h3vvn")
+region = Rect2(2880, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3vvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loasc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2hpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueym6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdy62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enieg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcgsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv2fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3saj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m184c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mamok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8gno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ui6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er2wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbvpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6tgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjml6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3jid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufraa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yhfb")
+}],
+"loop": false,
+"name": &"blast",
+"speed": 30.0
+}]
+
 [node name="Incinerator" type="Node2D"]
 z_index = -1
 script = ExtResource("1_rrkj0")
@@ -183,4 +325,9 @@ script = ExtResource("1_rrkj0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_loasc")
-animation = &"chiusura"
+animation = &"apertura"
+
+[node name="Blast" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_h3vvn")
+animation = &"blast"

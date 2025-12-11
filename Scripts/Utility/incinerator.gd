@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var blast: AnimatedSprite2D = $Blast
 
 
 func open_incinerator():
@@ -9,6 +10,12 @@ func open_incinerator():
 	await animatedSprite.animation_finished
 	# Passa all'animazione di attesa
 	animatedSprite.play("attesa") 
+
+
+func fire_blast():
+	blast.visible = true
+	blast.play("blast")
+	await blast.animation_finished
 
 
 func close_incinerator():
