@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://il7acuidkdd1"
-path="res://.godot/imported/image-removebg-preview (4).png-6b8c3fd4ed8a6812731e7a642c898be2.ctex"
+path="res://.godot/imported/image-removebg-preview (4).png-9fadd9c6aa38ab6e1fd04d7397070a2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menu Assets/image-removebg-preview (4).png"
-dest_files=["res://.godot/imported/image-removebg-preview (4).png-6b8c3fd4ed8a6812731e7a642c898be2.ctex"]
+source_file="res://Assets/Menu Assets/Stili Bottone Lingua/image-removebg-preview (4).png"
+dest_files=["res://.godot/imported/image-removebg-preview (4).png-9fadd9c6aa38ab6e1fd04d7397070a2f.ctex"]
 
 [params]
 

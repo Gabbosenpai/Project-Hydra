@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buqsf6g4me1q6"
-path="res://.godot/imported/unnamed-removebg-preview.png-098d739480810afb766c6b78cf6b69c0.ctex"
+path="res://.godot/imported/unnamed-removebg-preview.png-26b99e986d42ee7222ab0e6bbdf6dbc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menu Assets/unnamed-removebg-preview.png"
-dest_files=["res://.godot/imported/unnamed-removebg-preview.png-098d739480810afb766c6b78cf6b69c0.ctex"]
+source_file="res://Assets/Menu Assets/Stili Bottoni Centrali/unnamed-removebg-preview.png"
+dest_files=["res://.godot/imported/unnamed-removebg-preview.png-26b99e986d42ee7222ab0e6bbdf6dbc7.ctex"]
 
 [params]
 
