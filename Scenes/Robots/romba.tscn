@@ -195,12 +195,11 @@ animations = [{
 size = Vector2(63, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvec"]
-size = Vector2(2, 26)
+size = Vector2(2, 20.5)
 
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_wtial")
-metadata/_edit_group_ = true
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -217,7 +216,7 @@ shape = SubResource("RectangleShape2D_x2fpp")
 position = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector"]
-position = Vector2(-31, 3)
+position = Vector2(-31, 5.75)
 shape = SubResource("RectangleShape2D_cnvec")
 
 [node name="VisNot" type="VisibleOnScreenNotifier2D" parent="."]
