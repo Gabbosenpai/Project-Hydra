@@ -90,28 +90,36 @@ size_flags_stretch_ratio = 5.0
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = ExtResource("4_g4iet")
+theme_override_styles/pressed = ExtResource("7_atr7h")
 theme_override_styles/hover = ExtResource("5_atr7h")
+theme_override_styles/hover_pressed = ExtResource("7_atr7h")
 text = "Gioca"
 
 [node name="OptionButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxTexture_atr7h")
+theme_override_styles/pressed = ExtResource("7_atr7h")
 theme_override_styles/hover = ExtResource("5_atr7h")
+theme_override_styles/hover_pressed = ExtResource("7_atr7h")
 text = "Opzioni"
 
 [node name="EncyclopediaButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxTexture_873nt")
+theme_override_styles/pressed = ExtResource("7_atr7h")
 theme_override_styles/hover = ExtResource("5_atr7h")
+theme_override_styles/hover_pressed = ExtResource("7_atr7h")
 text = "Enciclopedia"
 
 [node name="CreditsButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxTexture_s8um3")
+theme_override_styles/pressed = ExtResource("7_atr7h")
 theme_override_styles/hover = ExtResource("5_atr7h")
+theme_override_styles/hover_pressed = ExtResource("7_atr7h")
 text = "Crediti"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
