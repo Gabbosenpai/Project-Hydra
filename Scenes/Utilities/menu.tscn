@@ -1,23 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=14 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://b4hjtvvhswqbv" path="res://Assets/Menu Assets/Background Button.jpg" id="2_873nt"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
+[ext_resource type="Texture2D" uid="uid://blojo3dh8ih3v" path="res://sfondi fabbrica e textures nastro trasportatore/Factory AI Background.jpg" id="2_s8um3"]
+[ext_resource type="Texture2D" uid="uid://bbjxpnqf626rv" path="res://Assets/Menu Assets/button-removebg-preview.png" id="3_s8um3"]
+[ext_resource type="StyleBox" uid="uid://6bgm47vv82af" path="res://Assets/Menu Assets/buttonNormal.tres" id="4_g4iet"]
+[ext_resource type="StyleBox" uid="uid://chvcswuqo2vxe" path="res://Assets/Menu Assets/buttonHover.tres" id="5_atr7h"]
+[ext_resource type="StyleBox" uid="uid://0pthk1yyc81x" path="res://Assets/Menu Assets/buttonPressedAndHover.tres" id="7_atr7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pi1c3"]
+texture = ExtResource("2_873nt")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_atr7h"]
+texture = ExtResource("3_s8um3")
+texture_margin_bottom = 60.0
+expand_margin_left = 25.0
+expand_margin_top = 150.0
+expand_margin_right = 25.0
+expand_margin_bottom = 170.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_873nt"]
+texture = ExtResource("3_s8um3")
+texture_margin_bottom = 60.0
+expand_margin_left = 25.0
+expand_margin_top = 150.0
+expand_margin_right = 25.0
+expand_margin_bottom = 170.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s8um3"]
+texture = ExtResource("3_s8um3")
+texture_margin_bottom = 60.0
+expand_margin_left = 25.0
+expand_margin_top = 150.0
+expand_margin_right = 25.0
+expand_margin_bottom = 170.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16l3d"]
+texture = ExtResource("3_s8um3")
+texture_margin_bottom = 60.0
+expand_margin_left = 25.0
+expand_margin_top = 150.0
+expand_margin_right = 25.0
+expand_margin_bottom = 170.0
 
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_lti8b")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = -1
 anchor_left = 0.045
 anchor_right = 0.948
 anchor_bottom = 0.637
 offset_left = -91.4
 offset_top = 24.0
-offset_right = 94.8398
-offset_bottom = 416.04
+offset_right = 94.83984
+offset_bottom = 416.03998
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_s8um3")
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
@@ -30,44 +74,53 @@ theme_override_font_sizes/font_size = 50
 text = "SELEZIONA LINGUA
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 760.0
+offset_top = 368.0
+offset_right = 1360.0
+offset_bottom = 1099.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_pi1c3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(600, 600)
-anchors_preset = -1
-anchor_left = 0.337
-anchor_top = 0.348
-anchor_right = 0.699
-anchor_bottom = 0.759
-offset_left = -21.04
-offset_top = 0.159973
-offset_right = 148.92
-offset_bottom = 156.28
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_stretch_ratio = 5.0
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("4_g4iet")
+theme_override_styles/hover = ExtResource("5_atr7h")
 text = "Gioca"
 
-[node name="OptionButton" type="Button" parent="VBoxContainer"]
+[node name="OptionButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_atr7h")
+theme_override_styles/hover = ExtResource("5_atr7h")
 text = "Opzioni"
 
-[node name="EncyclopediaButton" type="Button" parent="VBoxContainer"]
+[node name="EncyclopediaButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_873nt")
+theme_override_styles/hover = ExtResource("5_atr7h")
 text = "Enciclopedia"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_s8um3")
+theme_override_styles/hover = ExtResource("5_atr7h")
 text = "Crediti"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_16l3d")
+theme_override_styles/pressed = ExtResource("7_atr7h")
+theme_override_styles/hover = ExtResource("5_atr7h")
+theme_override_styles/hover_pressed = ExtResource("7_atr7h")
 text = "Esci
 "
 
@@ -113,9 +166,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "No"
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LanguagesButton" to="." method="_on_languages_button_pressed"]

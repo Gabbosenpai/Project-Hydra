@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://6bgm47vv82af"]
+
+[ext_resource type="Texture2D" uid="uid://bbjxpnqf626rv" path="res://Assets/Menu Assets/button-removebg-preview.png" id="1_su2cc"]
+
+[resource]
+texture = ExtResource("1_su2cc")
+texture_margin_bottom = 60.0
+expand_margin_left = 25.0
+expand_margin_top = 150.0
+expand_margin_right = 25.0
+expand_margin_bottom = 170.0

@@ -1,12 +1,12 @@
 extends CanvasLayer
 
 # Riferimenti ai pulsanti del menu
-@onready var play_button = $VBoxContainer/PlayButton
-@onready var quit_button = $VBoxContainer/QuitButton
-@onready var credits_button = $VBoxContainer/CreditsButton
-@onready var encyclopedia_button = $VBoxContainer/EncyclopediaButton
+@onready var play_button = $PanelContainer/VBoxContainer/PlayButton
+@onready var quit_button = $PanelContainer/VBoxContainer/QuitButton
+@onready var credits_button = $PanelContainer/VBoxContainer/CreditsButton
+@onready var encyclopedia_button = $PanelContainer/VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
-@onready var main_menu = $VBoxContainer
+@onready var main_menu = $PanelContainer/VBoxContainer
 
 # Funzione che inizializza il menu principale
 func _ready():
