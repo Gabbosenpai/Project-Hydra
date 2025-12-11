@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=16 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://b4hjtvvhswqbv" path="res://Assets/Menu Assets/Background Button.jpg" id="2_873nt"]
-[ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
 [ext_resource type="Texture2D" uid="uid://blojo3dh8ih3v" path="res://sfondi fabbrica e textures nastro trasportatore/Factory AI Background.jpg" id="2_s8um3"]
 [ext_resource type="Texture2D" uid="uid://bbjxpnqf626rv" path="res://Assets/Menu Assets/button-removebg-preview.png" id="3_s8um3"]
 [ext_resource type="StyleBox" uid="uid://6bgm47vv82af" path="res://Assets/Menu Assets/buttonNormal.tres" id="4_g4iet"]
 [ext_resource type="StyleBox" uid="uid://chvcswuqo2vxe" path="res://Assets/Menu Assets/buttonHover.tres" id="5_atr7h"]
 [ext_resource type="StyleBox" uid="uid://0pthk1yyc81x" path="res://Assets/Menu Assets/buttonPressedAndHover.tres" id="7_atr7h"]
+[ext_resource type="Texture2D" uid="uid://cfbpyo6wann6m" path="res://Assets/Menu Assets/image-removebg-preview (2).png" id="8_ixpxt"]
+[ext_resource type="Texture2D" uid="uid://il7acuidkdd1" path="res://Assets/Menu Assets/image-removebg-preview (4).png" id="9_nyop6"]
+[ext_resource type="Texture2D" uid="uid://ciuada7pkdrmn" path="res://Assets/Menu Assets/image-removebg-preview (3).png" id="10_u188u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pi1c3"]
 texture = ExtResource("2_873nt")
@@ -62,17 +64,6 @@ offset_bottom = 416.03998
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_s8um3")
-
-[node name="Label" type="Label" parent="ColorRect"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 747.0
-offset_right = 568.0
-offset_bottom = 916.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "SELEZIONA LINGUA
-"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 760.0
@@ -136,12 +127,14 @@ text = "Esci
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 99.0
-offset_top = -209.0
-offset_right = 349.0
-offset_bottom = -42.0
+offset_left = -12.0
+offset_top = -210.0
+offset_right = 498.0
+offset_bottom = 9.0
 grow_vertical = 0
-texture_normal = ExtResource("2_eas8t")
+texture_normal = ExtResource("8_ixpxt")
+texture_pressed = ExtResource("9_nyop6")
+texture_hover = ExtResource("10_u188u")
 
 [node name="ResetConfirm" type="VBoxContainer" parent="."]
 visible = false
