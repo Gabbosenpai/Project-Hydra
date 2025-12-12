@@ -188,3 +188,38 @@ func update_tilemap_base(cell: Vector2i, phase: int):
 	# Le Atlas Coords (0,0) vengono usate per specificare 
 	# il frame statico iniziale del tile.
 	tilemap.set_cell(0, cell, source_id, Vector2i(0,0), 0)
+
+# Nuova funzione per eseguire l'animazione 'blast' su una riga
+func animate_conveyors_blast(row_y: int):
+	for x in range(1, GameConstants.COLUMN):
+		var cell = Vector2i(x, row_y)
+		
+		# 1. Rimuovi il tile statico corrente
+		tilemap.erase_cell(0, cell)
+		
+		# 2. Crea l'istanza dell'animazione 'blast'
+		var step_instance = CONVEYOR_STEP_SCENE.instantiate()
+		
+		# 3. Imposta l'animazione
+		step_instance.animation_name = "blast" 
+		
+		# 4. Posiziona l'animazione e aggiungi alla scena
+		step_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell))
+		add_child(step_instance)
+
+
+# Funzione ausiliaria per ripristinare i tile statici del conveyor
+func restore_conveyor_tiles(row_y: int):
+	# Usa la logica a scacchiera per ripristinare lo stato
+	for x in range(1, GameConstants.COLUMN):
+		var cell = Vector2i(x, row_y)
+		
+		var source_id: int
+		# Usiamo la logica a scacchiera (x + y) % 2 == 0 per determinare lo stato statico
+		if (x + row_y) % 2 == 0:
+			source_id = 0 # Tile Scuro
+		else:
+			source_id = 2 # Tile Chiaro
+			
+		# Disegna la cella base sul livello 0
+		tilemap.set_cell(0, cell, source_id, Vector2i(0,0), 0)
