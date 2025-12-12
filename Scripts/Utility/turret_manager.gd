@@ -10,6 +10,7 @@ const CONVEYOR_SHIFT_DURATION: float = 0.85
 const INCINERATOR_LAYER: int = 0
 const INCINERATOR_TILE_ID: int = 4
 const INCINERATOR_ATLAS_COORDS: Vector2i = Vector2i(0, 0)
+const BLAST_DURATION: float = 0.5
 
 @export var tilemap: TileMap
 
@@ -33,6 +34,7 @@ var turret_scenes = {
 }
 
 @onready var grid_initializer = get_parent().get_node("GridInitializer")
+@onready var enemy_manager = get_parent().get_node("EnemySpawner")
 
 
 func initialize_incinerators():
@@ -440,3 +442,29 @@ func close_incinerator_on_robot_entry(row_y: int):
 	row_locked_by_robot[row_y] = true 
 	# 2. Esegui la chiusura fisica (rimozione istanza e ripristino tile)
 	_close_incinerator(row_y)
+
+# Funzione per eseguire la pulizia della riga con animazione coordinata
+# Questa è la funzione che dovrai chiamare da un'abilità o evento.
+func execute_row_blast_cleanup(row_y: int):
+	print("--- Esecuzione Blast di Riga %d Iniziata ---" % row_y)
+	
+	# 1. Avvia le animazioni del conveyor (SINCRONA - parte subito in parallelo)
+	if grid_initializer and grid_initializer.has_method("animate_conveyors_blast"):
+		grid_initializer.animate_conveyors_blast(row_y)
+	
+	# 2. Distrugge le torrette presenti sulla riga (SINCRONA - SPARIZIONE IMMEDIATA)
+	destroy_all_turrets_in_row(row_y) 
+	
+	# 3. Avvia la distruzione animata dei nemici e ASPEtta il tempo del blast (TASK ASINCRONO)
+	if enemy_manager and enemy_manager.has_method("destroy_robots_in_row_with_animation"):
+		# Questo await aspetta 0.5 secondi e poi aggiorna i contatori
+		await enemy_manager.destroy_robots_in_row_with_animation(row_y)
+	else:
+		# Se l'EnemyManager non c'è, aspetta solo la durata del blast
+		await get_tree().create_timer(BLAST_DURATION).timeout
+		
+	# 4. Ripristina i tile statici del conveyor (solo dopo l'attesa)
+	if grid_initializer and grid_initializer.has_method("restore_conveyor_tiles"):
+		grid_initializer.restore_conveyor_tiles(row_y)
+	
+	print("--- Pulizia di Riga %d Completata ---" % row_y)

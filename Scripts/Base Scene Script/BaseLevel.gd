@@ -140,7 +140,7 @@ func enemy_reached_base(robot_instance: Node2D):
 		turret_manager.close_incinerator_on_robot_entry(row)
 		
 		# Distrugge tutti gli oggetti nella riga (il robot è già distrutto da queue_free in move)
-		kill_all_in_row(row)
+		await kill_all_in_row(row)
 	
 # 🔥 Nuova funzione per incenerire tutti gli oggetti in una riga
 func kill_all_in_row(row: int):
@@ -150,13 +150,10 @@ func kill_all_in_row(row: int):
 	
 	# Incenerisce i Robot (DELEGA ALLO SPINNER PER GESTIRE enemies_alive)
 	# Assicurati che enemy_spawner abbia il metodo destroy_robots_in_row(row)
-	if enemy_spawner.has_method("destroy_robots_in_row"):
-		enemy_spawner.destroy_robots_in_row(row)
+	if turret_manager.has_method("execute_row_blast_cleanup"):
+		await turret_manager.execute_row_blast_cleanup(row)
 	else:
-		push_error("ERRORE: enemy_spawner non ha il metodo destroy_robots_in_row.")
-			
-	# Incenerisce le Torrette (DELEGA AL MANAGER)
-	turret_manager.destroy_all_turrets_in_row(row)
+		push_error("ERRORE: turret_manager non ha il metodo execute_row_blast_cleanup.")
 
 # ⚡️ Funzione per applicare un flash rosso e un suono
 func apply_incinerate_flash(row: int):
