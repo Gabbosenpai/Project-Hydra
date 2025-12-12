@@ -465,6 +465,6 @@ func execute_row_blast_cleanup(row_y: int):
 		
 	# 4. Ripristina i tile statici del conveyor (solo dopo l'attesa)
 	if grid_initializer and grid_initializer.has_method("restore_conveyor_tiles"):
-		grid_initializer.restore_conveyor_tiles(row_y)
+		grid_initializer.restore_conveyor_tiles(row_y, conveyor_phase_shift)
 	
 	print("--- Pulizia di Riga %d Completata ---" % row_y)

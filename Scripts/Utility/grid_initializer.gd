@@ -14,8 +14,7 @@ const CONVEYOR_STEP_SCENE: PackedScene = preload("res://Scenes/Utilities/conveyo
 		queue_redraw() # Chiede a Godot di chiamare _draw()
 
 # Il tuo dizionario, usato per tracciare le proprietà della cella
-var dic = {} 
-
+var dic = {}
 
 # Funzione che si occupa solo di inizializzare la griglia e il dizionario.
 func _ready():
@@ -194,6 +193,7 @@ func animate_conveyors_blast(row_y: int):
 	for x in range(1, GameConstants.COLUMN):
 		var cell = Vector2i(x, row_y)
 		
+		var current_source_id = tilemap.get_cell_source_id(0, cell)
 		# 1. Rimuovi il tile statico corrente
 		tilemap.erase_cell(0, cell)
 		
@@ -203,20 +203,28 @@ func animate_conveyors_blast(row_y: int):
 		# 3. Imposta l'animazione
 		step_instance.animation_name = "blast" 
 		
+		if current_source_id == 0:
+			step_instance.background_animation = "scuroToChiaro"
+		elif current_source_id == 2:
+			step_instance.background_animation = "chiaroToScuro"
+		else:
+			# Fallback, usa un colore neutro o lo scuro
+			step_instance.background_animation = "chiaroToScuro"
+		
 		# 4. Posiziona l'animazione e aggiungi alla scena
 		step_instance.global_position = tilemap.to_global(tilemap.map_to_local(cell))
 		add_child(step_instance)
 
 
 # Funzione ausiliaria per ripristinare i tile statici del conveyor
-func restore_conveyor_tiles(row_y: int):
+func restore_conveyor_tiles(row_y: int,current_phase: int):
 	# Usa la logica a scacchiera per ripristinare lo stato
 	for x in range(1, GameConstants.COLUMN):
 		var cell = Vector2i(x, row_y)
 		
 		var source_id: int
 		# Usiamo la logica a scacchiera (x + y) % 2 == 0 per determinare lo stato statico
-		if (x + row_y) % 2 == 0:
+		if (x + row_y + current_phase) % 2 == 0:
 			source_id = 0 # Tile Scuro
 		else:
 			source_id = 2 # Tile Chiaro
