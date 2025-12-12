@@ -180,23 +180,8 @@ func destroy_robots_in_row_with_animation(row: int):
 	for child in get_children():
 		if child.is_in_group("Robot") and child.has_method("die") and is_instance_valid(child):
 			if child.riga == row:
-				
-				# 1. Avvia l'animazione di morte del robot
-				child.die() 
-				
-				# 2. Scollega il segnale enemy_defeated
-				if child.is_connected("enemy_defeated", Callable(self, "_on_enemy_defeated")):
-					child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
-				
-				# 3. Imposta un timer per la liberazione del nodo dopo l'attesa.
-				# Chiamiamo un metodo che si libera dopo il ritardo.
-				_set_delayed_free(child)
-				
+				child.queue_free()
 				killed_count += 1
-	
-	# Aspetta il tempo del blast del conveyor prima di procedere con la logica finale
-	var timer = get_tree().create_timer(ENEMY_DESTRUCTION_DELAY)
-	await timer.timeout
 	
 	# Aggiorna il contatore globale dopo l'attesa
 	enemies_alive = max(0, enemies_alive - killed_count)
@@ -206,16 +191,6 @@ func destroy_robots_in_row_with_animation(row: int):
 	
 	# Verifica la fine dell'ondata
 	check_enemies_for_next_wave()
-	
-# Funzione ausiliaria per gestire l'attesa e la liberazione del nodo
-func _set_delayed_free(robot: Node):
-	if is_instance_valid(robot):
-		# Usa un timer one-shot per liberare il nodo dopo il ritardo
-		var timer = get_tree().create_timer(ENEMY_DESTRUCTION_DELAY)
-		await timer.timeout
-		
-		if is_instance_valid(robot):
-			robot.queue_free()
 
 
 func _check_wave_completion():
