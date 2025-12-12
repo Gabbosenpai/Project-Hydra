@@ -290,7 +290,7 @@ script = ExtResource("1_burqt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0ef7")
-animation = &"scuroToChiaro"
+animation = &"chiaroToScuro"
 
 [node name="Blast" type="AnimatedSprite2D" parent="."]
 visible = false

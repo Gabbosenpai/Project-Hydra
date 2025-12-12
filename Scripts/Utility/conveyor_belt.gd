@@ -5,6 +5,7 @@ var grid_initializer: Node2D = null
 var cell_position: Vector2i
 var next_phase: int
 var animation_name: String
+var background_animation: String = ""
 
 @onready var step_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var blast_sprite: AnimatedSprite2D = $Blast
@@ -14,13 +15,22 @@ func _ready():
 	if animation_name == "blast":
 		# Se l'animazione è 'blast', usiamo la sprite Blast e la rendiamo visibile
 		blast_sprite.visible = true
+		step_sprite.visible = true
+	
+		if background_animation != "":
+			step_sprite.play(background_animation)
+			step_sprite.stop() 
+		else:
+			# Se per qualche motivo non abbiamo lo stato, riproduci lo scuro
+			step_sprite.play("scuroToChiaro")
+			step_sprite.stop()
 		blast_sprite.play("blast")
-		
 		# Connettiamo il segnale di fine animazione dal nodo Blast
 		blast_sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	else:
 		# Se l'animazione è movimento, usiamo la sprite principale
 		blast_sprite.visible = false
+		step_sprite.visible = true
 		step_sprite.play(animation_name)
 		
 		# Connettiamo il segnale di fine animazione dal nodo AnimatedSprite2D
