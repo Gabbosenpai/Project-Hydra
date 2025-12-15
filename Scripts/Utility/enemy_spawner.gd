@@ -31,7 +31,7 @@ var level_enemy_pool = {
 	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
-	{ "count": 3000, "interval": 0.4 },
+	{ "count": 13, "interval": 0.4 },
 	{ "count": 16, "interval": 0.6 },
 	{ "count": 19, "interval": 0.8 },
 	{ "count": 22, "interval": 1.0 }
