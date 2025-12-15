@@ -325,7 +325,9 @@ script = ExtResource("1_rrkj0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_loasc")
-animation = &"apertura"
+animation = &"chiusura"
+frame = 8
+frame_progress = 1.0
 
 [node name="Blast" type="AnimatedSprite2D" parent="."]
 visible = false
