@@ -31,7 +31,7 @@ var level_enemy_pool = {
 	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
-	{ "count": 13, "interval": 0.4 },
+	{ "count": 3000, "interval": 0.4 },
 	{ "count": 16, "interval": 0.6 },
 	{ "count": 19, "interval": 0.8 },
 	{ "count": 22, "interval": 1.0 }
@@ -42,6 +42,9 @@ var enemies_alive = 0
 var is_wave_active = false
 var current_level: int = 1
 const ENEMY_DESTRUCTION_DELAY: float = 0.5
+const TILE_SIZE = 160
+const INCINERATE_COLUMN_THRESHOLD: float = 9.0
+var INCINERATE_X_LIMIT: float
 
 
 func _ready():
@@ -57,6 +60,13 @@ func _ready():
 		current_level = 1
 	
 	print("Spawner avviato in livello: ", current_level, " (path=", path, ")")
+	
+	if tilemap:
+		INCINERATE_X_LIMIT = tilemap.global_position.x + (INCINERATE_COLUMN_THRESHOLD + 1.0) * TILE_SIZE
+		print("Limite X Incenerimento impostato a: ", INCINERATE_X_LIMIT)
+	else:
+		push_error("TileMap non è assegnata in enemy_spawner, il limite X potrebbe essere errato.")
+		INCINERATE_X_LIMIT = (INCINERATE_COLUMN_THRESHOLD + 10) * TILE_SIZE
 	
 	if initial_delay_timer:
 		initial_delay_timer.wait_time = grace_time
@@ -179,7 +189,12 @@ func destroy_robots_in_row_with_animation(row: int):
 	
 	for child in get_children():
 		if child.is_in_group("Robot") and child.has_method("die") and is_instance_valid(child):
-			if child.riga == row:
+			var robot = child
+			var can_incinerate = (
+				robot.riga == row and
+				robot.global_position.x <= INCINERATE_X_LIMIT
+			)
+			if can_incinerate:
 				child.queue_free()
 				killed_count += 1
 	
