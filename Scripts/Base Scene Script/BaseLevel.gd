@@ -131,6 +131,10 @@ func enemy_reached_base(robot_instance: Node2D):
 			# *** BLOCCO DEL GIOCO E SEGNALE ***
 			is_game_over = true 
 			emit_signal("game_over")
+			
+			if is_instance_valid(robot):
+				robot.queue_free()
+			return
 		
 		else:
 			# PRIMA VOLTA NELLA RIGA: Chiude l'inceneritore animato e blocca la riga.
