@@ -4,7 +4,7 @@ extends Control
 @onready var desc_label = $MonsterDescriptionPanel/MonsterDescription
 @onready var name_label = $MonsterDescriptionPanel/MonsterName
 @onready var monster_image = $MonsterDescriptionPanel/MonsterTexture
-#da modificare con i percorsi giusti
+
 var monster_textures = {
 	"bolt_shooter": preload("res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png"),
 	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
@@ -13,12 +13,25 @@ var monster_textures = {
 	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png")
 }
 
+#valore livello massimo per sbloccare una voce
+var tower_unlock_levels = {
+	"bolt_shooter": 2,         
+	"delivery_drone": 2,
+	"hkcm": 3,
+	"jammer": 4,
+	"spaghetti_cable": 5
+}
 
 
 
-
-
-
+#corrispondenza nome->nodo
+@onready var tower_buttons = {
+	"bolt_shooter": $BoltShooter,
+	"delivery_drone": $DeliveryDrone,
+	"hkcm": $HKCM,
+	"jammer": $Jammer,
+	"spaghetti_cable": $SpaghettiCable
+}
 
 var monster_names = {
 	"bolt_shooter": "BOLT SHOOTER",
@@ -27,6 +40,8 @@ var monster_names = {
 	"jammer": "JAMMER",
 	"spaghetti_cable": "SPAGHETTI CABLE"
 }
+
+
 
 
 var monster_texts = {
@@ -57,8 +72,9 @@ var monster_texts = {
 }
 
 
-func ready():
-	desc_panel.visible = false
+func _ready():
+	update_buttons()
+
 	
  #Mostra la descrizione del mostro
 func show_description(monster_name: String):
@@ -121,3 +137,18 @@ func _on_hkcm_pressed() -> void:
 
 func _on_spaghetti_cable_pressed() -> void:
 	show_description("spaghetti_cable")
+
+#per aggiornare dinamicamente l'enciclopedia
+func update_buttons():
+	var max_level = SaveManager.get_max_level_all_slots()
+	
+	for tower_name in tower_unlock_levels.keys():
+		var button = tower_buttons[tower_name]        
+		var texture = button.get_node("TextureRect")  
+
+		if max_level >= tower_unlock_levels[tower_name]:
+			button.disabled = false
+			texture.visible = true
+		else:
+			button.disabled = true
+			texture.visible = false

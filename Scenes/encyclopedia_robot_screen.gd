@@ -5,7 +5,7 @@ extends Control
 @onready var name_label = $MonsterDescriptionPanel/MonsterName
 @onready var monster_image = $MonsterDescriptionPanel/MonsterTexture
 
-#da modificare con i percorsi giusti
+
 var monster_textures = {
 	"weed_eater": preload("res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png"),
 	"mecha_freezer": preload("res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer.png"),
@@ -23,6 +23,25 @@ var monster_names = {
 	"cassa_schierata": "CASSA SCHIERATA"
 }	
 
+#valore livello massimo per sbloccare una voce
+var robot_unlock_levels = {
+	"weed_eater": 2,         
+	"mecha_freezer": 2,
+	"fire_hydrant": 3,
+	"romba": 4,
+	"cassa_schierata": 5
+}
+
+
+
+#corrispondenza nome->nodo
+@onready var robot_buttons = {
+	"weed_eater": $WeedEater,         
+	"mecha_freezer": $MechaFreezer,
+	"fire_hydrant": $FireHydrant,
+	"romba": $Romba,
+	"cassa_schierata": $CassaSchierata
+}
 
 var monster_texts = {
 	
@@ -37,8 +56,8 @@ var monster_texts = {
 	
 }
 
-func ready():
-	desc_panel.visible = false
+func _ready():
+	update_buttons()
 	
 	
  #Mostra la descrizione del mostro
@@ -67,7 +86,7 @@ func show_description(monster_name: String):
 
 # Nasconde la descrizione
 func hide_description():
-	desc_panel.visible = false
+	update_buttons()
 
 
 # per nascondere la descrizione cliccando 
@@ -100,3 +119,19 @@ func _on_fire_hydrant_pressed() -> void:
 
 func _on_romba_pressed() -> void:
 	show_description("romba")
+
+
+#per aggiornare dinamicamente l'enciclopedia
+func update_buttons():
+	var max_level = SaveManager.get_max_level_all_slots()
+	
+	for robot_name in robot_unlock_levels.keys():
+		var button = robot_buttons[robot_name]        
+		var texture = button.get_node("TextureRect")  
+
+		if max_level >= robot_unlock_levels[robot_name]:
+			button.disabled = false
+			texture.visible = true
+		else:
+			button.disabled = true
+			texture.visible = false

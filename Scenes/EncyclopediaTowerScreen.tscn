@@ -21,7 +21,7 @@ border_color = Color(0.3889133, 0.21603402, 0.04774279, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56vox"]
 
-[node name="Control" type="Control"]
+[node name="Towers" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
