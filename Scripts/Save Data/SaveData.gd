@@ -97,3 +97,15 @@ func reset_progress() -> void:
 	# Reset dati
 	max_unlocked_level = 1
 	save_progress()
+
+
+
+# Restituisce il massimo livello sbloccato tra tutti e tre gli slot
+
+func get_max_level_all_slots() -> int:
+	var max_level = 0
+	for slot in range(1, 4):  # range(inizio, fine) esclusivo della fine
+		var level = get_saved_level(slot)
+		if level > max_level:
+			max_level = level
+	return max_level
