@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=5 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
 
-[node name="Menu" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
+bg_color = Color(0.813258, 0.813258, 0.813258, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8um3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("mute_music_button", "mute_sfx_button", "option_menu", "music_slider", "sfx_slider")]
 process_mode = 3
 script = ExtResource("1_lti8b")
+mute_music_button = NodePath("OptionMenu/MuteMusicButton")
+mute_sfx_button = NodePath("OptionMenu/MuteSFXButton")
+option_menu = NodePath("OptionMenu")
+music_slider = NodePath("OptionMenu/MusicSlider")
+sfx_slider = NodePath("OptionMenu/SfxSlider")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = -1
@@ -113,9 +132,86 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "No"
 
+[node name="OptionMenu" type="Panel" parent="."]
+process_mode = 3
+visible = false
+offset_left = 353.0
+offset_top = 304.0
+offset_right = 1422.0
+offset_bottom = 1022.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6rwh")
+
+[node name="MenuButton" type="Button" parent="OptionMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 373.0
+offset_top = 359.0
+offset_right = 581.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_s8um3")
+toggle_mode = true
+action_mode = 0
+text = "Torna al Menu Principale"
+
+[node name="MusicSlider" type="HSlider" parent="OptionMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 187.0
+offset_top = 66.0
+offset_right = 458.0
+offset_bottom = 82.0
+
+[node name="SfxSlider" type="HSlider" parent="OptionMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 187.0
+offset_top = 140.0
+offset_right = 457.0
+offset_bottom = 156.0
+
+[node name="MuteMusicButton" type="Button" parent="OptionMenu"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 52.0
+offset_right = 165.0
+offset_bottom = 83.0
+text = "Disattiva Musica"
+
+[node name="Musictext" type="Label" parent="OptionMenu"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 43.0
+offset_right = 342.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
+text = "OST"
+
+[node name="SFXtext" type="Label" parent="OptionMenu"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 114.0
+offset_right = 342.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
+text = "SFX"
+
+[node name="MuteSFXButton" type="Button" parent="OptionMenu"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 126.0
+offset_right = 186.0
+offset_bottom = 157.0
+text = "Disattiva Effetti Sonori"
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LanguagesButton" to="." method="_on_languages_button_pressed"]
+[connection signal="pressed" from="OptionMenu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="value_changed" from="OptionMenu/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionMenu/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="OptionMenu/MuteMusicButton" to="." method="_on_mute_music_button_pressed"]
+[connection signal="pressed" from="OptionMenu/MuteSFXButton" to="." method="_on_mute_sfx_button_pressed"]
