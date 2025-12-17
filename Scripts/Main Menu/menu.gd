@@ -12,11 +12,39 @@ extends CanvasLayer
 @export var option_menu: Panel
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
+#sprite per le icone del volume
+@export var music_on_sprite: Sprite2D
+@export var music_off_sprite: Sprite2D
+@export var sfx_on_sprite: Sprite2D
+@export var sfx_off_sprite: Sprite2D
+
+
+
 
 # Funzione che inizializza il menu principale
 func _ready():
 	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	AudioManager.play_music(menu_music)
+	# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
+	_sync_audio_sprites()
+
+
+func _sync_audio_sprites():
+	# Music sprites
+	if AudioManager.is_music_muted:
+		music_on_sprite.visible = false
+		music_off_sprite.visible = true
+	else:
+		music_on_sprite.visible = true
+		music_off_sprite.visible = false
+
+	# SFX sprites
+	if AudioManager.is_sfx_muted:
+		sfx_on_sprite.visible = false
+		sfx_off_sprite.visible = true
+	else:
+		sfx_on_sprite.visible = true
+		sfx_off_sprite.visible = false
 
 
 # Se clicco gioca ferma l'OST del menù
@@ -69,6 +97,9 @@ func _on_languages_button_pressed() -> void:
 	#main_menu.visible = true
 
 
+
+
+
 # Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
 func _sync_sliders_with_audio():
 	music_slider.value = AudioManager.music_volume *100
@@ -90,17 +121,21 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
 	if AudioManager.is_music_muted:
-		mute_music_button.text = "RIATTIVA MUSICA"
+		music_on_sprite.visible = false
+		music_off_sprite.visible = true
 	else:
-		mute_music_button.text = "DISATTIVA MUSICA"
+		music_on_sprite.visible = true
+		music_off_sprite.visible = false
 
 
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
 	if AudioManager.is_sfx_muted:
-		mute_sfx_button.text = "RIATTIVA EFFETTI SONORI"
+		sfx_on_sprite.visible = false
+		sfx_off_sprite.visible = true
 	else:
-		mute_sfx_button.text = "DISATTIVA EFFETTI SONORI"
+		sfx_on_sprite.visible = true
+		sfx_off_sprite.visible = false
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
