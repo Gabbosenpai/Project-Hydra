@@ -12,7 +12,8 @@ signal exit
 @export var game_over_ui: Control
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
-@export var mute_button: Button
+@export var mute_music_button: Button
+@export var mute_sfx_button: Button
 
 var current_level
 var is_wave_active = false
@@ -126,9 +127,17 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioManager.set_sfx_volume(value/100.0)
 
 
-func _on_mute_button_pressed() -> void:
+func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
 	if AudioManager.is_music_muted:
-		mute_button.text = "RIATTIVA AUDIO"
+		mute_music_button.text = "RIATTIVA MUSICA"
 	else:
-		mute_button.text = "DISATTIVA AUDIO"
+		mute_music_button.text = "DISATTIVA MUSICA"
+
+
+func _on_mute_sfx_button_pressed() -> void:
+	AudioManager.toggle_sfx_mute()
+	if AudioManager.is_sfx_muted:
+		mute_sfx_button.text = "RIATTIVA EFFETTI SONORI"
+	else:
+		mute_sfx_button.text = "DISATTIVA EFFETTI SONORI"
