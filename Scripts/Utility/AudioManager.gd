@@ -14,6 +14,7 @@ var victory_music = preload("res://Assets/Sound/OST/8-bit RPG Music ｜ Victory 
 # Per gestire mute musica
 var previous_music_volume: float = 0.01
 var is_music_muted: bool = false
+var is_sfx_muted: bool = false
 # Suono bottoni
 var button_click_sfx = preload("res://Assets/Sound/SFX/8bit Click Sound Effect.mp3")
 # Audio Players
@@ -80,7 +81,7 @@ func play_sfx(sfx_stream: AudioStream, variate_pitch: bool = false, variate_volu
 	new_sfx_player.stream = sfx_stream
 	new_sfx_player.bus = "SFX"
 	
-	if is_music_muted:
+	if is_sfx_muted:
 		new_sfx_player.volume_db = linear_to_db(0.0)
 	else:
 		# Varia volume se richiesto
@@ -100,13 +101,22 @@ func play_sfx(sfx_stream: AudioStream, variate_pitch: bool = false, variate_volu
 
 # Mute/unmute musica
 func toggle_music_mute() -> void:
-	is_music_muted = !is_music_muted
+	is_music_muted = !is_music_muted   #se true diventa false e viceversa
 	if is_music_muted:
 		music_player.volume_db = linear_to_db(0.0)
-		sfx_player.volume_db = linear_to_db(0.0)
 	else:
 		music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
+
+
+# Mute/unmute sfx
+func toggle_sfx_mute() -> void:
+	is_sfx_muted = !is_sfx_muted
+	if is_sfx_muted:
+		sfx_player.volume_db = linear_to_db(0.0)
+	else:
 		sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_VOLUME_FACTOR)
+
+
 
 
 
