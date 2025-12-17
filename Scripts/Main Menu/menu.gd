@@ -7,6 +7,11 @@ extends CanvasLayer
 @onready var encyclopedia_button = $VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxContainer
+@export var mute_music_button: Button
+@export var mute_sfx_button: Button
+@export var option_menu: Panel
+@export var music_slider: HSlider
+@export var sfx_slider: HSlider
 
 # Funzione che inizializza il menu principale
 func _ready():
@@ -34,7 +39,8 @@ func _on_credits_button_pressed() -> void:
 # Funzione che mostra le opzioni e avvia la sfx del pulsante opzioni
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Utilities/Opzioni.tscn")
+	option_menu.visible = true
+	_sync_sliders_with_audio()
 
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
@@ -63,6 +69,39 @@ func _on_languages_button_pressed() -> void:
 	#main_menu.visible = true
 
 
+# Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
+func _sync_sliders_with_audio():
+	music_slider.value = AudioManager.music_volume *100
+	sfx_slider.value = AudioManager.sfx_volume * 100
+
 func _on_encyclopedia_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/EncyclopediaFirstScreen.tscn")
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioManager.set_music_volume(value/100.0)
+
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	AudioManager.set_sfx_volume(value/100.0)
+
+
+func _on_mute_music_button_pressed() -> void:
+	AudioManager.toggle_music_mute()
+	if AudioManager.is_music_muted:
+		mute_music_button.text = "RIATTIVA MUSICA"
+	else:
+		mute_music_button.text = "DISATTIVA MUSICA"
+
+
+func _on_mute_sfx_button_pressed() -> void:
+	AudioManager.toggle_sfx_mute()
+	if AudioManager.is_sfx_muted:
+		mute_sfx_button.text = "RIATTIVA EFFETTI SONORI"
+	else:
+		mute_sfx_button.text = "DISATTIVA EFFETTI SONORI"
+
+func _on_menu_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
