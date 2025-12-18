@@ -24,27 +24,19 @@ extends CanvasLayer
 # Funzione che inizializza il menu principale
 func _ready():
 	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
-	AudioManager.play_music(menu_music)
-	# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
-	_sync_audio_sprites()
+	AudioManager.play_music(menu_music)# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
+	_sync_sliders_with_audio()
+	_refresh_audio_ui()
 
+#per sincronizzare le icone audio
+func _refresh_audio_ui():
+	
+	music_on_sprite.visible = !AudioManager.is_music_muted
+	music_off_sprite.visible = AudioManager.is_music_muted
 
-func _sync_audio_sprites():
-	# Music sprites
-	if AudioManager.is_music_muted:
-		music_on_sprite.visible = false
-		music_off_sprite.visible = true
-	else:
-		music_on_sprite.visible = true
-		music_off_sprite.visible = false
+	sfx_on_sprite.visible = !AudioManager.is_sfx_muted
+	sfx_off_sprite.visible = AudioManager.is_sfx_muted
 
-	# SFX sprites
-	if AudioManager.is_sfx_muted:
-		sfx_on_sprite.visible = false
-		sfx_off_sprite.visible = true
-	else:
-		sfx_on_sprite.visible = true
-		sfx_off_sprite.visible = false
 
 
 # Se clicco gioca ferma l'OST del menù
@@ -64,11 +56,13 @@ func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Utilities/Credits.tscn")
 
 
-# Funzione che mostra le opzioni e avvia la sfx del pulsante opzioni
+# Funzione che mostra le opzioni, avvia la sfx del pulsante opzioni e sincronizza
+# icona mute/unmute
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	option_menu.visible = true
 	_sync_sliders_with_audio()
+	_refresh_audio_ui()
 
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
@@ -100,7 +94,7 @@ func _on_languages_button_pressed() -> void:
 
 
 
-# Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
+# Sincronizzo gli slider nelle opzioni con il livello audio attuale 
 func _sync_sliders_with_audio():
 	music_slider.value = AudioManager.music_volume *100
 	sfx_slider.value = AudioManager.sfx_volume * 100
@@ -120,22 +114,13 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
-	if AudioManager.is_music_muted:
-		music_on_sprite.visible = false
-		music_off_sprite.visible = true
-	else:
-		music_on_sprite.visible = true
-		music_off_sprite.visible = false
+	_refresh_audio_ui()
 
 
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
-	if AudioManager.is_sfx_muted:
-		sfx_on_sprite.visible = false
-		sfx_off_sprite.visible = true
-	else:
-		sfx_on_sprite.visible = true
-		sfx_off_sprite.visible = false
+	_refresh_audio_ui()
+
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)

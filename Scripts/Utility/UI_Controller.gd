@@ -14,13 +14,15 @@ signal exit
 @export var sfx_slider: HSlider
 @export var mute_music_button: Button
 @export var mute_sfx_button: Button
+@onready var button_remove = $ButtonRemove
+@onready var button_kill_all = $ButtonKillAll
+@export var music_on_sprite: Sprite2D
+@export var music_off_sprite: Sprite2D
+@export var sfx_on_sprite: Sprite2D
+@export var sfx_off_sprite: Sprite2D
 
 var current_level
 var is_wave_active = false
-
-@onready var button_remove = $ButtonRemove
-@onready var button_kill_all = $ButtonKillAll
-
 
 # Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
 func _sync_sliders_with_audio():
@@ -66,13 +68,13 @@ func _on_button_kill_all_pressed():
 	emit_signal("kill_all")
 
 
-# Mostra il menu di pausa e ferma il gioco
+# Mostra il menu di pausa, ferma il menu di gioco e sincronizza le icone mute/unmute
 func _on_pause_button_pressed():
 	get_tree().paused = true
 	pause_menu.visible = true
 	pause_button.visible = false
 	_sync_sliders_with_audio()
-
+	_refresh_audio_ui()
 
 # Riprende il gioco dopo la pausa
 func _on_resume_button_pressed():
@@ -129,15 +131,17 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
-	if AudioManager.is_music_muted:
-		mute_music_button.text = "RIATTIVA MUSICA"
-	else:
-		mute_music_button.text = "DISATTIVA MUSICA"
+	_refresh_audio_ui()
 
 
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
-	if AudioManager.is_sfx_muted:
-		mute_sfx_button.text = "RIATTIVA EFFETTI SONORI"
-	else:
-		mute_sfx_button.text = "DISATTIVA EFFETTI SONORI"
+	_refresh_audio_ui()
+
+#per tenere sincronizzate le icone audio
+func _refresh_audio_ui():
+	music_on_sprite.visible = !AudioManager.is_music_muted
+	music_off_sprite.visible = AudioManager.is_music_muted
+
+	sfx_on_sprite.visible = !AudioManager.is_sfx_muted
+	sfx_off_sprite.visible = AudioManager.is_sfx_muted

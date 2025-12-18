@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=25 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
@@ -46,6 +46,8 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1efrn"]
 
 [sub_resource type="Animation" id="Animation_wunin"]
 length = 0.001
@@ -140,7 +142,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="UI" type="Control" node_paths=PackedStringArray("music_slider", "sfx_slider", "mute_music_button", "mute_sfx_button")]
+[node name="UI" type="Control" node_paths=PackedStringArray("music_slider", "sfx_slider", "mute_music_button", "mute_sfx_button", "music_on_sprite", "music_off_sprite", "sfx_on_sprite", "sfx_off_sprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,6 +158,10 @@ music_slider = NodePath("PauseMenu/MusicSlider")
 sfx_slider = NodePath("PauseMenu/SfxSlider")
 mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
+music_on_sprite = NodePath("PauseMenu/MusicOn")
+music_off_sprite = NodePath("PauseMenu/MusicOff")
+sfx_on_sprite = NodePath("PauseMenu/SFXon")
+sfx_off_sprite = NodePath("PauseMenu/SFXoff")
 
 [node name="ButtonRemove" type="TextureButton" parent="."]
 layout_mode = 0
@@ -386,11 +392,10 @@ offset_bottom = 156.0
 
 [node name="MuteMusicButton" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 150.0
 offset_top = 52.0
-offset_right = 165.0
+offset_right = 180.0
 offset_bottom = 83.0
-text = "Disattiva Musica"
 
 [node name="Musictext" type="Label" parent="PauseMenu"]
 layout_mode = 0
@@ -412,11 +417,35 @@ text = "SFX"
 
 [node name="MuteSFXButton" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 126.0
-offset_right = 186.0
-offset_bottom = 157.0
-text = "Disattiva Effetti Sonori"
+offset_left = 149.0
+offset_top = 131.0
+offset_right = 182.0
+offset_bottom = 162.0
+
+[node name="MusicOn" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(149, 52)
+scale = Vector2(33, 32.000008)
+texture = SubResource("PlaceholderTexture2D_1efrn")
+
+[node name="MusicOff" type="Sprite2D" parent="PauseMenu"]
+visible = false
+self_modulate = Color(0.41568628, 1, 1, 1)
+position = Vector2(148, 52)
+scale = Vector2(33, 32.000008)
+texture = SubResource("PlaceholderTexture2D_1efrn")
+
+[node name="SFXon" type="Sprite2D" parent="PauseMenu"]
+self_modulate = Color(1, 1, 0.39215687, 1)
+position = Vector2(149, 130)
+scale = Vector2(33, 32.000008)
+texture = SubResource("PlaceholderTexture2D_1efrn")
+
+[node name="SFXoff" type="Sprite2D" parent="PauseMenu"]
+visible = false
+self_modulate = Color(0.4745098, 1, 0.69803923, 1)
+position = Vector2(149, 130)
+scale = Vector2(33, 32.000008)
+texture = SubResource("PlaceholderTexture2D_1efrn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
