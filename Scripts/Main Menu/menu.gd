@@ -28,13 +28,12 @@ func _ready():
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
 
-
+#per sincronizzare le icone audio
 func _refresh_audio_ui():
-	# sprite musica
+	
 	music_on_sprite.visible = !AudioManager.is_music_muted
 	music_off_sprite.visible = AudioManager.is_music_muted
 
-	# sprite sfx
 	sfx_on_sprite.visible = !AudioManager.is_sfx_muted
 	sfx_off_sprite.visible = AudioManager.is_sfx_muted
 
@@ -57,7 +56,8 @@ func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Utilities/Credits.tscn")
 
 
-# Funzione che mostra le opzioni e avvia la sfx del pulsante opzioni
+# Funzione che mostra le opzioni, avvia la sfx del pulsante opzioni e sincronizza
+# icona mute/unmute
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	option_menu.visible = true
@@ -94,7 +94,7 @@ func _on_languages_button_pressed() -> void:
 
 
 
-# Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
+# Sincronizzo gli slider nelle opzioni con il livello audio attuale 
 func _sync_sliders_with_audio():
 	music_slider.value = AudioManager.music_volume *100
 	sfx_slider.value = AudioManager.sfx_volume * 100
@@ -120,6 +120,7 @@ func _on_mute_music_button_pressed() -> void:
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
 	_refresh_audio_ui()
+
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
