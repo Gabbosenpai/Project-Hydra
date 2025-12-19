@@ -175,6 +175,13 @@ offset_right = 147.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 34
 
+[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret6" index="0"]
+offset_left = 81.0
+offset_top = -4.0
+offset_right = 139.0
+offset_bottom = 43.0
+text = "200"
+
 [node name="LabelWave" parent="UI" index="2"]
 z_index = 1000
 offset_left = 917.0
@@ -203,6 +210,7 @@ offset_bottom = 277.0
 texture_normal = ExtResource("6_tk4nw")
 
 [node name="PauseMenu" parent="UI" index="6"]
+visible = true
 z_index = 1000
 offset_left = 289.0
 offset_top = 419.0

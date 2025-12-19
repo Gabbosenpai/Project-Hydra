@@ -143,9 +143,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -534.5
+offset_left = -535.0
 offset_top = -359.0
-offset_right = 534.5
+offset_right = 534.0
 offset_bottom = 359.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -155,17 +155,14 @@ metadata/_edit_lock_ = true
 [node name="MenuButton" type="Button" parent="MenuOption"]
 process_mode = 3
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -168.0
-offset_right = 104.0
-offset_bottom = -100.0
+anchors_preset = -1
+anchor_left = 0.40224507
+anchor_top = 0.7660167
+anchor_right = 0.5986904
+anchor_bottom = 0.8635098
+offset_left = 3.0517578e-05
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_s8um3")
 toggle_mode = true
@@ -209,21 +206,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -279.0
+offset_left = -279.5
 offset_top = -199.0
-offset_right = -154.0
+offset_right = -154.5
 offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MusicOn" type="Sprite2D" parent="MenuOption/MuteMusicButton"]
-position = Vector2(64.00003, 62)
+position = Vector2(63.00003, 62)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_j4ee8")
 
 [node name="MusicOff" type="Sprite2D" parent="MenuOption/MuteMusicButton"]
 visible = false
-position = Vector2(63.99997, 62)
+position = Vector2(62.99997, 62)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_873nt")
 
@@ -249,19 +246,19 @@ horizontal_alignment = 1
 
 [node name="MuteSFXButton" type="Button" parent="MenuOption"]
 layout_mode = 0
-offset_left = 255.5
+offset_left = 255.0
 offset_top = 310.0
-offset_right = 380.5
+offset_right = 380.0
 offset_bottom = 435.0
 
 [node name="SFXon" type="Sprite2D" parent="MenuOption/MuteSFXButton"]
-position = Vector2(62.999996, 62.999992)
+position = Vector2(63, 62)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("5_s8um3")
 
 [node name="SFXoff" type="Sprite2D" parent="MenuOption/MuteSFXButton"]
 visible = false
-position = Vector2(62.999996, 62.999996)
+position = Vector2(63, 62)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("6_pi1c3")
 
