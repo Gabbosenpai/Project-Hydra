@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=9 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
+[ext_resource type="Texture2D" uid="uid://dxr1eiaflpvlm" path="res://Assets/Sprites/UI/Music and SFX/Music On.png" id="3_j4ee8"]
+[ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="4_873nt"]
+[ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="5_s8um3"]
+[ext_resource type="Texture2D" uid="uid://js16sifrwfab" path="res://Assets/Sprites/UI/Music and SFX/Sound Off.png" id="6_pi1c3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
 bg_color = Color(0.813258, 0.813258, 0.813258, 1)
@@ -17,8 +21,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v6rwh"]
-
 [node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("mute_music_button", "mute_sfx_button", "option_menu", "music_slider", "sfx_slider", "music_on_sprite", "music_off_sprite", "sfx_on_sprite", "sfx_off_sprite")]
 process_mode = 3
 script = ExtResource("1_lti8b")
@@ -27,20 +29,15 @@ mute_sfx_button = NodePath("MenuOption/MuteSFXButton")
 option_menu = NodePath("MenuOption")
 music_slider = NodePath("MenuOption/MusicSlider")
 sfx_slider = NodePath("MenuOption/SfxSlider")
-music_on_sprite = NodePath("MenuOption/MusicOn")
-music_off_sprite = NodePath("MenuOption/MusicOff")
-sfx_on_sprite = NodePath("MenuOption/SFXon")
-sfx_off_sprite = NodePath("MenuOption/SFXoff")
+music_on_sprite = NodePath("MenuOption/MuteMusicButton/MusicOn")
+music_off_sprite = NodePath("MenuOption/MuteMusicButton/MusicOff")
+sfx_on_sprite = NodePath("MenuOption/MuteSFXButton/SFXon")
+sfx_off_sprite = NodePath("MenuOption/MuteSFXButton/SFXoff")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = -1
-anchor_left = 0.045
-anchor_right = 0.948
-anchor_bottom = 0.637
-offset_left = -91.4
-offset_top = 24.0
-offset_right = 94.8398
-offset_bottom = 416.04
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -141,19 +138,34 @@ text = "No"
 [node name="MenuOption" type="Panel" parent="."]
 process_mode = 3
 visible = false
-offset_left = 353.0
-offset_top = 304.0
-offset_right = 1422.0
-offset_bottom = 1022.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.5
+offset_top = -359.0
+offset_right = 534.5
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v6rwh")
+metadata/_edit_lock_ = true
 
 [node name="MenuButton" type="Button" parent="MenuOption"]
 process_mode = 3
-layout_mode = 0
-offset_left = 373.0
-offset_top = 359.0
-offset_right = 581.0
-offset_bottom = 427.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -168.0
+offset_right = 104.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_s8um3")
 toggle_mode = true
@@ -162,76 +174,96 @@ text = "Torna al Menu Principale"
 
 [node name="MusicSlider" type="HSlider" parent="MenuOption"]
 process_mode = 3
-layout_mode = 0
-offset_left = 187.0
-offset_top = 66.0
-offset_right = 458.0
-offset_bottom = 82.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -149.0
+offset_right = 145.5
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SfxSlider" type="HSlider" parent="MenuOption"]
 process_mode = 3
-layout_mode = 0
-offset_left = 187.0
-offset_top = 140.0
-offset_right = 457.0
-offset_bottom = 156.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = 1.0
+offset_right = 145.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MuteMusicButton" type="Button" parent="MenuOption"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 52.0
-offset_right = 180.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -199.0
+offset_right = -154.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicOn" type="Sprite2D" parent="MenuOption/MuteMusicButton"]
+position = Vector2(64.00003, 62)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_j4ee8")
+
+[node name="MusicOff" type="Sprite2D" parent="MenuOption/MuteMusicButton"]
+visible = false
+position = Vector2(63.99997, 62)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_873nt")
 
 [node name="Musictext" type="Label" parent="MenuOption"]
 layout_mode = 0
-offset_left = 302.0
-offset_top = 43.0
-offset_right = 342.0
-offset_bottom = 66.0
+offset_left = 525.0
+offset_top = 180.0
+offset_right = 571.0
+offset_bottom = 203.0
 theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
-text = "OST"
+text = "Music"
+horizontal_alignment = 1
 
 [node name="SFXtext" type="Label" parent="MenuOption"]
 layout_mode = 0
-offset_left = 302.0
-offset_top = 114.0
-offset_right = 342.0
-offset_bottom = 137.0
+offset_left = 493.0
+offset_top = 330.0
+offset_right = 598.0
+offset_bottom = 353.0
 theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
-text = "SFX"
+text = "Sound Effects"
+horizontal_alignment = 1
 
 [node name="MuteSFXButton" type="Button" parent="MenuOption"]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 130.0
-offset_right = 181.0
-offset_bottom = 161.0
+offset_left = 255.5
+offset_top = 310.0
+offset_right = 380.5
+offset_bottom = 435.0
 
-[node name="MusicOn" type="Sprite2D" parent="MenuOption"]
-position = Vector2(149, 52)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_v6rwh")
+[node name="SFXon" type="Sprite2D" parent="MenuOption/MuteSFXButton"]
+position = Vector2(62.999996, 62.999992)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_s8um3")
 
-[node name="MusicOff" type="Sprite2D" parent="MenuOption"]
+[node name="SFXoff" type="Sprite2D" parent="MenuOption/MuteSFXButton"]
 visible = false
-self_modulate = Color(0.41568628, 1, 1, 1)
-position = Vector2(148, 52)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_v6rwh")
-
-[node name="SFXon" type="Sprite2D" parent="MenuOption"]
-self_modulate = Color(1, 1, 0.39215687, 1)
-position = Vector2(149, 130)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_v6rwh")
-
-[node name="SFXoff" type="Sprite2D" parent="MenuOption"]
-visible = false
-self_modulate = Color(0.4745098, 1, 0.69803923, 1)
-position = Vector2(149, 130)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_v6rwh")
+position = Vector2(62.999996, 62.999996)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_pi1c3")
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
