@@ -93,7 +93,7 @@ func can_move() -> bool;
 # Ogni Robot varia leggermente la sua velocità così che si evitino effetti di
 # sovrapposizione visivamente odiosi
 func randomize_speed():
-	var random_offset = randi_range(-5, +5)
+	var random_offset = randi_range(-3, +3)
 	print("Robot offset:", random_offset)
 	speed += random_offset
 
