@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgwyfcruwr0ti"]
+
+[ext_resource type="Script" uid="uid://dgpgt1b0cjlv" path="res://Scripts/Login/register.gd" id="1_d52cs"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d52cs")
+
+[node name="Username" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 94.0
+offset_right = 236.0
+offset_bottom = 125.0
+
+[node name="Email" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 94.0
+offset_right = 376.0
+offset_bottom = 125.0
+
+[node name="Password" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 94.0
+offset_right = 510.0
+offset_bottom = 125.0
+
+[node name="UsernameTag" type="Label" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 72.0
+offset_right = 233.0
+offset_bottom = 95.0
+text = "Username"
+
+[node name="EmailTag" type="Label" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 72.0
+offset_right = 374.0
+offset_bottom = 95.0
+text = "Email"
+
+[node name="PasswordTag" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 71.0
+offset_right = 509.0
+offset_bottom = 94.0
+text = "Password"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 140.0
+offset_right = 419.0
+offset_bottom = 171.0
+text = "Back
+"
+
+[node name="Register" type="Button" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 139.0
+offset_right = 290.0
+offset_bottom = 171.0
+text = "Register"
+
+[connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="Register" to="." method="_on_register_button_up"]
