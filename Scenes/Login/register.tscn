@@ -73,6 +73,6 @@ offset_right = 290.0
 offset_bottom = 171.0
 text = "Register"
 
-[connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]

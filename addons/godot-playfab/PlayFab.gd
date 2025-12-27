@@ -10,6 +10,9 @@ signal registered(RegisterPlayFabUserResult)
 ## @param login_result: LoginResult
 signal logged_in(login_result)
 
+### Emitted when the player needs to recovery password
+signal recovery_email_sent()
+
 enum AUTH_TYPE {SESSION_TICKET, ENTITY_TOKEN}
 
 
@@ -112,6 +115,18 @@ func _on_login(result: Dictionary):
 	login_result.from_dict(result["data"], login_result)
 
 	emit_signal("logged_in", login_result)
+
+func send_account_recovery(email: String, template_id: String = ""):
+	var request = SendAccountRecoveryEmailRequest.new()
+	request.Email = email
+	request.TitleId = _title_id
+	request.EmailTemplateId = template_id
+	_post(request, "/Client/SendAccountRecoveryEmail", _on_recovery_email_success)
+
+func _on_recovery_email_success(_result: Dictionary):
+	print("PlayFab: Email di recupero inviata con successo.")
+	emit_signal("recovery_email_sent")
+
 
 func _post_with_session_auth(body: JsonSerializable, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
 	var result = _add_auth_headers(additional_headers, AUTH_TYPE.SESSION_TICKET)

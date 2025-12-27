@@ -32,3 +32,8 @@ func _on_PlayFab_login_succeded(login_result: LoginResult):
 
 func _on_register_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Login/register.tscn")
+
+
+func _on_forgot_password_button_up() -> void:
+	var email = $Username.text
+	PlayFabManager.client.send_account_recovery(email,"")

@@ -57,5 +57,14 @@ offset_right = 267.0
 offset_bottom = 171.0
 text = "Register"
 
+[node name="ForgotPassword" type="Button" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 180.0
+offset_right = 359.0
+offset_bottom = 211.0
+text = "Forgot Password?"
+
 [connection signal="button_up" from="Login" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]
+[connection signal="button_up" from="ForgotPassword" to="." method="_on_forgot_password_button_up"]
