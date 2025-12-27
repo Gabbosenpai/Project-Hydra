@@ -31,6 +31,7 @@ offset_left = 384.0
 offset_top = 94.0
 offset_right = 510.0
 offset_bottom = 125.0
+secret = true
 
 [node name="UsernameTag" type="Label" parent="."]
 layout_mode = 0

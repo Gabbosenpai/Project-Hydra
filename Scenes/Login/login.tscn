@@ -24,6 +24,7 @@ offset_left = 294.0
 offset_top = 94.0
 offset_right = 420.0
 offset_bottom = 125.0
+secret = true
 
 [node name="EmailTag" type="Label" parent="."]
 layout_mode = 0
