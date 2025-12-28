@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=10 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
+[ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_g4iet"]
 [ext_resource type="Texture2D" uid="uid://dxr1eiaflpvlm" path="res://Assets/Sprites/UI/Music and SFX/Music On.png" id="3_j4ee8"]
 [ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="4_873nt"]
 [ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="5_s8um3"]
@@ -33,6 +34,7 @@ music_on_sprite = NodePath("MenuOption/MuteMusicButton/MusicOn")
 music_off_sprite = NodePath("MenuOption/MuteMusicButton/MusicOff")
 sfx_on_sprite = NodePath("MenuOption/MuteSFXButton/SFXon")
 sfx_off_sprite = NodePath("MenuOption/MuteSFXButton/SFXoff")
+metadata/_edit_vertical_guides_ = [625.0, 1485.0, 625.0, 1485.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -69,11 +71,13 @@ size_flags_stretch_ratio = 5.0
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Gioca"
 
 [node name="OptionButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Opzioni"
 
