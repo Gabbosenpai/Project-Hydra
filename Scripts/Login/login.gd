@@ -37,3 +37,18 @@ func _on_register_button_up() -> void:
 func _on_forgot_password_button_up() -> void:
 	var email = $Username.text
 	PlayFabManager.client.send_account_recovery(email,"")
+
+
+func _on_remove_account_button_up() -> void:
+	var confirmationDialog = $ConfirmationDialog
+	confirmationDialog.visible = true
+
+
+
+func _on_confirmation_dialog_confirmed() -> void:
+	pass # Replace with function body.
+
+
+func _on_confirmation_dialog_canceled() -> void:
+	var confirmationDialog = $ConfirmationDialog
+	confirmationDialog.visible = false
