@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=13 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_g4iet"]
+[ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_ixpxt"]
+[ext_resource type="Texture2D" uid="uid://gvm1rp6trqjx" path="res://Assets/Sprites/UI/Menu/Menu Button.png" id="3_atr7h"]
 [ext_resource type="Texture2D" uid="uid://dxr1eiaflpvlm" path="res://Assets/Sprites/UI/Music and SFX/Music On.png" id="3_j4ee8"]
+[ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="3_nyop6"]
 [ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="4_873nt"]
 [ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="5_s8um3"]
 [ext_resource type="Texture2D" uid="uid://js16sifrwfab" path="res://Assets/Sprites/UI/Music and SFX/Sound Off.png" id="6_pi1c3"]
@@ -34,7 +37,6 @@ music_on_sprite = NodePath("MenuOption/MuteMusicButton/MusicOn")
 music_off_sprite = NodePath("MenuOption/MuteMusicButton/MusicOff")
 sfx_on_sprite = NodePath("MenuOption/MuteSFXButton/SFXon")
 sfx_off_sprite = NodePath("MenuOption/MuteSFXButton/SFXoff")
-metadata/_edit_vertical_guides_ = [625.0, 1485.0, 625.0, 1485.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -69,29 +71,90 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_stretch_ratio = 5.0
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("2_ixpxt")
+texture_pressed = ExtResource("3_nyop6")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -27.0
+offset_right = 142.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Gioca"
 
 [node name="OptionButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Opzioni"
+icon = ExtResource("3_atr7h")
+flat = true
+icon_alignment = 1
 
-[node name="EncyclopediaButton" type="Button" parent="VBoxContainer"]
+[node name="EncyclopediaButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("2_ixpxt")
+texture_pressed = ExtResource("3_nyop6")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/EncyclopediaButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -27.0
+offset_right = 236.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
-text = "Enciclopedia"
+text = "Database"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("2_ixpxt")
+texture_pressed = ExtResource("3_nyop6")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/CreditsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -27.0
+offset_right = 191.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Crediti"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Esci
