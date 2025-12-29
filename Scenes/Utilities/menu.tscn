@@ -40,16 +40,11 @@ music_on_sprite = NodePath("MenuOption/MuteMusicButton/MusicOn")
 music_off_sprite = NodePath("MenuOption/MuteMusicButton/MusicOff")
 sfx_on_sprite = NodePath("MenuOption/MuteSFXButton/SFXon")
 sfx_off_sprite = NodePath("MenuOption/MuteSFXButton/SFXoff")
-metadata/_edit_horizontal_guides_ = [225.0, 240.0, 340.0, 365.0, 355.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -7.0
-offset_right = 1.0
-offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
