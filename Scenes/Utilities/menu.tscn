@@ -40,6 +40,7 @@ music_on_sprite = NodePath("MenuOption/MuteMusicButton/MusicOn")
 music_off_sprite = NodePath("MenuOption/MuteMusicButton/MusicOff")
 sfx_on_sprite = NodePath("MenuOption/MuteSFXButton/SFXon")
 sfx_off_sprite = NodePath("MenuOption/MuteSFXButton/SFXoff")
+metadata/_edit_horizontal_guides_ = [225.0, 240.0, 340.0, 365.0, 355.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -70,11 +71,11 @@ position = Vector2(960, 125)
 texture = ExtResource("2_nyop6")
 
 [node name="VS" type="Sprite2D" parent="Title"]
-position = Vector2(960, 299)
+position = Vector2(960, 289)
 texture = ExtResource("3_e6g3s")
 
 [node name="Robots" type="Sprite2D" parent="Title"]
-position = Vector2(960, 475)
+position = Vector2(960, 455)
 texture = ExtResource("3_u188u")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
