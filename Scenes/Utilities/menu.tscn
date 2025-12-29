@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=16 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_g4iet"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_ixpxt"]
+[ext_resource type="Texture2D" uid="uid://6bs1wh3bx1ec" path="res://Assets/Sprites/UI/Title Screen/Title Engineers.png" id="2_nyop6"]
 [ext_resource type="Texture2D" uid="uid://gvm1rp6trqjx" path="res://Assets/Sprites/UI/Menu/Menu Button.png" id="3_atr7h"]
+[ext_resource type="Texture2D" uid="uid://dnx37mm1hkptv" path="res://Assets/Sprites/UI/Title Versus.png" id="3_e6g3s"]
 [ext_resource type="Texture2D" uid="uid://dxr1eiaflpvlm" path="res://Assets/Sprites/UI/Music and SFX/Music On.png" id="3_j4ee8"]
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="3_nyop6"]
+[ext_resource type="Texture2D" uid="uid://bllxb17p50un" path="res://Assets/Sprites/UI/Title Robots.png" id="3_u188u"]
 [ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="4_873nt"]
 [ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="5_s8um3"]
 [ext_resource type="Texture2D" uid="uid://js16sifrwfab" path="res://Assets/Sprites/UI/Music and SFX/Sound Off.png" id="6_pi1c3"]
@@ -37,13 +40,19 @@ music_on_sprite = NodePath("MenuOption/MuteMusicButton/MusicOn")
 music_off_sprite = NodePath("MenuOption/MuteMusicButton/MusicOff")
 sfx_on_sprite = NodePath("MenuOption/MuteSFXButton/SFXon")
 sfx_off_sprite = NodePath("MenuOption/MuteSFXButton/SFXoff")
+metadata/_edit_horizontal_guides_ = [225.0, 240.0, 340.0, 365.0, 355.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -7.0
+offset_right = 1.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
@@ -51,24 +60,38 @@ offset_left = 8.0
 offset_top = 747.0
 offset_right = 568.0
 offset_bottom = 916.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "SELEZIONA LINGUA
 "
 
+[node name="Title" type="Node2D" parent="."]
+
+[node name="Engineers" type="Sprite2D" parent="Title"]
+position = Vector2(960, 125)
+texture = ExtResource("2_nyop6")
+
+[node name="VS" type="Sprite2D" parent="Title"]
+position = Vector2(960, 289)
+texture = ExtResource("3_e6g3s")
+
+[node name="Robots" type="Sprite2D" parent="Title"]
+position = Vector2(960, 455)
+texture = ExtResource("3_u188u")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(600, 600)
-anchors_preset = -1
-anchor_left = 0.337
-anchor_top = 0.348
-anchor_right = 0.699
-anchor_bottom = 0.759
-offset_left = -21.04
-offset_top = 0.159973
-offset_right = 148.92
-offset_bottom = 156.28
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = 85.0
+offset_right = 430.0
+offset_bottom = 685.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 size_flags_stretch_ratio = 5.0
 
 [node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
