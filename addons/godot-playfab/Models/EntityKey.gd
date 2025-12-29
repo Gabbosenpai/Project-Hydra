@@ -55,4 +55,3 @@ var Id: String
 
 # Entity type - one of ENTITY_TYPE_*. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types
 var Type: String
-

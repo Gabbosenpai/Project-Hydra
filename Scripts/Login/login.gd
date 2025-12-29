@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	var _error = PlayFabManager.client.connect("api_error",Callable(self,"_on_api_error"))
 	_error = PlayFabManager.client.connect("logged_in",Callable(self,"_on_PlayFab_login_succeded"))
+	_error = PlayFabManager.client.connect("account_removed", Callable(self, "_on_account_removed"))
 
 func _on_login_button_up() -> void:
 	var email = $Username.text
@@ -27,8 +28,24 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 func _on_PlayFab_login_succeded(login_result: LoginResult):
 	print("Success ! " + str(login_result.InfoResultPayload.PlayerProfile))
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
-	
 
+func _on_account_removed():
+	print("UI: Ricevuta conferma rimozione account.")
+	$ConfirmationDialog.visible = false
+	
+	
+	$EmailTag.text = "ACCOUNT ELIMINATO CON SUCCESSO"
+	$EmailTag.modulate = Color.GREEN # Cambia il colore in verde
+	
+	
+	$Login.disabled = true
+	$RemoveAccount.disabled = true
+	
+	# Aspettiamo 2 secondi per mostrare il colore verde
+	await get_tree().create_timer(2.0).timeout
+	
+	# Torniamo alla scena di login (o resettiamo la scena attuale)
+	get_tree().reload_current_scene()
 
 func _on_register_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Login/register.tscn")
@@ -46,7 +63,7 @@ func _on_remove_account_button_up() -> void:
 
 
 func _on_confirmation_dialog_confirmed() -> void:
-	pass # Replace with function body.
+	PlayFabManager.client.execute_cloud_script();
 
 
 func _on_confirmation_dialog_canceled() -> void:
