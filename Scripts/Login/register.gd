@@ -15,21 +15,37 @@ func _on_register_button_up() -> void:
 	PlayFabManager.client.register_email_password(username, email, password, combined_info_request_params)
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
-	var text = "[b]%s[/b]\n\n" % api_error_wrapper.errorMessage
-	var error_details = api_error_wrapper.errorDetails
+	var error_message = api_error_wrapper.errorMessage
+	print("Errore PlayFab: " + error_message)
 
-	if error_details:
-		for key in error_details.keys():
-			text += "[color=red][b]%s[/b][/color]: " % key
-			for element in error_details[key]:
-				text += "%s\n" % element
+	# Usiamo EmailTag per mostrare l'errore se non vuoi aggiungere StatusLabel
+	if has_node("EmailTag"):
+		if "Email address not available" in error_message:
+			$EmailTag.text = "ERRORE: Email già in uso!"
+			$EmailTag.modulate = Color.RED
+		else:
+			$EmailTag.text = "Errore registrazione."
+			$EmailTag.modulate = Color.RED
 
-	print(str(text))
-	$Register.self_modulate = Color(1, 0, 0, 0.5)
+	# Coloriamo il tasto Register di rosso per feedback visivo
+	if has_node("Register"):
+		$Register.self_modulate = Color(1, 0, 0, 0.5)
 
 func _on_registered(result: RegisterPlayFabUserResult):
 	$Register.self_modulate = Color(0, 1, 0, 0.5)
 	print("[color=green]Registration for \"%s\" succeeded!" % result.Username)
+	PlayFabManager.client_config.session_ticket = result.SessionTicket
+	PlayFabManager.client_config.master_player_account_id = result.PlayFabId
+	PlayFabManager.save_client_config()
+	if not PlayFabManager.client.is_connected("contact_email_updated", Callable(self, "_on_back_to_login")):
+		PlayFabManager.client.contact_email_updated.connect(_on_back_to_login)
+	await get_tree().process_frame
+	var email_inserita = $Email.text
+	PlayFabManager.client.add_contact_email(email_inserita)
+
+func _on_back_to_login():
+	print("Registrazione e Email completate.")
+	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 func _on_back_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")

@@ -66,6 +66,25 @@ offset_right = 359.0
 offset_bottom = 211.0
 text = "Forgot Password?"
 
+[node name="RemoveAccount" type="Button" parent="."]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 221.0
+offset_right = 372.0
+offset_bottom = 252.0
+text = "Remove"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+mode = 3
+title = "Remove Account"
+initial_position = 1
+size = Vector2i(575, 150)
+dialog_text = "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile."
+
 [connection signal="button_up" from="Login" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]
 [connection signal="button_up" from="ForgotPassword" to="." method="_on_forgot_password_button_up"]
+[connection signal="button_up" from="RemoveAccount" to="." method="_on_remove_account_button_up"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

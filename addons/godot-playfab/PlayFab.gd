@@ -13,6 +13,9 @@ signal logged_in(login_result)
 ### Emitted when the player needs to recovery password
 signal recovery_email_sent()
 
+### Emitted when the player needs removes account
+signal account_removed()
+
 enum AUTH_TYPE {SESSION_TICKET, ENTITY_TOKEN}
 
 
@@ -127,6 +130,40 @@ func _on_recovery_email_success(_result: Dictionary):
 	print("PlayFab: Email di recupero inviata con successo.")
 	emit_signal("recovery_email_sent")
 
+func _on_remove_account_success(_result: Dictionary):
+	if _result.has("data") && _result["data"].has("Error"):
+		var cloud_error = _result["data"]["Error"]
+		push_error("CloudScript Error: " + str(cloud_error))
+		return
+
+	print("PlayFab: Cancellazione account effettuata con successo.")
+	
+	# Reset sessione
+	PlayFabManager.client_config.session_ticket = ""
+	PlayFabManager.client_config.master_player_account_id = ""
+	PlayFabManager.save_client_config()
+	
+	emit_signal("account_removed")
+
+func execute_cloud_script():
+	print("PlayFab: Avvio cancellazione diretta dell'account...")
+	
+	var data = {
+		"FunctionName": "DeleteFullMasterAccount", # Il nuovo nome nel tuo CloudScript
+		"FunctionParameter": {},
+		"GeneratePlayStreamEvent": true,
+		"RevisionSelection": "Latest"
+	}
+	
+	# Eseguiamo direttamente la cancellazione senza passare per la mail
+	_post_with_session_auth_direct_dict(data, "/Client/ExecuteCloudScript", _on_remove_account_success)
+
+func _post_with_session_auth_direct_dict(dict: Dictionary, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
+	var result = _add_auth_headers(additional_headers, AUTH_TYPE.SESSION_TICKET)
+	if !result:
+		return false
+	_http_request(HTTPClient.METHOD_POST, dict, path, callback, additional_headers)
+	return true
 
 func _post_with_session_auth(body: JsonSerializable, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
 	var result = _add_auth_headers(additional_headers, AUTH_TYPE.SESSION_TICKET)
