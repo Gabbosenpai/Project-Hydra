@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtsowgsvoy1mc"]
+
+[ext_resource type="Texture2D" uid="uid://ckso758e8fip" path="res://Assets/Sprites/UI/Title Screen/Title Star 1.png" id="1_o8mhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asuea"]
+atlas = ExtResource("1_o8mhq")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a83u2"]
+atlas = ExtResource("1_o8mhq")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmxjv"]
+atlas = ExtResource("1_o8mhq")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o8jt"]
+atlas = ExtResource("1_o8mhq")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbf8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asuea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a83u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmxjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a83u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asuea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o8jt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="TitleStarE" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nbf8u")
+autoplay = "default"
+frame_progress = 0.15329608
