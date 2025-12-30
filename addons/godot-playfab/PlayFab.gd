@@ -20,6 +20,8 @@ signal data_synchronized()
 
 enum AUTH_TYPE {SESSION_TICKET, ENTITY_TOKEN}
 
+const PointsScript = preload("res://Scripts/Utility/point_manager.gd")
+
 
 func _init():
 
@@ -164,7 +166,8 @@ func update_user_data():
 	var data_payload = {
 		"Data": {
 			"max_unlocked_level": str(SaveManager.max_unlocked_level),
-			"current_slot": str(SaveManager.current_slot)
+			"current_slot": str(SaveManager.current_slot),
+			"tech_tree_points": str(PointsScript.get_total_points_for_current_slot())
 		}
 	}
 	
@@ -202,6 +205,15 @@ func _on_get_user_data_success(result: Dictionary):
 		if cloud_data.has("current_slot"):
 			SaveManager.current_slot = cloud_data["current_slot"]["Value"].to_int()
 			needs_local_save = true
+
+		if cloud_data.has("tech_tree_points"):
+			var cloud_points = cloud_data["tech_tree_points"]["Value"].to_int()
+			var local_points = PointsScript.get_total_points_for_current_slot()
+			
+			if cloud_points > local_points:
+				PointsScript.save_total_points_for_current_slot(cloud_points)
+				print("PlayFab: Punti TechTree aggiornati dal Cloud: ", cloud_points)
+				needs_local_save = true
 
 		if needs_local_save:
 			SaveManager.save_local_only()
