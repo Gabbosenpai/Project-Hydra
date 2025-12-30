@@ -15,6 +15,7 @@ var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
 var colonna: int
 var tower_current_health: int
 var recharge_time: float
+var just_spawned : bool
 var max_health: int
 var shoot_sfx: AudioStream
 var BULLET: PackedScene
@@ -39,6 +40,7 @@ func _ready() -> void:
 		base_level_ref = levels[0]
 	# Inizializzo variabili per tutti i tipi di torretta
 	armed = false
+	just_spawned = true
 	robots_coming = []
 	tower_current_health = max_health
 	reload_timer.wait_time = recharge_time
@@ -71,7 +73,7 @@ func _process(_delta: float):
 		is_blackout_level = base_level_ref.is_blackout_level
 	
 	robots_coming = get_valid_robots()  
-	armed = not robots_coming.is_empty() 
+	armed = not robots_coming.is_empty() and !just_spawned
 	
 	if is_blackout_level and not has_been_activated:
 		if armed and is_instance_valid(base_level_ref) and base_level_ref.is_blackout_lights_on():
@@ -152,6 +154,10 @@ func set_riga(value: int) -> void:
 
 func set_colonna(value: int) -> void:
 	colonna = value
+
+
+func has_just_spawned()->void:
+	just_spawned = false
 
 
 # Modula lo sprite per dare feedback visivo

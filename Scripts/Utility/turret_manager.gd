@@ -22,6 +22,7 @@ var current_mode = Mode.NONE
 var last_touch_position: Vector2 = Vector2.ZERO
 var dic = {} # Inizializzato vuoto, verrà assegnato da GridInitializer
 var incinerator_scene: PackedScene = preload("res://Scenes/Utilities/incinerator.tscn")
+var tower_construcion: PackedScene = preload("res://Scenes/Towers/tower_construction.tscn")
 var active_incinerators = {} # Mappa: {row_y: incinerator_instance}
 var row_locked_by_robot = {}
 var turret_scenes = {
@@ -178,43 +179,10 @@ func place_turret(cell_key: Vector2i):
 		var spawn_point = tilemap.to_global(tilemap.map_to_local(cell_key))
 		var turret_key_to_place = turret_scenes.find_key(turret_scene_to_place)
 		
-		var drone_visual_scene: PackedScene = preload("res://Scenes/Towers/delivery_drone.tscn")
-		var drone_visual: Area2D = drone_visual_scene.instantiate()
-		
-		drone_visual.is_spawn_animation = true
-		
-		var collision_shape = drone_visual.get_node_or_null("TowerHitbox")
-		if collision_shape:
-			collision_shape.set_deferred("disabled", true)
-		
-		drone_visual.global_position = spawn_point + Vector2(0, -50)
-		
-		
-		var drop_pad = drone_visual.get_node_or_null("DropPad")
-		if drop_pad:
-			drop_pad.visible = false
-		
-		print("DEBUG: Avvio animazione drone, posizione iniziale: ", drone_visual.global_position)
-		add_child(drone_visual)
-		await get_tree().process_frame
-		
-		var drone_sprite: AnimatedSprite2D = drone_visual.get_node("Drone")
-		if drone_sprite:
-			print("DEBUG: Sprite del drone pronto. Avvio animazioni.")
-			drone_sprite.play("fly")
-			drone_sprite.z_index = 999
-		
-			if drone_visual.has_signal("spawn_animation_finished"):
-				await drone_visual.spawn_animation_finished
-		
-		if is_instance_valid(drone_visual):
-			drone_visual.queue_free()
-			
 		var turret_instance = turret_scene_to_place.instantiate()
 		
 		if turret_instance.has_signal("died"):
 			turret_instance.died.connect(handle_turret_death)
-		
 		
 		turret_instance.global_position = spawn_point
 		
@@ -229,9 +197,36 @@ func place_turret(cell_key: Vector2i):
 			print("Torretta piazzata con chiave: ", turret_key_to_place)
 			
 		add_child(turret_instance)
+		turret_instance.visible = false
 		turrets[cell_key] = turret_instance
 		emit_signal("turret_placed", cell_key)
 		clear_mode()
+		
+		var construction = tower_construcion.instantiate()
+		construction.global_position = spawn_point
+		
+		print("DEBUG: Avvio animazione drone, posizione iniziale: ", construction.global_position)
+		add_child(construction)
+		await get_tree().process_frame
+		
+		if construction:
+			print("DEBUG: Sprite del drone pronto. Avvio animazioni.")
+			var animation = construction.get_node("AnimatedSprite2D")
+			var construction_timer = Timer.new()
+			construction_timer.wait_time = 1.0
+			construction_timer.one_shot = true
+			construction_timer.autostart = true
+			add_child(construction_timer)
+			animation.play("construction")
+			await construction_timer.timeout
+			construction_timer.queue_free()
+		
+		if is_instance_valid(construction):
+			construction.queue_free()
+		
+		turret_instance.visible = true
+		if turret_instance.has_method("has_just_spawned"):
+			turret_instance.has_just_spawned()
 
 
 func remove_turret(cell_key: Vector2i):

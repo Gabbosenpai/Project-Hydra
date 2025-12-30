@@ -51,13 +51,15 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 747.0
-offset_right = 568.0
-offset_bottom = 916.0
+offset_left = -4.0
+offset_top = 730.0
+offset_right = 459.0
+offset_bottom = 899.0
+theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 50
-text = "SELEZIONA LINGUA
-"
+text = "Lingua"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Title" type="Node2D" parent="."]
 
