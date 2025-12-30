@@ -73,6 +73,143 @@ text = "Lingua"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Stars" type="Node" parent="."]
+
+[node name="TitleStarA" parent="Stars" instance=ExtResource("14_qtn2w")]
+position = Vector2(179, 180)
+rotation = -1.0152149
+
+[node name="TitleStarA5" parent="Stars" instance=ExtResource("14_qtn2w")]
+position = Vector2(1340, 1032)
+rotation = -1.3613569
+
+[node name="TitleStarA2" parent="Stars" instance=ExtResource("14_qtn2w")]
+position = Vector2(1689, 420.00003)
+rotation = -0.52534765
+
+[node name="TitleStarA4" parent="Stars" instance=ExtResource("14_qtn2w")]
+position = Vector2(1861.0001, 574)
+rotation = 0.59667265
+
+[node name="TitleStarA3" parent="Stars" instance=ExtResource("14_qtn2w")]
+position = Vector2(1208, 304)
+rotation = -0.25206682
+
+[node name="TitleStarB" parent="Stars" instance=ExtResource("15_nd5l3")]
+position = Vector2(322, 99)
+rotation = 1.4189236
+
+[node name="TitleStarB3" parent="Stars" instance=ExtResource("15_nd5l3")]
+position = Vector2(1786, 196)
+rotation = 1.2979053
+
+[node name="TitleStarB2" parent="Stars" instance=ExtResource("15_nd5l3")]
+position = Vector2(379, 614)
+rotation = -0.4200813
+
+[node name="TitleStarC" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(104.00001, 328)
+rotation = -2.2873256
+
+[node name="TitleStarC2" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(338, 749)
+rotation = -0.8978844
+
+[node name="TitleStarC6" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(269, 969)
+rotation = 0.37317878
+
+[node name="TitleStarC4" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(562, 1032)
+rotation = 0.75914735
+
+[node name="TitleStarC3" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(1683, 869)
+rotation = -0.68860215
+
+[node name="TitleStarC5" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(1486, 499.00006)
+rotation = -0.4007071
+
+[node name="TitleStarC7" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(864, 974.00006)
+rotation = 1.1762453
+
+[node name="TitleStarC8" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(1577, 971)
+rotation = -0.12217305
+
+[node name="TitleStarC9" parent="Stars" instance=ExtResource("16_gh4pp")]
+position = Vector2(1060, 1029.0001)
+rotation = -0.6703754
+
+[node name="TitleStarD" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(334, 291)
+rotation = -0.3842984
+
+[node name="TitleStarD6" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(1579, 301)
+rotation = -0.33803397
+
+[node name="TitleStarD5" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(1612, 112)
+rotation = -0.21973976
+
+[node name="TitleStarD3" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(1834.0001, 767)
+rotation = 0.38397244
+
+[node name="TitleStarD4" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(1534, 745)
+rotation = -1.8143587
+
+[node name="TitleStarD2" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(447, 377)
+rotation = 0.30129564
+
+[node name="TitleStarE" parent="Stars" instance=ExtResource("18_auemk")]
+position = Vector2(275, 423)
+rotation = 0.24846326
+
+[node name="TitleStarE3" parent="Stars" instance=ExtResource("18_auemk")]
+position = Vector2(505, 550)
+rotation = -2.183125
+
+[node name="TitleStarE4" parent="Stars" instance=ExtResource("18_auemk")]
+position = Vector2(1806, 983)
+rotation = 3.0508356
+
+[node name="TitleStarE2" parent="Stars" instance=ExtResource("18_auemk")]
+position = Vector2(145, 661)
+rotation = 1.097812
+
+[node name="TitleStarF" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(218, 523)
+rotation = -0.43110862
+
+[node name="TitleStarF7" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(1403, 364)
+rotation = 0.5555145
+
+[node name="TitleStarF4" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(1677, 606)
+rotation = 0.16580628
+
+[node name="TitleStarF3" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(782, 300)
+rotation = 1.486054
+
+[node name="TitleStarF6" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(90, 68)
+rotation = 1.3539327
+
+[node name="TitleStarF5" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(1825, 336)
+rotation = 1.0464532
+
+[node name="TitleStarF2" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(141, 875)
+
 [node name="Title" type="Node2D" parent="."]
 
 [node name="Engineers" type="Sprite2D" parent="Title"]
@@ -365,143 +502,6 @@ icon = ExtResource("13_e6g3s")
 flat = true
 icon_alignment = 1
 expand_icon = true
-
-[node name="Stars" type="Node" parent="."]
-
-[node name="TitleStarA" parent="Stars" instance=ExtResource("14_qtn2w")]
-position = Vector2(179, 180)
-rotation = -1.0152149
-
-[node name="TitleStarA5" parent="Stars" instance=ExtResource("14_qtn2w")]
-position = Vector2(1340, 1032)
-rotation = -1.3613569
-
-[node name="TitleStarA2" parent="Stars" instance=ExtResource("14_qtn2w")]
-position = Vector2(1689, 420.00003)
-rotation = -0.52534765
-
-[node name="TitleStarA4" parent="Stars" instance=ExtResource("14_qtn2w")]
-position = Vector2(1861.0001, 574)
-rotation = 0.59667265
-
-[node name="TitleStarA3" parent="Stars" instance=ExtResource("14_qtn2w")]
-position = Vector2(1208, 304)
-rotation = -0.25206682
-
-[node name="TitleStarB" parent="Stars" instance=ExtResource("15_nd5l3")]
-position = Vector2(322, 99)
-rotation = 1.4189236
-
-[node name="TitleStarB3" parent="Stars" instance=ExtResource("15_nd5l3")]
-position = Vector2(1786, 196)
-rotation = 1.2979053
-
-[node name="TitleStarB2" parent="Stars" instance=ExtResource("15_nd5l3")]
-position = Vector2(379, 614)
-rotation = -0.4200813
-
-[node name="TitleStarC" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(104.00001, 328)
-rotation = -2.2873256
-
-[node name="TitleStarC2" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(338, 749)
-rotation = -0.8978844
-
-[node name="TitleStarC6" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(269, 969)
-rotation = 0.37317878
-
-[node name="TitleStarC4" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(562, 1032)
-rotation = 0.75914735
-
-[node name="TitleStarC3" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(1683, 869)
-rotation = -0.68860215
-
-[node name="TitleStarC5" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(1486, 499.00006)
-rotation = -0.4007071
-
-[node name="TitleStarC7" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(864, 974.00006)
-rotation = 1.1762453
-
-[node name="TitleStarC8" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(1577, 971)
-rotation = -0.12217305
-
-[node name="TitleStarC9" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(1060, 1029.0001)
-rotation = -0.6703754
-
-[node name="TitleStarD" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(334, 291)
-rotation = -0.3842984
-
-[node name="TitleStarD6" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(1579, 301)
-rotation = -0.33803397
-
-[node name="TitleStarD5" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(1612, 112)
-rotation = -0.21973976
-
-[node name="TitleStarD3" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(1834.0001, 767)
-rotation = 0.38397244
-
-[node name="TitleStarD4" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(1534, 745)
-rotation = -1.8143587
-
-[node name="TitleStarD2" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(447, 377)
-rotation = 0.30129564
-
-[node name="TitleStarE" parent="Stars" instance=ExtResource("18_auemk")]
-position = Vector2(275, 423)
-rotation = 0.24846326
-
-[node name="TitleStarE3" parent="Stars" instance=ExtResource("18_auemk")]
-position = Vector2(505, 550)
-rotation = -2.183125
-
-[node name="TitleStarE4" parent="Stars" instance=ExtResource("18_auemk")]
-position = Vector2(1806, 983)
-rotation = 3.0508356
-
-[node name="TitleStarE2" parent="Stars" instance=ExtResource("18_auemk")]
-position = Vector2(145, 661)
-rotation = 1.097812
-
-[node name="TitleStarF" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(218, 523)
-rotation = -0.43110862
-
-[node name="TitleStarF7" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(1403, 364)
-rotation = 0.5555145
-
-[node name="TitleStarF4" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(1677, 606)
-rotation = 0.16580628
-
-[node name="TitleStarF3" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(782, 300)
-rotation = 1.486054
-
-[node name="TitleStarF6" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(90, 68)
-rotation = 1.3539327
-
-[node name="TitleStarF5" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(1825, 336)
-rotation = 1.0464532
-
-[node name="TitleStarF2" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(141, 875)
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
