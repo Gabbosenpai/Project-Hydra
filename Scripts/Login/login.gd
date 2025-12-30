@@ -29,6 +29,7 @@ func _on_PlayFab_login_succeded(login_result: LoginResult):
 	print("Success ! " + str(login_result.InfoResultPayload.PlayerProfile))
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
+
 func _on_account_removed():
 	print("UI: Ricevuta conferma rimozione account.")
 	$ConfirmationDialog.visible = false

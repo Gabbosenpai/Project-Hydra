@@ -140,23 +140,22 @@ func _on_remove_account_success(_result: Dictionary):
 	
 	# Reset sessione
 	PlayFabManager.client_config.session_ticket = ""
+	PlayFabManager.client_config.master_player_account_id = ""
 	PlayFabManager.save_client_config()
 	
 	emit_signal("account_removed")
 
 func execute_cloud_script():
-	var request = ExecuteCloudScriptRequest.new()
-	# Impostiamo i valori base
+	print("PlayFab: Avvio cancellazione diretta dell'account...")
+	
 	var data = {
-		"FunctionName": "DeleteMyAccount",
+		"FunctionName": "DeleteFullMasterAccount", # Il nuovo nome nel tuo CloudScript
 		"FunctionParameter": {},
 		"GeneratePlayStreamEvent": true,
-		"RevisionSelection": "Latest" # Forza la stringa semplice invece dell'oggetto
+		"RevisionSelection": "Latest"
 	}
 	
-	print("Dati inviati (corretti): ", data)
-	
-	# Usiamo la funzione che accetta direttamente il Dictionary per evitare errori di classe
+	# Eseguiamo direttamente la cancellazione senza passare per la mail
 	_post_with_session_auth_direct_dict(data, "/Client/ExecuteCloudScript", _on_remove_account_success)
 
 func _post_with_session_auth_direct_dict(dict: Dictionary, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
