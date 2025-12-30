@@ -37,11 +37,6 @@ func _on_registered(result: RegisterPlayFabUserResult):
 	PlayFabManager.client_config.session_ticket = result.SessionTicket
 	PlayFabManager.client_config.master_player_account_id = result.PlayFabId
 	PlayFabManager.save_client_config()
-	if not PlayFabManager.client.is_connected("contact_email_updated", Callable(self, "_on_back_to_login")):
-		PlayFabManager.client.contact_email_updated.connect(_on_back_to_login)
-	await get_tree().process_frame
-	var email_inserita = $Email.text
-	PlayFabManager.client.add_contact_email(email_inserita)
 
 func _on_back_to_login():
 	print("Registrazione e Email completate.")

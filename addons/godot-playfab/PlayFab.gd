@@ -16,7 +16,11 @@ signal recovery_email_sent()
 ### Emitted when the player needs removes account
 signal account_removed()
 
+signal data_synchronized()
+
 enum AUTH_TYPE {SESSION_TICKET, ENTITY_TOKEN}
+
+const PointsScript = preload("res://Scripts/Utility/point_manager.gd")
 
 
 func _init():
@@ -157,6 +161,67 @@ func execute_cloud_script():
 	
 	# Eseguiamo direttamente la cancellazione senza passare per la mail
 	_post_with_session_auth_direct_dict(data, "/Client/ExecuteCloudScript", _on_remove_account_success)
+
+func update_user_data():
+	var data_payload = {
+		"Data": {
+			"max_unlocked_level": str(SaveManager.max_unlocked_level),
+			"current_slot": str(SaveManager.current_slot),
+			"tech_tree_points": str(PointsScript.get_total_points_for_current_slot())
+		}
+	}
+	
+	# Usiamo il metodo che accetta direttamente un Dictionary
+	var result = _post_with_session_auth_direct_dict(data_payload, "/Client/UpdateUserData", _on_update_user_data_success)
+	
+	if result:
+		print("PlayFab: Invio dati (Direct Dict) in corso...")
+	else:
+		print("PlayFab: Errore sessione.")
+
+func _on_update_user_data_success(_result: Dictionary):
+	print("PlayFab: Sincronizzazione Cloud completata con successo!")
+
+func get_user_data():
+	var request = GetUserDataRequest.new()
+	var result = _post_with_session_auth(request, "/Client/GetUserData", _on_get_user_data_success)
+	
+	if result:
+		print("PlayFab: Richiesta dati utente (GetUserData) inviata...")
+	else:
+		print("PlayFab: Errore - Impossibile richiedere dati, utente non loggato.")
+
+func _on_get_user_data_success(result: Dictionary):
+	if result.has("data") and result["data"].has("Data"):
+		var cloud_data = result["data"]["Data"]
+		var needs_local_save = false
+		
+		if cloud_data.has("max_unlocked_level"):
+			var cloud_level = cloud_data["max_unlocked_level"]["Value"].to_int()
+			if cloud_level > SaveManager.max_unlocked_level:
+				SaveManager.max_unlocked_level = cloud_level
+				needs_local_save = true
+		
+		if cloud_data.has("current_slot"):
+			SaveManager.current_slot = cloud_data["current_slot"]["Value"].to_int()
+			needs_local_save = true
+
+		if cloud_data.has("tech_tree_points"):
+			var cloud_points = cloud_data["tech_tree_points"]["Value"].to_int()
+			var local_points = PointsScript.get_total_points_for_current_slot()
+			
+			if cloud_points > local_points:
+				PointsScript.save_total_points_for_current_slot(cloud_points)
+				print("PlayFab: Punti TechTree aggiornati dal Cloud: ", cloud_points)
+				needs_local_save = true
+
+		if needs_local_save:
+			SaveManager.save_local_only()
+			print("PlayFab: Dati locali aggiornati dal Cloud.")
+	
+	print("PlayFab: Sincronizzazione completata.")
+	emit_signal("data_synchronized")
+
 
 func _post_with_session_auth_direct_dict(dict: Dictionary, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
 	var result = _add_auth_headers(additional_headers, AUTH_TYPE.SESSION_TICKET)
