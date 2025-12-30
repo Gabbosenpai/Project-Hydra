@@ -27,8 +27,13 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 
 func _on_PlayFab_login_succeded(login_result: LoginResult):
 	print("Success ! " + str(login_result.InfoResultPayload.PlayerProfile))
-	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	if not PlayFabManager.client.data_synchronized.is_connected(_on_data_ready):
+		PlayFabManager.client.data_synchronized.connect(_on_data_ready)
+	PlayFabManager.client.get_user_data()
 
+func _on_data_ready():
+	print("Dati sincronizzati correttamente. Benvenuto!")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func _on_account_removed():
 	print("UI: Ricevuta conferma rimozione account.")

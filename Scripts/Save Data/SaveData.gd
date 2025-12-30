@@ -17,9 +17,7 @@ func unlock_level(level: int) -> void:
 		max_unlocked_level = level
 		save_progress()
 
-
-# Funzione che si occupa salvare i dati
-func save_progress() -> void:
+func save_local_only() -> void:
 	var save_path = "user://save_slot_%d.save" % current_slot
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	if file == null:
@@ -27,6 +25,12 @@ func save_progress() -> void:
 		return
 	file.store_var(max_unlocked_level)
 	file.close()
+
+# Funzione che si occupa salvare i dati
+func save_progress() -> void:
+	save_local_only()
+	if PlayFabManager.client_config.is_logged_in():
+		PlayFabManager.client.update_user_data()
 
 
 # Passo il numero dello slot e restituisce se il path esiste o no
