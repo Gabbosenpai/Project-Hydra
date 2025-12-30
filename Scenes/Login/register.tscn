@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgwyfcruwr0ti"]
+[gd_scene load_steps=3 format=3 uid="uid://cgwyfcruwr0ti"]
 
 [ext_resource type="Script" uid="uid://dgpgt1b0cjlv" path="res://Scripts/Login/register.gd" id="1_d52cs"]
+[ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_27gwr"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,6 +18,7 @@ offset_left = 106.0
 offset_top = 94.0
 offset_right = 236.0
 offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 
 [node name="Email" type="LineEdit" parent="."]
 layout_mode = 0
@@ -24,6 +26,7 @@ offset_left = 246.0
 offset_top = 94.0
 offset_right = 376.0
 offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 
 [node name="Password" type="LineEdit" parent="."]
 layout_mode = 0
@@ -31,6 +34,7 @@ offset_left = 384.0
 offset_top = 94.0
 offset_right = 510.0
 offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 secret = true
 
 [node name="UsernameTag" type="Label" parent="."]
@@ -39,6 +43,7 @@ offset_left = 107.0
 offset_top = 72.0
 offset_right = 233.0
 offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Username"
 
 [node name="EmailTag" type="Label" parent="."]
@@ -47,6 +52,7 @@ offset_left = 248.0
 offset_top = 72.0
 offset_right = 374.0
 offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Email"
 
 [node name="PasswordTag" type="Label" parent="."]
@@ -55,14 +61,16 @@ offset_left = 384.0
 offset_top = 71.0
 offset_right = 509.0
 offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Password"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 300.0
+offset_left = 311.0
 offset_top = 140.0
-offset_right = 419.0
+offset_right = 430.0
 offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Back
 "
 
@@ -72,8 +80,9 @@ offset_left = 170.0
 offset_top = 139.0
 offset_right = 290.0
 offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Register"
 
-[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
 [connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]
