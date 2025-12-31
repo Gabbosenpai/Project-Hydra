@@ -7,9 +7,9 @@ signal game_over
 @onready var exit = $GameOverUI/ExitButton
 @onready var turret_manager = $TurretManager
 @onready var enemy_spawner = $EnemySpawner
-@onready var ui_controller = $UI
 @onready var grid_initializer = $GridInitializer
 @export var tilemap: TileMap
+@export var ui_controller: Control
 
 var incinerator_used_in_row: Array = [false, false, false, false, false]
 var is_game_over: bool = false 
