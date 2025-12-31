@@ -57,9 +57,10 @@ sources/2 = SubResource("TileSetAtlasSource_pwmuf")
 sources/4 = SubResource("TileSetAtlasSource_2ebpk")
 sources/3 = SubResource("TileSetAtlasSource_8qrwp")
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap", "ui_controller")]
 script = ExtResource("1_cdrp3")
 tilemap = NodePath("TileMap")
+ui_controller = NodePath("UI")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(80, 160)
