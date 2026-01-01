@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7qojdhekgsee"]
+[gd_scene load_steps=28 format=3 uid="uid://b7qojdhekgsee"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_48q88"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="6_h4kyy"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="7_1efrn"]
+[ext_resource type="Texture2D" uid="uid://dxr1eiaflpvlm" path="res://Assets/Sprites/UI/Music and SFX/Music On.png" id="9_rub5k"]
+[ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="10_5bsoa"]
+[ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="11_y808j"]
+[ext_resource type="Texture2D" uid="uid://js16sifrwfab" path="res://Assets/Sprites/UI/Music and SFX/Sound Off.png" id="12_y2o5t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j04uc"]
 shader = ExtResource("3_wunin")
@@ -46,8 +50,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1efrn"]
 
 [sub_resource type="Animation" id="Animation_wunin"]
 length = 0.001
@@ -392,8 +394,8 @@ offset_bottom = 156.0
 
 [node name="MuteMusicButton" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 52.0
+offset_left = 149.0
+offset_top = 51.0
 offset_right = 180.0
 offset_bottom = 83.0
 
@@ -417,35 +419,32 @@ text = "SFX"
 
 [node name="MuteSFXButton" type="Button" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 131.0
+offset_left = 147.0
+offset_top = 128.0
 offset_right = 182.0
 offset_bottom = 162.0
 
 [node name="MusicOn" type="Sprite2D" parent="PauseMenu"]
-position = Vector2(149, 52)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_1efrn")
+position = Vector2(164, 67.99999)
+scale = Vector2(0.45250005, 0.35250002)
+texture = ExtResource("9_rub5k")
 
 [node name="MusicOff" type="Sprite2D" parent="PauseMenu"]
 visible = false
-self_modulate = Color(0.41568628, 1, 1, 1)
-position = Vector2(148, 52)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_1efrn")
+position = Vector2(163.99998, 68.00001)
+scale = Vector2(0.453, 0.375)
+texture = ExtResource("10_5bsoa")
 
 [node name="SFXon" type="Sprite2D" parent="PauseMenu"]
-self_modulate = Color(1, 1, 0.39215687, 1)
-position = Vector2(149, 130)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_1efrn")
+position = Vector2(165, 145)
+scale = Vector2(0.37, 0.40749997)
+texture = ExtResource("11_y808j")
 
 [node name="SFXoff" type="Sprite2D" parent="PauseMenu"]
 visible = false
-self_modulate = Color(0.4745098, 1, 0.69803923, 1)
-position = Vector2(149, 130)
-scale = Vector2(33, 32.000008)
-texture = SubResource("PlaceholderTexture2D_1efrn")
+position = Vector2(165, 145)
+scale = Vector2(0.3675, 0.4174999)
+texture = ExtResource("12_y2o5t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
