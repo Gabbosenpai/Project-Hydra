@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhagnqcntnk8k"]
+[gd_scene load_steps=4 format=3 uid="uid://bhagnqcntnk8k"]
+
+[ext_resource type="Script" uid="uid://y6re6ya0ge1o" path="res://Scripts/Utility/victory_screen.gd" id="1_oviq5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oviq5"]
 bg_color = Color(1, 1, 1, 1)
@@ -22,8 +24,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oviq5")
 
-[node name="SelectLevelButton" type="Button" parent="."]
+[node name="SelectLevel" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
 offset_left = 379.0
@@ -81,5 +84,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.18393525, 0.3251517, 0.48796934, 1)
 metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]
