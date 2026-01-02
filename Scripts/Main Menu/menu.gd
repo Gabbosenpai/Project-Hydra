@@ -63,6 +63,14 @@ func _on_option_button_pressed() -> void:
 	option_menu.visible = true
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
+	if PlayFabManager.client_config.is_logged_in():
+		var userButtonText = $MenuOption/UserText
+		var username = PlayFabManager.client_config.username
+		
+		if username == "":
+			userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+		else:
+			userButtonText.text = "Utente loggato: " + username
 
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
@@ -125,3 +133,7 @@ func _on_mute_sfx_button_pressed() -> void:
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+
+
+func _on_user_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
