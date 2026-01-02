@@ -11,6 +11,14 @@ const INCINERATOR_LAYER: int = 0
 const INCINERATOR_TILE_ID: int = 4
 const INCINERATOR_ATLAS_COORDS: Vector2i = Vector2i(0, 0)
 const BLAST_DURATION: float = 0.5
+const TURRET_UNLOCKS = {
+	"turret1": 1, # Delivery Drone (Sempre disponibile)
+	"turret2": 1, # Bolt Shooter (Sempre disponibile)
+	"turret3": 2, # Jammer Cannon (Dal Livello 2)
+	"turret4": 3, # HKCM (Dal Livello 3)
+	"turret5": 4, # Spaghetti Cable (Dal Livello 4)
+	"turret6": 5  # Toilet Silo (Dal Livello 5)
+}
 
 @export var tilemap: TileMap
 
@@ -118,6 +126,18 @@ func _process(_delta):
 
 # Gestione torrette 
 func select_turret(key: String):
+	var level_path = get_parent().current_level
+	var level_num = 1
+	var regex = RegEx.new()
+	regex.compile("\\d+")
+	var result = regex.search(level_path)
+	if result:
+		level_num = result.get_string().to_int()
+
+	# Controllo sblocco
+	if TURRET_UNLOCKS.has(key) and level_num < TURRET_UNLOCKS[key]:
+		print("Torretta bloccata! Si sblocca al livello: ", TURRET_UNLOCKS[key])
+		return
 	var point_manager = $"/root/Main/PointManager"
 	if point_manager.can_select_turret(key):
 		selected_turret_scene = turret_scenes[key]

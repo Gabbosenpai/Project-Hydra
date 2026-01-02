@@ -75,9 +75,9 @@ func _set_level_music(levelOST: AudioStream):
 	
 func set_current_level(level):
 	current_level = level
-	ui_controller.current_level=level
+	ui_controller.set_current_level(level)
 	print("DEBUG: Livello Corrente Impostato su: ", current_level)
-	
+
 # Implementa questo metodo per specificare quale livello sbloccare.
 func _on_level_completed():
 	push_warning("Il livello figlio non ha implementato _on_level_completed(). Nessun livello sbloccato.")

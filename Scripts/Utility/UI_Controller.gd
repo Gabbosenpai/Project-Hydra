@@ -6,6 +6,14 @@ signal remove_mode
 signal retry
 signal exit
 
+const TURRET_UNLOCKS = {
+	"turret1": 1, # Delivery Drone (Sempre)
+	"turret2": 1, # Bolt Shooter (Sempre)
+	"turret3": 2, # Jammer Cannon (Livello 2+)
+	"turret4": 3, # HKCM (Livello 3+)
+	"turret5": 4, # Spaghetti (Livello 4+)
+	"turret6": 5  # Toilet (Livello 5)
+}
 # Riferimenti a nodi dell'interfaccia impostati dall'editor
 @export var pause_button: TextureButton
 @export var pause_menu: Panel
@@ -32,7 +40,45 @@ func _sync_sliders_with_audio():
 
 func set_current_level(level):
 	current_level = level
+	call_deferred("update_available_turrets")
 
+func update_available_turrets():
+	if not current_level:
+		return
+
+	# 1. Estrazione numero livello
+	var level_number = 1
+	var regex = RegEx.new()
+	regex.compile("Lvl(\\d+)") 
+	var result = regex.search(current_level)
+	if result:
+		level_number = result.get_string(1).to_int()
+
+	print("Configurazione UI per Livello: ", level_number)
+
+	# 2. Cerchiamo i bottoni. 
+	# Se ButtonTurret1 è dentro un Container (es. HBoxContainer), 
+	# usiamo find_child per trovarlo ovunque nella gerarchia della UI.
+	for i in range(1, 7):
+		var turret_key = "turret" + str(i)
+		var button_name = "ButtonTurret" + str(i)
+		
+		# find_child cerca ricorsivamente in tutti i figli della UI
+		var button_node = find_child(button_name, true, false)
+		
+		if button_node:
+			var unlock_at = TURRET_UNLOCKS.get(turret_key, 1)
+			var is_unlocked = (level_number >= unlock_at)
+			
+			# Nasconde completamente il bottone se bloccato
+			button_node.visible = is_unlocked
+			
+			# Opzionale: se vuoi che occupino comunque spazio ma siano neri/disabilitati
+			# button_node.disabled = !is_unlocked 
+			
+			print("Torretta ", i, " visibile: ", is_unlocked)
+		else:
+			push_warning("Attenzione: Non trovo il nodo chiamato: " + button_name)
 
 # Attiva la modalità rimozione piante
 func _on_button_remove_pressed():
