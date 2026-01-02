@@ -26,7 +26,21 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	print(str(text))
 
 func _on_PlayFab_login_succeded(login_result: LoginResult):
-	print("Success ! " + str(login_result.InfoResultPayload.PlayerProfile))
+	var account_info = login_result.InfoResultPayload.AccountInfo
+	var user_name_found = ""
+	
+	if account_info:
+		if account_info.TitleInfo.DisplayName:
+			user_name_found = account_info.TitleInfo.DisplayName
+		elif account_info.Username:
+			user_name_found = account_info.Username
+			
+	# Salviamolo nella configurazione globale
+	PlayFabManager.client_config.username = user_name_found
+	PlayFabManager.save_client_config() # Importante per persistenza
+	
+	print("Successo! Benvenuto: " + user_name_found)
+	#print("Success ! " + str(login_result.InfoResultPayload.PlayerProfile))
 	if not PlayFabManager.client.data_synchronized.is_connected(_on_data_ready):
 		PlayFabManager.client.data_synchronized.connect(_on_data_ready)
 	PlayFabManager.client.get_user_data()
