@@ -136,4 +136,9 @@ func _on_menu_button_pressed() -> void:
 
 
 func _on_user_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
+	if(PlayFabManager.client_config.is_logged_in()):
+		PlayFabManager.forget_login()
+		var userButtonText = $MenuOption/UserText
+		userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
