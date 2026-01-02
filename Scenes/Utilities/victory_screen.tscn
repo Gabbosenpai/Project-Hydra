@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhagnqcntnk8k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oviq5"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_samx0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="VictoryScreen" type="Control"]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectLevelButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 379.0
+offset_top = 522.0
+offset_right = 560.0
+offset_bottom = 587.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_oviq5")
+toggle_mode = true
+action_mode = 0
+text = "Seleziona Livello"
+
+[node name="MenuButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 1206.0
+offset_top = 545.0
+offset_right = 1432.0
+offset_bottom = 615.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_samx0")
+toggle_mode = true
+action_mode = 0
+text = "Torna al Menu Principale"
+
+[node name="Text" type="Label" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 229.0
+offset_top = 117.0
+offset_right = 1647.0
+offset_bottom = 191.0
+theme_override_colors/font_color = Color(0.05882353, 0.13333334, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Congratulazioni Ingegnere hai sconfitto i robot che vogliono sterminare gli umani!"
+
+[node name="NextLevel" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 794.0
+offset_top = 532.0
+offset_right = 975.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_oviq5")
+toggle_mode = true
+action_mode = 0
+text = "Prossimo Livello"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18393525, 0.3251517, 0.48796934, 1)
+metadata/_edit_lock_ = true
