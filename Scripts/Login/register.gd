@@ -8,32 +8,52 @@ func _on_register_button_up() -> void:
 	var username = $Username.text
 	var email = $Email.text
 	var password = $Password.text
+	if username.length() < 3:
+		$StatusLabel.text = "Username troppo corto (min 3 car.)"
+		$StatusLabel.modulate = Color.ORANGE
+		return
+		
+	if not "@" in email or not "." in email:
+		$StatusLabel.text = "Inserisci un'email valida!"
+		$StatusLabel.modulate = Color.ORANGE
+		return
+		
+	if $Password.text.length() < 6:
+		$StatusLabel.text = "Password troppo corta (min 6 car.)"
+		$StatusLabel.modulate = Color.ORANGE
+		return
+
 	var combined_info_request_params = GetPlayerCombinedInfoRequestParams.new()
 	combined_info_request_params.show_all()
 	var player_profile_view_constraints = PlayerProfileViewConstraints.new()
 	combined_info_request_params.ProfileConstraints = player_profile_view_constraints
+	$Register.disabled = true
+	$StatusLabel.text = "Creazione account..."
+	$StatusLabel.modulate = Color.WHITE
 	PlayFabManager.client.register_email_password(username, email, password, combined_info_request_params)
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	var error_message = api_error_wrapper.errorMessage
-	print("Errore PlayFab: " + error_message)
+	var details = ""
+	
+	# Estraiamo i dettagli specifici (es: "Password: Password is too short")
+	if api_error_wrapper.errorDetails:
+		for key in api_error_wrapper.errorDetails.keys():
+			for msg in api_error_wrapper.errorDetails[key]:
+				details += "\n- %s" % msg
 
-	# Usiamo EmailTag per mostrare l'errore se non vuoi aggiungere StatusLabel
+	print("Errore PlayFab: " + error_message + details)
+
 	if has_node("EmailTag"):
-		if "Email address not available" in error_message:
-			$EmailTag.text = "ERRORE: Email già in uso!"
-			$EmailTag.modulate = Color.RED
+		if details != "":
+			$StatusLabel.text = "Dati non validi: " + details
 		else:
-			$EmailTag.text = "Errore registrazione."
-			$EmailTag.modulate = Color.RED
-
-	# Coloriamo il tasto Register di rosso per feedback visivo
-	if has_node("Register"):
-		$Register.self_modulate = Color(1, 0, 0, 0.5)
+			$StatusLabel.text = "Errore: " + error_message
+		$StatusLabel.modulate = Color.RED
 
 func _on_registered(result: RegisterPlayFabUserResult):
-	$Register.self_modulate = Color(0, 1, 0, 0.5)
-	print("[color=green]Registration for \"%s\" succeeded!" % result.Username)
+	$StatusLabel.text = "Registrazione completata con successo!"
+	$StatusLabel.modulate = Color.GREEN
 	PlayFabManager.client_config.session_ticket = result.SessionTicket
 	PlayFabManager.client_config.master_player_account_id = result.PlayFabId
 	PlayFabManager.save_client_config()

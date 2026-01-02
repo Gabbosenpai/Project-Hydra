@@ -29,6 +29,13 @@ offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("2_kxikt")
 secret = true
 
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 27.0
+offset_right = 299.0
+offset_bottom = 50.0
+
 [node name="EmailTag" type="Label" parent="."]
 layout_mode = 0
 offset_left = 145.0
@@ -65,35 +72,15 @@ offset_bottom = 171.0
 theme_override_fonts/font = ExtResource("2_kxikt")
 text = "Register"
 
-[node name="ForgotPassword" type="Button" parent="."]
+[node name="BackMainMenu" type="Button" parent="."]
 layout_mode = 0
-offset_left = 148.0
+offset_left = 143.0
 offset_top = 180.0
-offset_right = 417.0
-offset_bottom = 211.0
+offset_right = 427.0
+offset_bottom = 212.0
 theme_override_fonts/font = ExtResource("2_kxikt")
-text = "Forgot Password?"
-
-[node name="RemoveAccount" type="Button" parent="."]
-layout_mode = 0
-offset_left = 148.0
-offset_top = 221.0
-offset_right = 417.0
-offset_bottom = 252.0
-theme_override_fonts/font = ExtResource("2_kxikt")
-text = "Remove"
-
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-oversampling_override = 1.0
-mode = 3
-title = "Remove Account"
-initial_position = 1
-size = Vector2i(575, 150)
-dialog_text = "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile."
+text = "Return To Main Menu"
 
 [connection signal="button_up" from="Login" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]
-[connection signal="button_up" from="ForgotPassword" to="." method="_on_forgot_password_button_up"]
-[connection signal="button_up" from="RemoveAccount" to="." method="_on_remove_account_button_up"]
-[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
-[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]

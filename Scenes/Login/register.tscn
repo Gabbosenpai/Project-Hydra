@@ -37,6 +37,13 @@ offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("2_27gwr")
 secret = true
 
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 27.0
+offset_right = 325.0
+offset_bottom = 50.0
+
 [node name="UsernameTag" type="Label" parent="."]
 layout_mode = 0
 offset_left = 107.0
@@ -83,6 +90,6 @@ offset_bottom = 171.0
 theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Register"
 
-[connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]

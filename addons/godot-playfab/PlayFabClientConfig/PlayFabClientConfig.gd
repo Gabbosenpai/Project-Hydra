@@ -14,6 +14,8 @@ var master_player_account_id: String
 
 var username: String = ""
 
+var email: String = ""
+
 ## Object holding the Entity Token, as well as the EntityKey (ID, Type) of the logged in Entity (usually title_player_account)
 var entity_token: EntityTokenResponse = EntityTokenResponse.new()
 
