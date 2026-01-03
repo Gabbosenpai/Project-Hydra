@@ -5,6 +5,7 @@ func _ready():
 	_error = PlayFabManager.client.connect("registered",Callable(self,"_on_registered"))
 
 func _on_register_button_up() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	var username = $Username.text
 	var email = $Email.text
 	var password = $Password.text
@@ -59,8 +60,10 @@ func _on_registered(result: RegisterPlayFabUserResult):
 	PlayFabManager.save_client_config()
 
 func _on_back_to_login():
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	print("Registrazione e Email completate.")
 	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 func _on_back_button_up() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")

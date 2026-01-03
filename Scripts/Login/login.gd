@@ -6,6 +6,7 @@ func _ready():
 	_error = PlayFabManager.client.connect("account_removed", Callable(self, "_on_account_removed"))
 
 func _on_login_button_up() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	$Login.disabled = true
 	$StatusLabel.text = "Accesso in corso..."
 	$StatusLabel.modulate = Color.WHITE
@@ -50,13 +51,16 @@ func _on_data_ready():
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func _on_register_button_up() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Login/register.tscn")
 
 
 func _on_back_main_menu_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func _on_forgot_password_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	var email = $Username.text
 	if email != "":
 		PlayFabManager.client.send_account_recovery(email, "")

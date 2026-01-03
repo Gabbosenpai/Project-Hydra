@@ -136,6 +136,7 @@ func _on_menu_button_pressed() -> void:
 
 
 func _on_user_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	if(PlayFabManager.client_config.is_logged_in()):
 		get_tree().change_scene_to_file("res://Scenes/Login/account_management.tscn")
 	else:
