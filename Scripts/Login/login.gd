@@ -46,7 +46,7 @@ func _on_PlayFab_login_succeded(login_result: LoginResult):
 	if not PlayFabManager.client.data_synchronized.is_connected(_on_data_ready):
 		PlayFabManager.client.data_synchronized.connect(_on_data_ready)
 	PlayFabManager.client.get_user_data()
-	reset_fields()
+	reset_fields_login()
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
 
@@ -63,7 +63,7 @@ func _on_register_button_up() -> void:
 
 func _on_back_main_menu_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	reset_fields()
+	reset_fields_login()
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
@@ -79,7 +79,7 @@ func _on_forgot_password_pressed() -> void:
 		$StatusLabel.text = "Errore: Email mancante."
 		$StatusLabel.modulate = Color.RED
 
-func reset_fields():
+func reset_fields_login():
 	$Username.text = ""
 	$Password.text = ""
 	$StatusLabel.text = ""

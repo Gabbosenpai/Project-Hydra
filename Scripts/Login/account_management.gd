@@ -31,6 +31,7 @@ func _on_account_removed():
 	await get_tree().create_timer(2.0).timeout
 	self.hide()
 	get_parent().get_node("Login").visible = true
+	reset_label_()
 	#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 # --- ERRORI ---
@@ -43,10 +44,16 @@ func _on_logout_pressed() -> void:
 	PlayFabManager.forget_login() # Rimuove i token di sessione
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
+	reset_label_()
 	#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 
 func _on_back_main_menu_pressed() -> void:
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
+	reset_label_()
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+
+func reset_label_():
+	$PopupMenu/VBoxContainer/StatusLabel.text = "Gestione Account"
+	$PopupMenu/VBoxContainer/StatusLabel.modulate = Color.WHITE
