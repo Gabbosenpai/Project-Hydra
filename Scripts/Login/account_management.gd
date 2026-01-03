@@ -11,18 +11,6 @@ func _ready():
 	if !PlayFabManager.client.account_removed.is_connected(_on_account_removed):
 		PlayFabManager.client.account_removed.connect(_on_account_removed)
 
-# --- RECUPERO PASSWORD ---
-# Collega questo al segnale "pressed" del tuo pulsante di recupero
-func _on_forgot_password_pressed() -> void:
-	var email = PlayFabManager.client_config.email
-	if email != "":
-		PlayFabManager.client.send_account_recovery(email, "")
-		status_label.text = "Email inviata a: " + email
-		status_label.modulate = Color.CYAN
-	else:
-		status_label.text = "Errore: Email mancante."
-		status_label.modulate = Color.RED
-
 # --- RIMOZIONE ACCOUNT ---
 # Collega questo al pulsante "Elimina Account"
 func _on_remove_account_pressed() -> void:

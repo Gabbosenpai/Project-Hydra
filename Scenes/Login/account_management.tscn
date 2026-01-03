@@ -34,11 +34,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vjpih")
 text = "Gestione account"
 
-[node name="ForgotPassword" type="Button" parent="PopupMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vjpih")
-text = "Forgot Password?"
-
 [node name="RemoveAccount" type="Button" parent="PopupMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vjpih")
@@ -62,7 +57,6 @@ initial_position = 1
 size = Vector2i(575, 150)
 dialog_text = "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile."
 
-[connection signal="pressed" from="PopupMenu/VBoxContainer/ForgotPassword" to="." method="_on_forgot_password_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/RemoveAccount" to="." method="_on_remove_account_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/Logout" to="." method="_on_logout_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/BackMainMenu" to="." method="_on_back_main_menu_pressed"]

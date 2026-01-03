@@ -55,3 +55,13 @@ func _on_register_button_up() -> void:
 
 func _on_back_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+
+func _on_forgot_password_pressed() -> void:
+	var email = $Username.text
+	if email != "":
+		PlayFabManager.client.send_account_recovery(email, "")
+		$StatusLabel.text = "Email inviata a: " + email
+		$StatusLabel.modulate = Color.CYAN
+	else:
+		$StatusLabel.text = "Errore: Email mancante."
+		$StatusLabel.modulate = Color.RED

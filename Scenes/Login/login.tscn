@@ -81,6 +81,16 @@ offset_bottom = 212.0
 theme_override_fonts/font = ExtResource("2_kxikt")
 text = "Return To Main Menu"
 
+[node name="ForgotPassword" type="Button" parent="."]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 222.0
+offset_right = 428.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("2_kxikt")
+text = "Forgot Password?"
+
 [connection signal="button_up" from="Login" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]
 [connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]
+[connection signal="pressed" from="ForgotPassword" to="." method="_on_forgot_password_pressed"]
