@@ -19,37 +19,37 @@
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="10_tf0td"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_uimwk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_soeiq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5nqqt"]
 texture = ExtResource("2_h4611")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uimwk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tf0td"]
 texture = ExtResource("2_7nfcr")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tk4nw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ehon"]
 texture = ExtResource("4_soeiq")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gogke"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbcvc"]
 texture = ExtResource("5_dwxw5")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5nqqt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ye07"]
 texture = ExtResource("6_gogke")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4611"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bf00m"]
 texture = ExtResource("2_uimwk")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tf0td"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnd2y"]
 texture = ExtResource("8_5nqqt")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
@@ -67,13 +67,13 @@ texture_region_size = Vector2i(160, 160)
 
 [sub_resource type="TileSet" id="TileSet_wrv6g"]
 tile_size = Vector2i(160, 160)
-sources/1 = SubResource("TileSetAtlasSource_uimwk")
-sources/5 = SubResource("TileSetAtlasSource_h4611")
-sources/0 = SubResource("TileSetAtlasSource_soeiq")
-sources/2 = SubResource("TileSetAtlasSource_tk4nw")
-sources/3 = SubResource("TileSetAtlasSource_gogke")
-sources/4 = SubResource("TileSetAtlasSource_5nqqt")
-sources/6 = SubResource("TileSetAtlasSource_tf0td")
+sources/1 = SubResource("TileSetAtlasSource_tf0td")
+sources/5 = SubResource("TileSetAtlasSource_bf00m")
+sources/0 = SubResource("TileSetAtlasSource_5nqqt")
+sources/2 = SubResource("TileSetAtlasSource_7ehon")
+sources/3 = SubResource("TileSetAtlasSource_nbcvc")
+sources/4 = SubResource("TileSetAtlasSource_4ye07")
+sources/6 = SubResource("TileSetAtlasSource_cnd2y")
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap", "ui_controller")]
 script = ExtResource("1_s1ade")
