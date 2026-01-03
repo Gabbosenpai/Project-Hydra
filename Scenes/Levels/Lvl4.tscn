@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2k7axup34stp"]
+[gd_scene load_steps=27 format=3 uid="uid://b2k7axup34stp"]
 
 [ext_resource type="Script" uid="uid://c3k38umpnqf23" path="res://Scripts/Base Scene Script/Lvl4.gd" id="1_k7kxx"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_baary"]
@@ -12,50 +12,68 @@
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_lq7bi"]
 [ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_5m3vc"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="8_gxxe0"]
+[ext_resource type="Texture2D" uid="uid://6nrwjma8m0rf" path="res://Assets/Terrain Texture/Better Industrial Tile.png" id="8_qrf60"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="9_iwjai"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_yqgre"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_0yc45"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_62725"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_baary"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjpki"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcyle"]
 texture = ExtResource("2_baary")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_buj31"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmij8"]
 texture = ExtResource("2_gbsg3")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwjai"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ryyw"]
 texture = ExtResource("4_tjpki")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qrf60"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlbiv"]
 texture = ExtResource("5_jgq3g")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jgq3g"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_icrfm"]
 texture = ExtResource("5_yrax0")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xbs6m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kihmy"]
 texture = ExtResource("3_xwq6h")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_gf0j3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iv5e8"]
+texture = ExtResource("8_qrf60")
+texture_region_size = Vector2i(160, 160)
+0:0/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sr13n"]
 tile_size = Vector2i(160, 160)
-sources/1 = SubResource("TileSetAtlasSource_buj31")
-sources/5 = SubResource("TileSetAtlasSource_xbs6m")
-sources/0 = SubResource("TileSetAtlasSource_tjpki")
-sources/2 = SubResource("TileSetAtlasSource_iwjai")
-sources/4 = SubResource("TileSetAtlasSource_jgq3g")
-sources/3 = SubResource("TileSetAtlasSource_qrf60")
+sources/1 = SubResource("TileSetAtlasSource_jmij8")
+sources/5 = SubResource("TileSetAtlasSource_kihmy")
+sources/0 = SubResource("TileSetAtlasSource_bcyle")
+sources/2 = SubResource("TileSetAtlasSource_0ryyw")
+sources/3 = SubResource("TileSetAtlasSource_mlbiv")
+sources/4 = SubResource("TileSetAtlasSource_icrfm")
+sources/6 = SubResource("TileSetAtlasSource_iv5e8")
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap", "ui_controller")]
 script = ExtResource("1_k7kxx")
@@ -63,11 +81,12 @@ tilemap = NodePath("TileMap")
 ui_controller = NodePath("UI")
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 position = Vector2(80, 160)
-tile_set = SubResource("TileSet_gf0j3")
+tile_set = SubResource("TileSet_sr13n")
 rendering_quadrant_size = 128
 format = 2
-layer_0/tile_data = PackedInt32Array(1, 0, 0, 3, 0, 0, 5, 0, 0, 7, 0, 0, 65538, 0, 0, 65540, 0, 0, 65542, 0, 0, 65544, 0, 0, 131073, 0, 0, 131075, 0, 0, 131077, 0, 0, 131079, 0, 0, 196610, 0, 0, 196612, 0, 0, 196614, 0, 0, 196616, 0, 0, 262145, 0, 0, 262147, 0, 0, 262149, 0, 0, 262151, 0, 0, 9, 0, 0, 131081, 0, 0, 262153, 0, 0, 13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 0, 131085, 1, 0, 131086, 1, 0, 196621, 1, 0, 196622, 1, 0, 262157, 1, 0, 262158, 1, 0, 327693, 1, 0, 327694, 1, 0, 393229, 1, 0, 393230, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458763, 1, 0, 458762, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, -65523, 1, 0, -65522, 1, 0, 524287, 1, 0, 589823, 1, 0, 2, 2, 0, 4, 2, 0, 6, 2, 0, 8, 2, 0, 65545, 2, 0, 65543, 2, 0, 65541, 2, 0, 65539, 2, 0, 65537, 2, 0, 131074, 2, 0, 131076, 2, 0, 131078, 2, 0, 131080, 2, 0, 196617, 2, 0, 196615, 2, 0, 196613, 2, 0, 196611, 2, 0, 196609, 2, 0, 262146, 2, 0, 262148, 2, 0, 262150, 2, 0, 262152, 2, 0, 0, 4, 0, 65536, 4, 0, 131072, 4, 0, 196608, 4, 0, 262144, 4, 0, -1, 3, 0, 65535, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 0, 327679, 3, 0, 393215, 3, 0, 458751, 3, 0, 327680, 3, 0, 393216, 3, 0, 327681, 3, 0, 393217, 3, 0, 327682, 3, 0, 393218, 3, 0, 327683, 3, 0, 393219, 3, 0, 327684, 3, 0, 393220, 3, 0, 327685, 3, 0, 393221, 3, 0, 327686, 3, 0, 393222, 3, 0, 327687, 3, 0, 393223, 3, 0, 327688, 3, 0, 393224, 3, 0, 327689, 3, 0, 393225, 3, 0, 327690, 3, 0, 393226, 3, 0, 327691, 3, 0, 393227, 3, 0, 327692, 3, 0, 393228, 3, 0, -65526, 3, 0, 10, 3, 0, 65546, 3, 0, 131082, 3, 0, 196618, 3, 0, 262154, 3, 0, -65525, 3, 0, 11, 3, 0, 65547, 3, 0, 131083, 3, 0, 196619, 3, 0, 262155, 3, 0, -65524, 3, 0, 12, 3, 0, 65548, 3, 0, 131084, 3, 0, 196620, 3, 0, 262156, 3, 0, -65536, 3, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 0)
+layer_0/tile_data = PackedInt32Array(13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 0, 131085, 1, 0, 131086, 1, 0, 196622, 1, 0, 262158, 1, 0, 327694, 1, 0, 393216, 6, 0, 393217, 6, 0, 393218, 6, 0, 393219, 6, 0, 393220, 6, 0, 393221, 6, 0, 393222, 6, 0, 393223, 6, 0, 393224, 6, 0, 393225, 6, 0, 393226, 6, 0, 393227, 6, 0, 393229, 1, 0, 393230, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458763, 1, 0, 458762, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, -65523, 1, 0, -65522, 1, 0, 458751, 6, 0, 524287, 1, 0, 589823, 1, 0, 1, 0, 0, 262145, 0, 0, 196610, 0, 0, 3, 0, 0, 131075, 0, 0, 262147, 0, 0, 196612, 0, 0, 5, 0, 0, 131077, 0, 0, 262149, 0, 0, 196614, 0, 0, 7, 0, 0, 131079, 0, 0, 262151, 0, 0, 196616, 0, 0, 9, 0, 0, 131081, 0, 0, 262153, 0, 0, 2, 2, 0, 4, 2, 0, 6, 2, 0, 8, 2, 0, 65538, 0, 0, 65540, 0, 0, 65542, 0, 0, 65544, 0, 0, 65545, 2, 0, 65543, 2, 0, 65541, 2, 0, 65539, 2, 0, 65537, 2, 0, 131074, 2, 0, 131076, 2, 0, 131078, 2, 0, 131080, 2, 0, 196617, 2, 0, 196615, 2, 0, 196613, 2, 0, 196611, 2, 0, 196609, 2, 0, 262146, 2, 0, 262148, 2, 0, 262150, 2, 0, 262152, 2, 0, -65536, 262150, 0, -65535, 262150, 0, -65534, 262150, 0, -65533, 262150, 0, -65532, 262150, 0, -65531, 262150, 0, -65530, 262150, 0, -65529, 262150, 0, -65528, 262150, 0, -65527, 262150, 0, -65526, 524294, 0, -65525, 6, 0, 10, 196614, 0, 11, 6, 0, 65546, 196614, 0, 65547, 6, 0, 131082, 196614, 0, 131083, 6, 0, 196618, 196614, 0, 196619, 6, 0, 262155, 6, 0, 262154, 196614, 0, 327690, 458758, 0, 327689, 131078, 0, 327688, 131078, 0, 327687, 131078, 0, 327686, 131078, 0, 327685, 131078, 0, 327684, 131078, 0, 327683, 131078, 0, 327682, 131078, 0, 327681, 131078, 0, 327680, 131078, 0, -1, 327686, 0, 65535, 655366, 0, 131071, 589830, 0, 196607, 589830, 0, 262143, 589830, 0, 327679, 720902, 0, 393215, 393222, 0, 327691, 6, 0, -65524, 6, 0, 12, 6, 0, 65548, 6, 0, 131084, 6, 0, 196620, 6, 0, 262156, 6, 0, 327692, 6, 0, 393228, 6, 0, 196621, 1, 0, 262157, 1, 0, 327693, 1, 0, 0, 4, 0, 65536, 4, 0, 131072, 4, 0, 196608, 4, 0, 262144, 4, 0, 131073, 0, 0)
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
