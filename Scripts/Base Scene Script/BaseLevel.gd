@@ -44,13 +44,13 @@ func _ready():
 
 	print("DEBUG: current_level in _ready(): ", current_level)
 		
-	if current_level == "res://Scenes/Levels/Lvl5.tscn":
-		is_blackout_level = true
-		enemy_spawner.is_blackout_level = true
-		_init_blackout_lights()
-		_create_blackout_light_nodes()
-	else:
-		is_blackout_level = false
+	#if current_level == "res://Scenes/Levels/Lvl5.tscn":
+		#is_blackout_level = true
+		#enemy_spawner.is_blackout_level = true
+		#_init_blackout_lights()
+		#_create_blackout_light_nodes()
+	#else:
+		#is_blackout_level = false
 	# 2. Connessioni dei segnali COMUNI
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
