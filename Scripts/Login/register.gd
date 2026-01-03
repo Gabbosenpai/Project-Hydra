@@ -28,7 +28,7 @@ func _on_register_button_up() -> void:
 	combined_info_request_params.show_all()
 	var player_profile_view_constraints = PlayerProfileViewConstraints.new()
 	combined_info_request_params.ProfileConstraints = player_profile_view_constraints
-	$Register.disabled = true
+	#$Register.disabled = true
 	$StatusLabel.text = "Creazione account..."
 	$StatusLabel.modulate = Color.WHITE
 	PlayFabManager.client.register_email_password(username, email, password, combined_info_request_params)
