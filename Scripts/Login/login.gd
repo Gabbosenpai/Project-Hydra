@@ -17,6 +17,7 @@ func _on_login_button_up() -> void:
 	var player_profile_view_constraints = PlayerProfileViewConstraints.new()
 	combined_info_request_params.ProfileConstraints = player_profile_view_constraints
 	PlayFabManager.client.login_with_email(email,password,{},combined_info_request_params)
+	
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	$Login.disabled = false # Riabilita il tasto in caso di errore
@@ -45,19 +46,27 @@ func _on_PlayFab_login_succeded(login_result: LoginResult):
 	if not PlayFabManager.client.data_synchronized.is_connected(_on_data_ready):
 		PlayFabManager.client.data_synchronized.connect(_on_data_ready)
 	PlayFabManager.client.get_user_data()
+	reset_fields()
+	self.hide()
+	get_parent().get_parent().toggle_main_options_ui(true)
 
 func _on_data_ready():
 	print("Dati sincronizzati correttamente. Benvenuto!")
-	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func _on_register_button_up() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Login/register.tscn")
+	self.hide()
+	get_parent().get_node("Register").visible = true
+	#get_tree().change_scene_to_file("res://Scenes/Login/register.tscn")
 
 
 func _on_back_main_menu_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	reset_fields()
+	self.hide()
+	get_parent().get_parent().toggle_main_options_ui(true)
+	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func _on_forgot_password_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -69,3 +78,9 @@ func _on_forgot_password_pressed() -> void:
 	else:
 		$StatusLabel.text = "Errore: Email mancante."
 		$StatusLabel.modulate = Color.RED
+
+func reset_fields():
+	$Username.text = ""
+	$Password.text = ""
+	$StatusLabel.text = ""
+	$Login.disabled = false

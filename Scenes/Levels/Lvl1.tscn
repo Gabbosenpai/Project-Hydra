@@ -332,7 +332,6 @@ label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
 PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
-visible = false
 script = ExtResource("12_uimwk")
 tilemap = NodePath("../TileMap")
 

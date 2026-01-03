@@ -62,8 +62,12 @@ func _on_registered(result: RegisterPlayFabUserResult):
 func _on_back_to_login():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	print("Registrazione e Email completate.")
-	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
+	self.hide()
+	get_parent().get_node("Login").visible = true
+	#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 func _on_back_button_up() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
+	self.hide()
+	get_parent().get_node("Login").visible = true
+	#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")

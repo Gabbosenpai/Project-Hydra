@@ -138,6 +138,56 @@ func _on_menu_button_pressed() -> void:
 func _on_user_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	if(PlayFabManager.client_config.is_logged_in()):
-		get_tree().change_scene_to_file("res://Scenes/Login/account_management.tscn")
+		var account_management = $MenuOption/AccountManagement
+		$MenuOption/MenuButton.hide()
+		$MenuOption/MusicSlider.hide()
+		$MenuOption/SfxSlider.hide()
+		$MenuOption/MuteMusicButton.hide()
+		$MenuOption/Musictext.hide()
+		$MenuOption/SFXtext.hide()
+		$MenuOption/MuteSFXButton.hide()
+		$MenuOption/UserButton.hide()
+		$MenuOption/UserText.hide()
+		account_management.visible = true
+		#get_tree().change_scene_to_file("res://Scenes/Login/account_management.tscn")
 	else:
-		get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
+			var login = $MenuOption/Login
+			$MenuOption/MenuButton.hide()
+			$MenuOption/MusicSlider.hide()
+			$MenuOption/SfxSlider.hide()
+			$MenuOption/MuteMusicButton.hide()
+			$MenuOption/Musictext.hide()
+			$MenuOption/SFXtext.hide()
+			$MenuOption/MuteSFXButton.hide()
+			$MenuOption/UserButton.hide()
+			$MenuOption/UserText.hide()
+			login.visible = true
+		#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
+
+func update_user_display() -> void:
+	var userButtonText = $MenuOption/UserText
+	
+	if PlayFabManager.client_config.is_logged_in():
+		var username = PlayFabManager.client_config.username
+		if username == "" or username == null:
+			userButtonText.text = "Utente loggato (DisplayName mancante)"
+		else:
+			userButtonText.text = "Utente loggato: " + username
+	else:
+		# QUESTO RESETTA IL TESTO DOPO IL LOGOUT
+		userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+	
+
+func toggle_main_options_ui(boolean: bool):
+	$MenuOption/MenuButton.visible = boolean
+	$MenuOption/MusicSlider.visible = boolean
+	$MenuOption/SfxSlider.visible = boolean
+	$MenuOption/MuteMusicButton.visible = boolean
+	$MenuOption/Musictext.visible = boolean
+	$MenuOption/SFXtext.visible = boolean
+	$MenuOption/MuteSFXButton.visible = boolean
+	$MenuOption/UserButton.visible = boolean
+	$MenuOption/UserText.visible = boolean
+	
+	if show:
+		update_user_display()
