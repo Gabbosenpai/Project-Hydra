@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="8_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="9_ipxc1"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="10_wlbwg"]
-[ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="11_lnnbn"]
+[ext_resource type="Texture2D" uid="uid://dodchjw6xsndv" path="res://Assets/Sprites/UI/Menu/Options.png" id="11_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://dxr1eiaflpvlm" path="res://Assets/Sprites/UI/Music and SFX/Music On.png" id="12_4hxx0"]
 [ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="13_7nnyr"]
 [ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="14_xnhdg"]
@@ -152,10 +152,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 79.0
-offset_top = -196.0
-offset_right = 79.0
-offset_bottom = -196.0
+offset_left = -10.0
+offset_top = 141.0
+offset_right = -10.0
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cu3u0")
@@ -172,10 +172,10 @@ sfx_off_sprite = NodePath("PauseMenu/SFXoff")
 
 [node name="ButtonRemove" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1536.0
-offset_top = 1273.0
-offset_right = 1704.0
-offset_bottom = 1454.0
+offset_left = 1271.0
+offset_top = 842.0
+offset_right = 1399.0
+offset_bottom = 970.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("2_cu3u0")
 ignore_texture_size = true
@@ -183,10 +183,10 @@ stretch_mode = 0
 
 [node name="TurretSelector" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 844.0
-offset_top = 1452.0
-offset_right = 1026.0
-offset_bottom = 1456.0
+offset_left = 644.0
+offset_top = 1107.0
+offset_right = 826.0
+offset_bottom = 1111.0
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="TurretSelector"]
@@ -335,36 +335,35 @@ text = "50"
 [node name="LabelWave" type="Label" parent="."]
 z_index = 1000
 layout_mode = 0
-offset_left = 917.0
-offset_top = 203.0
-offset_right = 988.0
-offset_bottom = 233.0
+offset_left = 258.0
+offset_top = 841.0
+offset_right = 329.0
+offset_bottom = 871.0
 text = "Ondata 0"
 
 [node name="LabelEnemies" type="Label" parent="."]
 z_index = 1000
 layout_mode = 0
-offset_left = 917.0
-offset_top = 228.0
-offset_right = 989.0
-offset_bottom = 251.0
+offset_left = 256.0
+offset_top = 892.0
+offset_right = 328.0
+offset_bottom = 915.0
 text = "Nemici: 0"
 
 [node name="ButtonKillAll" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1698.0
-offset_top = 1398.0
-offset_right = 1839.0
-offset_bottom = 1452.0
+offset_left = 1538.0
+offset_top = 941.0
+offset_right = 1679.0
+offset_bottom = 995.0
 text = "Uccidi i nemici"
 
 [node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1913.0
-offset_top = 201.0
-offset_right = 1988.0
-offset_bottom = 277.0
-texture_normal = ExtResource("11_lnnbn")
+offset_left = 1792.0
+offset_right = 1920.0
+offset_bottom = 128.0
+texture_normal = ExtResource("11_cu3u0")
 ignore_texture_size = true
 stretch_mode = 0
 
