@@ -6,7 +6,6 @@
 shader = ExtResource("1_bt25q")
 
 [node name="Colorscale Filter" type="CanvasLayer"]
-layer = 2
 
 [node name="Gray Filter" type="ColorRect" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dur5nevu7cin8"]
+[gd_scene load_steps=24 format=3 uid="uid://dur5nevu7cin8"]
 
 [ext_resource type="Script" uid="uid://dsew7m8ngiyqm" path="res://Scripts/Base Scene Script/Lvl5.gd" id="1_s53du"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_5hwcm"]
@@ -93,6 +93,12 @@ limit_enabled = false
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_xk3qw")]
 game_over_ui = NodePath("../GameOverUI")
 
+[node name="LabelWaveCenter" parent="UI" index="8"]
+offset_left = 1532.0
+offset_top = 458.0
+offset_right = 2598.0
+offset_bottom = 754.0
+
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -154,17 +160,6 @@ tilemap = NodePath("../TileMap")
 
 [node name="Grayscale Filter" parent="." instance=ExtResource("19_5i5n3")]
 
-[connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret1" to="UI" method="_on_button_turret_1_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret2" to="UI" method="_on_button_turret_2_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret3" to="UI" method="_on_button_turret_3_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret4" to="UI" method="_on_button_turret_4_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret5" to="UI" method="_on_button_turret_5_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret6" to="UI" method="_on_button_turret_6_pressed"]
-[connection signal="pressed" from="UI/ButtonKillAll" to="UI" method="_on_button_kill_all_pressed"]
-[connection signal="pressed" from="UI/PauseButton" to="UI" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/MenuButton" to="UI" method="_on_menu_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 
