@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhagnqcntnk8k"]
+[gd_scene load_steps=5 format=3 uid="uid://bhagnqcntnk8k"]
 
 [ext_resource type="Script" uid="uid://y6re6ya0ge1o" path="res://Scripts/Utility/victory_screen.gd" id="1_oviq5"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_samx0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oviq5"]
 bg_color = Color(1, 1, 1, 1)
@@ -87,6 +88,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_oviq5")
 toggle_mode = true
 action_mode = 0
 text = "Prossimo Livello"
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("2_samx0")]
 
 [connection signal="pressed" from="SelectLevel" to="." method="_on_select_level_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

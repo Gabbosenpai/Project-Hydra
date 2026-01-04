@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8gjqm40lbvk2"]
+[gd_scene load_steps=4 format=3 uid="uid://b8gjqm40lbvk2"]
 
 [ext_resource type="Script" uid="uid://t01jm1v7dol4" path="res://Scripts/Utility/slot_selection.gd" id="1_6qa0o"]
 [ext_resource type="Texture2D" uid="uid://c63g4ta6exmss" path="res://Assets/DeleteSave.png" id="2_ws6yv"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="3_0imya"]
 
 [node name="SlotSelect" type="Control"]
 layout_mode = 3
@@ -135,6 +136,8 @@ offset_right = 1147.0
 offset_bottom = 323.0
 theme_override_font_sizes/font_size = 40
 text = "Torna al menù"
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("3_0imya")]
 
 [connection signal="pressed" from="VBoxContainer/File1" to="." method="_on_file_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/File2" to="." method="_on_file_2_pressed"]
