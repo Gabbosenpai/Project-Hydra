@@ -215,7 +215,6 @@ rotation = 1.0464532
 position = Vector2(141, 875)
 
 [node name="Title" type="Node2D" parent="."]
-position = Vector2(0, 50)
 
 [node name="Engineers" type="Sprite2D" parent="Title"]
 position = Vector2(960, 125)
@@ -236,9 +235,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -430.0
-offset_top = 135.0
+offset_top = 85.0
 offset_right = 430.0
-offset_bottom = 443.0
+offset_bottom = 393.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -541,8 +540,6 @@ icon = ExtResource("13_e6g3s")
 flat = true
 icon_alignment = 1
 expand_icon = true
-
-[node name="Colorscale Filter" parent="." instance=ExtResource("20_7555j")]
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]

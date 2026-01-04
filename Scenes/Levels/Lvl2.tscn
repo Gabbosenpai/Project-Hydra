@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_jti0j"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_nlwmo"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_buj31"]
-[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="19_up8n1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_up8n1"]
 texture = ExtResource("2_xbs6m")
@@ -87,7 +86,8 @@ layer_0/tile_data = PackedInt32Array(13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(950, 681)
+position = Vector2(1038, 630)
+zoom = Vector2(0.925, 0.86)
 limit_enabled = false
 
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_gf0j3")]

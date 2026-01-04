@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=11 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
-[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="4_x0f88"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="5_se8tl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo2e"]
@@ -196,8 +195,6 @@ offset_right = 730.0
 offset_bottom = 136.0
 theme_override_font_sizes/font_size = 60
 text = "ENCICLOPEDIA - INDICE"
-
-[node name="Colorscale Filter" parent="." instance=ExtResource("4_x0f88")]
 
 [connection signal="pressed" from="RiquadroTorrette/RiquadroTesto/TowerButton" to="." method="_on_tower_button_pressed"]
 [connection signal="pressed" from="RiquadroTorrette/TextureRect/HandicapButton" to="." method="_on_handicap_button_pressed"]

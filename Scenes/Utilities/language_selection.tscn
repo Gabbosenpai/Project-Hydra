@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cloled5m4tbf7"]
+[gd_scene load_steps=2 format=3 uid="uid://cloled5m4tbf7"]
 
 [ext_resource type="Script" uid="uid://brde1aqn7vrot" path="res://Scripts/Utility/language_selection.gd" id="1_ky16n"]
-[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_72c5y"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -45,8 +44,6 @@ offset_right = 1098.0
 offset_bottom = 977.0
 theme_override_font_sizes/font_size = 50
 text = "Torna al Menù"
-
-[node name="Colorscale Filter" parent="." instance=ExtResource("2_72c5y")]
 
 [connection signal="pressed" from="ItalianoButton" to="." method="_on_italiano_button_pressed"]
 [connection signal="pressed" from="EnglishButton" to="." method="_on_english_button_pressed"]

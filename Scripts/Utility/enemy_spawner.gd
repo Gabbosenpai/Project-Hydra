@@ -25,10 +25,10 @@ var all_enemy_scenes = {
 }
 var level_enemy_pool = {
 	1: ["romba"],
-	2: ["we9k"],
-	3: ["mf"],
-	4: ["fh"],
-	5: ["cs"]
+	2: ["we9k","mf","fh"],
+	3: ["cs"],
+	4: ["romba","we9k","mf","fh","cs"],
+	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
 	{ "count": 13, "interval": 0.6 },
