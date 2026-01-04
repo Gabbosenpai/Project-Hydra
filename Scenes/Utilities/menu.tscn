@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=27 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="18_auemk"]
 [ext_resource type="PackedScene" uid="uid://dciw03lb6qvj2" path="res://Scenes/Login/login.tscn" id="19_7555j"]
 [ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="19_lmo3v"]
-[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="20_7555j"]
 [ext_resource type="PackedScene" uid="uid://cgwyfcruwr0ti" path="res://Scenes/Login/register.tscn" id="20_lmo3v"]
 [ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
 
