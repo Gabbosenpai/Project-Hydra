@@ -243,10 +243,10 @@ func place_turret(cell_key: Vector2i):
 		
 		if is_instance_valid(construction):
 			construction.queue_free()
-		if is_instance_valid(turret_instance):
-			turret_instance.visible = true
-			if turret_instance.has_method("has_just_spawned"):
-				turret_instance.has_just_spawned()
+		
+		turret_instance.visible = true
+		if turret_instance.has_method("has_just_spawned"):
+			turret_instance.has_just_spawned()
 
 
 func remove_turret(cell_key: Vector2i):
@@ -418,7 +418,7 @@ func _incinerate_with_delay(turret_instance: Node2D, row_y: int):
 	print("🔥 Incenerita torretta dopo il ritardo.")
 	turret_instance.queue_free()
 	
-	var post_destruction_delay = 1.0
+	var post_destruction_delay = 3.0
 	var post_timer = get_tree().create_timer(post_destruction_delay)
 	await post_timer.timeout
 	
@@ -444,6 +444,7 @@ func _close_incinerator(row_y: int):
 		
 		if is_instance_valid(incinerator_instance):
 			# L'incenertiore si chiude
+			await incinerator_instance.fire_blast()
 			await incinerator_instance.close_incinerator()
 		
 		# Sostituisci con il tile statico dell'inceneritore chiuso
