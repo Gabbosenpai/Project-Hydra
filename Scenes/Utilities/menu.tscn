@@ -18,8 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="16_gh4pp"]
 [ext_resource type="PackedScene" uid="uid://cdwqym4ehbpbd" path="res://Scenes/Utilities/Title Stars/title_star_d.tscn" id="17_7555j"]
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="18_auemk"]
+[ext_resource type="PackedScene" uid="uid://dciw03lb6qvj2" path="res://Scenes/Login/login.tscn" id="19_7555j"]
 [ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="19_lmo3v"]
+
 [ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="20_7555j"]
+[ext_resource type="PackedScene" uid="uid://cgwyfcruwr0ti" path="res://Scenes/Login/register.tscn" id="20_lmo3v"]
+[ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
 bg_color = Color(0.813258, 0.813258, 0.813258, 1)
@@ -515,6 +520,18 @@ theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
 text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Login" parent="MenuOption" instance=ExtResource("19_7555j")]
+visible = false
+layout_mode = 1
+
+[node name="Register" parent="MenuOption" instance=ExtResource("20_lmo3v")]
+visible = false
+layout_mode = 1
+
+[node name="AccountManagement" parent="MenuOption" instance=ExtResource("21_8rq7v")]
+visible = false
+layout_mode = 1
 
 [node name="OptionButton" type="Button" parent="."]
 offset_left = 1792.0
