@@ -74,7 +74,7 @@ sources/6 = SubResource("TileSetAtlasSource_h6cep")
 [node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap", "ui_controller")]
 script = ExtResource("1_cdrp3")
 tilemap = NodePath("TileMap")
-ui_controller = NodePath("")
+ui_controller = NodePath("UI")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -90,7 +90,14 @@ position = Vector2(1038, 630)
 zoom = Vector2(0.925, 0.86)
 limit_enabled = false
 
-[node name="UI" parent="." instance=ExtResource("9_gf0j3")]
+[node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_gf0j3")]
+game_over_ui = NodePath("../GameOverUI")
+
+[node name="LabelWaveCenter" parent="UI" index="8"]
+offset_left = 1532.0
+offset_top = 458.0
+offset_right = 2598.0
+offset_bottom = 754.0
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
@@ -133,19 +140,19 @@ tilemap = NodePath("../TileMap")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "label_wave_center", "animation_player", "victory_screen", "next_wave_delay_timer") instance=ExtResource("10_jti0j")]
 tilemap = NodePath("../TileMap")
-label_wave = NodePath("")
-label_enemies = NodePath("")
+label_wave = NodePath("../UI/LabelWave")
+label_enemies = NodePath("../UI/LabelEnemies")
 wave_timer = NodePath("../WaveTimer")
 initial_delay_timer = NodePath("InitialDelayTimer")
-label_wave_center = NodePath("")
-animation_player = NodePath("")
-victory_screen = NodePath("")
+label_wave_center = NodePath("../UI/LabelWaveCenter")
+animation_player = NodePath("../UI/AnimationPlayer")
+victory_screen = NodePath("../UI/VictoryScreen")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_nlwmo")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("")
-PointsBar = NodePath("")
+label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
+PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_buj31")
@@ -154,5 +161,6 @@ tilemap = NodePath("../TileMap")
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 
+[editable path="UI"]
 [editable path="GameOverUI"]
 [editable path="EnemySpawner"]
