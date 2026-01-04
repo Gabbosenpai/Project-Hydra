@@ -15,6 +15,8 @@ signal wave_completed(wave_number)
 @export var inter_wave_delay = 5.0
 @export var next_wave_delay_timer: Timer
 @export var is_blackout_level: bool = false
+@export var weight_penalty: float = 10.0  # Quanto "pesa" un nemico in più sulla riga
+@export var weight_recovery: float = 2.0 # Quanto velocemente la riga torna appetibile nel tempo
 
 var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
@@ -31,10 +33,10 @@ var level_enemy_pool = {
 	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
-	{ "count": 13, "interval": 0.6 },
-	{ "count": 16, "interval": 0.6 },
-	{ "count": 19, "interval": 0.8 },
-	{ "count": 22, "interval": 1.0 }
+	{ "count": 13, "interval": 1.5 },
+	{ "count": 16, "interval": 1.8 },
+	{ "count": 19, "interval": 2.0 },
+	{ "count": 22, "interval": 2.5 }
 ]
 var current_wave = 0
 var enemies_to_spawn = 0
@@ -45,11 +47,21 @@ const ENEMY_DESTRUCTION_DELAY: float = 0.5
 const TILE_SIZE = 160
 const INCINERATE_COLUMN_THRESHOLD: float = 9.0
 var INCINERATE_X_LIMIT: float
+var row_weights = []
+var current_wave_fixed_pool = {}
 
+func _process(delta):
+	# Diminuisce lentamente tutti i pesi nel tempo
+	for i in range(row_weights.size()):
+		if row_weights[i] > 0:
+			row_weights[i] = max(0.0, row_weights[i] - weight_recovery * delta)
+	if Input.is_action_just_pressed("ui_focus_next"): # Premi TAB per vedere i pesi
+		print("Pesi attuali righe: ", row_weights)
 
 func _ready():
 	randomize()
-	
+	row_weights.resize(GameConstants.ROW)
+	row_weights.fill(0.0)
 	var path = get_tree().current_scene.scene_file_path
 	var regex = RegEx.new()
 	regex.compile("\\d+")
@@ -95,6 +107,15 @@ func start_wave():
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
 	
+	current_wave_fixed_pool.clear()
+	var pool = level_enemy_pool.get(current_level, ["romba"])
+	var base_share = enemies_to_spawn / pool.size()
+	var remainder = enemies_to_spawn % pool.size()
+	
+	for i in range(pool.size()):
+		var type = pool[i]
+		current_wave_fixed_pool[type] = base_share + (1 if i < remainder else 0)
+	
 	is_wave_active = true
 	
 	label_wave.text = "Ondata: " + str(current_wave)
@@ -125,19 +146,26 @@ func _on_next_wave_delay_timeout():
 
 
 func spawn_enemy():
-	var pool = level_enemy_pool.get(current_level, ["romba"])
-	var choice = pool[randi() % pool.size()]
-	print("Lvl", current_level, " pool=", pool, " → scelto: ", choice)
-	var enemy_scene = all_enemy_scenes[choice]
-	var enemy = enemy_scene.instantiate()
+	var available_types = []
+	for type in current_wave_fixed_pool:
+		if current_wave_fixed_pool[type] > 0:
+			available_types.append(type)
 	
-	var row = randi() % GameConstants.ROW
+	if available_types.is_empty(): return
+	
+	var choice = available_types.pick_random()
+	current_wave_fixed_pool[choice] -= 1
+	
+	var row = _get_weighted_row()
+	row_weights[row] += weight_penalty
+	
+	var enemy = all_enemy_scenes[choice].instantiate()
 	var spawn_cell = Vector2i(GameConstants.COLUMN + 2, row)
 	var center_pos = tilemap.map_to_local(spawn_cell)
 	enemy.global_position = tilemap.to_global(center_pos)
 	enemy.riga = row
 	
-	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
+	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated_with_row").bind(row))
 	add_child(enemy)
 	
 	enemies_alive += 1
@@ -157,11 +185,12 @@ func _on_enemy_defeated():
 func kill_all():
 	# Forziamo la fine dello spawn e l'eliminazione dei nemici.
 	enemies_to_spawn = 0
+	row_weights.fill(0.0)
 	
 	var children_to_kill = []
 	for child in get_children():
 		if child.has_method("die"):
-			child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
+			child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated_with_row"))
 			children_to_kill.append(child)
 			enemies_alive -= 1
 	
@@ -195,6 +224,7 @@ func destroy_robots_in_row_with_animation(row: int):
 				robot.global_position.x <= INCINERATE_X_LIMIT
 			)
 			if can_incinerate:
+				row_weights[row] = max(0.0, row_weights[row] - weight_penalty)
 				child.queue_free()
 				killed_count += 1
 	
@@ -245,3 +275,25 @@ func check_enemies_for_next_wave():
 			if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
 				AudioManager.play_victory_music()
 			emit_signal("level_completed")
+
+func _get_weighted_row() -> int:
+	var best_rows = []
+	var min_weight = row_weights[0]
+	
+	# Trova il peso minimo attuale
+	for w in row_weights:
+		if w < min_weight:
+			min_weight = w
+			
+	# Prendi tutte le righe che hanno quel peso minimo (o molto vicino)
+	for i in range(row_weights.size()):
+		if row_weights[i] <= min_weight:
+			best_rows.append(i)
+	
+	# Scegli a caso tra le migliori righe disponibili
+	return best_rows[randi() % best_rows.size()]
+
+func _on_enemy_defeated_with_row(row_index: int):
+	# Diminuisce il peso della riga quando il nemico muore
+	row_weights[row_index] = max(0.0, row_weights[row_index] - weight_penalty)
+	_on_enemy_defeated()
