@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd41ts1gil5l5"]
+[gd_scene load_steps=3 format=3 uid="uid://cd41ts1gil5l5"]
 
 [ext_resource type="Script" uid="uid://erjs2kqbx7gu" path="res://Scripts/Main Menu/level_selection.gd" id="1_1m0xv"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_ayueh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -101,6 +102,8 @@ offset_right = 665.0
 offset_bottom = 39.0
 theme_override_font_sizes/font_size = 60
 text = "Scegli il livello in base alla difficoltà"
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("2_ayueh")]
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]

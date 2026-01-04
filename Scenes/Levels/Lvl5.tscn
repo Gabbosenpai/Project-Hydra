@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dur5nevu7cin8"]
+[gd_scene load_steps=24 format=3 uid="uid://dur5nevu7cin8"]
 
 [ext_resource type="Script" uid="uid://dsew7m8ngiyqm" path="res://Scripts/Base Scene Script/Lvl5.gd" id="1_s53du"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_5hwcm"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_l5mna"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_dpoto"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="11_lhqd2"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="15_lkvta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5i5n3"]
 texture = ExtResource("2_5hwcm")
@@ -86,12 +87,17 @@ layer_0/tile_data = PackedInt32Array(13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1038, 630)
-zoom = Vector2(0.925, 0.86)
+position = Vector2(950, 681)
 limit_enabled = false
 
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_xk3qw")]
 game_over_ui = NodePath("../GameOverUI")
+
+[node name="LabelWaveCenter" parent="UI" index="8"]
+offset_left = 1532.0
+offset_top = 458.0
+offset_right = 2598.0
+offset_bottom = 754.0
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
@@ -151,6 +157,8 @@ PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("11_lhqd2")
 tilemap = NodePath("../TileMap")
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("15_lkvta")]
 
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]

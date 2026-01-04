@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxf57fc3thev4"]
+[gd_scene load_steps=3 format=3 uid="uid://bxf57fc3thev4"]
 
 [ext_resource type="Script" uid="uid://ditc80hikpiab" path="res://Scripts/Main Menu/credits.gd" id="1_s2xlg"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_cxtio"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -35,5 +36,7 @@ offset_right = 1094.0
 offset_bottom = 858.0
 theme_override_font_sizes/font_size = 50
 text = "Torna al Menù"
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("2_cxtio")]
 
 [connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://c6t080f7r542l" path="res://Assets/Sprites/UI/Trash can.png" id="2_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_d5ei8"]
-[ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/point_bar.gdshader" id="4_6wlri"]
+[ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/Shaders/point_bar.gdshader" id="4_6wlri"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_5o6ld"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="6_pi3ax"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="7_3sob7"]
@@ -147,7 +147,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="UI" type="Control" node_paths=PackedStringArray("pause_button", "pause_menu", "game_over_ui", "music_slider", "sfx_slider", "mute_music_button", "mute_sfx_button", "music_on_sprite", "music_off_sprite", "sfx_on_sprite", "sfx_off_sprite")]
+[node name="UI" type="Control" node_paths=PackedStringArray("pause_button", "pause_menu", "music_slider", "sfx_slider", "mute_music_button", "mute_sfx_button", "music_on_sprite", "music_off_sprite", "sfx_on_sprite", "sfx_off_sprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +161,6 @@ grow_vertical = 2
 script = ExtResource("1_cu3u0")
 pause_button = NodePath("PauseButton")
 pause_menu = NodePath("PauseMenu")
-game_over_ui = NodePath("../../../../../../../../@WindowWrapper@12615/@ScriptEditor@12614/@VBoxContainer@11811/@HSplitContainer@11814/@VBoxContainer@11839/@TabContainer@11841/@ScriptTextEditor@22754/@PopupPanel@55784/@ColorPicker@55948/@MarginContainer@55785/@VBoxContainer@55786/@GridContainer@55809/@SpinBox@55924/@SpinBoxLineEdit@55922/@PopupMenu@55909/@PanelContainer@55904/@ScrollContainer@55905/@Control@55906")
 music_slider = NodePath("PauseMenu/MusicSlider")
 sfx_slider = NodePath("PauseMenu/SfxSlider")
 mute_music_button = NodePath("PauseMenu/MuteMusicButton")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=28 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="19_lmo3v"]
 [ext_resource type="PackedScene" uid="uid://cgwyfcruwr0ti" path="res://Scenes/Login/register.tscn" id="20_lmo3v"]
 [ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="23_8rq7v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
 bg_color = Color(0.813258, 0.813258, 0.813258, 1)
@@ -95,7 +96,7 @@ position = Vector2(1861.0001, 574)
 rotation = 0.59667265
 
 [node name="TitleStarA3" parent="Stars" instance=ExtResource("14_qtn2w")]
-position = Vector2(1208, 304)
+position = Vector2(1194, 318.00003)
 rotation = -0.25206682
 
 [node name="TitleStarB" parent="Stars" instance=ExtResource("15_nd5l3")]
@@ -134,10 +135,6 @@ rotation = -0.68860215
 position = Vector2(1486, 499.00006)
 rotation = -0.4007071
 
-[node name="TitleStarC7" parent="Stars" instance=ExtResource("16_gh4pp")]
-position = Vector2(864, 974.00006)
-rotation = 1.1762453
-
 [node name="TitleStarC8" parent="Stars" instance=ExtResource("16_gh4pp")]
 position = Vector2(1577, 971)
 rotation = -0.12217305
@@ -162,6 +159,10 @@ rotation = -0.21973976
 position = Vector2(1834.0001, 767)
 rotation = 0.38397244
 
+[node name="TitleStarD8" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(832.00006, 1020.0001)
+rotation = 1.3075144
+
 [node name="TitleStarD4" parent="Stars" instance=ExtResource("17_7555j")]
 position = Vector2(1534, 745)
 rotation = -1.8143587
@@ -170,6 +171,10 @@ rotation = -1.8143587
 position = Vector2(447, 377)
 rotation = 0.30129564
 
+[node name="TitleStarD7" parent="Stars" instance=ExtResource("17_7555j")]
+position = Vector2(594, 337.00003)
+rotation = -1.8858153
+
 [node name="TitleStarE" parent="Stars" instance=ExtResource("18_auemk")]
 position = Vector2(275, 423)
 rotation = 0.24846326
@@ -177,6 +182,10 @@ rotation = 0.24846326
 [node name="TitleStarE3" parent="Stars" instance=ExtResource("18_auemk")]
 position = Vector2(505, 550)
 rotation = -2.183125
+
+[node name="TitleStarE5" parent="Stars" instance=ExtResource("18_auemk")]
+position = Vector2(651, 639)
+rotation = -2.901379
 
 [node name="TitleStarE4" parent="Stars" instance=ExtResource("18_auemk")]
 position = Vector2(1806, 983)
@@ -198,8 +207,12 @@ rotation = 0.5555145
 position = Vector2(1677, 606)
 rotation = 0.16580628
 
+[node name="TitleStarF8" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(1358, 625)
+rotation = -1.181322
+
 [node name="TitleStarF3" parent="Stars" instance=ExtResource("19_lmo3v")]
-position = Vector2(782, 300)
+position = Vector2(818, 351.99997)
 rotation = 1.486054
 
 [node name="TitleStarF6" parent="Stars" instance=ExtResource("19_lmo3v")]
@@ -214,6 +227,7 @@ rotation = 1.0464532
 position = Vector2(141, 875)
 
 [node name="Title" type="Node2D" parent="."]
+position = Vector2(0, 50)
 
 [node name="Engineers" type="Sprite2D" parent="Title"]
 position = Vector2(960, 125)
@@ -234,9 +248,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -430.0
-offset_top = 85.0
+offset_top = 135.0
 offset_right = 430.0
-offset_bottom = 393.0
+offset_bottom = 443.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -539,6 +553,8 @@ icon = ExtResource("13_e6g3s")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("23_8rq7v")]
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]

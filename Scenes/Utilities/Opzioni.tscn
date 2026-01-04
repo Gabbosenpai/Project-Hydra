@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn85mtsod4km3"]
+[gd_scene load_steps=3 format=3 uid="uid://cn85mtsod4km3"]
 
 [ext_resource type="Script" uid="uid://c6acc41h83ar2" path="res://Scripts/Main Menu/opzioni.gd" id="1_m5ied"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_dng63"]
 
 [node name="Opzioni" type="Control"]
 layout_mode = 3
@@ -60,5 +61,7 @@ offset_right = -15.0
 offset_bottom = 135.0
 theme_override_font_sizes/font_size = 40
 text = "Disattiva Audio"
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("2_dng63")]
 
 [connection signal="pressed" from="MuteButton" to="." method="_on_mute_button_pressed"]
