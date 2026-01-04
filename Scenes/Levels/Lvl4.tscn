@@ -90,8 +90,7 @@ layer_0/tile_data = PackedInt32Array(13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1038, 630)
-zoom = Vector2(0.925, 0.86)
+position = Vector2(950, 681)
 limit_enabled = false
 
 [node name="UI" parent="." node_paths=PackedStringArray("pause_button", "pause_menu", "game_over_ui") instance=ExtResource("3_6i180")]
