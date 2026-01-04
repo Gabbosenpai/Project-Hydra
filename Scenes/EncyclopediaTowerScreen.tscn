@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ex4t3xl6envv"]
+[gd_scene load_steps=12 format=3 uid="uid://ex4t3xl6envv"]
 
 [ext_resource type="Script" uid="uid://1itaq2o6e6b7" path="res://Scenes/encyclopedia_tower_screen.gd" id="1_l0238"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_56vox"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_g5eb7"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="5_o8leb"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="6_g5eb7"]
+[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="7_v4lb0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4x86"]
 bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
@@ -201,6 +202,8 @@ offset_top = -22.0
 offset_right = 235.0
 offset_bottom = 239.0
 texture = ExtResource("6_g5eb7")
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("7_v4lb0")]
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="BoltShooter" to="." method="_on_bolt_shooter_pressed"]
