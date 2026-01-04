@@ -1,20 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://cprlr05615smj"]
+[gd_scene load_steps=23 format=3 uid="uid://cprlr05615smj"]
 
 [ext_resource type="Script" uid="uid://0rar5r8r2phc" path="res://Scripts/Base Scene Script/Lvl2.gd" id="1_cdrp3"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_wee7m"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_xbs6m"]
-[ext_resource type="PackedScene" uid="uid://b7qojdhekgsee" path="res://Scenes/Utilities/UI.tscn" id="3_23hhs"]
 [ext_resource type="Texture2D" uid="uid://clu141eyajsm7" path="res://Assets/Selettore.png" id="3_p3xk4"]
 [ext_resource type="Texture2D" uid="uid://d27h1vlrudpmr" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 2.png" id="4_gf0j3"]
 [ext_resource type="Texture2D" uid="uid://d2wwy4s3slqh8" path="res://Assets/Terrain Texture/Industrial Tile Test.png" id="5_2ebpk"]
-[ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_pokxs"]
 [ext_resource type="Texture2D" uid="uid://dxek6vkt8k8eq" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Closed.png" id="5_qqdmy"]
-[ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="6_m5ddy"]
-[ext_resource type="Texture2D" uid="uid://c44x75dlvtt0c" path="res://Assets/Sprites/Options/Windows_Settings_icon.svg.png" id="7_a162t"]
 [ext_resource type="Texture2D" uid="uid://6nrwjma8m0rf" path="res://Assets/Terrain Texture/Better Industrial Tile.png" id="8_8qrwp"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="8_ejsqg"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_aco5b"]
-[ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="9_pwmuf"]
+[ext_resource type="PackedScene" uid="uid://cjoobhnq7wt5i" path="res://Scenes/Utilities/new_UI.tscn" id="9_gf0j3"]
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_jti0j"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_nlwmo"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_buj31"]
@@ -78,7 +74,7 @@ sources/6 = SubResource("TileSetAtlasSource_h6cep")
 [node name="Main" type="Node2D" node_paths=PackedStringArray("tilemap", "ui_controller")]
 script = ExtResource("1_cdrp3")
 tilemap = NodePath("TileMap")
-ui_controller = NodePath("UI")
+ui_controller = NodePath("")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -94,183 +90,7 @@ position = Vector2(1038, 630)
 zoom = Vector2(0.925, 0.86)
 limit_enabled = false
 
-[node name="UI" parent="." node_paths=PackedStringArray("pause_button", "pause_menu", "game_over_ui") instance=ExtResource("3_23hhs")]
-pause_button = NodePath("PauseButton")
-pause_menu = NodePath("PauseMenu")
-game_over_ui = NodePath("../GameOverUI")
-
-[node name="ButtonRemove" parent="UI" index="0"]
-offset_left = 1527.0
-offset_top = 1273.0
-offset_right = 1695.0
-offset_bottom = 1454.0
-
-[node name="TurretSelector" parent="UI" index="1"]
-offset_left = 844.0
-offset_top = 1452.0
-offset_right = 1026.0
-offset_bottom = 1456.0
-
-[node name="TextureRect" parent="UI/TurretSelector" index="0"]
-offset_left = -282.0
-offset_top = -298.0
-offset_right = 691.0
-offset_bottom = 81.0
-
-[node name="PointsBar" parent="UI/TurretSelector" index="1"]
-offset_left = -658.0
-offset_top = -84.0
-offset_right = 1088.0
-offset_bottom = 11.0
-
-[node name="ScrapPoints" parent="UI/TurretSelector/PointsBar" index="0"]
-offset_left = 805.0
-offset_top = 32.0
-offset_right = 949.0
-offset_bottom = 62.0
-
-[node name="HBoxContainer" parent="UI/TurretSelector" index="2"]
-offset_left = -232.0
-offset_top = -261.0
-offset_right = 380.0
-offset_bottom = -63.0
-
-[node name="ButtonTurret1" parent="UI/TurretSelector/HBoxContainer" index="0"]
-texture_filter = 1
-custom_minimum_size = Vector2(140, 150)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-icon = ExtResource("5_pokxs")
-expand_icon = true
-
-[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret1" index="0"]
-offset_left = 101.0
-offset_top = -10.0
-offset_right = 141.0
-offset_bottom = 37.0
-theme_override_font_sizes/font_size = 34
-
-[node name="ButtonTurret2" parent="UI/TurretSelector/HBoxContainer" index="1"]
-texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_icon = true
-
-[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret2" index="0"]
-offset_left = 112.0
-offset_top = -7.0
-offset_right = 152.0
-offset_bottom = 40.0
-theme_override_font_sizes/font_size = 34
-
-[node name="ButtonTurret3" parent="UI/TurretSelector/HBoxContainer" index="2"]
-texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-icon = ExtResource("6_m5ddy")
-expand_icon = true
-
-[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret3" index="0"]
-offset_left = 87.0
-offset_top = -6.0
-offset_right = 145.0
-offset_bottom = 41.0
-theme_override_font_sizes/font_size = 34
-
-[node name="ButtonTurret4" parent="UI/TurretSelector/HBoxContainer" index="3"]
-texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-icon = ExtResource("9_pwmuf")
-expand_icon = true
-
-[node name="Cost" parent="UI/TurretSelector/HBoxContainer/ButtonTurret4" index="0"]
-offset_left = 89.0
-offset_top = -5.0
-offset_right = 147.0
-offset_bottom = 42.0
-theme_override_font_sizes/font_size = 34
-
-[node name="LabelWave" parent="UI" index="2"]
-z_index = 1000
-offset_left = 917.0
-offset_top = 203.0
-offset_right = 988.0
-offset_bottom = 233.0
-
-[node name="LabelEnemies" parent="UI" index="3"]
-z_index = 1000
-offset_left = 917.0
-offset_top = 228.0
-offset_right = 989.0
-offset_bottom = 251.0
-
-[node name="ButtonKillAll" parent="UI" index="4"]
-offset_left = 1682.0
-offset_top = 1398.0
-offset_right = 1823.0
-offset_bottom = 1452.0
-
-[node name="PauseButton" parent="UI" index="5"]
-offset_left = 1913.0
-offset_top = 201.0
-offset_right = 1988.0
-offset_bottom = 277.0
-texture_normal = ExtResource("7_a162t")
-
-[node name="PauseMenu" parent="UI" index="6"]
-z_index = 1000
-offset_left = 289.0
-offset_top = 419.0
-offset_right = 1358.0
-offset_bottom = 1137.0
-
-[node name="ResumeButton" parent="UI/PauseMenu" index="1"]
-offset_left = 333.0
-offset_top = 368.0
-offset_right = 514.0
-offset_bottom = 433.0
-
-[node name="MenuButton" parent="UI/PauseMenu" index="2"]
-offset_left = 566.0
-offset_top = 368.0
-offset_right = 774.0
-offset_bottom = 436.0
-
-[node name="LabelWaveCenter" parent="UI" index="8"]
-z_index = 1000
-offset_left = 1532.0
-offset_top = 458.0
-offset_right = 2598.0
-offset_bottom = 754.0
-text = "Ondata 0
-"
-
-[node name="VictoryScreen" parent="UI" index="9"]
-z_index = 1000
-offset_left = 273.0
-offset_top = 394.0
-offset_right = 1333.0
-offset_bottom = 1121.0
-
-[node name="PauseMenu" parent="UI/VictoryScreen" index="0"]
-offset_top = 0.0
-offset_bottom = 718.0
-
-[node name="SelectLevelButton" parent="UI/VictoryScreen" index="2"]
-offset_left = 281.0
-offset_top = 420.0
-offset_right = 462.0
-offset_bottom = 485.0
-
-[node name="MenuButton" parent="UI/VictoryScreen" index="3"]
-offset_left = 569.0
-offset_top = 416.0
-offset_right = 795.0
-offset_bottom = 486.0
+[node name="UI" parent="." instance=ExtResource("9_gf0j3")]
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
@@ -313,38 +133,26 @@ tilemap = NodePath("../TileMap")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "label_wave_center", "animation_player", "victory_screen", "next_wave_delay_timer") instance=ExtResource("10_jti0j")]
 tilemap = NodePath("../TileMap")
-label_wave = NodePath("../UI/LabelWave")
-label_enemies = NodePath("../UI/LabelEnemies")
+label_wave = NodePath("")
+label_enemies = NodePath("")
 wave_timer = NodePath("../WaveTimer")
 initial_delay_timer = NodePath("InitialDelayTimer")
-label_wave_center = NodePath("../UI/LabelWaveCenter")
-animation_player = NodePath("../UI/AnimationPlayer")
-victory_screen = NodePath("../UI/VictoryScreen")
+label_wave_center = NodePath("")
+animation_player = NodePath("")
+victory_screen = NodePath("")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_nlwmo")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
-PointsBar = NodePath("../UI/TurretSelector/PointsBar")
+label_points = NodePath("")
+PointsBar = NodePath("")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_buj31")
 tilemap = NodePath("../TileMap")
 
-[connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret1" to="UI" method="_on_button_turret_1_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret2" to="UI" method="_on_button_turret_2_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret3" to="UI" method="_on_button_turret_3_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret4" to="UI" method="_on_button_turret_4_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret5" to="UI" method="_on_button_turret_5_pressed"]
-[connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret6" to="UI" method="_on_button_turret_6_pressed"]
-[connection signal="pressed" from="UI/ButtonKillAll" to="UI" method="_on_button_kill_all_pressed"]
-[connection signal="pressed" from="UI/PauseButton" to="UI" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/MenuButton" to="UI" method="_on_menu_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 
-[editable path="UI"]
 [editable path="GameOverUI"]
 [editable path="EnemySpawner"]
