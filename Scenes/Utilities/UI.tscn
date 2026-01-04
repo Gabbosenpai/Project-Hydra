@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_hfhsn"]
 [ext_resource type="Texture2D" uid="uid://c0vbpknsm315p" path="res://Assets/Sprites/Options/download.png" id="2_mg6lk"]
 [ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_mg6lk"]
-[ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/Shaders/point_bar.gdshader" id="3_wunin"]
+[ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/point_bar.gdshader" id="3_wunin"]
 [ext_resource type="Texture2D" uid="uid://yo130ipmk2w8" path="res://Assets/Sprites/Options/Google-Noto-Emoji-Objects-62971-gear.1024.png" id="5_qwshj"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="6_h4kyy"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="7_1efrn"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=27 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
@@ -20,11 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="18_auemk"]
 [ext_resource type="PackedScene" uid="uid://dciw03lb6qvj2" path="res://Scenes/Login/login.tscn" id="19_7555j"]
 [ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="19_lmo3v"]
-
-[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="20_7555j"]
 [ext_resource type="PackedScene" uid="uid://cgwyfcruwr0ti" path="res://Scenes/Login/register.tscn" id="20_lmo3v"]
 [ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
-
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
 bg_color = Color(0.813258, 0.813258, 0.813258, 1)
@@ -217,7 +214,6 @@ rotation = 1.0464532
 position = Vector2(141, 875)
 
 [node name="Title" type="Node2D" parent="."]
-position = Vector2(0, 50)
 
 [node name="Engineers" type="Sprite2D" parent="Title"]
 position = Vector2(960, 125)
@@ -238,9 +234,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -430.0
-offset_top = 135.0
+offset_top = 85.0
 offset_right = 430.0
-offset_bottom = 443.0
+offset_bottom = 393.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -543,8 +539,6 @@ icon = ExtResource("13_e6g3s")
 flat = true
 icon_alignment = 1
 expand_icon = true
-
-[node name="Colorscale Filter" parent="." instance=ExtResource("20_7555j")]
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]

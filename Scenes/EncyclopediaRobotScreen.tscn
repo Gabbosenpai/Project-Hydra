@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k10m7sae6uup"]
+[gd_scene load_steps=10 format=3 uid="uid://k10m7sae6uup"]
 
 [ext_resource type="Script" uid="uid://cg1pqyhidk1ad" path="res://Scenes/encyclopedia_robot_screen.gd" id="1_v1qki"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="2_tjctc"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dc3j3rmm8h854" path="res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata.png" id="4_s4j6h"]
 [ext_resource type="Texture2D" uid="uid://depj0cpi7kstf" path="res://Assets/Sprites/Robots/Fire Hydrant/Firehydrant.png" id="5_m4umy"]
 [ext_resource type="Texture2D" uid="uid://bu71iov4gs1o4" path="res://Assets/Sprites/Robots/Romba/Romba.png" id="6_m4umy"]
-[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="7_bvdv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4x86"]
 bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
@@ -198,8 +197,6 @@ offset_top = -22.0
 offset_right = 235.0
 offset_bottom = 239.0
 texture = ExtResource("6_m4umy")
-
-[node name="Colorscale Filter" parent="." instance=ExtResource("7_bvdv8")]
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="WeedEater" to="." method="_on_weed_eater_pressed"]
