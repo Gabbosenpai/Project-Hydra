@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpwd2ie4hw630"]
+[gd_scene load_steps=24 format=3 uid="uid://dpwd2ie4hw630"]
 
 [ext_resource type="Script" uid="uid://doro4771j2o5w" path="res://Scripts/Base Scene Script/Lvl3.gd" id="1_ilo8m"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_mg6tb"]
@@ -157,6 +157,8 @@ PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("11_at4sb")
 tilemap = NodePath("../TileMap")
+
+[node name="Grayscale Filter" parent="." instance=ExtResource("19_c7emg")]
 
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
