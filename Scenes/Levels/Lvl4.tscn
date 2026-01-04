@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2k7axup34stp"]
+[gd_scene load_steps=23 format=3 uid="uid://b2k7axup34stp"]
 
 [ext_resource type="Script" uid="uid://c3k38umpnqf23" path="res://Scripts/Base Scene Script/Lvl4.gd" id="1_k7kxx"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_baary"]
@@ -157,8 +157,6 @@ PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_baary")
 tilemap = NodePath("../TileMap")
-
-[node name="Grayscale Filter" parent="." instance=ExtResource("19_bcyle")]
 
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
