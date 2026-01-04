@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b2k7axup34stp"]
+[gd_scene load_steps=28 format=3 uid="uid://b2k7axup34stp"]
 
 [ext_resource type="Script" uid="uid://c3k38umpnqf23" path="res://Scripts/Base Scene Script/Lvl4.gd" id="1_k7kxx"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_baary"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://m8fnpf42kpe4" path="res://Scenes/Utilities/enemy_spawner.tscn" id="10_0yc45"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_62725"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_baary"]
+[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="19_bcyle"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcyle"]
 texture = ExtResource("2_baary")
@@ -329,6 +330,8 @@ PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_baary")
 tilemap = NodePath("../TileMap")
+
+[node name="Grayscale Filter" parent="." instance=ExtResource("19_bcyle")]
 
 [connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret1" to="UI" method="_on_button_turret_1_pressed"]

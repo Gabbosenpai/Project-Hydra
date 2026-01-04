@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgwyfcruwr0ti"]
+[gd_scene load_steps=4 format=3 uid="uid://cgwyfcruwr0ti"]
 
 [ext_resource type="Script" uid="uid://dgpgt1b0cjlv" path="res://Scripts/Login/register.gd" id="1_d52cs"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_27gwr"]
+[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="3_63hco"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -90,6 +91,8 @@ offset_bottom = 171.0
 theme_override_fonts/font = ExtResource("2_27gwr")
 text = "Register"
 
-[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
+[node name="Colorscale Filter" parent="." instance=ExtResource("3_63hco")]
+
 [connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]

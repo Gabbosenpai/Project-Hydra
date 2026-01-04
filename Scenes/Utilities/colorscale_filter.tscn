@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://balhmck37efo"]
+
+[ext_resource type="Shader" uid="uid://ybgyoihmjwvm" path="res://Assets/Shaders/grayscale.gdshader" id="1_bt25q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_olbps"]
+shader = ExtResource("1_bt25q")
+
+[node name="Colorscale Filter" type="CanvasLayer"]
+
+[node name="Gray Filter" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_olbps")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

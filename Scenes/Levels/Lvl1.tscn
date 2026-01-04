@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=29 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/Base Scene Script/Lvl1.gd" id="1_s1ade"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_7nfcr"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="9_tk4nw"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="10_tf0td"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_uimwk"]
+[ext_resource type="PackedScene" uid="uid://balhmck37efo" path="res://Scenes/Utilities/colorscale_filter.tscn" id="20_7ehon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5nqqt"]
 texture = ExtResource("2_h4611")
@@ -333,6 +334,8 @@ PointsBar = NodePath("../UI/TurretSelector/PointsBar")
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_uimwk")
 tilemap = NodePath("../TileMap")
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("20_7ehon")]
 
 [connection signal="pressed" from="UI/ButtonRemove" to="UI" method="_on_button_remove_pressed"]
 [connection signal="pressed" from="UI/TurretSelector/HBoxContainer/ButtonTurret1" to="UI" method="_on_button_turret_1_pressed"]
