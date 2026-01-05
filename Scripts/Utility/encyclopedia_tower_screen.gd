@@ -118,7 +118,7 @@ func _unhandled_input(event):
 
 func _on_back_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/EncyclopediaFirstScreen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaFirstScreen.tscn")
 
 	
 func _on_jammer_pressed() -> void:

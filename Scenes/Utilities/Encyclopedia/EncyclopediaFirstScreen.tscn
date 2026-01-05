@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://5h4nur0meyjt"]
 
-[ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/EncyclopediaFirstScreen.gd" id="1_mxu24"]
+[ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Utility/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="4_x0f88"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="5_se8tl"]
