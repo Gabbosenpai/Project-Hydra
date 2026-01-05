@@ -57,7 +57,9 @@ func _on_data_ready():
 func _on_register_button_up() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	self.hide()
-	get_parent().get_node("Register").visible = true
+	var register = get_parent().get_node("Register")
+	register.reset_fields_register()
+	register.visible = true
 	#get_tree().change_scene_to_file("res://Scenes/Login/register.tscn")
 
 

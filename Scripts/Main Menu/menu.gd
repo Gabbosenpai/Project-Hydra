@@ -139,6 +139,7 @@ func _on_user_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	if(PlayFabManager.client_config.is_logged_in()):
 		var account_management = $MenuOption/AccountManagement
+		account_management.reset_label_()
 		$MenuOption/MenuButton.hide()
 		$MenuOption/MusicSlider.hide()
 		$MenuOption/SfxSlider.hide()
