@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://k10m7sae6uup"]
+[gd_scene load_steps=12 format=3 uid="uid://k10m7sae6uup"]
 
 [ext_resource type="Script" uid="uid://cg1pqyhidk1ad" path="res://Scripts/Utility/encyclopedia_robot_screen.gd" id="1_v1qki"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="2_cr2w7"]
 [ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="2_tjctc"]
 [ext_resource type="Texture2D" uid="uid://byw4mjba306yh" path="res://Assets/Sprites/Robots/Mecha Freezer/Mecha Freezer.png" id="3_skn1t"]
 [ext_resource type="Texture2D" uid="uid://dc3j3rmm8h854" path="res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata.png" id="4_s4j6h"]
@@ -73,21 +74,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1070.0
-offset_top = 242.0
-offset_right = -48.0
-offset_bottom = -193.0
+offset_left = 1075.0
+offset_top = 16.0
+offset_right = -43.0
+offset_bottom = -419.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_56vox")
+metadata/_edit_lock_ = true
 
 [node name="MonsterDescription" type="Label" parent="MonsterDescriptionPanel"]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 388.0
-offset_right = 707.0
-offset_bottom = 655.0
-theme_override_font_sizes/font_size = 32
+offset_left = -229.0
+offset_top = 152.0
+offset_right = 831.0
+offset_bottom = 497.0
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("2_cr2w7")
+theme_override_font_sizes/font_size = 42
 vertical_alignment = 1
 autowrap_mode = 3
 

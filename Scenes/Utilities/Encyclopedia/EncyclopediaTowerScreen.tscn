@@ -109,7 +109,7 @@ offset_left = 124.0
 offset_top = 388.0
 offset_right = 707.0
 offset_bottom = 655.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 vertical_alignment = 1
 autowrap_mode = 3
 

@@ -52,7 +52,11 @@ var monster_texts = {
 	"mecha_freezer": "Si dice che appaia nei centri abitati nelle notti in cui imperversano bufere di neve. Se bussa alla porta, non bisogna aprire per nessun motivo.",
 	"cassa_schierata": "Le sue urla si sentono a 10 km di distanza. Emette diversi suoni dalle numerose aperture sul suo corpo.",
 	"romba": "Ha gli arti superiori dotati di foglie affilate come rasoi e si muove agilmente fra i rami degli alberi per attaccare dall'alto i nemici.",
-	"fire_hydrant": "I cannoni sul suo guscio sparano getti d'acqua capaci di bucare l'acciaio."
+	"fire_hydrant": "Grazie a questo robot non dovrai mai più aspettare i vigili del fuoco per spegnere un incendio, ma ci penserà lui! Le sue braccia sono in grado di spruzzare getti d’acqua a pressione estremamente elevata per contrastare anche le fiamme più ostinate e grazie alle sue molle è in grado di raggiungere anche i roghi più alti. I vigili del fuoco sono scettici nel suo uso a causa dell’elevata probabilità che saltelli via a spegnere le sigarette dei fumatori alla prima occasione (acqua non inclusa nel prezzo)."
+	
+	
+
+
 	
 }
 
