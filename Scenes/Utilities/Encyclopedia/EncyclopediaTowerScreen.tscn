@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ex4t3xl6envv"]
+[gd_scene load_steps=13 format=3 uid="uid://ex4t3xl6envv"]
 
 [ext_resource type="Script" uid="uid://1itaq2o6e6b7" path="res://Scripts/Utility/encyclopedia_tower_screen.gd" id="1_l0238"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_56vox"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_g5eb7"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="5_o8leb"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="6_g5eb7"]
+[ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="7_bvcsp"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="7_v4lb0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4x86"]
@@ -203,6 +204,24 @@ offset_right = 235.0
 offset_bottom = 239.0
 texture = ExtResource("6_g5eb7")
 
+[node name="ToiletSilo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 538.0
+offset_right = 918.0
+offset_bottom = 790.0
+focus_mode = 0
+flat = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ToiletSilo"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -22.0
+offset_right = 213.0
+offset_bottom = 189.0
+texture = ExtResource("7_bvcsp")
+
 [node name="Colorscale Filter" parent="." instance=ExtResource("7_v4lb0")]
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
@@ -211,3 +230,4 @@ texture = ExtResource("6_g5eb7")
 [connection signal="pressed" from="HKCM" to="." method="_on_hkcm_pressed"]
 [connection signal="pressed" from="DeliveryDrone" to="." method="_on_delivery_drone_pressed"]
 [connection signal="pressed" from="SpaghettiCable" to="." method="_on_spaghetti_cable_pressed"]
+[connection signal="pressed" from="ToiletSilo" to="." method="_on_toilet_silo_pressed"]

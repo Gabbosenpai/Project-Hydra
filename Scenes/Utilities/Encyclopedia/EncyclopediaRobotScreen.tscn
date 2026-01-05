@@ -111,10 +111,10 @@ stretch_mode = 5
 
 [node name="WeedEater" type="Button" parent="."]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 263.0
-offset_right = 335.0
-offset_bottom = 515.0
+offset_left = 324.0
+offset_top = 233.0
+offset_right = 561.0
+offset_bottom = 485.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -129,10 +129,10 @@ texture = ExtResource("2_tjctc")
 
 [node name="MechaFreezer" type="Button" parent="."]
 layout_mode = 0
-offset_left = 428.0
-offset_top = 271.0
-offset_right = 665.0
-offset_bottom = 523.0
+offset_left = 576.0
+offset_top = 255.0
+offset_right = 813.0
+offset_bottom = 507.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -183,10 +183,10 @@ texture = ExtResource("5_m4umy")
 
 [node name="Romba" type="Button" parent="."]
 layout_mode = 0
-offset_left = 642.0
-offset_top = 489.0
-offset_right = 879.0
-offset_bottom = 741.0
+offset_left = 100.0
+offset_top = 251.0
+offset_right = 337.0
+offset_bottom = 503.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true

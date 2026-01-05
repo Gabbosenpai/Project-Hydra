@@ -10,16 +10,18 @@ var monster_textures = {
 	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
 	"hkcm": preload("res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"),
 	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png"),
-	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png")
+	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png"),
+	"toilet_silo": preload("res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png")
 }
 
 #valore livello massimo per sbloccare una voce
 var tower_unlock_levels = {
 	"bolt_shooter": 2,         
 	"delivery_drone": 2,
-	"hkcm": 3,
-	"jammer": 4,
-	"spaghetti_cable": 5
+	"hkcm": 4,
+	"jammer": 3,
+	"spaghetti_cable": 5,
+	"toilet_silo": 6
 }
 
 
@@ -30,7 +32,8 @@ var tower_unlock_levels = {
 	"delivery_drone": $DeliveryDrone,
 	"hkcm": $HKCM,
 	"jammer": $Jammer,
-	"spaghetti_cable": $SpaghettiCable
+	"spaghetti_cable": $SpaghettiCable,
+	"toilet_silo": $ToiletSilo
 }
 
 var monster_names = {
@@ -38,7 +41,8 @@ var monster_names = {
 	"delivery_drone": "DELIVERY DRONE",
 	"hkcm": "HOT KAWAII COFFEE MACHINE",
 	"jammer": "JAMMER",
-	"spaghetti_cable": "SPAGHETTI CABLE"
+	"spaghetti_cable": "SPAGHETTI CABLE",
+	"toilet_silo": "TOILET SILO"
 }
 
 
@@ -68,7 +72,8 @@ var monster_texts = {
 	"avevamo progettato questo nuovo tipo di jammer ma le misure "+
 	"invece che in centimetri le abbiamo scritte in metri!",
 	
-	"spaghetti_cable": "Le liane blu che nascondono il suo corpo sono rivestite di peli sottili. Si dice che soffra il solletico."
+	"spaghetti_cable": "Le liane blu che nascondono il suo corpo sono rivestite di peli sottili. Si dice che soffra il solletico.",
+	"toilet_silo":"È nato da un sacchetto della spazzatura che ha subito un cambiamento chimico a causa delle scorie industriali."
 }
 
 
@@ -137,6 +142,10 @@ func _on_hkcm_pressed() -> void:
 
 func _on_spaghetti_cable_pressed() -> void:
 	show_description("spaghetti_cable")
+
+func _on_toilet_silo_pressed() -> void:
+	show_description("toilet_silo")
+
 
 #per aggiornare dinamicamente l'enciclopedia
 func update_buttons():

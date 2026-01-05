@@ -25,11 +25,11 @@ var monster_names = {
 
 #valore livello massimo per sbloccare una voce
 var robot_unlock_levels = {
-	"weed_eater": 2,         
-	"mecha_freezer": 2,
-	"fire_hydrant": 3,
-	"romba": 4,
-	"cassa_schierata": 5
+	"romba": 2,
+	"weed_eater": 3,         
+	"mecha_freezer": 4,
+	"fire_hydrant": 5,
+	"cassa_schierata": 6
 }
 
 
