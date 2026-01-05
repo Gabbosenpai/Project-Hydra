@@ -71,6 +71,8 @@ func _on_back_to_login():
 func _on_back_button_up() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	self.hide()
+	var login = get_parent().get_node("Login")
+	login.reset_fields_login()
 	get_parent().get_node("Login").visible = true
 	reset_fields_register()
 	#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")

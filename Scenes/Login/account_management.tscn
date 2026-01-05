@@ -32,21 +32,25 @@ layout_mode = 2
 [node name="StatusLabel" type="Label" parent="PopupMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vjpih")
+theme_override_font_sizes/font_size = 24
 text = "Gestione account"
 
 [node name="RemoveAccount" type="Button" parent="PopupMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vjpih")
+theme_override_font_sizes/font_size = 24
 text = "Remove"
 
 [node name="Logout" type="Button" parent="PopupMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vjpih")
+theme_override_font_sizes/font_size = 24
 text = "Logout"
 
 [node name="BackMainMenu" type="Button" parent="PopupMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vjpih")
+theme_override_font_sizes/font_size = 24
 text = "Back To Main Menu"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
