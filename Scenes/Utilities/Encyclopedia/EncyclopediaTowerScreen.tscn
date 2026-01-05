@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ex4t3xl6envv"]
+[gd_scene load_steps=14 format=3 uid="uid://ex4t3xl6envv"]
 
 [ext_resource type="Script" uid="uid://1itaq2o6e6b7" path="res://Scripts/Utility/encyclopedia_tower_screen.gd" id="1_l0238"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_56vox"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="3_s63nn"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="4_ahmee"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_g5eb7"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="5_o8leb"]
@@ -109,6 +110,7 @@ offset_left = 124.0
 offset_top = 388.0
 offset_right = 707.0
 offset_bottom = 655.0
+theme_override_fonts/font = ExtResource("3_s63nn")
 theme_override_font_sizes/font_size = 40
 vertical_alignment = 1
 autowrap_mode = 3
