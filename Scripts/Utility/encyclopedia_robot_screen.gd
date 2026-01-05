@@ -45,16 +45,15 @@ var robot_unlock_levels = {
 
 var monster_texts = {
 	
-	"weed_eater": "Questo è il Weed Eater! "+
-	"Due ruote motrici, tre lame che fanno ognuna 800 rpm "+
-	"e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
-	
-	"mecha_freezer": "Si dice che appaia nei centri abitati nelle notti in cui imperversano bufere di neve. Se bussa alla porta, non bisogna aprire per nessun motivo.",
-	"cassa_schierata": "Le sue urla si sentono a 10 km di distanza. Emette diversi suoni dalle numerose aperture sul suo corpo.",
-	"romba": "Ha gli arti superiori dotati di foglie affilate come rasoi e si muove agilmente fra i rami degli alberi per attaccare dall'alto i nemici.",
-	"fire_hydrant": "Grazie a questo robot non dovrai mai più aspettare i vigili del fuoco per spegnere un incendio, ma ci penserà lui! Le sue braccia sono in grado di spruzzare getti d’acqua a pressione estremamente elevata per contrastare anche le fiamme più ostinate e grazie alle sue molle è in grado di raggiungere anche i roghi più alti. I vigili del fuoco sono scettici nel suo uso a causa dell’elevata probabilità che saltelli via a spegnere le sigarette dei fumatori alla prima occasione (acqua non inclusa nel prezzo)."
+	"weed_eater": "Dotato di tre possenti lame d’acciaio estremamente affilate. Le lame sono grado di compiere ben 800 giri al minuto e falciare anche la più insidiosa delle erbacce. Non accarezzare le sue lame anche se possono sembrare dei bei baffoni (l’Azienda non è responsabile in caso della perdita di arti, leggere attentamente il foglio illustrativo non presente nella confezione).",
+	"mecha_freezer": "È più grosso! È più cattivo! Signore e signori,questo è troppo anche per l’estate più torrida che abbiate mai vissuto! Il nuovo modello di Mecha Freezer è progettato per farti sentire al fresco come se fossi in mezzo ad una bufera di neve e può raggiungere qualsiasi luogo grazie ai suoi possenti cingoli (necessita comunque di essere collegato ad una presa per il corretto funzionamento).",
+	"cassa_schierata": "Questa cassa ha uno stile moderno e selvaggio allo stesso tempo, per alcuni incute timore, per altri ispira sicurezza. Purtroppo crede a tutti gli ordini del software e li esegue sempre senza mai metterli in discussione, se provi a contraddirlo ti urla addosso. Crede che si stava meglio quando c’era lui a dirigere la musica, ovvero la versione 2.2 del software.",
+	"romba": "Il suo unico scopo è divorare anche la più piccola briciola presente sulla faccia della terra. Non si fermerà dinanzi a nulla, nemmeno davanti a un muro! (si prega di non posizionare ostacoli davanti al suo passaggio per un corretto funzionamento).",
+	"fire_hydrant": "Non dovrai aspettare mai più i pompieri! Le braccia del Fire Hydrant sono in grado di spruzzare getti d’acqua ad alta pressione per contrastare anche le fiamme più ostinate e, grazie alle sue molle, neanche il fuoco ad alta quota è un problema! I pompieri sono scettici nel suo uso a causa dell’elevata probabilità che saltelli via a domare mozziconi di sigaretta roventi sui marciapiedi (acqua non inclusa)."
 	
 	
+
+
 
 
 	
