@@ -185,8 +185,10 @@ func spawn_scrap_on_incinerate() -> void:
 		if points_to_earn > 0:
 			var scrap_instance = scrap_scene.instantiate()
 			var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
+			var scrap_collision = scrap_instance.get_node_or_null("CollisionShape2D")
 			if scrap_sprite:
-				scrap_sprite.scale = Vector2(1.0, 1.0)
+				scrap_sprite.scale = Vector2(1.5, 1.5)
+				scrap_collision.scale = Vector2(2.0, 2.0)
 				
 				# Aggiungi al nodo genitore (Main/Level)
 				get_parent().call_deferred("add_child", scrap_instance)

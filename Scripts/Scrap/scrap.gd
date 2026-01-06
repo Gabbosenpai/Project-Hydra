@@ -74,8 +74,8 @@ func _on_lampeggiante_timeout():
 func lampeggia():
 	var tween = create_tween()
 	tween.set_loops()
-	tween.tween_property(self, "modulate:a", 0.0, 0.35)
-	tween.tween_property(self, "modulate:a", 1.0, 0.35)
+	tween.tween_property(self, "modulate:a", 0.0, 0.25)
+	tween.tween_property(self, "modulate:a", 1.0, 0.25)
 
 
 # Funzione che si occupa dell'animazione dello spawn della scrap
