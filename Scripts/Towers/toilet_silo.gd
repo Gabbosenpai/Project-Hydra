@@ -7,7 +7,7 @@ extends Tower
 @export var ts_recharge_time: float = 10.0 # Tempo di ricarica 
 
 # Effetto sonoro sparo del proiettile
-var ts_shoot_sfx: AudioStream = preload("res://Assets/Sound/SFX/explosion.wav") 
+var ts_shoot_sfx: AudioStream = preload("res://Assets/Sound/SFX/sturamissile1.mp3") 
 
 
 func _ready() -> void:

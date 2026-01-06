@@ -31,6 +31,7 @@ var last_touch_position: Vector2 = Vector2.ZERO
 var dic = {} # Inizializzato vuoto, verrà assegnato da GridInitializer
 var incinerator_scene: PackedScene = preload("res://Scenes/Utilities/incinerator.tscn")
 var tower_construcion: PackedScene = preload("res://Scenes/Towers/tower_construction.tscn")
+var placing_sfx: AudioStream = preload("res://Assets/Sound/SFX/placingTower.mp3")
 var active_incinerators = {} # Mappa: {row_y: incinerator_instance}
 var row_locked_by_robot = {}
 var turret_scenes = {
@@ -230,6 +231,7 @@ func place_turret(cell_key: Vector2i):
 		await get_tree().process_frame
 		
 		if construction:
+			AudioManager.play_sfx(placing_sfx)
 			print("DEBUG: Sprite del drone pronto. Avvio animazioni.")
 			var animation = construction.get_node("AnimatedSprite2D")
 			var construction_timer = Timer.new()

@@ -17,7 +17,7 @@ var tower_current_health: float
 var turret_key: String = ""
 var refund_percentage: float = 0.5
 var scrap_scene: PackedScene = preload("res://Scenes/Utilities/Scrap.tscn")
-
+var spaghettiCable_sfx: AudioStream = preload("res://Assets/Sound/SFX/spaghettiCable.mp3")
 # Nodi-Figlio della scena
 @onready var tower_sprite: AnimatedSprite2D = $TowerSprite
 @onready var tower_hitbox: CollisionShape2D = $TowerHitbox
@@ -35,6 +35,7 @@ func _process(_delta: float) -> void:
 
 #Funzione che fa prendere danno allo torretta
 func take_damage(amount):
+	
 	tower_current_health -= float(amount) * (1 - dmg_reduction)
 	flash_bright()
 	print("Tower HP:", tower_current_health)
@@ -52,6 +53,7 @@ func die():
 
 # Modula lo sprite per dare feedback visivo
 func flash_bright():
+	#AudioManager.play_sfx(spaghettiCable_sfx)
 	tower_sprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
 	await get_tree().create_timer(0.1).timeout
 	tower_sprite.modulate = Color(1, 1, 1) # Normale

@@ -6,13 +6,14 @@ var cell_position: Vector2i
 var next_phase: int
 var animation_name: String
 var background_animation: String = ""
-
+var incinerator_sfx: AudioStream = preload("res://Assets/Sound/SFX/incinerator.wav")
 @onready var step_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var blast_sprite: AnimatedSprite2D = $Blast
 
 
 func _ready():
 	if animation_name == "blast":
+		AudioManager.play_sfx(incinerator_sfx)
 		# Se l'animazione è 'blast', usiamo la sprite Blast e la rendiamo visibile
 		blast_sprite.visible = true
 		step_sprite.visible = true
