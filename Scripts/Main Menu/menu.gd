@@ -1,3 +1,4 @@
+class_name Menu
 extends CanvasLayer
 
 # Riferimenti ai pulsanti del menu
@@ -7,6 +8,7 @@ extends CanvasLayer
 @onready var encyclopedia_button = $VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxContainer
+@onready var admin_timer = Timer.new()
 @export var mute_music_button: Button
 @export var mute_sfx_button: Button
 @export var option_menu: Panel
@@ -18,11 +20,19 @@ extends CanvasLayer
 @export var sfx_on_sprite: Sprite2D
 @export var sfx_off_sprite: Sprite2D
 
-
-
+static var adminMode = false 
+var adminButtonPressed = 0
 
 # Funzione che inizializza il menu principale
 func _ready():
+	if(adminMode == true):
+		adminMode = true
+	else:
+		adminMode = false
+	add_child(admin_timer)
+	admin_timer.wait_time = 5.0
+	admin_timer.one_shot = true
+	admin_timer.timeout.connect(_on_admin_timer_timeout)
 	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	AudioManager.play_music(menu_music)# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
 	_sync_sliders_with_audio()
@@ -192,3 +202,18 @@ func toggle_main_options_ui(boolean: bool):
 	
 	if show:
 		update_user_display()
+
+
+func _on_admin_button_pressed() -> void:
+
+	adminButtonPressed += 1
+	admin_timer.start()
+	
+	if(adminButtonPressed >= 7):
+		adminMode = true
+		admin_timer.stop()
+		print("ADMIN MODE ACTIVATED!")
+		
+
+func _on_admin_timer_timeout():
+	adminButtonPressed = 0

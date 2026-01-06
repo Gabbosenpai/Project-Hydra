@@ -556,6 +556,14 @@ expand_icon = true
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("23_8rq7v")]
 
+[node name="AdminButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1650.0
+offset_top = 917.0
+offset_right = 1915.0
+offset_bottom = 1073.0
+action_mode = 0
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
@@ -568,3 +576,4 @@ expand_icon = true
 [connection signal="pressed" from="MenuOption/MuteSFXButton" to="." method="_on_mute_sfx_button_pressed"]
 [connection signal="pressed" from="MenuOption/UserButton" to="." method="_on_user_button_pressed"]
 [connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="AdminButton" to="." method="_on_admin_button_pressed"]
