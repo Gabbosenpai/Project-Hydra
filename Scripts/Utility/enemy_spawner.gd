@@ -48,7 +48,7 @@ const TILE_SIZE = 160
 const INCINERATE_COLUMN_THRESHOLD: float = 9.0
 var INCINERATE_X_LIMIT: float
 var row_weights = []
-var current_wave_fixed_pool = {}
+var remaining_enemies_queue = {}
 
 func _process(delta):
 	# Diminuisce lentamente tutti i pesi nel tempo
@@ -103,18 +103,34 @@ func start_wave():
 		emit_signal("wave_completed", current_wave)
 		print("✅ Segnale 'wave_completed' emesso (Inizio Onda ", current_wave, ").")
 	
+	#Recupera i dati (quanti nemici e ogni quanto tempo) dall'array 'waves'
 	var wave = waves[current_wave - 1]
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
 	
-	current_wave_fixed_pool.clear()
+	#Svuota la coda dell'ondata precedente
+	remaining_enemies_queue.clear()
+	
+	# Recupera i tipi di nemici permessi per questo specifico livello
 	var pool = level_enemy_pool.get(current_level, ["romba"])
+	
+	#base_share: quanti nemici spettano "di base" a ogni tipologia (divisione intera)
 	var base_share = enemies_to_spawn / pool.size()
+	
+	## remainder: i nemici che avanzano se la divisione non è perfetta (resto)
 	var remainder = enemies_to_spawn % pool.size()
 	
+	# riempimento della coda di spawn
 	for i in range(pool.size()):
 		var type = pool[i]
-		current_wave_fixed_pool[type] = base_share + (1 if i < remainder else 0)
+		var quantity = base_share
+		
+		# Distribuisce i nemici rimasti dal resto uno alla volta ai primi tipi della lista
+		if i < remainder:
+			quantity += 1
+		
+		# Registra nel dizionario: "TipoNemico": QuantitàFissa
+		remaining_enemies_queue[type] = quantity
 	
 	is_wave_active = true
 	
@@ -146,20 +162,27 @@ func _on_next_wave_delay_timeout():
 
 
 func spawn_enemy():
+	#Selezione del tipo da spawnare
 	var available_types = []
-	for type in current_wave_fixed_pool:
-		if current_wave_fixed_pool[type] > 0:
+	#Controlla nel dizionario quali tipi hanno ancora quantità > 0
+	for type in remaining_enemies_queue:
+		if remaining_enemies_queue[type] > 0:
 			available_types.append(type)
-	
+	#Se non ci sono più nemici da spawnare esce dalla funzione
 	if available_types.is_empty(): return
 	
+	# Sceglie a caso uno dei tipi disponibili e scala 1 dal tipo di nemico scelto per l'ondata
 	var choice = available_types.pick_random()
-	current_wave_fixed_pool[choice] -= 1
+	remaining_enemies_queue[choice] -= 1
 	
+	#Chiama la funzione per trovare la riga meno affollata
 	var row = _get_weighted_row()
+	#Aumenta il peso della riga scelta per rendere meno probabile lo spawn immediato di un altro nemico qui
 	row_weights[row] += weight_penalty
 	
+	#Crea l'istanza della scena corrispondente al robot scelto
 	var enemy = all_enemy_scenes[choice].instantiate()
+	
 	var spawn_cell = Vector2i(GameConstants.COLUMN + 2, row)
 	var center_pos = tilemap.map_to_local(spawn_cell)
 	enemy.global_position = tilemap.to_global(center_pos)
@@ -277,23 +300,28 @@ func check_enemies_for_next_wave():
 			emit_signal("level_completed")
 
 func _get_weighted_row() -> int:
+	# Lista che conterrà gli indici delle righe "migliori" (quelle meno affollate)
 	var best_rows = []
+	
+	# Inizializziamo il peso minimo prendendo come riferimento il valore della prima riga
 	var min_weight = row_weights[0]
 	
-	# Trova il peso minimo attuale
+	# Cicliamo attraverso tutti i pesi registrati per trovare il valore più basso attuale
 	for w in row_weights:
 		if w < min_weight:
 			min_weight = w
 			
-	# Prendi tutte le righe che hanno quel peso minimo (o molto vicino)
+	# Identifichiamo tutte le righe che hanno il peso minimo
 	for i in range(row_weights.size()):
 		if row_weights[i] <= min_weight:
 			best_rows.append(i)
 	
-	# Scegli a caso tra le migliori righe disponibili
+	# Tra tutte le righe migliori identificate, ne scegliamo una a caso. Per evitare che i nemici appaiano sempre nella stessa riga se sono tutte libere.
 	return best_rows[randi() % best_rows.size()]
 
 func _on_enemy_defeated_with_row(row_index: int):
-	# Diminuisce il peso della riga quando il nemico muore
+	# Quando un nemico viene sconfitto, riduciamo il peso della riga in cui si trovava.
+	# Sottraiamo il 'weight_penalty' per annullare l'aumento di peso dato allo spawn.
+	# Usiamo max(0.0, ...) per assicurarci che il peso non diventi mai un numero negativo.
 	row_weights[row_index] = max(0.0, row_weights[row_index] - weight_penalty)
 	_on_enemy_defeated()
