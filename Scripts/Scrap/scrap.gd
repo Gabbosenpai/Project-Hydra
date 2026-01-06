@@ -8,6 +8,7 @@ extends Area2D
 
 @onready var lifetime_timer := Timer.new()
 
+var scrap_sfx: AudioStream = preload("res://Assets/Sound/SFX/scrap.mp3") 
 
 # Funzione che inizializza lo scrap e il suo timer affinche poi scompaia  
 func _ready():
@@ -44,6 +45,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 # Funzione dopo il clic del mouse fa aumentare i punti 
 # che si hanno per posizionare le torrette e poi dealloca la scrap
 func collect_scrap():
+	AudioManager.play_sfx(scrap_sfx)
 	# Utilizziamo la funzione earn_points() del PointManager
 	if point_manager and point_manager.has_method("earn_points"):
 		# Assicurati che 'point_manager' sia un nodo che ha il metodo earn_points
