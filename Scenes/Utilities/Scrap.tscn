@@ -9,6 +9,7 @@ size = Vector2(18, 18)
 [node name="Area2D" type="Area2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_5chpn")
+incinerator_distance = Vector2(110, 35)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

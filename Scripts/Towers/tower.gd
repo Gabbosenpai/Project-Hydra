@@ -184,6 +184,8 @@ func spawn_scrap_on_incinerate() -> void:
 		var points_to_earn: int = pm.refund_points
 		if points_to_earn > 0:
 			var scrap_instance = scrap_scene.instantiate()
+			if scrap_instance:
+				scrap_instance.scrap_value = points_to_earn
 			var scrap_sprite = scrap_instance.get_node_or_null("Sprite2D")
 			var scrap_collision = scrap_instance.get_node_or_null("CollisionShape2D")
 			if scrap_sprite:
@@ -195,7 +197,6 @@ func spawn_scrap_on_incinerate() -> void:
 				
 				# Assegna la posizione globale e i valori
 				scrap_instance.global_position = global_position
-				scrap_instance.scrap_value = points_to_earn
 				scrap_instance.point_manager = pm
 				scrap_instance.z_index = 100 
 				

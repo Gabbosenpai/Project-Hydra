@@ -4,7 +4,8 @@ extends Area2D
 @export var scrap_value: int = 50
 @export var lifetime: float = 10.0   # tempo di vita in secondi
 @export var lampeggiante: float = 7   # Quanto tempo lampeggia
-@export var hop_distance: Vector2 = Vector2(30, 40) # spostamento in basso a destra
+@export var hop_distance: Vector2 = Vector2(20, 15) # spostamento in basso a destra
+@export var incinerator_distance: Vector2 = Vector2(20, 15) # spostamento in basso a destra
 @export var point_manager: Node # viene settato da chi spawna il rottame
 
 @onready var lifetime_timer: Timer = $Lifetime
@@ -26,7 +27,10 @@ func _ready():
 	lampeggiante_timer.timeout.connect(_on_lampeggiante_timeout)
 	
 	# Animazione spawn / hop
-	play_spawn_animation()
+	if scrap_value >= 50:
+		play_spawn_animation()
+	else:
+		play_incinerator_spawn_animation()
 
 
 # Funzione che cattura il clic del mouse e consente di prendere lo scrap   
@@ -89,10 +93,26 @@ func play_spawn_animation():
 	
 	# Calcola il bordo della pista come offset
 	
-	var hop_offset = Vector2(20 * direction, 15) # Piccolo spostamento verso dx/sx
+	var hop_offset = Vector2(hop_distance.x * direction, hop_distance.y) # Piccolo spostamento verso dx/sx
 	# Punto medio più alto per creare parabola
-	var mid_pos = position + Vector2(hop_offset.x / 2, -20) 
+	var mid_pos = position + Vector2(hop_offset.x / 2, hop_offset.y - 35) 
 	var target_pos = position + hop_offset
+	
+	# Tween lungo parabola: salita e discesa
+	tween.tween_property(self, "position", mid_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", target_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	
+	# Piccolo rimbalzo finale
+	tween.tween_property(self, "position", target_pos + Vector2(0, -5), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", target_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+
+func play_incinerator_spawn_animation():
+	var tween = create_tween()
+	
+	# Punto medio più alto per creare parabola
+	var mid_pos = position + Vector2(incinerator_distance.x / 2, incinerator_distance.y - 75) 
+	var target_pos = position + incinerator_distance
 	
 	# Tween lungo parabola: salita e discesa
 	tween.tween_property(self, "position", mid_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
