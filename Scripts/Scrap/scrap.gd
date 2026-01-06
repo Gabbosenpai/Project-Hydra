@@ -3,10 +3,13 @@ extends Area2D
 # Variabili della Scrap     
 @export var scrap_value: int = 50
 @export var lifetime: float = 10.0   # tempo di vita in secondi
+@export var lampeggiante: float = 7   # Quanto tempo lampeggia
 @export var hop_distance: Vector2 = Vector2(30, 40) # spostamento in basso a destra
 @export var point_manager: Node # viene settato da chi spawna il rottame
 
-@onready var lifetime_timer := Timer.new()
+@onready var lifetime_timer: Timer = $Lifetime
+@onready var lampeggiante_timer: Timer = $Lampeggiante
+
 
 
 # Funzione che inizializza lo scrap e il suo timer affinche poi scompaia  
@@ -14,13 +17,13 @@ func _ready():
 	input_pickable = true
 	connect("input_event", Callable(self, "_on_input_event"))
 	#print("Scrap ready at:", global_position, " z:", z_index)
-	
 	# Timer per far scomparire il rottame
-	lifetime_timer.one_shot = true
 	lifetime_timer.wait_time = lifetime
-	add_child(lifetime_timer)
+	lampeggiante_timer.wait_time = lampeggiante
 	lifetime_timer.start()
+	lampeggiante_timer.start()
 	lifetime_timer.timeout.connect(_on_lifetime_timeout)
+	lampeggiante_timer.timeout.connect(_on_lampeggiante_timeout)
 	
 	# Animazione spawn / hop
 	play_spawn_animation()
@@ -52,14 +55,27 @@ func collect_scrap():
 	queue_free()
 
 
-# Funzione che dealloca la scrap a tempo scaduto se non si clicca su di essa
+# Funzione che dealloca la scrap a tempo scaduto se non si clicca su di esso
 func _on_lifetime_timeout():
-	# ASSEGNA I PUNTI PRIMA DI DEALLOCARE (Raccolta automatica per timeout)
+	# NON ASSEGNARE I PUNTI 
 	if point_manager and point_manager.has_method("earn_points"):
-		# Invece di farla "sparire e basta", la consideriamo "raccolta automaticamente"
-		point_manager.earn_points(scrap_value)
-		print("Scrap scaduto, punti assegnati automaticamente: ", scrap_value)
+		# Scrap scade, punti non assegnati
+		print("Scrap scaduto, punti PERSI: ", scrap_value)
 	queue_free()
+
+
+# Scrap segnala che deve iniziare a lampeggiare perchè sta per scomparire
+func _on_lampeggiante_timeout():
+	if has_method("lampeggia"):
+		lampeggia()
+
+
+# Fa lampeggiare lo scrap: sta per scomparire
+func lampeggia():
+	var tween = create_tween()
+	tween.set_loops()
+	tween.tween_property(self, "modulate:a", 0.0, 0.35)
+	tween.tween_property(self, "modulate:a", 1.0, 0.35)
 
 
 # Funzione che si occupa dell'animazione dello spawn della scrap
