@@ -3,7 +3,7 @@ extends Bullet
 
 @export var sturamissile_speed: float = 350 # Velocità del proiettile
 @export var sturamissile_damage: int = 42 # Danno del proiettile
-
+var sturamissile_sfx: AudioStream = preload("res://Assets/Sound/SFX/sturamissile_explosion.mp3")
 var armed: bool
 var explosion_range: Array
 
@@ -48,6 +48,7 @@ func explode() -> void:
 				and is_instance_valid(robot) 
 				and robot.has_method("take_damage")
 		):
+			AudioManager.play_sfx(sturamissile_sfx)
 			robot.take_damage(damage)
 
 
