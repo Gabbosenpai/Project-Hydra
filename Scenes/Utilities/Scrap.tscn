@@ -9,6 +9,7 @@ size = Vector2(18, 18)
 [node name="Area2D" type="Area2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_5chpn")
+incinerator_distance = Vector2(110, 35)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,4 +17,11 @@ texture_filter = 1
 texture = ExtResource("2_1exl5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.25, 1.25)
 shape = SubResource("RectangleShape2D_1exl5")
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Lampeggiante" type="Timer" parent="."]
+one_shot = true
