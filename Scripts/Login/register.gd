@@ -10,17 +10,17 @@ func _on_register_button_up() -> void:
 	var email = $Email.text
 	var password = $Password.text
 	if username.length() < 3:
-		$StatusLabel.text = "Username troppo corto (min 3 car.)"
+		$StatusLabel.text = "Username troppo corto\n(min 3 car.)"
 		$StatusLabel.modulate = Color.ORANGE
 		return
 		
 	if not "@" in email or not "." in email:
-		$StatusLabel.text = "Inserisci un'email valida!"
+		$StatusLabel.text = "Email non valida!"
 		$StatusLabel.modulate = Color.ORANGE
 		return
 		
 	if $Password.text.length() < 6:
-		$StatusLabel.text = "Password troppo corta (min 6 car.)"
+		$StatusLabel.text = "Password troppo corta\n(min 6 car)"
 		$StatusLabel.modulate = Color.ORANGE
 		return
 
@@ -53,7 +53,7 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 		$StatusLabel.modulate = Color.RED
 
 func _on_registered(result: RegisterPlayFabUserResult):
-	$StatusLabel.text = "Registrazione completata con successo!"
+	$StatusLabel.text = "Registrazione completata"
 	$StatusLabel.modulate = Color.GREEN
 	PlayFabManager.client_config.session_ticket = result.SessionTicket
 	PlayFabManager.client_config.master_player_account_id = result.PlayFabId

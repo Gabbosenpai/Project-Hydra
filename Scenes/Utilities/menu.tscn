@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dodchjw6xsndv" path="res://Assets/Sprites/UI/Menu/Options.png" id="13_e6g3s"]
 [ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="14_qtn2w"]
 [ext_resource type="PackedScene" uid="uid://d0n3qorj4uy87" path="res://Scenes/Utilities/Title Stars/title_star_b.tscn" id="15_nd5l3"]
-[ext_resource type="Texture2D" uid="uid://dogxodk1oegrl" path="res://Assets/Sprites/UI/Menu Panel Flipped.png" id="16_2uc32"]
+[ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="16_2uc32"]
 [ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="16_gh4pp"]
 [ext_resource type="PackedScene" uid="uid://cdwqym4ehbpbd" path="res://Scenes/Utilities/Title Stars/title_star_d.tscn" id="17_7555j"]
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="18_auemk"]
@@ -394,13 +394,14 @@ text = "No"
 
 [node name="MenuOption" type="Panel" parent="."]
 process_mode = 3
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -535.0
-offset_top = -359.0
+offset_top = -559.0
 offset_right = 534.0
 offset_bottom = 359.0
 grow_horizontal = 2
@@ -416,10 +417,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -81.0
-offset_right = 104.0
-offset_bottom = -13.0
+offset_left = -102.5
+offset_top = -118.0
+offset_right = 105.5
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -437,9 +438,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -124.5
-offset_top = -149.0
+offset_top = -49.0
 offset_right = 145.5
-offset_bottom = -124.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -452,9 +453,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -124.5
-offset_top = 1.0
+offset_top = 101.0
 offset_right = 145.5
-offset_bottom = 26.0
+offset_bottom = 126.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -466,9 +467,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -279.0
-offset_top = -199.0
+offset_top = -99.0
 offset_right = -154.0
-offset_bottom = -74.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -486,9 +487,9 @@ texture = ExtResource("4_873nt")
 [node name="Musictext" type="Label" parent="MenuOption"]
 layout_mode = 0
 offset_left = 525.0
-offset_top = 180.0
+offset_top = 380.0
 offset_right = 571.0
-offset_bottom = 203.0
+offset_bottom = 403.0
 theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
 text = "Music"
 horizontal_alignment = 1
@@ -496,9 +497,9 @@ horizontal_alignment = 1
 [node name="SFXtext" type="Label" parent="MenuOption"]
 layout_mode = 0
 offset_left = 493.0
-offset_top = 330.0
+offset_top = 530.0
 offset_right = 598.0
-offset_bottom = 353.0
+offset_bottom = 553.0
 theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
 text = "Sound Effects"
 horizontal_alignment = 1
@@ -506,9 +507,9 @@ horizontal_alignment = 1
 [node name="MuteSFXButton" type="Button" parent="MenuOption"]
 layout_mode = 0
 offset_left = 255.5
-offset_top = 310.0
+offset_top = 510.0
 offset_right = 380.5
-offset_bottom = 435.0
+offset_bottom = 635.0
 
 [node name="SFXon" type="Sprite2D" parent="MenuOption/MuteSFXButton"]
 position = Vector2(62.999996, 62.999992)
@@ -524,9 +525,9 @@ texture = ExtResource("6_pi1c3")
 [node name="UserButton" type="Button" parent="MenuOption"]
 layout_mode = 0
 offset_left = 255.5
-offset_top = 457.0
+offset_top = 657.0
 offset_right = 380.5
-offset_bottom = 582.0
+offset_bottom = 782.0
 
 [node name="UserImage" type="Sprite2D" parent="MenuOption/UserButton"]
 position = Vector2(62.999996, 62.999992)
@@ -536,9 +537,9 @@ texture = ExtResource("5_s8um3")
 [node name="UserText" type="Label" parent="MenuOption"]
 layout_mode = 0
 offset_left = 407.5
-offset_top = 486.0
+offset_top = 686.0
 offset_right = 723.0
-offset_bottom = 561.0
+offset_bottom = 761.0
 theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
 text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
 horizontal_alignment = 1
@@ -547,10 +548,26 @@ autowrap_mode = 2
 [node name="Login" parent="MenuOption" instance=ExtResource("19_7555j")]
 visible = false
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Register" parent="MenuOption" instance=ExtResource("20_lmo3v")]
 visible = false
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 191.0
+offset_right = 0.5
+offset_bottom = 191.0
 
 [node name="AccountManagement" parent="MenuOption" instance=ExtResource("21_8rq7v")]
 visible = false
