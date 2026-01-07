@@ -20,7 +20,7 @@ extends CanvasLayer
 @export var sfx_on_sprite: Sprite2D
 @export var sfx_off_sprite: Sprite2D
 
-static var adminMode = false 
+static var adminMode = true 
 var adminButtonPressed = 0
 
 # Funzione che inizializza il menu principale
