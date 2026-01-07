@@ -53,7 +53,7 @@ func die():
 
 # Modula lo sprite per dare feedback visivo
 func flash_bright():
-	#AudioManager.play_sfx(spaghettiCable_sfx)
+	AudioManager.play_sfx(spaghettiCable_sfx)
 	tower_sprite.modulate = Color(1.3, 1.3, 1.3) # Più luminoso del normale
 	await get_tree().create_timer(0.1).timeout
 	tower_sprite.modulate = Color(1, 1, 1) # Normale

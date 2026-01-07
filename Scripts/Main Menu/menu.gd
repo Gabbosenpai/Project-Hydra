@@ -2,12 +2,12 @@ class_name Menu
 extends CanvasLayer
 
 # Riferimenti ai pulsanti del menu
-@onready var play_button = $VBoxContainer/PlayButton
-@onready var quit_button = $VBoxContainer/QuitButton
-@onready var credits_button = $VBoxContainer/CreditsButton
-@onready var encyclopedia_button = $VBoxContainer/EncyclopediaButton
+@onready var play_button = $VBoxPanel/VBoxContainer/PlayButton
+@onready var quit_button = $VBoxPanel/VBoxContainer/QuitButton
+@onready var credits_button = $VBoxPanel/VBoxContainer/CreditsButton
+@onready var encyclopedia_button = $VBoxPanel/VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
-@onready var main_menu = $VBoxContainer
+@onready var main_menu = $VBoxPanel/VBoxContainer
 @onready var admin_timer = Timer.new()
 @export var mute_music_button: Button
 @export var mute_sfx_button: Button

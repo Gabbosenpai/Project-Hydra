@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=30 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
@@ -12,9 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://c0lachd2anv1y" path="res://Assets/Sprites/UI/Music and SFX/Music Off.png" id="4_873nt"]
 [ext_resource type="Texture2D" uid="uid://b0eeeyjp6nlgm" path="res://Assets/Sprites/UI/Music and SFX/Sound On.png" id="5_s8um3"]
 [ext_resource type="Texture2D" uid="uid://js16sifrwfab" path="res://Assets/Sprites/UI/Music and SFX/Sound Off.png" id="6_pi1c3"]
+[ext_resource type="Texture2D" uid="uid://d2w3eo1xqkkh4" path="res://Assets/Sprites/UI/Menu/Menu Panel.png" id="12_ewdvb"]
 [ext_resource type="Texture2D" uid="uid://dodchjw6xsndv" path="res://Assets/Sprites/UI/Menu/Options.png" id="13_e6g3s"]
 [ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="14_qtn2w"]
 [ext_resource type="PackedScene" uid="uid://d0n3qorj4uy87" path="res://Scenes/Utilities/Title Stars/title_star_b.tscn" id="15_nd5l3"]
+[ext_resource type="Texture2D" uid="uid://dogxodk1oegrl" path="res://Assets/Sprites/UI/Menu Panel Flipped.png" id="16_2uc32"]
 [ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="16_gh4pp"]
 [ext_resource type="PackedScene" uid="uid://cdwqym4ehbpbd" path="res://Scenes/Utilities/Title Stars/title_star_d.tscn" id="17_7555j"]
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="18_auemk"]
@@ -24,12 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="23_8rq7v"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
-bg_color = Color(0.813258, 0.813258, 0.813258, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewdvb"]
+texture = ExtResource("16_2uc32")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8um3"]
 bg_color = Color(1, 1, 1, 1)
@@ -111,6 +109,10 @@ rotation = 1.2979053
 position = Vector2(379, 614)
 rotation = -0.4200813
 
+[node name="TitleStarB4" parent="Stars" instance=ExtResource("15_nd5l3")]
+position = Vector2(587.00006, 324.00003)
+rotation = -0.4200813
+
 [node name="TitleStarC" parent="Stars" instance=ExtResource("16_gh4pp")]
 position = Vector2(104.00001, 328)
 rotation = -2.2873256
@@ -143,10 +145,6 @@ rotation = -0.12217305
 position = Vector2(1060, 1029.0001)
 rotation = -0.6703754
 
-[node name="TitleStarD" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(334, 291)
-rotation = -0.3842984
-
 [node name="TitleStarD6" parent="Stars" instance=ExtResource("17_7555j")]
 position = Vector2(1579, 301)
 rotation = -0.33803397
@@ -171,10 +169,6 @@ rotation = -1.8143587
 position = Vector2(447, 377)
 rotation = 0.30129564
 
-[node name="TitleStarD7" parent="Stars" instance=ExtResource("17_7555j")]
-position = Vector2(594, 337.00003)
-rotation = -1.8858153
-
 [node name="TitleStarE" parent="Stars" instance=ExtResource("18_auemk")]
 position = Vector2(275, 423)
 rotation = 0.24846326
@@ -198,6 +192,10 @@ rotation = 1.097812
 [node name="TitleStarF" parent="Stars" instance=ExtResource("19_lmo3v")]
 position = Vector2(218, 523)
 rotation = -0.43110862
+
+[node name="TitleStarF9" parent="Stars" instance=ExtResource("19_lmo3v")]
+position = Vector2(334, 291)
+rotation = -1.2662534
 
 [node name="TitleStarF7" parent="Stars" instance=ExtResource("19_lmo3v")]
 position = Vector2(1403, 364)
@@ -241,28 +239,44 @@ texture = ExtResource("3_e6g3s")
 position = Vector2(960, 455)
 texture = ExtResource("3_u188u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxPanel" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.0
+offset_top = 95.0
+offset_right = 475.0
+offset_bottom = 565.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_ewdvb")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxPanel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -430.0
-offset_top = 135.0
+offset_top = -204.0
 offset_right = 430.0
-offset_bottom = 443.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 5.0
 
-[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="VBoxPanel/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_ixpxt")
 texture_pressed = ExtResource("3_nyop6")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/PlayButton"]
+[node name="Label" type="Label" parent="VBoxPanel/VBoxContainer/PlayButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -280,13 +294,13 @@ theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Gioca"
 
-[node name="EncyclopediaButton" type="TextureButton" parent="VBoxContainer"]
+[node name="EncyclopediaButton" type="TextureButton" parent="VBoxPanel/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_ixpxt")
 texture_pressed = ExtResource("3_nyop6")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/EncyclopediaButton"]
+[node name="Label" type="Label" parent="VBoxPanel/VBoxContainer/EncyclopediaButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -304,22 +318,22 @@ theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Database"
 
-[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="VBoxPanel/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_ixpxt")
 texture_pressed = ExtResource("3_nyop6")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/CreditsButton"]
+[node name="Label" type="Label" parent="VBoxPanel/VBoxContainer/CreditsButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -191.0
+offset_left = -187.0
 offset_top = -27.0
-offset_right = 191.0
+offset_right = 195.0
 offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -328,7 +342,7 @@ theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
 text = "Crediti"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="VBoxPanel/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
@@ -380,19 +394,18 @@ text = "No"
 
 [node name="MenuOption" type="Panel" parent="."]
 process_mode = 3
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -534.5
+offset_left = -535.0
 offset_top = -359.0
-offset_right = 534.5
+offset_right = 534.0
 offset_bottom = 359.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_v6rwh")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
 metadata/_edit_lock_ = true
 
 [node name="MenuButton" type="Button" parent="MenuOption"]
@@ -564,10 +577,10 @@ offset_right = 1915.0
 offset_bottom = 1073.0
 action_mode = 0
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxPanel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxPanel/VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
+[connection signal="pressed" from="VBoxPanel/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxPanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LanguagesButton" to="." method="_on_languages_button_pressed"]
 [connection signal="pressed" from="MenuOption/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="value_changed" from="MenuOption/MusicSlider" to="." method="_on_music_slider_value_changed"]
