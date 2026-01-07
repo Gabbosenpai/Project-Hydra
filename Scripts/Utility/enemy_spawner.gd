@@ -344,8 +344,13 @@ func _get_weighted_row() -> int:
 	return best_rows[randi() % best_rows.size()]
 
 func _on_enemy_defeated_with_row(row_index: int):
-	# Quando un nemico viene sconfitto, riduciamo il peso della riga in cui si trovava.
-	# Sottraiamo il 'weight_penalty' per annullare l'aumento di peso dato allo spawn.
-	# Usiamo max(0.0, ...) per assicurarci che il peso non diventi mai un numero negativo.
-	row_weights[row_index] = max(0.0, row_weights[row_index] - weight_penalty)
+	# Sottraiamo la penalità di peso perché il nemico è stato rimosso. 
+	# Questo rende la corsia nuovamente disponibile e appetibile per nuovi spawn.
+	row_weights[row_index] -= weight_penalty
+
+# Se a causa del recupero naturale nel tempo il peso è sceso molto, evitiamo che diventi negativo
+	if row_weights[row_index] < 0.0:
+		row_weights[row_index] = 0.0
+		
+# Richiama la funzione principale per decrementare il numero totale di nemici vivi e controllare se l'ondata è terminata.
 	_on_enemy_defeated()
