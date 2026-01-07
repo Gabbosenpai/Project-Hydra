@@ -163,16 +163,44 @@ func spawn_enemy():
 	
 	#Decido quale nemico creare in base alle percentuali (60/30/10)
 	var choice = ""
-	var roll = randf()
-	if pool.size() == 1:
-		choice = pool[0]
-	elif pool.size() == 3:
-		if roll < 0.6: choice = pool[0]    # 60% probabilità primo nemico
-		elif roll < 0.9: choice = pool[1]  # 30% probabilità secondo
-		else: choice = pool[2]             # 10% probabilità terzo
-	else:
-		#Scelta casuale pura se il pool ha dimensioni diverse
-		choice = pool[randi() % pool.size()]
+	var roll = randf() # Estrae un numero tra 0.0 e 1.0
+	
+	# Per modificare le probabilità, usa la "Somma Progressiva":
+	# 1. Decidi la % per ogni nemico ne caso 3 (es. 70%, 20%, 10%)
+	# 2. Il primo numero è la % del primo nemico (0.70)
+	# 3. I successivi numeri sono la somma del precedenti + attuale nel caso 3 (0.70 + 0.20 = 0.90)
+	# 4. L'ultimo nemico prende automaticamente il resto ad esempio nel caso 3 0.1 ovvero (il 10%)
+	
+	# Usiamo match (stessa logica di switch) per creare regole diverse in base a quanti tipi di nemici sono presenti nel pool
+	match pool.size():
+		1:
+			#CASO 1 NEMICO: Se c'è solo un nemico, viene scelto sempre (100% di probabilità)
+			choice = pool[0] # 100%
+		2:
+			# CASO 2 NEMICI: Dividiamo il range 0.0-1.0 in due parti
+			if roll < 0.80: choice = pool[0] # 80%
+			else:           choice = pool[1] # 20%
+		3:
+			# CASO 3 NEMICI: Tre fasce di probabilità
+			if roll < 0.60:   choice = pool[0] # 60%
+			elif roll < 0.99: choice = pool[1] # 39%
+			else:             choice = pool[2] # 1%
+		4:
+			# CASO 4 NEMICI: quattro fasce di probabilità
+			if roll < 0.50:   choice = pool[0] # 50%
+			elif roll < 0.80: choice = pool[1] # 30%
+			elif roll < 0.95: choice = pool[2] # 15%
+			else:             choice = pool[3] # 5%
+		5:
+			# CASO 5 NEMICI: cinque fasce di probabilità
+			if roll < 0.40:   choice = pool[0] # 40%
+			elif roll < 0.70: choice = pool[1] # 30%
+			elif roll < 0.90: choice = pool[2] # 20%
+			elif roll < 0.99: choice = pool[3] # 9%
+			else:             choice = pool[4] # 1%
+		_:
+			# Fallback per sicurezza (casuale puro)
+			choice = pool.pick_random()
 	
 	#Decide DOVE crearlo ovvero nella riga meno affollata
 	var row = _get_weighted_row()
