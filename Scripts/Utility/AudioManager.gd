@@ -1,6 +1,6 @@
 extends Node
 
-const GLOBAL_VOLUME_FACTOR: float = 0.01
+const GLOBAL_VOLUME_FACTOR: float = 0.05
 
 # Variabile per evitare di inizializzare più volte
 var initialized: bool = false

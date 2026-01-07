@@ -11,7 +11,8 @@ var monster_textures = {
 	"hkcm": preload("res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"),
 	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png"),
 	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png"),
-	"toilet_silo": preload("res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png")
+	"toilet_silo": preload("res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png"),
+	"cassa_schierata": preload("res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata.png")
 }
 
 #valore livello massimo per sbloccare una voce
@@ -50,20 +51,12 @@ var monster_names = {
 
 var monster_texts = {
 	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
-	"weed_eater": "Questo è il Weed Eater! "+
-	"due ruote motrici, tre lame che fanno ognuna 800 rpm "+
-	"e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
-	
+	"weed_eater": "Questo è il Weed Eater! due ruote motrici, tre lame che fanno ognuna 800 rpm e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
 	"delivery_drone": "Se desideri qualcosa e la desideri subito, allora il delivery drone è ciò che fa per te! Posiziona la sua piattaforma d’atterraggio ben visibile, fai l’ordine e il nostro drone la porterà sfrecciando nel cielo! (A causa di traffico, schianto del drone, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, etc. la mancata consegna non sarà rimborsata e sarà necessario fare un nuovo ordine)",
-	
 	"hkcm": "“せんぱ〜い！こんにちはっ！今日もすっごく頑張ったね！えへへ…よかったら、あったか〜いコーヒー、一緒に飲まない？”Questa frase d’incoraggiamento incisa su questa carinissima macchina del caffè l’ha resa una tra le più vendute sul mercato. Alcuni hanno giurato di vederla arrossire mentre faceva il caffè…",
-	
-	"jammer": "Questo è il Jammer! "+
-	"avevamo progettato questo nuovo tipo di jammer ma le misure "+
-	"invece che in centimetri le abbiamo scritte in metri!",
-	
-	"spaghetti_cable": "Le liane blu che nascondono il suo corpo sono rivestite di peli sottili. Si dice che soffra il solletico.",
-	"toilet_silo":"È nato da un sacchetto della spazzatura che ha subito un cambiamento chimico a causa delle scorie industriali."
+	"jammer": "Questo è il Jammer! Avevamo progettato questo nuovo tipo di jammer, ma le misure invece che in centimetri le abbiamo scritte in metri!",
+	"spaghetti_cable": "Versione Hardware del famoso Spaghetti Code e incubo di qualsiasi tecnico ma stranamente popolare sul mercato. Il suo successo ha portato l’Azienda ad allocare un intero reparto per la produzione, incrementando inspiegabilmente le vendite scrivendo “MADE IN ITALY” sulla confezione, fornendo cavi esclusivamente tricolore.",
+	"toilet_silo":"Il nemico non potrà nascondersi nemmeno in bagno! Questo design permette l’installazione di missili ad alto potenziale esplosivo costruiti con materiali estremamente economici e in grado di mimetizzarsi in ogni bagno che si rispetti (Non confondere la carta igienica esplosiva non quella classica)."
 }
 
 
@@ -135,6 +128,7 @@ func _on_spaghetti_cable_pressed() -> void:
 
 func _on_toilet_silo_pressed() -> void:
 	show_description("toilet_silo")
+
 
 
 #per aggiornare dinamicamente l'enciclopedia
