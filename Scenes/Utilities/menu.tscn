@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=29 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cgwyfcruwr0ti" path="res://Scenes/Login/register.tscn" id="20_lmo3v"]
 [ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="23_8rq7v"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="24_ewdvb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6rwh"]
 bg_color = Color(0.813258, 0.813258, 0.813258, 1)
@@ -563,6 +564,16 @@ offset_top = 917.0
 offset_right = 1915.0
 offset_bottom = 1073.0
 action_mode = 0
+
+[node name="AdminModeLabel" type="Label" parent="."]
+visible = false
+offset_left = 1653.0
+offset_top = 890.0
+offset_right = 1917.0
+offset_bottom = 925.0
+theme_override_colors/font_color = Color(0.22919601, 0.71845937, 3.85046e-07, 1)
+theme_override_fonts/font = ExtResource("24_ewdvb")
+text = "Admin Mode Activated"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
