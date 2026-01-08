@@ -168,7 +168,7 @@ func spawn_enemy():
 	# Per modificare le probabilità, usa la "Somma Progressiva":
 	# 1. Decidi la % per ogni nemico ne caso 3 (es. 70%, 20%, 10%)
 	# 2. Il primo numero è la % del primo nemico (0.70)
-	# 3. I successivi numeri sono la somma del precedenti + attuale nel caso 3 (0.70 + 0.20 = 0.90)
+	# 3. I successivi numeri sono la somma del precedente + attuale nel caso 3 (0.70 + 0.20 = 0.90)
 	# 4. L'ultimo nemico prende automaticamente il resto ad esempio nel caso 3 0.1 ovvero (il 10%)
 	
 	# Usiamo match (stessa logica di switch) per creare regole diverse in base a quanti tipi di nemici sono presenti nel pool
