@@ -154,33 +154,17 @@ func _on_user_button_pressed() -> void:
 	if(PlayFabManager.client_config.is_logged_in()):
 		var account_management = $MenuOption/AccountManagement
 		account_management.reset_label_()
-		$MenuOption/MenuButton.hide()
-		$MenuOption/MusicSlider.hide()
-		$MenuOption/SfxSlider.hide()
-		$MenuOption/MuteMusicButton.hide()
-		$MenuOption/Musictext.hide()
-		$MenuOption/SFXtext.hide()
-		$MenuOption/MuteSFXButton.hide()
-		$MenuOption/UserButton.hide()
-		$MenuOption/UserText.hide()
+		toggle_main_options_ui(false)
 		account_management.visible = true
 		#get_tree().change_scene_to_file("res://Scenes/Login/account_management.tscn")
 	else:
 			var login = $MenuOption/Login
-			$MenuOption/MenuButton.hide()
-			$MenuOption/MusicSlider.hide()
-			$MenuOption/SfxSlider.hide()
-			$MenuOption/MuteMusicButton.hide()
-			$MenuOption/Musictext.hide()
-			$MenuOption/SFXtext.hide()
-			$MenuOption/MuteSFXButton.hide()
-			$MenuOption/UserButton.hide()
-			$MenuOption/UserText.hide()
+			toggle_main_options_ui(false)
 			login.visible = true
 		#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 func update_user_display() -> void:
-	var userButtonText = $MenuOption/UserText
+	var userButtonText = $MenuOption/UserButton/UserText
 	
 	if PlayFabManager.client_config.is_logged_in():
 		var username = PlayFabManager.client_config.username
@@ -195,14 +179,10 @@ func update_user_display() -> void:
 
 func toggle_main_options_ui(boolean: bool):
 	$MenuOption/MenuButton.visible = boolean
-	$MenuOption/MusicSlider.visible = boolean
-	$MenuOption/SfxSlider.visible = boolean
 	$MenuOption/MuteMusicButton.visible = boolean
-	$MenuOption/Musictext.visible = boolean
-	$MenuOption/SFXtext.visible = boolean
 	$MenuOption/MuteSFXButton.visible = boolean
 	$MenuOption/UserButton.visible = boolean
-	$MenuOption/UserText.visible = boolean
+	$MenuOption/LanguageButton.visible = boolean
 	
 	if show:
 		update_user_display()
