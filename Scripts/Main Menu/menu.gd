@@ -134,6 +134,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	_refresh_audio_ui()
 
 
