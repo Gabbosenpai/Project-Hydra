@@ -2,12 +2,12 @@ class_name Menu
 extends CanvasLayer
 
 # Riferimenti ai pulsanti del menu
-@onready var play_button = $VBoxContainer/PlayButton
-@onready var quit_button = $VBoxContainer/QuitButton
-@onready var credits_button = $VBoxContainer/CreditsButton
-@onready var encyclopedia_button = $VBoxContainer/EncyclopediaButton
+@onready var play_button = $VBoxPanel/VBoxContainer/PlayButton
+@onready var quit_button = $VBoxPanel/VBoxContainer/QuitButton
+@onready var credits_button = $VBoxPanel/VBoxContainer/CreditsButton
+@onready var encyclopedia_button = $VBoxPanel/VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
-@onready var main_menu = $VBoxContainer
+@onready var main_menu = $VBoxPanel/VBoxContainer
 @onready var admin_timer = Timer.new()
 @export var mute_music_button: Button
 @export var mute_sfx_button: Button
@@ -70,18 +70,20 @@ func _on_credits_button_pressed() -> void:
 # icona mute/unmute
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	option_menu.visible = true
-	_sync_sliders_with_audio()
-	_refresh_audio_ui()
-	if PlayFabManager.client_config.is_logged_in():
-		var userButtonText = $MenuOption/UserText
-		var username = PlayFabManager.client_config.username
-		
-		if username == "":
-			userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
-		else:
-			userButtonText.text = "Utente loggato: " + username
-
+	if option_menu.visible == false:
+		option_menu.visible = true
+		_sync_sliders_with_audio()
+		_refresh_audio_ui()
+		if PlayFabManager.client_config.is_logged_in():
+			var userButtonText = $MenuOption/UserText
+			var username = PlayFabManager.client_config.username
+			
+			if username == "":
+				userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+			else:
+				userButtonText.text = "Utente loggato: " + username
+	else:
+		option_menu.visible = false
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
@@ -142,7 +144,9 @@ func _on_mute_sfx_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	# By changing scene we see the scene flickering, not good for the eyes :/
+	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	option_menu.visible = false
 
 
 func _on_user_button_pressed() -> void:
@@ -150,33 +154,17 @@ func _on_user_button_pressed() -> void:
 	if(PlayFabManager.client_config.is_logged_in()):
 		var account_management = $MenuOption/AccountManagement
 		account_management.reset_label_()
-		$MenuOption/MenuButton.hide()
-		$MenuOption/MusicSlider.hide()
-		$MenuOption/SfxSlider.hide()
-		$MenuOption/MuteMusicButton.hide()
-		$MenuOption/Musictext.hide()
-		$MenuOption/SFXtext.hide()
-		$MenuOption/MuteSFXButton.hide()
-		$MenuOption/UserButton.hide()
-		$MenuOption/UserText.hide()
+		toggle_main_options_ui(false)
 		account_management.visible = true
 		#get_tree().change_scene_to_file("res://Scenes/Login/account_management.tscn")
 	else:
 			var login = $MenuOption/Login
-			$MenuOption/MenuButton.hide()
-			$MenuOption/MusicSlider.hide()
-			$MenuOption/SfxSlider.hide()
-			$MenuOption/MuteMusicButton.hide()
-			$MenuOption/Musictext.hide()
-			$MenuOption/SFXtext.hide()
-			$MenuOption/MuteSFXButton.hide()
-			$MenuOption/UserButton.hide()
-			$MenuOption/UserText.hide()
+			toggle_main_options_ui(false)
 			login.visible = true
 		#get_tree().change_scene_to_file("res://Scenes/Login/login.tscn")
 
 func update_user_display() -> void:
-	var userButtonText = $MenuOption/UserText
+	var userButtonText = $MenuOption/UserButton/UserText
 	
 	if PlayFabManager.client_config.is_logged_in():
 		var username = PlayFabManager.client_config.username
@@ -191,14 +179,10 @@ func update_user_display() -> void:
 
 func toggle_main_options_ui(boolean: bool):
 	$MenuOption/MenuButton.visible = boolean
-	$MenuOption/MusicSlider.visible = boolean
-	$MenuOption/SfxSlider.visible = boolean
 	$MenuOption/MuteMusicButton.visible = boolean
-	$MenuOption/Musictext.visible = boolean
-	$MenuOption/SFXtext.visible = boolean
 	$MenuOption/MuteSFXButton.visible = boolean
 	$MenuOption/UserButton.visible = boolean
-	$MenuOption/UserText.visible = boolean
+	$MenuOption/LanguageButton.visible = boolean
 	
 	if show:
 		update_user_display()

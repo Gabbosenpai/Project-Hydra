@@ -1,66 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgwyfcruwr0ti"]
+[gd_scene load_steps=5 format=3 uid="uid://cgwyfcruwr0ti"]
 
 [ext_resource type="Script" uid="uid://dgpgt1b0cjlv" path="res://Scripts/Login/register.gd" id="1_d52cs"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_27gwr"]
+[ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="4_8w4oi"]
+[ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="5_fdpk5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d52cs")
-
-[node name="Username" type="LineEdit" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -364.0
-offset_top = -230.5
-offset_right = -179.0
-offset_bottom = -199.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-
-[node name="Email" type="LineEdit" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -161.0
-offset_top = -230.0
-offset_bottom = -197.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-
-[node name="Password" type="LineEdit" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = -228.5
-offset_right = 209.0
-offset_bottom = -197.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-secret = true
+metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [990.0, 930.0, 1620.0, 615.0, 768.0, 845.0, 845.0, 770.0]
+metadata/_edit_horizontal_guides_ = [395.0, 485.0, 575.0, 675.0, 572.0]
 
 [node name="StatusLabel" type="Label" parent="."]
 layout_mode = 1
@@ -69,99 +24,187 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -360.0
-offset_right = -63.0
-offset_bottom = -326.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-
-[node name="UsernameTag" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -366.5
-offset_top = -261.0
-offset_right = -171.5
-offset_bottom = -237.0
+offset_left = -20.0
+offset_top = -351.0
+offset_right = 20.0
+offset_bottom = -311.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-text = "Username"
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="EmailTag" type="Label" parent="."]
+[node name="Username" type="LineEdit" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -260.0
-offset_right = -14.0
-offset_bottom = -236.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-text = "Email"
-
-[node name="PasswordTag" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 15.5
-offset_top = -260.0
-offset_right = 210.5
-offset_bottom = -236.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-text = "Password"
-
-[node name="Back" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = -177.0
-offset_right = -32.5
+offset_left = -115.0
+offset_top = -220.0
+offset_right = 635.0
 offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
-text = "Back
-"
+theme_override_font_sizes/font_size = 40
 
-[node name="Register" type="Button" parent="."]
+[node name="UsernameTag" type="Label" parent="Username"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -361.5
-offset_top = -178.0
-offset_right = -170.5
-offset_bottom = -146.0
+offset_left = -777.0
+offset_top = -37.5
+offset_right = -452.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_27gwr")
+theme_override_font_sizes/font_size = 40
+text = "Username"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Email" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -130.0
+offset_right = 635.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_27gwr")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
+
+[node name="EmailTag" type="Label" parent="Email"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -777.0
+offset_top = -37.5
+offset_right = -452.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_27gwr")
+theme_override_font_sizes/font_size = 40
+text = "Email"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Password" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -40.0
+offset_right = 635.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_27gwr")
+theme_override_font_sizes/font_size = 40
+secret = true
+
+[node name="PasswordTag" type="Label" parent="Password"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -777.0
+offset_top = -37.5
+offset_right = -452.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_27gwr")
+theme_override_font_sizes/font_size = 40
+text = "Password"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -650.0
+offset_top = 135.0
+offset_right = -20.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_8w4oi")
+texture_pressed = ExtResource("5_fdpk5")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_27gwr")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Register" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 135.0
+offset_right = 650.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_8w4oi")
+texture_pressed = ExtResource("5_fdpk5")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Register"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_27gwr")
+theme_override_font_sizes/font_size = 40
 text = "Register"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
 [connection signal="button_up" from="Back" to="." method="_on_login_button_up"]
