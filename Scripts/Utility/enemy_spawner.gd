@@ -161,7 +161,7 @@ func spawn_enemy():
 	#Recupero i nemici validi per questo livello
 	var pool = level_enemy_pool.get(current_level, ["romba"])
 	
-	#Decido quale nemico creare in base alle percentuali (60/30/10)
+	#Decido quale nemico creare in base alle percentuali
 	var choice = ""
 	var roll = randf() # Estrae un numero tra 0.0 e 1.0
 	
