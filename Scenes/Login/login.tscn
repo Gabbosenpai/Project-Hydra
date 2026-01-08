@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dciw03lb6qvj2"]
+[gd_scene load_steps=7 format=3 uid="uid://dciw03lb6qvj2"]
 
 [ext_resource type="Script" uid="uid://dctv4ju75q28x" path="res://Scripts/Login/login.gd" id="1_eiqty"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_kxikt"]
+[ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="3_l36fp"]
+[ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="4_82wc7"]
+
+[sub_resource type="FontVariation" id="FontVariation_l36fp"]
+base_font = ExtResource("2_kxikt")
+
+[sub_resource type="FontVariation" id="FontVariation_82wc7"]
+base_font = SubResource("FontVariation_l36fp")
+spacing_glyph = -10
+spacing_space = -10
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -10,25 +20,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 script = ExtResource("1_eiqty")
 
-[node name="Username" type="LineEdit" parent="."]
+[node name="Email" type="LineEdit" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -198.0
-offset_top = -217.0
-offset_right = 5.0
-offset_bottom = -185.0
+offset_left = -115.0
+offset_top = -220.0
+offset_right = 635.0
+offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
+
+[node name="EmailTag" type="Label" parent="Email"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -777.0
+offset_top = -28.5
+offset_right = -452.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_kxikt")
+theme_override_font_sizes/font_size = 40
+text = "Email"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Password" type="LineEdit" parent="."]
 layout_mode = 1
@@ -37,15 +64,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = -217.0
-offset_right = 214.0
-offset_bottom = -185.0
+offset_left = -115.0
+offset_top = -130.0
+offset_right = 635.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
 secret = true
+
+[node name="PasswordTag" type="Label" parent="Password"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -777.0
+offset_top = -37.5
+offset_right = -452.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_kxikt")
+theme_override_font_sizes/font_size = 40
+text = "Password"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="."]
 layout_mode = 1
@@ -55,114 +101,137 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -301.5
+offset_top = -351.0
 offset_right = 20.0
-offset_bottom = -278.5
+offset_bottom = -311.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_kxikt")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="EmailTag" type="Label" parent="."]
+[node name="Login" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -155.0
-offset_top = -249.0
-offset_right = -29.0
-offset_bottom = -225.0
+offset_left = 20.0
+offset_top = 45.0
+offset_right = 650.0
+offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
-text = "Email"
+texture_normal = ExtResource("3_l36fp")
+texture_pressed = ExtResource("4_82wc7")
+metadata/_edit_group_ = true
 
-[node name="PasswordTag" type="Label" parent="."]
+[node name="Label" type="Label" parent="Login"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 20.5
-offset_top = -248.0
-offset_right = 215.5
-offset_bottom = -224.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
-text = "Password"
-
-[node name="Login" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = -171.0
-offset_right = 215.0
-offset_bottom = -139.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
 text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Register" type="Button" parent="."]
+[node name="Register" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -197.0
-offset_top = -171.0
-offset_right = 6.0
-offset_bottom = -139.0
+offset_left = -650.0
+offset_top = 45.0
+offset_right = -20.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_l36fp")
+texture_pressed = ExtResource("4_82wc7")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Register"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
 text = "Register"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BackMainMenu" type="Button" parent="."]
+[node name="BackMainMenu" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -133.0
-offset_right = 221.0
-offset_bottom = -101.0
+offset_left = -650.0
+offset_top = 175.0
+offset_right = -20.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_l36fp")
+texture_pressed = ExtResource("4_82wc7")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BackMainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
-text = "Return To Main Menu"
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ForgotPassword" type="Button" parent="."]
+[node name="ForgotPassword" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -203.0
-offset_top = -94.5
-offset_right = 221.0
-offset_bottom = -61.5
+offset_left = 20.0
+offset_top = 175.0
+offset_right = 650.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_kxikt")
-theme_override_font_sizes/font_size = 24
+texture_normal = ExtResource("3_l36fp")
+texture_pressed = ExtResource("4_82wc7")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ForgotPassword"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_82wc7")
+theme_override_font_sizes/font_size = 40
 text = "Forgot Password?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_up" from="Login" to="." method="_on_login_button_up"]
 [connection signal="button_up" from="Register" to="." method="_on_register_button_up"]

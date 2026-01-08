@@ -408,6 +408,7 @@ offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
+metadata/_edit_lock_ = true
 
 [node name="MenuButton" type="Button" parent="MenuOption"]
 process_mode = 3
@@ -548,13 +549,15 @@ autowrap_mode = 2
 [node name="Login" parent="MenuOption" instance=ExtResource("19_7555j")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.75
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.75
-grow_horizontal = 1
-grow_vertical = 1
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 191.0
+offset_right = 0.5
+offset_bottom = 191.0
 
 [node name="Register" parent="MenuOption" instance=ExtResource("20_lmo3v")]
 visible = false

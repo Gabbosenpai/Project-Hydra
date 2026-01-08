@@ -10,7 +10,7 @@ func _on_login_button_up() -> void:
 	$Login.disabled = true
 	$StatusLabel.text = "Accesso in corso..."
 	$StatusLabel.modulate = Color.WHITE
-	var email = $Username.text
+	var email = $Email.text
 	var password = $Password.text
 	var combined_info_request_params = GetPlayerCombinedInfoRequestParams.new()
 	combined_info_request_params.show_all()
@@ -38,7 +38,7 @@ func _on_PlayFab_login_succeded(login_result: LoginResult):
 			
 	# Salviamolo nella configurazione globale
 	PlayFabManager.client_config.username = user_name_found
-	PlayFabManager.client_config.email = $Username.text
+	PlayFabManager.client_config.email = $Email.text
 	PlayFabManager.save_client_config() # Importante per persistenza
 	
 	print("Successo! Benvenuto: " + user_name_found)
@@ -72,7 +72,7 @@ func _on_back_main_menu_pressed() -> void:
 
 func _on_forgot_password_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	var email = $Username.text
+	var email = $Email.text
 	if email != "":
 		PlayFabManager.client.send_account_recovery(email, "")
 		$StatusLabel.text = "Email inviata a: " + email
@@ -82,7 +82,7 @@ func _on_forgot_password_pressed() -> void:
 		$StatusLabel.modulate = Color.RED
 
 func reset_fields_login():
-	$Username.text = ""
+	$Email.text = ""
 	$Password.text = ""
 	$StatusLabel.text = ""
 	$Login.disabled = false
