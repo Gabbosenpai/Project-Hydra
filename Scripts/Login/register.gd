@@ -44,6 +44,10 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 				details += "\n- %s" % msg
 
 	print("Errore PlayFab: " + error_message + details)
+	
+	if "display name" in error_message.to_lower() or "display name" in details.to_lower():
+		error_message = "Username già esistente!"
+		details = ""
 
 	if has_node("EmailTag"):
 		if details != "":

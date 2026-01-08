@@ -116,6 +116,7 @@ func _on_button_kill_all_pressed():
 
 # Mostra il menu di pausa, ferma il menu di gioco e sincronizza le icone mute/unmute
 func _on_pause_button_pressed():
+	AudioManager.play_pause_click(AudioManager.button_click_sfx)
 	get_tree().paused = true
 	pause_menu.visible = true
 	pause_button.visible = false

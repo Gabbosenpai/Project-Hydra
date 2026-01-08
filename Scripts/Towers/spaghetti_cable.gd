@@ -35,16 +35,22 @@ func _process(_delta: float) -> void:
 
 #Funzione che fa prendere danno allo torretta
 func take_damage(amount):
-	
+	#vita prima del danno subito
+	var old_health := tower_current_health
+
 	tower_current_health -= float(amount) * (1 - dmg_reduction)
 	flash_bright()
 	print("Tower HP:", tower_current_health)
 	if tower_current_health < 0:
 		tower_current_health = 0
+	
+	#quando la vita va sotto un multiplo di 20, riprdouci suono"
+	if tower_current_health > 0 and int(old_health / 20) > int(tower_current_health / 20):
+		AudioManager.play_sfx(spaghettiCable_sfx)
+		
 	if tower_current_health == 0:
 		die()
-
-
+		
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
 	emit_signal("died", self) 

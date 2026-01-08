@@ -20,7 +20,7 @@ extends CanvasLayer
 @export var sfx_on_sprite: Sprite2D
 @export var sfx_off_sprite: Sprite2D
 
-static var adminMode = false 
+static var adminMode = true
 var adminButtonPressed = 0
 
 # Funzione che inizializza il menu principale
@@ -197,7 +197,16 @@ func _on_admin_button_pressed() -> void:
 		adminMode = true
 		admin_timer.stop()
 		print("ADMIN MODE ACTIVATED!")
-		
+		$AdminModeLabel.visible = true
+		var adminModeLabelTimer = Timer.new()
+		add_child(adminModeLabelTimer)
+		adminModeLabelTimer.wait_time = 2.0
+		adminModeLabelTimer.one_shot = true
+		adminModeLabelTimer.timeout.connect(_on_admin_label_timer_timeout)
+		adminModeLabelTimer.start()
 
 func _on_admin_timer_timeout():
 	adminButtonPressed = 0
+
+func _on_admin_label_timer_timeout():
+	$AdminModeLabel.visible = false

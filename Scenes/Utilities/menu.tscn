@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cmrq4568hj2cl" path="res://Scenes/Login/account_management.tscn" id="21_8rq7v"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="21_ich1y"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="23_8rq7v"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="24_ewdvb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewdvb"]
 texture = ExtResource("16_2uc32")
@@ -616,10 +617,24 @@ offset_right = 1915.0
 offset_bottom = 1073.0
 action_mode = 0
 
-[connection signal="pressed" from="VBoxPanel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxPanel/VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
-[connection signal="pressed" from="VBoxPanel/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxPanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="AdminModeLabel" type="Label" parent="."]
+visible = false
+offset_left = 1653.0
+offset_top = 890.0
+offset_right = 1917.0
+offset_bottom = 925.0
+theme_override_colors/font_color = Color(0.22919601, 0.71845937, 3.85046e-07, 1)
+theme_override_fonts/font = ExtResource("24_ewdvb")
+text = "Admin Mode Activated"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="LanguagesButton" to="." method="_on_languages_button_pressed"]
+[connection signal="pressed" from="MenuOption/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="value_changed" from="MenuOption/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MenuOption/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="MenuOption/MuteMusicButton" to="." method="_on_mute_music_button_pressed"]
 [connection signal="value_changed" from="MenuOption/MuteMusicButton/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="MenuOption/MuteSFXButton" to="." method="_on_mute_sfx_button_pressed"]

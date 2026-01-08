@@ -153,7 +153,7 @@ func _flush_batches_on_batch_size_met():
 # @Visibility: Private
 func _flush_playstream_event_batch():
 	if playstream_event_batch.size() < 1:
-		print_debug("No playstream events to flush")
+		#print_debug("No playstream events to flush")
 		return
 
 	var request = WriteEventsRequest.new()
@@ -167,7 +167,7 @@ func _flush_playstream_event_batch():
 # @Visibility: Private
 func _flush_telemetry_event_batch():
 	if telemetry_event_batch.size() < 1:
-		print_debug("No telemetry events to flush")
+		#print_debug("No telemetry events to flush")
 		return
 
 	var request = WriteEventsRequest.new()
@@ -181,7 +181,7 @@ func _flush_telemetry_event_batch():
 # @Visibility: Private
 func _on_playstream_batch_flush(response: Dictionary):
 	var event_ids: Array = response["data"]["AssignedEventIds"]
-	print_debug("Flushed %s PlayStream events" % event_ids.size())
+	#print_debug("Flushed %s PlayStream events" % event_ids.size())
 	emit_signal("event_batch_playstream_flushed", event_ids)
 
 
@@ -189,5 +189,5 @@ func _on_playstream_batch_flush(response: Dictionary):
 # @Visibility: Private
 func _on_telemetry_batch_flush(response: Dictionary):
 	var event_ids: Array = response["data"]["AssignedEventIds"]
-	print_debug("Flushed %s Telemetry events" % event_ids.size())
+	#print_debug("Flushed %s Telemetry events" % event_ids.size())
 	emit_signal("event_batch_telemetry_flushed", event_ids)
