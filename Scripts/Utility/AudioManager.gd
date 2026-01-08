@@ -1,6 +1,8 @@
 extends Node
 
-const GLOBAL_VOLUME_FACTOR: float = 0.05
+const GLOBAL_MUSIC_FACTOR: float = 0.05
+const GLOBAL_SFX_FACTOR: float = 0.08 
+
 
 # Variabile per evitare di inizializzare più volte
 var initialized: bool = false
@@ -38,13 +40,14 @@ func _ready():
 	music_player.bus = "Music"
 	music_player.connect("finished", Callable(self, "_on_music_finished"))
 	add_child(music_player)
-	music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
+	music_player.volume_db = linear_to_db(music_volume * GLOBAL_MUSIC_FACTOR)
+
 	
 	# Creazione e configurazione effetti sonori
 	sfx_player = AudioStreamPlayer.new()
 	sfx_player.name = "SFXPlayer"
 	sfx_player.bus = "SFX"
-	sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_VOLUME_FACTOR)
+	sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_SFX_FACTOR)
 	add_child(sfx_player)
 	
 	# Carica e suona la musica iniziale solo se non sta già suonando
@@ -61,7 +64,7 @@ func _on_music_finished():
 func set_music_volume(vol: float) -> void:
 	vol = clamp(vol, 0.0, 1.0)
 	music_volume = vol
-	var adjusted_vol = music_volume * GLOBAL_VOLUME_FACTOR
+	var adjusted_vol = music_volume * GLOBAL_MUSIC_FACTOR
 	if is_music_muted:
 		music_player.volume_db = linear_to_db(0.0)
 	else:
@@ -71,7 +74,7 @@ func set_music_volume(vol: float) -> void:
 # Cambia il volume degli effetti
 func set_sfx_volume(vol: float) -> void:
 	sfx_volume = clamp(vol, 0.0, 1.0)
-	var adjusted_vol = sfx_volume * GLOBAL_VOLUME_FACTOR
+	var adjusted_vol = sfx_volume * GLOBAL_SFX_FACTOR
 	sfx_player.volume_db = linear_to_db(adjusted_vol)
 
 
@@ -85,7 +88,7 @@ func play_sfx(sfx_stream: AudioStream, variate_pitch: bool = false, variate_volu
 		new_sfx_player.volume_db = linear_to_db(0.0)
 	else:
 		# Varia volume se richiesto
-		var volume_to_set = sfx_volume * GLOBAL_VOLUME_FACTOR
+		var volume_to_set = sfx_volume * GLOBAL_SFX_FACTOR
 		if variate_volume:
 			volume_to_set *= randf_range(0.8, 1.0) # Varia il volume tra 80% e 100%
 		new_sfx_player.volume_db = linear_to_db(volume_to_set)
@@ -105,7 +108,8 @@ func toggle_music_mute() -> void:
 	if is_music_muted:
 		music_player.volume_db = linear_to_db(0.0)
 	else:
-		music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
+		music_player.volume_db = linear_to_db(music_volume * GLOBAL_MUSIC_FACTOR)
+
 
 
 # Mute/unmute sfx
@@ -114,7 +118,8 @@ func toggle_sfx_mute() -> void:
 	if is_sfx_muted:
 		sfx_player.volume_db = linear_to_db(0.0)
 	else:
-		sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_VOLUME_FACTOR)
+		sfx_player.volume_db = linear_to_db(sfx_volume * GLOBAL_SFX_FACTOR)
+
 
 
 
@@ -130,7 +135,8 @@ func play_music(music_stream: AudioStream) -> void:
 		if is_music_muted:
 			music_player.volume_db = linear_to_db(0.0)
 		else:
-			music_player.volume_db = linear_to_db(music_volume * GLOBAL_VOLUME_FACTOR)
+			music_player.volume_db = linear_to_db(music_volume * GLOBAL_MUSIC_FACTOR)
+
 		
 		music_player.play()
 
