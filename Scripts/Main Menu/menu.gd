@@ -144,7 +144,9 @@ func _on_mute_sfx_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	# By changing scene we see the scene flickering, not good for the eyes :/
+	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	option_menu.visible = false
 
 
 func _on_user_button_pressed() -> void:

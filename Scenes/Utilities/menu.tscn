@@ -29,12 +29,9 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewdvb"]
 texture = ExtResource("16_2uc32")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8um3"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="FontVariation" id="FontVariation_2uc32"]
+base_font = ExtResource("2_g4iet")
+spacing_glyph = -2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6g3s"]
 
@@ -410,26 +407,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
 metadata/_edit_lock_ = true
 
-[node name="MenuButton" type="Button" parent="MenuOption"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -102.5
-offset_top = -118.0
-offset_right = 105.5
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_s8um3")
-toggle_mode = true
-action_mode = 0
-text = "Torna al Menu Principale"
-
 [node name="MusicSlider" type="HSlider" parent="MenuOption"]
 process_mode = 3
 layout_mode = 1
@@ -576,6 +553,37 @@ offset_bottom = 191.0
 visible = false
 layout_mode = 1
 
+[node name="MenuButton" type="TextureButton" parent="MenuOption"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -118.0
+offset_right = 105.5
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_ixpxt")
+texture_pressed = ExtResource("3_nyop6")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuOption/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_2uc32")
+theme_override_font_sizes/font_size = 40
+text = "Menù Principale"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="OptionButton" type="Button" parent="."]
 offset_left = 1792.0
 offset_right = 1920.0
@@ -602,11 +610,11 @@ action_mode = 0
 [connection signal="pressed" from="VBoxPanel/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxPanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LanguagesButton" to="." method="_on_languages_button_pressed"]
-[connection signal="pressed" from="MenuOption/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="value_changed" from="MenuOption/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MenuOption/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="MenuOption/MuteMusicButton" to="." method="_on_mute_music_button_pressed"]
 [connection signal="pressed" from="MenuOption/MuteSFXButton" to="." method="_on_mute_sfx_button_pressed"]
 [connection signal="pressed" from="MenuOption/UserButton" to="." method="_on_user_button_pressed"]
+[connection signal="pressed" from="MenuOption/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="AdminButton" to="." method="_on_admin_button_pressed"]
