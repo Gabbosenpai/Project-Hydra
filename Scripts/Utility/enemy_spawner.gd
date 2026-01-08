@@ -15,6 +15,8 @@ signal wave_completed(wave_number)
 @export var inter_wave_delay = 5.0
 @export var next_wave_delay_timer: Timer
 @export var is_blackout_level: bool = false
+@export var weight_penalty: float = 10.0  # Quanto "pesa" un nemico in più sulla riga
+@export var weight_recovery: float = 2.0 # Quanto velocemente la riga torna appetibile nel tempo
 
 var all_enemy_scenes = {
 	"romba": preload("res://Scenes/Robots/romba.tscn"),
@@ -31,10 +33,10 @@ var level_enemy_pool = {
 	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
-	{ "count": 13, "interval": 0.6 },
-	{ "count": 16, "interval": 0.6 },
-	{ "count": 19, "interval": 0.8 },
-	{ "count": 22, "interval": 1.0 }
+	{ "count": 13, "interval": 1.5 },
+	{ "count": 16, "interval": 1.8 },
+	{ "count": 19, "interval": 2.0 },
+	{ "count": 22, "interval": 2.5 }
 ]
 var current_wave = 0
 var enemies_to_spawn = 0
@@ -45,11 +47,21 @@ const ENEMY_DESTRUCTION_DELAY: float = 0.5
 const TILE_SIZE = 160
 const INCINERATE_COLUMN_THRESHOLD: float = 9.0
 var INCINERATE_X_LIMIT: float
+var row_weights = []
+var remaining_enemies_queue = {}
 
+func _process(delta):
+	# Diminuisce lentamente tutti i pesi nel tempo
+	for i in range(row_weights.size()):
+		if row_weights[i] > 0:
+			row_weights[i] = max(0.0, row_weights[i] - weight_recovery * delta)
+	if Input.is_action_just_pressed("ui_focus_next"): # Premi TAB per vedere i pesi
+		print("Pesi attuali righe: ", row_weights)
 
 func _ready():
 	randomize()
-	
+	row_weights.resize(GameConstants.ROW)
+	row_weights.fill(0.0)
 	var path = get_tree().current_scene.scene_file_path
 	var regex = RegEx.new()
 	regex.compile("\\d+")
@@ -91,9 +103,30 @@ func start_wave():
 		emit_signal("wave_completed", current_wave)
 		print("✅ Segnale 'wave_completed' emesso (Inizio Onda ", current_wave, ").")
 	
+	#Recupera i dati (quanti nemici e ogni quanto tempo) dall'array 'waves'
 	var wave = waves[current_wave - 1]
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
+	
+	#Svuota la coda dell'ondata precedente
+	remaining_enemies_queue.clear()
+	
+	# Recupera i tipi di nemici permessi per questo specifico livello
+	var pool = level_enemy_pool.get(current_level, ["romba"])
+	#base_share: quanti nemici spettano "di base" a ogni tipologia (divisione intera)
+	var base_share = enemies_to_spawn / pool.size()
+	## remainder: i nemici che avanzano se la divisione non è perfetta (resto)
+	var remainder = enemies_to_spawn % pool.size()
+	
+	# riempimento della coda di spawn
+	for i in range(pool.size()):
+		var type = pool[i]
+		var quantity = base_share
+		# Distribuisce i nemici rimasti dal resto uno alla volta ai primi tipi della lista
+		if i < remainder:
+			quantity += 1
+		# Registra nel dizionario: "TipoNemico": QuantitàFissa
+		remaining_enemies_queue[type] = quantity
 	
 	is_wave_active = true
 	
@@ -125,19 +158,62 @@ func _on_next_wave_delay_timeout():
 
 
 func spawn_enemy():
+	#Recupero i nemici validi per questo livello
 	var pool = level_enemy_pool.get(current_level, ["romba"])
-	var choice = pool[randi() % pool.size()]
-	print("Lvl", current_level, " pool=", pool, " → scelto: ", choice)
-	var enemy_scene = all_enemy_scenes[choice]
-	var enemy = enemy_scene.instantiate()
 	
-	var row = randi() % GameConstants.ROW
+	#Decido quale nemico creare in base alle percentuali
+	var choice = ""
+	var roll = randf() # Estrae un numero tra 0.0 e 1.0
+	
+	# Per modificare le probabilità, usa la "Somma Progressiva":
+	# 1. Decidi la % per ogni nemico ne caso 3 (es. 70%, 20%, 10%)
+	# 2. Il primo numero è la % del primo nemico (0.70)
+	# 3. I successivi numeri sono la somma del precedente + attuale nel caso 3 (0.70 + 0.20 = 0.90)
+	# 4. L'ultimo nemico prende automaticamente il resto ad esempio nel caso 3 0.1 ovvero (il 10%)
+	
+	# Usiamo match (stessa logica di switch) per creare regole diverse in base a quanti tipi di nemici sono presenti nel pool
+	match pool.size():
+		1:
+			#CASO 1 NEMICO: Se c'è solo un nemico, viene scelto sempre (100% di probabilità)
+			choice = pool[0] # 100%
+		2:
+			# CASO 2 NEMICI: Dividiamo il range 0.0-1.0 in due parti
+			if roll < 0.80: choice = pool[0] # 80%
+			else:           choice = pool[1] # 20%
+		3:
+			# CASO 3 NEMICI: Tre fasce di probabilità
+			if roll < 0.60:   choice = pool[0] # 60%
+			elif roll < 0.99: choice = pool[1] # 39%
+			else:             choice = pool[2] # 1%
+		4:
+			# CASO 4 NEMICI: quattro fasce di probabilità
+			if roll < 0.50:   choice = pool[0] # 50%
+			elif roll < 0.80: choice = pool[1] # 30%
+			elif roll < 0.95: choice = pool[2] # 15%
+			else:             choice = pool[3] # 5%
+		5:
+			# CASO 5 NEMICI: cinque fasce di probabilità
+			if roll < 0.40:   choice = pool[0] # 40%
+			elif roll < 0.70: choice = pool[1] # 30%
+			elif roll < 0.90: choice = pool[2] # 20%
+			elif roll < 0.99: choice = pool[3] # 9%
+			else:             choice = pool[4] # 1%
+		_:
+			# Fallback per sicurezza (casuale puro)
+			choice = pool.pick_random()
+	
+	#Decide DOVE crearlo ovvero nella riga meno affollata
+	var row = _get_weighted_row()
+	row_weights[row] += weight_penalty
+	
+	#Crea l'oggetto nella scena e lo posiziona
+	var enemy = all_enemy_scenes[choice].instantiate()
 	var spawn_cell = Vector2i(GameConstants.COLUMN + 2, row)
 	var center_pos = tilemap.map_to_local(spawn_cell)
 	enemy.global_position = tilemap.to_global(center_pos)
 	enemy.riga = row
 	
-	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
+	enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated_with_row").bind(row))
 	add_child(enemy)
 	
 	enemies_alive += 1
@@ -157,11 +233,12 @@ func _on_enemy_defeated():
 func kill_all():
 	# Forziamo la fine dello spawn e l'eliminazione dei nemici.
 	enemies_to_spawn = 0
+	row_weights.fill(0.0)
 	
 	var children_to_kill = []
 	for child in get_children():
 		if child.has_method("die"):
-			child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
+			child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated_with_row"))
 			children_to_kill.append(child)
 			enemies_alive -= 1
 	
@@ -195,6 +272,7 @@ func destroy_robots_in_row_with_animation(row: int):
 				robot.global_position.x <= INCINERATE_X_LIMIT
 			)
 			if can_incinerate:
+				row_weights[row] = max(0.0, row_weights[row] - weight_penalty)
 				child.queue_free()
 				killed_count += 1
 	
@@ -245,3 +323,34 @@ func check_enemies_for_next_wave():
 			if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
 				AudioManager.play_victory_music()
 			emit_signal("level_completed")
+
+func _get_weighted_row() -> int:
+	# Lista che conterrà gli indici delle righe "migliori" (quelle meno affollate)
+	var best_rows = []
+	# Inizializziamo il peso minimo prendendo come riferimento il valore della prima riga
+	var min_weight = row_weights[0]
+	
+	# Cicliamo attraverso tutti i pesi registrati per trovare il valore più basso attuale
+	for w in row_weights:
+		if w < min_weight:
+			min_weight = w
+			
+	# Identifichiamo tutte le righe che hanno il peso minimo
+	for i in range(row_weights.size()):
+		if row_weights[i] <= min_weight:
+			best_rows.append(i)
+	
+	# Scegli a caso tra le migliori righe disponibili
+	return best_rows[randi() % best_rows.size()]
+
+func _on_enemy_defeated_with_row(row_index: int):
+	# Sottraiamo la penalità di peso perché il nemico è stato rimosso. 
+	# Questo rende la corsia nuovamente disponibile e appetibile per nuovi spawn.
+	row_weights[row_index] -= weight_penalty
+
+# Se a causa del recupero naturale nel tempo il peso è sceso molto, evitiamo che diventi negativo
+	if row_weights[row_index] < 0.0:
+		row_weights[row_index] = 0.0
+		
+# Richiama la funzione principale per decrementare il numero totale di nemici vivi e controllare se l'ondata è terminata.
+	_on_enemy_defeated()
