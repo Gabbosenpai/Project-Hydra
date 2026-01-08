@@ -149,3 +149,18 @@ func play_game_over_music():
 # Suona la musica di vittoria
 func play_victory_music():
 	play_music(victory_music)
+
+func play_pause_click(sfx: AudioStream) -> void:
+	var p = AudioStreamPlayer.new()
+	p.process_mode = Node.PROCESS_MODE_ALWAYS
+	p.stream = sfx
+	p.bus = "SFX"
+
+	if is_sfx_muted:
+		p.volume_db = linear_to_db(0.0)
+	else:
+		p.volume_db = linear_to_db(sfx_volume * GLOBAL_SFX_FACTOR)
+
+	add_child(p)
+	p.play()
+	p.connect("finished", p.queue_free)
