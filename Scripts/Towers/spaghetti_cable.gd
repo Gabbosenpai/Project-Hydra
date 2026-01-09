@@ -37,7 +37,6 @@ func _process(_delta: float) -> void:
 func take_damage(amount):
 	#vita prima del danno subito
 	var old_health := tower_current_health
-
 	tower_current_health -= float(amount) * (1 - dmg_reduction)
 	flash_bright()
 	print("Tower HP:", tower_current_health)
@@ -50,7 +49,8 @@ func take_damage(amount):
 		
 	if tower_current_health == 0:
 		die()
-		
+
+
 #Funzione di morte per ora il nemico viene solamente deallocato dalla scena 
 func die():
 	emit_signal("died", self) 
