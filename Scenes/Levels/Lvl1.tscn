@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cyvvrq135uf1p"]
+[gd_scene load_steps=26 format=3 uid="uid://cyvvrq135uf1p"]
 
 [ext_resource type="Script" uid="uid://cdur2dolyiavw" path="res://Scripts/Base Scene Script/Lvl1.gd" id="1_s1ade"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_7nfcr"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cjoobhnq7wt5i" path="res://Scenes/Utilities/new_UI.tscn" id="10_tk4nw"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_uimwk"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="16_dwxw5"]
+[ext_resource type="PackedScene" uid="uid://bmlxl8qb5cvdy" path="res://Scenes/Utilities/tutorial_manager.tscn" id="17_gogke"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5nqqt"]
 texture = ExtResource("2_h4611")
@@ -94,6 +95,8 @@ layer_1/name = "Layer1"
 position = Vector2(950, 681)
 limit_enabled = false
 
+[node name="TutorialManager" parent="." instance=ExtResource("17_gogke")]
+
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("10_tk4nw")]
 game_over_ui = NodePath("../GameOverUI")
 
@@ -164,6 +167,8 @@ tilemap = NodePath("../TileMap")
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("16_dwxw5")]
 
+[connection signal="pressed" from="UI/TutorialPopup/BtnSi" to="TutorialManager" method="_on_btn_si_pressed"]
+[connection signal="pressed" from="UI/TutorialPopup/BtnNo" to="TutorialManager" method="_on_btn_no_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 
