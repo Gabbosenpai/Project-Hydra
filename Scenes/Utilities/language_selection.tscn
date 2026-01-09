@@ -1,53 +1,173 @@
-[gd_scene load_steps=3 format=3 uid="uid://cloled5m4tbf7"]
+[gd_scene load_steps=7 format=3 uid="uid://cloled5m4tbf7"]
 
 [ext_resource type="Script" uid="uid://brde1aqn7vrot" path="res://Scripts/Utility/language_selection.gd" id="1_ky16n"]
-[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_72c5y"]
+[ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_ga8sr"]
+[ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="3_utder"]
+[ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="4_xwqma"]
 
-[node name="Control" type="Control"]
+[sub_resource type="FontVariation" id="FontVariation_l36fp"]
+base_font = ExtResource("2_ga8sr")
+
+[sub_resource type="FontVariation" id="FontVariation_82wc7"]
+base_font = SubResource("FontVariation_l36fp")
+spacing_glyph = -10
+spacing_space = -10
+
+[node name="Language" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ky16n")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 781.0
-offset_top = 122.0
-offset_right = 1205.0
-offset_bottom = 205.0
-theme_override_font_sizes/font_size = 60
-text = "Scegli la lingua"
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -351.0
+offset_right = 20.0
+offset_bottom = -311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ga8sr")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ItalianoButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 860.0
-offset_top = 356.0
-offset_right = 1051.0
-offset_bottom = 441.0
-theme_override_font_sizes/font_size = 50
-text = "Italiano"
+[node name="BackToMenu" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = 448.0
+offset_right = 231.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_utder")
+texture_pressed = ExtResource("4_xwqma")
+metadata/_edit_group_ = true
 
-[node name="EnglishButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 866.0
-offset_top = 536.0
-offset_right = 1045.0
-offset_bottom = 623.0
-theme_override_font_sizes/font_size = 50
+[node name="Label" type="Label" parent="BackToMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_ga8sr")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItalianoButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.0
+offset_top = 51.0
+offset_right = 232.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("3_utder")
+texture_pressed = ExtResource("4_xwqma")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ItalianoButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_ga8sr")
+theme_override_font_sizes/font_size = 40
+text = "Italian"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnglishButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = 267.0
+offset_right = 245.0
+offset_bottom = 367.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("3_utder")
+texture_pressed = ExtResource("4_xwqma")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="EnglishButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_ga8sr")
+theme_override_font_sizes/font_size = 40
 text = "English"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BackToMenuButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 764.0
-offset_top = 789.0
-offset_right = 1098.0
-offset_bottom = 977.0
-theme_override_font_sizes/font_size = 50
-text = "Torna al Menù"
+[node name="Titolo" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -401.0
+offset_top = -166.0
+offset_right = 229.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_utder")
+texture_pressed = ExtResource("4_xwqma")
+metadata/_edit_group_ = true
 
-[node name="Colorscale Filter" parent="." instance=ExtResource("2_72c5y")]
+[node name="Label" type="Label" parent="Titolo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = SubResource("FontVariation_82wc7")
+theme_override_font_sizes/font_size = 40
+text = "Select Language"
+horizontal_alignment = 1
+vertical_alignment = 1
 
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="ItalianoButton" to="." method="_on_italiano_button_pressed"]
 [connection signal="pressed" from="EnglishButton" to="." method="_on_english_button_pressed"]
-[connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
