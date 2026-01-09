@@ -14,11 +14,6 @@ extends CanvasLayer
 @export var option_menu: Panel
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
-#sprite per le icone del volume
-@export var music_on_sprite: Sprite2D
-@export var music_off_sprite: Sprite2D
-@export var sfx_on_sprite: Sprite2D
-@export var sfx_off_sprite: Sprite2D
 
 static var adminMode = true
 var adminButtonPressed = 0
