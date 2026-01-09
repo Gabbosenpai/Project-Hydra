@@ -9,16 +9,11 @@ extends CanvasLayer
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxPanel/VBoxContainer
 @onready var admin_timer = Timer.new()
-@export var mute_music_button: Button
-@export var mute_sfx_button: Button
+@export var mute_music_button: TextureButton
+@export var mute_sfx_button: TextureButton
 @export var option_menu: Panel
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
-#sprite per le icone del volume
-@export var music_on_sprite: Sprite2D
-@export var music_off_sprite: Sprite2D
-@export var sfx_on_sprite: Sprite2D
-@export var sfx_off_sprite: Sprite2D
 
 static var adminMode = true
 var adminButtonPressed = 0
@@ -38,14 +33,15 @@ func _ready():
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
 
-#per sincronizzare le icone audio
+# Aggiornata UI bottoni SFX e Music, dovrebbeero sincronizzarsi automaticamente
+# Per sincronizzare le icone audio
 func _refresh_audio_ui():
-	
-	music_on_sprite.visible = !AudioManager.is_music_muted
-	music_off_sprite.visible = AudioManager.is_music_muted
+	pass
+	#music_on_sprite.visible = !AudioManager.is_music_muted
+	#music_off_sprite.visible = AudioManager.is_music_muted
 
-	sfx_on_sprite.visible = !AudioManager.is_sfx_muted
-	sfx_off_sprite.visible = AudioManager.is_sfx_muted
+	#sfx_on_sprite.visible = !AudioManager.is_sfx_muted
+	#sfx_off_sprite.visible = AudioManager.is_sfx_muted
 
 
 
@@ -75,7 +71,7 @@ func _on_option_button_pressed() -> void:
 		_sync_sliders_with_audio()
 		_refresh_audio_ui()
 		if PlayFabManager.client_config.is_logged_in():
-			var userButtonText = $MenuOption/UserText
+			var userButtonText = $MenuOption/UserButton/UserText
 			var username = PlayFabManager.client_config.username
 			
 			if username == "":
