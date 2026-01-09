@@ -88,7 +88,9 @@ func _on_option_button_pressed() -> void:
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Utilities/language_selection.tscn")
+	var language_selection = $MenuOption/LanguageSelection
+	toggle_main_options_ui(false)
+	language_selection.visible = true
 
 ##Funzione che si occupa di resettare i salvataggi fatti e lancia la sfx del pulsante reset
 #func _on_reset_button_pressed() -> void:
