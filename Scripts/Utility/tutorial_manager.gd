@@ -20,14 +20,20 @@ func mostra_domanda_tutorial():
 	anim_player.play("entrata")
 
 func _on_btn_no_pressed():
+	anim_player.play("chiusura")
+	await anim_player.animation_finished
 	popup.visible = false
 	get_tree().paused = false # Riparte il gioco normalmente
 
 func _on_btn_si_pressed():
+	anim_player.play("chiusura")
+	await anim_player.animation_finished
 	popup.visible = false
 	get_tree().paused = false
+	anim_player.play("chiusura")
 	avvia_sequenza_tutorial()
 
+#Vedere come implementare questa parte
 func avvia_sequenza_tutorial():
 	# Qui piloti i tuoi manager già esistenti
 	spawner.initial_delay_timer.stop() # Blocca i 15 secondi di attesa
