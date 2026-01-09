@@ -44,7 +44,7 @@ func take_damage(amount):
 		tower_current_health = 0
 	
 	#quando la vita va sotto un multiplo di 20, riprdouci suono"
-	if tower_current_health > 0 and int(old_health / 20) > int(tower_current_health / 20):
+	if tower_current_health > 0 and int(old_health / 50) > int(tower_current_health / 50):
 		AudioManager.play_sfx(spaghettiCable_sfx)
 		
 	if tower_current_health == 0:
