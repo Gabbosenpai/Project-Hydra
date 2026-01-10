@@ -110,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -385.0
-offset_top = 267.0
-offset_right = 245.0
-offset_bottom = 367.0
+offset_left = -390.0
+offset_top = 199.0
+offset_right = 240.0
+offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
@@ -132,6 +132,38 @@ theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_ga8sr")
 theme_override_font_sizes/font_size = 40
 text = "English"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChineseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = 331.0
+offset_right = 240.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("3_utder")
+texture_pressed = ExtResource("4_xwqma")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ChineseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_ga8sr")
+theme_override_font_sizes/font_size = 40
+text = "Chinese"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -171,3 +203,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="ItalianoButton" to="." method="_on_italiano_button_pressed"]
 [connection signal="pressed" from="EnglishButton" to="." method="_on_english_button_pressed"]
+[connection signal="pressed" from="ChineseButton" to="." method="_on_chinese_button_pressed"]
