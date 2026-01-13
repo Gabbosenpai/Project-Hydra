@@ -116,8 +116,8 @@ func _on_option_button_pressed() -> void:
 				userButtonText.text = "Accesso non eseguito"
 			else:
 				userButtonText.text = "Accesso eseguito"
-	else:
-		option_menu.visible = false
+	#else:
+		#option_menu.visible = false
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
