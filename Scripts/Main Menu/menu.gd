@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var encyclopedia_button = $VBoxPanel/VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxPanel/VBoxContainer
+@onready var anim_player = $AnimationPlayer
 @onready var admin_timer = Timer.new()
 @export var mute_music_button: TextureButton
 @export var mute_sfx_button: TextureButton
@@ -20,6 +21,15 @@ var adminButtonPressed = 0
 
 # Funzione che inizializza il menu principale
 func _ready():
+	anim_player.play("avvioTitolo")
+	await anim_player.animation_finished
+	
+	anim_player.play("avvioOpzioni")
+	await anim_player.animation_finished
+	
+	anim_player.play("avvioMonitorCentro")
+	await anim_player.animation_finished
+	
 	if(adminMode == true):
 		adminMode = true
 	else:
