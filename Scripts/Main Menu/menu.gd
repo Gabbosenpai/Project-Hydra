@@ -86,9 +86,9 @@ func _on_option_button_pressed() -> void:
 			var username = PlayFabManager.client_config.username
 			
 			if username == "":
-				userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+				userButtonText.text = "Accesso non eseguito"
 			else:
-				userButtonText.text = "Utente loggato: " + username
+				userButtonText.text = "Accesso eseguito"
 	else:
 		option_menu.visible = false
 
@@ -179,10 +179,10 @@ func update_user_display() -> void:
 		if username == "" or username == null:
 			userButtonText.text = "Utente loggato (DisplayName mancante)"
 		else:
-			userButtonText.text = "Utente loggato: " + username
+			userButtonText.text =  "Accesso eseguito"
 	else:
 		# QUESTO RESETTA IL TESTO DOPO IL LOGOUT
-		userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+		userButtonText.text = "Accesso non eseguito"
 	
 
 func toggle_main_options_ui(boolean: bool):
