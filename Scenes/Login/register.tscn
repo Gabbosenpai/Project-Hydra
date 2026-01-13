@@ -14,8 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d52cs")
 metadata/_edit_lock_ = true
-metadata/_edit_vertical_guides_ = [990.0, 930.0, 1620.0, 615.0, 768.0, 845.0, 845.0, 770.0]
-metadata/_edit_horizontal_guides_ = [395.0, 485.0, 575.0, 675.0, 572.0]
 
 [node name="StatusLabel" type="Label" parent="."]
 layout_mode = 1
