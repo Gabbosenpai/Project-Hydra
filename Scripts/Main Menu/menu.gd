@@ -24,11 +24,12 @@ func _ready():
 	anim_player.play("avvioTitolo")
 	await anim_player.animation_finished
 	
+	anim_player.play("avvioMonitorCentro")
+	await anim_player.animation_finished
+	
 	anim_player.play("avvioOpzioni")
 	await anim_player.animation_finished
 	
-	anim_player.play("avvioMonitorCentro")
-	await anim_player.animation_finished
 	
 	if(adminMode == true):
 		adminMode = true
