@@ -76,20 +76,21 @@ func _on_credits_button_pressed() -> void:
 # icona mute/unmute
 func _on_option_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	if option_menu.visible == false:
-		option_menu.visible = true
-		_sync_sliders_with_audio()
-		_refresh_audio_ui()
-		if PlayFabManager.client_config.is_logged_in():
-			var userButtonText = $MenuOption/UserButton/UserText
-			var username = PlayFabManager.client_config.username
+	anim_player.play("aperturaOpzioni")
+	#if option_menu.visible == false:
+		#option_menu.visible = true
+	_sync_sliders_with_audio()
+	_refresh_audio_ui()
+	if PlayFabManager.client_config.is_logged_in():
+		var userButtonText = $MenuOption/UserButton/UserText
+		var username = PlayFabManager.client_config.username
 			
-			if username == "":
-				userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
-			else:
-				userButtonText.text = "Utente loggato: " + username
-	else:
-		option_menu.visible = false
+		if username == "":
+			userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+		else:
+			userButtonText.text = "Utente loggato: " + username
+	#else:
+		#option_menu.visible = false
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
@@ -153,7 +154,8 @@ func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	# By changing scene we see the scene flickering, not good for the eyes :/
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
-	option_menu.visible = false
+	anim_player.play("chiusuraOpzioni")
+	#option_menu.visible = false
 
 
 func _on_user_button_pressed() -> void:
