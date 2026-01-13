@@ -20,21 +20,26 @@ const TURRET_UNLOCKS = {
 @export var game_over_ui: Control
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
-@export var mute_music_button: Button
-@export var mute_sfx_button: Button
+@export var mute_music_button: TextureButton
+@export var mute_sfx_button: TextureButton
 @onready var button_remove = $ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
-@export var music_on_sprite: Sprite2D
-@export var music_off_sprite: Sprite2D
-@export var sfx_on_sprite: Sprite2D
-@export var sfx_off_sprite: Sprite2D
 
+var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
+var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
+var texture_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png")
+var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button On.png")
 var current_level
 var is_wave_active = false
 
+
+func _ready():
+	_refresh_audio_ui()
+
+
 # Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
 func _sync_sliders_with_audio():
-	music_slider.value = AudioManager.music_volume *100
+	music_slider.value = AudioManager.music_volume * 100
 	sfx_slider.value = AudioManager.sfx_volume * 100
 
 
@@ -121,7 +126,7 @@ func _on_pause_button_pressed():
 	pause_menu.visible = true
 	pause_button.visible = false
 	_sync_sliders_with_audio()
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
 # Riprende il gioco dopo la pausa
 func _on_resume_button_pressed():
@@ -178,17 +183,25 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
 
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
-#per tenere sincronizzate le icone audio
+# Aggiornata UI bottoni SFX e Music, ora questa funzione cambia le texture
+# normal e pressed dei bottoni in base allo stato AudioManager
 func _refresh_audio_ui():
-	music_on_sprite.visible = !AudioManager.is_music_muted
-	music_off_sprite.visible = AudioManager.is_music_muted
-
-	sfx_on_sprite.visible = !AudioManager.is_sfx_muted
-	sfx_off_sprite.visible = AudioManager.is_sfx_muted
+	if !AudioManager.is_music_muted:
+		mute_music_button.texture_normal = texture_not_muted_music
+		mute_music_button.texture_pressed = texture_muted_music
+	else:
+		mute_music_button.texture_normal = texture_muted_music
+		mute_music_button.texture_pressed = texture_not_muted_music
+	if !AudioManager.is_sfx_muted:
+		mute_sfx_button.texture_normal = texture_not_muted_sfx
+		mute_sfx_button.texture_pressed = texture_muted_sfx
+	else:
+		mute_sfx_button.texture_normal = texture_muted_sfx
+		mute_sfx_button.texture_pressed = texture_not_muted_sfx

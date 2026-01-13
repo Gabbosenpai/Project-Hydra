@@ -17,6 +17,11 @@ extends CanvasLayer
 
 static var adminMode = true
 var adminButtonPressed = 0
+var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
+var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
+var texture_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png")
+var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button On.png")
+
 
 # Funzione che inizializza il menu principale
 func _ready():
@@ -36,12 +41,18 @@ func _ready():
 # Aggiornata UI bottoni SFX e Music, dovrebbeero sincronizzarsi automaticamente
 # Per sincronizzare le icone audio
 func _refresh_audio_ui():
-	pass
-	#music_on_sprite.visible = !AudioManager.is_music_muted
-	#music_off_sprite.visible = AudioManager.is_music_muted
-
-	#sfx_on_sprite.visible = !AudioManager.is_sfx_muted
-	#sfx_off_sprite.visible = AudioManager.is_sfx_muted
+	if !AudioManager.is_music_muted:
+		mute_music_button.texture_normal = texture_not_muted_music
+		mute_music_button.texture_pressed = texture_muted_music
+	else:
+		mute_music_button.texture_normal = texture_muted_music
+		mute_music_button.texture_pressed = texture_not_muted_music
+	if !AudioManager.is_sfx_muted:
+		mute_sfx_button.texture_normal = texture_not_muted_sfx
+		mute_sfx_button.texture_pressed = texture_muted_sfx
+	else:
+		mute_sfx_button.texture_normal = texture_muted_sfx
+		mute_sfx_button.texture_pressed = texture_not_muted_sfx
 
 
 
@@ -69,15 +80,15 @@ func _on_option_button_pressed() -> void:
 	if option_menu.visible == false:
 		option_menu.visible = true
 		_sync_sliders_with_audio()
-		_refresh_audio_ui()
+		#_refresh_audio_ui()
 		if PlayFabManager.client_config.is_logged_in():
 			var userButtonText = $MenuOption/UserButton/UserText
 			var username = PlayFabManager.client_config.username
 			
 			if username == "":
-				userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+				userButtonText.text = "Accesso non eseguito"
 			else:
-				userButtonText.text = "Utente loggato: " + username
+				userButtonText.text = "Accesso eseguito"
 	else:
 		option_menu.visible = false
 
@@ -131,12 +142,12 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
 
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
 
 func _on_menu_button_pressed() -> void:
@@ -168,10 +179,10 @@ func update_user_display() -> void:
 		if username == "" or username == null:
 			userButtonText.text = "Utente loggato (DisplayName mancante)"
 		else:
-			userButtonText.text = "Utente loggato: " + username
+			userButtonText.text =  "Accesso eseguito"
 	else:
 		# QUESTO RESETTA IL TESTO DOPO IL LOGOUT
-		userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+		userButtonText.text = "Accesso non eseguito"
 	
 
 func toggle_main_options_ui(boolean: bool):

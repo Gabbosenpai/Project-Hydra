@@ -47,8 +47,8 @@ mute_sfx_button = NodePath("MenuOption/MuteSFXButton")
 option_menu = NodePath("MenuOption")
 music_slider = NodePath("MenuOption/MuteMusicButton/MusicSlider")
 sfx_slider = NodePath("MenuOption/MuteSFXButton/SfxSlider")
-metadata/_edit_vertical_guides_ = [1147.0, 1547.0, 1347.0]
-metadata/_edit_horizontal_guides_ = [647.0, 377.0, 378.0, 560.0, 290.0]
+metadata/_edit_vertical_guides_ = [1147.0, 1547.0, 1347.0, 1147.0]
+metadata/_edit_horizontal_guides_ = [647.0, 377.0, 378.0, 560.0, 290.0, 966.0, 928.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -408,12 +408,14 @@ stretch_mode = 0
 [node name="UserText" type="Label" parent="MenuOption/UserButton"]
 layout_mode = 0
 offset_left = 195.0
-offset_top = 44.0
-offset_right = 510.5
-offset_bottom = 119.0
-theme_override_colors/font_color = Color(0.10980392, 0.11372549, 0.12156863, 1)
-text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+offset_top = 24.0
+offset_right = 510.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_g4iet")
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="LanguageButton" type="TextureButton" parent="MenuOption"]
