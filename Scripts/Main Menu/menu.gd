@@ -18,17 +18,22 @@ extends CanvasLayer
 
 static var adminMode = true
 var adminButtonPressed = 0
+var animazioni_iniziali_concluse = false
+var opzioni_aperte = false
 
 # Funzione che inizializza il menu principale
 func _ready():
 	anim_player.play("avvioTitolo")
 	await anim_player.animation_finished
+	if animazioni_iniziali_concluse: return
 	
 	anim_player.play("avvioMonitorCentro")
 	await anim_player.animation_finished
+	if animazioni_iniziali_concluse: return
 	
 	anim_player.play("avvioOpzioni")
 	await anim_player.animation_finished
+	animazioni_iniziali_concluse = true
 	
 	
 	if(adminMode == true):
@@ -76,20 +81,30 @@ func _on_credits_button_pressed() -> void:
 # Funzione che mostra le opzioni, avvia la sfx del pulsante opzioni e sincronizza
 # icona mute/unmute
 func _on_option_button_pressed() -> void:
+	
+	if anim_player.is_playing() and (anim_player.current_animation == "aperturaOpzioni" or anim_player.current_animation == "chiusuraOpzioni"):
+		return
+	
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	anim_player.play("aperturaOpzioni")
-	#if option_menu.visible == false:
-		#option_menu.visible = true
-	_sync_sliders_with_audio()
-	_refresh_audio_ui()
-	if PlayFabManager.client_config.is_logged_in():
-		var userButtonText = $MenuOption/UserButton/UserText
-		var username = PlayFabManager.client_config.username
+	
+	if opzioni_aperte:
+		anim_player.play("chiusuraOpzioni")
+		opzioni_aperte = false
+	else:
+		anim_player.play("aperturaOpzioni")
+		opzioni_aperte = true
+		#if option_menu.visible == false:
+			#option_menu.visible = true
+		_sync_sliders_with_audio()
+		_refresh_audio_ui()
+		if PlayFabManager.client_config.is_logged_in():
+			var userButtonText = $MenuOption/UserButton/UserText
+			var username = PlayFabManager.client_config.username
 			
-		if username == "":
-			userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
-		else:
-			userButtonText.text = "Utente loggato: " + username
+			if username == "":
+				userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+			else:
+				userButtonText.text = "Utente loggato: " + username
 	#else:
 		#option_menu.visible = false
 
@@ -156,6 +171,7 @@ func _on_menu_button_pressed() -> void:
 	# By changing scene we see the scene flickering, not good for the eyes :/
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 	anim_player.play("chiusuraOpzioni")
+	opzioni_aperte = false
 	#option_menu.visible = false
 
 
@@ -220,3 +236,29 @@ func _on_admin_timer_timeout():
 
 func _on_admin_label_timer_timeout():
 	$AdminModeLabel.visible = false
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if not animazioni_iniziali_concluse:
+			salta_animazioni_iniziali()
+
+func salta_animazioni_iniziali():
+	# Ferma tutto e vai all'ultimo frame dell'ultima animazione della sequenza
+	# 1. Fermiamo tutto per sicurezza
+	anim_player.stop() 
+	
+	# 2. Forziamo lo stato finale di ogni animazione in sequenza
+	# Questo "teletrasporta" i nodi ai loro valori conclusivi
+	anim_player.play("avvioTitolo")
+	anim_player.advance(10.0)
+	
+	anim_player.play("avvioMonitorCentro")
+	anim_player.advance(10.0)
+	
+	anim_player.play("avvioOpzioni")
+	anim_player.advance(10.0)
+	
+	# 3. Aggiorniamo le variabili di stato
+	animazioni_iniziali_concluse = true
+	opzioni_aperte = false
+	
