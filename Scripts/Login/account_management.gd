@@ -1,6 +1,6 @@
 extends Control
 
-@onready var status_label = $CenterContainer/UserLabel
+@onready var status_label = $UserLabel
 @onready var confirmation_dialog = $ConfirmationDialog
 
 func _ready():
