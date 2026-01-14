@@ -23,6 +23,11 @@ func _on_register_button_up() -> void:
 		$StatusLabel.text = "Password troppo corta\n(min 6 car)"
 		$StatusLabel.modulate = Color.ORANGE
 		return
+	
+	if username.length() > 20:
+		$StatusLabel.text = "Username troppo lungo\n(max 20 car.)"
+		$StatusLabel.modulate = Color.ORANGE
+		return
 
 	var combined_info_request_params = GetPlayerCombinedInfoRequestParams.new()
 	combined_info_request_params.show_all()
@@ -86,3 +91,4 @@ func reset_fields_register():
 	$Email.text = ""
 	$Password.text = ""
 	$StatusLabel.text = ""
+	PlayFabManager.client_config.session_ticket = ""

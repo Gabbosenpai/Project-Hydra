@@ -1,8 +1,7 @@
 extends Control
 
-@onready var status_label = $PopupMenu/VBoxContainer/StatusLabel
+@onready var status_label = $UserLabel
 @onready var confirmation_dialog = $ConfirmationDialog
-@onready var popup_account = $PopupMenu
 
 func _ready():
 	# Connessione segnali di sicurezza
@@ -55,5 +54,4 @@ func _on_back_main_menu_pressed() -> void:
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func reset_label_():
-	$PopupMenu/VBoxContainer/StatusLabel.text = "Gestione Account"
-	$PopupMenu/VBoxContainer/StatusLabel.modulate = Color.WHITE
+	status_label.text = PlayFabManager.client_config.username

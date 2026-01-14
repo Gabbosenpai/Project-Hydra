@@ -8,23 +8,39 @@ extends CanvasLayer
 @onready var encyclopedia_button = $VBoxPanel/VBoxContainer/EncyclopediaButton
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxPanel/VBoxContainer
+@onready var anim_player = $AnimationPlayer
 @onready var admin_timer = Timer.new()
-@export var mute_music_button: Button
-@export var mute_sfx_button: Button
+@export var mute_music_button: TextureButton
+@export var mute_sfx_button: TextureButton
 @export var option_menu: Panel
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
-#sprite per le icone del volume
-@export var music_on_sprite: Sprite2D
-@export var music_off_sprite: Sprite2D
-@export var sfx_on_sprite: Sprite2D
-@export var sfx_off_sprite: Sprite2D
 
 static var adminMode = true
 var adminButtonPressed = 0
+var animazioni_iniziali_concluse = false
+var opzioni_aperte = false
+var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
+var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
+var texture_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png")
+var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button On.png")
+
 
 # Funzione che inizializza il menu principale
 func _ready():
+	anim_player.play("avvioTitolo")
+	await anim_player.animation_finished
+	if animazioni_iniziali_concluse: return
+	
+	anim_player.play("avvioMonitorCentro")
+	await anim_player.animation_finished
+	if animazioni_iniziali_concluse: return
+	
+	anim_player.play("avvioOpzioni")
+	await anim_player.animation_finished
+	animazioni_iniziali_concluse = true
+	
+	
 	if(adminMode == true):
 		adminMode = true
 	else:
@@ -38,14 +54,21 @@ func _ready():
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
 
-#per sincronizzare le icone audio
+# Aggiornata UI bottoni SFX e Music, dovrebbeero sincronizzarsi automaticamente
+# Per sincronizzare le icone audio
 func _refresh_audio_ui():
-	
-	music_on_sprite.visible = !AudioManager.is_music_muted
-	music_off_sprite.visible = AudioManager.is_music_muted
-
-	sfx_on_sprite.visible = !AudioManager.is_sfx_muted
-	sfx_off_sprite.visible = AudioManager.is_sfx_muted
+	if !AudioManager.is_music_muted:
+		mute_music_button.texture_normal = texture_not_muted_music
+		mute_music_button.texture_pressed = texture_muted_music
+	else:
+		mute_music_button.texture_normal = texture_muted_music
+		mute_music_button.texture_pressed = texture_not_muted_music
+	if !AudioManager.is_sfx_muted:
+		mute_sfx_button.texture_normal = texture_not_muted_sfx
+		mute_sfx_button.texture_pressed = texture_muted_sfx
+	else:
+		mute_sfx_button.texture_normal = texture_muted_sfx
+		mute_sfx_button.texture_pressed = texture_not_muted_sfx
 
 
 
@@ -69,21 +92,33 @@ func _on_credits_button_pressed() -> void:
 # Funzione che mostra le opzioni, avvia la sfx del pulsante opzioni e sincronizza
 # icona mute/unmute
 func _on_option_button_pressed() -> void:
+	
+	if anim_player.is_playing() and (anim_player.current_animation == "aperturaOpzioni" or anim_player.current_animation == "chiusuraOpzioni"):
+		return
+	
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	if option_menu.visible == false:
-		option_menu.visible = true
+	
+	if opzioni_aperte:
+		anim_player.play("chiusuraOpzioni")
+		opzioni_aperte = false
+	else:
+		anim_player.play("aperturaOpzioni")
+		opzioni_aperte = true
+		#if option_menu.visible == false:
+			#option_menu.visible = true
 		_sync_sliders_with_audio()
-		_refresh_audio_ui()
+		#_refresh_audio_ui()
+		var userButtonText = $MenuOption/UserButton/UserText
 		if PlayFabManager.client_config.is_logged_in():
-			var userButtonText = $MenuOption/UserText
+			
 			var username = PlayFabManager.client_config.username
 			
 			if username == "":
-				userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+				userButtonText.text = "Accesso non eseguito"
 			else:
-				userButtonText.text = "Utente loggato: " + username
-	else:
-		option_menu.visible = false
+				userButtonText.text = "Accesso eseguito"
+		else:
+			userButtonText.text = "Accesso non eseguito"
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
@@ -137,19 +172,21 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_mute_music_button_pressed() -> void:
 	AudioManager.toggle_music_mute()
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
 
 func _on_mute_sfx_button_pressed() -> void:
 	AudioManager.toggle_sfx_mute()
-	_refresh_audio_ui()
+	#_refresh_audio_ui()
 
 
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	# By changing scene we see the scene flickering, not good for the eyes :/
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
-	option_menu.visible = false
+	anim_player.play("chiusuraOpzioni")
+	opzioni_aperte = false
+	#option_menu.visible = false
 
 
 func _on_user_button_pressed() -> void:
@@ -174,10 +211,10 @@ func update_user_display() -> void:
 		if username == "" or username == null:
 			userButtonText.text = "Utente loggato (DisplayName mancante)"
 		else:
-			userButtonText.text = "Utente loggato: " + username
+			userButtonText.text =  "Accesso eseguito"
 	else:
 		# QUESTO RESETTA IL TESTO DOPO IL LOGOUT
-		userButtonText.text = "Utente non loggato per procedere al login cliccare sul pulsante con l'omino qui a sinistra"
+		userButtonText.text = "Accesso non eseguito"
 	
 
 func toggle_main_options_ui(boolean: bool):
@@ -213,3 +250,29 @@ func _on_admin_timer_timeout():
 
 func _on_admin_label_timer_timeout():
 	$AdminModeLabel.visible = false
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if not animazioni_iniziali_concluse:
+			salta_animazioni_iniziali()
+
+func salta_animazioni_iniziali():
+	# Ferma tutto e vai all'ultimo frame dell'ultima animazione della sequenza
+	# 1. Fermiamo tutto per sicurezza
+	anim_player.stop() 
+	
+	# 2. Forziamo lo stato finale di ogni animazione in sequenza
+	# Questo "teletrasporta" i nodi ai loro valori conclusivi
+	anim_player.play("avvioTitolo")
+	anim_player.advance(10.0)
+	
+	anim_player.play("avvioMonitorCentro")
+	anim_player.advance(10.0)
+	
+	anim_player.play("avvioOpzioni")
+	anim_player.advance(10.0)
+	
+	# 3. Aggiorniamo le variabili di stato
+	animazioni_iniziali_concluse = true
+	opzioni_aperte = false
+	
