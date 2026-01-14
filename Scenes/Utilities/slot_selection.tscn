@@ -30,14 +30,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6qa0o")
-metadata/_edit_vertical_guides_ = [960.0, 530.0, 1390.0, 495.0, 1425.0]
-metadata/_edit_horizontal_guides_ = [373.0, 323.0, 453.0, 583.0, 273.0, 403.0, 503.0, 533.0, 633.0]
+metadata/_edit_vertical_guides_ = [960.0, 530.0, 1390.0, 495.0, 1425.0, 665.0, 1245.0, 1253.0, 1260.0, 1255.0, 1300.0]
+metadata/_edit_horizontal_guides_ = [373.0, 323.0, 453.0, 583.0, 273.0, 403.0, 503.0, 533.0, 633.0, 699.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_top = -4.0
 offset_right = 1920.0
-offset_bottom = 1076.0
+offset_bottom = 1080.0
 texture = ExtResource("2_y0hdr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -195,10 +194,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -6.0
-offset_right = -5.0
-offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gtvrc")
@@ -218,11 +213,12 @@ vertical_alignment = 1
 [node name="YesButton" type="TextureButton" parent="ConfirmPanel"]
 layout_mode = 0
 offset_left = 665.0
-offset_top = 698.0
-offset_right = 765.0
-offset_bottom = 798.0
+offset_top = 699.0
+offset_right = 790.0
+offset_bottom = 824.0
 texture_normal = ExtResource("11_nckc7")
 texture_pressed = ExtResource("12_jacdq")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ConfirmPanel/YesButton"]
 layout_mode = 1
@@ -240,12 +236,13 @@ vertical_alignment = 1
 
 [node name="NoButton" type="TextureButton" parent="ConfirmPanel"]
 layout_mode = 0
-offset_left = 1119.0
-offset_top = 701.0
-offset_right = 1219.0
-offset_bottom = 801.0
+offset_left = 1130.0
+offset_top = 699.0
+offset_right = 1255.0
+offset_bottom = 824.0
 texture_normal = ExtResource("10_kqvdf")
 texture_pressed = ExtResource("11_01qf0")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ConfirmPanel/NoButton"]
 layout_mode = 1
