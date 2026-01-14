@@ -108,16 +108,17 @@ func _on_option_button_pressed() -> void:
 			#option_menu.visible = true
 		_sync_sliders_with_audio()
 		#_refresh_audio_ui()
+		var userButtonText = $MenuOption/UserButton/UserText
 		if PlayFabManager.client_config.is_logged_in():
-			var userButtonText = $MenuOption/UserButton/UserText
+			
 			var username = PlayFabManager.client_config.username
 			
 			if username == "":
 				userButtonText.text = "Accesso non eseguito"
 			else:
 				userButtonText.text = "Accesso eseguito"
-	#else:
-		#option_menu.visible = false
+		else:
+			userButtonText.text = "Accesso non eseguito"
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:

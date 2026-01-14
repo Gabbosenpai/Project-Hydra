@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmrq4568hj2cl"]
+[gd_scene load_steps=7 format=3 uid="uid://cmrq4568hj2cl"]
 
 [ext_resource type="Script" uid="uid://buol7e3tsyytm" path="res://Scripts/Login/account_management.gd" id="1_yr52k"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_vjpih"]
+[ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="3_mtfc0"]
+[ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="4_llti5"]
+
+[sub_resource type="FontVariation" id="FontVariation_mtfc0"]
+base_font = ExtResource("2_vjpih")
+spacing_glyph = -4
+spacing_space = -10
 
 [sub_resource type="Theme" id="Theme_yr52k"]
 default_font = ExtResource("2_vjpih")
@@ -12,57 +19,116 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yr52k")
 metadata/_edit_vertical_guides_ = [960.0]
+metadata/_edit_lock_ = true
 
-[node name="PopupMenu" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -356.0
-offset_top = -346.0
-offset_right = 373.0
-offset_bottom = 370.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu"]
-layout_mode = 2
-
-[node name="UserLabel" type="Label" parent="PopupMenu/VBoxContainer"]
-layout_mode = 2
+[node name="User" type="Label" parent="."]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 202.0
+offset_right = 1057.0
+offset_bottom = 242.0
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
-theme_override_font_sizes/font_size = 24
-text = "Username"
+theme_override_font_sizes/font_size = 40
+text = "User"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RemoveAccount" type="Button" parent="PopupMenu/VBoxContainer"]
-layout_mode = 2
+[node name="UserLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 316.0
+offset_right = 1365.0
+offset_bottom = 356.0
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
+text = "UsernameUsername1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemoveAccount" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 432.0
+offset_right = 1274.0
+offset_bottom = 532.0
+size_flags_vertical = 3
+texture_normal = ExtResource("3_mtfc0")
+texture_pressed = ExtResource("4_llti5")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="RemoveAccount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = SubResource("FontVariation_mtfc0")
+theme_override_font_sizes/font_size = 40
 text = "Delete Account"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Logout" type="Button" parent="PopupMenu/VBoxContainer"]
-layout_mode = 2
+[node name="BackMainMenu" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 657.0
+offset_right = 1274.0
+offset_bottom = 757.0
 size_flags_vertical = 3
+texture_normal = ExtResource("3_mtfc0")
+texture_pressed = ExtResource("4_llti5")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BackMainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logout" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 544.0
+offset_right = 1274.0
+offset_bottom = 644.0
+size_flags_vertical = 3
+texture_normal = ExtResource("3_mtfc0")
+texture_pressed = ExtResource("4_llti5")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Logout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_vjpih")
+theme_override_font_sizes/font_size = 40
 text = "Logout"
-
-[node name="BackMainMenu" type="Button" parent="PopupMenu/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_vjpih")
-theme_override_font_sizes/font_size = 24
-text = "Back To Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 oversampling_override = 1.0
@@ -75,7 +141,7 @@ theme = SubResource("Theme_yr52k")
 dialog_text = "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile."
 dialog_autowrap = true
 
-[connection signal="pressed" from="PopupMenu/VBoxContainer/RemoveAccount" to="." method="_on_remove_account_pressed"]
-[connection signal="pressed" from="PopupMenu/VBoxContainer/Logout" to="." method="_on_logout_pressed"]
-[connection signal="pressed" from="PopupMenu/VBoxContainer/BackMainMenu" to="." method="_on_back_main_menu_pressed"]
+[connection signal="pressed" from="RemoveAccount" to="." method="_on_remove_account_pressed"]
+[connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]
+[connection signal="pressed" from="Logout" to="." method="_on_logout_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

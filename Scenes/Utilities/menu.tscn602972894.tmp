@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=32 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
@@ -38,166 +38,6 @@ spacing_glyph = -2
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6g3s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keyao"]
-
-[sub_resource type="Animation" id="Animation_6py8x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(503, 1082)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Title:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MenuOption:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(275, -1125)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("OptionButton:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1920, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("OptionButton:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_btrbw"]
-resource_name = "avvioMonitorCentro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(503, 1082), Vector2(503, 635)]
-}
-
-[sub_resource type="Animation" id="Animation_84m0w"]
-resource_name = "avvioTitolo"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_25wvx"]
-resource_name = "avvioOpzioni"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OptionButton:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1920, 0), Vector2(1792, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OptionButton:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -6.2831855]
-}
-
-[sub_resource type="Animation" id="Animation_t5brg"]
-resource_name = "aperturaOpzioni"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MenuOption:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(275, -1125), Vector2(275, -140)]
-}
-
-[sub_resource type="Animation" id="Animation_1r4vl"]
-resource_name = "chiusuraOpzioni"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MenuOption:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(275, -140), Vector2(275, -1120)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_84m0w"]
-_data = {
-&"RESET": SubResource("Animation_6py8x"),
-&"aperturaOpzioni": SubResource("Animation_t5brg"),
-&"avvioMonitorCentro": SubResource("Animation_btrbw"),
-&"avvioOpzioni": SubResource("Animation_25wvx"),
-&"avvioTitolo": SubResource("Animation_84m0w"),
-&"chiusuraOpzioni": SubResource("Animation_1r4vl")
-}
 
 [node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("mute_music_button", "mute_sfx_button", "option_menu", "music_slider", "sfx_slider")]
 process_mode = 3
@@ -381,7 +221,6 @@ rotation = 1.0464532
 position = Vector2(141, 875)
 
 [node name="Title" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(0, 50)
 metadata/_edit_lock_ = true
 
@@ -404,9 +243,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -457.0
-offset_top = 542.0
+offset_top = 95.0
 offset_right = 475.0
-offset_bottom = 1012.016
+offset_bottom = 565.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_ewdvb")
@@ -541,18 +380,20 @@ text = "No"
 
 [node name="MenuOption" type="Panel" parent="."]
 process_mode = 3
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -685.0
-offset_top = -1665.0
+offset_top = -680.0
 offset_right = 684.0
-offset_bottom = -547.0
+offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
+metadata/_edit_lock_ = true
 
 [node name="UserButton" type="TextureButton" parent="MenuOption"]
 layout_mode = 0
@@ -757,10 +598,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionButton" type="Button" parent="."]
-offset_left = 1920.0
-offset_right = 2048.0
+offset_left = 1792.0
+offset_right = 1920.0
 offset_bottom = 128.0
-pivot_offset = Vector2(64, 64)
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_e6g3s")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_keyao")
 icon = ExtResource("13_e6g3s")
@@ -787,11 +627,6 @@ offset_bottom = 925.0
 theme_override_colors/font_color = Color(0.22919601, 0.71845937, 3.85046e-07, 1)
 theme_override_fonts/font = ExtResource("24_ewdvb")
 text = "Admin Mode Activated"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_84m0w")
-}
 
 [connection signal="pressed" from="VBoxPanel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxPanel/VBoxContainer/EncyclopediaButton" to="." method="_on_encyclopedia_button_pressed"]
