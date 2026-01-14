@@ -293,7 +293,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
-text = "Gioca"
+text = "menu_play"
 
 [node name="EncyclopediaButton" type="TextureButton" parent="VBoxPanel/VBoxContainer"]
 layout_mode = 2
@@ -317,7 +317,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
-text = "Database"
+text = "database"
 
 [node name="CreditsButton" type="TextureButton" parent="VBoxPanel/VBoxContainer"]
 layout_mode = 2
@@ -341,7 +341,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 60
-text = "Crediti"
+text = "menu_credits"
 
 [node name="QuitButton" type="Button" parent="VBoxPanel/VBoxContainer"]
 visible = false
@@ -574,7 +574,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_2uc32")
 theme_override_font_sizes/font_size = 40
-text = "Menù Principale"
+text = "main_menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
