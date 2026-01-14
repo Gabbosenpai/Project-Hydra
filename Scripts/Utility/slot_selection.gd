@@ -2,6 +2,17 @@ extends Control
 
 # Salviamo quale slot vogliamo cancellare
 var slot_to_delete = 0  
+ 
+@onready var file1_label: Label = $VBoxContainer/File1/Label
+@onready var file2_label: Label = $VBoxContainer/File2/Label
+@onready var file3_label: Label = $VBoxContainer/File3/Label
+@onready var slot_1_led: TextureRect = $LedSlots/Slot1Led
+@onready var slot_2_led: TextureRect = $LedSlots/Slot2Led
+@onready var slot_3_led: TextureRect = $LedSlots/Slot3Led
+
+var slot_occupato = preload("res://Assets/Sprites/UI/Menu/SaveSlot Led On.png")
+var slot_vuoto = preload("res://Assets/Sprites/UI/Menu/SaveSlot Led Off.png")
+
 
 func _ready():
 	update_slot_texts()
@@ -17,9 +28,11 @@ func update_slot_texts():
 	if livello1 > 1:
 		completato1 = livello1 - 1
 	if completato1 > 0:
-		$VBoxContainer/File1.text = "File 1 - Livello %d completato" % completato1
+		file1_label.text = "Livello %d superato" % completato1
+		slot_1_led.texture = slot_occupato
 	else:
-		$VBoxContainer/File1.text = "File 1 - Vuoto"
+		file1_label.text = "Vuoto"
+		slot_1_led.texture = slot_vuoto
 	
 	# Stessa cosa del file 1
 	var livello2 = SaveManager.get_saved_level(2)
@@ -27,9 +40,11 @@ func update_slot_texts():
 	if livello2 > 1:
 		completato2 = livello2 - 1
 	if completato2 > 0:
-		$VBoxContainer/File2.text = "File 2 - Livello %d completato" % completato2
+		file2_label.text = "Livello %d superato" % completato2
+		slot_2_led.texture = slot_occupato
 	else:
-		$VBoxContainer/File2.text = "File 2 - Vuoto"
+		file2_label.text = "Vuoto"
+		slot_2_led.texture = slot_vuoto
 	
 	# Stessa cosa del file 1
 	var livello3 = SaveManager.get_saved_level(3)
@@ -37,9 +52,11 @@ func update_slot_texts():
 	if livello3 > 1:
 		completato3 = livello3 - 1
 	if completato3 > 0:
-		$VBoxContainer/File3.text = "File 3 - Livello %d completato" % completato3
+		file3_label.text = "Livello %d superato" % completato3
+		slot_3_led.texture = slot_occupato
 	else:
-		$VBoxContainer/File3.text = "File 3 - Vuoto"
+		file3_label.text = "Vuoto"
+		slot_3_led.texture = slot_vuoto
 
 
 func _on_file_1_pressed() -> void:
