@@ -31,10 +31,15 @@ var texture_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound But
 var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button On.png")
 var current_level
 var is_wave_active = false
+var opzioni_aperte = false
+@onready var anim_player = $PauseMenu/AnimationPlayer
 
 
 func _ready():
 	_refresh_audio_ui()
+	pause_menu.position.y = -1300
+	opzioni_aperte = false
+	get_tree().paused = false
 
 
 # Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
@@ -121,19 +126,29 @@ func _on_button_kill_all_pressed():
 
 # Mostra il menu di pausa, ferma il menu di gioco e sincronizza le icone mute/unmute
 func _on_pause_button_pressed():
+	if anim_player.is_playing():
+		return
 	AudioManager.play_pause_click(AudioManager.button_click_sfx)
-	get_tree().paused = true
-	pause_menu.visible = true
-	pause_button.visible = false
-	_sync_sliders_with_audio()
+	if opzioni_aperte:
+		anim_player.play("chiudiOpzioni")
+		await anim_player.animation_finished
+		get_tree().paused = false
+		opzioni_aperte = false
+	else:
+		get_tree().paused = true
+		_sync_sliders_with_audio()
+		anim_player.play("apriOpzioni")
+		await anim_player.animation_finished
+		opzioni_aperte = true
+
+	#pause_menu.visible = true
+	#pause_button.visible = false
 	#_refresh_audio_ui()
 
 # Riprende il gioco dopo la pausa
 func _on_resume_button_pressed():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().paused = false
-	pause_menu.visible = false
-	pause_button.visible = true
+	_on_pause_button_pressed()
 
 
 # Torna al menu principale dalla schermata di vittoria

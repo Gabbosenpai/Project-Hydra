@@ -95,9 +95,9 @@ game_over_ui = NodePath("../GameOverUI")
 
 [node name="PauseMenu" parent="UI" index="6"]
 offset_left = 275.0
-offset_top = -140.0
+offset_top = -1261.0
 offset_right = 1644.0
-offset_bottom = 978.0
+offset_bottom = -143.0
 
 [node name="LabelWaveCenter" parent="UI" index="8"]
 offset_left = 1532.0
