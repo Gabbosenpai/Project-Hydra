@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpwd2ie4hw630"]
+[gd_scene load_steps=25 format=3 uid="uid://dpwd2ie4hw630"]
 
 [ext_resource type="Script" uid="uid://doro4771j2o5w" path="res://Scripts/Base Scene Script/Lvl3.gd" id="1_ilo8m"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_mg6tb"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="11_at4sb"]
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_k0qwe"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="15_cfv47"]
+[ext_resource type="PackedScene" uid="uid://bhagnqcntnk8k" path="res://Scenes/Utilities/victory_screen.tscn" id="16_06t3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c7emg"]
 texture = ExtResource("2_pukyc")
@@ -152,7 +153,7 @@ wave_timer = NodePath("../WaveTimer")
 initial_delay_timer = NodePath("InitialDelayTimer")
 label_wave_center = NodePath("../UI/LabelWaveCenter")
 animation_player = NodePath("../UI/AnimationPlayer")
-victory_screen = NodePath("../UI/VictoryScreen")
+victory_screen = NodePath("../VictoryScreen")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_k0qwe")]
@@ -165,6 +166,9 @@ script = ExtResource("11_at4sb")
 tilemap = NodePath("../TileMap")
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("15_cfv47")]
+
+[node name="VictoryScreen" parent="." instance=ExtResource("16_06t3i")]
+visible = false
 
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
