@@ -91,3 +91,4 @@ func reset_fields_register():
 	$Email.text = ""
 	$Password.text = ""
 	$StatusLabel.text = ""
+	PlayFabManager.client_config.session_ticket = ""
