@@ -1,19 +1,19 @@
-KEY,it,en
-
-#Menu principale,,
-
-menu_play,Gioca,Play
-menu_quit,Esci,Quit
-menu_option,Opzioni,Options
-menu_credits,Crediti,Credits
-
-
-
-#Menu Selezione livello,,
-
-select_back,Indietro,Back
-select,Scegli il livello in base alla difficoltà,Select a level based on its difficulty 
-
-#Schermo selezione lingua,,
-select_language,Seleziona lingua,Select language
-back_to_menu,Torna al menù,Back to menu
+KEY,it,en,zh
+,,,
+#Menu principale,,,
+main_menu,Menù principale,Main Menu,主選單
+menu_play,Gioca,Play,演出
+menu_quit,Esci,Quit,退出
+menu_option,Opzioni,Options,選項
+menu_credits,Crediti,Credits,片尾字幕
+database,Database,Database,資料庫
+,,,
+,,,
+#Menu Selezione livello,,,
+,,,
+select_back,Indietro,Back,
+select,Scegli il livello in base alla difficoltà,Select a level based on its difficulty ,
+,,,
+#Schermo selezione lingua,,,
+select_language,Seleziona lingua,Select language,
+back_to_menu,Torna al menù,Back to menu,
