@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=38 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://c6t080f7r542l" path="res://Assets/Sprites/UI/Trash can.png" id="2_cu3u0"]
