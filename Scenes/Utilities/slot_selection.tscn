@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8gjqm40lbvk2"]
+[gd_scene load_steps=19 format=3 uid="uid://b8gjqm40lbvk2"]
 
 [ext_resource type="Script" uid="uid://t01jm1v7dol4" path="res://Scripts/Utility/slot_selection.gd" id="1_6qa0o"]
-[ext_resource type="Texture2D" uid="uid://c63g4ta6exmss" path="res://Assets/DeleteSave.png" id="2_ws6yv"]
+[ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_m7ute"]
+[ext_resource type="Texture2D" uid="uid://bwg7ovj3mk2sw" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG.png" id="2_y0hdr"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="3_0imya"]
+[ext_resource type="Texture2D" uid="uid://dkwx5wy853gff" path="res://Assets/Sprites/UI/Menu/Slot Button Not Pressed.png" id="3_gtvrc"]
+[ext_resource type="Texture2D" uid="uid://b2fykvcpa72sw" path="res://Assets/Sprites/UI/Menu/Slot Button Pressed.png" id="4_m8hq0"]
+[ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="4_q85rw"]
+[ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="5_ldhr5"]
+[ext_resource type="Texture2D" uid="uid://dmpsp8j2lg18" path="res://Assets/Sprites/UI/Menu/Small Delete Button Not Pressed.png" id="7_01qf0"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="7_jacdq"]
+[ext_resource type="Texture2D" uid="uid://d0udik5gvty21" path="res://Assets/Sprites/UI/Menu/Small Delete Button Pressed.png" id="8_7e5cc"]
+[ext_resource type="Texture2D" uid="uid://cueqoy4kyuu6i" path="res://Assets/Sprites/UI/Menu/SaveSlot Led Off.png" id="8_sukf7"]
+[ext_resource type="Texture2D" uid="uid://bumg0s0a8nkxj" path="res://Assets/Sprites/UI/Menu/Small Confirm Button Not Pressed.png" id="10_kqvdf"]
+[ext_resource type="Texture2D" uid="uid://dac2c67cmjayi" path="res://Assets/Sprites/UI/Menu/Small Confirm Button Pressed.png" id="11_01qf0"]
+[ext_resource type="Texture2D" uid="uid://8r6a1fxwloic" path="res://Assets/Sprites/UI/Menu/Small Delete Text Button Not Pressed.png" id="11_nckc7"]
+[ext_resource type="Texture2D" uid="uid://cmviy1byko556" path="res://Assets/Sprites/UI/Menu/Small Delete Text Button Pressed.png" id="12_jacdq"]
+
+[sub_resource type="FontVariation" id="FontVariation_ldhr5"]
+base_font = ExtResource("4_q85rw")
+spacing_glyph = -1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gtvrc"]
 
 [node name="SlotSelect" type="Control"]
 layout_mode = 3
@@ -12,87 +31,208 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6qa0o")
+metadata/_edit_vertical_guides_ = [960.0, 530.0, 1390.0, 495.0, 1425.0, 665.0, 1245.0, 1253.0, 1260.0, 1255.0, 1300.0]
+metadata/_edit_horizontal_guides_ = [373.0, 323.0, 453.0, 583.0, 273.0, 403.0, 503.0, 533.0, 633.0, 699.0]
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_y0hdr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 566.0
-offset_top = 442.0
-offset_right = 1366.0
-offset_bottom = 798.0
+offset_left = 530.0
+offset_top = 273.0
+offset_right = 1390.0
+offset_bottom = 581.0
+theme_override_constants/separation = 30
 
-[node name="File1" type="Button" parent="VBoxContainer"]
+[node name="File1" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 45
+texture_normal = ExtResource("3_gtvrc")
+texture_pressed = ExtResource("4_m8hq0")
 
-[node name="File2" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-
-[node name="File3" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-
-[node name="Delete1" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 0
-offset_left = 1364.0
-offset_top = 442.0
-offset_right = 1464.0
-offset_bottom = 542.0
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Delete1"]
+[node name="Label" type="Label" parent="VBoxContainer/File1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ws6yv")
-expand_mode = 1
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_q85rw")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Delete2" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 0
-offset_left = 1364.0
-offset_top = 545.0
-offset_right = 1464.0
-offset_bottom = 645.0
-metadata/_edit_group_ = true
+[node name="File2" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_gtvrc")
+texture_pressed = ExtResource("4_m8hq0")
 
-[node name="TextureRect" type="TextureRect" parent="Delete2"]
+[node name="Label" type="Label" parent="VBoxContainer/File2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ws6yv")
-expand_mode = 1
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_q85rw")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Delete3" type="Button" parent="Delete2"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 0
-offset_top = 101.0
-offset_right = 100.0
-offset_bottom = 201.0
-metadata/_edit_group_ = true
+[node name="File3" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_gtvrc")
+texture_pressed = ExtResource("4_m8hq0")
 
-[node name="TextureRect" type="TextureRect" parent="Delete2/Delete3"]
+[node name="Label" type="Label" parent="VBoxContainer/File3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ws6yv")
-expand_mode = 1
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_q85rw")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LedSlots" type="Node" parent="."]
+
+[node name="Slot1Led" type="TextureRect" parent="LedSlots"]
+offset_left = 395.0
+offset_top = 273.0
+offset_right = 495.0
+offset_bottom = 373.0
+texture = ExtResource("8_sukf7")
+
+[node name="Text" type="Label" parent="LedSlots/Slot1Led"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_jacdq")
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2Led" type="TextureRect" parent="LedSlots"]
+offset_left = 395.0
+offset_top = 403.0
+offset_right = 495.0
+offset_bottom = 503.0
+texture = ExtResource("8_sukf7")
+
+[node name="Text" type="Label" parent="LedSlots/Slot2Led"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_jacdq")
+theme_override_font_sizes/font_size = 40
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3Led" type="TextureRect" parent="LedSlots"]
+offset_left = 395.0
+offset_top = 533.0
+offset_right = 495.0
+offset_bottom = 633.0
+texture = ExtResource("8_sukf7")
+
+[node name="Text" type="Label" parent="LedSlots/Slot3Led"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_jacdq")
+theme_override_font_sizes/font_size = 40
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Delete1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1425.0
+offset_top = 273.0
+offset_right = 1550.0
+offset_bottom = 398.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("7_01qf0")
+texture_pressed = ExtResource("8_7e5cc")
+stretch_mode = 3
+
+[node name="Delete2" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 1425.0
+offset_top = 403.0
+offset_right = 1525.0
+offset_bottom = 503.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("7_01qf0")
+texture_pressed = ExtResource("8_7e5cc")
+stretch_mode = 0
+
+[node name="Delete3" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 1425.0001
+offset_top = 533.00006
+offset_right = 1550.0001
+offset_bottom = 658.00006
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("7_01qf0")
+texture_pressed = ExtResource("8_7e5cc")
+stretch_mode = 0
+
+[node name="BackToMenu" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 866.0
+offset_right = 1390.0
+offset_bottom = 966.0
+texture_normal = ExtResource("2_m7ute")
+texture_pressed = ExtResource("5_ldhr5")
+stretch_mode = 0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BackToMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = SubResource("FontVariation_ldhr5")
+theme_override_font_sizes/font_size = 40
+text = "Menù Principale"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ConfirmPanel" type="Panel" parent="."]
-visible = false
+z_index = 1
 custom_minimum_size = Vector2(500, 400)
 layout_mode = 1
 anchors_preset = 15
@@ -100,42 +240,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gtvrc")
 
 [node name="Text" type="Label" parent="ConfirmPanel"]
 layout_mode = 0
-offset_left = 266.0
-offset_top = 313.0
-offset_right = 1600.0
-offset_bottom = 382.0
-theme_override_font_sizes/font_size = 50
-text = "Sei sicuro di voler cancellare i dati salvati in questo file?"
-
-[node name="YesButton" type="Button" parent="ConfirmPanel"]
-layout_mode = 0
-offset_left = 649.0
-offset_top = 418.0
-offset_right = 699.0
-offset_bottom = 495.0
-theme_override_font_sizes/font_size = 50
-text = "Si"
-
-[node name="NoButton" type="Button" parent="ConfirmPanel"]
-layout_mode = 0
-offset_left = 1089.0
-offset_top = 420.0
-offset_right = 1167.0
-offset_bottom = 497.0
-theme_override_font_sizes/font_size = 50
-text = "No"
-
-[node name="BackToMenu" type="Button" parent="."]
-layout_mode = 0
-offset_left = 772.0
-offset_top = 173.0
-offset_right = 1147.0
-offset_bottom = 323.0
+offset_left = 53.0
+offset_top = 127.0
+offset_right = 1868.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_q85rw")
 theme_override_font_sizes/font_size = 40
-text = "Torna al menù"
+text = "Sei sicuro di voler cancellare i dati di questo file?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YesButton" type="TextureButton" parent="ConfirmPanel"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 699.0
+offset_right = 790.0
+offset_bottom = 824.0
+texture_normal = ExtResource("11_nckc7")
+texture_pressed = ExtResource("12_jacdq")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ConfirmPanel/YesButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_q85rw")
+theme_override_font_sizes/font_size = 40
+text = "SI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoButton" type="TextureButton" parent="ConfirmPanel"]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 699.0
+offset_right = 1255.0
+offset_bottom = 824.0
+texture_normal = ExtResource("10_kqvdf")
+texture_pressed = ExtResource("11_01qf0")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ConfirmPanel/NoButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_q85rw")
+theme_override_font_sizes/font_size = 40
+text = "NO"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("3_0imya")]
 
@@ -144,7 +310,7 @@ text = "Torna al menù"
 [connection signal="pressed" from="VBoxContainer/File3" to="." method="_on_file_3_pressed"]
 [connection signal="pressed" from="Delete1" to="." method="_on_delete_1_pressed"]
 [connection signal="pressed" from="Delete2" to="." method="_on_delete_2_pressed"]
-[connection signal="pressed" from="Delete2/Delete3" to="." method="_on_delete_3_pressed"]
+[connection signal="pressed" from="Delete3" to="." method="_on_delete_3_pressed"]
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="ConfirmPanel/YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="ConfirmPanel/NoButton" to="." method="_on_no_button_pressed"]
-[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
