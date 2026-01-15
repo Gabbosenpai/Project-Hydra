@@ -23,9 +23,9 @@ func _update_buttons():
 
 	italian_button.set_pressed(locale == "it")
 	english_button.set_pressed(locale == "en")
-	chinese_button.set_pressed(locale == "zh")
-
-
+	chinese_button.set_pressed(locale == "zh_CN")
+	
+	
 func _on_italiano_button_pressed():
 	TranslationServer.set_locale("it")
 	_update_buttons()
@@ -39,7 +39,7 @@ func _on_english_button_pressed():
 
 
 func _on_chinese_button_pressed():
-	TranslationServer.set_locale("zh")
+	TranslationServer.set_locale("zh_CN")
 	_update_buttons()
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 
