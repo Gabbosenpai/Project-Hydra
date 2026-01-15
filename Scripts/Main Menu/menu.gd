@@ -9,12 +9,14 @@ extends CanvasLayer
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxPanel/VBoxContainer
 @onready var anim_player = $AnimationPlayer
+@onready var lang_text: Label = $MenuOption/LanguageButton/LangText
 @onready var admin_timer = Timer.new()
 @export var mute_music_button: TextureButton
 @export var mute_sfx_button: TextureButton
 @export var option_menu: Panel
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
+
 
 static var adminMode = true
 var adminButtonPressed = 0
@@ -40,7 +42,6 @@ func _ready():
 	await anim_player.animation_finished
 	animazioni_iniziali_concluse = true
 	
-	
 	if(adminMode == true):
 		adminMode = true
 	else:
@@ -53,6 +54,7 @@ func _ready():
 	AudioManager.play_music(menu_music)# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
+	refresh_lang_label()
 
 # Aggiornata UI bottoni SFX e Music, dovrebbeero sincronizzarsi automaticamente
 # Per sincronizzare le icone audio
@@ -70,6 +72,16 @@ func _refresh_audio_ui():
 		mute_sfx_button.texture_normal = texture_muted_sfx
 		mute_sfx_button.texture_pressed = texture_not_muted_sfx
 
+
+func refresh_lang_label():
+	var language = TranslationServer.get_locale()
+	match language:
+		"it":
+			lang_text.text = "Italiano"
+		"en":
+			lang_text.text = "English"
+		"zh_cn":
+			lang_text.text = "ChingChong"
 
 
 # Se clicco gioca ferma l'OST del menù

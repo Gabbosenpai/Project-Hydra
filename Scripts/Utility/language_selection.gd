@@ -48,4 +48,5 @@ func _on_back_to_menu_pressed():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
+	get_parent().get_parent().refresh_lang_label()
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")

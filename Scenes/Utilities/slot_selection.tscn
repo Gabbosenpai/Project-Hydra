@@ -31,8 +31,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6qa0o")
-metadata/_edit_vertical_guides_ = [960.0, 530.0, 1390.0, 495.0, 1425.0, 665.0, 1245.0, 1253.0, 1260.0, 1255.0, 1300.0]
-metadata/_edit_horizontal_guides_ = [373.0, 323.0, 453.0, 583.0, 273.0, 403.0, 503.0, 533.0, 633.0, 699.0]
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://dxtmnq1665owm"]
+[gd_scene load_steps=41 format=3 uid="uid://dxtmnq1665owm"]
 
 [ext_resource type="Script" uid="uid://bvdu63lrngdxb" path="res://Scripts/Main Menu/menu.gd" id="1_lti8b"]
-[ext_resource type="Texture2D" uid="uid://cbgovrifgisaw" path="res://Assets/bandiera ita.png" id="2_eas8t"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_g4iet"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_ixpxt"]
 [ext_resource type="Texture2D" uid="uid://6bs1wh3bx1ec" path="res://Assets/Sprites/UI/Title Screen/Title Engineers.png" id="2_nyop6"]
@@ -16,9 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="16_gh4pp"]
 [ext_resource type="Texture2D" uid="uid://d32oxk02kuw3p" path="res://Assets/Sprites/UI/Menu/User Button Not Logged.png" id="17_25wvx"]
 [ext_resource type="PackedScene" uid="uid://cdwqym4ehbpbd" path="res://Scenes/Utilities/Title Stars/title_star_d.tscn" id="17_7555j"]
+[ext_resource type="Texture2D" uid="uid://e5bxttbbbxu7" path="res://Assets/Sprites/UI/Menu/Lang Button Not Pressed.png" id="18_1r4vl"]
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="18_auemk"]
 [ext_resource type="Texture2D" uid="uid://mtdri4cs2f6d" path="res://Assets/Sprites/UI/Music and SFX/Music Button On.png" id="18_t5brg"]
 [ext_resource type="Texture2D" uid="uid://c0hekqemeviuw" path="res://Assets/Sprites/UI/Music and SFX/Music Button Off.png" id="19_1r4vl"]
+[ext_resource type="Texture2D" uid="uid://da6nsnxf3yib3" path="res://Assets/Sprites/UI/Menu/Lang Button Pressed.png" id="19_7v85l"]
 [ext_resource type="PackedScene" uid="uid://dciw03lb6qvj2" path="res://Scenes/Login/login.tscn" id="19_7555j"]
 [ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="19_lmo3v"]
 [ext_resource type="Texture2D" uid="uid://c543ksxxdq8fo" path="res://Assets/Sprites/UI/Music and SFX/Sound Button On.png" id="20_6py8x"]
@@ -208,7 +209,8 @@ mute_sfx_button = NodePath("MenuOption/MuteSFXButton")
 option_menu = NodePath("MenuOption")
 music_slider = NodePath("MenuOption/MuteMusicButton/MusicSlider")
 sfx_slider = NodePath("MenuOption/MuteSFXButton/SfxSlider")
-metadata/_edit_vertical_guides_ = [958.0, 960.0]
+metadata/_edit_vertical_guides_ = [958.0, 960.0, 486.0, 487.0]
+metadata/_edit_horizontal_guides_ = [-608.0, -353.0, -250.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -582,28 +584,28 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 92.0
-offset_top = -434.0
-offset_right = 342.0
-offset_bottom = -267.0
+offset_left = 124.0
+offset_top = -418.0
+offset_right = 299.0
+offset_bottom = -243.0
 grow_vertical = 0
-texture_normal = ExtResource("2_eas8t")
+texture_normal = ExtResource("18_1r4vl")
+texture_pressed = ExtResource("19_7v85l")
+stretch_mode = 0
+metadata/_edit_group_ = true
 
 [node name="LangText" type="Label" parent="MenuOption/LanguageButton"]
 layout_mode = 0
-offset_left = 338.0
-offset_top = 58.0
-offset_right = 378.0
-offset_bottom = 81.0
-text = "Ita Placeholder"
-
-[node name="LangText2" type="Label" parent="MenuOption/LanguageButton"]
-layout_mode = 0
-offset_left = 338.0
-offset_top = 58.0
-offset_right = 378.0
-offset_bottom = 81.0
-text = "Ita Placeholder"
+offset_left = 192.0
+offset_top = 25.0
+offset_right = 507.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("2_g4iet")
+theme_override_font_sizes/font_size = 40
+text = "Italiano"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MuteMusicButton" type="TextureButton" parent="MenuOption"]
 layout_mode = 1
