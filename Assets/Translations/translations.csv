@@ -1,12 +1,12 @@
-KEY,it,en,zh
+KEY,it,en,zh_CN
 ,,,
 #Menu principale,,,
 main_menu,Menù principale,Main Menu,主選單
-menu_play,Gioca,Play,演出
+menu_play,Gioca,Play,播放
 menu_quit,Esci,Quit,退出
-menu_option,Opzioni,Options,選項
-menu_credits,Crediti,Credits,片尾字幕
-database,Database,Database,資料庫
+menu_option,Opzioni,Options,选项
+menu_credits,Crediti,Credits,鸣谢
+database,Database,Database,数据库
 ,,,
 ,,,
 #Menu Selezione livello,,,

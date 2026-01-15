@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=39 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://c6t080f7r542l" path="res://Assets/Sprites/UI/Trash can.png" id="2_cu3u0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="9_ipxc1"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="10_wlbwg"]
 [ext_resource type="Texture2D" uid="uid://dodchjw6xsndv" path="res://Assets/Sprites/UI/Menu/Options.png" id="11_cu3u0"]
+[ext_resource type="PackedScene" uid="uid://bhagnqcntnk8k" path="res://Scenes/Utilities/victory_screen.tscn" id="13_3sob7"]
 [ext_resource type="Texture2D" uid="uid://mtdri4cs2f6d" path="res://Assets/Sprites/UI/Music and SFX/Music Button On.png" id="13_rkjgo"]
 [ext_resource type="Texture2D" uid="uid://c0hekqemeviuw" path="res://Assets/Sprites/UI/Music and SFX/Music Button Off.png" id="14_d5ei8"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="15_6wlri"]
@@ -520,12 +521,19 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -685.0
 offset_top = -1801.0
-offset_right = 684.0
+offset_right = 693.0
 offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
-metadata/_edit_group_ = true
+
+[node name="VictoryScreen" parent="PauseMenu" instance=ExtResource("13_3sob7")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
 
 [node name="PauseLabel" type="Label" parent="PauseMenu"]
 layout_mode = 0
