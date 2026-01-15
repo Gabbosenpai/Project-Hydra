@@ -6,15 +6,18 @@ extends CanvasLayer
 @onready var quit_button = $VBoxPanel/VBoxContainer/QuitButton
 @onready var credits_button = $VBoxPanel/VBoxContainer/CreditsButton
 @onready var encyclopedia_button = $VBoxPanel/VBoxContainer/EncyclopediaButton
+@onready var user_button: TextureButton = $MenuOption/UserButton
 @onready var confirm_box = $ResetConfirm
 @onready var main_menu = $VBoxPanel/VBoxContainer
 @onready var anim_player = $AnimationPlayer
+@onready var lang_text: Label = $MenuOption/LanguageButton/LangText
 @onready var admin_timer = Timer.new()
 @export var mute_music_button: TextureButton
 @export var mute_sfx_button: TextureButton
 @export var option_menu: Panel
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
+
 
 static var adminMode = true
 var adminButtonPressed = 0
@@ -24,7 +27,8 @@ var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music B
 var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
 var texture_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png")
 var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button On.png")
-
+var texture_logged = preload("res://Assets/Sprites/UI/Menu/User Button Logged.png")
+var texture_not_logged = preload("res://Assets/Sprites/UI/Menu/User Button Not Logged.png")
 
 # Funzione che inizializza il menu principale
 func _ready():
@@ -40,7 +44,6 @@ func _ready():
 	await anim_player.animation_finished
 	animazioni_iniziali_concluse = true
 	
-	
 	if(adminMode == true):
 		adminMode = true
 	else:
@@ -53,6 +56,8 @@ func _ready():
 	AudioManager.play_music(menu_music)# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
+	refresh_lang_label()
+	refresh_user_ui()
 
 # Aggiornata UI bottoni SFX e Music, dovrebbeero sincronizzarsi automaticamente
 # Per sincronizzare le icone audio
@@ -70,6 +75,25 @@ func _refresh_audio_ui():
 		mute_sfx_button.texture_normal = texture_muted_sfx
 		mute_sfx_button.texture_pressed = texture_not_muted_sfx
 
+
+func refresh_lang_label():
+	var language = TranslationServer.get_locale()
+	match language:
+		"it":
+			lang_text.text = "Italiano"
+		"en":
+			lang_text.text = "English"
+		"zh_cn":
+			lang_text.text = "ChingChong"
+
+
+func refresh_user_ui():
+	if PlayFabManager.client_config.is_logged_in():
+		user_button.texture_normal = texture_logged
+		user_button.texture_pressed = texture_not_logged
+	else:
+		user_button.texture_normal = texture_not_logged
+		user_button.texture_pressed = texture_logged
 
 
 # Se clicco gioca ferma l'OST del menù

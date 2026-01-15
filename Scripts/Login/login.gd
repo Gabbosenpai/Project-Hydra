@@ -49,6 +49,7 @@ func _on_PlayFab_login_succeded(login_result: LoginResult):
 	reset_fields_login()
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
+	get_parent().get_parent().refresh_user_ui()
 
 func _on_data_ready():
 	print("Dati sincronizzati correttamente. Benvenuto!")
@@ -68,6 +69,7 @@ func _on_back_main_menu_pressed() -> void:
 	reset_fields_login()
 	self.hide()
 	get_parent().get_parent().toggle_main_options_ui(true)
+	get_parent().get_parent().refresh_user_ui()
 	#get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
 func _on_forgot_password_pressed() -> void:
