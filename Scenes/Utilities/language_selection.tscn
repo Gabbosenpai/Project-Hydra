@@ -4,14 +4,8 @@
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_ga8sr"]
 [ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="3_utder"]
 [ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="4_xwqma"]
-
-[sub_resource type="FontVariation" id="FontVariation_l36fp"]
-base_font = ExtResource("2_ga8sr")
-
-[sub_resource type="FontVariation" id="FontVariation_82wc7"]
-base_font = SubResource("FontVariation_l36fp")
-spacing_glyph = -10
-spacing_space = -10
+[ext_resource type="Texture2D" uid="uid://q5rxd6r22iht" path="res://Assets/Sprites/UI/Menu/LangSelection Button OFF.png" id="5_ga8sr"]
+[ext_resource type="Texture2D" uid="uid://baolb5xdk7a31" path="res://Assets/Sprites/UI/Menu/LangSelection Button ON.png" id="6_utder"]
 
 [node name="Language" type="Control"]
 layout_mode = 3
@@ -85,8 +79,8 @@ offset_bottom = 151.0
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
-texture_normal = ExtResource("3_utder")
-texture_pressed = ExtResource("4_xwqma")
+texture_normal = ExtResource("5_ga8sr")
+texture_pressed = ExtResource("6_utder")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ItalianoButton"]
@@ -117,8 +111,8 @@ offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
-texture_normal = ExtResource("3_utder")
-texture_pressed = ExtResource("4_xwqma")
+texture_normal = ExtResource("5_ga8sr")
+texture_pressed = ExtResource("6_utder")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="EnglishButton"]
@@ -149,8 +143,8 @@ offset_bottom = 431.0
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
-texture_normal = ExtResource("3_utder")
-texture_pressed = ExtResource("4_xwqma")
+texture_normal = ExtResource("5_ga8sr")
+texture_pressed = ExtResource("6_utder")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ChineseButton"]
@@ -167,34 +161,19 @@ text = "Chinese"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Titolo" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -166.0
-offset_right = 229.0
-offset_bottom = -66.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("3_utder")
-texture_pressed = ExtResource("4_xwqma")
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="Titolo"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = -5.0
+offset_left = 455.0
+offset_top = 339.0
+offset_right = -632.0
+offset_bottom = -454.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_fonts/font = SubResource("FontVariation_82wc7")
+theme_override_fonts/font = ExtResource("2_ga8sr")
 theme_override_font_sizes/font_size = 40
 text = "Select Language"
 horizontal_alignment = 1
