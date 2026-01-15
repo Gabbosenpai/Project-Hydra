@@ -17,14 +17,25 @@ func _ready():
 	level_3.disabled = max_unlocked_level < 3
 	level_4.disabled = max_unlocked_level < 4
 	level_5.disabled = max_unlocked_level < 5
-	
-
 	# Suona la musica di selezione solo se diversa
 	var selection_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	if AudioManager.music_player.stream != selection_music:
 		AudioManager.play_music(selection_music)
+	refresh_select_lvl_ui(max_unlocked_level)
 
 
+func refresh_select_lvl_ui(max_lvl):
+	match max_lvl:
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
+		4:
+			pass
+		5:
+			pass
 
 
 func _on_level_1_pressed() -> void:
