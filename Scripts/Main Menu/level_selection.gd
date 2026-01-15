@@ -1,25 +1,30 @@
 extends Control
 
 # Prendiamo i bottoni dei livelli
-@onready var level_1_button = $Level1
-@onready var level_2_button = $Level2
-@onready var level_3_button = $Level3
-@onready var level_4_button = $Level4
-@onready var level_5_button = $Level5
+@onready var level_1: TextureButton = $Level1
+@onready var level_2: TextureButton = $Level2
+@onready var level_3: TextureButton = $Level3
+@onready var level_4: TextureButton = $Level4
+@onready var level_5: TextureButton = $Level5
+
+
 
 func _ready():
 	# Disattiva bottone se il max unlocked è minore del numero del livello
 	# massimo livello sbloccato 
 	var max_unlocked_level: int = SaveManager.get_max_unlocked_level()
-	level_2_button.disabled = max_unlocked_level < 2
-	level_3_button.disabled = max_unlocked_level < 3
-	level_4_button.disabled = max_unlocked_level < 4
-	level_5_button.disabled = max_unlocked_level < 5
+	level_2.disabled = max_unlocked_level < 2
+	level_3.disabled = max_unlocked_level < 3
+	level_4.disabled = max_unlocked_level < 4
+	level_5.disabled = max_unlocked_level < 5
+	
 
 	# Suona la musica di selezione solo se diversa
 	var selection_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
 	if AudioManager.music_player.stream != selection_music:
 		AudioManager.play_music(selection_music)
+
+
 
 
 func _on_level_1_pressed() -> void:
