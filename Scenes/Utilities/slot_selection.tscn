@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8gjqm40lbvk2"]
+[gd_scene load_steps=19 format=3 uid="uid://b8gjqm40lbvk2"]
 
 [ext_resource type="Script" uid="uid://t01jm1v7dol4" path="res://Scripts/Utility/slot_selection.gd" id="1_6qa0o"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_m7ute"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="4_q85rw"]
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="5_ldhr5"]
 [ext_resource type="Texture2D" uid="uid://dmpsp8j2lg18" path="res://Assets/Sprites/UI/Menu/Small Delete Button Not Pressed.png" id="7_01qf0"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="7_jacdq"]
 [ext_resource type="Texture2D" uid="uid://d0udik5gvty21" path="res://Assets/Sprites/UI/Menu/Small Delete Button Pressed.png" id="8_7e5cc"]
 [ext_resource type="Texture2D" uid="uid://cueqoy4kyuu6i" path="res://Assets/Sprites/UI/Menu/SaveSlot Led Off.png" id="8_sukf7"]
 [ext_resource type="Texture2D" uid="uid://bumg0s0a8nkxj" path="res://Assets/Sprites/UI/Menu/Small Confirm Button Not Pressed.png" id="10_kqvdf"]
@@ -32,6 +33,7 @@ grow_vertical = 2
 script = ExtResource("1_6qa0o")
 metadata/_edit_vertical_guides_ = [960.0, 530.0, 1390.0, 495.0, 1425.0, 665.0, 1245.0, 1253.0, 1260.0, 1255.0, 1300.0]
 metadata/_edit_horizontal_guides_ = [373.0, 323.0, 453.0, 583.0, 273.0, 403.0, 503.0, 533.0, 633.0, 699.0]
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -113,6 +115,20 @@ offset_right = 495.0
 offset_bottom = 373.0
 texture = ExtResource("8_sukf7")
 
+[node name="Text" type="Label" parent="LedSlots/Slot1Led"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_jacdq")
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Slot2Led" type="TextureRect" parent="LedSlots"]
 offset_left = 395.0
 offset_top = 403.0
@@ -120,12 +136,40 @@ offset_right = 495.0
 offset_bottom = 503.0
 texture = ExtResource("8_sukf7")
 
+[node name="Text" type="Label" parent="LedSlots/Slot2Led"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_jacdq")
+theme_override_font_sizes/font_size = 40
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Slot3Led" type="TextureRect" parent="LedSlots"]
 offset_left = 395.0
 offset_top = 533.0
 offset_right = 495.0
 offset_bottom = 633.0
 texture = ExtResource("8_sukf7")
+
+[node name="Text" type="Label" parent="LedSlots/Slot3Led"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_jacdq")
+theme_override_font_sizes/font_size = 40
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Delete1" type="TextureButton" parent="."]
 layout_mode = 0
@@ -204,6 +248,7 @@ offset_left = 53.0
 offset_top = 127.0
 offset_right = 1868.0
 offset_bottom = 196.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("4_q85rw")
 theme_override_font_sizes/font_size = 40
 text = "Sei sicuro di voler cancellare i dati di questo file?"
