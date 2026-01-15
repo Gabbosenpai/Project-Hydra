@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cprlr05615smj"]
+[gd_scene load_steps=25 format=3 uid="uid://cprlr05615smj"]
 
 [ext_resource type="Script" uid="uid://0rar5r8r2phc" path="res://Scripts/Base Scene Script/Lvl2.gd" id="1_cdrp3"]
 [ext_resource type="Texture2D" uid="uid://cout6bca5u3qv" path="res://Assets/Terrain Texture/grass.png" id="2_wee7m"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cnppbimtf26sx" path="res://Scenes/Managers/point_manager.tscn" id="11_nlwmo"]
 [ext_resource type="Script" uid="uid://bkr8up3j6mvt7" path="res://Scripts/Utility/grid_initializer.gd" id="12_buj31"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="15_pwmuf"]
+[ext_resource type="PackedScene" uid="uid://bhagnqcntnk8k" path="res://Scenes/Utilities/victory_screen.tscn" id="16_qqdmy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_up8n1"]
 texture = ExtResource("2_xbs6m")
@@ -76,6 +77,9 @@ sources/6 = SubResource("TileSetAtlasSource_h6cep")
 script = ExtResource("1_cdrp3")
 tilemap = NodePath("TileMap")
 ui_controller = NodePath("UI")
+
+[node name="VictoryScreen" parent="." instance=ExtResource("16_qqdmy")]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -152,7 +156,7 @@ wave_timer = NodePath("../WaveTimer")
 initial_delay_timer = NodePath("InitialDelayTimer")
 label_wave_center = NodePath("../UI/LabelWaveCenter")
 animation_player = NodePath("../UI/AnimationPlayer")
-victory_screen = NodePath("../UI/VictoryScreen")
+victory_screen = NodePath("../VictoryScreen")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_nlwmo")]
