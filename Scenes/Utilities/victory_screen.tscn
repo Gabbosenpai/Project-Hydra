@@ -1,14 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://bhagnqcntnk8k"]
+[gd_scene load_steps=13 format=4 uid="uid://bhagnqcntnk8k"]
 
 [ext_resource type="Script" uid="uid://y6re6ya0ge1o" path="res://Scripts/Utility/victory_screen.gd" id="1_oviq5"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_samx0"]
-[ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="3_epw8h"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="5_aus6y"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="14_fhf4d"]
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="15_8imgj"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0bsv"]
-texture = ExtResource("3_epw8h")
 
 [sub_resource type="Image" id="Image_fwdys"]
 data = {
@@ -20386,14 +20382,14 @@ cache/44/25/0/glyphs/3/size = Vector2(0, 0)
 cache/44/25/0/glyphs/3/uv_rect = Rect2(0, 0, 0, 0)
 cache/44/25/0/glyphs/3/texture_idx = -1
 
-[sub_resource type="FontVariation" id="FontVariation_wky1m"]
-base_font = SubResource("FontFile_76dmo")
-spacing_glyph = -3
-
 [sub_resource type="FontVariation" id="FontVariation_2ay3o"]
 base_font = SubResource("FontFile_76dmo")
 spacing_glyph = -4
 spacing_space = -6
+
+[sub_resource type="FontVariation" id="FontVariation_wky1m"]
+base_font = SubResource("FontFile_76dmo")
+spacing_glyph = -3
 
 [node name="VictoryScreen" type="Control"]
 z_index = 1000
@@ -20401,45 +20397,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -14.0
-offset_right = 17.0
-offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oviq5")
 
-[node name="Text" type="Label" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_left = 229.0
-offset_top = 117.0
-offset_right = 1647.0
-offset_bottom = 191.0
-theme_override_colors/font_color = Color(0.05882353, 0.13333334, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "Congratulazioni Ingegnere hai sconfitto i robot che vogliono sterminare gli umani!"
-
-[node name="Colorscale Filter" parent="." instance=ExtResource("2_samx0")]
-
-[node name="MenuOption" type="Panel" parent="."]
-process_mode = 3
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -725.0
-offset_top = -574.0
-offset_right = 644.0
-offset_bottom = 544.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_k0bsv")
-
-[node name="NextLevel" type="TextureButton" parent="MenuOption"]
+[node name="MenuButton" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 7
@@ -20447,10 +20409,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -438.5
-offset_top = -530.0
-offset_right = 421.5
-offset_bottom = -430.0
+offset_left = -430.0
+offset_top = -277.0
+offset_right = 430.0
+offset_bottom = -177.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("14_fhf4d")
@@ -20458,73 +20420,7 @@ texture_pressed = ExtResource("15_8imgj")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="MenuOption/NextLevel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_fonts/font = SubResource("FontVariation_wky1m")
-theme_override_font_sizes/font_size = 40
-text = "Prossimo Livello"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SelectLevel" type="TextureButton" parent="MenuOption"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -439.5
-offset_top = -710.0
-offset_right = 420.5
-offset_bottom = -610.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("14_fhf4d")
-texture_pressed = ExtResource("15_8imgj")
-stretch_mode = 4
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="MenuOption/SelectLevel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_fonts/font = SubResource("FontVariation_2ay3o")
-theme_override_font_sizes/font_size = 40
-text = "Seleziona Livello"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MenuButton" type="TextureButton" parent="MenuOption"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -441.5
-offset_top = -332.0
-offset_right = 418.5
-offset_bottom = -232.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("14_fhf4d")
-texture_pressed = ExtResource("15_8imgj")
-stretch_mode = 4
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="MenuOption/MenuButton"]
+[node name="Label" type="Label" parent="MenuButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20538,6 +20434,96 @@ text = "main_menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MenuOption/NextLevel" to="." method="_on_next_level_pressed"]
-[connection signal="pressed" from="MenuOption/SelectLevel" to="." method="_on_select_level_pressed"]
-[connection signal="pressed" from="MenuOption/MenuButton" to="." method="_on_menu_button_pressed"]
+[node name="SelectLevel" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -426.0
+offset_top = -548.0
+offset_right = 434.0
+offset_bottom = -448.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("14_fhf4d")
+texture_pressed = ExtResource("15_8imgj")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="SelectLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = SubResource("FontVariation_2ay3o")
+theme_override_font_sizes/font_size = 40
+text = "Seleziona Livello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -714.0
+offset_top = -767.0
+offset_right = 717.0
+offset_bottom = -648.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("5_aus6y")
+theme_override_font_sizes/font_size = 36
+text = "Congratulazioni Ingegnere hai sconfitto i
+ robot che vogliono 
+sterminare gli umani!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("2_samx0")]
+
+[node name="NextLevel" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -428.0
+offset_top = -412.0
+offset_right = 432.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("14_fhf4d")
+texture_pressed = ExtResource("15_8imgj")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="NextLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = SubResource("FontVariation_wky1m")
+theme_override_font_sizes/font_size = 40
+text = "Prossimo Livello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]
