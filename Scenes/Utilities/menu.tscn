@@ -640,7 +640,7 @@ offset_bottom = 21.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 40
-text = "Music"
+text = "music"
 horizontal_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="MenuOption/MuteMusicButton"]
@@ -680,10 +680,10 @@ offset_bottom = 42.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_g4iet")
 theme_override_font_sizes/font_size = 40
-text = "Sound 
-Effects"
+text = "sound_effect"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SfxSlider" type="HSlider" parent="MenuOption/MuteSFXButton"]
 process_mode = 3

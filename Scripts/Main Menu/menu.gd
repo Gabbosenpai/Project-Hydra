@@ -83,8 +83,8 @@ func refresh_lang_label():
 			lang_text.text = "Italiano"
 		"en":
 			lang_text.text = "English"
-		"zh_cn":
-			lang_text.text = "ChingChong"
+		"zh_CN":
+			lang_text.text = "中文"
 
 
 func refresh_user_ui():
@@ -138,11 +138,11 @@ func _on_option_button_pressed() -> void:
 			var username = PlayFabManager.client_config.username
 			
 			if username == "":
-				userButtonText.text = "Accesso non eseguito"
+				userButtonText.text = tr("not_logged_in")
 			else:
-				userButtonText.text = "Accesso eseguito"
+				userButtonText.text = tr("logged_in")
 		else:
-			userButtonText.text = "Accesso non eseguito"
+			userButtonText.text = tr("not_logged_in")
 
 # Funzione che consente di cambiare la lingua e avvia la sfx del pulsante opzioni
 func _on_languages_button_pressed() -> void:
