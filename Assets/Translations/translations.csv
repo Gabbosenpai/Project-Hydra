@@ -21,4 +21,5 @@ back,Indietro,Back,返回
 email,Email,Email,电子邮件
 password,Password,Password,密码
 register,Registrati,Register,注册
-forgot_password,Password dimenticata?,Forgot password?,忘记密码？
+forgot_password,Password persa?,Forgot password?,忘记密码？
+username,Username,Username,用户名

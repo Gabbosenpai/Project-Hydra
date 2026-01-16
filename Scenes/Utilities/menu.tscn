@@ -839,4 +839,5 @@ libraries = {
 [connection signal="pressed" from="AdminButton" to="." method="_on_admin_button_pressed"]
 
 [editable path="MenuOption/Login"]
+[editable path="MenuOption/Register"]
 [editable path="MenuOption/LanguageSelection"]
