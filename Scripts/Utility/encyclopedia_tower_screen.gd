@@ -1,11 +1,11 @@
 extends Control
 
-@onready var desc_panel = $MonsterDescriptionPanel
-@onready var desc_label = $MonsterDescriptionPanel/MonsterDescription
-@onready var name_label = $MonsterDescriptionPanel/MonsterName
-@onready var monster_image = $MonsterDescriptionPanel/MonsterTexture
+@onready var desc_panel = $TowerDescriptionPanel
+@onready var desc_label = $TowerDescriptionPanel/TowerDescription
+@onready var name_label = $TowerDescriptionPanel/TowerName
+@onready var tower_image = $TowerDescriptionPanel/TowerTexture
 
-var monster_textures = {
+var tower_textures = {
 	"bolt_shooter": preload("res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png"),
 	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
 	"hkcm": preload("res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"),
@@ -37,7 +37,7 @@ var tower_unlock_levels = {
 	"toilet_silo": $ToiletSilo
 }
 
-var monster_names = {
+var tower_names = {
 	"bolt_shooter": "BOLT SHOOTER",
 	"delivery_drone": "DELIVERY DRONE",
 	"hkcm": "HOT KAWAII COFFEE MACHINE",
@@ -49,7 +49,7 @@ var monster_names = {
 
 
 
-var monster_texts = {
+var tower_texts = {
 	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
 	"weed_eater": "Questo è il Weed Eater! due ruote motrici, tre lame che fanno ognuna 800 rpm e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
 	"delivery_drone": "Se desideri qualcosa e la desideri subito, allora il delivery drone è ciò che fa per te! Posiziona la sua piattaforma d’atterraggio ben visibile, fai l’ordine e il nostro drone la porterà sfrecciando nel cielo! (A causa di traffico, schianto del drone, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, etc. la mancata consegna non sarà rimborsata e sarà necessario fare un nuovo ordine)",
@@ -65,14 +65,14 @@ func _ready():
 
 	
  #Mostra la descrizione del mostro
-func show_description(monster_name: String):
-	if monster_name in monster_texts:
-		name_label.text = monster_names[monster_name]
-		desc_label.text = monster_texts[monster_name]
-		if monster_name in monster_textures:
-			monster_image.texture = monster_textures[monster_name]
+func show_description(tower_name: String):
+	if tower_name in tower_texts:
+		name_label.text = tower_names[tower_name]
+		desc_label.text = tower_texts[tower_name]
+		if tower_name in tower_textures:
+			tower_image.texture = tower_textures[tower_name]
 		else:
-			monster_image.texture = null
+			tower_image.texture = null
 
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
