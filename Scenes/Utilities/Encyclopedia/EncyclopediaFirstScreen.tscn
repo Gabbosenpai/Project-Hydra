@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5h4nur0meyjt"]
+[gd_scene load_steps=14 format=3 uid="uid://5h4nur0meyjt"]
 
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Utility/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
@@ -13,22 +13,9 @@
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_weu46"]
 [ext_resource type="Texture2D" uid="uid://cmviy1byko556" path="res://Assets/Sprites/UI/Menu/Small Delete Text Button Pressed.png" id="8_5fabj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu672"]
-bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
-border_width_left = 50
-border_width_top = 50
-border_width_right = 50
-border_width_bottom = 50
-border_color = Color(0.627451, 0.627451, 0.627451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1lwu"]
-
 [sub_resource type="FontVariation" id="FontVariation_hc4qr"]
 base_font = ExtResource("7_weu46")
 spacing_glyph = -1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viucg"]
-bg_color = Color(0, 0, 0, 0.8666667)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -40,8 +27,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_mxu24")
 metadata/_edit_lock_ = true
-metadata/_edit_vertical_guides_ = [960.0, 239.0, 939.0, 239.0, 589.0, 1002.0, 1352.0]
-metadata/_edit_horizontal_guides_ = [177.0, 877.0, 702.0, 697.0, 491.0]
+metadata/_edit_vertical_guides_ = [960.0, 1000.0, 920.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -53,9 +39,9 @@ metadata/_edit_lock_ = true
 
 [node name="TowerButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 239.0
+offset_left = 220.0
 offset_top = 177.0
-offset_right = 939.0
+offset_right = 920.0
 offset_bottom = 877.0
 texture_normal = ExtResource("3_weu46")
 texture_pressed = ExtResource("4_hc4qr")
@@ -87,9 +73,9 @@ vertical_alignment = 1
 
 [node name="RobotButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1002.0
+offset_left = 1000.0
 offset_top = 177.0
-offset_right = 1702.0
+offset_right = 1700.0
 offset_bottom = 877.0
 texture_normal = ExtResource("7_2bn6w")
 texture_pressed = ExtResource("8_5fabj")
@@ -117,24 +103,6 @@ text = "Robot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RiquadroRobot" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 1009.0
-offset_top = 198.0
-offset_right = 1843.0
-offset_bottom = 877.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fu672")
-
-[node name="RiquadroTesto" type="Panel" parent="RiquadroRobot"]
-modulate = Color(0.47312066, 0.5684909, 0.62377065, 1)
-layout_mode = 0
-offset_left = 214.0
-offset_top = 476.0
-offset_right = 575.0
-offset_bottom = 581.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_e1lwu")
-
 [node name="BackToMenu" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 530.0
@@ -158,42 +126,6 @@ theme_override_font_sizes/font_size = 40
 text = "Menù Principale"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MonsterDescriptionPanel" type="Panel" parent="."]
-visible = false
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 263.0
-offset_top = 126.0
-offset_right = -222.0
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_viucg")
-
-[node name="MonsterDescription" type="Label" parent="MonsterDescriptionPanel"]
-layout_mode = 0
-offset_left = 157.0
-offset_top = 267.0
-offset_right = 1308.0
-offset_bottom = 549.0
-theme_override_font_sizes/font_size = 40
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="RettangoloTitolo" type="ColorRect" parent="."]
-visible = false
-show_behind_parent = true
-layout_mode = 0
-offset_left = 584.0
-offset_top = 42.0
-offset_right = 1395.0
-offset_bottom = 173.0
-color = Color(0.7695294, 0.9673949, 0.94883716, 0.393)
 
 [node name="Titolo" type="Label" parent="."]
 layout_mode = 1
