@@ -136,6 +136,7 @@ func _on_pause_button_pressed():
 		opzioni_aperte = false
 	else:
 		get_tree().paused = true
+		pause_menu.move_to_front()
 		_sync_sliders_with_audio()
 		anim_player.play("apriOpzioni")
 		await anim_player.animation_finished
