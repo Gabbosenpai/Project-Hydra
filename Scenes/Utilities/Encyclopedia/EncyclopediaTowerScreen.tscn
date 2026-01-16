@@ -1,15 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://ex4t3xl6envv"]
+[gd_scene load_steps=18 format=3 uid="uid://ex4t3xl6envv"]
 
 [ext_resource type="Script" uid="uid://1itaq2o6e6b7" path="res://Scripts/Utility/encyclopedia_tower_screen.gd" id="1_l0238"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_56vox"]
 [ext_resource type="Texture2D" uid="uid://bwg7ovj3mk2sw" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG.png" id="2_chmbl"]
 [ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="3_s63nn"]
+[ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="3_xvras"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="4_ahmee"]
+[ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="4_ra2yn"]
+[ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="5_18xws"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_g5eb7"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="5_o8leb"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="6_g5eb7"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="7_bvcsp"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="7_v4lb0"]
+
+[sub_resource type="FontVariation" id="FontVariation_nrdxa"]
+base_font = ExtResource("5_18xws")
+spacing_glyph = -1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4x86"]
 bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
@@ -18,8 +25,6 @@ border_width_top = 50
 border_width_right = 50
 border_width_bottom = 50
 border_color = Color(0.3889133, 0.21603402, 0.04774279, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahmee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56vox"]
 
@@ -34,6 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l0238")
+metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -43,15 +49,29 @@ offset_bottom = 1080.0
 texture = ExtResource("2_chmbl")
 metadata/_edit_lock_ = true
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 980.0
-offset_right = 386.0
-offset_bottom = 1043.0
+offset_left = 96.0
+offset_top = 908.0
+offset_right = 956.0
+offset_bottom = 1008.0
+texture_normal = ExtResource("3_xvras")
+texture_pressed = ExtResource("4_ra2yn")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = SubResource("FontVariation_nrdxa")
 theme_override_font_sizes/font_size = 40
-text = "INDICE ENCICLOPEDICO
-"
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RiquadroTorrette" type="Panel" parent="."]
 layout_mode = 0
@@ -61,31 +81,25 @@ offset_right = 1881.0
 offset_bottom = 1017.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h4x86")
 
-[node name="Titolo" type="Panel" parent="."]
-modulate = Color(1, 0.654902, 0.20392157, 1)
+[node name="Testo" type="Label" parent="."]
 layout_mode = 0
-offset_left = 414.0
-offset_top = 65.0
-offset_right = 1514.0
+offset_left = 650.0
+offset_top = 60.0
+offset_right = 1270.0
 offset_bottom = 170.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ahmee")
-
-[node name="Testo" type="Label" parent="Titolo"]
-layout_mode = 0
-offset_left = 296.0
-offset_top = 21.0
-offset_right = 804.0
-offset_bottom = 97.0
-theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
-theme_override_font_sizes/font_size = 40
-text = "ENCICLOPEDIA - TORRETTE"
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("5_18xws")
+theme_override_font_sizes/font_size = 80
+text = "Torrette"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BoltShooter" type="Button" parent="."]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 214.0
-offset_right = 328.0
-offset_bottom = 452.0
+offset_left = 369.0
+offset_top = 250.0
+offset_right = 608.0
+offset_bottom = 488.0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_56vox")
 flat = true
@@ -93,10 +107,10 @@ flat = true
 [node name="TextureRect" type="TextureRect" parent="BoltShooter"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 23.0
-offset_top = 59.0
-offset_right = 166.0
-offset_bottom = 231.0
+offset_left = -4.0
+offset_top = -17.0
+offset_right = 252.0
+offset_bottom = 239.0
 texture = ExtResource("2_56vox")
 
 [node name="TowerDescriptionPanel" type="Panel" parent="."]
@@ -144,10 +158,10 @@ stretch_mode = 5
 
 [node name="Jammer" type="Button" parent="."]
 layout_mode = 0
-offset_left = 326.0
-offset_top = 194.0
-offset_right = 551.0
-offset_bottom = 462.0
+offset_left = 660.0
+offset_top = 215.0
+offset_right = 885.0
+offset_bottom = 483.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -157,16 +171,16 @@ texture_filter = 1
 layout_mode = 0
 offset_left = -1.0
 offset_top = 12.0
-offset_right = 221.0
-offset_bottom = 277.0
+offset_right = 255.0
+offset_bottom = 268.0
 texture = ExtResource("4_ahmee")
 
 [node name="HKCM" type="Button" parent="."]
 layout_mode = 0
-offset_left = 567.0
-offset_top = 191.0
-offset_right = 792.0
-offset_bottom = 459.0
+offset_left = 95.0
+offset_top = 526.0
+offset_right = 320.0
+offset_bottom = 794.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -175,16 +189,16 @@ metadata/_edit_group_ = true
 texture_filter = 1
 layout_mode = 0
 offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
+offset_right = 256.0
+offset_bottom = 255.0
 texture = ExtResource("5_o8leb")
 
 [node name="DeliveryDrone" type="Button" parent="."]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 527.0
-offset_right = 296.0
-offset_bottom = 795.0
+offset_left = 100.0
+offset_top = 225.0
+offset_right = 325.0
+offset_bottom = 493.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -193,16 +207,16 @@ metadata/_edit_group_ = true
 texture_filter = 1
 layout_mode = 0
 offset_top = -1.0
-offset_right = 222.0
-offset_bottom = 264.0
+offset_right = 256.0
+offset_bottom = 255.0
 texture = ExtResource("5_g5eb7")
 
 [node name="SpaghettiCable" type="Button" parent="."]
 layout_mode = 0
-offset_left = 393.0
-offset_top = 531.0
-offset_right = 630.0
-offset_bottom = 783.0
+offset_left = 385.0
+offset_top = 550.0
+offset_right = 617.0
+offset_bottom = 788.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -211,16 +225,16 @@ metadata/_edit_group_ = true
 texture_filter = 1
 layout_mode = 0
 offset_top = -22.0
-offset_right = 235.0
-offset_bottom = 239.0
+offset_right = 256.0
+offset_bottom = 234.0
 texture = ExtResource("6_g5eb7")
 
 [node name="ToiletSilo" type="Button" parent="."]
 layout_mode = 0
-offset_left = 681.0
-offset_top = 538.0
-offset_right = 918.0
-offset_bottom = 790.0
+offset_left = 665.0
+offset_top = 558.0
+offset_right = 902.0
+offset_bottom = 810.0
 focus_mode = 0
 flat = true
 metadata/_edit_group_ = true
@@ -229,8 +243,8 @@ metadata/_edit_group_ = true
 texture_filter = 1
 layout_mode = 0
 offset_top = -22.0
-offset_right = 213.0
-offset_bottom = 189.0
+offset_right = 256.0
+offset_bottom = 234.0
 texture = ExtResource("7_bvcsp")
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("7_v4lb0")]
