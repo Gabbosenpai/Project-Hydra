@@ -19,6 +19,10 @@ script = ExtResource("1_1m0xv")
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [960.0]
 
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -31,9 +35,9 @@ metadata/_edit_lock_ = true
 
 [node name="Level1" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 135.0
+offset_left = 134.0
 offset_top = 399.0
-offset_right = 385.0
+offset_right = 384.0
 offset_bottom = 649.0
 texture_normal = ExtResource("3_xf1by")
 stretch_mode = 0
@@ -44,6 +48,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
@@ -188,6 +196,7 @@ vertical_alignment = 1
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("2_ayueh")]
 
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
