@@ -235,10 +235,10 @@ func update_user_display() -> void:
 		if username == "" or username == null:
 			userButtonText.text = "Utente loggato (DisplayName mancante)"
 		else:
-			userButtonText.text =  "Accesso eseguito"
+			userButtonText.text =  tr("logged_in")
 	else:
 		# QUESTO RESETTA IL TESTO DOPO IL LOGOUT
-		userButtonText.text = "Accesso non eseguito"
+		userButtonText.text = tr("not_logged_in")
 	
 
 func toggle_main_options_ui(boolean: bool):

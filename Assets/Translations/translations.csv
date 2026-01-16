@@ -9,7 +9,17 @@ menu_credits,Crediti,Credits,鸣谢
 database,Database,Database,数据库
 music,Musica,Music,音乐
 sound_effect,Effetti sonori,Sound effects,音效
+select_language,Seleziona Lingua,Select language,选择语言
 logged_in,Accesso eseguito,Logged in,已登录
 not_logged_in,Accesso non eseguito,Not logged in,未登录
-back,Indietro,back,返回
-select_language,Seleziona Lingua,Select language,选择语言
+,,,
+,,,
+#sezione login,,,
+,,,
+login_button,Login,Login,登录
+back,Indietro,Back,返回
+email,Email,Email,电子邮件
+password,Password,Password,密码
+register,Registrati,Register,注册
+forgot_password,Password persa?,Forgot password?,忘记密码？
+username,Username,Username,用户名
