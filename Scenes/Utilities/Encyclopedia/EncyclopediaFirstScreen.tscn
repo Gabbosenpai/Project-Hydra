@@ -3,25 +3,15 @@
 [ext_resource type="Script" uid="uid://11unxma7vfov" path="res://Scripts/Utility/EncyclopediaFirstScreen.gd" id="1_mxu24"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="2_i424e"]
 [ext_resource type="Texture2D" uid="uid://bwg7ovj3mk2sw" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG.png" id="2_q8a2u"]
+[ext_resource type="Texture2D" uid="uid://bumg0s0a8nkxj" path="res://Assets/Sprites/UI/Menu/Small Confirm Button Not Pressed.png" id="3_weu46"]
+[ext_resource type="Texture2D" uid="uid://dac2c67cmjayi" path="res://Assets/Sprites/UI/Menu/Small Confirm Button Pressed.png" id="4_hc4qr"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="4_x0f88"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="5_bepon"]
-[ext_resource type="Texture2D" uid="uid://cm4kvemyasjsg" path="res://Assets/Sprites/Robots/Weed Eater 9000/Weed Eater 9000.png" id="5_se8tl"]
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="6_77apo"]
+[ext_resource type="Texture2D" uid="uid://8r6a1fxwloic" path="res://Assets/Sprites/UI/Menu/Small Delete Text Button Not Pressed.png" id="7_2bn6w"]
+[ext_resource type="Texture2D" uid="uid://bu71iov4gs1o4" path="res://Assets/Sprites/Robots/Romba/Romba.png" id="7_hc4qr"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="7_weu46"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibo2e"]
-bg_color = Color(0.36078432, 0.22745098, 0.12941177, 1)
-border_width_left = 50
-border_width_top = 50
-border_width_right = 50
-border_width_bottom = 50
-border_color = Color(0.3889133, 0.21603402, 0.04774279, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1lwu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibo2e"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfxy6"]
+[ext_resource type="Texture2D" uid="uid://cmviy1byko556" path="res://Assets/Sprites/UI/Menu/Small Delete Text Button Pressed.png" id="8_5fabj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu672"]
 bg_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
@@ -31,7 +21,7 @@ border_width_right = 50
 border_width_bottom = 50
 border_color = Color(0.627451, 0.627451, 0.627451, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxu24"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1lwu"]
 
 [sub_resource type="FontVariation" id="FontVariation_hc4qr"]
 base_font = ExtResource("7_weu46")
@@ -50,7 +40,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_mxu24")
 metadata/_edit_lock_ = true
-metadata/_edit_vertical_guides_ = [960.0]
+metadata/_edit_vertical_guides_ = [960.0, 239.0, 939.0, 239.0, 589.0, 1002.0, 1352.0]
+metadata/_edit_horizontal_guides_ = [177.0, 877.0, 702.0, 697.0, 491.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -60,60 +51,74 @@ offset_bottom = 1080.0
 texture = ExtResource("2_q8a2u")
 metadata/_edit_lock_ = true
 
-[node name="RiquadroTorrette" type="Panel" parent="."]
+[node name="TowerButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 200.0
-offset_right = 918.0
-offset_bottom = 879.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ibo2e")
-
-[node name="RiquadroTesto" type="Panel" parent="RiquadroTorrette"]
-modulate = Color(1, 0.654902, 0.20392157, 1)
-layout_mode = 0
-offset_left = 214.0
-offset_top = 476.0
-offset_right = 575.0
-offset_bottom = 581.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_e1lwu")
-
-[node name="Label" type="Label" parent="RiquadroTorrette/RiquadroTesto"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 25.0
-offset_right = 355.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0, 0.23137255, 0.33333334, 1)
-theme_override_font_sizes/font_size = 36
-text = "ELENCO TORRETTE"
-
-[node name="TowerButton" type="Button" parent="RiquadroTorrette/RiquadroTesto"]
-layout_mode = 0
-offset_top = -1.0
-offset_right = 361.0
-offset_bottom = 105.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ibo2e")
-
-[node name="TextureRect" type="TextureRect" parent="RiquadroTorrette"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 274.0
-offset_top = 126.0
-offset_right = 517.0
-offset_bottom = 369.0
-texture = ExtResource("2_i424e")
+offset_left = 239.0
+offset_top = 177.0
+offset_right = 939.0
+offset_bottom = 877.0
+texture_normal = ExtResource("3_weu46")
+texture_pressed = ExtResource("4_hc4qr")
+stretch_mode = 0
 metadata/_edit_group_ = true
 
-[node name="HandicapButton" type="Button" parent="RiquadroTorrette/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_kfxy6")
+[node name="TextureRect" type="TextureRect" parent="TowerButton"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 190.0
+offset_top = 154.0
+offset_right = 510.0
+offset_bottom = 474.0
+texture = ExtResource("2_i424e")
+
+[node name="Label" type="Label" parent="TowerButton/TextureRect"]
+layout_mode = 0
+offset_left = -73.0
+offset_top = 336.0
+offset_right = 392.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_weu46")
+theme_override_font_sizes/font_size = 60
+text = "Torrette"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RobotButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1002.0
+offset_top = 177.0
+offset_right = 1702.0
+offset_bottom = 877.0
+texture_normal = ExtResource("7_2bn6w")
+texture_pressed = ExtResource("8_5fabj")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="RobotButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 190.0
+offset_top = 154.0
+offset_right = 510.0
+offset_bottom = 474.0
+texture = ExtResource("7_hc4qr")
+
+[node name="Label" type="Label" parent="RobotButton/TextureRect"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 335.0
+offset_right = 320.0
+offset_bottom = 396.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("7_weu46")
+theme_override_font_sizes/font_size = 60
+text = "Robot"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RiquadroRobot" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1009.0
 offset_top = 198.0
@@ -129,39 +134,6 @@ offset_top = 476.0
 offset_right = 575.0
 offset_bottom = 581.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e1lwu")
-
-[node name="Label" type="Label" parent="RiquadroRobot/RiquadroTesto"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 25.0
-offset_right = 320.0
-offset_bottom = 128.0
-theme_override_colors/font_color = Color(0.1931151, 0.22935726, 0.2374612, 1)
-theme_override_font_sizes/font_size = 36
-text = "ELENCO ROBOT
-"
-
-[node name="RobotButton" type="Button" parent="RiquadroRobot/RiquadroTesto"]
-layout_mode = 0
-offset_top = -4.0
-offset_right = 359.0
-offset_bottom = 107.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_mxu24")
-
-[node name="TextureRect" type="TextureRect" parent="RiquadroRobot"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 292.0
-offset_top = 122.0
-offset_right = 514.0
-offset_bottom = 387.0
-texture = ExtResource("5_se8tl")
-
-[node name="HandicapButton2" type="Button" parent="RiquadroRobot/TextureRect"]
-layout_mode = 0
-offset_right = 225.0
-offset_bottom = 272.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_kfxy6")
 
 [node name="BackToMenu" type="TextureButton" parent="."]
 layout_mode = 0
@@ -243,8 +215,6 @@ vertical_alignment = 1
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("4_x0f88")]
 
-[connection signal="pressed" from="RiquadroTorrette/RiquadroTesto/TowerButton" to="." method="_on_tower_button_pressed"]
-[connection signal="pressed" from="RiquadroTorrette/TextureRect/HandicapButton" to="." method="_on_handicap_button_pressed"]
-[connection signal="pressed" from="RiquadroRobot/RiquadroTesto/RobotButton" to="." method="_on_robot_button_pressed"]
-[connection signal="pressed" from="RiquadroRobot/TextureRect/HandicapButton2" to="." method="_on_handicap_button_2_pressed"]
+[connection signal="pressed" from="TowerButton" to="." method="_on_tower_button_pressed"]
+[connection signal="pressed" from="RobotButton" to="." method="_on_robot_button_pressed"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
