@@ -1,7 +1,7 @@
 extends Control
-
+@onready var user = $User
 @onready var status_label = $UserLabel
-@onready var confirmation_dialog = $ConfirmationDialog
+@onready var confirmPanel = $ConfirmPanel
 
 func _ready():
 	# Connessione segnali di sicurezza
@@ -13,12 +13,8 @@ func _ready():
 # --- RIMOZIONE ACCOUNT ---
 # Collega questo al pulsante "Elimina Account"
 func _on_remove_account_pressed() -> void:
-	confirmation_dialog.popup_centered()
-
-# Questo viene eseguito quando clicchi "OK" sul ConfirmationDialog
-func _on_confirmation_dialog_confirmed() -> void:
-	status_label.text = "Eliminazione in corso..."
-	PlayFabManager.client.execute_cloud_script()
+	confirmPanel.visible = true
+	user.visible = false
 
 func _on_account_removed():
 	status_label.text = "ACCOUNT ELIMINATO CON SUCCESSO"
@@ -58,3 +54,13 @@ func _on_back_main_menu_pressed() -> void:
 
 func reset_label_():
 	status_label.text = PlayFabManager.client_config.username
+
+
+func _on_yes_button_pressed() -> void:
+	status_label.text = "Eliminazione in corso..."
+	PlayFabManager.client.execute_cloud_script()
+
+
+func _on_no_button_pressed() -> void:
+	confirmPanel.visible = false
+	user.visible = true
