@@ -32,6 +32,8 @@ var texture_not_logged = preload("res://Assets/Sprites/UI/Menu/User Button Not L
 
 # Funzione che inizializza il menu principale
 func _ready():
+	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
+	AudioManager.play_music(menu_music)# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
 	anim_player.play("avvioTitolo")
 	await anim_player.animation_finished
 	if animazioni_iniziali_concluse: return
@@ -52,8 +54,6 @@ func _ready():
 	admin_timer.wait_time = 5.0
 	admin_timer.one_shot = true
 	admin_timer.timeout.connect(_on_admin_timer_timeout)
-	var menu_music = preload("res://Assets/Sound/OST/Quincas Moreira - Robot City ♫ NO COPYRIGHT 8-bit Music (MENU AUDIO).mp3")
-	AudioManager.play_music(menu_music)# Sincronizza gli sprite dei pulsanti muto con lo stato effettivo
 	_sync_sliders_with_audio()
 	_refresh_audio_ui()
 	refresh_lang_label()
