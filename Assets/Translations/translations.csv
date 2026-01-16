@@ -1,37 +1,15 @@
 KEY,it,en,zh_CN
 ,,,
 #Menu principale,,,
-main_menu,Menù principale,Main Menu,主選單
+main_menu,Menù principale,Main menu,主選單
 menu_play,Gioca,Play,播放
 menu_quit,Esci,Quit,退出
 menu_option,Opzioni,Options,选项
 menu_credits,Crediti,Credits,鸣谢
 database,Database,Database,数据库
 music,Musica,Music,音乐
-sound_effect,Effetti sonori,Sound Effects,音效
+sound_effect,Effetti sonori,Sound effects,音效
 logged_in,Accesso eseguito,Logged in,已登录
 not_logged_in,Accesso non eseguito,Not logged in,未登录
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-#Menu Selezione livello,,,
-,,,
-select_back,Indietro,Back,
-select,Scegli il livello in base alla difficoltà,Select a level based on its difficulty ,
-,,,
-#Schermo selezione lingua,,,
-select_language,Seleziona lingua,Select language,
-back_to_menu,Torna al menù,Back to menu,
+back,Indietro,back,返回
+select_language,Seleziona Lingua,Select language,选择语言
