@@ -743,7 +743,6 @@ grow_vertical = 1
 
 [node name="MenuButton" type="TextureButton" parent="MenuOption"]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
