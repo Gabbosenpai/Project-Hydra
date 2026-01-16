@@ -1,3 +1,4 @@
+
 extends Node
 
 signal level_completed
@@ -11,7 +12,7 @@ signal wave_completed(wave_number)
 @export var initial_delay_timer: Timer
 @export var label_wave_center: Label
 @export var animation_player: AnimationPlayer
-@export var victory_screen: Control
+@export var victory_screen: Panel
 @export var inter_wave_delay = 5.0
 @export var next_wave_delay_timer: Timer
 @export var is_blackout_level: bool = false
@@ -318,7 +319,10 @@ func check_enemies_for_next_wave():
 			start_wave()
 		else:
 			# Gestione vittoria finale
-			victory_screen.visible = true
+			var anim_player = victory_screen.get_node("AnimationPlayer")
+			anim_player.play("apriVittoria")
+			await anim_player.animation_finished
+			
 			
 			if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
 				AudioManager.play_victory_music()
