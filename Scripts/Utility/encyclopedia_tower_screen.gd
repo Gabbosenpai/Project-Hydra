@@ -12,17 +12,16 @@ var tower_textures = {
 	"jammer": preload("res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png"),
 	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png"),
 	"toilet_silo": preload("res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png"),
-	"cassa_schierata": preload("res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata.png")
 }
 
 #valore livello massimo per sbloccare una voce
 var tower_unlock_levels = {
-	"bolt_shooter": 2,         
-	"delivery_drone": 2,
-	"hkcm": 4,
-	"jammer": 3,
-	"spaghetti_cable": 5,
-	"toilet_silo": 6
+	"bolt_shooter": 1,         
+	"delivery_drone": 1,
+	"hkcm": 3,
+	"jammer": 2,
+	"spaghetti_cable": 4,
+	"toilet_silo": 5
 }
 
 
@@ -41,11 +40,11 @@ var tower_names = {
 	"bolt_shooter": "BOLT SHOOTER",
 	"delivery_drone": "DELIVERY DRONE",
 	"hkcm": "HOT KAWAII COFFEE MACHINE",
-	"jammer": "JAMMER",
+	"jammer": "JAMMER CANNON",
 	"spaghetti_cable": "SPAGHETTI CABLE",
 	"toilet_silo": "TOILET SILO"
 }
-
+	
 
 
 
@@ -63,8 +62,8 @@ var tower_texts = {
 func _ready():
 	update_buttons()
 
-	
- #Mostra la descrizione del mostro
+
+ #Mostra la descrizione della torretta
 func show_description(tower_name: String):
 	if tower_name in tower_texts:
 		name_label.text = tower_names[tower_name]
@@ -144,4 +143,4 @@ func update_buttons():
 			texture.visible = true
 		else:
 			button.disabled = true
-			texture.visible = false
+			texture.modulate = Color.BLACK
