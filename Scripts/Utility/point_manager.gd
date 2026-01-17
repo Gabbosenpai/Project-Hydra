@@ -4,7 +4,6 @@ static var current_points: int
 
 @export var turret_manager: Node
 @export var label_points: Label
-@export var PointsBar: ColorRect
 @export var starting_points: int = 100
 @export var max_points: int = 500000
 @export var refund_points: int = 25
@@ -91,25 +90,25 @@ func earn_points(amount: int):
 # Aggiorna il testo dell'etichetta che mostra i punti attuali al giocatore
 func update_points_label():
 	if label_points:
-		label_points.text = str("Scrap: ") + str(current_points)
+		label_points.text = str(current_points)
 # Aggiorna lo shader della barra
-	if PointsBar and PointsBar.material is ShaderMaterial:
-		var mat: ShaderMaterial = PointsBar.material as ShaderMaterial
-		var target_ratio: float = clamp(float(current_points) / float(max_points), 0.0, 1.0)
+	#if PointsBar and PointsBar.material is ShaderMaterial:
+		#var mat: ShaderMaterial = PointsBar.material as ShaderMaterial
+		#var target_ratio: float = clamp(float(current_points) / float(max_points), 0.0, 1.0)
 		
 		# Calcola differenza percentuale rispetto al massimo
-		var diff = abs(target_ratio - current_ratio)
+		#var diff = abs(target_ratio - current_ratio)
 		
 		# Imposta durata proporzionale alla differenza, 
 		# così anche piccoli valori si muovono lentamente.
 		# Puoi moltiplicare per un fattore per velocità più lenta
-		var duration = diff * 1.0  
-		duration = max(duration, 0.1)  # Durata min per vedere sempre movimento
+		#var duration = diff * 1.0  
+		#duration = max(duration, 0.1)  # Durata min per vedere sempre movimento
 		
-		var tween = PointsBar.create_tween()
-		tween.tween_property(mat, "shader_parameter/progress_value", target_ratio, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		#var tween = PointsBar.create_tween()
+		#tween.tween_property(mat, "shader_parameter/progress_value", target_ratio, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		
-		current_ratio = target_ratio
+		#current_ratio = target_ratio
 
 
 # Ricava la chiave della pianta dato un PackedScene della pianta stessa

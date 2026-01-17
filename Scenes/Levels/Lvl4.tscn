@@ -87,25 +87,27 @@ layer_0/tile_data = PackedInt32Array(13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(950, 681)
+position = Vector2(907, 681)
 limit_enabled = false
 
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_tjpki")]
+offset_left = -53.0
+offset_right = -53.0
 game_over_ui = NodePath("../GameOverUI")
 
-[node name="PauseMenu" parent="UI" index="6"]
+[node name="PauseMenu" parent="UI" index="5"]
 offset_left = 275.0
 offset_top = -1261.0
 offset_right = 1644.0
 offset_bottom = -143.0
 
-[node name="LabelWaveCenter" parent="UI" index="8"]
+[node name="LabelWaveCenter" parent="UI" index="7"]
 offset_left = 1532.0
 offset_top = 458.0
 offset_right = 2598.0
 offset_bottom = 754.0
 
-[node name="Victory" parent="UI" index="10"]
+[node name="Victory" parent="UI" index="9"]
 offset_left = 275.0
 offset_top = -1261.0
 offset_right = 1653.0
@@ -161,10 +163,9 @@ animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/Victory")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
-[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("11_62725")]
+[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points") instance=ExtResource("11_62725")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
-PointsBar = NodePath("../UI/TurretSelector/PointsBar")
+label_points = NodePath("../UI/TurretSelector/ScrapUI/ScrapPoints")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_baary")

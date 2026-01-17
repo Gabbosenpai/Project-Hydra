@@ -278,7 +278,7 @@ func spawn_scrap_on_death() -> void:
 	# Se il valore randf (0.0 a 1.0) è minore o uguale alla probabilità, guadagna punti
 	if randf() <= scrap_drop_chance:
 		# Punti casuali tra 1 e il valore massimo configurato
-		points_to_earn = randi_range(1, max_points_on_defeat)
+		points_to_earn = max_points_on_defeat
 	
 	# 2. Istanzia la Scrap e assegna il valore
 	if points_to_earn > 0 and scrap_scene:

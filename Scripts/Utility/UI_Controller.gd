@@ -22,7 +22,7 @@ const TURRET_UNLOCKS = {
 @export var sfx_slider: HSlider
 @export var mute_music_button: TextureButton
 @export var mute_sfx_button: TextureButton
-@onready var button_remove = $ButtonRemove
+@onready var button_remove = $TurretSelector/ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
 
 var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
