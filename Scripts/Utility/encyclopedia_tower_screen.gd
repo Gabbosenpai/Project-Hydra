@@ -39,7 +39,6 @@ var clicked: bool
 @onready var desc_panel = $TowerDescriptionPanel
 @onready var desc_label = $TowerDescriptionPanel/TowerDescription
 @onready var name_label = $TowerDescriptionPanel/TowerName
-@onready var tower_image = $TowerDescriptionPanel/TowerTexture
 #corrispondenza nome->nodo
 @onready var tower_buttons = {
 	"bolt_shooter": $BoltShooter,
@@ -61,11 +60,6 @@ func show_description(tower_name: String):
 	if tower_name in tower_texts:
 		name_label.text = tower_names[tower_name]
 		desc_label.text = tower_texts[tower_name]
-		if tower_name in tower_textures:
-			tower_image.texture = tower_textures[tower_name]
-		else:
-			tower_image.texture = null
-
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
 
@@ -85,66 +79,23 @@ func hide_description():
 	desc_panel.visible = false
 
 
-
-# Esempio di pulsante
-func _on_bolt_shooter_pressed() -> void:
+ # Nasconde gli altri bottoni e mette in evidenza quello premuto
+func show_entry(towerName: String):
 	if not clicked:
-		show_description("bolt_shooter")
+		show_description(towerName)
 		for button in tower_buttons:
-			if button != "bolt_shooter":
+			if button != towerName:
 				tower_buttons[button].hide()
 			else:
+				#tower_buttons[button].texture_normal = null
+				#tower_buttons[button].texture_pressed = null
 				var tween = create_tween()
-				tween.tween_property(tower_buttons[button], "scale", Vector2(2, 2), 0.25)
+				tween.set_parallel()
+				tween.tween_property(tower_buttons[button], "scale", Vector2(2, 2), 0.35)
+				tween.tween_property(tower_buttons[button], "position", Vector2(210,227), 0.35)
 		clicked = true
 	else:
 		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
-
-
-# Nasconde al click
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		hide_description()
-
-
-func _on_back_pressed() -> void:
-	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	if clicked:
-		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
-	else:
-		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaFirstScreen.tscn")
-
-	
-func _on_jammer_pressed() -> void:
-	show_description("jammer")
-#
-#
-#
-#
-func _on_delivery_drone_pressed() -> void:
-	if not clicked:
-		show_description("delivery_drone")
-		for button in tower_buttons:
-			if button != "delivery_drone":
-				tower_buttons[button].hide()
-			else:
-				var tween = create_tween()
-				tween.tween_property(tower_buttons[button], "scale", Vector2(2, 2), 0.25)
-		clicked = true
-	else:
-		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
-
-
-func _on_hkcm_pressed() -> void:
-	show_description("hkcm")
-
-
-func _on_spaghetti_cable_pressed() -> void:
-	show_description("spaghetti_cable")
-
-func _on_toilet_silo_pressed() -> void:
-	show_description("toilet_silo")
-
 
 
 #per aggiornare dinamicamente l'enciclopedia
@@ -161,3 +112,41 @@ func update_buttons():
 		else:
 			button.disabled = true
 			texture.modulate = Color.BLACK
+
+
+# Nasconde al click
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		hide_description()
+
+
+func _on_back_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
+	if clicked:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaFirstScreen.tscn")
+
+
+func _on_bolt_shooter_pressed() -> void:
+	show_entry("bolt_shooter")
+
+
+func _on_jammer_pressed() -> void:
+	show_entry("jammer")
+
+
+func _on_delivery_drone_pressed() -> void:
+	show_entry("delivery_drone")
+
+
+func _on_hkcm_pressed() -> void:
+	show_entry("hkcm")
+
+
+func _on_spaghetti_cable_pressed() -> void:
+	show_entry("spaghetti_cable")
+
+
+func _on_toilet_silo_pressed() -> void:
+	show_entry("toilet_silo")
