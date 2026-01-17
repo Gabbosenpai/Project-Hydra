@@ -42,7 +42,7 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	var error_message = api_error_wrapper.errorMessage
 	var details = ""
 	
-	# Estraiamo i dettagli specifici (es: "Password: Password is too short")
+	# Estraiamo i dettagli specifici
 	if api_error_wrapper.errorDetails:
 		for key in api_error_wrapper.errorDetails.keys():
 			for msg in api_error_wrapper.errorDetails[key]:
@@ -50,16 +50,17 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 
 	print("Errore PlayFab: " + error_message + details)
 	
-	if "display name" in error_message.to_lower() or "display name" in details.to_lower():
-		error_message = "Username già esistente!"
-		details = ""
-
-	if has_node("EmailTag"):
-		if details != "":
-			$StatusLabel.text = "Dati non validi: " + details
-		else:
-			$StatusLabel.text = "Errore: " + error_message
+	if "display name" in error_message.to_lower():
+		$StatusLabel.text = "Username già esistente!"
 		$StatusLabel.modulate = Color.RED
+		return
+
+	
+	if details != "":
+		$StatusLabel.text = "Dati non validi: " + details
+	else:
+		$StatusLabel.text = "Errore: " + error_message
+	$StatusLabel.modulate = Color.RED
 
 func _on_registered(result: RegisterPlayFabUserResult):
 	$StatusLabel.text = "Registrazione completata"
