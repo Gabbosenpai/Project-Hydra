@@ -1,6 +1,8 @@
 extends Control
 
 @onready var unlock_label = $Text
+@onready var turret_background = $"../TextureRect"
+@onready var turret_icon = $"../TextureRect/TurretIcon"
 
 func _ready() -> void:
 	var last_completed_level = SaveManager.get_max_unlocked_level() + 1
@@ -8,6 +10,21 @@ func _ready() -> void:
 	if turret_name != "":
 		unlock_label.text += "\n\n NUOVA TORRETTA SBLOCCATA: " + turret_name
 		unlock_label.visible = true
+		var image_path = get_turret_image_for_level(last_completed_level)
+		if image_path != "":
+			var tex = load(image_path)
+			if tex:
+				turret_icon.texture = tex
+				turret_background.visible = true
+				turret_icon.visible = true
+			else:
+				print("Errore: Immagine non trovata al percorso: ", image_path)
+				turret_icon.visible = false
+				turret_background.visible = false
+	else:
+		# Se non c'è una nuova torretta, nascondiamo l'icona
+		turret_background.visible = false
+		turret_icon.visible = false
 
 func _on_select_level_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -59,4 +76,12 @@ func get_turret_name_for_level(lvl: int) -> String:
 		3: return "HKCM"
 		4: return "Spaghetti Cable"
 		5: return "Toilet Silo"
+		_: return ""
+
+func get_turret_image_for_level(lvl: int) -> String:
+	match lvl:
+		2: return "res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" 
+		3: return "res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png"
+		4: return "res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png"
+		5: return "res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png"
 		_: return ""

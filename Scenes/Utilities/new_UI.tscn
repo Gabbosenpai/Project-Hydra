@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=43 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://c6t080f7r542l" path="res://Assets/Sprites/UI/Trash can.png" id="2_cu3u0"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="16_5o6ld"]
 [ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="17_d5ei8"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
+[ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="22_d2tjn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j04uc"]
 shader = ExtResource("4_6wlri")
@@ -58,22 +59,6 @@ tracks/0/keys = {
 "values": [Vector2(275, -1261)]
 }
 
-[sub_resource type="Animation" id="Animation_ipxc1"]
-resource_name = "chiudiOpzioni"
-length = 0.75
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(275, -140), Vector2(275, -1261)]
-}
-
 [sub_resource type="Animation" id="Animation_3sob7"]
 resource_name = "apriOpzioni"
 length = 0.75
@@ -88,6 +73,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(275, -1261), Vector2(275, -140)]
+}
+
+[sub_resource type="Animation" id="Animation_ipxc1"]
+resource_name = "chiudiOpzioni"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(275, -140), Vector2(275, -1261)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ipxc1"]
@@ -291,6 +292,21 @@ _data = {
 &"entrata": SubResource("Animation_6wlri")
 }
 
+[sub_resource type="Animation" id="Animation_lnnbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(275, -1261)]
+}
+
 [sub_resource type="Animation" id="Animation_wlbwg"]
 resource_name = "apriVittoria"
 length = 0.75
@@ -305,21 +321,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(275, -1261), Vector2(275, -140)]
-}
-
-[sub_resource type="Animation" id="Animation_lnnbn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(275, -1261)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4hxx0"]
@@ -809,6 +810,26 @@ grow_vertical = 0
 libraries = {
 &"": SubResource("AnimationLibrary_4hxx0")
 }
+
+[node name="TextureRect" type="TextureRect" parent="Victory"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 581.0
+offset_top = 470.0
+offset_right = 837.0
+offset_bottom = 726.0
+texture = ExtResource("22_d2tjn")
+stretch_mode = 5
+
+[node name="TurretIcon" type="TextureRect" parent="Victory/TextureRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 31.0
+offset_top = 27.0
+offset_right = 234.0
+offset_bottom = 226.0
+texture = ExtResource("6_pi3ax")
+stretch_mode = 5
 
 [connection signal="pressed" from="ButtonRemove" to="." method="_on_button_remove_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret1" to="." method="_on_button_turret_1_pressed"]
