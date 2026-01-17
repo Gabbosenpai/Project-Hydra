@@ -1,5 +1,13 @@
 extends Control
 
+@onready var unlock_label = $Text
+
+func _ready() -> void:
+	var last_completed_level = SaveManager.get_max_unlocked_level() + 1
+	var turret_name = get_turret_name_for_level(last_completed_level)
+	if turret_name != "":
+		unlock_label.text += "\n\n NUOVA TORRETTA SBLOCCATA: " + turret_name
+		unlock_label.visible = true
 
 func _on_select_level_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -43,3 +51,12 @@ func _on_next_level_pressed() -> void:
 func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+
+func get_turret_name_for_level(lvl: int) -> String:
+	match lvl:
+		#1: return "Delivery Drone & Bolt Shooter"
+		2: return "Jammer Cannon"
+		3: return "HKCM"
+		4: return "Spaghetti Cable"
+		5: return "Toilet Silo"
+		_: return ""
