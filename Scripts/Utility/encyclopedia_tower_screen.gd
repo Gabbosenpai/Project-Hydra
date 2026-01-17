@@ -8,14 +8,14 @@ var tower_textures = {
 	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png"),
 	"toilet_silo": preload("res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png"),
 }
-#valore livello massimo per sbloccare una voce
+# Valore livello massimo per sbloccare una voce
 var tower_unlock_levels = {
-	"bolt_shooter": 1,         
-	"delivery_drone": 1,
-	"hkcm": 3,
-	"jammer": 2,
-	"spaghetti_cable": 4,
-	"toilet_silo": 5
+	"bolt_shooter": 2,         
+	"delivery_drone": 2,
+	"hkcm": 4,
+	"jammer": 3,
+	"spaghetti_cable": 5,
+	"toilet_silo": 6
 }
 var tower_names = {
 	"bolt_shooter": "Bolt Shooter",
@@ -38,7 +38,7 @@ var clicked: bool
 @onready var desc_panel = $RiquadroTorrette/TowerDescriptionPanel
 @onready var desc_label = $RiquadroTorrette/TowerDescriptionPanel/TowerDescription
 @onready var name_label = $RiquadroTorrette/TowerDescriptionPanel/TowerName
-#corrispondenza nome->nodo
+# Corrispondenza nome->nodo
 @onready var tower_buttons = {
 	"bolt_shooter": $BoltShooter,
 	"delivery_drone": $DeliveryDrone,
@@ -56,7 +56,7 @@ func _ready():
 	update_buttons()
 
 
- #Mostra la descrizione della torretta
+ # Mostra la descrizione della torretta
 func show_description(tower_name: String):
 	if tower_name in tower_texts:
 		name_label.text = tower_names[tower_name]
@@ -75,12 +75,13 @@ func show_description(tower_name: String):
 		tween.tween_property(desc_panel, "modulate:a", 1.0, 0.3)
 
 
+# Deprecated, not needed anymore
 # Nasconde la descrizione
-func hide_description():
-	desc_panel.visible = false
+#func hide_description():
+	#desc_panel.visible = false
 
 
- # Nasconde gli altri bottoni e mette in evidenza quello premuto
+# Nasconde gli altri bottoni e mette in evidenza quello premuto
 func show_entry(towerName: String):
 	if not clicked:
 		show_description(towerName)
@@ -99,7 +100,7 @@ func show_entry(towerName: String):
 		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
 
 
-#per aggiornare dinamicamente l'enciclopedia
+# Per aggiornare dinamicamente l'enciclopedia
 func update_buttons():
 	var max_level = SaveManager.get_max_level_all_slots()
 	
@@ -115,10 +116,12 @@ func update_buttons():
 			texture.modulate = Color.BLACK
 
 
-# Nasconde al click
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		hide_description()
+# Deprecated, not needed anymore
+# Per nascondere la descrizione cliccando 
+# al di fuori delle immagini dei robot
+#func _unhandled_input(event):
+	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#hide_description()
 
 
 func _on_back_pressed() -> void:
