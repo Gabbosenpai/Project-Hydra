@@ -47,8 +47,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l0238")
-metadata/_edit_horizontal_guides_ = [1163.0, 541.0, 404.0, 221.0, 876.0, 890.0, 218.0, 230.0, 870.0, 14.0, 1066.0, 1026.0, 1006.0, 937.0, 74.0, 84.0, 97.0]
-metadata/_edit_vertical_guides_ = [706.0, 691.0, 371.0, 356.0, 530.0, 1871.0, 1858.0, 1048.0, 1061.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -240,19 +238,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_56vox")
 
-[node name="TowerDescription" type="Label" parent="RiquadroTorrette/TowerDescriptionPanel"]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 91.0
-offset_right = 820.0
-offset_bottom = 1108.0
-theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_constants/line_spacing = 8
-theme_override_fonts/font = SubResource("FontVariation_18xws")
-theme_override_font_sizes/font_size = 40
-text = "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important,"
-autowrap_mode = 3
-
 [node name="TowerName" type="Label" parent="RiquadroTorrette/TowerDescriptionPanel"]
 layout_mode = 0
 offset_left = 23.0
@@ -265,6 +250,19 @@ theme_override_font_sizes/font_size = 40
 text = "Lorem Ipsum Dixe Dixit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TowerDescription" type="Label" parent="RiquadroTorrette/TowerDescriptionPanel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 91.0
+offset_right = 820.0
+offset_bottom = 1108.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_constants/line_spacing = 8
+theme_override_fonts/font = SubResource("FontVariation_18xws")
+theme_override_font_sizes/font_size = 40
+text = "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important,"
+autowrap_mode = 3
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("7_v4lb0")]
 
