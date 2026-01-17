@@ -20,25 +20,24 @@ var tower_unlock_levels = {
 var tower_names = {
 	"bolt_shooter": "Bolt Shooter",
 	"delivery_drone": "Delivery Drone",
-	"hkcm": "Hot Kawaii Coffee Machine",
+	"hkcm": "HKCM",
 	"jammer": "Jammer Cannon",
 	"spaghetti_cable": "Spaghetti Cable",
 	"toilet_silo": "Toilet Silo"
 }
 var tower_texts = {
 	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
-	"weed_eater": "Questo è il Weed Eater! due ruote motrici, tre lame che fanno ognuna 800 rpm e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
-	"delivery_drone": "Se desideri qualcosa e la desideri subito, allora il delivery drone è ciò che fa per te! Posiziona la sua piattaforma d’atterraggio ben visibile, fai l’ordine e il nostro drone la porterà sfrecciando nel cielo! (A causa di traffico, schianto del drone, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, etc. la mancata consegna non sarà rimborsata e sarà necessario fare un nuovo ordine)",
-	"hkcm": "“せんぱ〜い！こんにちはっ！今日もすっごく頑張ったね！えへへ…よかったら、あったか〜いコーヒー、一緒に飲まない？”Questa frase d’incoraggiamento incisa su questa carinissima macchina del caffè l’ha resa una tra le più vendute sul mercato. Alcuni hanno giurato di vederla arrossire mentre faceva il caffè…",
-	"jammer": "Questo è il Jammer! Avevamo progettato questo nuovo tipo di jammer, ma le misure invece che in centimetri le abbiamo scritte in metri!",
-	"spaghetti_cable": "Versione Hardware del famoso Spaghetti Code e incubo di qualsiasi tecnico ma stranamente popolare sul mercato. Il suo successo ha portato l’Azienda ad allocare un intero reparto per la produzione, incrementando inspiegabilmente le vendite scrivendo “MADE IN ITALY” sulla confezione, fornendo cavi esclusivamente tricolore.",
+	"delivery_drone": "Se vuoi qualcosa e la vuoi subito, allora hai bisogno del delivery drone! Posiziona la piattaforma d’atterraggio all'aperto, fai l’ordine e il nostro drone porterà il tuo pacco sfrecciando nel cielo! (In caso di mancata consegna causa traffico, schianto, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, questa non sarà rimborsata e sarà necessario fare un nuovo ordine).",
+	"hkcm": "“せんぱ〜い！こんにちはっ！今日もすっごく頑張ったね！えへへ…よかったら、あったか〜いコーヒー、一緒に飲まない？”\n-Hot Kawaii Coffee Machine\n\nQuesta frase d’incoraggiamento incisa su questa carinissima macchina del caffè l’ha resa una tra le più vendute sul mercato. Alcuni hanno giurato di vederla arrossire mentre faceva il caffè…",
+	"jammer": "L’Azienda aveva richiesto un Jammer tascabile ma abbiamo sbagliato le misure e ora è un cannone in grado di disturbare congegni elettronici a distanze elevate con estrema precisione. Vorrei aggiungere altri dettagli ma abbiamo dovuto firmare un accordo di riservatezza.",
+	"spaghetti_cable": "Versione hardware del famoso Spaghetti Code, incubo di qualsiasi tecnico ma stranamente popolare sul mercato. Il suo successo ha portato l’Azienda ad allocare un intero reparto per la sua produzione, incrementando inspiegabilmente le vendite scrivendo “MADE IN ITALY” sulla confezione e fornendo cavi esclusivamente tricolore.",
 	"toilet_silo":"Il nemico non potrà nascondersi nemmeno in bagno! Questo design permette l’installazione di missili ad alto potenziale esplosivo costruiti con materiali estremamente economici e in grado di mimetizzarsi in ogni bagno che si rispetti (Non confondere la carta igienica esplosiva non quella classica)."
 }
 var clicked: bool
 
-@onready var desc_panel = $TowerDescriptionPanel
-@onready var desc_label = $TowerDescriptionPanel/TowerDescription
-@onready var name_label = $TowerDescriptionPanel/TowerName
+@onready var desc_panel = $RiquadroTorrette/TowerDescriptionPanel
+@onready var desc_label = $RiquadroTorrette/TowerDescriptionPanel/TowerDescription
+@onready var name_label = $RiquadroTorrette/TowerDescriptionPanel/TowerName
 #corrispondenza nome->nodo
 @onready var tower_buttons = {
 	"bolt_shooter": $BoltShooter,
@@ -52,6 +51,8 @@ var clicked: bool
 
 func _ready():
 	clicked = false
+	desc_label.text = "Clicca su una torretta per saperne di più!"
+	name_label.text = ""
 	update_buttons()
 
 
