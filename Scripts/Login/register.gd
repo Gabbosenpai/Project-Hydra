@@ -68,6 +68,8 @@ func _on_registered(result: RegisterPlayFabUserResult):
 	PlayFabManager.client_config.session_ticket = result.SessionTicket
 	PlayFabManager.client_config.master_player_account_id = result.PlayFabId
 	PlayFabManager.save_client_config()
+	await get_tree().create_timer(2.0).timeout
+	_on_back_to_login()
 
 func _on_back_to_login():
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
