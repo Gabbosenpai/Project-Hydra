@@ -209,8 +209,7 @@ mute_sfx_button = NodePath("MenuOption/MuteSFXButton")
 option_menu = NodePath("MenuOption")
 music_slider = NodePath("MenuOption/MuteMusicButton/MusicSlider")
 sfx_slider = NodePath("MenuOption/MuteSFXButton/SfxSlider")
-metadata/_edit_vertical_guides_ = [958.0, 960.0, 486.0, 487.0]
-metadata/_edit_horizontal_guides_ = [-608.0, -353.0, -250.0]
+metadata/_edit_vertical_guides_ = [645.0, 292.0, 468.0, 1275.0, 1627.0, 1451.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
