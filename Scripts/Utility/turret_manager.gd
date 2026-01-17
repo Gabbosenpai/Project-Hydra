@@ -80,7 +80,7 @@ func _process(_delta):
 	if dic.is_empty():
 		return 
 	
-	$"/root/Main/UI/ButtonRemove".visible = not turrets.is_empty()
+	#$"/root/Main/UI/ButtonRemove".visible = not turrets.is_empty()
 	
 	for x in range(GameConstants.COLUMN):
 		for y in range(GameConstants.ROW):

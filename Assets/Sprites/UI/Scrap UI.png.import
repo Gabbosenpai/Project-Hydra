@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnx37mm1hkptv"
-path="res://.godot/imported/Title Versus.png-619ee1b7e95b54caabc0bd259171527d.ctex"
+uid="uid://c1gnm3v0hp5ta"
+path="res://.godot/imported/Scrap UI.png-edc593d51676a3d3f2c749e9e144494a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/Title Versus.png"
-dest_files=["res://.godot/imported/Title Versus.png-619ee1b7e95b54caabc0bd259171527d.ctex"]
+source_file="res://Assets/Sprites/UI/Scrap UI.png"
+dest_files=["res://.godot/imported/Scrap UI.png-edc593d51676a3d3f2c749e9e144494a.ctex"]
 
 [params]
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=43 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://dmpsp8j2lg18" path="res://Assets/Sprites/UI/Menu/Small Delete Button Not Pressed.png" id="2_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="2_rkjgo"]
 [ext_resource type="Texture2D" uid="uid://d0udik5gvty21" path="res://Assets/Sprites/UI/Menu/Small Delete Button Pressed.png" id="3_ipxc1"]
-[ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/Shaders/point_bar.gdshader" id="4_6wlri"]
 [ext_resource type="Texture2D" uid="uid://bwg7ovj3mk2sw" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG.png" id="4_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_5o6ld"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="6_pi3ax"]
@@ -24,20 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="16_5o6ld"]
 [ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="17_d5ei8"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j04uc"]
-shader = ExtResource("4_6wlri")
-shader_parameter/background_color = Color(0.1, 0.1, 0.1, 0.5)
-shader_parameter/fill_color = Color(0.26, 0.56, 1, 1)
-shader_parameter/glow_color = Color(0.4, 0.7, 1, 0.4)
-shader_parameter/edge_glow_strength = 0.3
-shader_parameter/wave_speed = 2.0
-shader_parameter/wave_height = 0.02
-shader_parameter/progress_value = 0.0
-shader_parameter/corner_radius = 0.25
-
-[sub_resource type="LabelSettings" id="LabelSettings_mg6lk"]
-font_size = 20
+[ext_resource type="Texture2D" uid="uid://c1gnm3v0hp5ta" path="res://Assets/Sprites/UI/Scrap UI.png" id="24_wlbwg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewdvb"]
 texture = ExtResource("2_rkjgo")
@@ -337,9 +323,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.0
 offset_top = 141.0
-offset_right = -10.0
 offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -350,21 +334,7 @@ music_slider = NodePath("PauseMenu/MuteMusicButton/MusicSlider")
 sfx_slider = NodePath("PauseMenu/MuteSFXButton/SfxSlider")
 mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
-metadata/_edit_vertical_guides_ = [950.0]
-
-[node name="ButtonRemove" type="TextureButton" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 1372.0
-offset_top = 842.0
-offset_right = 1500.0
-offset_bottom = 970.0
-scale = Vector2(2, 2)
-toggle_mode = true
-texture_normal = ExtResource("2_d2tjn")
-texture_pressed = ExtResource("3_ipxc1")
-ignore_texture_size = true
-stretch_mode = 0
+metadata/_edit_vertical_guides_ = [111.0, 17.0, 1761.0, 1903.0, 1761.0, 1761.0]
 
 [node name="TurretSelector" type="Panel" parent="."]
 layout_mode = 0
@@ -373,43 +343,47 @@ offset_top = 1107.0
 offset_right = 826.0
 offset_bottom = 1111.0
 
-[node name="TextureRect" type="TextureRect" parent="TurretSelector"]
+[node name="Screen" type="TextureRect" parent="TurretSelector"]
 layout_mode = 0
-offset_left = -634.0
+offset_left = -644.0
 offset_top = -278.0
-offset_right = 1286.0
-offset_bottom = 110.0
+offset_right = 1276.0
+offset_bottom = 802.0
 texture = ExtResource("4_d2tjn")
+metadata/_edit_lock_ = true
 
-[node name="PointsBar" type="ColorRect" parent="TurretSelector"]
-material = SubResource("ShaderMaterial_j04uc")
+[node name="ScrapUI" type="TextureRect" parent="TurretSelector"]
 layout_mode = 0
-offset_left = -653.0
-offset_top = -84.0
-offset_right = 1085.0
-offset_bottom = 11.0
+offset_left = -509.0
+offset_top = -245.0
+offset_right = -349.0
+offset_bottom = -85.0
+texture = ExtResource("24_wlbwg")
 
-[node name="ScrapPoints" type="Label" parent="TurretSelector/PointsBar"]
+[node name="ScrapPoints" type="Label" parent="TurretSelector/ScrapUI"]
 layout_mode = 0
-offset_left = 785.0
-offset_top = 32.0
-offset_right = 929.0
-offset_bottom = 62.0
-text = "Scrap : 0"
-label_settings = SubResource("LabelSettings_mg6lk")
+offset_left = -40.0
+offset_top = 179.0
+offset_right = 200.0
+offset_bottom = 219.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
+text = "200000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TurretSelector"]
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 0
-offset_left = -297.0
+offset_left = -286.0
 offset_top = -261.0
-offset_right = 593.0
-offset_bottom = -111.0
+offset_right = 886.0
+offset_bottom = -69.0
 
 [node name="ButtonTurret1" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -417,34 +391,43 @@ texture_normal = ExtResource("6_wlbwg")
 texture_pressed = ExtResource("7_lnnbn")
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
+[node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 13.0
-offset_right = -14.0
-offset_bottom = -9.0
+offset_left = 15.0
+offset_top = 22.0
+offset_right = -17.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_5o6ld")
 
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
+[node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 156.0
-offset_right = 130.0
-offset_bottom = 196.0
+offset_left = 35.0
+offset_top = 194.0
+offset_right = 75.0
+offset_bottom = 234.0
+texture = ExtResource("24_wlbwg")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1/ScrapImg"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 2.0
+offset_right = 122.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ButtonTurret2" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -452,132 +435,266 @@ texture_normal = ExtResource("6_wlbwg")
 texture_pressed = ExtResource("7_lnnbn")
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
+[node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = 10.0
-offset_right = -9.0
-offset_bottom = -12.0
+offset_left = 20.0
+offset_top = 14.0
+offset_right = -12.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_pi3ax")
 
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
+[node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 162.0
-offset_right = 142.0
-offset_bottom = 209.0
-theme_override_font_sizes/font_size = 34
+offset_left = 32.0
+offset_top = 194.0
+offset_right = 72.0
+offset_bottom = 234.0
+texture = ExtResource("24_wlbwg")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret2/ScrapImg"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 2.0
+offset_right = 102.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
 text = "75"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ButtonTurret3" type="Button" parent="TurretSelector/HBoxContainer"]
+[node name="ButtonTurret3" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("7_3sob7")
-expand_icon = true
+texture_normal = ExtResource("6_wlbwg")
+texture_pressed = ExtResource("7_lnnbn")
+stretch_mode = 5
 
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
+[node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 4.0
+offset_right = -15.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_3sob7")
+
+[node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 162.0
-offset_right = 144.0
-offset_bottom = 209.0
-theme_override_font_sizes/font_size = 34
+offset_left = 14.0
+offset_top = 194.0
+offset_right = 54.0
+offset_bottom = 234.0
+texture = ExtResource("24_wlbwg")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret3/ScrapImg"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 2.0
+offset_right = 160.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
 text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ButtonTurret4" type="Button" parent="TurretSelector/HBoxContainer"]
+[node name="ButtonTurret4" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("8_d2tjn")
-expand_icon = true
+texture_normal = ExtResource("6_wlbwg")
+texture_pressed = ExtResource("7_lnnbn")
+stretch_mode = 5
 
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret4"]
+[node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = -20.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_d2tjn")
+
+[node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret4"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 152.0
-offset_right = 120.0
-offset_bottom = 199.0
-theme_override_font_sizes/font_size = 34
+offset_left = 10.0
+offset_top = 194.0
+offset_right = 50.0
+offset_bottom = 234.0
+texture = ExtResource("24_wlbwg")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret4/ScrapImg"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
 text = "125"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ButtonTurret5" type="Button" parent="TurretSelector/HBoxContainer"]
+[node name="ButtonTurret5" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(140, 150)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("9_ipxc1")
-expand_icon = true
+texture_normal = ExtResource("6_wlbwg")
+texture_pressed = ExtResource("7_lnnbn")
+stretch_mode = 5
 
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret5"]
+[node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 19.0
+offset_right = -17.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_ipxc1")
+
+[node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret5"]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 159.0
-offset_right = 109.0
-offset_bottom = 206.0
-theme_override_font_sizes/font_size = 34
+offset_left = 26.0
+offset_top = 194.0
+offset_right = 66.0
+offset_bottom = 234.0
+texture = ExtResource("24_wlbwg")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret5/ScrapImg"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 2.0
+offset_right = 102.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
 text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ButtonTurret6" type="Button" parent="TurretSelector/HBoxContainer"]
+[node name="ButtonTurret6" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(140, 150)
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("10_wlbwg")
-expand_icon = true
+texture_normal = ExtResource("6_wlbwg")
+texture_pressed = ExtResource("7_lnnbn")
+stretch_mode = 5
 
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret6"]
+[node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_wlbwg")
+
+[node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret6"]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 154.0
-offset_right = 109.0
-offset_bottom = 201.0
-theme_override_font_sizes/font_size = 34
+offset_left = 10.0
+offset_top = 194.0
+offset_right = 50.0
+offset_bottom = 234.0
+texture = ExtResource("24_wlbwg")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret6/ScrapImg"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
 text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRemove" type="TextureButton" parent="TurretSelector"]
+layout_mode = 0
+offset_left = 949.0
+offset_top = -261.0
+offset_right = 1141.0
+offset_bottom = -69.0
+texture_normal = ExtResource("2_d2tjn")
+texture_pressed = ExtResource("3_ipxc1")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="LabelWave" type="Label" parent="."]
 z_index = 1000
 layout_mode = 0
-offset_left = 258.0
-offset_top = 841.0
-offset_right = 329.0
-offset_bottom = 871.0
+offset_left = 16.0
+offset_top = 723.0
+offset_right = 240.0
+offset_bottom = 754.0
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 30
 text = "Ondata 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelEnemies" type="Label" parent="."]
 z_index = 1000
 layout_mode = 0
-offset_left = 256.0
-offset_top = 892.0
-offset_right = 328.0
-offset_bottom = 915.0
+offset_left = 12.0
+offset_top = 762.0
+offset_right = 248.0
+offset_bottom = 821.0
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 30
 text = "Nemici: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonKillAll" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1694.0
-offset_top = 859.0
-offset_right = 1892.0
-offset_bottom = 1003.0
+offset_left = 1657.0
+offset_top = 588.0
+offset_right = 1897.0
+offset_bottom = 819.0
 theme_override_font_sizes/font_size = 30
 text = "Uccidi i nemici"
 
 [node name="PauseButton" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 10.0
-offset_right = 138.0
+offset_right = 128.0
 offset_bottom = 128.0
 texture_normal = ExtResource("11_cu3u0")
 ignore_texture_size = true
@@ -846,13 +963,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_4hxx0")
 }
 
-[connection signal="pressed" from="ButtonRemove" to="." method="_on_button_remove_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret1" to="." method="_on_button_turret_1_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret2" to="." method="_on_button_turret_2_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret3" to="." method="_on_button_turret_3_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret4" to="." method="_on_button_turret_4_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret5" to="." method="_on_button_turret_5_pressed"]
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret6" to="." method="_on_button_turret_6_pressed"]
+[connection signal="pressed" from="TurretSelector/ButtonRemove" to="." method="_on_button_remove_pressed"]
 [connection signal="pressed" from="ButtonKillAll" to="." method="_on_button_kill_all_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MuteMusicButton" to="." method="_on_mute_music_button_pressed"]

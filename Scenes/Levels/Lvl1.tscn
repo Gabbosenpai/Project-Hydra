@@ -94,29 +94,29 @@ limit_enabled = false
 [node name="TutorialManager" parent="." instance=ExtResource("17_gogke")]
 
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("10_tk4nw")]
-offset_left = -63.0
-offset_right = -63.0
+offset_left = -53.0
+offset_right = -53.0
 game_over_ui = NodePath("../GameOverUI")
 
-[node name="ButtonKillAll" parent="UI" index="4"]
+[node name="ButtonKillAll" parent="UI" index="3"]
 offset_left = 1713.0
 offset_top = 635.0
 offset_right = 1928.0
 offset_bottom = 779.0
 
-[node name="PauseMenu" parent="UI" index="6"]
+[node name="PauseMenu" parent="UI" index="5"]
 offset_left = 275.0
 offset_top = -1261.0
 offset_right = 1644.0
 offset_bottom = -143.0
 
-[node name="LabelWaveCenter" parent="UI" index="8"]
+[node name="LabelWaveCenter" parent="UI" index="7"]
 offset_left = 1532.0
 offset_top = 458.0
 offset_right = 2598.0
 offset_bottom = 754.0
 
-[node name="Victory" parent="UI" index="10"]
+[node name="Victory" parent="UI" index="9"]
 offset_left = 275.0
 offset_top = -1261.0
 offset_right = 1653.0
@@ -172,10 +172,9 @@ animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/Victory")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
-[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points", "PointsBar") instance=ExtResource("10_tf0td")]
+[node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points") instance=ExtResource("10_tf0td")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/TurretSelector/PointsBar/ScrapPoints")
-PointsBar = NodePath("../UI/TurretSelector/PointsBar")
+label_points = NodePath("../UI/TurretSelector/ScrapUI/ScrapPoints")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_uimwk")
