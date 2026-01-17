@@ -1,10 +1,5 @@
 extends Control
 
-@onready var desc_panel = $TowerDescriptionPanel
-@onready var desc_label = $TowerDescriptionPanel/TowerDescription
-@onready var name_label = $TowerDescriptionPanel/TowerName
-@onready var tower_image = $TowerDescriptionPanel/TowerTexture
-
 var tower_textures = {
 	"bolt_shooter": preload("res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png"),
 	"delivery_drone": preload("res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png"),
@@ -13,7 +8,6 @@ var tower_textures = {
 	"spaghetti_cable": preload("res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png"),
 	"toilet_silo": preload("res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png"),
 }
-
 #valore livello massimo per sbloccare una voce
 var tower_unlock_levels = {
 	"bolt_shooter": 1,         
@@ -23,9 +17,29 @@ var tower_unlock_levels = {
 	"spaghetti_cable": 4,
 	"toilet_silo": 5
 }
+var tower_names = {
+	"bolt_shooter": "Bolt Shooter",
+	"delivery_drone": "Delivery Drone",
+	"hkcm": "Hot Kawaii Coffee Machine",
+	"jammer": "Jammer Cannon",
+	"spaghetti_cable": "Spaghetti Cable",
+	"toilet_silo": "Toilet Silo"
+}
+var tower_texts = {
+	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
+	"weed_eater": "Questo è il Weed Eater! due ruote motrici, tre lame che fanno ognuna 800 rpm e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
+	"delivery_drone": "Se desideri qualcosa e la desideri subito, allora il delivery drone è ciò che fa per te! Posiziona la sua piattaforma d’atterraggio ben visibile, fai l’ordine e il nostro drone la porterà sfrecciando nel cielo! (A causa di traffico, schianto del drone, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, etc. la mancata consegna non sarà rimborsata e sarà necessario fare un nuovo ordine)",
+	"hkcm": "“せんぱ〜い！こんにちはっ！今日もすっごく頑張ったね！えへへ…よかったら、あったか〜いコーヒー、一緒に飲まない？”Questa frase d’incoraggiamento incisa su questa carinissima macchina del caffè l’ha resa una tra le più vendute sul mercato. Alcuni hanno giurato di vederla arrossire mentre faceva il caffè…",
+	"jammer": "Questo è il Jammer! Avevamo progettato questo nuovo tipo di jammer, ma le misure invece che in centimetri le abbiamo scritte in metri!",
+	"spaghetti_cable": "Versione Hardware del famoso Spaghetti Code e incubo di qualsiasi tecnico ma stranamente popolare sul mercato. Il suo successo ha portato l’Azienda ad allocare un intero reparto per la produzione, incrementando inspiegabilmente le vendite scrivendo “MADE IN ITALY” sulla confezione, fornendo cavi esclusivamente tricolore.",
+	"toilet_silo":"Il nemico non potrà nascondersi nemmeno in bagno! Questo design permette l’installazione di missili ad alto potenziale esplosivo costruiti con materiali estremamente economici e in grado di mimetizzarsi in ogni bagno che si rispetti (Non confondere la carta igienica esplosiva non quella classica)."
+}
+var clicked: bool
 
-
-
+@onready var desc_panel = $TowerDescriptionPanel
+@onready var desc_label = $TowerDescriptionPanel/TowerDescription
+@onready var name_label = $TowerDescriptionPanel/TowerName
+@onready var tower_image = $TowerDescriptionPanel/TowerTexture
 #corrispondenza nome->nodo
 @onready var tower_buttons = {
 	"bolt_shooter": $BoltShooter,
@@ -36,30 +50,9 @@ var tower_unlock_levels = {
 	"toilet_silo": $ToiletSilo
 }
 
-var tower_names = {
-	"bolt_shooter": "BOLT SHOOTER",
-	"delivery_drone": "DELIVERY DRONE",
-	"hkcm": "HOT KAWAII COFFEE MACHINE",
-	"jammer": "JAMMER CANNON",
-	"spaghetti_cable": "SPAGHETTI CABLE",
-	"toilet_silo": "TOILET SILO"
-}
-	
-
-
-
-var tower_texts = {
-	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
-	"weed_eater": "Questo è il Weed Eater! due ruote motrici, tre lame che fanno ognuna 800 rpm e sembrano anche dei bei baffoni utili per tosare l'erba con stile!",
-	"delivery_drone": "Se desideri qualcosa e la desideri subito, allora il delivery drone è ciò che fa per te! Posiziona la sua piattaforma d’atterraggio ben visibile, fai l’ordine e il nostro drone la porterà sfrecciando nel cielo! (A causa di traffico, schianto del drone, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, etc. la mancata consegna non sarà rimborsata e sarà necessario fare un nuovo ordine)",
-	"hkcm": "“せんぱ〜い！こんにちはっ！今日もすっごく頑張ったね！えへへ…よかったら、あったか〜いコーヒー、一緒に飲まない？”Questa frase d’incoraggiamento incisa su questa carinissima macchina del caffè l’ha resa una tra le più vendute sul mercato. Alcuni hanno giurato di vederla arrossire mentre faceva il caffè…",
-	"jammer": "Questo è il Jammer! Avevamo progettato questo nuovo tipo di jammer, ma le misure invece che in centimetri le abbiamo scritte in metri!",
-	"spaghetti_cable": "Versione Hardware del famoso Spaghetti Code e incubo di qualsiasi tecnico ma stranamente popolare sul mercato. Il suo successo ha portato l’Azienda ad allocare un intero reparto per la produzione, incrementando inspiegabilmente le vendite scrivendo “MADE IN ITALY” sulla confezione, fornendo cavi esclusivamente tricolore.",
-	"toilet_silo":"Il nemico non potrà nascondersi nemmeno in bagno! Questo design permette l’installazione di missili ad alto potenziale esplosivo costruiti con materiali estremamente economici e in grado di mimetizzarsi in ogni bagno che si rispetti (Non confondere la carta igienica esplosiva non quella classica)."
-}
-
 
 func _ready():
+	clicked = false
 	update_buttons()
 
 
@@ -95,7 +88,18 @@ func hide_description():
 
 # Esempio di pulsante
 func _on_bolt_shooter_pressed() -> void:
-	show_description("bolt_shooter")
+	if not clicked:
+		show_description("bolt_shooter")
+		for button in tower_buttons:
+			if button != "bolt_shooter":
+				tower_buttons[button].hide()
+			else:
+				var tween = create_tween()
+				tween.tween_property(tower_buttons[button], "scale", Vector2(2, 2), 0.25)
+		clicked = true
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
+
 
 # Nasconde al click
 func _unhandled_input(event):
@@ -105,7 +109,10 @@ func _unhandled_input(event):
 
 func _on_back_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaFirstScreen.tscn")
+	if clicked:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaFirstScreen.tscn")
 
 	
 func _on_jammer_pressed() -> void:
@@ -115,9 +122,19 @@ func _on_jammer_pressed() -> void:
 #
 #
 func _on_delivery_drone_pressed() -> void:
-	show_description("delivery_drone")
-#
-#
+	if not clicked:
+		show_description("delivery_drone")
+		for button in tower_buttons:
+			if button != "delivery_drone":
+				tower_buttons[button].hide()
+			else:
+				var tween = create_tween()
+				tween.tween_property(tower_buttons[button], "scale", Vector2(2, 2), 0.25)
+		clicked = true
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Encyclopedia/EncyclopediaTowerScreen.tscn")
+
+
 func _on_hkcm_pressed() -> void:
 	show_description("hkcm")
 
