@@ -88,10 +88,12 @@ layer_0/tile_data = PackedInt32Array(13, 1, 0, 14, 1, 0, 65549, 1, 0, 65550, 1, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(950, 681)
+position = Vector2(907, 681)
 limit_enabled = false
 
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_tjpki")]
+offset_left = -63.0
+offset_right = -63.0
 game_over_ui = NodePath("../GameOverUI")
 
 [node name="PauseMenu" parent="UI" index="6"]

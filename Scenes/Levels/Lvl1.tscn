@@ -88,13 +88,21 @@ layer_0/tile_data = PackedInt32Array(1, 0, 0, 262145, 0, 0, 196610, 0, 0, 3, 0, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(950, 681)
+position = Vector2(907, 681)
 limit_enabled = false
 
 [node name="TutorialManager" parent="." instance=ExtResource("17_gogke")]
 
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("10_tk4nw")]
+offset_left = -63.0
+offset_right = -63.0
 game_over_ui = NodePath("../GameOverUI")
+
+[node name="ButtonKillAll" parent="UI" index="4"]
+offset_left = 1713.0
+offset_top = 635.0
+offset_right = 1928.0
+offset_bottom = 779.0
 
 [node name="PauseMenu" parent="UI" index="6"]
 offset_left = 275.0

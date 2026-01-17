@@ -1,13 +1,16 @@
-[gd_scene load_steps=42 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=45 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
-[ext_resource type="Texture2D" uid="uid://c6t080f7r542l" path="res://Assets/Sprites/UI/Trash can.png" id="2_cu3u0"]
+[ext_resource type="Texture2D" uid="uid://dmpsp8j2lg18" path="res://Assets/Sprites/UI/Menu/Small Delete Button Not Pressed.png" id="2_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="2_rkjgo"]
-[ext_resource type="Texture2D" uid="uid://ctc56ut0f43qi" path="res://Assets/Sprites/Options/computer-whitescreen-mockup-office-supplies-600nw-2475148169-removebg-preview.png" id="3_d5ei8"]
+[ext_resource type="Texture2D" uid="uid://d0udik5gvty21" path="res://Assets/Sprites/UI/Menu/Small Delete Button Pressed.png" id="3_ipxc1"]
 [ext_resource type="Shader" uid="uid://co5k2nqbuonv1" path="res://Assets/Shaders/point_bar.gdshader" id="4_6wlri"]
+[ext_resource type="Texture2D" uid="uid://bwg7ovj3mk2sw" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG.png" id="4_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://c68y4m0qm3fgc" path="res://Assets/Sprites/Towers/Delivery Drone/Delivery Drone Fly-00.png" id="5_5o6ld"]
 [ext_resource type="Texture2D" uid="uid://qxwsfkdg3cng" path="res://Assets/Sprites/Towers/Bolt Shooter/Idle/Bolt Shooter-Idle_0001.png" id="6_pi3ax"]
+[ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="6_wlbwg"]
 [ext_resource type="Texture2D" uid="uid://dtol8cecgi2rj" path="res://Assets/Sprites/Towers/Jammer Cannon/Jammer Cannon.png" id="7_3sob7"]
+[ext_resource type="Texture2D" uid="uid://bk5xlovlq1fgi" path="res://Assets/Sprites/UI/Menu/DB Button Pressed.png" id="7_lnnbn"]
 [ext_resource type="Texture2D" uid="uid://xb8ppe6kmgur" path="res://Assets/Sprites/Towers/HKCM/Hot Kawaii Coffee Machine.png" id="8_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="9_ipxc1"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="10_wlbwg"]
@@ -58,22 +61,6 @@ tracks/0/keys = {
 "values": [Vector2(275, -1261)]
 }
 
-[sub_resource type="Animation" id="Animation_ipxc1"]
-resource_name = "chiudiOpzioni"
-length = 0.75
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(275, -140), Vector2(275, -1261)]
-}
-
 [sub_resource type="Animation" id="Animation_3sob7"]
 resource_name = "apriOpzioni"
 length = 0.75
@@ -88,6 +75,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(275, -1261), Vector2(275, -140)]
+}
+
+[sub_resource type="Animation" id="Animation_ipxc1"]
+resource_name = "chiudiOpzioni"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(275, -140), Vector2(275, -1261)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ipxc1"]
@@ -291,6 +294,21 @@ _data = {
 &"entrata": SubResource("Animation_6wlri")
 }
 
+[sub_resource type="Animation" id="Animation_lnnbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(275, -1261)]
+}
+
 [sub_resource type="Animation" id="Animation_wlbwg"]
 resource_name = "apriVittoria"
 length = 0.75
@@ -305,21 +323,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(275, -1261), Vector2(275, -140)]
-}
-
-[sub_resource type="Animation" id="Animation_lnnbn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(275, -1261)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4hxx0"]
@@ -350,13 +353,16 @@ mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
 metadata/_edit_vertical_guides_ = [950.0]
 
 [node name="ButtonRemove" type="TextureButton" parent="."]
+z_index = 1
 layout_mode = 0
-offset_left = 1271.0
+offset_left = 1372.0
 offset_top = 842.0
-offset_right = 1399.0
+offset_right = 1500.0
 offset_bottom = 970.0
 scale = Vector2(2, 2)
-texture_normal = ExtResource("2_cu3u0")
+toggle_mode = true
+texture_normal = ExtResource("2_d2tjn")
+texture_pressed = ExtResource("3_ipxc1")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -366,16 +372,14 @@ offset_left = 644.0
 offset_top = 1107.0
 offset_right = 826.0
 offset_bottom = 1111.0
-metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="TurretSelector"]
 layout_mode = 0
-offset_left = -283.0
-offset_top = -298.0
-offset_right = 693.0
-offset_bottom = 81.0
-texture = ExtResource("3_d5ei8")
-expand_mode = 1
+offset_left = -634.0
+offset_top = -278.0
+offset_right = 1286.0
+offset_bottom = 110.0
+texture = ExtResource("4_d2tjn")
 
 [node name="PointsBar" type="ColorRect" parent="TurretSelector"]
 material = SubResource("ShaderMaterial_j04uc")
@@ -398,44 +402,75 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TurretSelector"]
 layout_mode = 0
-offset_left = -232.0
+offset_left = -297.0
 offset_top = -261.0
-offset_right = 380.0
-offset_bottom = -63.0
+offset_right = 593.0
+offset_bottom = -111.0
 
-[node name="ButtonTurret1" type="Button" parent="TurretSelector/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(140, 150)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-icon = ExtResource("5_5o6ld")
-expand_icon = true
-
-[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
-layout_mode = 0
-offset_left = 101.0
-offset_top = -10.0
-offset_right = 141.0
-offset_bottom = 37.0
-theme_override_font_sizes/font_size = 34
-text = "50"
-
-[node name="ButtonTurret2" type="Button" parent="TurretSelector/HBoxContainer"]
+[node name="ButtonTurret1" type="TextureButton" parent="TurretSelector/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("6_pi3ax")
-expand_icon = true
+texture_normal = ExtResource("6_wlbwg")
+texture_pressed = ExtResource("7_lnnbn")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 13.0
+offset_right = -14.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_5o6ld")
+
+[node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret1"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 156.0
+offset_right = 130.0
+offset_bottom = 196.0
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 30
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonTurret2" type="TextureButton" parent="TurretSelector/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_wlbwg")
+texture_pressed = ExtResource("7_lnnbn")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 10.0
+offset_right = -9.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pi3ax")
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret2"]
 layout_mode = 0
-offset_left = 112.0
-offset_top = -7.0
-offset_right = 152.0
-offset_bottom = 40.0
+offset_left = 102.0
+offset_top = 162.0
+offset_right = 142.0
+offset_bottom = 209.0
 theme_override_font_sizes/font_size = 34
 text = "75"
 
@@ -450,10 +485,10 @@ expand_icon = true
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 0
-offset_left = 87.0
-offset_top = -6.0
-offset_right = 145.0
-offset_bottom = 41.0
+offset_left = 86.0
+offset_top = 162.0
+offset_right = 144.0
+offset_bottom = 209.0
 theme_override_font_sizes/font_size = 34
 text = "100"
 
@@ -468,10 +503,10 @@ expand_icon = true
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret4"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = -5.0
-offset_right = 147.0
-offset_bottom = 42.0
+offset_left = 62.0
+offset_top = 152.0
+offset_right = 120.0
+offset_bottom = 199.0
 theme_override_font_sizes/font_size = 34
 text = "125"
 
@@ -486,10 +521,10 @@ expand_icon = true
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret5"]
 layout_mode = 0
-offset_left = 98.0
-offset_top = -6.0
-offset_right = 156.0
-offset_bottom = 41.0
+offset_left = 51.0
+offset_top = 159.0
+offset_right = 109.0
+offset_bottom = 206.0
 theme_override_font_sizes/font_size = 34
 text = "50"
 
@@ -504,12 +539,12 @@ expand_icon = true
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret6"]
 layout_mode = 0
-offset_left = 98.0
-offset_top = -6.0
-offset_right = 156.0
-offset_bottom = 41.0
+offset_left = 51.0
+offset_top = 154.0
+offset_right = 109.0
+offset_bottom = 201.0
 theme_override_font_sizes/font_size = 34
-text = "50"
+text = "200"
 
 [node name="LabelWave" type="Label" parent="."]
 z_index = 1000
@@ -531,17 +566,18 @@ text = "Nemici: 0"
 
 [node name="ButtonKillAll" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1538.0
-offset_top = 941.0
-offset_right = 1679.0
-offset_bottom = 995.0
+offset_left = 1694.0
+offset_top = 859.0
+offset_right = 1892.0
+offset_bottom = 1003.0
+theme_override_font_sizes/font_size = 30
 text = "Uccidi i nemici"
 
 [node name="PauseButton" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 1792.0
-offset_right = 1920.0
+offset_left = 10.0
+offset_right = 138.0
 offset_bottom = 128.0
 texture_normal = ExtResource("11_cu3u0")
 ignore_texture_size = true
