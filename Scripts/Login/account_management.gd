@@ -54,6 +54,7 @@ func _on_back_main_menu_pressed() -> void:
 
 func reset_label_():
 	status_label.text = PlayFabManager.client_config.username
+	status_label.modulate = Color.WHITE
 
 
 func _on_yes_button_pressed() -> void:
