@@ -1,10 +1,13 @@
 extends Control
 
+@onready var anim_player = $AnimationPlayer
 
 #Funzione che inizializza i crediti
 func _ready():
 	var credits_music = preload("res://Assets/Sound/OST/Kevin MacLeod - Itty Bitty (CREDITS THEME).mp3")
 	AudioManager.play_music(credits_music) #Viene avviata la OST
+	anim_player.play("ScorriCrediti")
+	
 
 
 #Funzione che rileva quando il pulsante per tonare al menu viene cliccato
