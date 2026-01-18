@@ -94,7 +94,7 @@ func update_available_turrets():
 
 
 func turret_placed_UI():
-	for i in range(0, 5):
+	for i in range(0, 6):
 		var button = h_box_container.get_child(i)
 		button.button_pressed = false
 
@@ -103,31 +103,45 @@ func turret_deleted_UI():
 	button_remove.button_pressed = false
 
 
+func update_buttons_UI(ButtonName: String):
+	for i in range(0, 6):
+		var button = h_box_container.get_child(i)
+		if button.name != ButtonName:
+			button.button_pressed = false
+
+
 func _on_button_remove_pressed():
 	emit_signal("remove_mode")
 
 
 func _on_button_turret_1_pressed():
 	emit_signal("select_turret", "turret1")
+	update_buttons_UI("ButtonTurret1")
 
 
 func _on_button_turret_2_pressed():
 	emit_signal("select_turret", "turret2")
+	update_buttons_UI("ButtonTurret2")
 
 
 func _on_button_turret_3_pressed():
 	emit_signal("select_turret", "turret3")
+	update_buttons_UI("ButtonTurret3")
 
 
 func _on_button_turret_4_pressed():
 	emit_signal("select_turret", "turret4")
+	update_buttons_UI("ButtonTurret4")
 
 
 func _on_button_turret_5_pressed() -> void:
 	emit_signal("select_turret", "turret5")
+	update_buttons_UI("ButtonTurret5")
+
 
 func _on_button_turret_6_pressed() -> void:
 	emit_signal("select_turret", "turret6")
+	update_buttons_UI("ButtonTurret6")
 
 
 # Uccide istantaneamente tutti i nemici in scena

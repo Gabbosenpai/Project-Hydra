@@ -129,9 +129,9 @@ func _process(_delta):
 
 # Gestione torrette 
 func select_turret(key: String):
-	if current_mode == Mode.PLACE:
+	if current_mode == Mode.REMOVE:
 		clear_mode()
-		return
+		emit_signal("turret_deleted_UI")
 	var level_path = get_parent().current_level
 	var level_num = 1
 	var regex = RegEx.new()
@@ -155,6 +155,7 @@ func select_turret(key: String):
 func remove_mode():
 	if current_mode != Mode.REMOVE:
 		current_mode = Mode.REMOVE
+		emit_signal("turret_placed_UI")
 	else:
 		clear_mode()
 
