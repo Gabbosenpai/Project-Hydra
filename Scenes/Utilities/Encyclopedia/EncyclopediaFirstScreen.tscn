@@ -66,7 +66,7 @@ offset_bottom = 551.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("7_weu46")
 theme_override_font_sizes/font_size = 60
-text = "Torrette"
+text = "towers"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -98,7 +98,7 @@ offset_bottom = 550.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("7_weu46")
 theme_override_font_sizes/font_size = 60
-text = "Robot"
+text = "robots"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -122,7 +122,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_hc4qr")
 theme_override_font_sizes/font_size = 40
-text = "Menù Principale"
+text = "main_menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -140,7 +140,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("7_weu46")
 theme_override_font_sizes/font_size = 80
-text = "Database"
+text = "database"
 horizontal_alignment = 1
 vertical_alignment = 1
 

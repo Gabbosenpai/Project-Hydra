@@ -32,3 +32,13 @@ delete_account,Elimina account,Delete account,删除账户
 delete_account_dialogue,Sei sicuro di voler eliminare Il tuo account?\n Questa azione è irreversibile.,Are you sure you want to delete your account?\n This action is irreversible.,您确定要删除您的账户吗？\n此操作不可撤销。
 yes,SI, YES,是
 no,NO,NO,不
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+#database,,,
+towers,Torrette,Towers,塔楼
+robots,Robot,Robots,机器人
