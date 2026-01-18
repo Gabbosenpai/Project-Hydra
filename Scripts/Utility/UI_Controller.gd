@@ -24,6 +24,7 @@ const TURRET_UNLOCKS = {
 @export var mute_sfx_button: TextureButton
 @onready var button_remove = $TurretSelector/ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
+@onready var h_box_container: HBoxContainer = $TurretSelector/HBoxContainer
 
 var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
 var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
@@ -52,10 +53,11 @@ func set_current_level(level):
 	current_level = level
 	call_deferred("update_available_turrets")
 
+
 func update_available_turrets():
 	if not current_level:
 		return
-
+	
 	# 1. Estrazione numero livello
 	var level_number = 1
 	var regex = RegEx.new()
@@ -63,9 +65,9 @@ func update_available_turrets():
 	var result = regex.search(current_level)
 	if result:
 		level_number = result.get_string(1).to_int()
-
+	
 	print("Configurazione UI per Livello: ", level_number)
-
+	
 	# 2. Cerchiamo i bottoni. 
 	# Se ButtonTurret1 è dentro un Container (es. HBoxContainer), 
 	# usiamo find_child per trovarlo ovunque nella gerarchia della UI.
@@ -80,22 +82,31 @@ func update_available_turrets():
 			var unlock_at = TURRET_UNLOCKS.get(turret_key, 1)
 			var is_unlocked = (level_number >= unlock_at)
 			
-			# Nasconde completamente il bottone se bloccato
-			button_node.visible = is_unlocked
-			
-			# Opzionale: se vuoi che occupino comunque spazio ma siano neri/disabilitati
-			# button_node.disabled = !is_unlocked 
+			# Nasconde l'icona della torretta se non sbloccata
+			if !is_unlocked:
+				button_node.get_child(1).visible = false
+				button_node.get_child(0).modulate = Color.BLACK
+				button_node.disabled = true
 			
 			print("Torretta ", i, " visibile: ", is_unlocked)
 		else:
 			push_warning("Attenzione: Non trovo il nodo chiamato: " + button_name)
 
-# Attiva la modalità rimozione piante
+
+func turret_placed_UI():
+	for i in range(0, 5):
+		var button = h_box_container.get_child(i)
+		button.button_pressed = false
+
+
+func turret_deleted_UI():
+	button_remove.button_pressed = false
+
+
 func _on_button_remove_pressed():
 	emit_signal("remove_mode")
 
 
-# Selezione rapida di una pianta specifica in base al tasto premuto
 func _on_button_turret_1_pressed():
 	emit_signal("select_turret", "turret1")
 
@@ -141,7 +152,7 @@ func _on_pause_button_pressed():
 		anim_player.play("apriOpzioni")
 		await anim_player.animation_finished
 		opzioni_aperte = true
-
+	
 	#pause_menu.visible = true
 	#pause_button.visible = false
 	#_refresh_audio_ui()

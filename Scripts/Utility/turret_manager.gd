@@ -1,6 +1,8 @@
 extends Node
 
 signal turret_placed(cell_key)
+signal turret_placed_UI
+signal turret_deleted_UI
 
 # --- COSTANTI: Configurazione TileMap ---
 const HIGHLIGHT_LAYER: int = 1
@@ -127,6 +129,9 @@ func _process(_delta):
 
 # Gestione torrette 
 func select_turret(key: String):
+	if current_mode == Mode.PLACE:
+		clear_mode()
+		return
 	var level_path = get_parent().current_level
 	var level_num = 1
 	var regex = RegEx.new()
@@ -148,7 +153,10 @@ func select_turret(key: String):
 
 
 func remove_mode():
-	current_mode = Mode.REMOVE
+	if current_mode != Mode.REMOVE:
+		current_mode = Mode.REMOVE
+	else:
+		clear_mode()
 
 
 func clear_mode():
@@ -221,6 +229,7 @@ func place_turret(cell_key: Vector2i):
 		turret_instance.visible = false
 		turrets[cell_key] = turret_instance
 		emit_signal("turret_placed", cell_key)
+		emit_signal("turret_placed_UI")
 		clear_mode()
 		
 		var construction = tower_construcion.instantiate()
@@ -258,7 +267,7 @@ func remove_turret(cell_key: Vector2i):
 		
 		if is_instance_valid(turret_instance):
 			turret_instance.queue_free()
-		
+			emit_signal("turret_deleted_UI")
 		turrets.erase(cell_key)
 		clear_mode()
 
