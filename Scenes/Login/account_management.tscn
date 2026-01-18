@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmrq4568hj2cl"]
+[gd_scene load_steps=12 format=3 uid="uid://cmrq4568hj2cl"]
 
 [ext_resource type="Script" uid="uid://buol7e3tsyytm" path="res://Scripts/Login/account_management.gd" id="1_yr52k"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_vjpih"]
@@ -15,6 +15,10 @@ spacing_glyph = -7
 spacing_space = -8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4ljn"]
+
+[sub_resource type="FontVariation" id="FontVariation_vxsct"]
+base_font = ExtResource("2_vjpih")
+spacing_glyph = -8
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -168,17 +172,18 @@ offset_right = 522.0
 offset_bottom = 645.0
 texture_normal = ExtResource("5_vxsct")
 texture_pressed = ExtResource("6_ni8i4")
-metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ConfirmPanel/YesButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_fonts/font = ExtResource("2_vjpih")
+theme_override_fonts/font = SubResource("FontVariation_vxsct")
 theme_override_font_sizes/font_size = 40
 text = "yes"
 horizontal_alignment = 1
