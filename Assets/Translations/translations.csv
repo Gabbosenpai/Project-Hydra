@@ -23,3 +23,9 @@ password,Password,Password,密码
 register,Registrati,Register,注册
 forgot_password,Password persa?,Forgot password?,忘记密码？
 username,Username,Username,用户名
+logout,Logout,Logout,
+user,Utente,User,
+delete_account,Elimina account,Delete account,
+,,,
+,,,
+#Messaggi,,,

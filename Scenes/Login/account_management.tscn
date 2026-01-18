@@ -11,8 +11,8 @@
 
 [sub_resource type="FontVariation" id="FontVariation_mtfc0"]
 base_font = ExtResource("2_vjpih")
-spacing_glyph = -4
-spacing_space = -10
+spacing_glyph = -7
+spacing_space = -8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4ljn"]
 
@@ -38,7 +38,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
 theme_override_font_sizes/font_size = 40
-text = "User"
+text = "user"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -77,7 +77,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_mtfc0")
 theme_override_font_sizes/font_size = 40
-text = "Delete Account"
+text = "delete_account"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -102,7 +102,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
 theme_override_font_sizes/font_size = 40
-text = "Back"
+text = "back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -127,7 +127,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
 theme_override_font_sizes/font_size = 40
-text = "Logout"
+text = "logout"
 horizontal_alignment = 1
 vertical_alignment = 1
 
