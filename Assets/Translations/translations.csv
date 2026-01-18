@@ -23,9 +23,12 @@ password,Password,Password,密码
 register,Registrati,Register,注册
 forgot_password,Password persa?,Forgot password?,忘记密码？
 username,Username,Username,用户名
-logout,Logout,Logout,
-user,Utente,User,
-delete_account,Elimina account,Delete account,
+logout,Logout,Logout,注销
+user,Utente,User,用户名
+delete_account,Elimina account,Delete account,删除账户
 ,,,
 ,,,
 #Messaggi,,,
+delete_account_dialogue,Sei sicuro di voler eliminare Il tuo account?\n Questa azione è irreversibile.,Are you sure you want to delete your account?\n This action is irreversible.,您确定要删除您的账户吗？\n此操作不可撤销。
+yes,SÌ, YES,是
+no,NO,NO,不

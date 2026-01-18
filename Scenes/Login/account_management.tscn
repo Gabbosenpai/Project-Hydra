@@ -156,8 +156,7 @@ offset_bottom = 298.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
 theme_override_font_sizes/font_size = 33
-text = "Sei sicuro di voler eliminare il tuo account? 
-Questa azione è irreversibile."
+text = "delete_account_dialogue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -181,7 +180,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
 theme_override_font_sizes/font_size = 40
-text = "SI"
+text = "yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -205,7 +204,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("2_vjpih")
 theme_override_font_sizes/font_size = 40
-text = "NO"
+text = "no"
 horizontal_alignment = 1
 vertical_alignment = 1
 
