@@ -5,12 +5,25 @@ extends Control
 @onready var turret_icon = $"../TextureRect/TurretIcon"
 
 func _ready() -> void:
-	var last_completed_level = SaveManager.get_max_unlocked_level() + 1
-	var turret_name = get_turret_name_for_level(last_completed_level)
+	var scene_path = get_tree().current_scene.scene_file_path
+	var current_level_num = 0
+	
+	#Cerchiamo nel percorso della scena (es. "Lvl3.tscn") il modello "Lvl" seguito da numeri.
+	# "Lvl" -> Cerca il testo letterale
+	#"(\\d+)" -> Cattura uno o più cifre numeriche (0-9)
+	var regex = RegEx.new()
+	regex.compile("Lvl(\\d+)") 
+	var result = regex.search(scene_path)
+	
+	if result:
+		# Recuperiamo il primo gruppo catturato (il numero) e lo convertiamo in intero
+		current_level_num = result.get_string(1).to_int() + 1
+	
+	var turret_name = get_turret_name_for_level(current_level_num)
 	if turret_name != "":
 		unlock_label.text += "\n\n NUOVA TORRETTA SBLOCCATA: " + turret_name
 		unlock_label.visible = true
-		var image_path = get_turret_image_for_level(last_completed_level)
+		var image_path = get_turret_image_for_level(current_level_num)
 		if image_path != "":
 			var tex = load(image_path)
 			if tex:
