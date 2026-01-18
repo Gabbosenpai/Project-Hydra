@@ -23,7 +23,7 @@ var jamming_sources: int
 var target: Area2D # Bersaglio dell'attacco, vienne aggiornata dai signal
 var riga: int
 var arrived: bool
-var max_points_on_defeat: int  = 25 # Valore max pts ottenibili da questo robot
+var max_points_on_defeat: int  = 50 # Valore max pts ottenibili da questo robot
 var scrap_drop_chance: float = 0.05 # Probabilità (0.0 a 1.0) drop alla morte
 var in_blackout_level: bool = false
 

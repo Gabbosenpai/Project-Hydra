@@ -130,17 +130,17 @@ process_mode = 3
 visible = false
 z_index = 1000
 
-[node name="ColorRect" parent="GameOverUI" index="0"]
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 1918.0
-offset_bottom = 1076.0
-
-[node name="Label" parent="GameOverUI" index="1"]
+[node name="Label" parent="GameOverUI" index="0"]
 offset_left = 705.0
 offset_top = 426.0
 offset_right = 1248.0
 offset_bottom = 563.0
+
+[node name="Label2" parent="GameOverUI" index="1"]
+offset_left = 135.0
+offset_top = 563.0
+offset_right = 1717.0
+offset_bottom = 700.0
 
 [node name="RetryButton" parent="GameOverUI" index="2"]
 offset_left = 670.0

@@ -57,7 +57,8 @@ func _ready():
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))
 	retry.pressed.connect(ui_controller._on_retry_button_pressed)
 	exit.pressed.connect(ui_controller._on_exit_button_pressed)
-	
+	turret_manager.connect("turret_placed_UI", Callable(ui_controller, "turret_placed_UI"))
+	turret_manager.connect("turret_deleted_UI", Callable(ui_controller, "turret_deleted_UI"))
 	ui_controller.connect("retry", Callable(self, "_on_retry_button_pressed"))
 	ui_controller.connect("exit", Callable(self, "_on_exit_button_pressed"))
 	
