@@ -3,9 +3,9 @@ extends Node2D
 
 signal game_over
 
-@onready var turret_manager = $TurretManager
-@onready var enemy_spawner = $EnemySpawner
-@onready var grid_initializer = $GridInitializer
+const LIGHT_FLASH_DURATION: float = 1.0
+const LIGHT_FLASH_INTERVAL: float = 10.0
+
 @export var tilemap: TileMap
 @export var ui_controller: Control
 
@@ -13,20 +13,19 @@ var incinerator_used_in_row: Array = [false, false, false, false, false]
 var is_game_over: bool = false 
 var OST: AudioStream
 var current_level
-
 # Variabili per Blackout
 var is_blackout_level: bool = false
 var active_shift_rows: Array = []
-
 # Variabili per le luci intermittenti
 var blackout_light_timer: Timer = null
-const LIGHT_FLASH_DURATION: float = 1.0
-const LIGHT_FLASH_INTERVAL: float = 10.0
-
 # Variabile per tracciare i nodi overlay di blackout (il "buio")
 var blackout_dark_overlays: Array[ColorRect] = [] 
 # Nuova variabile per tracciare i nodi luce veri e propri (il "flash")
 var blackout_flash_lights: Array[ColorRect] = []
+
+@onready var turret_manager = $TurretManager
+@onready var enemy_spawner = $EnemySpawner
+@onready var grid_initializer = $GridInitializer
 
 
 func _ready():
