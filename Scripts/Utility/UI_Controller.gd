@@ -20,6 +20,8 @@ const TURRET_UNLOCKS = {
 @export var sfx_slider: HSlider
 @export var mute_music_button: TextureButton
 @export var mute_sfx_button: TextureButton
+@export var game_over_timer_value: float = 2.0
+
 @onready var button_remove = $TurretSelector/ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
 @onready var h_box_container: HBoxContainer = $TurretSelector/HBoxContainer
@@ -30,6 +32,9 @@ const TURRET_UNLOCKS = {
 @onready var menu_button: TextureButton = $PauseMenu/MenuButton
 @onready var scrap_ui: TextureRect = $TurretSelector/ScrapUI
 @onready var scrap_points: Label = $TurretSelector/ScrapPoints
+@onready var game_over_timer: Timer = $PauseMenu/GameOverUI/GameOverTimer
+@onready var anim_player = $PauseMenu/AnimationPlayer
+@onready var victory_anim_player: AnimationPlayer = $Victory/AnimationPlayer
 
 
 var scrap_pos
@@ -40,10 +45,10 @@ var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound
 var current_level
 var is_wave_active = false
 var opzioni_aperte = false
-@onready var anim_player = $PauseMenu/AnimationPlayer
 
 
 func _ready():
+	game_over_timer.wait_time = game_over_timer_value
 	scrap_pos = scrap_ui.position
 	_refresh_audio_ui()
 	pause_menu.position.y = -1300
@@ -121,7 +126,7 @@ func not_enough_scrap():
 func shake(node, intensity := 8.0, duration := 0.3):
 	var tween = create_tween()
 	# Transizione interpolata con una funzione seno
-	#tween.set_trans(Tween.TRANS_SINE)
+	tween.set_trans(Tween.TRANS_SINE)
 	
 	# Piccoli spostamenti casuali
 	for i in range(6):
@@ -239,13 +244,22 @@ func show_game_over():
 	resume_button.visible = false
 	menu_button.visible = false
 	game_over_ui.visible = true
+	game_over_timer.start()
+	await game_over_timer.timeout
+	if is_instance_valid(game_over_timer):
+		game_over_timer.queue_free()
 	get_tree().paused = true  # Metti in pausa il gioco
 	pause_menu.move_to_front()
+	pause_button.disabled = true
 	_sync_sliders_with_audio()
 	AudioManager.play_game_over_music()
 	anim_player.play("apriOpzioni")
 	await anim_player.animation_finished
-	
+
+
+func _on_victory():
+	victory_anim_player.play("apriVittoria")
+	pause_button.disabled = true
 
 
 # Ricarica il livello 1 per riprovare

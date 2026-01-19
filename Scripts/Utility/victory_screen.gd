@@ -39,9 +39,11 @@ func _ready() -> void:
 		turret_background.visible = false
 		turret_icon.visible = false
 
+
 func _on_select_level_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
+
 
 func _on_next_level_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
@@ -82,6 +84,7 @@ func _on_menu_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
 
+
 func get_turret_name_for_level(lvl: int) -> String:
 	match lvl:
 		#1: return "Delivery Drone & Bolt Shooter"
@@ -90,6 +93,7 @@ func get_turret_name_for_level(lvl: int) -> String:
 		4: return "Spaghetti Cable"
 		5: return "Toilet Silo"
 		_: return ""
+
 
 func get_turret_image_for_level(lvl: int) -> String:
 	match lvl:

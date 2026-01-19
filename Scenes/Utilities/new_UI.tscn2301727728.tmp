@@ -335,7 +335,6 @@ music_slider = NodePath("PauseMenu/MuteMusicButton/MusicSlider")
 sfx_slider = NodePath("PauseMenu/MuteSFXButton/SfxSlider")
 mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
-game_over_timer_value = 3.5
 metadata/_edit_vertical_guides_ = [111.0, 17.0, 1761.0, 1903.0, 1761.0, 1761.0, 964.0, 960.0]
 metadata/_edit_horizontal_guides_ = [987.0]
 
