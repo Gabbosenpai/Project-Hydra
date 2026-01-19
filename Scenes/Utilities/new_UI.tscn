@@ -362,12 +362,12 @@ offset_right = -349.0
 offset_bottom = -85.0
 texture = ExtResource("24_wlbwg")
 
-[node name="ScrapPoints" type="Label" parent="TurretSelector/ScrapUI"]
+[node name="ScrapPoints" type="Label" parent="TurretSelector"]
 layout_mode = 0
-offset_left = -40.0
-offset_top = 179.0
-offset_right = 200.0
-offset_bottom = 219.0
+offset_left = -549.0
+offset_top = -66.0
+offset_right = -309.0
+offset_bottom = -26.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40

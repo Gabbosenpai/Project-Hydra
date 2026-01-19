@@ -28,9 +28,9 @@ var all_enemy_scenes = {
 }
 var level_enemy_pool = {
 	1: ["romba"],
-	2: ["we9k","mf","fh"],
-	3: ["cs"],
-	4: ["romba","we9k","mf","fh","cs"],
+	2: ["romba", "we9k"],
+	3: ["romba", "we9k", "mf"],
+	4: ["romba","we9k","mf","fh"],
 	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
@@ -109,7 +109,8 @@ func start_wave():
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
 	
-	#Svuota la coda dell'ondata precedente
+	# Non credo che io voglia far scomparire robot dal nulla?
+	# Svuota la coda dell'ondata precedente
 	remaining_enemies_queue.clear()
 	
 	# Recupera i tipi di nemici permessi per questo specifico livello

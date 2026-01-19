@@ -56,7 +56,7 @@ func _ready():
 	
 	turret_manager.connect("turret_placed_UI", Callable(ui_controller, "turret_placed_UI"))
 	turret_manager.connect("turret_deleted_UI", Callable(ui_controller, "turret_deleted_UI"))
-	
+	turret_manager.connect("not_enough_scrap", Callable(ui_controller, "not_enough_scrap"))
 	connect("game_over", Callable(ui_controller, "show_game_over"))
 	
 	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))

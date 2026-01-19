@@ -131,7 +131,7 @@ next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points") instance=ExtResource("11_dpoto")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/TurretSelector/ScrapUI/ScrapPoints")
+label_points = NodePath("../UI/TurretSelector/ScrapPoints")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("11_lhqd2")

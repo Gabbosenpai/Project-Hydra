@@ -28,8 +28,11 @@ const TURRET_UNLOCKS = {
 @onready var pause_label: Label = $PauseMenu/PauseLabel
 @onready var resume_button: TextureButton = $PauseMenu/ResumeButton
 @onready var menu_button: TextureButton = $PauseMenu/MenuButton
+@onready var scrap_ui: TextureRect = $TurretSelector/ScrapUI
+@onready var scrap_points: Label = $TurretSelector/ScrapPoints
 
 
+var scrap_pos
 var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
 var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
 var texture_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png")
@@ -41,6 +44,7 @@ var opzioni_aperte = false
 
 
 func _ready():
+	scrap_pos = scrap_ui.position
 	_refresh_audio_ui()
 	pause_menu.position.y = -1300
 	opzioni_aperte = false
@@ -107,6 +111,40 @@ func turret_placed_UI():
 
 func turret_deleted_UI():
 	button_remove.button_pressed = false
+
+
+func not_enough_scrap():
+	shake(scrap_ui)
+	flash_red(scrap_points)
+
+
+func shake(node, intensity := 8.0, duration := 0.3):
+	var tween = create_tween()
+	# Transizione interpolata con una funzione seno
+	#tween.set_trans(Tween.TRANS_SINE)
+	
+	# Piccoli spostamenti casuali
+	for i in range(6):
+		var offset = Vector2(
+			randf_range(-intensity, intensity),
+			randf_range(-intensity, intensity)
+		)
+		tween.tween_property(
+			node,
+			"position",
+			scrap_pos + offset,
+			duration / 6.0
+		)
+	
+	# Ritorno alla posizione iniziale
+	tween.tween_property(node, "position", scrap_pos, duration / 6.0)
+
+
+func flash_red(node):
+	var tween = create_tween()
+	for i in range(3):
+		tween.tween_property(node, "modulate", Color.RED, 0.08)
+		tween.tween_property(node, "modulate", Color(1,1,1,1), 0.08)
 
 
 func update_buttons_UI(ButtonName: String):
