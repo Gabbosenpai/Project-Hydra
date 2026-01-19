@@ -34,6 +34,8 @@ const TURRET_UNLOCKS = {
 @onready var scrap_points: Label = $TurretSelector/ScrapPoints
 @onready var game_over_timer: Timer = $PauseMenu/GameOverUI/GameOverTimer
 @onready var anim_player = $PauseMenu/AnimationPlayer
+@onready var victory_anim_player: AnimationPlayer = $Victory/AnimationPlayer
+
 
 var scrap_pos
 var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
@@ -253,6 +255,11 @@ func show_game_over():
 	AudioManager.play_game_over_music()
 	anim_player.play("apriOpzioni")
 	await anim_player.animation_finished
+
+
+func _on_victory():
+	victory_anim_player.play("apriVittoria")
+	pause_button.disabled = true
 
 
 # Ricarica il livello 1 per riprovare

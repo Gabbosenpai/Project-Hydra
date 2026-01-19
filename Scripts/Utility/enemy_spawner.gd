@@ -2,6 +2,7 @@
 extends Node
 
 signal level_completed
+signal victory
 signal wave_completed(wave_number)
 
 @export var grace_time = 15.0
@@ -319,12 +320,7 @@ func check_enemies_for_next_wave():
 		if current_wave < waves.size():
 			start_wave()
 		else:
-			# Gestione vittoria finale
-			var anim_player = victory_screen.get_node("AnimationPlayer")
-			anim_player.play("apriVittoria")
-			await anim_player.animation_finished
-			
-			
+			emit_signal("victory")
 			if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
 				AudioManager.play_victory_music()
 			emit_signal("level_completed")

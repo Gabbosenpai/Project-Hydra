@@ -60,6 +60,7 @@ func _ready():
 	
 	enemy_spawner.connect("level_completed", Callable(self, "_on_level_completed"))
 	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
+	enemy_spawner.connect("victory", Callable(ui_controller, "_on_victory"))
 	$TurretManager.initialize_incinerators()
 	active_kill_all(Menu.adminMode)
 	AudioManager.play_music(OST)
