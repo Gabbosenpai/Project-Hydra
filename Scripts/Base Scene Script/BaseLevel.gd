@@ -3,8 +3,6 @@ extends Node2D
 
 signal game_over
 
-@onready var retry = $GameOverUI/RetryButton
-@onready var exit = $GameOverUI/ExitButton
 @onready var turret_manager = $TurretManager
 @onready var enemy_spawner = $EnemySpawner
 @onready var grid_initializer = $GridInitializer
@@ -55,12 +53,9 @@ func _ready():
 	ui_controller.connect("kill_all", Callable(enemy_spawner, "kill_all"))
 	ui_controller.connect("select_turret", Callable(turret_manager, "select_turret"))
 	ui_controller.connect("remove_mode", Callable(turret_manager, "remove_mode"))
-	retry.pressed.connect(ui_controller._on_retry_button_pressed)
-	exit.pressed.connect(ui_controller._on_exit_button_pressed)
+	
 	turret_manager.connect("turret_placed_UI", Callable(ui_controller, "turret_placed_UI"))
 	turret_manager.connect("turret_deleted_UI", Callable(ui_controller, "turret_deleted_UI"))
-	ui_controller.connect("retry", Callable(self, "_on_retry_button_pressed"))
-	ui_controller.connect("exit", Callable(self, "_on_exit_button_pressed"))
 	
 	connect("game_over", Callable(ui_controller, "show_game_over"))
 	

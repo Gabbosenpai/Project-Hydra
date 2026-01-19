@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=44 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="2_rkjgo"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dma3yhwxs0fv6" path="res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png" id="16_3sob7"]
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="16_5o6ld"]
 [ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="17_d5ei8"]
+[ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="17_lnnbn"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
 [ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="22_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://c1gnm3v0hp5ta" path="res://Assets/Sprites/UI/Scrap UI.png" id="24_wlbwg"]
@@ -730,6 +731,10 @@ offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
+
+[node name="GameOverUI" parent="PauseMenu" instance=ExtResource("17_lnnbn")]
+visible = false
+layout_mode = 1
 
 [node name="PauseLabel" type="Label" parent="PauseMenu"]
 layout_mode = 0

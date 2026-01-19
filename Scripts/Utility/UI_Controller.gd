@@ -3,8 +3,6 @@ extends Control
 signal kill_all
 signal select_turret(turret_key)
 signal remove_mode
-signal retry
-signal exit
 
 const TURRET_UNLOCKS = {
 	"turret1": 1, # Delivery Drone (Sempre)
@@ -25,6 +23,12 @@ const TURRET_UNLOCKS = {
 @onready var button_remove = $TurretSelector/ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
 @onready var h_box_container: HBoxContainer = $TurretSelector/HBoxContainer
+@onready var retry_lvl = $PauseMenu/GameOverUI/RetryButton
+@onready var sel_lvl = $PauseMenu/GameOverUI/ExitButton
+@onready var pause_label: Label = $PauseMenu/PauseLabel
+@onready var resume_button: TextureButton = $PauseMenu/ResumeButton
+@onready var menu_button: TextureButton = $PauseMenu/MenuButton
+
 
 var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
 var texture_not_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button On.png")
@@ -41,6 +45,8 @@ func _ready():
 	pause_menu.position.y = -1300
 	opzioni_aperte = false
 	get_tree().paused = false
+	retry_lvl.pressed.connect(_on_retry_button_pressed)
+	sel_lvl.pressed.connect(_on_exit_button_pressed)
 
 
 # Sincronizzo gli slider nel menu di pausa con il livello audio attuale 
@@ -186,26 +192,36 @@ func _on_menu_button_pressed():
 
 # Mostra la schermata di game over e nasconde i pulsanti di gioco
 func show_game_over():
+	if anim_player.is_playing():
+		return
 	is_wave_active = false
+	mute_music_button.visible = false
+	mute_sfx_button.visible = false
+	pause_label.visible = false
+	resume_button.visible = false
+	menu_button.visible = false
 	game_over_ui.visible = true
 	get_tree().paused = true  # Metti in pausa il gioco
+	pause_menu.move_to_front()
+	_sync_sliders_with_audio()
 	AudioManager.play_game_over_music()
-	button_remove.visible = false
-	button_kill_all.visible = false
+	anim_player.play("apriOpzioni")
+	await anim_player.animation_finished
+	
 
 
 # Ricarica il livello 1 per riprovare
 func _on_retry_button_pressed():
-	emit_signal("retry")
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().paused = false
 	get_tree().change_scene_to_file(current_level)
 
 
 # Esce al menu principale dalla schermata di game over
 func _on_exit_button_pressed():
-	emit_signal("exit")
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 
 # Da schermata di vittoria
