@@ -33,7 +33,7 @@ const TURRET_UNLOCKS = {
 @onready var scrap_ui: TextureRect = $TurretSelector/ScrapUI
 @onready var scrap_points: Label = $TurretSelector/ScrapPoints
 @onready var game_over_timer: Timer = $PauseMenu/GameOverUI/GameOverTimer
-
+@onready var anim_player = $PauseMenu/AnimationPlayer
 
 var scrap_pos
 var texture_muted_music = preload("res://Assets/Sprites/UI/Music and SFX/Music Button Off.png")
@@ -43,7 +43,6 @@ var texture_not_muted_sfx = preload("res://Assets/Sprites/UI/Music and SFX/Sound
 var current_level
 var is_wave_active = false
 var opzioni_aperte = false
-@onready var anim_player = $PauseMenu/AnimationPlayer
 
 
 func _ready():
@@ -125,7 +124,7 @@ func not_enough_scrap():
 func shake(node, intensity := 8.0, duration := 0.3):
 	var tween = create_tween()
 	# Transizione interpolata con una funzione seno
-	#tween.set_trans(Tween.TRANS_SINE)
+	tween.set_trans(Tween.TRANS_SINE)
 	
 	# Piccoli spostamenti casuali
 	for i in range(6):
@@ -249,11 +248,11 @@ func show_game_over():
 		game_over_timer.queue_free()
 	get_tree().paused = true  # Metti in pausa il gioco
 	pause_menu.move_to_front()
+	pause_button.disabled = true
 	_sync_sliders_with_audio()
 	AudioManager.play_game_over_music()
 	anim_player.play("apriOpzioni")
 	await anim_player.animation_finished
-	
 
 
 # Ricarica il livello 1 per riprovare

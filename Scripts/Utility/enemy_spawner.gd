@@ -329,6 +329,7 @@ func check_enemies_for_next_wave():
 				AudioManager.play_victory_music()
 			emit_signal("level_completed")
 
+
 func _get_weighted_row() -> int:
 	# Lista che conterrà gli indici delle righe "migliori" (quelle meno affollate)
 	var best_rows = []
