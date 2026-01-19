@@ -28,9 +28,9 @@ var all_enemy_scenes = {
 }
 var level_enemy_pool = {
 	1: ["romba"],
-	2: ["we9k","mf","fh"],
-	3: ["cs"],
-	4: ["romba","we9k","mf","fh","cs"],
+	2: ["romba", "we9k"],
+	3: ["romba", "we9k", "mf"],
+	4: ["romba","we9k","mf","fh"],
 	5: ["romba","we9k","mf","fh","cs"]
 }
 var waves = [
