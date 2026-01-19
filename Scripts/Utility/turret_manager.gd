@@ -35,6 +35,7 @@ var dic = {} # Inizializzato vuoto, verrà assegnato da GridInitializer
 var incinerator_scene: PackedScene = preload("res://Scenes/Utilities/incinerator.tscn")
 var tower_construcion: PackedScene = preload("res://Scenes/Towers/tower_construction.tscn")
 var placing_sfx: AudioStream = preload("res://Assets/Sound/SFX/placingTower.mp3")
+var error_sfx: AudioStream = preload("res://Assets/Sound/SFX/error.mp3") 
 var active_incinerators = {} # Mappa: {row_y: incinerator_instance}
 var row_locked_by_robot = {}
 var turret_scenes = {
@@ -156,6 +157,7 @@ func select_turret(key: String):
 		selected_turret_scene = null
 		emit_signal("turret_placed_UI")
 		emit_signal("not_enough_scrap")
+		AudioManager.play_sfx(error_sfx);
 		print("Non hai abbastanza punti per piazzare questa torretta!")
 
 
