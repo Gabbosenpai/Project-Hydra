@@ -42,7 +42,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 			and event.button_index == MOUSE_BUTTON_LEFT
 	):
 		collect_scrap()
-	if (
+	elif (
 			event is InputEventScreenTouch 
 			and event.pressed
 	):
