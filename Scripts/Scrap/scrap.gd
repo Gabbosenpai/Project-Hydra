@@ -36,16 +36,19 @@ func _ready():
 
 # Funzione che cattura il clic del mouse e consente di prendere lo scrap   
 func _on_input_event(_viewport, event, _shape_idx):
+	var should_I_earn: bool = false
 	if (
 			event is InputEventMouseButton 
 			and event.pressed 
 			and event.button_index == MOUSE_BUTTON_LEFT
 	):
-		collect_scrap()
-	elif (
+		should_I_earn = true
+	if (
 			event is InputEventScreenTouch 
 			and event.pressed
 	):
+		should_I_earn = true
+	if should_I_earn:
 		collect_scrap()
 
 
