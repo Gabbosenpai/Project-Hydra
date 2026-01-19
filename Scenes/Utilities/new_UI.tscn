@@ -334,7 +334,7 @@ music_slider = NodePath("PauseMenu/MuteMusicButton/MusicSlider")
 sfx_slider = NodePath("PauseMenu/MuteSFXButton/SfxSlider")
 mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
-metadata/_edit_vertical_guides_ = [111.0, 17.0, 1761.0, 1903.0, 1761.0, 1761.0]
+metadata/_edit_vertical_guides_ = [111.0, 17.0, 1761.0, 1903.0, 1761.0, 1761.0, 964.0, 960.0]
 metadata/_edit_horizontal_guides_ = [987.0]
 
 [node name="TurretSelector" type="Panel" parent="."]
@@ -725,7 +725,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -685.0
 offset_top = -1801.0
-offset_right = 693.0
+offset_right = 684.0
 offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -905,7 +905,6 @@ offset_right = 1654.0
 offset_bottom = -140.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_d5ei8")
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="TutorialPopup"]
 layout_mode = 1
@@ -958,7 +957,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -685.0
 offset_top = -1801.0
-offset_right = 693.0
+offset_right = 684.0
 offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
