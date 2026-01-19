@@ -113,7 +113,7 @@ tracks/0/path = NodePath("MenuOption:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(275, -1125), Vector2(275, -140)]
@@ -128,7 +128,7 @@ tracks/0/path = NodePath("VBoxPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(503, 1082), Vector2(503, 635)]
@@ -185,7 +185,7 @@ tracks/0/path = NodePath("MenuOption:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(275, -140), Vector2(275, -1120)]
