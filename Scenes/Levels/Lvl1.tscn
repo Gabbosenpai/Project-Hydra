@@ -87,6 +87,7 @@ layer_0/tile_data = PackedInt32Array(1, 0, 0, 262145, 0, 0, 196610, 0, 0, 3, 0, 
 layer_1/name = "Layer1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 5
 position = Vector2(907, 681)
 limit_enabled = false
 
@@ -140,7 +141,7 @@ next_wave_delay_timer = NodePath("NextWaveDelayTimer")
 
 [node name="PointManager" parent="." node_paths=PackedStringArray("turret_manager", "label_points") instance=ExtResource("10_tf0td")]
 turret_manager = NodePath("../TurretManager")
-label_points = NodePath("../UI/TurretSelector/ScrapUI/ScrapPoints")
+label_points = NodePath("../UI/TurretSelector/ScrapPoints")
 
 [node name="GridInitializer" type="Node2D" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("12_uimwk")

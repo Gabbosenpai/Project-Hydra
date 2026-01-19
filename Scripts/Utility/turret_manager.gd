@@ -3,6 +3,7 @@ extends Node
 signal turret_placed(cell_key)
 signal turret_placed_UI
 signal turret_deleted_UI
+signal not_enough_scrap
 
 # --- COSTANTI: Configurazione TileMap ---
 const HIGHLIGHT_LAYER: int = 1
@@ -145,12 +146,16 @@ func select_turret(key: String):
 		print("Torretta bloccata! Si sblocca al livello: ", TURRET_UNLOCKS[key])
 		return
 	var point_manager = $"/root/Main/PointManager"
-	if point_manager.can_select_turret(key) and selected_turret_scene != turret_scenes[key]:
+	if selected_turret_scene == turret_scenes[key]:
+		emit_signal("turret_placed_UI")
+		selected_turret_scene = null
+	elif point_manager.can_select_turret(key):
 		selected_turret_scene = turret_scenes[key]
 		current_mode = Mode.PLACE
 	else:
-		emit_signal("turret_placed_UI")
 		selected_turret_scene = null
+		emit_signal("turret_placed_UI")
+		emit_signal("not_enough_scrap")
 		print("Non hai abbastanza punti per piazzare questa torretta!")
 
 
