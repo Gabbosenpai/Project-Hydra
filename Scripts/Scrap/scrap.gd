@@ -12,7 +12,7 @@ extends Area2D
 @onready var lampeggiante_timer: Timer = $Lampeggiante
 
 
-var scrap_sfx: AudioStream = preload("res://Assets/Sound/SFX/scrap.mp3") 
+var scrap_sfx: AudioStream = preload("res://Assets/Sound/SFX/coin.wav") 
 
 # Funzione che inizializza lo scrap e il suo timer affinche poi scompaia  
 func _ready():
