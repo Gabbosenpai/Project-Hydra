@@ -109,9 +109,9 @@ func start_wave():
 	enemies_to_spawn = wave["count"]
 	wave_timer.wait_time = wave["interval"]
 	
-	# Non credo che io voglia far scomparire robot dal nulla
+	# Non credo che io voglia far scomparire robot dal nulla?
 	# Svuota la coda dell'ondata precedente
-	#remaining_enemies_queue.clear()
+	remaining_enemies_queue.clear()
 	
 	# Recupera i tipi di nemici permessi per questo specifico livello
 	var pool = level_enemy_pool.get(current_level, ["romba"])
