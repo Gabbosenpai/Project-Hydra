@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckndwo137esko"]
+[gd_scene load_steps=6 format=3 uid="uid://ckndwo137esko"]
 
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_0mjcy"]
 [ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="2_7tyry"]
 [ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="3_pnlvc"]
+
+[sub_resource type="FontVariation" id="FontVariation_7tyry"]
+base_font = ExtResource("1_0mjcy")
+spacing_glyph = -8
 
 [sub_resource type="FontVariation" id="FontVariation_shas4"]
 base_font = ExtResource("1_0mjcy")
 spacing_glyph = -9
 
 [node name="GameOverUI" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,7 +57,7 @@ offset_bottom = 182.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_fonts/font = ExtResource("1_0mjcy")
+theme_override_fonts/font = SubResource("FontVariation_7tyry")
 theme_override_font_sizes/font_size = 50
 text = "Sei stato rimpiazzato da un robot..."
 horizontal_alignment = 1

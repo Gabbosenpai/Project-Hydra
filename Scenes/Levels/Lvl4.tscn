@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2k7axup34stp"]
+[gd_scene load_steps=23 format=3 uid="uid://b2k7axup34stp"]
 
 [ext_resource type="Script" uid="uid://c3k38umpnqf23" path="res://Scripts/Base Scene Script/Lvl4.gd" id="1_k7kxx"]
 [ext_resource type="Texture2D" uid="uid://uc84txl0rsyy" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 1.png" id="2_baary"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://d27h1vlrudpmr" path="res://Assets/Terrain Texture/Conveyor Belt/Conveyor Belt Tile 2.png" id="4_tjpki"]
 [ext_resource type="Texture2D" uid="uid://d2wwy4s3slqh8" path="res://Assets/Terrain Texture/Industrial Tile Test.png" id="5_jgq3g"]
 [ext_resource type="Texture2D" uid="uid://dxek6vkt8k8eq" path="res://Assets/Terrain Texture/Incinerator/Inceneritore Closed.png" id="5_yrax0"]
-[ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="8_gxxe0"]
 [ext_resource type="Texture2D" uid="uid://6nrwjma8m0rf" path="res://Assets/Terrain Texture/Better Industrial Tile.png" id="8_qrf60"]
 [ext_resource type="PackedScene" uid="uid://cjoobhnq7wt5i" path="res://Scenes/Utilities/new_UI.tscn" id="9_tjpki"]
 [ext_resource type="PackedScene" uid="uid://ynbv47vh6qjk" path="res://Scenes/Managers/turret_manager.tscn" id="9_yqgre"]
@@ -93,7 +92,7 @@ limit_enabled = false
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("9_tjpki")]
 offset_left = -53.0
 offset_right = -53.0
-game_over_ui = NodePath("../GameOverUI")
+game_over_ui = NodePath("PauseMenu/GameOverUI")
 
 [node name="PauseMenu" parent="UI" index="5"]
 offset_left = 275.0
@@ -115,39 +114,6 @@ offset_bottom = -143.0
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="GameOverUI" parent="." instance=ExtResource("8_gxxe0")]
-process_mode = 3
-visible = false
-z_index = 1000
-
-[node name="ColorRect" parent="GameOverUI" index="0"]
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 1918.0
-offset_bottom = 1076.0
-
-[node name="Label" parent="GameOverUI" index="1"]
-offset_left = 705.0
-offset_top = 426.0
-offset_right = 1248.0
-offset_bottom = 563.0
-
-[node name="RetryButton" parent="GameOverUI" index="2"]
-offset_left = 670.0
-offset_top = 729.0
-offset_right = 881.0
-offset_bottom = 784.0
-toggle_mode = true
-action_mode = 0
-
-[node name="ExitButton" parent="GameOverUI" index="3"]
-offset_left = 1010.0
-offset_top = 728.0
-offset_right = 1221.0
-offset_bottom = 783.0
-toggle_mode = true
-action_mode = 0
 
 [node name="TurretManager" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("9_yqgre")]
 tilemap = NodePath("../TileMap")
@@ -177,5 +143,4 @@ tilemap = NodePath("../TileMap")
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 
 [editable path="UI"]
-[editable path="GameOverUI"]
 [editable path="EnemySpawner"]
