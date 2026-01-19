@@ -145,10 +145,12 @@ func select_turret(key: String):
 		print("Torretta bloccata! Si sblocca al livello: ", TURRET_UNLOCKS[key])
 		return
 	var point_manager = $"/root/Main/PointManager"
-	if point_manager.can_select_turret(key):
+	if point_manager.can_select_turret(key) and selected_turret_scene != turret_scenes[key]:
 		selected_turret_scene = turret_scenes[key]
 		current_mode = Mode.PLACE
 	else:
+		emit_signal("turret_placed_UI")
+		selected_turret_scene = null
 		print("Non hai abbastanza punti per piazzare questa torretta!")
 
 
@@ -250,8 +252,10 @@ func place_turret(cell_key: Vector2i):
 			construction_timer.autostart = true
 			add_child(construction_timer)
 			animation.play("construction")
+			selected_turret_scene = null
 			await construction_timer.timeout
 			construction_timer.queue_free()
+			
 		
 		if is_instance_valid(construction):
 			construction.queue_free()
