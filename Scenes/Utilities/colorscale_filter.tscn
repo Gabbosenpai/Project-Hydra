@@ -8,6 +8,7 @@ shader = ExtResource("1_n8ek3")
 [node name="Colorscale Filter" type="CanvasLayer"]
 
 [node name="Gray Filter" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_n8ek3")
 anchors_preset = 15
 anchor_right = 1.0
