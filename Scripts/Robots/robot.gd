@@ -109,7 +109,8 @@ func move(delta) -> void:
 			# Passa l'istanza del robot al main level
 			main_scene.enemy_reached_base(self) # ✅ CORRETTO
 			arrived = true
-		speed = 0.0
+		if !main_scene.turret_manager.row_locked_by_robot.get(riga, false):
+			speed = 0.0
 
 
 # Robot prende danno, se la sua salute va a 0, muore.

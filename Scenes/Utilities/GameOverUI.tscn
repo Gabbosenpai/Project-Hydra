@@ -132,3 +132,7 @@ theme_override_font_sizes/font_size = 40
 text = "Seleziona Livello"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true

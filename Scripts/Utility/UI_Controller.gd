@@ -20,6 +20,8 @@ const TURRET_UNLOCKS = {
 @export var sfx_slider: HSlider
 @export var mute_music_button: TextureButton
 @export var mute_sfx_button: TextureButton
+@export var game_over_timer_value: float = 2.0
+
 @onready var button_remove = $TurretSelector/ButtonRemove
 @onready var button_kill_all = $ButtonKillAll
 @onready var h_box_container: HBoxContainer = $TurretSelector/HBoxContainer
@@ -30,6 +32,7 @@ const TURRET_UNLOCKS = {
 @onready var menu_button: TextureButton = $PauseMenu/MenuButton
 @onready var scrap_ui: TextureRect = $TurretSelector/ScrapUI
 @onready var scrap_points: Label = $TurretSelector/ScrapPoints
+@onready var game_over_timer: Timer = $PauseMenu/GameOverUI/GameOverTimer
 
 
 var scrap_pos
@@ -44,6 +47,7 @@ var opzioni_aperte = false
 
 
 func _ready():
+	game_over_timer.wait_time = game_over_timer_value
 	scrap_pos = scrap_ui.position
 	_refresh_audio_ui()
 	pause_menu.position.y = -1300
@@ -239,6 +243,10 @@ func show_game_over():
 	resume_button.visible = false
 	menu_button.visible = false
 	game_over_ui.visible = true
+	game_over_timer.start()
+	await game_over_timer.timeout
+	if is_instance_valid(game_over_timer):
+		game_over_timer.queue_free()
 	get_tree().paused = true  # Metti in pausa il gioco
 	pause_menu.move_to_front()
 	_sync_sliders_with_audio()
