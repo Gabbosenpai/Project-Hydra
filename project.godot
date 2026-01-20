@@ -34,10 +34,6 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/godot-playfab/plugin.cfg")
 
-[internationalization]
-
-locale/translations=PackedStringArray("res://Assets/Translations/translations.en.translation", "res://Assets/Translations/translations.it.translation", "res://Assets/Translations/translations.zh_CN.translation")
-
 [playfab]
 
 title_id="1CFD90"
