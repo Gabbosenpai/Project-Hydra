@@ -34,12 +34,12 @@ func update_slot_texts():
 	if livello1 > 1:
 		completato1 = livello1 - 1
 	if completato1 > 0:
-		file1_label.text = "Livello %d superato" % completato1
+		file1_label.text = tr("level_completed") % completato1
 		slot_1_led.texture = slot_occupato
 		delete_1.texture_normal = delete_slot_occupato
 		delete_1.texture_pressed = delete_slot_vuoto
 	else:
-		file1_label.text = "Vuoto"
+		file1_label.text = tr("empty")
 		slot_1_led.texture = slot_vuoto
 		delete_1.texture_pressed = delete_slot_occupato
 		delete_1.texture_normal = delete_slot_vuoto
@@ -50,12 +50,12 @@ func update_slot_texts():
 	if livello2 > 1:
 		completato2 = livello2 - 1
 	if completato2 > 0:
-		file2_label.text = "Livello %d superato" % completato2
+		file2_label.text = tr("level_completed") % completato2
 		slot_2_led.texture = slot_occupato
 		delete_2.texture_normal = delete_slot_occupato
 		delete_2.texture_pressed = delete_slot_vuoto
 	else:
-		file2_label.text = "Vuoto"
+		file2_label.text = tr("empty")
 		slot_2_led.texture = slot_vuoto
 		delete_2.texture_pressed = delete_slot_occupato
 		delete_2.texture_normal = delete_slot_vuoto
@@ -66,12 +66,12 @@ func update_slot_texts():
 	if livello3 > 1:
 		completato3 = livello3 - 1
 	if completato3 > 0:
-		file3_label.text = "Livello %d superato" % completato3
+		file3_label.text = tr("level_completed") % completato3
 		slot_3_led.texture = slot_occupato
 		delete_3.texture_normal = delete_slot_occupato
 		delete_3.texture_pressed = delete_slot_vuoto
 	else:
-		file3_label.text = "Vuoto"
+		file3_label.text = tr("empty")
 		slot_3_led.texture = slot_vuoto
 		delete_3.texture_pressed = delete_slot_occupato
 		delete_3.texture_normal = delete_slot_vuoto
@@ -107,7 +107,7 @@ func _on_file_3_pressed() -> void:
 # Schemrata conferma cancellazione salvataggio
 func show_confirm_panel():
 	$ConfirmPanel.visible = true
-	$ConfirmPanel/Text.text = "Vuoi davvero cancellare il salvataggio %d?" % slot_to_delete
+
 
 
 func _on_delete_1_pressed() -> void:

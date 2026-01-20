@@ -31,6 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yr52k")
 metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [414.0, 454.0]
 
 [node name="User" type="Label" parent="."]
 layout_mode = 0
@@ -136,7 +137,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ConfirmPanel" type="Panel" parent="."]
-visible = false
 z_index = 1
 custom_minimum_size = Vector2(500, 400)
 layout_mode = 1

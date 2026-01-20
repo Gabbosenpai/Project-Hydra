@@ -30,17 +30,17 @@ delete_account,Elimina account,Delete account,删除账户
 ,,,
 #Messaggi,,,
 delete_account_dialogue,Sei sicuro di voler eliminare Il tuo account?\n Questa azione è irreversibile.,Are you sure you want to delete your account?\n This action is irreversible.,您确定要删除您的账户吗？\n此操作不可撤销。
-yes,SI, YES,是
+yes,SI,YES,是
 no,NO,NO,不
 retry,Riprova,Retry,重试
 game_over,Game Over,Game Over,游戏结束
 game_over_message,Sei stato rimpiazzato da un robot…,You’ve been replaced by a robot,你已被机器人取代
 ,,,
 ,,,
-,,,
-,,,
-,,,
-,,,
+#file selection,,,
+delete_file,Sei sicuro di voler cancellare i dati di questo file?,Are you sure you want to delete your save data?,您确定要删除您的存档数据吗？
+empty,Vuoto,Empty,空
+level_completed,Livello %d superato,Level %d completed,第 %d 关完成
 ,,,
 ,,,
 ,,,

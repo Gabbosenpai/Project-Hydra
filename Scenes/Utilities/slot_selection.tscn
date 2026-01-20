@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8gjqm40lbvk2"]
+[gd_scene load_steps=20 format=3 uid="uid://b8gjqm40lbvk2"]
 
 [ext_resource type="Script" uid="uid://t01jm1v7dol4" path="res://Scripts/Utility/slot_selection.gd" id="1_6qa0o"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_m7ute"]
@@ -23,6 +23,10 @@ spacing_glyph = -1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gtvrc"]
 
+[sub_resource type="FontVariation" id="FontVariation_vxsct"]
+base_font = ExtResource("4_q85rw")
+spacing_glyph = -8
+
 [node name="SlotSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,6 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6qa0o")
 metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [765.0, 777.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -226,7 +231,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_ldhr5")
 theme_override_font_sizes/font_size = 40
-text = "Menù Principale"
+text = "main_menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -251,7 +256,7 @@ offset_bottom = 196.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("4_q85rw")
 theme_override_font_sizes/font_size = 40
-text = "Sei sicuro di voler cancellare i dati di questo file?"
+text = "delete_file"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -263,19 +268,20 @@ offset_right = 790.0
 offset_bottom = 824.0
 texture_normal = ExtResource("11_nckc7")
 texture_pressed = ExtResource("12_jacdq")
-metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="ConfirmPanel/YesButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_fonts/font = ExtResource("4_q85rw")
+theme_override_fonts/font = SubResource("FontVariation_vxsct")
 theme_override_font_sizes/font_size = 40
-text = "SI"
+text = "yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -299,7 +305,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("4_q85rw")
 theme_override_font_sizes/font_size = 40
-text = "NO"
+text = "no"
 horizontal_alignment = 1
 vertical_alignment = 1
 
