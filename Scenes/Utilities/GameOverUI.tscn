@@ -39,7 +39,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("1_0mjcy")
 theme_override_font_sizes/font_size = 80
-text = "Game Over"
+text = "game_over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -59,7 +59,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_7tyry")
 theme_override_font_sizes/font_size = 50
-text = "Sei stato rimpiazzato da un robot..."
+text = "game_over_message"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -96,7 +96,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("1_0mjcy")
 theme_override_font_sizes/font_size = 40
-text = "Riprova"
+text = "retry"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -129,7 +129,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_shas4")
 theme_override_font_sizes/font_size = 40
-text = "Seleziona Livello"
+text = "select_level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
