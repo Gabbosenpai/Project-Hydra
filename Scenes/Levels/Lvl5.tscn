@@ -76,6 +76,7 @@ script = ExtResource("1_s53du")
 tilemap = NodePath("TileMap")
 ui_controller = NodePath("UI")
 metadata/_edit_vertical_guides_ = [-53.0, 907.0]
+metadata/_edit_horizontal_guides_ = [113.0, 129.0]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -95,11 +96,14 @@ offset_left = -53.0
 offset_right = -53.0
 game_over_ui = NodePath("PauseMenu/GameOverUI")
 
+[node name="WaveScreen" parent="UI" index="1"]
+offset_right = 1135.0
+
 [node name="WaveNumber" parent="UI/WaveScreen" index="0"]
-offset_left = 812.0
-offset_top = 6.0
-offset_right = 1107.0
-offset_bottom = 46.0
+offset_left = 27.0
+offset_top = 40.0
+offset_right = -28.0
+offset_bottom = -20.0
 
 [node name="PauseMenu" parent="UI" index="7"]
 offset_left = 275.0
