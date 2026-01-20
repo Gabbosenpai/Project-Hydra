@@ -1,0 +1,51 @@
+KEY,it,en,zh_CN
+,,,
+#Menu principale,,,
+main_menu,Menù principale,Main menu,主選單
+menu_play,Gioca,Play,播放
+menu_quit,Esci,Quit,退出
+menu_option,Opzioni,Options,选项
+menu_credits,Crediti,Credits,鸣谢
+database,Database,Database,数据库
+music,Musica,Music,音乐
+sound_effect,Effetti sonori,Sound effects,音效
+select_language,Seleziona Lingua,Select language,选择语言
+logged_in,Accesso eseguito,Logged in,已登录
+not_logged_in,Accesso non eseguito,Not logged in,未登录
+select_level,Seleziona livello,Select level,选择级别
+,,,
+#sezione login,,,
+,,,
+login_button,Login,Login,登录
+back,Indietro,Back,返回
+email,Email,Email,电子邮件
+password,Password,Password,密码
+register,Registrati,Register,注册
+forgot_password,Password persa?,Forgot password?,忘记密码？
+username,Username,Username,用户名
+logout,Logout,Logout,注销
+user,Utente,User,用户名
+delete_account,Elimina account,Delete account,删除账户
+,,,
+,,,
+#Messaggi,,,
+delete_account_dialogue,Sei sicuro di voler eliminare Il tuo account?\n Questa azione è irreversibile.,Are you sure you want to delete your account?\n This action is irreversible.,您确定要删除您的账户吗？\n此操作不可撤销。
+yes,SI,YES,是
+no,NO,NO,不
+retry,Riprova,Retry,重试
+game_over,Game Over,Game Over,游戏结束
+game_over_message,Sei stato rimpiazzato da un robot…,You’ve been replaced by a robot,你已被机器人取代
+,,,
+,,,
+#file selection,,,
+delete_file,Sei sicuro di voler cancellare i dati di questo file?,Are you sure you want to delete your save data?,您确定要删除您的存档数据吗？
+empty,Vuoto,Empty,空
+level_completed,Livello %d superato,Level %d completed,第 %d 关完成
+,,,
+,,,
+,,,
+,,,
+,,,
+#database,,,
+towers,Torrette,Towers,塔楼
+robots,Robot,Robots,机器人
