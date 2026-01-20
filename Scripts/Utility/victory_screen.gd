@@ -3,10 +3,14 @@ extends Control
 @onready var unlock_label = $Text
 @onready var turret_background = $"../TextureRect"
 @onready var turret_icon = $"../TextureRect/TurretIcon"
+@onready var menu_button: TextureButton = $MenuButton
+@onready var select_level: TextureButton = $SelectLevel
+@onready var next_level_label: Label = $NextLevel/Label
+
+var current_level
 
 func _ready() -> void:
 	var scene_path = get_tree().current_scene.scene_file_path
-	var current_level_num = 0
 	
 	#Cerchiamo nel percorso della scena (es. "Lvl3.tscn") il modello "Lvl" seguito da numeri.
 	# "Lvl" -> Cerca il testo letterale
@@ -17,13 +21,13 @@ func _ready() -> void:
 	
 	if result:
 		# Recuperiamo il primo gruppo catturato (il numero) e lo convertiamo in intero
-		current_level_num = result.get_string(1).to_int() + 1
+		current_level = result.get_string(1).to_int() + 1
 	
-	var turret_name = get_turret_name_for_level(current_level_num)
+	var turret_name = get_turret_name_for_level(current_level)
 	if turret_name != "":
 		unlock_label.text += "\n\n NUOVA TORRETTA SBLOCCATA: " + turret_name
 		unlock_label.visible = true
-		var image_path = get_turret_image_for_level(current_level_num)
+		var image_path = get_turret_image_for_level(current_level)
 		if image_path != "":
 			var tex = load(image_path)
 			if tex:
@@ -38,6 +42,17 @@ func _ready() -> void:
 		# Se non c'è una nuova torretta, nascondiamo l'icona
 		turret_background.visible = false
 		turret_icon.visible = false
+	if current_level == 6:
+		unlock_label.text = "Congratulazioni Ingegnere!\n Hai salvato il tuo posto di lavoro!"
+		var settings := LabelSettings.new()
+		settings.font_size = 60
+		settings.line_spacing = 20
+		unlock_label.label_settings = settings
+		unlock_label.position += Vector2(0, 100)
+		menu_button.visible = false
+		select_level.visible = false
+		next_level_label.text = "Continua"
+		
 
 
 func _on_select_level_pressed() -> void:
@@ -47,14 +62,12 @@ func _on_select_level_pressed() -> void:
 
 func _on_next_level_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	
-	var max_unlocked_level = SaveManager.get_max_unlocked_level()
-	
+	var next_level = current_level
 	# Precarico la musica e cambio scena in base al livello max sbloccato
 	var level_music : AudioStream = null
 	var level_scene_path : String = ""
 	
-	match max_unlocked_level:
+	match next_level:
 		1:
 			level_music = preload("res://Assets/Sound/OST/16-Bit Music - ＂Scrub Slayer＂.mp3")
 			level_scene_path = "res://Scenes/Levels/Lvl1.tscn"
@@ -72,7 +85,7 @@ func _on_next_level_pressed() -> void:
 			level_scene_path = "res://Scenes/Levels/Lvl5.tscn"
 		_:
 			# Se non esiste un livello sbloccato valido, fai qualcosa (ad esempio torna al menu)
-			get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Utilities/Credits.tscn")
 			return
 	
 	AudioManager.play_music(level_music)

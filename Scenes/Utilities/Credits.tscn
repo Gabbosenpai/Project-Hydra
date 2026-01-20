@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxf57fc3thev4"]
+[gd_scene load_steps=18 format=3 uid="uid://bxf57fc3thev4"]
 
 [ext_resource type="Script" uid="uid://ditc80hikpiab" path="res://Scripts/Main Menu/credits.gd" id="1_s2xlg"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_cxtio"]
 [ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="2_sethm"]
-[ext_resource type="Texture2D" uid="uid://dqllx6mpun8k0" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG Frame.png" id="3_bqnof"]
 [ext_resource type="PackedScene" uid="uid://d0n3qorj4uy87" path="res://Scenes/Utilities/Title Stars/title_star_b.tscn" id="3_gpgwr"]
 [ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="4_vauuf"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="4_wg104"]
@@ -76,14 +75,6 @@ offset_bottom = 1040.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.003921569, 0.047058824, 0.08627451, 1)
-
-[node name="Foreground" type="TextureRect" parent="."]
-z_index = 5
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_bqnof")
-metadata/_edit_lock_ = true
 
 [node name="BackToMenuButton" type="Button" parent="."]
 layout_mode = 0
