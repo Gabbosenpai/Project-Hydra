@@ -51,7 +51,7 @@ var clicked: bool
 
 func _ready():
 	clicked = false
-	desc_label.text = "Clicca su una torretta per saperne di più!"
+	desc_label.text = tr("no_tower_selected_text")
 	name_label.text = ""
 	update_buttons()
 

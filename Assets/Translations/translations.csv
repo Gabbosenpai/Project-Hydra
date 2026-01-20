@@ -13,6 +13,15 @@ select_language,Seleziona Lingua,Select language,选择语言
 logged_in,Accesso eseguito,Logged in,已登录
 not_logged_in,Accesso non eseguito,Not logged in,未登录
 select_level,Seleziona livello,Select level,选择级别
+level_selection,Selezione Livello,Level selection,关卡选择
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
 ,,,
 #sezione login,,,
 ,,,
@@ -49,3 +58,5 @@ level_completed,Livello %d superato,Level %d completed,第 %d 关完成
 #database,,,
 towers,Torrette,Towers,塔楼
 robots,Robot,Robots,机器人
+no_robot_selected_text,Clicca su un robot per saperne di più!,Click on a robot for more info!,点击机器人查看更多信息！
+no_tower_selected_text,Clicca su una torretta per saperne di più!,Click on a tower for more info!,点击一座塔楼查看更多信息！

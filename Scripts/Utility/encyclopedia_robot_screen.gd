@@ -45,10 +45,9 @@ var clicked: bool
 
 func _ready():
 	clicked = false
-	desc_label.text = "Clicca su un robot per saperne di più!"
+	desc_label.text = tr("no_robot_selected_text")
 	name_label.text = ""
 	update_buttons()
-
 
 # Mostra la descrizione del robot
 func show_description(robot_name: String):
