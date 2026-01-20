@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dytc7sfgdh3et" path="res://Assets/Sprites/UI/Menu/Remove Button Not Pressed.png" id="13_wlbwg"]
 [ext_resource type="Texture2D" uid="uid://c0hekqemeviuw" path="res://Assets/Sprites/UI/Music and SFX/Music Button Off.png" id="14_d5ei8"]
 [ext_resource type="Texture2D" uid="uid://ck4doa1b4njcf" path="res://Assets/Sprites/UI/Menu/Remove Button Pressed.png" id="14_lnnbn"]
+[ext_resource type="Texture2D" uid="uid://bpbwnwuwramb" path="res://Assets/Sprites/UI/Menu/Wave Panel.png" id="15_4hxx0"]
 [ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="15_6wlri"]
 [ext_resource type="Texture2D" uid="uid://c543ksxxdq8fo" path="res://Assets/Sprites/UI/Music and SFX/Sound Button On.png" id="15_pi3ax"]
 [ext_resource type="Texture2D" uid="uid://dma3yhwxs0fv6" path="res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png" id="16_3sob7"]
@@ -25,6 +26,43 @@
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
 [ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="22_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://c1gnm3v0hp5ta" path="res://Assets/Sprites/UI/Scrap UI.png" id="24_wlbwg"]
+
+[sub_resource type="Animation" id="Animation_wunin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(785, -100)]
+}
+
+[sub_resource type="Animation" id="Animation_mg6lk"]
+resource_name = "wave_intro"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 3, 3.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(785, -100), Vector2(785, 0), Vector2(785, 0), Vector2(785, -100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wunin"]
+_data = {
+&"RESET": SubResource("Animation_wunin"),
+&"wave_intro": SubResource("Animation_mg6lk")
+}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewdvb"]
 texture = ExtResource("2_rkjgo")
@@ -86,70 +124,6 @@ _data = {
 &"apriOpzioni": SubResource("Animation_3sob7"),
 &"chiudiOpzioni": SubResource("Animation_ipxc1")
 }
-
-[sub_resource type="Animation" id="Animation_wunin"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LabelWaveCenter:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LabelWaveCenter:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1532, 458)]
-}
-
-[sub_resource type="Animation" id="Animation_mg6lk"]
-resource_name = "wave_intro"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LabelWaveCenter:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.2, 2, 2.5, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.00784314), Color(1, 1, 1, 0.164706), Color(1, 1, 1, 1), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0.133333), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LabelWaveCenter:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1532, 458), Vector2(358, 452)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wunin"]
-_data = {
-&"RESET": SubResource("Animation_wunin"),
-&"wave_intro": SubResource("Animation_mg6lk")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_j04uc"]
-font_size = 50
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5ei8"]
 texture = ExtResource("2_rkjgo")
@@ -337,7 +311,8 @@ mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
 game_over_timer_value = 3.5
 metadata/_edit_vertical_guides_ = [111.0, 17.0, 1761.0, 1903.0, 1761.0, 1761.0, 964.0, 960.0]
-metadata/_edit_horizontal_guides_ = [987.0]
+metadata/_edit_horizontal_guides_ = [987.0, 55.0, 129.0]
+metadata/_edit_lock_ = true
 
 [node name="TurretSelector" type="Panel" parent="."]
 layout_mode = 0
@@ -672,6 +647,40 @@ texture_pressed = ExtResource("14_lnnbn")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="WaveScreen" type="TextureRect" parent="."]
+z_index = 5
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.021000002
+offset_left = 785.0
+offset_top = -100.0
+offset_right = 1094.68
+mouse_filter = 2
+texture = ExtResource("15_4hxx0")
+stretch_mode = 2
+metadata/_edit_group_ = true
+
+[node name="WaveNumber" type="Label" parent="WaveScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 18.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 40
+text = "Ondata 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wunin")
+}
+
 [node name="LabelWave" type="Label" parent="."]
 z_index = 1000
 layout_mode = 0
@@ -876,31 +885,6 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_ipxc1")
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wunin")
-}
-
-[node name="LabelWaveCenter" type="Label" parent="."]
-z_index = 1000
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 572.0
-offset_top = -82.0
-offset_right = 1638.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Ondata 0
-"
-label_settings = SubResource("LabelSettings_j04uc")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TutorialPopup" type="Panel" parent="."]
 process_mode = 3

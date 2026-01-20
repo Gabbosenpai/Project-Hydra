@@ -11,7 +11,7 @@ signal wave_completed(wave_number)
 @export var label_enemies: Label
 @export var wave_timer: Timer
 @export var initial_delay_timer: Timer
-@export var label_wave_center: Label
+@export var wave_number: Label
 @export var animation_player: AnimationPlayer
 @export var victory_screen: Panel
 @export var inter_wave_delay = 5.0
@@ -135,8 +135,8 @@ func start_wave():
 	
 	label_wave.text = "Ondata: " + str(current_wave)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	label_wave_center.text = "ONDATA " + str(current_wave)
-	label_wave_center.visible = true
+	wave_number.text = "Ondata " + str(current_wave)
+	wave_number.visible = true
 	animation_player.play("wave_intro")
 	wave_timer.start()
 
