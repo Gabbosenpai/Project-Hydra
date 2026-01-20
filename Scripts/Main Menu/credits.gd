@@ -12,5 +12,5 @@ func _ready():
 
 #Funzione che rileva quando il pulsante per tonare al menu viene cliccato
 func _on_back_to_menu_button_pressed() -> void:
-	#AudioManager.play_sfx(AudioManager.button_click_sfx) #Viene avviata la OST del menu principale
+	AudioManager.play_sfx(AudioManager.button_click_sfx) #Viene avviata la OST del menu principale
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")

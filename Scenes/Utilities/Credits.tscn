@@ -1,40 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxf57fc3thev4"]
+[gd_scene load_steps=9 format=3 uid="uid://bxf57fc3thev4"]
 
 [ext_resource type="Script" uid="uid://ditc80hikpiab" path="res://Scripts/Main Menu/credits.gd" id="1_s2xlg"]
+[ext_resource type="Texture2D" uid="uid://b7m4f1dunu7ms" path="res://Assets/Sprites/UI/Menu/Menu Button Not Pressed.png" id="2_6w3tb"]
 [ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="2_cxtio"]
-[ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="2_sethm"]
-[ext_resource type="Texture2D" uid="uid://dqllx6mpun8k0" path="res://Assets/Sprites/UI/Menu/Menu Panel BIG Frame.png" id="3_bqnof"]
-[ext_resource type="PackedScene" uid="uid://d0n3qorj4uy87" path="res://Scenes/Utilities/Title Stars/title_star_b.tscn" id="3_gpgwr"]
-[ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="4_vauuf"]
+[ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="3_gapt4"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="4_wg104"]
-[ext_resource type="PackedScene" uid="uid://cdwqym4ehbpbd" path="res://Scenes/Utilities/Title Stars/title_star_d.tscn" id="5_g4kwf"]
-[ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="6_rdf5d"]
-[ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="7_jpee5"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wg104"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wm4l"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqnof"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d5d72"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjtxe"]
-
-[sub_resource type="Animation" id="Animation_4wm4l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1083)]
-}
 
 [sub_resource type="Animation" id="Animation_wg104"]
 resource_name = "ScorriCrediti"
@@ -52,6 +22,21 @@ tracks/0/keys = {
 "values": [Vector2(0, 1083), Vector2(0, -862)]
 }
 
+[sub_resource type="Animation" id="Animation_4wm4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1083)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqnof"]
 _data = {
 &"RESET": SubResource("Animation_4wm4l"),
@@ -64,48 +49,42 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_s2xlg")
-metadata/_edit_vertical_guides_ = [959.0]
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="BackToMenuButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 947.0
+offset_right = 1428.0
+offset_bottom = 1076.0
+texture_normal = ExtResource("2_6w3tb")
+texture_pressed = ExtResource("3_gapt4")
+
+[node name="Label2" type="Label" parent="BackToMenuButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1880.0
-offset_bottom = 1040.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = -45.0
+offset_right = 247.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.003921569, 0.047058824, 0.08627451, 1)
-
-[node name="Foreground" type="TextureRect" parent="."]
-z_index = 5
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_bqnof")
-metadata/_edit_lock_ = true
-
-[node name="BackToMenuButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wg104")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_4wm4l")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_bqnof")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_d5d72")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_fjtxe")
-metadata/_edit_lock_ = true
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("4_wg104")
+theme_override_font_sizes/font_size = 60
+text = "Menu "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="."]
-z_index = 1
 layout_mode = 0
 offset_top = 1083.0
-offset_right = 1920.0
-offset_bottom = 1944.019
-theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
-theme_override_constants/line_spacing = 20
-theme_override_fonts/font = ExtResource("4_wg104")
-theme_override_font_sizes/font_size = 45
+offset_right = 1156.0
+offset_bottom = 1944.0
+theme_override_font_sizes/font_size = 50
 text = "DA AGGIORNARE!
 
 Crediti OST:
@@ -118,261 +97,7 @@ Quincas Moreira: Robot City
 Cody O'Quinn: Scrub Slayer
 MB Music: Game Over (8-Bit Music)
 Kevin MacLeod:  Itty Bitty"
-horizontal_alignment = 1
-vertical_alignment = 1
 metadata/_edit_group_ = true
-
-[node name="Stars" type="Node" parent="."]
-
-[node name="TitleStarA" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(179, 180)
-rotation = -1.0152149
-
-[node name="TitleStarA5" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(1340, 1032)
-rotation = -1.3613569
-
-[node name="TitleStarA2" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(1689, 420.00003)
-rotation = -0.52534765
-
-[node name="TitleStarA4" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(1861.0001, 574)
-rotation = 0.59667265
-
-[node name="TitleStarA7" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(885.0002, 648.0001)
-rotation = -0.5235988
-
-[node name="TitleStarA3" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(1194, 318.00003)
-rotation = -0.25206682
-
-[node name="TitleStarA8" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(682.00006, 492)
-rotation = -1.0471976
-
-[node name="TitleStarA6" parent="Stars" instance=ExtResource("2_sethm")]
-position = Vector2(482, 104)
-rotation = 0.7520751
-
-[node name="TitleStarB" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(322, 99)
-rotation = 1.4189236
-
-[node name="TitleStarB7" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(789, 215)
-rotation = 0.7853982
-
-[node name="TitleStarB3" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(1786, 196)
-rotation = 1.2979053
-
-[node name="TitleStarB9" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(1029.0001, 89)
-rotation = 0.7853982
-
-[node name="TitleStarB2" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(379, 614)
-rotation = -0.4200813
-
-[node name="TitleStarB4" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(442, 479)
-rotation = -0.4200813
-
-[node name="TitleStarB8" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(1231, 170.00006)
-rotation = -1.0471976
-
-[node name="TitleStarB6" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(1300, 502.00003)
-rotation = -1.3089969
-
-[node name="TitleStarB5" parent="Stars" instance=ExtResource("3_gpgwr")]
-position = Vector2(1066.9999, 377.99997)
-rotation = -1.5136178
-
-[node name="TitleStarC" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(104.00001, 328)
-rotation = -2.2873256
-
-[node name="TitleStarC7" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(615.00006, 302)
-rotation = -1.462675
-
-[node name="TitleStarC2" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(338, 749)
-rotation = -0.8978844
-
-[node name="TitleStarC13" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(1363.0001, 46.000084)
-rotation = -2.3561945
-
-[node name="TitleStarC6" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(269, 969)
-rotation = 0.37317878
-
-[node name="TitleStarC10" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(736.0001, 845.0001)
-rotation = -2.2835174
-
-[node name="TitleStarC4" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(562, 1032)
-rotation = 0.75914735
-
-[node name="TitleStarC11" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(464, 863)
-
-[node name="TitleStarC3" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(1683, 869)
-rotation = -0.68860215
-
-[node name="TitleStarC5" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(1486, 499.00006)
-rotation = -0.4007071
-
-[node name="TitleStarC16" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(911.00006, 475.99994)
-rotation = -1.0471976
-
-[node name="TitleStarC8" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(1577, 971)
-rotation = -0.12217305
-
-[node name="TitleStarC14" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(1079.0001, 623.0001)
-rotation = -0.72768676
-
-[node name="TitleStarC15" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(597.0002, 186.00006)
-rotation = 0.5235988
-
-[node name="TitleStarC12" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(895.00006, 134.99997)
-rotation = -1.3089969
-
-[node name="TitleStarC9" parent="Stars" instance=ExtResource("4_vauuf")]
-position = Vector2(1060, 1029.0001)
-rotation = -0.6703754
-
-[node name="TitleStarD6" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(1579, 301)
-rotation = -0.33803397
-
-[node name="TitleStarD5" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(1612, 112)
-rotation = -0.21973976
-
-[node name="TitleStarD9" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(725.00006, 354.00003)
-rotation = -0.7356196
-
-[node name="TitleStarD3" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(1834.0001, 767)
-rotation = 0.38397244
-
-[node name="TitleStarD10" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(1421.9999, 199)
-rotation = -0.2617994
-
-[node name="TitleStarD8" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(832.00006, 1020.0001)
-rotation = 1.3075144
-
-[node name="TitleStarD4" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(1534, 745)
-rotation = -1.8143587
-
-[node name="TitleStarD7" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(798.00006, 733.99994)
-rotation = -4.1887903
-
-[node name="TitleStarD2" parent="Stars" instance=ExtResource("5_g4kwf")]
-position = Vector2(447, 377)
-rotation = 0.30129564
-
-[node name="TitleStarE" parent="Stars" instance=ExtResource("6_rdf5d")]
-position = Vector2(275, 423)
-rotation = 0.24846326
-
-[node name="TitleStarE6" parent="Stars" instance=ExtResource("6_rdf5d")]
-position = Vector2(1049, 888)
-rotation = -0.5235988
-
-[node name="TitleStarE3" parent="Stars" instance=ExtResource("6_rdf5d")]
-position = Vector2(505, 550)
-rotation = -2.183125
-
-[node name="TitleStarE5" parent="Stars" instance=ExtResource("6_rdf5d")]
-position = Vector2(651, 639)
-rotation = -2.901379
-
-[node name="TitleStarE4" parent="Stars" instance=ExtResource("6_rdf5d")]
-position = Vector2(1806, 983)
-rotation = 3.0508356
-
-[node name="TitleStarE2" parent="Stars" instance=ExtResource("6_rdf5d")]
-position = Vector2(145, 661)
-rotation = 1.097812
-
-[node name="TitleStarF" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(218, 523)
-rotation = -0.43110862
-
-[node name="TitleStarF9" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(334, 291)
-rotation = -1.2662534
-
-[node name="TitleStarF14" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1331, 797)
-rotation = -2.3561945
-
-[node name="TitleStarF10" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(710.00006, 79)
-rotation = 0.13932174
-
-[node name="TitleStarF7" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1403, 364)
-rotation = 0.5555145
-
-[node name="TitleStarF13" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1208, 870.99994)
-rotation = -0.5235988
-
-[node name="TitleStarF4" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1677, 606)
-rotation = 0.16580628
-
-[node name="TitleStarF12" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1074, 184.00003)
-rotation = -3.9233327
-
-[node name="TitleStarF8" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1358, 625)
-rotation = -1.181322
-
-[node name="TitleStarF3" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(842.99994, 322.99994)
-rotation = 1.486054
-
-[node name="TitleStarF6" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(90, 68)
-rotation = 1.3539327
-
-[node name="TitleStarF5" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(1825, 336)
-rotation = 1.0464532
-
-[node name="TitleStarF15" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(577, 757.9999)
-rotation = 1.5707964
-
-[node name="TitleStarF11" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(991, 788.9999)
-rotation = -0.49769855
-
-[node name="TitleStarF2" parent="Stars" instance=ExtResource("7_jpee5")]
-position = Vector2(141, 875)
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("2_cxtio")]
 
