@@ -8,7 +8,7 @@ func _ready():
 func _on_login_button_up() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	$Login.disabled = true
-	$StatusLabel.text = "Accesso in corso..."
+	$StatusLabel.text = tr("logging_in")
 	$StatusLabel.modulate = Color.WHITE
 	var email = $Email.text
 	var password = $Password.text
@@ -25,7 +25,7 @@ func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	$StatusLabel.modulate = Color.RED
 
 func _on_PlayFab_login_succeded(login_result: LoginResult):
-	$StatusLabel.text = "Login effettuato! Sincronizzazione..."
+	$StatusLabel.text = tr("login_success_sync")
 	$StatusLabel.modulate = Color.GREEN
 	var account_info = login_result.InfoResultPayload.AccountInfo
 	var user_name_found = ""

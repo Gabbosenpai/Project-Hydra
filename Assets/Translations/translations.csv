@@ -35,6 +35,14 @@ username,Username,Username,用户名
 logout,Logout,Logout,注销
 user,Utente,User,用户名
 delete_account,Elimina account,Delete account,删除账户
+logging_in,Accesso in corso…,Logging in...,正在登录...
+login_success_sync,Login effettuato! Sincronizzazione…,Login succesful! Syncing...,登录成功！正在同步...
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
 ,,,
 ,,,
 #Messaggi,,,
