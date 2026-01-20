@@ -75,6 +75,7 @@ sources/6 = SubResource("TileSetAtlasSource_qlugu")
 script = ExtResource("1_s53du")
 tilemap = NodePath("TileMap")
 ui_controller = NodePath("UI")
+metadata/_edit_vertical_guides_ = [-53.0, 907.0]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -94,17 +95,17 @@ offset_left = -53.0
 offset_right = -53.0
 game_over_ui = NodePath("PauseMenu/GameOverUI")
 
-[node name="PauseMenu" parent="UI" index="5"]
+[node name="WaveNumber" parent="UI/WaveScreen" index="0"]
+offset_left = 812.0
+offset_top = 6.0
+offset_right = 1107.0
+offset_bottom = 46.0
+
+[node name="PauseMenu" parent="UI" index="7"]
 offset_left = 275.0
 offset_top = -1261.0
 offset_right = 1644.0
 offset_bottom = -143.0
-
-[node name="LabelWaveCenter" parent="UI" index="7"]
-offset_left = 1532.0
-offset_top = 458.0
-offset_right = 2598.0
-offset_bottom = 754.0
 
 [node name="Victory" parent="UI" index="9"]
 offset_left = 275.0
@@ -118,13 +119,13 @@ one_shot = true
 [node name="TurretManager" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("9_py7eb")]
 tilemap = NodePath("../TileMap")
 
-[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "label_wave_center", "animation_player", "victory_screen", "next_wave_delay_timer") instance=ExtResource("10_l5mna")]
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("tilemap", "label_wave", "label_enemies", "wave_timer", "initial_delay_timer", "wave_number", "animation_player", "victory_screen", "next_wave_delay_timer") instance=ExtResource("10_l5mna")]
 tilemap = NodePath("../TileMap")
 label_wave = NodePath("../UI/LabelWave")
 label_enemies = NodePath("../UI/LabelEnemies")
 wave_timer = NodePath("../WaveTimer")
 initial_delay_timer = NodePath("InitialDelayTimer")
-label_wave_center = NodePath("../UI/LabelWaveCenter")
+wave_number = NodePath("../UI/WaveScreen/WaveNumber")
 animation_player = NodePath("../UI/AnimationPlayer")
 victory_screen = NodePath("../UI/Victory")
 next_wave_delay_timer = NodePath("NextWaveDelayTimer")

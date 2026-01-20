@@ -62,7 +62,7 @@ func _ready():
 	enemy_spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
 	enemy_spawner.connect("victory", Callable(ui_controller, "_on_victory"))
 	$TurretManager.initialize_incinerators()
-	active_kill_all(Menu.adminMode)
+	update_admin_UI(Menu.adminMode)
 	AudioManager.play_music(OST)
 	
 # Implementa questo metodo in ogni livello figlio per caricare la musica unica.
@@ -307,9 +307,15 @@ func is_blackout_lights_on() -> bool:
 	
 	return false
 
-func active_kill_all(adminMode: bool):
+func update_admin_UI(adminMode: bool):
 	var kill_all_btn = $UI/ButtonKillAll
+	var wave_label = $UI/LabelWave
+	var enemy_count_label = $UI/LabelEnemies
 	if(adminMode == true):
 		kill_all_btn.visible = true
+		wave_label.visible = true
+		enemy_count_label.visible = true
 	else:
 		kill_all_btn.visible = false
+		wave_label.visible = false
+		enemy_count_label.visible = false

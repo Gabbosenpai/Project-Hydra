@@ -200,7 +200,6 @@ size = Vector2(2, 20.5)
 [node name="Robot" type="Area2D" groups=["Robot"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_wtial")
-romba_speed = 1000.0
 
 [node name="RobotSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
