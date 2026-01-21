@@ -68,3 +68,15 @@ towers,Torrette,Towers,塔楼
 robots,Robot,Robots,机器人
 no_robot_selected_text,Clicca su un robot per saperne di più!,Click on a robot for more info!,点击机器人查看更多信息！
 no_tower_selected_text,Clicca su una torretta per saperne di più!,Click on a tower for more info!,点击一座塔楼查看更多信息！
+,,,
+,,,
+,,,
+#playfab error,,,
+playfab_error_1000,Parametri non validi,Invalid parameters,参数无效
+playfab_error_1001,Account non trovato,Account not found,账户未找到
+playfab_error_1002,Account bannato,Banned account,账户被封禁
+playfab_error_1074,Non autenticato,Not authenticated,未认证
+playfab_error_1089,Credenziali errate,Incorrect credentials,凭据错误
+playfab_error_1295,Richieste API disabilitate,API requests disabled,API请求被禁用
+playfab_error_1347,Titolo eliminato,Title deleted,标题已删除
+playfab_error_1039,Errore sconosciuto,Unknown error,未知错误

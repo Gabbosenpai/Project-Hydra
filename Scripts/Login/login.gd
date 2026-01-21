@@ -21,7 +21,8 @@ func _on_login_button_up() -> void:
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	$Login.disabled = false # Riabilita il tasto in caso di errore
-	$StatusLabel.text = "Errore: " + api_error_wrapper.errorMessage
+	var key = "playfab_error_" + str(api_error_wrapper.errorCode)
+	$StatusLabel.text = tr(key);
 	$StatusLabel.modulate = Color.RED
 
 func _on_PlayFab_login_succeded(login_result: LoginResult):
