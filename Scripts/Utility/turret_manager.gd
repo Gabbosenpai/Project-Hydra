@@ -114,11 +114,13 @@ func _process(_delta):
 	var is_occupied = turrets.has(cell)
 	
 	if current_mode == Mode.PLACE:
-		tile_modulate = Color(1.0, 0.4, 0.4, 0.6) if is_occupied else Color(0.4, 1.0, 0.4, 0.6)
-		draw_highlight = true
+			if Menu.adminMode:
+				tile_modulate = Color(1.0, 0.4, 0.4, 0.6) # Rosso
+				draw_highlight = true
+		
 		
 	elif current_mode == Mode.REMOVE:
-		if is_occupied:
+		if is_occupied and Menu.adminMode:
 			tile_modulate = Color(1.0, 0.4, 0.4, 0.6)
 			draw_highlight = true
 	
