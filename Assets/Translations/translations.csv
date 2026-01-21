@@ -37,6 +37,12 @@ user,Utente,User,用户名
 delete_account,Elimina account,Delete account,删除账户
 logging_in,Accesso in corso…,Logging in...,正在登录...
 login_success_sync,Login effettuato! Sincronizzazione…,Login succesful! Syncing...,登录成功！正在同步...
+email_missing,Inserisci email,Email missing,电子邮件缺失
+email_sent_to,Email inviata a: ,Email sent to: ,邮件发送至： 
+,,,
+,,,
+,,,
+,,,
 ,,,
 #sezione registrazione,,,
 username_too_short,Username troppo corto\n(min 3 car.),Username too short\n(min 3 chars),用户名过短\n（至少3个字符）
