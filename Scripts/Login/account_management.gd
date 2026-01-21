@@ -17,7 +17,7 @@ func _on_remove_account_pressed() -> void:
 	user.visible = false
 
 func _on_account_removed():
-	status_label.text = "ACCOUNT ELIMINATO CON SUCCESSO"
+	status_label.text = tr("account_deleted")
 	status_label.modulate = Color.GREEN
 	
 	# Pulizia sessione
@@ -32,7 +32,8 @@ func _on_account_removed():
 
 # --- ERRORI ---
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
-	status_label.text = "Errore: " + api_error_wrapper.errorMessage
+	var key = "playfab_error_" + str(api_error_wrapper.errorCode)
+	status_label.text = tr(key)
 	status_label.modulate = Color.RED
 
 
@@ -58,7 +59,7 @@ func reset_label_():
 
 
 func _on_yes_button_pressed() -> void:
-	status_label.text = "Eliminazione in corso..."
+	status_label.text = tr("deleting_account")
 	PlayFabManager.client.execute_cloud_script()
 
 
