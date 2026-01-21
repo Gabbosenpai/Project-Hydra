@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ysbi4ys1iar"]
+
+[ext_resource type="Texture2D" uid="uid://covn6yeutucw1" path="res://Assets/Cutscene/Scena 1 - Earth.png" id="1_rj3ne"]
+[ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="2_afety"]
+[ext_resource type="PackedScene" uid="uid://d0n3qorj4uy87" path="res://Scenes/Utilities/Title Stars/title_star_b.tscn" id="3_e0h8o"]
+[ext_resource type="PackedScene" uid="uid://qfa20o8ywksw" path="res://Scenes/Utilities/Title Stars/title_star_c.tscn" id="4_llwun"]
+[ext_resource type="PackedScene" uid="uid://cdwqym4ehbpbd" path="res://Scenes/Utilities/Title Stars/title_star_d.tscn" id="5_n7642"]
+[ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="6_1a485"]
+[ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="7_43xp0"]
+
+[node name="Cutscene" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+metadata/_edit_lock_ = true
+
+[node name="Scene 1 - Earth" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_rj3ne")
+metadata/_edit_lock_ = true
+
+[node name="Stars" type="Node" parent="Scene 1 - Earth"]
+
+[node name="TitleStarA" parent="Scene 1 - Earth/Stars" instance=ExtResource("2_afety")]
+position = Vector2(179, 180)
+rotation = -1.0152149
+
+[node name="TitleStarA5" parent="Scene 1 - Earth/Stars" instance=ExtResource("2_afety")]
+position = Vector2(675, 976)
+rotation = -1.3613569
+
+[node name="TitleStarA2" parent="Scene 1 - Earth/Stars" instance=ExtResource("2_afety")]
+position = Vector2(338, 551.9998)
+rotation = -0.52534765
+
+[node name="TitleStarA4" parent="Scene 1 - Earth/Stars" instance=ExtResource("2_afety")]
+position = Vector2(1438.0001, 862.0001)
+rotation = 0.59667265
+
+[node name="TitleStarB" parent="Scene 1 - Earth/Stars" instance=ExtResource("3_e0h8o")]
+position = Vector2(322, 99)
+rotation = 1.4189236
+
+[node name="TitleStarB3" parent="Scene 1 - Earth/Stars" instance=ExtResource("3_e0h8o")]
+position = Vector2(1786, 196)
+rotation = 1.2979053
+
+[node name="TitleStarC" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(104.00001, 328)
+rotation = -2.2873256
+
+[node name="TitleStarC2" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(338, 749)
+rotation = -0.8978844
+
+[node name="TitleStarC13" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(1403, 168.99997)
+rotation = -2.3561945
+
+[node name="TitleStarC6" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(269, 969)
+rotation = 0.37317878
+
+[node name="TitleStarC4" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(585, 839)
+rotation = 0.75914735
+
+[node name="TitleStarC3" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(1718.0002, 579.0002)
+rotation = -0.68860215
+
+[node name="TitleStarC8" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(1670, 858.0001)
+rotation = -0.12217305
+
+[node name="TitleStarC12" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
+position = Vector2(858.00006, 119.999985)
+rotation = -1.3089969
+
+[node name="TitleStarD6" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
+position = Vector2(1579, 301)
+rotation = -0.33803397
+
+[node name="TitleStarD5" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
+position = Vector2(1612, 112)
+rotation = -0.21973976
+
+[node name="TitleStarD3" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
+position = Vector2(1839.9999, 822)
+rotation = 0.38397244
+
+[node name="TitleStarD8" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
+position = Vector2(1215, 914)
+rotation = 1.3075144
+
+[node name="TitleStarD4" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
+position = Vector2(1573.0002, 659)
+rotation = -1.8143587
+
+[node name="TitleStarD2" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
+position = Vector2(447, 377)
+rotation = 0.30129564
+
+[node name="TitleStarE2" parent="Scene 1 - Earth/Stars" instance=ExtResource("6_1a485")]
+position = Vector2(145, 661)
+rotation = 1.097812
+
+[node name="TitleStarF10" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
+position = Vector2(616.99994, 81.00001)
+rotation = 0.13932174
+
+[node name="TitleStarF4" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
+position = Vector2(1479, 484)
+rotation = 0.16580628
+
+[node name="TitleStarF12" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
+position = Vector2(1205, 69.00003)
+rotation = -3.9233327
+
+[node name="TitleStarF6" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
+position = Vector2(90, 68)
+rotation = 1.3539327
+
+[node name="TitleStarF5" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
+position = Vector2(1825, 336)
+rotation = 1.0464532
+
+[node name="TitleStarF2" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
+position = Vector2(141, 875)
