@@ -21,7 +21,8 @@ func _on_login_button_up() -> void:
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	$Login.disabled = false # Riabilita il tasto in caso di errore
-	$StatusLabel.text = "Errore: " + api_error_wrapper.errorMessage
+	var key = "playfab_error_" + str(api_error_wrapper.errorCode)
+	$StatusLabel.text = tr(key);
 	$StatusLabel.modulate = Color.RED
 
 func _on_PlayFab_login_succeded(login_result: LoginResult):
@@ -77,10 +78,10 @@ func _on_forgot_password_pressed() -> void:
 	var email = $Email.text
 	if email != "":
 		PlayFabManager.client.send_account_recovery(email, "")
-		$StatusLabel.text = "Email inviata a: " + email
+		$StatusLabel.text = tr("email_sent_to") + "\n\n" + email
 		$StatusLabel.modulate = Color.CYAN
 	else:
-		$StatusLabel.text = "Errore: Email mancante."
+		$StatusLabel.text = tr("email_missing")
 		$StatusLabel.modulate = Color.RED
 
 func reset_fields_login():

@@ -10,22 +10,22 @@ func _on_register_button_up() -> void:
 	var email = $Email.text
 	var password = $Password.text
 	if username.length() < 3:
-		$StatusLabel.text = "Username troppo corto\n(min 3 car.)"
+		$StatusLabel.text = tr("username_too_short")
 		$StatusLabel.modulate = Color.ORANGE
 		return
 		
 	if not "@" in email or not "." in email:
-		$StatusLabel.text = "Email non valida!"
+		$StatusLabel.text = tr("email_not_valid")
 		$StatusLabel.modulate = Color.ORANGE
 		return
 		
 	if $Password.text.length() < 6:
-		$StatusLabel.text = "Password troppo corta\n(min 6 car)"
+		$StatusLabel.text = tr("password_too_short")
 		$StatusLabel.modulate = Color.ORANGE
 		return
 	
 	if username.length() > 20:
-		$StatusLabel.text = "Username troppo lungo\n(max 20 car.)"
+		$StatusLabel.text = tr("username_too_long")
 		$StatusLabel.modulate = Color.ORANGE
 		return
 
@@ -34,36 +34,17 @@ func _on_register_button_up() -> void:
 	var player_profile_view_constraints = PlayerProfileViewConstraints.new()
 	combined_info_request_params.ProfileConstraints = player_profile_view_constraints
 	#$Register.disabled = true
-	$StatusLabel.text = "Creazione account..."
+	$StatusLabel.text = tr("creating_account")
 	$StatusLabel.modulate = Color.WHITE
 	PlayFabManager.client.register_email_password(username, email, password, combined_info_request_params)
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
-	var error_message = api_error_wrapper.errorMessage
-	var details = ""
-	
-	# Estraiamo i dettagli specifici
-	if api_error_wrapper.errorDetails:
-		for key in api_error_wrapper.errorDetails.keys():
-			for msg in api_error_wrapper.errorDetails[key]:
-				details += "\n- %s" % msg
-
-	print("Errore PlayFab: " + error_message + details)
-	
-	if "display name" in error_message.to_lower():
-		$StatusLabel.text = "Username già esistente!"
-		$StatusLabel.modulate = Color.RED
-		return
-
-	
-	if details != "":
-		$StatusLabel.text = "Dati non validi: " + details
-	else:
-		$StatusLabel.text = "Errore: " + error_message
+	var key = "playfab_error_" + str(api_error_wrapper.errorCode)
+	$StatusLabel.text = tr(key)
 	$StatusLabel.modulate = Color.RED
 
 func _on_registered(result: RegisterPlayFabUserResult):
-	$StatusLabel.text = "Registrazione completata"
+	$StatusLabel.text = tr("registration_complete")
 	$StatusLabel.modulate = Color.GREEN
 	PlayFabManager.client_config.session_ticket = result.SessionTicket
 	PlayFabManager.client_config.master_player_account_id = result.PlayFabId
