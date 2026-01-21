@@ -38,9 +38,13 @@ delete_account,Elimina account,Delete account,删除账户
 logging_in,Accesso in corso…,Logging in...,正在登录...
 login_success_sync,Login effettuato! Sincronizzazione…,Login succesful! Syncing...,登录成功！正在同步...
 ,,,
-,,,
-,,,
-,,,
+#sezione registrazione,,,
+username_too_short,Username troppo corto\n(min 3 car.),Username too short\n(min 3 chars),用户名过短\n（至少3个字符）
+username_too_long,Username troppo lungo\n(max 20 car.),Username too long\n(max 20 chars),用户名过长\n（最多20个字符）
+password_too_short,Password troppo corta\n(min 6 car),Password too short\n(min 6 chars),密码过短\n（至少6个字符）
+email_not_valid,Email non valida!,Email not valid!,电子邮件无效！
+creating_account,Creazione account…,Creating account...,正在创建账户...
+registration_complete,Registrazione completata,Registration complete,注册完成
 ,,,
 ,,,
 ,,,
@@ -80,3 +84,4 @@ playfab_error_1089,Credenziali errate,Incorrect credentials,凭据错误
 playfab_error_1295,Richieste API disabilitate,API requests disabled,API请求被禁用
 playfab_error_1347,Titolo eliminato,Title deleted,标题已删除
 playfab_error_1039,Errore sconosciuto,Unknown error,未知错误
+playfab_error_1142,Email o password non valide,Invalid email or password,电子邮件或密码无效
