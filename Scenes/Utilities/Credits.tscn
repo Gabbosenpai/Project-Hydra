@@ -91,8 +91,8 @@ metadata/_edit_lock_ = true
 z_index = 1
 layout_mode = 0
 offset_top = 1083.0
-offset_right = 1920.0
-offset_bottom = 2041.0
+offset_right = 2162.0
+offset_bottom = 2054.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_constants/line_spacing = 30
 theme_override_fonts/font = ExtResource("4_wg104")
@@ -101,12 +101,13 @@ text = "DA AGGIORNARE!
 
 Crediti OST:
 
+Cody O'Quinn: Scrub Slayer
+Epic Music Journey: 8 BIT RPG BATTLE  Retro Game Music
+AdventureChiptunes: NEW POWER 
 Pix: A Lonely Cherry Tree
 Adam Haynes: 8-bit RPG Music ｜ Victory Theme
-EliteFerrex: 8-Bit Boss Battle: 4  
-Cody O'Quinn: This Is Our Only Chance!
 Quincas Moreira: Robot City
-Cody O'Quinn: Scrub Slayer
+
 MB Music: Game Over (8-Bit Music)
 Kevin MacLeod:  Itty Bitty"
 horizontal_alignment = 1
