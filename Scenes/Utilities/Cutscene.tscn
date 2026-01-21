@@ -129,3 +129,23 @@ rotation = 1.0464532
 
 [node name="TitleStarF2" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
 position = Vector2(141, 875)
+
+[node name="Scene 2 - The Company" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scene 3 - Engineer\'s Desk" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scene 4a - Email Home" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scene 4c - Clankers" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
