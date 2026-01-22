@@ -41,34 +41,34 @@ var waves = [
 # }
 var level_patterns = {
 	1: { # LIVELLO 1
-		1: [["romba", "romba"], ["romba"], ["romba", "romba"], ["romba"], ["romba"]], # Tot 8
-		2: [["romba", "romba", "romba"], ["romba"], ["romba", "romba"], ["romba"], ["romba", "romba"]], # Tot 10
-		3: [["romba", "romba"], ["romba", "romba"], ["romba", "romba"], ["romba", "romba"], ["romba", "romba"]], # Tot 10
-		4: [["romba", "romba", "romba"], ["romba", "romba"], ["romba", "romba", "romba"], ["romba", "romba"], ["romba", "romba", "romba"]] # Tot 13
+		1: ["2xromba", "1xromba", "2xromba", "1xromba", "1xromba"],
+		2: ["3xromba", "1xromba", "2xromba", "1xromba", "2xromba"],
+		3: ["2xromba", "2xromba", "2xromba", "2xromba", "2xromba"],
+		4: ["3xromba", "2xromba", "3xromba", "2xromba", "3xromba"]
 	},
-	2: { # LIVELLO 2 (Introduzione Weed Eater 9000 - we9k)
-		1: [["romba", "we9k"], ["romba"], ["we9k", "romba"], ["romba"], ["romba"]],
-		2: [["we9k", "we9k"], ["romba", "romba"], ["we9k"], ["romba", "romba"], ["we9k", "romba"]],
-		3: [["romba", "romba", "we9k"], ["we9k", "we9k"], ["romba", "romba"], ["we9k", "romba"], ["romba", "we9k"]],
-		4: [["we9k", "we9k", "we9k"], ["romba", "romba", "romba"], ["we9k", "we9k"], ["romba", "romba", "romba"], ["we9k", "we9k"]]
+	2: { # LIVELLO 2
+		1: ["1xromba, 1xwe9k", "1xromba", "1xwe9k, 1xromba", "1xromba", "1xromba"],
+		2: ["2xwe9k", "2xromba", "1xwe9k", "2xromba", "1xwe9k, 1xromba"],
+		3: ["2xromba, 1xwe9k", "2xwe9k", "2xromba", "1xwe9k, 1xromba", "1xromba, 1xwe9k"],
+		4: ["3xwe9k", "3xromba", "2xwe9k", "3xromba", "2xwe9k"]
 	},
-	3: { # LIVELLO 3 (Introduzione Mecha Freezer - mf)
-		1: [["mf", "romba"], ["romba"], ["mf"], ["romba", "romba"], ["we9k"]],
-		2: [["mf", "we9k"], ["mf", "romba"], ["we9k", "we9k"], ["mf"], ["romba", "mf"]],
-		3: [["mf", "mf"], ["we9k", "we9k", "we9k"], ["mf", "romba"], ["we9k", "mf"], ["romba", "mf", "romba"]],
-		4: [["mf", "mf", "mf"], ["we9k", "we9k"], ["mf", "mf"], ["we9k", "we9k"], ["mf", "mf", "mf"]]
+	3: { # LIVELLO 3
+		1: ["1xmf, 1xromba", "1xromba", "1xmf", "2xromba", "1xwe9k"],
+		2: ["1xmf, 1xwe9k", "1xmf, 1xromba", "2xwe9k", "1xmf", "1xromba, 1xmf"],
+		3: ["2xmf", "3xwe9k", "1xmf, 1xromba", "1xwe9k, 1xmf", "1xromba, 1xmf, 1xromba"],
+		4: ["3xmf", "2xwe9k", "2xmf", "2xwe9k", "3xmf"]
 	},
-	4: { # LIVELLO 4 (Introduzione Fire Hydrant - fh)
-		1: [["fh", "romba"], ["mf"], ["fh"], ["we9k", "we9k"], ["romba"]],
-		2: [["fh", "mf"], ["fh", "we9k"], ["mf", "mf"], ["fh"], ["we9k", "fh"]],
-		3: [["fh", "fh"], ["mf", "mf", "mf"], ["fh", "we9k"], ["mf", "fh"], ["fh", "romba"]],
-		4: [["fh", "fh", "fh"], ["fh", "mf", "fh"], ["fh", "fh"], ["mf", "mf", "mf"], ["fh", "fh", "fh"]]
+	4: { # LIVELLO 4
+		1: ["1xfh, 1xromba", "1xmf", "1xfh", "2xwe9k", "1xromba"],
+		2: ["1xfh, 1xmf", "1xfh, 1xwe9k", "2xmf", "1xfh", "1xwe9k, 1xfh"],
+		3: ["2xfh", "3xmf", "1xfh, 1xwe9k", "1xmf, 1xfh", "1xfh, 1xromba"],
+		4: ["3xfh", "1xfh, 1xmf, 1xfh", "2xfh", "3xmf", "3xfh"]
 	},
-	5: { # LIVELLO 5 (Introduzione Cassa Schierata - cs)
-		1: [["cs", "romba"], ["fh"], ["cs"], ["mf", "mf"], ["we9k"]],
-		2: [["cs", "fh"], ["cs", "mf"], ["fh", "fh"], ["cs"], ["mf", "cs"]],
-		3: [["cs", "cs"], ["fh", "fh", "fh"], ["cs", "mf"], ["fh", "cs"], ["cs", "romba"]],
-		4: [["cs", "cs", "cs"], ["cs", "fh", "cs"], ["cs", "cs"], ["fh", "fh", "fh"], ["cs", "cs", "cs"]]
+	5: { # LIVELLO 5
+		1: ["1xcs, 1xromba", "1xfh", "1xcs", "2xmf", "1xwe9k"],
+		2: ["1xcs, 1xfh", "1xcs, 1xmf", "2xfh", "1xcs", "1xmf, 1xcs"],
+		3: ["2xcs", "3xfh", "1xcs, 1xmf", "1xfh, 1xcs", "1xcs, 1xromba"],
+		4: ["3xcs", "1xcs, 1xfh, 1xcs", "2xcs", "3xfh", "3xcs"]
 	}
 }
 
@@ -153,7 +153,14 @@ func start_wave():
 		# Evita crash se il pattern ha più righe di quelle permesse dal gioco
 		if pattern_index >= physical_rows.size(): break
 		var row = physical_rows[pattern_index]
-		var enemies_in_row = patterns[pattern_index]
+		#Prende la stringa "3xromba"
+		var raw_pattern = patterns[pattern_index]
+		var enemies_in_row = []
+		if raw_pattern is String:
+			enemies_in_row = unpack_pattern(raw_pattern)
+		else:
+			enemies_in_row = raw_pattern
+		
 		spawn_queues[row] = []
 		
 		print("Corsia Pattern [", pattern_index, "] (", enemies_in_row, ") -> Assegnata alla RIGA FISICA: ", row)
@@ -353,3 +360,25 @@ func debug_spawn_queues():
 				print(" > Riga ", row, ": ", str(coda), " (Tot: ", coda.size(), ")")
 	print("Nemici totali ancora da far uscire: ", enemies_to_spawn)
 	print("===============================================\n")
+
+
+## Converte la stringa "3xromba"
+## Esempio: "2xromba, mf" diventa ["romba", "romba", "mf"]
+func unpack_pattern(pattern_string: String) -> Array:
+	var final_list = []
+	# Dividiamo per virgola se vuoi mettere tipi diversi nella stessa riga (es: "2xromba, 1xwe9k")
+	var parts = pattern_string.split(",")
+	
+	for part in parts:
+		part = part.strip_edges() # Rimuove spazi inutili
+		if "x" in part:
+			var details = part.split("x")
+			var count = int(details[0])
+			var enemy_type = details[1]
+			for i in range(count):
+				final_list.append(enemy_type)
+		else:
+			# Se scrivi solo "romba", lo aggiunge una volta sola
+			final_list.append(part)
+			
+	return final_list
