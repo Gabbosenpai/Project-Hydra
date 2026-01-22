@@ -25,7 +25,9 @@ func _ready() -> void:
 	
 	var turret_name = get_turret_name_for_level(current_level)
 	if turret_name != "":
-		unlock_label.text += "\n\n NUOVA TORRETTA SBLOCCATA: " + turret_name
+		unlock_label.text += "\n\n" + tr("new_turret_unlocked").format({
+		"turret": turret_name
+	})
 		unlock_label.visible = true
 		var image_path = get_turret_image_for_level(current_level)
 		if image_path != "":
@@ -102,10 +104,10 @@ func _on_menu_button_pressed() -> void:
 func get_turret_name_for_level(lvl: int) -> String:
 	match lvl:
 		#1: return "Delivery Drone & Bolt Shooter"
-		2: return "Jammer Cannon"
-		3: return "HKCM"
-		4: return "Spaghetti Cable"
-		5: return "Toilet Silo"
+		2: return tr("jammer_cannon")
+		3: return tr("hkcm")
+		4: return tr("spaghetti_cable")
+		5: return tr("toilet_silo")
 		_: return ""
 
 

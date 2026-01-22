@@ -18,7 +18,7 @@ level_selection,Selezione livello,Level selection,关卡选择
 ,,,
 #victory screen,,,
 next_level,Prossimo livello,Next level,更高层次
-,,,
+new_turret_unlocked,Nuova torretta sbloccata: {turret},New tower unlocked: {turret},新塔解锁: {turret}
 ,,,
 ,,,
 ,,,
@@ -87,6 +87,19 @@ towers,Torrette,Towers,塔楼
 robots,Robot,Robots,机器人
 no_robot_selected_text,Clicca su un robot per saperne di più!,Click on a robot for more info!,点击机器人查看更多信息！
 no_tower_selected_text,Clicca su una torretta per saperne di più!,Click on a tower for more info!,点击一座塔楼查看更多信息！
+jammer_cannon,Jammer Cannon,Jammer Cannon,干扰炮
+hkcm,HKCM,HKCM,香港证书管理
+spaghetti_cable,Spaghetti Cable,Spaghetti Cable,意大利面线缆
+toilet_silo,Toilet Silo,Toilet Silo,厕所筒仓
+delivery_drone,Delivery Drone,Delivery Drone,配送无人机
+bolt_shooter,Bolt Shooter,Bolt Shooter,螺栓射钉枪
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
 ,,,
 ,,,
 ,,,
