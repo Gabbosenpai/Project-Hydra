@@ -19,7 +19,7 @@ extends CanvasLayer
 @export var sfx_slider: HSlider
 
 
-static var adminMode = false
+static var adminMode = true
 var adminButtonPressed = 0
 var animazioni_iniziali_concluse = false
 var opzioni_aperte = false
