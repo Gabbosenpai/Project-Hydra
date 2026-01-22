@@ -81,8 +81,8 @@ const ENEMY_DESTRUCTION_DELAY: float = 0.5
 const TILE_SIZE = 160
 const INCINERATE_COLUMN_THRESHOLD: float = 9.0
 var INCINERATE_X_LIMIT: float
-#Dizionario dei nemici rimanenti con una lista di oggetti da spawnare
-var spawn_queue = []
+# Nuovo dizionario per gestire le code separate per ogni riga fisica
+var spawn_queues = {}
 
 func _ready():
 	randomize()
@@ -116,8 +116,9 @@ func _ready():
 
 
 func _on_initial_delay_timeout():
-	print("Ritardo iniziale terminato. Avvio prima ondata.")
-	start_wave()
+	if current_wave == 0:
+		print("Ritardo iniziale terminato. Avvio prima ondata.")
+		start_wave()
 
 
 func start_wave():
@@ -130,15 +131,13 @@ func start_wave():
 		emit_signal("wave_completed", current_wave)
 	
 	is_wave_active = true
-	spawn_queue.clear()
+	spawn_queues.clear()
+	enemies_to_spawn = 0
 
 	# Recupera il dizionario del livello
 	var level_data = level_patterns.get(current_level, level_patterns[1])
 	# Recupera il pattern dell'ondata attuale
 	var patterns = level_data.get(current_wave, level_data[1])
-	# Recupera l'intervallo (sicurezza: se waves è corto, usa l'ultimo intervallo disponibile)
-	var wave_config = waves[min(current_wave - 1, waves.size() - 1)]
-	var interval = wave_config["interval"]
 	print("--- DEBUG ONDATA ", current_wave, " ---")
 	print("Pattern Originale (Dizionario): ", patterns)
 	# --- LOGICA DI SHUFFLE DELLE RIGHE ---
@@ -155,21 +154,14 @@ func start_wave():
 		if pattern_index >= physical_rows.size(): break
 		var row = physical_rows[pattern_index]
 		var enemies_in_row = patterns[pattern_index]
+		spawn_queues[row] = []
 		
 		print("Corsia Pattern [", pattern_index, "] (", enemies_in_row, ") -> Assegnata alla RIGA FISICA: ", row)
 
-		# 2. Aggiungi i nemici di questa riga alla coda globale
-		for pos in enemies_in_row.size():
-			spawn_queue.append({
-				"type": enemies_in_row[pos],
-				"row": row,
-				"delay": (pos * interval) + randf_range(0, 0.5)
-			})
-
-	# Ordiniamo la coda per tempo di delay per farli uscire in ordine cronologico
-	spawn_queue.sort_custom(func(a, b): return a["delay"] < b["delay"])
-	
-	enemies_to_spawn = spawn_queue.size()
+		# 2. Aggiungi i nemici di questa riga alla coda
+		for robot_name in enemies_in_row:
+			spawn_queues[row].append(robot_name)
+			enemies_to_spawn += 1
 	
 	print("Nemici totali da spawnare: ", enemies_to_spawn)
 	print("Righe fisiche assegnate (shuffled): ", physical_rows)
@@ -179,6 +171,8 @@ func start_wave():
 	label_enemies.text = "Nemici: " + str(enemies_alive)
 	wave_number.text = "Ondata " + str(current_wave)
 	wave_number.visible = true
+	print("--- LOG: Code generate con successo ---")
+	debug_spawn_queues()
 	animation_player.play("wave_intro")
 	
 	# Usiamo un Timer o il _process per svuotare la coda
@@ -187,19 +181,35 @@ func start_wave():
 
 
 func _on_wave_timer_timeout():
-	# In questo nuovo sistema, usiamo il tempo trascorso dall'inizio dell'ondata
-	# Ma per semplicità, spawniamo il prossimo nemico se presente
-	if not spawn_queue.is_empty():
-		var data = spawn_queue.pop_front()
-		spawn_enemy(data["type"], data["row"])
+	# Individuiamo le code che non sono ancora vuote
+	var active_rows = []
+	for r in spawn_queues.keys():
+		if not spawn_queues[r].is_empty():
+			active_rows.append(r)
+
+	# Se ci sono ancora robot da far uscire...
+	if not active_rows.is_empty():
+		# 2. SCEGLI RIGA RANDOM (tra quelle che hanno robot)
+		var random_row = active_rows[randi() % active_rows.size()]
 		
-		if not spawn_queue.is_empty():
-			# Impostiamo il timer per il prossimo nemico in coda
-			var next_delay = spawn_queue[0]["delay"] - data["delay"]
-			wave_timer.start(max(0.1, next_delay))
-		else:
-			enemies_to_spawn = 0
-			_check_wave_completion()
+		# 3. POP del robot in cima alla coda di quella specifica riga
+		var enemy_type = spawn_queues[random_row].pop_front()
+		
+		# 4. SPAWN
+		spawn_enemy(enemy_type, random_row)
+		enemies_to_spawn -= 1
+		debug_spawn_queues()
+		
+		print("DEBUG: Pescato ", enemy_type, " da riga ", random_row, ". Rimanenti da spawnare: ", enemies_to_spawn)
+		
+		# 5. WAIT TIME (intervallo dell'ondata)
+		var wave_config = waves[min(current_wave - 1, waves.size() - 1)]
+		wave_timer.start(wave_config["interval"])
+	else:
+		# TUTTI I ROBOT SONO SPAWNATI (anche se sono ancora vivi)
+		print("DEBUG: Tutti i robot spawnati. Ondata ", current_wave, " conclusa come spawn.")
+		is_wave_active = false 
+		_check_wave_completion()
 
 func _on_next_wave_delay_timeout():
 	print("Ritardo tra ondate terminato. Avvio prossima ondata.")
@@ -230,32 +240,42 @@ func _on_enemy_defeated():
 
 
 func kill_all():
-	# Forziamo la fine dello spawn e l'eliminazione dei nemici.
+	print("--- DEBUG KILL ALL (SKIP ATTESA) ---")
+	# 1. Fermiamo tutto lo spawn corrente
 	enemies_to_spawn = 0
+	is_wave_active = false
+	wave_timer.stop()
+	spawn_queues.clear()
 	
+	# 2. Fermiamo eventuali timer di attesa tra ondate già partiti
+	if next_wave_delay_timer:
+		next_wave_delay_timer.stop()
+	
+	# 3. Eliminiamo i nemici in campo
 	var children_to_kill = []
 	for child in get_children():
-		if child.has_method("die"):
-			child.disconnect("enemy_defeated", Callable(self, "_on_enemy_defeated_with_row"))
+		# Verifichiamo se è un robot (usando il gruppo o il metodo die)
+		if child.is_in_group("Robot") or child.has_method("die"):
 			children_to_kill.append(child)
-			enemies_alive -= 1
 	
 	for child in children_to_kill:
 		child.queue_free()
 	
-	enemies_alive = max(0, enemies_alive)
-	label_enemies.text = "Nemici: " + str(enemies_alive)
+	# 4. Resettiamo i contatori
+	enemies_alive = 0
+	label_enemies.text = "Nemici: 0"
 	
-	# Se l'onda era attiva, forziamo il passaggio 
-	# alla successiva (incrementando current_wave e avviando il timer)
-	if is_wave_active:
-		is_wave_active = false
-		wave_timer.stop()
-		#_check_wave_completion()
-	
-	# La funzione di check gestirà l'avvio immediato dell'ondata successiva 
-	# o la vittoria (poiché enemies_alive = 0).
-	check_enemies_for_next_wave()
+	# 5. LOGICA DI SALTO IMMEDIATO
+	if current_wave < waves.size():
+		print("Kill All: Salto l'attesa. Avvio ondata ", current_wave + 1)
+		start_wave() # Chiamata diretta senza timer
+	else:
+		# Se era l'ultima ondata, triggeriamo la vittoria
+		print("Kill All: Ultima ondata completata. Vittoria!")
+		emit_signal("victory")
+		if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
+			AudioManager.play_victory_music()
+		emit_signal("level_completed")
 
 
 # Funzione asincrona che TurretManager chiamerà per distruggere i robot
@@ -286,33 +306,30 @@ func destroy_robots_in_row_with_animation(row: int):
 func _check_wave_completion():
 	# Questa funzione viene chiamata SOLO quando 
 	# lo spawn è terminato (enemies_to_spawn = 0).
-	if enemies_to_spawn <= 0 and is_wave_active:
-		is_wave_active = false
-		
+	if enemies_to_spawn <= 0:
 		if current_wave < waves.size():
 			if next_wave_delay_timer:
-				print("Spawn completato. Avvio timer di ritardo di %s secondi." % inter_wave_delay)
-				next_wave_delay_timer.wait_time = inter_wave_delay
-				next_wave_delay_timer.start()
-			
+				if next_wave_delay_timer.is_stopped():
+					print("Spawn completato. Avvio timer di ritardo di %s secondi." % inter_wave_delay)
+					next_wave_delay_timer.wait_time = inter_wave_delay
+					next_wave_delay_timer.one_shot = true
+					next_wave_delay_timer.start()
 			# Controlla immediatamente se i nemici sono già zero per avvio anticipato
-			check_enemies_for_next_wave()
+			if enemies_alive <= 0:
+				check_enemies_for_next_wave()
 		else:
 			print("Ultima ondata spawnata. Attendo sconfitta nemici per vittoria.")
-			# L'ultima ondata è stata spawnata, chiamiamo il check per la vittoria
-			check_enemies_for_next_wave()
-
 
 func check_enemies_for_next_wave():
 	# Avviene se enemies_alive = 0 E siamo in fase di transizione (lo spawn è finito)
 	if enemies_alive <= 0 and not is_wave_active:
-		# Se il timer è attivo, fermalo (Avvio Anticipato)
-		if next_wave_delay_timer and next_wave_delay_timer.is_stopped() == false:
-			next_wave_delay_timer.stop()
-			print("Avvio prossima ondata anticipato: tutti i nemici sconfitti!")
-			
 		if current_wave < waves.size():
-			start_wave()
+			if next_wave_delay_timer:
+				print("DEBUG: Tutti I nemici Ondata Uccisi! Prossima ondata tra 10 secondi.")
+				next_wave_delay_timer.stop() 
+				next_wave_delay_timer.wait_time = 10.0 #Timer in caso di completa uccisione nemici tra ondate
+				next_wave_delay_timer.one_shot = true
+				next_wave_delay_timer.start()
 		else:
 			emit_signal("victory")
 			if "AudioManager" in get_tree().get_nodes_in_group("singleton"):
@@ -321,3 +338,18 @@ func check_enemies_for_next_wave():
 
 func _on_enemy_defeated_with_row(_row_index: int):
 	_on_enemy_defeated() # Richiama la logica standard
+
+func debug_spawn_queues():
+	print("\n=== [DEBUG CODE DI SPAWN] Ondata: ", current_wave, " ===")
+	if spawn_queues.is_empty():
+		print(" > Code attualmente vuote.")
+	else:
+		for row in spawn_queues.keys():
+			var coda = spawn_queues[row]
+			if coda.is_empty():
+				print(" > Riga ", row, ": [ VUOTA ]")
+			else:
+				# Stampa la riga e l'elenco dei nemici (es. ["romba", "we9k"])
+				print(" > Riga ", row, ": ", str(coda), " (Tot: ", coda.size(), ")")
+	print("Nemici totali ancora da far uscire: ", enemies_to_spawn)
+	print("===============================================\n")
