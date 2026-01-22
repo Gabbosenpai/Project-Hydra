@@ -44,6 +44,7 @@ func _ready() -> void:
 		turret_icon.visible = false
 	if current_level == 6:
 		unlock_label.text = "Congratulazioni Ingegnere!\n Hai salvato il tuo posto di lavoro!"
+	
 		var settings := LabelSettings.new()
 		settings.font_size = 60
 		settings.line_spacing = 20
@@ -52,7 +53,7 @@ func _ready() -> void:
 		menu_button.visible = false
 		select_level.visible = false
 		next_level_label.text = "Continua"
-		
+	
 
 
 func _on_select_level_pressed() -> void:

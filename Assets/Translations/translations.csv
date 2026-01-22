@@ -13,11 +13,11 @@ select_language,Seleziona Lingua,Select language,选择语言
 logged_in,Accesso eseguito,Logged in,已登录
 not_logged_in,Accesso non eseguito,Not logged in,未登录
 select_level,Seleziona livello,Select level,选择级别
-level_selection,Selezione Livello,Level selection,关卡选择
+level_selection,Selezione livello,Level selection,关卡选择
 ,,,
 ,,,
-,,,
-,,,
+#victory screen,,,
+next_level,Prossimo livello,Next level,更高层次
 ,,,
 ,,,
 ,,,
