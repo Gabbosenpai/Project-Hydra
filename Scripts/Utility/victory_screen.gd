@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	var turret_name = get_turret_name_for_level(current_level)
 	if turret_name != "":
-		unlock_label.text += "\n\n" + tr("new_turret_unlocked").format({
+		unlock_label.text += tr("victory_1-4") + "\n\n" + tr("new_turret_unlocked").format({
 		"turret": turret_name
 	})
 		unlock_label.visible = true
@@ -45,7 +45,7 @@ func _ready() -> void:
 		turret_background.visible = false
 		turret_icon.visible = false
 	if current_level == 6:
-		unlock_label.text = "Congratulazioni Ingegnere!\n Hai salvato il tuo posto di lavoro!"
+		unlock_label.text = tr("victory_5")
 	
 		var settings := LabelSettings.new()
 		settings.font_size = 60
@@ -54,7 +54,7 @@ func _ready() -> void:
 		unlock_label.position += Vector2(0, 100)
 		menu_button.visible = false
 		select_level.visible = false
-		next_level_label.text = "Continua"
+		next_level_label.text = tr("continue")
 	
 
 

@@ -15,13 +15,12 @@ not_logged_in,Accesso non eseguito,Not logged in,未登录
 select_level,Seleziona livello,Select level,选择级别
 level_selection,Selezione livello,Level selection,关卡选择
 ,,,
-,,,
 #victory screen,,,
 next_level,Prossimo livello,Next level,更高层次
 new_turret_unlocked,Nuova torretta sbloccata: {turret},New tower unlocked: {turret},新塔解锁: {turret}
-,,,
-,,,
-,,,
+victory_1-4,"Congratulazioni, Ingegnere!\n Hai sconfitto i robot che volevano sterminare gli esseri umani","Congratulations, Engineer!\n You’ve defeated all the robots\n that wanted to wipe out humanity",恭喜，工程师！\n你击败了所有企图消灭人类的机器人
+continue,Continua,Continue,继续
+victory_5,Congratulazioni Ingegnere!\n Hai salvato il tuo posto di lavoro!,"Congratulations, Engineer!\n You’ve saved your job!",恭喜，工程师！\n你保住了工作！
 ,,,
 #sezione login,,,
 ,,,
