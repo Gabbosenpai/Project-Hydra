@@ -177,7 +177,7 @@ func start_wave():
 	
 	label_wave.text = "Ondata: " + str(current_wave)
 	label_enemies.text = "Nemici: " + str(enemies_alive)
-	wave_number.text = "Ondata " + str(current_wave)
+	wave_number.text = tr("wave") + " " + str(current_wave)
 	wave_number.visible = true
 	print("--- LOG: Code generate con successo ---")
 	debug_spawn_queues()

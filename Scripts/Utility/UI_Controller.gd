@@ -314,3 +314,7 @@ func _refresh_audio_ui():
 	else:
 		mute_sfx_button.texture_normal = texture_muted_sfx
 		mute_sfx_button.texture_pressed = texture_not_muted_sfx
+
+
+func _on_btn_si_pressed() -> void:
+	pass # Replace with function body.

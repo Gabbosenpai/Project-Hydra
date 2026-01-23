@@ -92,18 +92,11 @@ z_index = 5
 position = Vector2(907, 681)
 limit_enabled = false
 
-[node name="TutorialManager" parent="." instance=ExtResource("17_gogke")]
-
 [node name="UI" parent="." node_paths=PackedStringArray("game_over_ui") instance=ExtResource("10_tk4nw")]
-offset_left = -53.0
-offset_right = -53.0
 game_over_ui = NodePath("PauseMenu/GameOverUI")
 
-[node name="ButtonKillAll" parent="UI" index="5"]
-offset_left = 1713.0
-offset_top = 635.0
-offset_right = 1928.0
-offset_bottom = 779.0
+[node name="WaveScreen" parent="UI" index="1"]
+offset_right = 1135.0
 
 [node name="PauseMenu" parent="UI" index="7"]
 offset_left = 275.0
@@ -114,8 +107,10 @@ offset_bottom = -143.0
 [node name="Victory" parent="UI" index="9"]
 offset_left = 275.0
 offset_top = -1261.0
-offset_right = 1653.0
+offset_right = 1644.0
 offset_bottom = -143.0
+
+[node name="TutorialManager" parent="." instance=ExtResource("17_gogke")]
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true

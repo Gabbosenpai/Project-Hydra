@@ -18,20 +18,20 @@ var tower_unlock_levels = {
 	"toilet_silo": 6
 }
 var tower_names = {
-	"bolt_shooter": "Bolt Shooter",
-	"delivery_drone": "Delivery Drone",
-	"hkcm": "HKCM",
-	"jammer": "Jammer Cannon",
-	"spaghetti_cable": "Spaghetti Cable",
-	"toilet_silo": "Toilet Silo"
+	"bolt_shooter": "bolt_shooter",
+	"delivery_drone": "delivery_drone",
+	"hkcm": "hkcm",
+	"jammer": "jammer_cannon",
+	"spaghetti_cable": "spaghetti_cable",
+	"toilet_silo": "toilet_silo"
 }
 var tower_texts = {
-	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
-	"delivery_drone": "Se vuoi qualcosa e la vuoi subito, allora hai bisogno del delivery drone! Posiziona la piattaforma d’atterraggio all'aperto, fai l’ordine e il nostro drone porterà il tuo pacco sfrecciando nel cielo! (In caso di mancata consegna causa traffico, schianto, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, questa non sarà rimborsata e sarà necessario fare un nuovo ordine).",
-	"hkcm": "“せんぱ〜い！こんにちはっ！今日もすっごく頑張ったね！えへへ…よかったら、あったか〜いコーヒー、一緒に飲まない？”\n-Hot Kawaii Coffee Machine\n\nQuesta frase d’incoraggiamento incisa su questa carinissima macchina del caffè l’ha resa una tra le più vendute sul mercato. Alcuni hanno giurato di vederla arrossire mentre faceva il caffè…",
-	"jammer": "L’Azienda aveva richiesto un Jammer tascabile ma abbiamo sbagliato le misure e ora è un cannone in grado di disturbare congegni elettronici a distanze elevate con estrema precisione. Vorrei aggiungere altri dettagli ma abbiamo dovuto firmare un accordo di riservatezza.",
-	"spaghetti_cable": "Versione hardware del famoso Spaghetti Code, incubo di qualsiasi tecnico ma stranamente popolare sul mercato. Il suo successo ha portato l’Azienda ad allocare un intero reparto per la sua produzione, incrementando inspiegabilmente le vendite scrivendo “MADE IN ITALY” sulla confezione e fornendo cavi esclusivamente tricolore.",
-	"toilet_silo":"Il nemico non potrà nascondersi nemmeno in bagno! Questo design permette l’installazione di missili ad alto potenziale esplosivo costruiti con materiali estremamente economici e in grado di mimetizzarsi in ogni bagno che si rispetti (Non confondere la carta igienica esplosiva non quella classica)."
+	"bolt_shooter": "bolt_shooter_desc",	
+	"delivery_drone": "delivery_drone_desc",
+	"hkcm": "hkcm_desc",
+	"jammer": "jammer_cannon_desc",
+	"spaghetti_cable": "spaghetti_cable_desc",
+	"toilet_silo":"toilet_silo_desc"
 }
 var clicked: bool
 
@@ -59,8 +59,8 @@ func _ready():
  # Mostra la descrizione della torretta
 func show_description(tower_name: String):
 	if tower_name in tower_texts:
-		name_label.text = tower_names[tower_name]
-		desc_label.text = tower_texts[tower_name]
+		name_label.text = tr(tower_names[tower_name])
+		desc_label.text = tr(tower_texts[tower_name])
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
 
