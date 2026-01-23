@@ -7,6 +7,7 @@ var robot_textures = {
 	"romba": preload("res://Assets/Sprites/Robots/Romba/Romba.png"),
 	"cassa_schierata": preload("res://Assets/Sprites/Robots/Cassa Schierata/Cassa Schierata.png")
 }
+
 var robot_names = {
 	"weed_eater": "Weed Eeater 9000",
 	"mecha_freezer": "Mecha Freezer",

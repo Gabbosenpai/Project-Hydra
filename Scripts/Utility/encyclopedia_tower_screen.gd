@@ -18,12 +18,12 @@ var tower_unlock_levels = {
 	"toilet_silo": 6
 }
 var tower_names = {
-	"bolt_shooter": "Bolt Shooter",
-	"delivery_drone": "Delivery Drone",
-	"hkcm": "HKCM",
-	"jammer": "Jammer Cannon",
-	"spaghetti_cable": "Spaghetti Cable",
-	"toilet_silo": "Toilet Silo"
+	"bolt_shooter": "bolt_shooter",
+	"delivery_drone": "delivery_drone",
+	"hkcm": "hkcm",
+	"jammer": "jammer_cannon",
+	"spaghetti_cable": "spaghetti_cable",
+	"toilet_silo": "toilet_silo"
 }
 var tower_texts = {
 	"bolt_shooter": "Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",	
@@ -59,8 +59,8 @@ func _ready():
  # Mostra la descrizione della torretta
 func show_description(tower_name: String):
 	if tower_name in tower_texts:
-		name_label.text = tower_names[tower_name]
-		desc_label.text = tower_texts[tower_name]
+		name_label.text = tr(tower_names[tower_name])
+		desc_label.text = tr(tower_texts[tower_name])
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
 
