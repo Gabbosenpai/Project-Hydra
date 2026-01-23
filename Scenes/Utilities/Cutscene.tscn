@@ -151,7 +151,6 @@ offset_bottom = 1080.0
 texture = ExtResource("8_e0h8o")
 
 [node name="Scene 3 - Engineer\'s Desk" type="TextureRect" parent="."]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("9_llwun")
