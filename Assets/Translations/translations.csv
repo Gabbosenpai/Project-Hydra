@@ -99,16 +99,17 @@ toilet_silo_desc,Il nemico non potrà nascondersi nemmeno in bagno! Questo desig
 delivery_drone_desc,"Se vuoi qualcosa e la vuoi subito, allora hai bisogno del delivery drone! Posiziona la piattaforma d’atterraggio all'aperto, fai l’ordine e il nostro drone porterà il tuo pacco sfrecciando nel cielo! (In caso di mancata consegna causa traffico, schianto, caduta del pacco, scontro aereo con volatile, abbattimento dalla contraerea, alieni, questa non sarà rimborsata e sarà necessario fare un nuovo ordine).",Placeholder 5,
 bolt_shooter_desc,"Ti manca un bullone? Non preoccuparti ma sii pronto a prenderlo al volo! Il Bolt Shooter è in grado di sorvegliare i suoi dintorni e capire se hai bisogno di un bullone senza nemmeno chiedere (nastro adesivo per farlo reggere in piedi e bulloni non inclusi - l’Azienda scarica ogni responsabilità al cliente in caso di danni a cose, animali o persone).",Placeholder 6,
 ,,,
+weed_eater_9000,Weed Eater 9000,Weed Eater 9000,除草机9000
+mecha_freezer,Mecha Freezer,Mecha Freezer,机械冷冻机
+fire_hydrant,Fire Hydrant,Fire Hydrant,消防栓
+vacuumba,Vacuumba,Vacuumba,吸尘机
+aligned_speaker,Cassa Schierata,Aligned Speaker,对齐音箱
 ,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
+weed_eater_9000_desc,"Dotato di tre possenti lame d’acciaio estremamente affilate, queste sono grado di compiere ben 800 giri al minuto e falciare anche la più insidiosa delle erbacce. Le sue lame non sono dei bei baffoni, non accarezzarle (l’Azienda non è responsabile in caso della perdita di arti, leggere attentamente il foglio illustrativo non presente nella confezione).",Placeholder 1,
+mecha_freezer_desc,"È più grosso! È più cattivo! Signore e signori, questo è troppo anche per l’estate più torrida che abbiate mai vissuto! Il nuovo Mecha Freezer è progettato per farti sentire al fresco come se fossi in mezzo ad una bufera di neve e può raggiungere qualsiasi luogo grazie ai suoi possenti cingoli (necessita comunque di essere collegato ad una presa per il corretto funzionamento).",Placeholder 2,
+fire_hydrant_desc,"Non dovrai aspettare mai più i pompieri! Le braccia del Fire Hydrant sono in grado di spruzzare getti d’acqua ad alta pressione per contrastare anche le fiamme più ostinate e, grazie alle sue molle, il fuoco ad alta quota non è più un problema! I pompieri sono scettici dato che spesso saltella via a domare mozziconi di sigaretta roventi sui marciapiedi (acqua non inclusa).",Placeholder 3,
+vacuumba_desc,"Il suo unico scopo è divorare anche la più piccola briciola presente sulla faccia della terra. Non si fermerà dinanzi a nulla, nemmeno davanti a un muro! (si prega di non posizionare ostacoli davanti al suo passaggio per un corretto funzionamento).",Placeholder 4,
+aligned_speaker_desc,"Questa cassa ha uno stile moderno e selvaggio allo stesso tempo, per alcuni incute timore, per altri ispira sicurezza. Purtroppo crede a tutti gli ordini del software e li esegue sempre senza mai metterli in discussione, se provi a contraddirlo ti urla addosso. Crede che si stava meglio quando c’era lui a dirigere la musica, ovvero la versione 2.2 del software.",Placeholder 5,
 ,,,
 ,,,
 ,,,

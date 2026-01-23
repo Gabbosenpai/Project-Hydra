@@ -9,11 +9,11 @@ var robot_textures = {
 }
 
 var robot_names = {
-	"weed_eater": "Weed Eeater 9000",
-	"mecha_freezer": "Mecha Freezer",
-	"fire_hydrant": "Fire Hydrant",
-	"romba": "Vacuumba", #da verificare copyright
-	"cassa_schierata": "Cassa Schierata"
+	"weed_eater": "weed_eater_9000",
+	"mecha_freezer": "mecha_freezer",
+	"fire_hydrant": "fire_hydrant",
+	"romba": "vacuumba", #da verificare copyright
+	"cassa_schierata": "aligned_speaker"
 }
 #valore livello massimo per sbloccare una voce
 var robot_unlock_levels = {
@@ -24,11 +24,11 @@ var robot_unlock_levels = {
 	"cassa_schierata": 6
 }
 var robot_texts = {
-	"weed_eater": "Dotato di tre possenti lame d’acciaio estremamente affilate, queste sono grado di compiere ben 800 giri al minuto e falciare anche la più insidiosa delle erbacce. Le sue lame non sono dei bei baffoni, non accarezzarle (l’Azienda non è responsabile in caso della perdita di arti, leggere attentamente il foglio illustrativo non presente nella confezione).",
-	"mecha_freezer": "È più grosso! È più cattivo! Signore e signori, questo è troppo anche per l’estate più torrida che abbiate mai vissuto! Il nuovo Mecha Freezer è progettato per farti sentire al fresco come se fossi in mezzo ad una bufera di neve e può raggiungere qualsiasi luogo grazie ai suoi possenti cingoli (necessita comunque di essere collegato ad una presa per il corretto funzionamento).",
-	"cassa_schierata": "Questa cassa ha uno stile moderno e selvaggio allo stesso tempo, per alcuni incute timore, per altri ispira sicurezza. Purtroppo crede a tutti gli ordini del software e li esegue sempre senza mai metterli in discussione, se provi a contraddirlo ti urla addosso. Crede che si stava meglio quando c’era lui a dirigere la musica, ovvero la versione 2.2 del software.",
-	"romba": "Il suo unico scopo è divorare anche la più piccola briciola presente sulla faccia della terra. Non si fermerà dinanzi a nulla, nemmeno davanti a un muro! (si prega di non posizionare ostacoli davanti al suo passaggio per un corretto funzionamento).",
-	"fire_hydrant": "Non dovrai aspettare mai più i pompieri! Le braccia del Fire Hydrant sono in grado di spruzzare getti d’acqua ad alta pressione per contrastare anche le fiamme più ostinate e, grazie alle sue molle, il fuoco ad alta quota non è più un problema! I pompieri sono scettici dato che spesso saltella via a domare mozziconi di sigaretta roventi sui marciapiedi (acqua non inclusa)."
+	"weed_eater": "weed_eater_9000_desc",
+	"mecha_freezer": "mecha_freezer_desc",
+	"cassa_schierata": "aligned_speaker_desc",
+	"romba": "vacuumba_desc",
+	"fire_hydrant": "fire_hydrant_desc"
 }
 var clicked: bool
 
@@ -53,8 +53,8 @@ func _ready():
 # Mostra la descrizione del robot
 func show_description(robot_name: String):
 	if robot_name in robot_texts:
-		name_label.text = robot_names[robot_name]
-		desc_label.text = robot_texts[robot_name]
+		name_label.text = tr(robot_names[robot_name])
+		desc_label.text = tr(robot_texts[robot_name])
 		desc_panel.modulate.a = 0.0
 		desc_panel.visible = true
 
