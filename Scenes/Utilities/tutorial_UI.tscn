@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byd0yxx472bpy"]
 
-[ext_resource type="Texture2D" uid="uid://o2o8mb00jk67" path="res://Assets/Level_Example.JPG" id="1_rihvr"]
+[ext_resource type="Texture2D" uid="uid://b3avukrrtfnrh" path="res://Assets/Level_Example2.JPG" id="1_rihvr"]
 [ext_resource type="PackedScene" uid="uid://y7gbajscu5sn" path="res://Scenes/Utilities/callout.tscn" id="1_w17sg"]
 
 [node name="TutorialUI" type="Control"]
@@ -46,9 +46,9 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
 offset_left = 369.0
-offset_top = 395.0
+offset_top = 418.0
 offset_right = 369.0
-offset_bottom = 395.0
+offset_bottom = 418.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
@@ -61,16 +61,32 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 502.0
-offset_top = 163.0
-offset_right = 502.0
-offset_bottom = 163.0
+offset_left = 591.0
+offset_top = 185.0
+offset_right = 591.0
+offset_bottom = 185.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="Node2D/Nuvoletta2/PanelContainer" index="0"]
 text = "Posiziona le torrette su un nastro 
 per evitare che i nemici avanzino."
+
+[node name="Nuvoletta3" parent="Node2D" instance=ExtResource("1_w17sg")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 507.0
+offset_top = 568.0
+offset_right = 507.0
+offset_bottom = 568.0
+grow_vertical = 1
+size_flags_horizontal = 4
+
+[node name="Label" parent="Node2D/Nuvoletta3/PanelContainer" index="0"]
+text = "Posizionando il delivery drone su un nastro 
+si potranno ottenere scrap."
 
 [node name="ButtonContinue" type="Button" parent="."]
 layout_mode = 0
@@ -90,3 +106,4 @@ text = "Salta"
 
 [editable path="Node2D/Nuvoletta1"]
 [editable path="Node2D/Nuvoletta2"]
+[editable path="Node2D/Nuvoletta3"]
