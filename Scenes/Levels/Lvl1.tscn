@@ -141,8 +141,12 @@ tilemap = NodePath("../TileMap")
 
 [connection signal="pressed" from="UI/TutorialPopup/BtnSi" to="TutorialManager" method="_on_btn_si_pressed"]
 [connection signal="pressed" from="UI/TutorialPopup/BtnNo" to="TutorialManager" method="_on_btn_no_pressed"]
+[connection signal="pressed" from="UI/TutorialPopup/TutorialUI/ButtonContinue" to="TutorialManager" method="_on_button_continue_pressed"]
+[connection signal="pressed" from="UI/TutorialPopup/TutorialUI/ButtonSkip" to="TutorialManager" method="_on_button_skip_pressed"]
 [connection signal="timeout" from="WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
 [connection signal="turret_placed" from="TurretManager" to="PointManager" method="_on_turret_placed"]
 
 [editable path="UI"]
+[editable path="UI/TutorialPopup/TutorialUI"]
+[editable path="UI/TutorialPopup/TutorialUI/Node2D/Nuvoletta1"]
 [editable path="EnemySpawner"]

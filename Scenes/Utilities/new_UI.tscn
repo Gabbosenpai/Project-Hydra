@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=45 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="2_rkjgo"]
@@ -26,6 +26,7 @@
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
 [ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="22_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://c1gnm3v0hp5ta" path="res://Assets/Sprites/UI/Scrap UI.png" id="24_wlbwg"]
+[ext_resource type="PackedScene" uid="uid://byd0yxx472bpy" path="res://Scenes/Utilities/tutorial_UI.tscn" id="26_7nnyr"]
 
 [sub_resource type="Animation" id="Animation_wunin"]
 length = 0.001
@@ -936,8 +937,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_pi3ax")
 }
 
+[node name="TutorialUI" parent="TutorialPopup" instance=ExtResource("26_7nnyr")]
+visible = false
+layout_mode = 1
+offset_left = 12.0
+offset_top = 324.0
+offset_right = 12.0
+offset_bottom = 324.0
+
 [node name="Victory" type="Panel" parent="."]
 process_mode = 3
+visible = false
 z_index = 1000
 layout_mode = 1
 anchors_preset = 8

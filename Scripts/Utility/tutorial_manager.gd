@@ -3,6 +3,10 @@ extends Node
 @onready var popup = $"../UI/TutorialPopup"
 @onready var spawner = $"../EnemySpawner"
 @onready var anim_player = $"../UI/TutorialPopup/AnimationPlayer"
+@onready var tutorialUI = $"../UI/TutorialPopup/TutorialUI"
+@onready var label = $"../UI/TutorialPopup/Label"
+@onready var buttonYes = $"../UI/TutorialPopup/BtnSi"
+@onready var buttonNo = $"../UI/TutorialPopup/BtnNo"
 
 func _ready():
 	# Controlliamo se il livello è già stato sbloccato/completato in passato
@@ -26,12 +30,11 @@ func _on_btn_no_pressed():
 	get_tree().paused = false # Riparte il gioco normalmente
 
 func _on_btn_si_pressed():
-	anim_player.play("chiusura")
-	await anim_player.animation_finished
-	popup.visible = false
-	get_tree().paused = false
-	anim_player.play("chiusura")
-	avvia_sequenza_tutorial()
+	label.visible = false
+	buttonYes.visible = false
+	buttonNo.visible = false
+	tutorialUI.visible = true
+	#avvia_sequenza_tutorial()
 
 #Vedere come implementare questa parte
 func avvia_sequenza_tutorial():
@@ -40,3 +43,14 @@ func avvia_sequenza_tutorial():
 	print("Tutorial avviato: segui le istruzioni...")
 	# Esempio: forza la selezione di una torretta
 	level.ui_controller.emit_signal("select_turret", "turret1")
+
+
+func _on_button_continue_pressed() -> void:
+	pass # Replace with function body.
+
+#Per Test da Sistemare
+func _on_button_skip_pressed() -> void:
+	anim_player.play("chiusura")
+	await anim_player.animation_finished
+	popup.visible = false
+	get_tree().paused = false
