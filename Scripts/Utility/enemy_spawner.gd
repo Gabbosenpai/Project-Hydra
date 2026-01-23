@@ -18,12 +18,13 @@ signal wave_completed(wave_number)
 @export var next_wave_delay_timer: Timer
 @export var is_blackout_level: bool = false
 
+
 var all_enemy_scenes = {
-	"romba": preload("res://Scenes/Robots/romba.tscn"),
-	"we9k": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
-	"mf": preload("res://Scenes/Robots/mecha_freezer.tscn"),
-	"fh": preload("res://Scenes/Robots/fire_hydrant.tscn"),
-	"cs": preload("res://Scenes/Robots/cassa_schierata.tscn")
+	"r": preload("res://Scenes/Robots/romba.tscn"),
+	"w": preload("res://Scenes/Robots/weed_eater_9000.tscn"),
+	"m": preload("res://Scenes/Robots/mecha_freezer.tscn"),
+	"f": preload("res://Scenes/Robots/fire_hydrant.tscn"),
+	"c": preload("res://Scenes/Robots/cassa_schierata.tscn")
 }
 
 # Modifica 'interval' per cambiare quanto velocemente escono i nemici (secondi tra uno e l'altro)
@@ -41,34 +42,34 @@ var waves = [
 # }
 var level_patterns = {
 	1: { # LIVELLO 1
-		1: ["2xromba", "1xromba", "2xromba", "1xromba", "1xromba"],
-		2: ["3xromba", "1xromba", "2xromba", "1xromba", "2xromba"],
-		3: ["2xromba", "2xromba", "2xromba", "2xromba", "2xromba"],
-		4: ["3xromba", "2xromba", "3xromba", "2xromba", "3xromba"]
+		1: ["2r", "1r", "2r", "1r", "1r"],
+		2: ["3r", "1r", "2r", "1r", "2r"],
+		3: ["2r", "2r", "2r", "2r", "2r"],
+		4: ["3r", "2r", "3r", "2r", "3r"]
 	},
 	2: { # LIVELLO 2
-		1: ["1xromba, 1xwe9k", "1xromba", "1xwe9k, 1xromba", "1xromba", "1xromba"],
-		2: ["2xwe9k", "2xromba", "1xwe9k", "2xromba", "1xwe9k, 1xromba"],
-		3: ["2xromba, 1xwe9k", "2xwe9k", "2xromba", "1xwe9k, 1xromba", "1xromba, 1xwe9k"],
-		4: ["3xwe9k", "3xromba", "2xwe9k", "3xromba", "2xwe9k"]
+		1: ["1r, 1w", "1r", "1w, 1r", "1r", "1r"],
+		2: ["2w", "2r", "1w", "2r", "1w, 1r"],
+		3: ["2r, 1w", "2w", "2r", "1w, 1r", "1r, 1w"],
+		4: ["3w", "3r", "2w", "3r", "2w"]
 	},
 	3: { # LIVELLO 3
-		1: ["1xmf, 1xromba", "1xromba", "1xmf", "2xromba", "1xwe9k"],
-		2: ["1xmf, 1xwe9k", "1xmf, 1xromba", "2xwe9k", "1xmf", "1xromba, 1xmf"],
-		3: ["2xmf", "3xwe9k", "1xmf, 1xromba", "1xwe9k, 1xmf", "1xromba, 1xmf, 1xromba"],
-		4: ["3xmf", "2xwe9k", "2xmf", "2xwe9k", "3xmf"]
+		1: ["1m, 1r", "1r", "1m", "2r", "1w"],
+		2: ["1m, 1w", "1m, 1r", "2w", "1m", "1r, 1m"],
+		3: ["2m", "3w", "1m, 1r", "1w, 1m", "1r, 1m, 1r"],
+		4: ["3m", "2w", "2m", "2w", "3m"]
 	},
 	4: { # LIVELLO 4
-		1: ["1xfh, 1xromba", "1xmf", "1xfh", "2xwe9k", "1xromba"],
-		2: ["1xfh, 1xmf", "1xfh, 1xwe9k", "2xmf", "1xfh", "1xwe9k, 1xfh"],
-		3: ["2xfh", "3xmf", "1xfh, 1xwe9k", "1xmf, 1xfh", "1xfh, 1xromba"],
-		4: ["3xfh", "1xfh, 1xmf, 1xfh", "2xfh", "3xmf", "3xfh"]
+		1: ["1f, 1r", "1m", "1f", "2w", "1r"],
+		2: ["1f, 1m", "1f, 1w", "2m", "1f", "1w, 1f"],
+		3: ["2f", "3m", "1f, 1w", "1m, 1f", "1f, 1r"],
+		4: ["3f", "1f, 1m, 1f", "2f", "3m", "3f"]
 	},
 	5: { # LIVELLO 5
-		1: ["1xcs, 1xromba", "1xfh", "1xcs", "2xmf", "1xwe9k"],
-		2: ["1xcs, 1xfh", "1xcs, 1xmf", "2xfh", "1xcs", "1xmf, 1xcs"],
-		3: ["2xcs", "3xfh", "1xcs, 1xmf", "1xfh, 1xcs", "1xcs, 1xromba"],
-		4: ["3xcs", "1xcs, 1xfh, 1xcs", "2xcs", "3xfh", "3xcs"]
+		1: ["1c, 1r", "1f", "1c", "2m", "1w"],
+		2: ["1c, 1f", "1c, 1m", "2f", "1c", "1m, 1c"],
+		3: ["2c", "3f", "1c, 1m", "1f, 1c", "1c, 1r"],
+		4: ["3c", "1c, 1f, 1c", "2c", "3f", "3c"]
 	}
 }
 
@@ -183,7 +184,7 @@ func start_wave():
 	animation_player.play("wave_intro")
 	
 	# Usiamo un Timer o il _process per svuotare la coda
-	wave_timer.wait_time = 0.1 # Frequenza di controllo della coda
+	wave_timer.wait_time = 0.1 # Frequenza di controllo della coda 
 	wave_timer.start()
 
 
@@ -362,8 +363,8 @@ func debug_spawn_queues():
 	print("===============================================\n")
 
 
-## Converte la stringa "3xromba"
-## Esempio: "2xromba, mf" diventa ["romba", "romba", "mf"]
+## Converte la stringa "3r"
+## Esempio: "2r, mf" diventa ["r", "r", "m"]
 func unpack_pattern(pattern_string: String) -> Array:
 	var final_list = []
 	# Dividiamo per virgola se vuoi mettere tipi diversi nella stessa riga (es: "2xromba, 1xwe9k")
@@ -371,14 +372,16 @@ func unpack_pattern(pattern_string: String) -> Array:
 	
 	for part in parts:
 		part = part.strip_edges() # Rimuove spazi inutili
-		if "x" in part:
-			var details = part.split("x")
-			var count = int(details[0])
-			var enemy_type = details[1]
+		if part.length() >= 2:
+			# Prende tutto tranne l'ultimo carattere (il numero)
+			var count = int(part.left(-1))
+			# Prende l'ultimo carattere (la chiave: r, w, m, f o c)
+			var type = part.right(1)
+			
 			for i in range(count):
-				final_list.append(enemy_type)
+				final_list.append(type)
 		else:
-			# Se scrivi solo "romba", lo aggiunge una volta sola
+			# Se scrivi solo "r", lo aggiunge una volta sola
 			final_list.append(part)
 			
 	return final_list
