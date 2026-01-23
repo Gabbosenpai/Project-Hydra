@@ -28,7 +28,8 @@ horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Il tuo Obiettivo è quello di distruggere tutti i nemici"
+text = "Proteggi la fabbrica dall'attacco dei nemici.
+Posiziona le torrette sui nastri per fermarli."
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -50,3 +51,42 @@ offset_right = 369.0
 offset_bottom = 395.0
 grow_vertical = 1
 size_flags_horizontal = 4
+
+[node name="Label" parent="Node2D/Nuvoletta1/PanelContainer" index="0"]
+text = "Questo è l'inceneritore evita che i robot vi cadano
+hai un solo tentativo dopo di che sei morto!"
+
+[node name="Nuvoletta2" parent="Node2D" instance=ExtResource("1_w17sg")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 502.0
+offset_top = 163.0
+offset_right = 502.0
+offset_bottom = 163.0
+grow_vertical = 1
+size_flags_horizontal = 4
+
+[node name="Label" parent="Node2D/Nuvoletta2/PanelContainer" index="0"]
+text = "Posiziona le torrette su un nastro 
+per evitare che i nemici avanzino."
+
+[node name="ButtonContinue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 639.0
+offset_right = 686.0
+offset_bottom = 774.0
+text = "Continua"
+
+[node name="ButtonSkip" type="Button" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 639.0
+offset_right = 1053.0
+offset_bottom = 774.0
+text = "Salta"
+
+[editable path="Node2D/Nuvoletta1"]
+[editable path="Node2D/Nuvoletta2"]

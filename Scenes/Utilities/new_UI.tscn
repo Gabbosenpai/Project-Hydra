@@ -728,7 +728,6 @@ stretch_mode = 0
 
 [node name="PauseMenu" type="Panel" parent="."]
 process_mode = 3
-visible = false
 z_index = 1000
 layout_mode = 1
 anchors_preset = 8
@@ -939,6 +938,7 @@ libraries = {
 }
 
 [node name="TutorialUI" parent="TutorialPopup" instance=ExtResource("26_7nnyr")]
+visible = false
 layout_mode = 1
 offset_left = 12.0
 offset_top = 324.0
