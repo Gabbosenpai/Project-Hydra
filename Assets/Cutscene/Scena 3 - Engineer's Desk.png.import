@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn5ompyl115hw"
-path="res://.godot/imported/Scena 3.png-d96976831225f48cab17e2663ab9f378.ctex"
+uid="uid://ehyxiucct06d"
+path="res://.godot/imported/Scena 3 - Engineer's Desk.png-1dca4a9167f8aeee18b50f4875d654b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cutscene/Scena 3.png"
-dest_files=["res://.godot/imported/Scena 3.png-d96976831225f48cab17e2663ab9f378.ctex"]
+source_file="res://Assets/Cutscene/Scena 3 - Engineer's Desk.png"
+dest_files=["res://.godot/imported/Scena 3 - Engineer's Desk.png-1dca4a9167f8aeee18b50f4875d654b2.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7ysbi4ys1iar"]
+[gd_scene load_steps=10 format=3 uid="uid://c7ysbi4ys1iar"]
 
 [ext_resource type="Texture2D" uid="uid://covn6yeutucw1" path="res://Assets/Cutscene/Scena 1 - Earth.png" id="1_rj3ne"]
 [ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="2_afety"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dtsowgsvoy1mc" path="res://Scenes/Utilities/Title Stars/title_star_e.tscn" id="6_1a485"]
 [ext_resource type="PackedScene" uid="uid://gfkstn7pgom8" path="res://Scenes/Utilities/Title Stars/title_star_f.tscn" id="7_43xp0"]
 [ext_resource type="Texture2D" uid="uid://0b4l6bium6lt" path="res://Assets/Cutscene/Scena 2 - The Company.png" id="8_e0h8o"]
+[ext_resource type="Texture2D" uid="uid://ehyxiucct06d" path="res://Assets/Cutscene/Scena 3 - Engineer's Desk.png" id="9_llwun"]
 
 [node name="Cutscene" type="Node"]
 
@@ -16,6 +17,7 @@ offset = Vector2(960, 540)
 metadata/_edit_lock_ = true
 
 [node name="Scene 1 - Earth" type="TextureRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(4, 4)
@@ -150,8 +152,9 @@ texture = ExtResource("8_e0h8o")
 
 [node name="Scene 3 - Engineer\'s Desk" type="TextureRect" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("9_llwun")
 
 [node name="Scene 4a - Email Home" type="TextureRect" parent="."]
 visible = false
