@@ -780,7 +780,7 @@ offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40
-text = "Music"
+text = "music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -815,10 +815,10 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40
-text = "Sound 
-Effects"
+text = "sound_effect"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SfxSlider" type="HSlider" parent="PauseMenu/MuteSFXButton"]
 process_mode = 3
@@ -851,7 +851,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40
-text = "Riprendi"
+text = "resume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -876,7 +876,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_pi3ax")
 theme_override_font_sizes/font_size = 40
-text = "Menù Principale"
+text = "main_menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
