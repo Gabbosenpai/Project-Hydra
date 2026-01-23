@@ -6,7 +6,7 @@ extends Tower
 @export var jc_max_health: int = 100 # Salute massima 
 @export var jc_recharge_timer: float = 5.0 # Tempo di ricarica 
 
-var jc_shoot_sfx: AudioStreamMP3 = preload("res://Assets/Sound/SFX/Robotic-shoot-cut.mp3")
+var jc_shoot_sfx: AudioStreamMP3 = preload("res://Assets/Sound/SFX/jammer_cannon.mp3")
 
 
 func _ready() -> void:

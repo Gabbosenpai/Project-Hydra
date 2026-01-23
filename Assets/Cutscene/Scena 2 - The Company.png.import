@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxpt0loru32bq"
-path="res://.godot/imported/Scena 1.png-78305b909c6417f9272d746cd764f5fa.ctex"
+uid="uid://0b4l6bium6lt"
+path="res://.godot/imported/Scena 2 - The Company.png-0e2fc177e3fc2fb74291626fdb327537.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cutscene/Scena 1.png"
-dest_files=["res://.godot/imported/Scena 1.png-78305b909c6417f9272d746cd764f5fa.ctex"]
+source_file="res://Assets/Cutscene/Scena 2 - The Company.png"
+dest_files=["res://.godot/imported/Scena 2 - The Company.png-0e2fc177e3fc2fb74291626fdb327537.ctex"]
 
 [params]
 
