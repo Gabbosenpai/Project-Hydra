@@ -947,7 +947,6 @@ offset_bottom = 324.0
 
 [node name="Victory" type="Panel" parent="."]
 process_mode = 3
-visible = false
 z_index = 1000
 layout_mode = 1
 anchors_preset = 8
