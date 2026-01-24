@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://byd0yxx472bpy"]
+[gd_scene load_steps=19 format=3 uid="uid://byd0yxx472bpy"]
 
+[ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_doooi"]
 [ext_resource type="Texture2D" uid="uid://b3avukrrtfnrh" path="res://Assets/Tutorial/Level_Example2.JPG" id="1_rihvr"]
 [ext_resource type="PackedScene" uid="uid://y7gbajscu5sn" path="res://Scenes/Utilities/callout.tscn" id="1_w17sg"]
+[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="2_p0j7y"]
 [ext_resource type="Texture2D" uid="uid://bg0nwkc5wdagy" path="res://Assets/Tutorial/Level_Example3.PNG" id="3_1a8s4"]
 [ext_resource type="Texture2D" uid="uid://dm5vrce6ou7u5" path="res://Assets/Tutorial/Level_Example4.PNG" id="4_a35il"]
 [ext_resource type="Texture2D" uid="uid://b5ckfeyndpibo" path="res://Assets/Tutorial/Level_Example5.PNG" id="5_8o15c"]
@@ -14,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://d2pnt3yato1t3" path="res://Assets/Sprites/Towers/Spaghetti Cable/Spaghetti Cable.png" id="11_rkl8b"]
 [ext_resource type="Texture2D" uid="uid://38ixobosr16o" path="res://Assets/Sprites/Towers/Toilet Silo/Sturamissile Launcher.png" id="12_86wuv"]
 [ext_resource type="Texture2D" uid="uid://bpbwnwuwramb" path="res://Assets/Sprites/UI/Menu/Wave Panel.png" id="14_4oee2"]
+[ext_resource type="Texture2D" uid="uid://d3jmyypyro3e" path="res://Assets/Sprites/UI/Menu/Small Menu Button Not Pressed.png" id="17_kl3j5"]
+[ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="18_odc72"]
 
 [node name="TutorialUI" type="Control"]
 visible = false
@@ -24,27 +28,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="Part1" type="Node2D" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Part1"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -197.5
-offset_right = 197.5
-offset_bottom = 40.0
+offset_left = 505.5
+offset_right = 900.5
+offset_bottom = 76.0
 grow_horizontal = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="Part1/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 25
 text = "Obiettivo"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="Part1/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Proteggi la fabbrica dall'attacco dei nemici.
 Posiziona le torrette sui nastri per fermarli."
-
-[node name="Part1" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Part1"]
 offset_left = 213.0
@@ -66,6 +73,8 @@ grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="Part1/Nuvoletta1/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Questo è l'inceneritore evita che i robot vi cadano
 hai un solo tentativo dopo di che sei morto!"
 
@@ -82,6 +91,8 @@ grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="Part1/Nuvoletta2/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Posiziona le torrette su un nastro 
 per evitare che i nemici avanzino."
 
@@ -98,6 +109,8 @@ grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="Part1/Nuvoletta3/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Posizionando il delivery drone su un nastro 
 si potranno ottenere scrap."
 
@@ -116,14 +129,16 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 577.0
+offset_left = 547.0
 offset_top = 264.0
-offset_right = 577.0
+offset_right = 547.0
 offset_bottom = 264.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="Part2/Nuvoletta1/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Se un Nemico cade nell'inceneritore 
 i nastri bruceranno i nemici
 ma anche le torrette posizionate
@@ -144,14 +159,19 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 519.0
+offset_left = 273.0
 offset_top = 334.0
-offset_right = 519.0
+offset_right = 273.0
 offset_bottom = 334.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
+[node name="Polygon2D" parent="Part3/Nuvoletta1" index="0"]
+position = Vector2(251, -4)
+
 [node name="Label" parent="Part3/Nuvoletta1/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Fai attenzione a dove posizioni la torrette 
 perché i nastri ad ogni ondata si spostano verso sinistra 
 in direzione dell'inceneritore di un posto  
@@ -161,6 +181,28 @@ verra distrutta tuttavia ti verra restituita una parte delle scrap."
 
 [node name="PosTurret1" type="Node2D" parent="."]
 visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PosTurret1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 392.5
+offset_right = 912.5
+offset_bottom = 76.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="PosTurret1/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 25
+text = "Posizionamento/Rimozione Torrette"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="PosTurret1/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
+text = "Posiziona torrette in punti strategici sui nastri per fermare i nemici."
 
 [node name="TextureRect" type="TextureRect" parent="PosTurret1"]
 offset_left = 28.0
@@ -183,14 +225,16 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 287.0
-offset_top = 479.0
-offset_right = 287.0
-offset_bottom = 479.0
+offset_left = 277.0
+offset_top = 489.0
+offset_right = 277.0
+offset_bottom = 489.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="PosTurret1/Nuvoletta1/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Per posizionare la torretta 
 clicca sul pulsante con l'immagine 
 della torretta di tuo interesse "
@@ -208,6 +252,8 @@ grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="PosTurret1/Nuvoletta2/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Ora il pulsante è verde 
 ed è possibile effettuare 
 il posizionamento 
@@ -219,14 +265,16 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 916.0
+offset_left = 815.0
 offset_top = 215.0
-offset_right = 916.0
+offset_right = 815.0
 offset_bottom = 215.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="PosTurret1/Nuvoletta3/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Ora basterà cliccare su una cella 
 con il dito e la torretta verrà posizionata "
 
@@ -254,14 +302,19 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 625.0
-offset_top = 487.0
-offset_right = 625.0
-offset_bottom = 487.0
+offset_left = 525.0
+offset_top = 509.0
+offset_right = 525.0
+offset_bottom = 509.0
 grow_vertical = 1
 size_flags_horizontal = 4
 
+[node name="Polygon2D" parent="PosTurret2/Nuvoletta1" index="0"]
+position = Vector2(100, 1)
+
 [node name="Label" parent="PosTurret2/Nuvoletta1/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Per rimuovere  una torretta 
 clicca sul pulsante con la X"
 
@@ -281,6 +334,8 @@ size_flags_horizontal = 4
 position = Vector2(263, 0)
 
 [node name="Label" parent="PosTurret2/Nuvoletta2/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Ora il pulsante è rosso 
 ed è possibile effettuare 
 la rimozione
@@ -300,11 +355,36 @@ grow_vertical = 1
 size_flags_horizontal = 4
 
 [node name="Label" parent="PosTurret2/Nuvoletta3/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Ora basterà cliccare sulla torretta 
 con il dito per eliminarla"
 
 [node name="TypeOfTurret" type="Node2D" parent="."]
 visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TypeOfTurret"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 505.5
+offset_right = 900.5
+offset_bottom = 76.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="TypeOfTurret/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 25
+text = "Tipi di Torrette"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="TypeOfTurret/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
+text = "Ci sono cinque tipi di torrette disponibili"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TypeOfTurret"]
 offset_left = 37.0
@@ -423,42 +503,53 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="TypeOfTurret"]
-offset_left = 97.0
+offset_left = 24.0
 offset_top = 193.0
-offset_right = 231.0
-offset_bottom = 216.0
+offset_right = 299.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 20
 text = "Bolt Shooter"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="TypeOfTurret"]
-offset_left = 359.0
+offset_left = 257.0
 offset_top = 193.0
-offset_right = 493.0
-offset_bottom = 216.0
+offset_right = 575.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 20
 text = "Jammer Cannon"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="TypeOfTurret"]
-offset_left = 581.0
-offset_top = 193.0
-offset_right = 789.0
-offset_bottom = 216.0
-text = "Hot Kawaii Coffee Machine"
+offset_left = 465.0
+offset_top = 179.0
+offset_right = 918.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 20
+text = "Hot Kawaii 
+Coffee Machine"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="TypeOfTurret"]
-offset_left = 869.0
-offset_top = 193.0
-offset_right = 1003.0
-offset_bottom = 216.0
+offset_left = 824.0
+offset_top = 192.0
+offset_right = 1099.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 20
 text = "Spaghetti Cable"
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="TypeOfTurret"]
-offset_left = 1135.0
-offset_top = 193.0
-offset_right = 1269.0
-offset_bottom = 216.0
+offset_left = 1108.0
+offset_top = 192.0
+offset_right = 1296.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 20
 text = "Toilet Silo"
 horizontal_alignment = 1
 
@@ -473,10 +564,12 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="TypeOfTurret/TextureRect"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 21.0
-offset_right = 280.0
-offset_bottom = 70.0
+offset_left = 29.0
+offset_top = 30.0
+offset_right = 276.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Torretta base"
 horizontal_alignment = 1
 
@@ -492,9 +585,11 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="TypeOfTurret/TextureRect2"]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 21.0
+offset_top = 30.0
 offset_right = 266.0
-offset_bottom = 70.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Blocca I Nemici"
 horizontal_alignment = 1
 
@@ -509,10 +604,12 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="TypeOfTurret/TextureRect3"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 21.0
-offset_right = 280.0
-offset_bottom = 70.0
+offset_left = 28.0
+offset_top = 29.0
+offset_right = 275.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
 text = "Danni Calore"
 horizontal_alignment = 1
 
@@ -527,11 +624,14 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="TypeOfTurret/TextureRect4"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 21.0
-offset_right = 273.0
-offset_bottom = 70.0
-text = "Torretta non ricordo cosa fa"
+offset_left = 24.0
+offset_top = 19.0
+offset_right = 274.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
+text = "Torretta non
+ ricordo cosa fa"
 horizontal_alignment = 1
 
 [node name="TextureRect5" type="TextureRect" parent="TypeOfTurret"]
@@ -549,28 +649,71 @@ offset_left = 30.0
 offset_top = 21.0
 offset_right = 277.0
 offset_bottom = 70.0
-text = "Torretta Lanciamissili"
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
+text = "Torretta 
+Lanciamissili"
 horizontal_alignment = 1
 
-[node name="ButtonContinue" type="Button" parent="."]
+[node name="ButtonContinue" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 343.0
-offset_top = 639.0
-offset_right = 686.0
-offset_bottom = 774.0
+offset_left = 44.0
+offset_top = 658.0
+offset_right = 674.0
+offset_bottom = 793.0
 action_mode = 0
-text = "Continua"
+texture_normal = ExtResource("17_kl3j5")
+texture_pressed = ExtResource("18_odc72")
 
-[node name="ButtonSkip" type="Button" parent="."]
+[node name="Label" type="Label" parent="ButtonContinue"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -28.5
+offset_right = 35.5
+offset_bottom = -5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 40
+text = "Continua"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonSkip" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 710.0
-offset_top = 639.0
-offset_right = 1053.0
-offset_bottom = 774.0
+offset_left = 686.0
+offset_top = 658.0
+offset_right = 1316.0
+offset_bottom = 793.0
 action_mode = 0
+texture_normal = ExtResource("17_kl3j5")
+texture_pressed = ExtResource("18_odc72")
+
+[node name="Label" type="Label" parent="ButtonSkip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -28.5
+offset_right = 35.5
+offset_bottom = -5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_doooi")
+theme_override_font_sizes/font_size = 40
 text = "Salta"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Part1/Nuvoletta1"]
 [editable path="Part1/Nuvoletta2"]
