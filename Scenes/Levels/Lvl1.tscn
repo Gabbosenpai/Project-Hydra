@@ -104,12 +104,6 @@ offset_top = -1261.0
 offset_right = 1644.0
 offset_bottom = -143.0
 
-[node name="Part1" parent="UI/TutorialPopup/TutorialUI" index="0"]
-visible = true
-
-[node name="TypeOfTurret" parent="UI/TutorialPopup/TutorialUI" index="5"]
-visible = false
-
 [node name="Victory" parent="UI" index="9"]
 offset_left = 275.0
 offset_top = -1261.0
