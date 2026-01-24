@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boo2pqxp2w1u0"
-path="res://.godot/imported/Scena 4c.png-29f24468161a75af8c5824c19040c05b.ctex"
+uid="uid://dtjxsqtjmqvm7"
+path="res://.godot/imported/Scena 4a - Email Home.png-185f8263392c29919d93c31438d9bef2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cutscene/Scena 4c.png"
-dest_files=["res://.godot/imported/Scena 4c.png-29f24468161a75af8c5824c19040c05b.ctex"]
+source_file="res://addons/Scena 4a - Email Home.png"
+dest_files=["res://.godot/imported/Scena 4a - Email Home.png-185f8263392c29919d93c31438d9bef2.ctex"]
 
 [params]
 
