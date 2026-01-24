@@ -97,19 +97,6 @@ theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_constants/line_spacing = 30
 theme_override_fonts/font = ExtResource("4_wg104")
 theme_override_font_sizes/font_size = 45
-text = "DA AGGIORNARE!
-
-Crediti OST:
-
-Cody O'Quinn: Scrub Slayer
-Epic Music Journey: 8 BIT RPG BATTLE  Retro Game Music
-AdventureChiptunes: NEW POWER 
-Pix: A Lonely Cherry Tree
-Adam Haynes: 8-bit RPG Music ｜ Victory Theme
-Quincas Moreira: Robot City
-
-MB Music: Game Over (8-Bit Music)
-Kevin MacLeod:  Itty Bitty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
