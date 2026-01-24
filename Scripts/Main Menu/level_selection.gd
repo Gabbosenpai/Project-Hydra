@@ -130,24 +130,24 @@ func _on_level_2_pressed() -> void:
 
 func _on_level_3_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
-	AudioManager.play_music(level_music)
+	#var level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
+	#AudioManager.play_music(level_music)
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl3.tscn")
 
 
 func _on_level_4_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	var level_music = preload("res://Assets/Sound/OST/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3")
-	AudioManager.play_music(level_music)
+	#var level_music = preload("res://Assets/Sound/OST/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3")
+	#AudioManager.play_music(level_music)
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl4.tscn")
 
 
 func _on_level_5_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
-	var level_music = preload("res://Assets/Sound/OST/8 Bit Boss - Boss Battle Music By HeatleyBros.mp3")
-	AudioManager.play_music(level_music)
+	#var level_music = preload("res://Assets/Sound/OST/8 Bit Boss - Boss Battle Music By HeatleyBros.mp3")
+	#AudioManager.play_music(level_music)
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Levels/Lvl5.tscn")
 

@@ -81,7 +81,7 @@ func _on_next_level_pressed() -> void:
 			level_music = preload("res://Assets/Sound/OST/NEW POWER ▸ 8-Bit Chiptune ｜ Free Game Music [No Copyright].mp3")
 			level_scene_path = "res://Scenes/Levels/Lvl3.tscn"
 		4:
-			level_music = preload("res://Assets/Sound/OST/Jeremy Blake - Powerup!  NO COPYRIGHT 8-bit Music.mp3")
+			level_music = preload("res://Assets/Sound/OST/8 Bit Scrap!  Fun Battle Game Music by HeatleyBros (lvl4).mp3")
 			level_scene_path = "res://Scenes/Levels/Lvl4.tscn"
 		5:
 			level_music = preload("res://Assets/Sound/OST/8 Bit Boss - Boss Battle Music By HeatleyBros.mp3")

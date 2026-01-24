@@ -8,7 +8,7 @@ func _ready():
 	$Label.text = "MANCANO CREDITI OST CUTSCENE\n\n\n" + tr("menu_credits") + " OST\n" + "Quincas Moreira: Robot City\nCody O'Quinn: Scrub Slayer\nEpic Music Journey: 8 BIT RPG BATTLE\nAdventureChiptunes: NEW POWER\nHeatleyBros: 8 Bit Scrap!\nHeatleyBros: 8 BIT BOSS\nPix: A Lonely Cherry Tree\nAdam Haynes: 8-bit Victory Theme\nKevin MacLeod: Itty Bitty"
 	AudioManager.play_music(credits_music) #Viene avviata la OST
 	anim_player.play("ScorriCrediti")
-	
+
 
 
 #Funzione che rileva quando il pulsante per tonare al menu viene cliccato
