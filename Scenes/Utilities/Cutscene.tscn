@@ -20,8 +20,6 @@ base_font = ExtResource("12_8y1j2")
 spacing_glyph = -5
 
 [node name="Cutscene" type="Node"]
-metadata/_edit_horizontal_guides_ = [261.0, 316.0, 281.0]
-metadata/_edit_vertical_guides_ = [1641.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -204,7 +202,7 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "Boss"
+text = "Capo"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Boss"]
@@ -654,6 +652,64 @@ theme_override_font_sizes/font_size = 40
 text = "Cestino"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sender" type="Label" parent="Scene 4/Scene 4c - Clankers"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 157.0
+offset_right = 572.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("11_b7k71")
+theme_override_font_sizes/font_size = 40
+text = "Capo"
+vertical_alignment = 1
+
+[node name="Object" type="Label" parent="Scene 4/Scene 4c - Clankers"]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 159.0
+offset_right = 1246.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("12_8y1j2")
+theme_override_font_sizes/font_size = 40
+text = "Promozione"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hour" type="Label" parent="Scene 4/Scene 4c - Clankers"]
+layout_mode = 0
+offset_left = 1558.0
+offset_top = 171.0
+offset_right = 1723.0
+offset_bottom = 211.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_fonts/font = ExtResource("12_8y1j2")
+theme_override_font_sizes/font_size = 40
+text = "11:27"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="Scene 4/Scene 4c - Clankers"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 291.0
+offset_right = 1792.0
+offset_bottom = 811.0
+theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
+theme_override_constants/line_spacing = 15
+theme_override_fonts/font = ExtResource("12_8y1j2")
+theme_override_font_sizes/font_size = 40
+text = "Sono AI, il nuovo capo.
+Sono lieto di annunciare la sua promozione, la sua nuova posizione è: LICENZIATO.
+Non è più necessario all'Azienda, sto inviando i miei robot per scortarla all'uscita più vicina.
+La prego di collaborare altrimenti la sua presenza nella struttura sarà: TERMINATA.
+
+Le auguro una buona giornata
+Il nuovo capo
+AI"
+autowrap_mode = 2
 
 [node name="Cursor" type="TextureRect" parent="Scene 4"]
 layout_mode = 0
