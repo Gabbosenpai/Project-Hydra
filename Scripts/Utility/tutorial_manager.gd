@@ -7,6 +7,14 @@ extends Node
 @onready var label = $"../UI/TutorialPopup/Label"
 @onready var buttonYes = $"../UI/TutorialPopup/BtnSi"
 @onready var buttonNo = $"../UI/TutorialPopup/BtnNo"
+@onready var tutorial1 = $"../UI/TutorialPopup/TutorialUI/Part1"
+@onready var tutorial2 = $"../UI/TutorialPopup/TutorialUI/Part2"
+@onready var tutorial3 = $"../UI/TutorialPopup/TutorialUI/Part3"
+@onready var tutorial4 = $"../UI/TutorialPopup/TutorialUI/PosTurret1"
+@onready var tutorial5 = $"../UI/TutorialPopup/TutorialUI/PosTurret2"
+@onready var tutorial6 = $"../UI/TutorialPopup/TutorialUI/TypeOfTurret"
+
+var tutorialPart = 0
 
 func _ready():
 	# Controlliamo se il livello è già stato sbloccato/completato in passato
@@ -34,6 +42,7 @@ func _on_btn_si_pressed():
 	buttonYes.visible = false
 	buttonNo.visible = false
 	tutorialUI.visible = true
+	tutorialPart = 1
 	#avvia_sequenza_tutorial()
 
 #Vedere come implementare questa parte
@@ -46,7 +55,31 @@ func avvia_sequenza_tutorial():
 
 
 func _on_button_continue_pressed() -> void:
-	pass # Replace with function body.
+	match tutorialPart:
+		1:
+			tutorial1.visible = false
+			tutorial2.visible = true
+			tutorialPart = 2
+		2:
+			tutorial2.visible = false
+			tutorial3.visible = true
+			tutorialPart = 3
+		3:
+			tutorial3.visible = false
+			tutorial4.visible = true
+			tutorialPart = 4
+		4:
+			tutorial4.visible = false
+			tutorial5.visible = true
+			tutorialPart = 5
+		5:
+			tutorial5.visible = false
+			tutorial6.visible = true
+			tutorialPart = 6
+		6:
+			# Reset e chiusura
+			tutorialPart = 0 
+			_on_button_skip_pressed()
 
 #Per Test da Sistemare
 func _on_button_skip_pressed() -> void:

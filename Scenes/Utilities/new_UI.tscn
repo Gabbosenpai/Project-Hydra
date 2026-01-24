@@ -938,7 +938,6 @@ libraries = {
 }
 
 [node name="TutorialUI" parent="TutorialPopup" instance=ExtResource("26_7nnyr")]
-visible = false
 layout_mode = 1
 offset_left = 12.0
 offset_top = 324.0
