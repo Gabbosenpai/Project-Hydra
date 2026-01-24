@@ -24,27 +24,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="Part1" type="Node2D" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Part1"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -197.5
-offset_right = 197.5
-offset_bottom = 40.0
+offset_left = 505.5
+offset_right = 900.5
+offset_bottom = 76.0
 grow_horizontal = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="Part1/VBoxContainer"]
 layout_mode = 2
 text = "Obiettivo"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="Part1/VBoxContainer"]
 layout_mode = 2
 text = "Proteggi la fabbrica dall'attacco dei nemici.
 Posiziona le torrette sui nastri per fermarli."
-
-[node name="Part1" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Part1"]
 offset_left = 213.0
@@ -161,6 +161,24 @@ verra distrutta tuttavia ti verra restituita una parte delle scrap."
 
 [node name="PosTurret1" type="Node2D" parent="."]
 visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PosTurret1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 392.5
+offset_right = 912.5
+offset_bottom = 76.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="PosTurret1/VBoxContainer"]
+layout_mode = 2
+text = "Posizionamento/Rimozione Torrette"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="PosTurret1/VBoxContainer"]
+layout_mode = 2
+text = "Posiziona torrette in punti strategici sui nastri per fermare i nemici."
 
 [node name="TextureRect" type="TextureRect" parent="PosTurret1"]
 offset_left = 28.0
@@ -305,6 +323,25 @@ con il dito per eliminarla"
 
 [node name="TypeOfTurret" type="Node2D" parent="."]
 visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TypeOfTurret"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 505.5
+offset_right = 900.5
+offset_bottom = 76.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="TypeOfTurret/VBoxContainer"]
+layout_mode = 2
+text = "Tipi di Torrette"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="TypeOfTurret/VBoxContainer"]
+layout_mode = 2
+text = "Ci sono cinque tipi di torrette disponibili"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TypeOfTurret"]
 offset_left = 37.0
