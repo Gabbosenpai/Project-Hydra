@@ -104,6 +104,15 @@ offset_top = -1261.0
 offset_right = 1644.0
 offset_bottom = -143.0
 
+[node name="Label" parent="UI/TutorialPopup" index="0"]
+text = "tutorial_question"
+
+[node name="BtnSi" parent="UI/TutorialPopup" index="1"]
+text = "yes"
+
+[node name="BtnNo" parent="UI/TutorialPopup" index="2"]
+text = "no"
+
 [node name="Victory" parent="UI" index="9"]
 offset_left = 275.0
 offset_top = -1261.0

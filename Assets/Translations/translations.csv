@@ -121,14 +121,6 @@ aligned_speaker_desc,"Questa cassa ha uno stile moderno e selvaggio allo stesso 
 ,,,
 ,,,
 ,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
 #playfab error,,,
 playfab_error_1000,Parametri non validi,Invalid parameters,参数无效
 playfab_error_1001,Account non trovato,Account not found,账户未找到
@@ -139,3 +131,17 @@ playfab_error_1295,Richieste API disabilitate,API requests disabled,API请求被
 playfab_error_1347,Titolo eliminato,Title deleted,标题已删除
 playfab_error_1039,Errore sconosciuto,Unknown error,未知错误
 playfab_error_1142,Email o password non valide,Invalid email or password,电子邮件或密码无效
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+#tutorial section
+skip,Salta,Skip,跳过
+tutorial_question,Vuoi giocare il tutorial?,Do you want to play the tutorial?,你想玩教程吗？
+
+
+
+
+
