@@ -91,7 +91,7 @@ metadata/_edit_lock_ = true
 z_index = 1
 layout_mode = 0
 offset_top = 1083.0
-offset_right = 2162.0
+offset_right = 1919.0
 offset_bottom = 2054.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_constants/line_spacing = 30
@@ -99,6 +99,7 @@ theme_override_fonts/font = ExtResource("4_wg104")
 theme_override_font_sizes/font_size = 45
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Colorscale Filter" parent="." instance=ExtResource("2_cxtio")]
 
