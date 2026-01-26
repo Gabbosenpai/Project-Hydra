@@ -38,8 +38,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 40
-text = "Difendi il tuo posto di lavoro!
-Rottama quelle lattine!"
+text = "tutorial_goal"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,8 +68,7 @@ position = Vector2(196, -2.5)
 [node name="Label" parent="Part1/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "L'inceneritore ti protegge dal primo robot 
-che arriva al tuo ufficio!"
+text = "tutorial_2"
 
 [node name="Nuvoletta2" parent="Part1" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -92,8 +90,7 @@ rotation = -2.6046605
 [node name="Label" parent="Part1/Nuvoletta2/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Posiziona le torrette sul nastro 
-per fermare i robot."
+text = "tutorial_1"
 
 [node name="PartScrap" type="Node2D" parent="."]
 visible = false
