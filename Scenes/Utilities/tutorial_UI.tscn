@@ -68,7 +68,7 @@ position = Vector2(196, -2.5)
 [node name="Label" parent="Part1/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "tutorial_2"
+text = "tutorial_1"
 
 [node name="Nuvoletta2" parent="Part1" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -90,7 +90,7 @@ rotation = -2.6046605
 [node name="Label" parent="Part1/Nuvoletta2/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "tutorial_1"
+text = "tutorial_2"
 
 [node name="PartScrap" type="Node2D" parent="."]
 visible = false
@@ -136,8 +136,7 @@ offset_bottom = 65.0
 [node name="Label" parent="PartScrap/Nuvoletta3/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Piazza un drone
-per ottenere rottami!"
+text = "tutorial_3"
 
 [node name="Nuvoletta4" parent="PartScrap" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -163,8 +162,7 @@ offset_bottom = 65.0
 [node name="Label" parent="PartScrap/Nuvoletta4/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Qui puoi vedere 
-quanti rottami hai!"
+text = "tutorial_4"
 
 [node name="Nuvoletta5" parent="PartScrap" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -190,8 +188,7 @@ offset_bottom = 65.0
 [node name="Label" parent="PartScrap/Nuvoletta5/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Ogni torretta 
-ha un costo in rottami!"
+text = "tutorial_5"
 
 [node name="Part2" type="Node2D" parent="."]
 visible = false
