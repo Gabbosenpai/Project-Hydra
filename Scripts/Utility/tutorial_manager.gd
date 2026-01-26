@@ -8,11 +8,11 @@ extends Node
 @onready var buttonYes = $"../UI/TutorialPopup/BtnSi"
 @onready var buttonNo = $"../UI/TutorialPopup/BtnNo"
 @onready var tutorial1 = $"../UI/TutorialPopup/TutorialUI/Part1"
-@onready var tutorial2 = $"../UI/TutorialPopup/TutorialUI/Part2"
-@onready var tutorial3 = $"../UI/TutorialPopup/TutorialUI/Part3"
-@onready var tutorial4 = $"../UI/TutorialPopup/TutorialUI/PosTurret1"
-@onready var tutorial5 = $"../UI/TutorialPopup/TutorialUI/PosTurret2"
-@onready var tutorial6 = $"../UI/TutorialPopup/TutorialUI/TypeOfTurret"
+@onready var tutorial2 = $"../UI/TutorialPopup/TutorialUI/PartScrap"
+@onready var tutorial3 = $"../UI/TutorialPopup/TutorialUI/Part2"
+@onready var tutorial4 = $"../UI/TutorialPopup/TutorialUI/Part3"
+@onready var tutorial5 = $"../UI/TutorialPopup/TutorialUI/PosTurret1"
+@onready var tutorial6 = $"../UI/TutorialPopup/TutorialUI/PosTurret2"
 
 var tutorialPart = 0
 
