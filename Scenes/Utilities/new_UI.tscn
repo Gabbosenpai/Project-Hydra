@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=48 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="2_rkjgo"]
@@ -26,7 +26,10 @@
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
 [ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="22_d2tjn"]
 [ext_resource type="Texture2D" uid="uid://c1gnm3v0hp5ta" path="res://Assets/Sprites/UI/Scrap UI.png" id="24_wlbwg"]
+[ext_resource type="Texture2D" uid="uid://0vbryaiuqra1" path="res://Assets/Tutorial/Menu Panel Flipped Big.png" id="25_xnhdg"]
 [ext_resource type="PackedScene" uid="uid://byd0yxx472bpy" path="res://Scenes/Utilities/tutorial_UI.tscn" id="26_7nnyr"]
+[ext_resource type="Texture2D" uid="uid://cfof8calkqqq6" path="res://Assets/Sprites/UI/Menu/DB Red Button Not Pressed.png" id="27_mf6oj"]
+[ext_resource type="Texture2D" uid="uid://b5bavfhcdt2lc" path="res://Assets/Sprites/UI/Menu/DB Red Button Pressed.png" id="28_msa12"]
 
 [sub_resource type="Animation" id="Animation_wunin"]
 length = 0.001
@@ -127,7 +130,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5ei8"]
-texture = ExtResource("2_rkjgo")
+texture = ExtResource("25_xnhdg")
 
 [sub_resource type="Animation" id="Animation_5o6ld"]
 length = 0.001
@@ -193,7 +196,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(285, -140), Vector2(285, -1280)]
+"values": [Vector2(180, -250), Vector2(180, -1500)]
 }
 
 [sub_resource type="Animation" id="Animation_6wlri"]
@@ -210,7 +213,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(285, -1280), Vector2(285, -140)]
+"values": [Vector2(180, -1500), Vector2(180, -250)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -311,8 +314,6 @@ sfx_slider = NodePath("PauseMenu/MuteSFXButton/SfxSlider")
 mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
 game_over_timer_value = 3.5
-metadata/_edit_vertical_guides_ = [111.0, 17.0, 1761.0, 1903.0, 1761.0, 1761.0, 964.0, 960.0]
-metadata/_edit_horizontal_guides_ = [987.0, 55.0, 129.0]
 metadata/_edit_lock_ = true
 
 [node name="TurretSelector" type="Panel" parent="."]
@@ -892,16 +893,16 @@ process_mode = 3
 layout_mode = 1
 offset_left = 285.0
 offset_top = -1258.0
-offset_right = 1654.0
-offset_bottom = -140.0
+offset_right = 1854.0
+offset_bottom = 60.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_d5ei8")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="TutorialPopup"]
 layout_mode = 1
-offset_left = 26.0
+offset_left = 132.0
 offset_top = 356.0
-offset_right = 1330.0
+offset_right = 1436.0
 offset_bottom = 430.0
 theme_override_fonts/font = ExtResource("17_d5ei8")
 theme_override_font_sizes/font_size = 40
@@ -910,27 +911,48 @@ horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="BtnSi" type="Button" parent="TutorialPopup"]
+[node name="BtnSi" type="TextureButton" parent="TutorialPopup"]
+process_mode = 3
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-offset_left = 227.0
+offset_left = 600.0
 offset_top = 635.0
-offset_right = 654.0
-offset_bottom = 734.0
-theme_override_fonts/font = ExtResource("18_6wlri")
-theme_override_font_sizes/font_size = 40
-text = "Si"
+offset_right = 711.0
+offset_bottom = 748.0
+texture_normal = ExtResource("22_d2tjn")
+texture_pressed = ExtResource("7_lnnbn")
 
-[node name="BtnNo" type="Button" parent="TutorialPopup"]
+[node name="Label" type="Label" parent="TutorialPopup/BtnSi"]
+layout_mode = 0
+offset_left = -8.0
+offset_right = 119.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 25
+text = "yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnNo" type="TextureButton" parent="TutorialPopup"]
+process_mode = 3
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-offset_left = 693.0
-offset_top = 635.0
-offset_right = 1120.0
-offset_bottom = 734.0
+offset_left = 818.0
+offset_top = 634.0
+offset_right = 929.0
+offset_bottom = 747.0
+texture_normal = ExtResource("27_mf6oj")
+texture_pressed = ExtResource("28_msa12")
+
+[node name="Label" type="Label" parent="TutorialPopup/BtnNo"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 34.0
+offset_right = 80.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("18_6wlri")
-theme_override_font_sizes/font_size = 40
-text = "No"
+theme_override_font_sizes/font_size = 25
+text = "no"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialPopup"]
 libraries = {
