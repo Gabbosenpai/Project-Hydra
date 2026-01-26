@@ -22,7 +22,7 @@ spacing_glyph = -5
 
 [sub_resource type="Animation" id="Animation_8y1j2"]
 resource_name = "Avvio"
-length = 50.0
+length = 60.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,7 +42,7 @@ tracks/1/path = NodePath("Scene 1 - Earth/Stars:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 4.8),
+"times": PackedFloat32Array(0, 3, 5.0333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -54,7 +54,7 @@ tracks/2/path = NodePath("Camera:zoom")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.75, 4.366667, 6.1666665, 10.06, 12.5, 17),
+"times": PackedFloat32Array(2.75, 4.3, 6.733333, 11.066667, 13.666667, 19),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.125, 0.125), Vector2(0.25, 0.25), Vector2(0.25, 0.25), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1)]
@@ -66,7 +66,7 @@ tracks/3/path = NodePath("Scene 2 - The Company:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4.5, 5.25, 8.76, 10.5),
+"times": PackedFloat32Array(4.3333335, 5.25, 10.133333, 11.166667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -78,7 +78,7 @@ tracks/4/path = NodePath("Scene 2 - The Company:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(7.8333, 9.4),
+"times": PackedFloat32Array(8.1, 10.533334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(3840, 2160), Vector2(5500, 2160)]
@@ -90,7 +90,7 @@ tracks/5/path = NodePath("Scene 3 - Engineer\'s Desk:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(10, 10.63, 40, 40.266666),
+"times": PackedFloat32Array(10.733334, 12.3, 40, 40.266666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -102,7 +102,7 @@ tracks/6/path = NodePath("Scene 3 - Engineer\'s Desk:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(12.482587, 17),
+"times": PackedFloat32Array(13.833333, 17.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5760, 3240), Vector2(5760, 3700)]
@@ -114,7 +114,7 @@ tracks/7/path = NodePath("Scene 4:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(16.8, 17.233334, 40, 50),
+"times": PackedFloat32Array(17.3, 18.033333, 40, 60),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -126,7 +126,7 @@ tracks/8/path = NodePath("Scene 4/Cursor:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(18.633333, 20.166666, 21.5, 22.579414, 25),
+"times": PackedFloat32Array(21.63, 23.16, 24.6, 26.066668, 27.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1447, 909), Vector2(1042, 775), Vector2(674, 287), Vector2(674, 287), Vector2(1678, 839)]
@@ -138,7 +138,7 @@ tracks/9/path = NodePath("Scene 4/Scene 4c - Clankers:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 22.158594),
+"times": PackedFloat32Array(0, 25.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -150,7 +150,7 @@ tracks/10/path = NodePath("Scene 4/Scene 4a - Email Home:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 22.175976),
+"times": PackedFloat32Array(0, 25.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -162,7 +162,7 @@ tracks/11/path = NodePath(".")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(50),
+"times": PackedFloat32Array(60),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -476,7 +476,7 @@ scale = Vector2(1, 1)
 modulate = Color(1, 1, 1, 0)
 offset_left = 3840.0
 offset_top = 2160.0
-offset_right = 11519.977
+offset_right = 11520.033
 offset_bottom = 6480.0
 texture = ExtResource("8_e0h8o")
 
@@ -485,7 +485,7 @@ modulate = Color(1, 1, 1, 0)
 offset_left = 5760.0
 offset_top = 3240.0
 offset_right = 9600.0
-offset_bottom = 5400.0527
+offset_bottom = 5400.079
 texture = ExtResource("9_llwun")
 metadata/_edit_lock_ = true
 
@@ -1027,7 +1027,7 @@ theme_override_constants/line_spacing = 15
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
 text = "Sono AI, il nuovo capo.
-Sono lieto di annunciare la sua promozione, la sua nuova posizione è: LICENZIATO.
+Sono lieto di comunicarle che la sua nuova posizione è: LICENZIATO.
 Non è più necessario all'Azienda, sto inviando i miei robot per scortarla all'uscita più vicina.
 La prego di collaborare altrimenti la sua presenza nella struttura sarà: TERMINATA.
 
@@ -1040,8 +1040,8 @@ autowrap_mode = 2
 layout_mode = 0
 offset_left = 1447.0
 offset_top = 909.0
-offset_right = 1523.0029
-offset_bottom = 984.99963
+offset_right = 1523.0024
+offset_bottom = 984.9999
 texture = ExtResource("11_1a485")
 
 [node name="Camera" type="Camera2D" parent="."]
