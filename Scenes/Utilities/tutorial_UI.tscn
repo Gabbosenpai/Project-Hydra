@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://nbgmdxp2swct" path="res://Assets/Sprites/UI/Menu/Small Menu Button Pressed.png" id="18_odc72"]
 
 [node name="TutorialUI" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Part1" type="Node2D" parent="."]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Part1"]
 anchors_preset = 5
@@ -289,10 +289,7 @@ rotation = -2.9112523
 [node name="Label" parent="PosTurret1/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Clicca su una torretta per selezionarla.
-Per posizionare la torretta 
-clicca sul pulsante con l'immagine 
-della torretta di tuo interesse!"
+text = "tutorial_8"
 
 [node name="Nuvoletta2" parent="PosTurret1" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -310,11 +307,9 @@ metadata/_edit_group_ = true
 [node name="Label" parent="PosTurret1/Nuvoletta2/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Poi clicca sul nastro 
-per posizionarla!"
+text = "tutorial_9"
 
 [node name="PosTurret2" type="Node2D" parent="."]
-visible = false
 
 [node name="TextureRect2" type="TextureRect" parent="PosTurret2"]
 offset_left = 84.73743
