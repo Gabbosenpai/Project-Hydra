@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7ysbi4ys1iar"]
+[gd_scene load_steps=19 format=3 uid="uid://c7ysbi4ys1iar"]
 
 [ext_resource type="Texture2D" uid="uid://covn6yeutucw1" path="res://Assets/Cutscene/Scena 1 - Earth.png" id="1_rj3ne"]
 [ext_resource type="PackedScene" uid="uid://cu738xwnfxtue" path="res://Scenes/Utilities/Title Stars/title_star_a.tscn" id="2_afety"]
@@ -19,14 +19,81 @@
 base_font = ExtResource("12_8y1j2")
 spacing_glyph = -5
 
+[sub_resource type="Animation" id="Animation_8y1j2"]
+resource_name = "Avvio"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 1 - Earth:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene 1 - Earth/Stars:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aabun"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 1 - Earth:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene 1 - Earth/Stars:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fy7p1"]
+_data = {
+&"Avvio": SubResource("Animation_8y1j2"),
+&"RESET": SubResource("Animation_aabun")
+}
+
 [node name="Cutscene" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 metadata/_edit_lock_ = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.047058824, 0.08627451, 1)
+
 [node name="Scene 1 - Earth" type="TextureRect" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(4, 4)
@@ -34,8 +101,9 @@ texture = ExtResource("1_rj3ne")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Stars" type="CanvasLayer" parent="Scene 1 - Earth"]
+[node name="Stars" type="Control" parent="Scene 1 - Earth"]
 visible = false
+anchors_preset = 0
 
 [node name="TitleStarA" parent="Scene 1 - Earth/Stars" instance=ExtResource("2_afety")]
 position = Vector2(179, 180)
@@ -78,7 +146,7 @@ scale = Vector2(2.9999998, 2.9999998)
 
 [node name="TitleStarC6" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
 position = Vector2(269, 969)
-rotation = 0.37317875
+rotation = 0.37317872
 
 [node name="TitleStarC4" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
 position = Vector2(585, 839)
@@ -86,7 +154,7 @@ rotation = 0.75914735
 
 [node name="TitleStarC3" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
 position = Vector2(1718.0002, 579.0002)
-rotation = -0.68860215
+rotation = -0.6886022
 scale = Vector2(2.9999998, 2.9999998)
 
 [node name="TitleStarC8" parent="Scene 1 - Earth/Stars" instance=ExtResource("4_llwun")]
@@ -105,7 +173,7 @@ scale = Vector2(3.0000002, 3.0000002)
 
 [node name="TitleStarD5" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
 position = Vector2(1612, 112)
-rotation = -0.21973976
+rotation = -0.21973975
 scale = Vector2(3.0000002, 3.0000002)
 
 [node name="TitleStarD3" parent="Scene 1 - Earth/Stars" instance=ExtResource("5_n7642")]
@@ -140,6 +208,7 @@ rotation = 0.16580628
 [node name="TitleStarF12" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
 position = Vector2(1205, 69.00003)
 rotation = 2.3598526
+scale = Vector2(2.9999998, 2.9999998)
 
 [node name="TitleStarF6" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
 position = Vector2(90, 68)
@@ -149,7 +218,7 @@ scale = Vector2(3.0000002, 3.0000002)
 [node name="TitleStarF5" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
 position = Vector2(1825, 336)
 rotation = 1.0464532
-scale = Vector2(2.9999998, 2.9999998)
+scale = Vector2(2.9999995, 2.9999995)
 
 [node name="TitleStarF2" parent="Scene 1 - Earth/Stars" instance=ExtResource("7_43xp0")]
 position = Vector2(141, 875)
@@ -175,6 +244,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Scene 4a - Email Home" type="TextureRect" parent="Scene 4"]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -712,9 +782,15 @@ AI"
 autowrap_mode = 2
 
 [node name="Cursor" type="TextureRect" parent="Scene 4"]
+visible = false
 layout_mode = 0
 offset_left = 1284.0
 offset_top = 689.0
 offset_right = 1360.0
 offset_bottom = 765.0
 texture = ExtResource("11_1a485")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fy7p1")
+}
