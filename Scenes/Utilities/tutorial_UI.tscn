@@ -38,8 +38,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 40
-text = "Difendi il tuo posto di lavoro!
-Rottama quelle lattine!"
+text = "tutorial_goal"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,8 +68,7 @@ position = Vector2(196, -2.5)
 [node name="Label" parent="Part1/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "L'inceneritore ti protegge dal primo robot 
-che arriva al tuo ufficio!"
+text = "tutorial_1"
 
 [node name="Nuvoletta2" parent="Part1" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -92,8 +90,7 @@ rotation = -2.6046605
 [node name="Label" parent="Part1/Nuvoletta2/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Posiziona le torrette sul nastro 
-per fermare i robot."
+text = "tutorial_2"
 
 [node name="PartScrap" type="Node2D" parent="."]
 visible = false
@@ -139,8 +136,7 @@ offset_bottom = 65.0
 [node name="Label" parent="PartScrap/Nuvoletta3/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Piazza un drone
-per ottenere rottami!"
+text = "tutorial_3"
 
 [node name="Nuvoletta4" parent="PartScrap" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -166,8 +162,7 @@ offset_bottom = 65.0
 [node name="Label" parent="PartScrap/Nuvoletta4/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Qui puoi vedere 
-quanti rottami hai!"
+text = "tutorial_4"
 
 [node name="Nuvoletta5" parent="PartScrap" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -193,8 +188,7 @@ offset_bottom = 65.0
 [node name="Label" parent="PartScrap/Nuvoletta5/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Ogni torretta 
-ha un costo in rottami!"
+text = "tutorial_5"
 
 [node name="Part2" type="Node2D" parent="."]
 visible = false
@@ -222,9 +216,7 @@ metadata/_edit_group_ = true
 [node name="Label" parent="Part2/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "L'inceneritore vaporizzerà
-tutti i robot sul nastro 
-ma anche le tue torrette!"
+text = "tutorial_6"
 
 [node name="Part3" type="Node2D" parent="."]
 visible = false
@@ -255,11 +247,7 @@ position = Vector2(251, -4)
 [node name="Label" parent="Part3/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Fai attenzione 
-a ogni ondata i nastri
-si spostano verso l'inceneritore
-una torretta che cade 
-nell'inceneritore viene distrutta!"
+text = "tutorial_7"
 
 [node name="PosTurret1" type="Node2D" parent="."]
 visible = false
@@ -301,10 +289,7 @@ rotation = -2.9112523
 [node name="Label" parent="PosTurret1/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Clicca su una torretta per selezionarla.
-Per posizionare la torretta 
-clicca sul pulsante con l'immagine 
-della torretta di tuo interesse!"
+text = "tutorial_8"
 
 [node name="Nuvoletta2" parent="PosTurret1" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -322,8 +307,7 @@ metadata/_edit_group_ = true
 [node name="Label" parent="PosTurret1/Nuvoletta2/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Poi clicca sul nastro 
-per posizionarla!"
+text = "tutorial_9"
 
 [node name="PosTurret2" type="Node2D" parent="."]
 visible = false
@@ -356,8 +340,7 @@ rotation = 3.2391675
 [node name="Label" parent="PosTurret2/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Per rimuovere una torretta 
-clicca sul pulsante con la X!"
+text = "tutorial_10"
 
 [node name="Nuvoletta3" parent="PosTurret2" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
@@ -375,9 +358,7 @@ metadata/_edit_group_ = true
 [node name="Label" parent="PosTurret2/Nuvoletta3/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "Poi clicca sul nastro 
-con la torretta 
-per rimuoverla!"
+text = "tutorial_11"
 metadata/_edit_group_ = true
 
 [node name="ButtonContinue" type="TextureButton" parent="."]

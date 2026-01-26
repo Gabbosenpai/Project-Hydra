@@ -19,8 +19,6 @@ func _ready():
 	anim_player.play("ScorriCrediti")
 
 
-
-
 #Funzione che rileva quando il pulsante per tonare al menu viene cliccato
 func _on_back_to_menu_button_pressed() -> void:
 	#AudioManager.play_sfx(AudioManager.button_click_sfx) #Viene avviata la OST del menu principale
