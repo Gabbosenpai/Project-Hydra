@@ -142,7 +142,7 @@ skip,Salta,Skip,跳过
 tutorial_question,Vuoi giocare il tutorial?,Do you want to play the tutorial?,你想玩教程吗？
 tutorial_goal,Difendi il tuo posto di lavoro!\nRottama quelle lattine!,Defend your job!\nScrap these clankers!,保住你的工作！\n把这些破铜烂铁都拆了！
 tutorial_1,L'inceneritore ti protegge dal primo robot\nche arriva al tuo ufficio.,The incinerator protects you from\nthe first robot that reaches your office.,焚化炉能保护你免受首个抵达办公室的机器人侵害.
-tutorial_2,Posiziona le torrette sul nastro\nper fermare i robot.,Place the turrets on the\nconveyor belt to stop incoming robots.,将塔楼放置在传送带上\n以阻止进来的机器人。
+tutorial_2,Posiziona le torrette sul nastro\nper fermare i robot.,Place the turrets on the\nconveyor belt to stop the robots.,将塔楼放置在传送带上\n以阻止进来的机器人。
 ,,,
 tutorial_3,Piazza un drone\nper ottenere rottami!,Place a drone\nto collect scrap!,部署无人机\n收集废料！
 tutorial_4,Qui puoi vedere\nquanti rottami hai.,Here you can see\nyour scrap amount.,这里你可以看到\n你的碎片数量.
@@ -151,9 +151,10 @@ tutorial_5, Ogni torretta\nha un costo in rottami.,Each turret\ncosts scrap.,每
 tutorial_6,L'inceneritore vaporizzerà\ntutti i robot sul nastro\nma anche le tue torrette!,The incinerator will vaporize\nall robots on the conveyor belt…\nand your turrets too!,焚化炉将蒸发传送带上的所有机器人……\n连同你的炮塔！
 tutorial_7,Fai attenzione!\nA ogni ondata i nastri\nsi spostano verso l'inceneritore.\nUna torretta che cade\nnell'inceneritore viene distrutta!,Be careful!\nEach wave moves the conveyor belts\ntoward the incinerator.\nTurrets that fall in will be destroyed.,小心！每波敌人都会推动传送带朝焚化炉移动。\n掉入其中的炮塔将被摧毁。
 ,,,
-tutorial_8,Clicca su una torretta per selezionarla.\nPer posizionare la torretta\nclicca sul pulsante con l'immagine\ndella torretta di tuo interesse.,Click on a turret to select it.\nTo place a turret\nclick the button with the image\nof the turret you want.,点击炮塔进行选择。\n要放置炮塔，\n请点击带有目标炮塔图像的按钮。
+tutorial_8,Clicca su una torretta per selezionarla.\nPer posizionare la torretta\nclicca sul pulsante con l'immagine\ndella torretta di tuo interesse.,Click a turret to select it.\nTo place a turret\nclick the button with the image\nof the turret you want.,点击炮塔进行选择。\n要放置炮塔，\n请点击带有目标炮塔图像的按钮。
 tutorial_9,Poi clicca sul nastro\nper posizionarla!,Then click on the conveyor\nbelt to place it!,然后点击传送带\n放置它！
-
+tutorial_10,Per rimuovere una torretta\nclicca sul pulsante con la X.,To remove a turret\nclick the button with the X.,要移除炮塔\n请点击带有X的按钮。
+tutorial_11,Poi clicca sul nastro\ncon la torretta\nper rimuoverla!,Then click the turret\non the conveyor belt\nto remove it,然后点击传送带上的炮塔将其移除！
 
 
 
