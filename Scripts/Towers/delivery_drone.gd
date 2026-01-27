@@ -8,7 +8,7 @@ const DRONE_FLYING_SPEED: float = 145.0
 const DRONE_FLYING_SPEED_SPAWN_TURRET: float = 500.0
 const SPAWN_DISTANCE: float = 300.0
 
-@export var dd_max_health: int = 100
+@export var dd_max_health: int = 50
 @export var scrap_scene: PackedScene
 @export var is_spawn_animation: bool = false
 
