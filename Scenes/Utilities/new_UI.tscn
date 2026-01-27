@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cjoobhnq7wt5i"]
+[gd_scene load_steps=47 format=3 uid="uid://cjoobhnq7wt5i"]
 
 [ext_resource type="Script" uid="uid://cp16wk5orkgcq" path="res://Scripts/Utility/UI_Controller.gd" id="1_cu3u0"]
 [ext_resource type="Texture2D" uid="uid://bbxnqx3athl7y" path="res://Assets/Sprites/UI/Menu/Menu Panel Flipped.png" id="2_rkjgo"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://c543ksxxdq8fo" path="res://Assets/Sprites/UI/Music and SFX/Sound Button On.png" id="15_pi3ax"]
 [ext_resource type="Texture2D" uid="uid://dma3yhwxs0fv6" path="res://Assets/Sprites/UI/Music and SFX/Sound Button Off.png" id="16_3sob7"]
 [ext_resource type="Texture2D" uid="uid://doelv0v67st5v" path="res://Assets/Sprites/UI/Menu/Menu Button Pressed.png" id="16_5o6ld"]
-[ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="17_d5ei8"]
 [ext_resource type="PackedScene" uid="uid://ckndwo137esko" path="res://Scenes/Utilities/GameOverUI.tscn" id="17_lnnbn"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="18_6wlri"]
 [ext_resource type="Texture2D" uid="uid://do0c206p2416p" path="res://Assets/Sprites/UI/Menu/DB Button Not Pressed.png" id="22_d2tjn"]
@@ -900,14 +899,15 @@ metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="TutorialPopup"]
 layout_mode = 1
-offset_left = 132.0
-offset_top = 356.0
-offset_right = 1436.0
-offset_bottom = 430.0
-theme_override_fonts/font = ExtResource("17_d5ei8")
-theme_override_font_sizes/font_size = 40
+offset_left = -13.0
+offset_top = 510.0
+offset_right = 1588.0
+offset_bottom = 584.0
+theme_override_fonts/font = ExtResource("18_6wlri")
+theme_override_font_sizes/font_size = 50
 text = "Vuoi Giocare il tutorial?"
 horizontal_alignment = 1
+vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -915,18 +915,20 @@ visible_ratio = 0.0
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-offset_left = 600.0
-offset_top = 635.0
-offset_right = 711.0
-offset_bottom = 748.0
+offset_left = 412.0
+offset_top = 662.99994
+offset_right = 523.0
+offset_bottom = 775.99994
+scale = Vector2(3, 3)
 texture_normal = ExtResource("22_d2tjn")
 texture_pressed = ExtResource("7_lnnbn")
 
 [node name="Label" type="Label" parent="TutorialPopup/BtnSi"]
 layout_mode = 0
-offset_left = -8.0
-offset_right = 119.0
-offset_bottom = 95.0
+offset_left = -6.6666718
+offset_top = 7.3333282
+offset_right = 120.33333
+offset_bottom = 102.33333
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 25
 text = "yes"
@@ -937,22 +939,25 @@ vertical_alignment = 1
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-offset_left = 818.0
-offset_top = 634.0
-offset_right = 929.0
-offset_bottom = 747.0
+offset_left = 836.0
+offset_top = 662.99994
+offset_right = 947.0
+offset_bottom = 775.99994
+scale = Vector2(3, 3)
 texture_normal = ExtResource("27_mf6oj")
 texture_pressed = ExtResource("28_msa12")
 
 [node name="Label" type="Label" parent="TutorialPopup/BtnNo"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 34.0
-offset_right = 80.0
-offset_bottom = 60.0
+offset_left = 32.0
+offset_top = 41.0
+offset_right = 82.0
+offset_bottom = 67.0
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 25
 text = "no"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialPopup"]
 libraries = {
