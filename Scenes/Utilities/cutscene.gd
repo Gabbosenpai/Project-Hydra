@@ -8,9 +8,8 @@ func _ready() -> void:
 	await animation_player.animation_finished
 	concluso = true
 
-func go_to_menu():
-	pass
-	#get_tree().change_scene_to_file("res://Scenes/Utilities/")
+func go_to_lvl_sel():
+	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -19,4 +18,3 @@ func _input(event):
 
 func salta_intro():
 	animation_player.advance(10.0)
-	#if animation_player.
