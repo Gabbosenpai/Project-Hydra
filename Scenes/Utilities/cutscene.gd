@@ -3,10 +3,20 @@ extends Node
 var concluso: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+var mouse_click = preload("res://Assets/Sound/SFX/mouse-click.mp3")
+var cutscene_OST = preload("res://Assets/Sound/OST/Party's Cancelled - RoccoW ｜ Chiptune [No Copyright Music].mp3")
 
 func _ready() -> void:
 	await animation_player.animation_finished
 	concluso = true
+
+func play_cutscene_OST():
+	AudioManager.play_music(cutscene_OST)
+
+func play_click_sound():
+	AudioManager.play_sfx(mouse_click)
+	
+
 
 func go_to_lvl_sel():
 	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
