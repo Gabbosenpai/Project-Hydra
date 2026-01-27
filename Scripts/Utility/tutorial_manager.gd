@@ -32,12 +32,14 @@ func mostra_domanda_tutorial():
 	anim_player.play("entrata")
 
 func _on_btn_no_pressed():
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	anim_player.play("chiusura")
 	await anim_player.animation_finished
 	popup.visible = false
 	get_tree().paused = false # Riparte il gioco normalmente
 
 func _on_btn_si_pressed():
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	label.visible = false
 	buttonYes.visible = false
 	buttonNo.visible = false
@@ -55,6 +57,7 @@ func avvia_sequenza_tutorial():
 
 
 func _on_button_continue_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	match tutorialPart:
 		1:
 			tutorial1.visible = false
@@ -83,6 +86,7 @@ func _on_button_continue_pressed() -> void:
 
 #Per Test da Sistemare
 func _on_button_skip_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	anim_player.play("chiusura")
 	await anim_player.animation_finished
 	popup.visible = false
