@@ -83,7 +83,10 @@ func _on_file_1_pressed() -> void:
 	SaveManager.load_progress()
 	# Temporanemante vogliamo andare alla selezione livello,
 	# questa parte andrà successivamente tolta
-	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
+	if is_slot_empty(1):
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Cutscene.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 
 func _on_file_2_pressed() -> void:
@@ -92,7 +95,10 @@ func _on_file_2_pressed() -> void:
 	SaveManager.load_progress()
 	# Temporanemante vogliamo andare alla selezione livello,
 	# questa parte andrà successivamente tolta
-	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
+	if is_slot_empty(2):
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Cutscene.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 
 func _on_file_3_pressed() -> void:
@@ -101,8 +107,10 @@ func _on_file_3_pressed() -> void:
 	SaveManager.load_progress()
 	# Temporanemante vogliamo andare alla selezione livello,
 	# questa parte andrà successivamente tolta
-	get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
-
+	if is_slot_empty(3):
+		get_tree().change_scene_to_file("res://Scenes/Utilities/Cutscene.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Utilities/level_selection.tscn")
 
 # Schemrata conferma cancellazione salvataggio
 func show_confirm_panel():
@@ -146,3 +154,7 @@ func _on_no_button_pressed() -> void:
 func _on_back_to_menu_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.button_click_sfx)
 	get_tree().change_scene_to_file("res://Scenes/Utilities/menu.tscn")
+
+
+func is_slot_empty(slot_n: int) -> bool:
+	return SaveManager.get_saved_level(slot_n) == 1
