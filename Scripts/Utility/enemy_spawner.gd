@@ -53,10 +53,14 @@ var level_patterns = {
 		4: ["8r", "7r", "10r", "8r", "8r"]
 	},
 	2: { # LIVELLO 2
-		1: ["1r, 1w", "1r", "1w, 1r", "1r", "1r"],
-		2: ["2w", "2r", "1w", "2r", "1w, 1r"],
-		3: ["2r, 1w", "2w", "2r", "1w, 1r", "1r, 1w"],
-		4: ["3w", "3r", "2w", "3r", "2w"]
+		# 1 roomba, 2 weed eater
+		1: ["1w, 1r", "1r, 1w", "0w, 0r", "0r", "0r"],
+		# 5 roomba, 4 weed eater
+		2: ["1w", "1r, 1w, 1r", "1w", "2r", "1w, 1r"],
+		# 16 roomba, 11 weed eater
+		3: ["2r, 1w, 3r", "2w, 2r, 2w", "3r, 2w", "1w, 1r, 1w, 1r", "2r, 2w, 2r"],
+		# 23 roomba, 15 weed eater
+		4: ["4r, 2w, 3r", "2w, 4r, 2w", "3r, 3w", "1w, 2r, 2w, 1r", "3r, 3w, 3r"]
 	},
 	3: { # LIVELLO 3
 		1: ["1m, 1r", "1r", "1m", "2r", "1w"],

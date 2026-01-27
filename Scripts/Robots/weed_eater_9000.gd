@@ -1,8 +1,8 @@
 class_name WeedEater9000
 extends Robot
 
-@export var we9k_max_health: int = 75 
-@export var we9k_speed: float = 75 
+@export var we9k_max_health: int = 40 
+@export var we9k_speed: float = 65 
 @export var we9k_damage: int = 2 
 @export var block_chance: float = 0.33 # probabilità di bloccare (0.33 = 33%)
 
