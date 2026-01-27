@@ -544,7 +544,7 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "Capo"
+text = "boss"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Boss"]
@@ -556,7 +556,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Promozione"
+text = "promotion"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -860,7 +860,7 @@ offset_bottom = 305.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Posta"
+text = "mail"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -873,7 +873,7 @@ offset_bottom = 376.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Bozze"
+text = "drafts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -886,7 +886,7 @@ offset_bottom = 445.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Inviata"
+text = "sent"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -899,7 +899,7 @@ offset_bottom = 516.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Spam"
+text = "spam"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -912,7 +912,7 @@ offset_bottom = 592.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Cestino"
+text = "bin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -939,7 +939,7 @@ offset_bottom = 305.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Posta"
+text = "mail"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -952,7 +952,7 @@ offset_bottom = 376.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Bozze"
+text = "drafts"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -965,7 +965,7 @@ offset_bottom = 445.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Inviata"
+text = "sent"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -978,7 +978,7 @@ offset_bottom = 516.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Spam"
+text = "spam"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -991,7 +991,7 @@ offset_bottom = 592.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = SubResource("FontVariation_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Cestino"
+text = "bin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
