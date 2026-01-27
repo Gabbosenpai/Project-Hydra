@@ -4,7 +4,7 @@ extends Area2D
 signal died(instance)
 signal spawn_animation_finished
 
-const DRONE_FLYING_SPEED: float = 200.0
+const DRONE_FLYING_SPEED: float = 145.0
 const DRONE_FLYING_SPEED_SPAWN_TURRET: float = 500.0
 const SPAWN_DISTANCE: float = 300.0
 

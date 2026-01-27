@@ -5,7 +5,8 @@ signal level_completed
 signal victory
 signal wave_completed(wave_number)
 
-@export var grace_time = 15.0
+@export var initial_grace_time = 15.0
+@export var grace_time = 5.0
 @export var tilemap: TileMap
 @export var label_wave: Label
 @export var label_enemies: Label
@@ -29,10 +30,10 @@ var all_enemy_scenes = {
 
 # Modifica 'interval' per cambiare quanto velocemente escono i nemici (secondi tra uno e l'altro)
 var waves = [
-	{ "interval": 1.5 }, # Ondata 1
-	{ "interval": 1.8 }, # Ondata 2
+	{ "interval": 4.0 }, # Ondata 1
+	{ "interval": 2.0 }, # Ondata 2
 	{ "interval": 2.0 }, # Ondata 3
-	{ "interval": 2.5 }  # Ondata 4
+	{ "interval": 1.0 }  # Ondata 4
 ]
 
 # Variabile per definire i pattern fissi per livello
@@ -42,10 +43,14 @@ var waves = [
 # }
 var level_patterns = {
 	1: { # LIVELLO 1
-		1: ["2r", "1r", "2r", "1r", "1r"],
-		2: ["3r", "1r", "2r", "1r", "2r"],
-		3: ["2r", "2r", "2r", "2r", "2r"],
-		4: ["3r", "2r", "3r", "2r", "3r"]
+		# 4 roomba
+		1: ["2r", "0r", "2r", "0r", "0r"],
+		# 12 romba
+		2: ["2r", "3r", "2r", "3r", "2r"],
+		# 23 romba
+		3: ["7r", "3r", "4r", "5r", "4r"],
+		# 41 romba
+		4: ["8r", "7r", "10r", "8r", "8r"]
 	},
 	2: { # LIVELLO 2
 		1: ["1r, 1w", "1r", "1w, 1r", "1r", "1r"],
@@ -109,7 +114,10 @@ func _ready():
 		INCINERATE_X_LIMIT = (INCINERATE_COLUMN_THRESHOLD + 10) * TILE_SIZE
 	
 	if initial_delay_timer:
-		initial_delay_timer.wait_time = grace_time
+		if current_wave == 0:
+			initial_delay_timer.wait_time = initial_grace_time
+		else:
+			initial_delay_timer.wait_time = grace_time
 		initial_delay_timer.start()
 		print("DEBUG: Timer iniziale avviato (", grace_time, " secondi)")
 	else:
