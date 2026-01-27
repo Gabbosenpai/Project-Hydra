@@ -169,6 +169,23 @@ tracks/11/keys = {
 "method": &"go_to_lvl_sel"
 }]
 }
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 25.75),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_cutscene_OST"
+}, {
+"args": [],
+"method": &"play_click_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_aabun"]
 length = 0.001
@@ -476,7 +493,7 @@ scale = Vector2(1, 1)
 modulate = Color(1, 1, 1, 0)
 offset_left = 3840.0
 offset_top = 2160.0
-offset_right = 11520.033
+offset_right = 11520.026
 offset_bottom = 6480.0
 texture = ExtResource("8_e0h8o")
 
@@ -485,7 +502,7 @@ modulate = Color(1, 1, 1, 0)
 offset_left = 5760.0
 offset_top = 3240.0
 offset_right = 9600.0
-offset_bottom = 5400.079
+offset_bottom = 5400.081
 texture = ExtResource("9_llwun")
 metadata/_edit_lock_ = true
 
@@ -1040,8 +1057,8 @@ autowrap_mode = 2
 layout_mode = 0
 offset_left = 1447.0
 offset_top = 909.0
-offset_right = 1523.0024
-offset_bottom = 984.9999
+offset_right = 1523.0023
+offset_bottom = 984.99994
 texture = ExtResource("11_1a485")
 
 [node name="Camera" type="Camera2D" parent="."]
