@@ -157,4 +157,4 @@ func _on_back_to_menu_pressed() -> void:
 
 
 func is_slot_empty(slot_n: int) -> bool:
-	return SaveManager.get_saved_level(slot_n) == 1
+	return SaveManager.get_saved_level(slot_n) == 1 or SaveManager.get_saved_level(slot_n) == 0
