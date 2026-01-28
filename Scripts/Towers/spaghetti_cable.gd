@@ -8,7 +8,7 @@ extends Area2D
 signal died(instance)
 
 # % di riduzione danno
-@export var dmg_reduction: float = 0.5
+@export var dmg_reduction: float = 0.4
 @export var max_health: float = 200
 
 # Variabili di un torretta standard
