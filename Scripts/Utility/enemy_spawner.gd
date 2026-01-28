@@ -73,7 +73,7 @@ var level_patterns = {
 		4: ["1m, 5r, 2w", "1m, 2w, 2r", "1m, 2w, 2r", "1m, 2r, 2w, 3r", "1m, 2r, 1w, 2r, 1w, 3r"]
 	},
 	4: { # LIVELLO 4
-		# TOT = 4 -> 1 roomba, 1 weed eater, 0 mecha freezer, 2 fire hydrant
+		# TOT = 4 -> 2 roomba, 0 weed eater, 0 mecha freezer, 2 fire hydrant
 		1: ["1f, 1r", "0m", "1f, 1r", "0w", "0r"],
 		# TOT = 14 -> 3 roomba, 4 weed eater, 1 mecha freezer, 6 fire hydrant
 		2: ["1m, 2f", "1r, 2f, 2w", "2r, 2f", "2w", "0w, 0f"],
@@ -84,9 +84,9 @@ var level_patterns = {
 	},
 	5: { # LIVELLO 5
 		# TOT = 4 -> 1 roomba, 1 weed eater, 0 mecha freezer, 0 fire hydrant, 2 cassa schierata
-		1: ["1r, 1c", "0f", "1w, 1c", "0m", "0w"],
-		# TOT = 17 -> 4 roomba, 4 weed eater, 0 mecha freezer, 4 fire hydrant, 5 cassa schierata
-		2: ["1c, 1f, 2r", "1r, 2c, 1w", "2f, 2w", "1c, 1f, 1w", "1r, 1c"],
+		1: ["1r, 1c", "0f", "1r, 1c", "0m", "0w"],
+		# TOT = 16 -> 3 roomba, 4 weed eater, 0 mecha freezer, 4 fire hydrant, 5 cassa schierata
+		2: ["1c, 1f, 2r", "1r, 2c, 1w", "2f, 2w", "1c, 1f, 1w, 1c", "0r, 0c"],
 		# TOT = 40 -> 9 roomba, 12 weed eater, 2 mecha freezer, 8 fire hydrant, 9 cassa schierata
 		3: ["2c, 2w, 3r, 4f", "1f, 2w, 2f", "1m, 2w, 2r, 2f, 2c", "1m, 3w, 1f, 3c", "1w, 2r, 2w, 2c"],
 		# TOT = 80 -> 25 roomba, 18 weed eater, 6 mecha freezer, 15 fire hydrant, 16 cassa schierata
