@@ -33,7 +33,7 @@ var waves = [
 	{ "interval": 4.0 }, # Ondata 1
 	{ "interval": 2.0 }, # Ondata 2
 	{ "interval": 2.0 }, # Ondata 3
-	{ "interval": 1.0 }  # Ondata 4
+	{ "interval": 1.0 }  # Ondata 4  
 ]
 
 # Variabile per definire i pattern fissi per livello
@@ -83,10 +83,14 @@ var level_patterns = {
 		4: ["1m, 3r, 3f, 2w", "4r, 1f, 1m, 2r, 2w, 2f, 1w, 4r", "2f, 3w, 2f, 3r", "2m, 3w, 3f, 2r", "1m, 3f, 2r, 2w, 2f"]
 	},
 	5: { # LIVELLO 5
-		1: ["1c, 1r", "1f", "1c", "2m", "1w"],
-		2: ["1c, 1f", "1c, 1m", "2f", "1c", "1m, 1c"],
-		3: ["2c", "3f", "1c, 1m", "1f, 1c", "1c, 1r"],
-		4: ["3c", "1c, 1f, 1c", "2c", "3f", "3c"]
+		# TOT = 4 -> 1 roomba, 1 weed eater, 0 mecha freezer, 0 fire hydrant, 2 cassa schierata
+		1: ["1r, 1c", "0f", "1w, 1c", "0m", "0w"],
+		# TOT = 17 -> 4 roomba, 4 weed eater, 0 mecha freezer, 4 fire hydrant, 5 cassa schierata
+		2: ["1c, 1f, 2r", "1r, 2c, 1w", "2f, 2w", "1c, 1f, 1w", "1r, 1c"],
+		# TOT = 40 -> 9 roomba, 12 weed eater, 2 mecha freezer, 8 fire hydrant, 9 cassa schierata
+		3: ["2c, 2w, 3r, 4f", "1f, 2w, 2f", "1m, 2w, 2r, 2f, 2c", "1m, 3w, 1f, 3c", "1w, 2r, 2w, 2c"],
+		# TOT = 80 -> 25 roomba, 18 weed eater, 6 mecha freezer, 15 fire hydrant, 16 cassa schierata
+		4: ["1m, 4r, 2w, 2c, 1m, 2f, 2w, 5r", "1c, 2f, 2w, 3c, 3r", "1m, 4w, 1f, 3c, 1m, 6r, 3f", "3f, 3c, 2w, 3r, 2w, 1c, 1f", "1m, 3c, 2w, 3r, 1m, 3f, 2w, 1r"]
 	}
 }
 
