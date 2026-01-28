@@ -74,7 +74,7 @@ var level_patterns = {
 	},
 	4: { # LIVELLO 4
 		# TOT = 4 -> 1 roomba, 1 weed eater, 0 mecha freezer, 2 fire hydrant
-		1: ["1f, 1w", "0m", "1f, 1r", "0w", "0r"],
+		1: ["1f, 1r", "0m", "1f, 1r", "0w", "0r"],
 		# TOT = 14 -> 3 roomba, 4 weed eater, 1 mecha freezer, 6 fire hydrant
 		2: ["1m, 2f", "1r, 1f, 1w", "2r, 2f", "2w", "1w, 1f"],
 		# TOT = 32 -> 11 roomba, 9 weed eater, 2 mecha freezer, 11 fire hydrant
