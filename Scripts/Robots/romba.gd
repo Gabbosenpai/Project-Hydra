@@ -1,7 +1,7 @@
 class_name Romba
 extends Robot
 
-@export var romba_max_health: int = 100
+@export var romba_max_health: int = 50
 @export var romba_speed: float = 50
 @export var romba_damage: int = 25
 

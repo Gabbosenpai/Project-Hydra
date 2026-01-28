@@ -3,7 +3,7 @@ extends Bullet
 
 # Variabili esportate per poterle modificare facilmente dall'editor di Godot
 @export var jamming_bullet_speed: float = 200          # Velocità del proiettile
-@export var jamming_bullet_damage: int = 10    # Danno che il proiettile infligge agli nemici
+@export var jamming_bullet_damage: int = 5    # Danno che il proiettile infligge agli nemici
 @export var jamming_value: float = 10
 @export var jamming_duration = 10.0
 

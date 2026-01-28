@@ -586,7 +586,7 @@ offset_bottom = 42.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40
-text = "50"
+text = "75"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -889,6 +889,7 @@ libraries = {
 
 [node name="TutorialPopup" type="Panel" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 1
 offset_left = 285.0
 offset_top = -1258.0
