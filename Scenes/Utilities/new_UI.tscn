@@ -889,6 +889,7 @@ libraries = {
 
 [node name="TutorialPopup" type="Panel" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 1
 offset_left = 285.0
 offset_top = -1258.0
