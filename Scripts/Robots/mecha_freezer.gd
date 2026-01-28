@@ -1,7 +1,7 @@
 class_name MechaFreezer
 extends Robot
 
-@export var mf_max_health: int = 300
+@export var mf_max_health: int = 180
 @export var mf_speed: float = 25
 @export var mf_damage: int = 10
 
