@@ -749,7 +749,7 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Ieri"
+text = "yesterday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -794,7 +794,7 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Ieri"
+text = "yesterday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -839,7 +839,7 @@ offset_bottom = 65.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Ieri"
+text = "yesterday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
