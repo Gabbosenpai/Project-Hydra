@@ -9,7 +9,7 @@ signal died(instance)
 
 # % di riduzione danno
 @export var dmg_reduction: float = 0.4
-@export var max_health: float = 200
+@export var max_health: float = 250
 
 # Variabili di un torretta standard
 var riga: int # Riga della torretta nella griglia, inizializzata al piazzamento
