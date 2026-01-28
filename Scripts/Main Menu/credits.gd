@@ -12,10 +12,23 @@ func _ready():
 	credits_text += "HeatleyBros – 8 Bit Scrap!\nHeatleyBros – 8 BIT BOSS\n"
 	credits_text += "Pix – A Lonely Cherry Tree\nAdam Haynes – 8-bit Victory Theme\nKevin MacLeod – Itty Bitty\n"
 	credits_text += "Party's Cancelled - RoccoW ｜ Chiptune\n\n"
+	
 	credits_text += tr("UI_design")+"\n"
 	credits_text += "da completare\n\n"
+	
 	credits_text += tr("monster_design")+"\n"
 	credits_text += "da completare\n\n"
+	
+	credits_text += tr("programming")+"\n"
+	credits_text += "da completare\n\n"
+	
+	credits_text += tr("balancing_testing")+"\n"
+	credits_text += "da completare\n\n"
+	
+	
+	
+	
+	
 	$Label.text = credits_text
 
 	AudioManager.play_music(credits_music)
