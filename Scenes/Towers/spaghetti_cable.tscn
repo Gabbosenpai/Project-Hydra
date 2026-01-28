@@ -45,6 +45,7 @@ radius = 22.5
 [node name="Tower" type="Area2D" groups=["Tower"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_8uawk")
+max_health = 400.0
 metadata/_edit_group_ = true
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
