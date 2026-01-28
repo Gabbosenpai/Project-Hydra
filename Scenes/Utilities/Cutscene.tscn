@@ -330,7 +330,7 @@ _data = {
 
 [node name="Cutscene" type="Node"]
 script = ExtResource("1_aabun")
-metadata/_edit_vertical_guides_ = [7680.0]
+metadata/_edit_vertical_guides_ = [7680.0, 7747.0, 8360.0]
 metadata/_edit_horizontal_guides_ = [4320.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -493,7 +493,7 @@ scale = Vector2(1, 1)
 modulate = Color(1, 1, 1, 0)
 offset_left = 3840.0
 offset_top = 2160.0
-offset_right = 11520.026
+offset_right = 11520.029
 offset_bottom = 6480.0
 texture = ExtResource("8_e0h8o")
 
@@ -502,7 +502,7 @@ modulate = Color(1, 1, 1, 0)
 offset_left = 5760.0
 offset_top = 3240.0
 offset_right = 9600.0
-offset_bottom = 5400.081
+offset_bottom = 5400.0806
 texture = ExtResource("9_llwun")
 metadata/_edit_lock_ = true
 
@@ -589,19 +589,19 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "A"
+text = "Aiuto"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/IT"]
 layout_mode = 0
-offset_left = 544.0
+offset_left = 477.0
 offset_top = 18.0
-offset_right = 982.0
+offset_right = 1047.0
 offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Placeholder"
+text = "Spegni e Riaccendi"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -634,19 +634,19 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "PH"
+text = "Phil"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Pornhub"]
 layout_mode = 0
-offset_left = 544.0
+offset_left = 506.0
 offset_top = 18.0
-offset_right = 982.0
+offset_right = 1021.0
 offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Placeholder"
+text = "BBC Documentary"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -679,7 +679,7 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "A"
+text = "N42"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/N26"]
@@ -691,7 +691,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Placeholder"
+text = "0€ Rimasti"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -742,9 +742,9 @@ vertical_alignment = 1
 
 [node name="Hour" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Quora"]
 layout_mode = 0
-offset_left = 1294.0
+offset_left = 1221.0
 offset_top = 30.0
-offset_right = 1459.0
+offset_right = 1531.0
 offset_bottom = 70.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
@@ -774,22 +774,22 @@ vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Poste Italiane"]
 layout_mode = 0
-offset_left = 544.0
+offset_left = 528.0
 offset_top = 18.0
-offset_right = 982.0
+offset_right = 998.0
 offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Placeholder"
+text = "Pagamento SPID"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hour" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Poste Italiane"]
 layout_mode = 0
-offset_left = 1294.0
+offset_left = 1221.0
 offset_top = 30.0
-offset_right = 1459.0
+offset_right = 1531.0
 offset_bottom = 70.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
@@ -1050,8 +1050,8 @@ autowrap_mode = 2
 layout_mode = 0
 offset_left = 1447.0
 offset_top = 909.0
-offset_right = 1523.0023
-offset_bottom = 984.99994
+offset_right = 1523.0026
+offset_bottom = 985.0
 texture = ExtResource("11_1a485")
 
 [node name="Camera" type="Camera2D" parent="."]
