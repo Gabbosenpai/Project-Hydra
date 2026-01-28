@@ -314,6 +314,7 @@ mute_music_button = NodePath("PauseMenu/MuteMusicButton")
 mute_sfx_button = NodePath("PauseMenu/MuteSFXButton")
 game_over_timer_value = 3.5
 metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [958.0, 863.0, 1051.0]
 
 [node name="TurretSelector" type="Panel" parent="."]
 layout_mode = 0
@@ -742,6 +743,8 @@ offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="GameOverUI" parent="PauseMenu" instance=ExtResource("17_lnnbn")]
 visible = false
@@ -988,6 +991,7 @@ offset_bottom = -683.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewdvb")
+metadata/_edit_lock_ = true
 
 [node name="VictoryScreen" parent="Victory" instance=ExtResource("13_3sob7")]
 layout_mode = 1
@@ -1005,17 +1009,19 @@ libraries = {
 [node name="TextureRect" type="TextureRect" parent="Victory"]
 layout_mode = 0
 offset_left = 588.0
-offset_top = 507.0
+offset_top = 528.0
 offset_right = 776.0
-offset_bottom = 698.3874
+offset_bottom = 719.3874
 texture = ExtResource("7_lnnbn")
+metadata/_edit_group_ = true
 
 [node name="TurretIcon" type="TextureRect" parent="Victory/TextureRect"]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 46.0
-offset_right = 142.0
-offset_bottom = 140.0
+offset_left = 23.0
+offset_top = 24.0
+offset_right = 117.0
+offset_bottom = 118.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("24_wlbwg")
 
 [connection signal="pressed" from="TurretSelector/HBoxContainer/ButtonTurret1" to="." method="_on_button_turret_1_pressed"]
