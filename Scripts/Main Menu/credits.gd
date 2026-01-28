@@ -25,6 +25,8 @@ func _ready():
 	credits_text += tr("balancing_testing")+"\n"
 	credits_text += "da completare\n\n"
 	
+	credits_text += tr("localization")+"\n"
+	credits_text += "da completare\n\n"
 	
 	
 	
