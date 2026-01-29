@@ -590,7 +590,7 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "Aiuto"
+text = "help"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/IT"]
@@ -602,7 +602,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Spegni e Riaccendi"
+text = "turn_off"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -692,7 +692,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "0€ Rimasti"
+text = "no_euros"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -725,7 +725,7 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "A"
+text = "red"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Quora"]
@@ -737,7 +737,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Placeholder"
+text = "...?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -770,7 +770,7 @@ offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("11_b7k71")
 theme_override_font_sizes/font_size = 40
-text = "Poste"
+text = "post"
 vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Poste Italiane"]
@@ -782,7 +782,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Pacco Scomparso"
+text = "lost_package"
 horizontal_alignment = 1
 vertical_alignment = 1
 

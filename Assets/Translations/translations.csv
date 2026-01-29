@@ -159,7 +159,7 @@ tutorial_11,Poi clicca sul nastro\ncon la torretta\nper rimuoverla!,Then click t
 ,,,
 ,,,
 #cutscene,,,
-email_boss,"Sono AI, il nuovo capo.\nSono lieto di comunicarle che la sua nuova posizione è: LICENZIATO.\nNon è più necessario all'Azienda, sto inviando i miei robot per scortarla all'uscita più vicina.\nLa prego di collaborare altrimenti la sua presenza nella struttura sarà: TERMINATA.\n\nLe auguro una buona giornata\nIl nuovo capo\nAI","I am AI, the new boss.\nI am pleased to inform you that your new position is: TERMINATED.\nYou are no longer required by the Company; I am dispatching my robots to guide you to the nearest exit.\nPlease cooperate, otherwise your presence in the facility will be: TERMINATED.\n\nHave a pleasant day.\nThe new boss\nAI",我是AI，新任主管。\n我很高兴通知您，您的新职位是：已终止。\n公司已不再需要您，我正在派遣我的机器人引导您前往最近的出口。\n请配合，否则您在该设施中的存在将被：终止。\n\n祝您有美好的一天。\n新任主管\nAI
+email_boss,"Sono AI, il nuovo capo.\nSono lieto di comunicarle che la sua nuova posizione è: LICENZIATO.\nNon è più necessario all'Azienda, sto inviando i miei robot per scortarla all'uscita più vicina.\nLa prego di collaborare altrimenti la sua presenza nella struttura sarà: TERMINATA.\n\nLe auguro una buona giornata\nIl nuovo capo\nAI","I am AI, the new boss.\nI am pleased to inform you that your new position is: FIRED.\nYou are no longer required by the Company; I am dispatching my robots to guide you to the nearest exit.\nPlease cooperate, otherwise your presence in the facility will be: TERMINATED.\n\nHave a pleasant day.\nThe new boss\nAI",我是AI，新任主管。\n我很高兴通知您，您的新职位是：已终止。\n公司已不再需要您，我正在派遣我的机器人引导您前往最近的出口。\n请配合，否则您在该设施中的存在将被：终止。\n\n祝您有美好的一天。\n新任主管\nAI
 boss,Capo,The Boss,老板
 promotion,Promozione,Promotion,晋升
 bin,Cestino,Bin,垃圾桶
@@ -168,7 +168,12 @@ spam,Spam,Spam,垃圾邮件
 drafts,Bozze,Drafts,草稿
 mail,Posta,Mail,邮件
 yesterday,Ieri,Yesterday,昨天
-
+red,Rosso,Red,赤紅
+help,Aiuto,Help,帮助
+turn_off,Spegni e riaccendi,Turn it off and on,关掉再打开
+lost_package,Pacco scomparso,Lost package,丢失包裹
+no_euros,0€ rimasti,No euros left,没钱了
+post,Poste,Post,帖子
 ,,,
 ,,,
 ,,,
@@ -183,8 +188,20 @@ yesterday,Ieri,Yesterday,昨天
 ,,,
 ,,,
 #crediti,,,
-UI_design,UI Design,UI design,用户界面设计
+UI_design,UI DESIGN,UI DESIGN,用户界面设计
 monster_design,Design Torrette e Robot,Turret and Robot Design,炮塔与机器人设计
-programming,Programmazione,Programming,编程
+programming,PROGRAMMAZIONE,PROGRAMMING,编程
 balancing_testing,Bilanciamento e Testing,Balancing and Testing,平衡设计与测试
-localization,Localizzazione,Localization,本地化
+localization,LOCALIZZAZIONE,LOCALIZATION,本地化
+created_by,CREATO DA,CREATED BY,创建于
+game_design,GAME DESIGN,GAME DESIGN,游戏设计
+2d_art,2D ART & ANIMATION,2D ART & ANIMATION,二维艺术与动画
+sound_design,SOUND DESIGN,SOUND DESIGN,声音设计
+writing,SCRITTURA,WRITING,写作
+playtesting,PLAYTESTING,PLAYTESTING,游戏测试
+
+
+
+
+
+
