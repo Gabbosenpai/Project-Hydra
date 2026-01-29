@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7ysbi4ys1iar"]
+[gd_scene load_steps=21 format=3 uid="uid://c7ysbi4ys1iar"]
 
 [ext_resource type="Script" uid="uid://tasa5dnynh7d" path="res://Scenes/Utilities/cutscene.gd" id="1_aabun"]
 [ext_resource type="Texture2D" uid="uid://covn6yeutucw1" path="res://Assets/Cutscene/Scena 1 - Earth.png" id="1_rj3ne"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://djpqulgdpw335" path="res://Assets/Cutscene/Scena 4c - Clankers.png" id="11_43xp0"]
 [ext_resource type="FontFile" uid="uid://8qixsdylbpdo" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="11_b7k71"]
 [ext_resource type="FontFile" uid="uid://s356y0v84w4" path="res://Assets/fonts/PixelOperator8.ttf" id="12_8y1j2"]
+[ext_resource type="PackedScene" uid="uid://12p1be5lu4o4" path="res://Scenes/Utilities/colorscale_filter.tscn" id="16_fy7p1"]
 
 [sub_resource type="FontVariation" id="FontVariation_8y1j2"]
 base_font = ExtResource("12_8y1j2")
@@ -1065,3 +1066,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_fy7p1")
 }
 autoplay = "Avvio"
+
+[node name="Colorscale Filter" parent="." instance=ExtResource("16_fy7p1")]
