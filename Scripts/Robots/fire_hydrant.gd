@@ -1,7 +1,7 @@
 class_name FireHydrant
 extends Robot
 
-@export var fh_max_health: int = 80
+@export var fh_max_health: int = 60
 @export var fh_speed: float = 45
 @export var fh_damage: int = 7
 

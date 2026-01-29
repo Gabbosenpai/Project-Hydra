@@ -1,7 +1,7 @@
 class_name CassaSchierata
 extends Robot
 
-@export var cs_max_health: int = 70
+@export var cs_max_health: int = 60
 @export var cs_speed: float = 40
 @export var cs_damage: int = 15
 
