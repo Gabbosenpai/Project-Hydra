@@ -92,6 +92,34 @@ theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
 text = "tutorial_2"
 
+[node name="Part2" type="Node2D" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Part2"]
+offset_left = 35.78894
+offset_top = 95.0
+offset_right = 1505.2753
+offset_bottom = 768.0
+texture = ExtResource("3_1a8s4")
+
+[node name="Nuvoletta1" parent="Part2" instance=ExtResource("1_w17sg")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 493.0
+offset_top = 406.0
+offset_right = 493.0
+offset_bottom = 406.0
+grow_vertical = 1
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="Label" parent="Part2/Nuvoletta1/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
+text = "tutorial_6"
+
 [node name="PartScrap" type="Node2D" parent="."]
 visible = false
 
@@ -190,33 +218,69 @@ theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
 text = "tutorial_5"
 
-[node name="Part2" type="Node2D" parent="."]
+[node name="PosTurret1" type="Node2D" parent="."]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="Part2"]
-offset_left = 35.78894
-offset_top = 95.0
-offset_right = 1505.2753
-offset_bottom = 768.0
-texture = ExtResource("3_1a8s4")
+[node name="VBoxContainer" type="VBoxContainer" parent="PosTurret1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 392.5
+offset_right = 912.5
+offset_bottom = 76.0
+grow_horizontal = 2
 
-[node name="Nuvoletta1" parent="Part2" instance=ExtResource("1_w17sg")]
+[node name="TextureRect" type="TextureRect" parent="PosTurret1"]
+offset_left = 118.122925
+offset_top = 75.0
+offset_right = 1472.0895
+offset_bottom = 805.0
+texture = ExtResource("5_8o15c")
+expand_mode = 2
+
+[node name="Nuvoletta1" parent="PosTurret1" instance=ExtResource("1_w17sg")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 493.0
-offset_top = 406.0
-offset_right = 493.0
-offset_bottom = 406.0
+offset_left = 146.0
+offset_top = 104.0
+offset_right = 146.0
+offset_bottom = 104.0
 grow_vertical = 1
 size_flags_horizontal = 4
 metadata/_edit_group_ = true
 
-[node name="Label" parent="Part2/Nuvoletta1/PanelContainer" index="0"]
+[node name="Polygon2D" parent="PosTurret1/Nuvoletta1" index="0"]
+position = Vector2(192.50009, 231.99988)
+rotation = -2.2800217
+polygon = PackedVector2Array(113.9471, 89.28072, -16, -11, -9.534119, -18.065323, -32, -20, -26.194702, 0.580719, -20.007874, -6.6285095, 105.48206, 98.12924)
+
+[node name="Line2D" parent="PosTurret1/Nuvoletta1/Polygon2D" index="0"]
+points = PackedVector2Array(114.59436, 89.118484, -15.341553, -10.530472, -9, -17, -32, -21, -26.520325, 0.9601593, -19.954071, -5.923462, 105.99928, 99.425354)
+
+[node name="Label" parent="PosTurret1/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
-text = "tutorial_6"
+text = "tutorial_8"
+
+[node name="Nuvoletta2" parent="PosTurret1" instance=ExtResource("1_w17sg")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 775.0
+offset_top = 506.0
+offset_right = 775.0
+offset_bottom = 506.0
+grow_vertical = 1
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="Label" parent="PosTurret1/Nuvoletta2/PanelContainer" index="0"]
+theme_override_fonts/font = ExtResource("2_p0j7y")
+theme_override_font_sizes/font_size = 20
+text = "tutorial_9"
 
 [node name="Part3" type="Node2D" parent="."]
 visible = false
@@ -249,66 +313,6 @@ theme_override_fonts/font = ExtResource("2_p0j7y")
 theme_override_font_sizes/font_size = 20
 text = "tutorial_7"
 
-[node name="PosTurret1" type="Node2D" parent="."]
-visible = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PosTurret1"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 392.5
-offset_right = 912.5
-offset_bottom = 76.0
-grow_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="PosTurret1"]
-offset_left = 118.122925
-offset_top = 75.0
-offset_right = 1472.0895
-offset_bottom = 805.0
-texture = ExtResource("5_8o15c")
-expand_mode = 2
-
-[node name="Nuvoletta1" parent="PosTurret1" instance=ExtResource("1_w17sg")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_left = 168.0
-offset_top = 372.0
-offset_right = 168.0
-offset_bottom = 372.0
-grow_vertical = 1
-size_flags_horizontal = 4
-metadata/_edit_group_ = true
-
-[node name="Polygon2D" parent="PosTurret1/Nuvoletta1" index="0"]
-position = Vector2(184, 108)
-rotation = -2.9112523
-
-[node name="Label" parent="PosTurret1/Nuvoletta1/PanelContainer" index="0"]
-theme_override_fonts/font = ExtResource("2_p0j7y")
-theme_override_font_sizes/font_size = 20
-text = "tutorial_8"
-
-[node name="Nuvoletta2" parent="PosTurret1" instance=ExtResource("1_w17sg")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_left = 545.0
-offset_top = 215.0
-offset_right = 545.0
-offset_bottom = 215.0
-grow_vertical = 1
-size_flags_horizontal = 4
-metadata/_edit_group_ = true
-
-[node name="Label" parent="PosTurret1/Nuvoletta2/PanelContainer" index="0"]
-theme_override_fonts/font = ExtResource("2_p0j7y")
-theme_override_font_sizes/font_size = 20
-text = "tutorial_9"
-
 [node name="PosTurret2" type="Node2D" parent="."]
 visible = false
 
@@ -325,17 +329,21 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 288.0
-offset_top = 509.0
-offset_right = 288.0
-offset_bottom = 509.0
+offset_left = 542.0
+offset_top = 88.0
+offset_right = 542.0
+offset_bottom = 88.0
 grow_vertical = 1
 size_flags_horizontal = 4
 metadata/_edit_group_ = true
 
 [node name="Polygon2D" parent="PosTurret2/Nuvoletta1" index="0"]
-position = Vector2(450.49988, 64.5)
-rotation = 3.2391675
+position = Vector2(382.49988, 246.50002)
+rotation = 4.0953317
+polygon = PackedVector2Array(154.47339, 102.851685, -15.496185, -10.994019, -9.709808, -19.149902, -32, -20, -24.465057, 1.647522, -18.389374, -6.9161377, 147.81909, 112.230896)
+
+[node name="Line2D" parent="PosTurret2/Nuvoletta1/Polygon2D" index="0"]
+points = PackedVector2Array(154.47339, 102.851685, -15.903961, -11.283325, -9.538971, -20.25476, -32, -21, -24.583527, 0.95043945, -19.086517, -6.7976074, 147.24042, 113.04651)
 
 [node name="Label" parent="PosTurret2/Nuvoletta1/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
@@ -347,13 +355,21 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_left = 529.0
-offset_top = 228.0
-offset_right = 529.0
-offset_bottom = 228.0
+offset_left = 438.0
+offset_top = 387.0
+offset_right = 438.0
+offset_bottom = 387.0
 grow_vertical = 1
 size_flags_horizontal = 4
 metadata/_edit_group_ = true
+
+[node name="Polygon2D" parent="PosTurret2/Nuvoletta3" index="0"]
+position = Vector2(15, -63)
+rotation = 0.9848909
+polygon = PackedVector2Array(53.04532, 34.0029, -18.330658, -12.164986, -13.077576, -20.080498, -32.491455, -19.762428, -26.071991, -0.5000229, -21, -8, 50.00406, 38.585556)
+
+[node name="Line2D" parent="PosTurret2/Nuvoletta3/Polygon2D" index="0"]
+points = PackedVector2Array(53.598267, 33.169678, -18.054169, -12.581596, -13.077576, -20.080498, -32.908066, -20.038918, -26.488617, -0.7765045, -21.512024, -8.275398, 50.28055, 38.16896)
 
 [node name="Label" parent="PosTurret2/Nuvoletta3/PanelContainer" index="0"]
 theme_override_fonts/font = ExtResource("2_p0j7y")
@@ -423,12 +439,12 @@ vertical_alignment = 1
 
 [editable path="Part1/Nuvoletta1"]
 [editable path="Part1/Nuvoletta2"]
+[editable path="Part2/Nuvoletta1"]
 [editable path="PartScrap/Nuvoletta3"]
 [editable path="PartScrap/Nuvoletta4"]
 [editable path="PartScrap/Nuvoletta5"]
-[editable path="Part2/Nuvoletta1"]
-[editable path="Part3/Nuvoletta1"]
 [editable path="PosTurret1/Nuvoletta1"]
 [editable path="PosTurret1/Nuvoletta2"]
+[editable path="Part3/Nuvoletta1"]
 [editable path="PosTurret2/Nuvoletta1"]
 [editable path="PosTurret2/Nuvoletta3"]
