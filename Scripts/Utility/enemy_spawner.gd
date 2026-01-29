@@ -53,10 +53,10 @@ var level_patterns = {
 		4: ["8r", "7r", "10r", "8r", "8r"]
 	},
 	2: { # LIVELLO 2
-		# TOT = 3 -> 1 roomba, 2 weed eater
-		1: ["1w, 1r", "1r, 1w", "0w, 0r", "0r", "0r"],
-		# TOT = 9 -> 5 roomba, 4 weed eater
-		2: ["1w", "1r, 1w, 1r", "1w", "2r", "1w, 1r"],
+		# TOT = 2 -> 0 roomba, 2 weed eater
+		1: ["1w", "1w", "0w, 0r", "0r", "0r"],
+		# TOT = 7 -> 4 roomba, 3 weed eater
+		2: ["0w", "1r, 1w", "1w", "2r", "1w, 1r"],
 		# TOT = 27 -> 16 roomba, 11 weed eater
 		3: ["2r, 1w, 3r", "2w, 2r, 2w", "3r, 2w", "1w, 1r, 1w, 1r", "2r, 2w, 2r"],
 		# TOT = 38 -> 23 roomba, 15 weed eater
