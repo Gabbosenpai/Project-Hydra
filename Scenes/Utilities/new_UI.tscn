@@ -463,6 +463,7 @@ toggle_mode = true
 texture_normal = ExtResource("22_d2tjn")
 texture_pressed = ExtResource("7_lnnbn")
 stretch_mode = 5
+metadata/_edit_group_ = true
 
 [node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 1
@@ -632,7 +633,7 @@ offset_bottom = 42.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40
-text = "200"
+text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
