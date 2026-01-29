@@ -502,7 +502,7 @@ modulate = Color(1, 1, 1, 0)
 offset_left = 5760.0
 offset_top = 3240.0
 offset_right = 9600.0
-offset_bottom = 5400.0806
+offset_bottom = 5400.08
 texture = ExtResource("9_llwun")
 metadata/_edit_lock_ = true
 
@@ -774,14 +774,14 @@ vertical_alignment = 1
 
 [node name="Object" type="Label" parent="Scene 4/Scene 4a - Email Home/Mails/Poste Italiane"]
 layout_mode = 0
-offset_left = 528.0
+offset_left = 503.0
 offset_top = 18.0
-offset_right = 998.0
+offset_right = 1023.0
 offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("12_8y1j2")
 theme_override_font_sizes/font_size = 40
-text = "Pagamento SPID"
+text = "Pacco Scomparso"
 horizontal_alignment = 1
 vertical_alignment = 1
 
