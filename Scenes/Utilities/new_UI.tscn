@@ -463,7 +463,6 @@ toggle_mode = true
 texture_normal = ExtResource("22_d2tjn")
 texture_pressed = ExtResource("7_lnnbn")
 stretch_mode = 5
-metadata/_edit_group_ = true
 
 [node name="TowerImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 1
@@ -480,22 +479,22 @@ texture = ExtResource("7_3sob7")
 
 [node name="ScrapImg" type="TextureRect" parent="TurretSelector/HBoxContainer/ButtonTurret3"]
 layout_mode = 0
-offset_left = 14.0
+offset_left = 32.0
 offset_top = 194.0
-offset_right = 54.0
+offset_right = 72.0
 offset_bottom = 234.0
 texture = ExtResource("24_wlbwg")
 
 [node name="Cost" type="Label" parent="TurretSelector/HBoxContainer/ButtonTurret3/ScrapImg"]
 layout_mode = 0
-offset_left = 40.0
+offset_left = 22.0
 offset_top = 2.0
-offset_right = 160.0
+offset_right = 142.0
 offset_bottom = 42.0
 theme_override_colors/font_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("18_6wlri")
 theme_override_font_sizes/font_size = 40
-text = "100"
+text = "75"
 horizontal_alignment = 1
 vertical_alignment = 1
 
