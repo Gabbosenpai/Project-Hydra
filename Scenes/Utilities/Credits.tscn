@@ -113,66 +113,48 @@ libraries = {
 [node name="TitleStarA" parent="Stars" instance=ExtResource("4_fjtxe")]
 position = Vector2(179, 180)
 rotation = -1.0152149
+scale = Vector2(2, 2)
 
 [node name="TitleStarA5" parent="Stars" instance=ExtResource("4_fjtxe")]
-position = Vector2(1340, 1032)
+position = Vector2(1372, 1029)
 rotation = -1.3613569
 
 [node name="TitleStarA2" parent="Stars" instance=ExtResource("4_fjtxe")]
 position = Vector2(1689, 420.00003)
 rotation = -0.52534765
+scale = Vector2(2, 2)
 
 [node name="TitleStarA4" parent="Stars" instance=ExtResource("4_fjtxe")]
 position = Vector2(1861.0001, 574)
 rotation = 0.59667265
 
-[node name="TitleStarA7" parent="Stars" instance=ExtResource("4_fjtxe")]
-position = Vector2(885.0002, 648.0001)
-rotation = -0.5235988
-
-[node name="TitleStarA3" parent="Stars" instance=ExtResource("4_fjtxe")]
-position = Vector2(1194, 318.00003)
-rotation = -0.25206682
-
-[node name="TitleStarA9" parent="Stars" instance=ExtResource("4_fjtxe")]
-position = Vector2(623.00006, 464)
-rotation = -1.3089969
-
-[node name="TitleStarA8" parent="Stars" instance=ExtResource("4_fjtxe")]
-position = Vector2(733.00006, 191.00002)
-rotation = -0.7853982
-
 [node name="TitleStarA6" parent="Stars" instance=ExtResource("4_fjtxe")]
 position = Vector2(547, 34.999954)
 rotation = 0.7520751
+scale = Vector2(2, 2)
 
 [node name="TitleStarB" parent="Stars" instance=ExtResource("5_sethm")]
-position = Vector2(322, 99)
+position = Vector2(388.00003, 129)
 rotation = 1.4189236
 
 [node name="TitleStarB3" parent="Stars" instance=ExtResource("5_sethm")]
-position = Vector2(1786, 196)
+position = Vector2(1836.0001, 190)
 rotation = 1.2979053
-
-[node name="TitleStarB2" parent="Stars" instance=ExtResource("5_sethm")]
-position = Vector2(379, 614)
-rotation = -0.4200813
-
-[node name="TitleStarB4" parent="Stars" instance=ExtResource("5_sethm")]
-position = Vector2(442, 479)
-rotation = -0.4200813
-
-[node name="TitleStarB6" parent="Stars" instance=ExtResource("5_sethm")]
-position = Vector2(1156, 1009.99994)
-rotation = -0.7853982
 
 [node name="TitleStarB5" parent="Stars" instance=ExtResource("5_sethm")]
 position = Vector2(1066.9999, 377.99997)
 rotation = -1.5136178
+scale = Vector2(0.7, 0.7)
+
+[node name="TitleStarB6" parent="Stars" instance=ExtResource("5_sethm")]
+position = Vector2(725, 788.99994)
+rotation = -2.0943952
+scale = Vector2(0.7, 0.7)
 
 [node name="TitleStarC" parent="Stars" instance=ExtResource("6_gpgwr")]
 position = Vector2(104.00001, 328)
 rotation = -2.2873256
+scale = Vector2(2, 2)
 
 [node name="TitleStarC7" parent="Stars" instance=ExtResource("6_gpgwr")]
 position = Vector2(615.00006, 302)
@@ -194,52 +176,30 @@ rotation = -2.3561945
 position = Vector2(269, 969)
 rotation = 0.37317878
 
-[node name="TitleStarC10" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(722.99994, 860.9998)
-rotation = -2.2835174
-
 [node name="TitleStarC4" parent="Stars" instance=ExtResource("6_gpgwr")]
 position = Vector2(596, 985)
 rotation = 0.75914735
-
-[node name="TitleStarC11" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(464, 863)
 
 [node name="TitleStarC3" parent="Stars" instance=ExtResource("6_gpgwr")]
 position = Vector2(1683, 869)
 rotation = -0.68860215
 
-[node name="TitleStarC16" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(1023.00024, 511.0002)
-rotation = -1.5707964
-
-[node name="TitleStarC17" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(433, 193)
-rotation = -2.0943952
-
 [node name="TitleStarC5" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(1486, 499.00006)
+position = Vector2(1444.0001, 450.99994)
 rotation = -0.4007071
 
 [node name="TitleStarC8" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(1577, 971)
+position = Vector2(1598, 975.0001)
 rotation = -0.12217305
-
-[node name="TitleStarC14" parent="Stars" instance=ExtResource("6_gpgwr")]
-position = Vector2(1079.0001, 623.0001)
-rotation = -0.72768676
 
 [node name="TitleStarC12" parent="Stars" instance=ExtResource("6_gpgwr")]
 position = Vector2(1026, 60.999992)
 rotation = -1.3089969
+scale = Vector2(1, 1)
 
 [node name="TitleStarC9" parent="Stars" instance=ExtResource("6_gpgwr")]
 position = Vector2(986, 1026)
 rotation = -0.6703754
-
-[node name="TitleStarD6" parent="Stars" instance=ExtResource("7_vauuf")]
-position = Vector2(1579, 301)
-rotation = -0.33803397
 
 [node name="TitleStarD5" parent="Stars" instance=ExtResource("7_vauuf")]
 position = Vector2(1612, 112)
@@ -248,6 +208,7 @@ rotation = -0.21973976
 [node name="TitleStarD9" parent="Stars" instance=ExtResource("7_vauuf")]
 position = Vector2(725.00006, 354.00003)
 rotation = -0.7356196
+scale = Vector2(2, 2)
 
 [node name="TitleStarD3" parent="Stars" instance=ExtResource("7_vauuf")]
 position = Vector2(1834.0001, 767)
@@ -257,33 +218,25 @@ rotation = 0.38397244
 position = Vector2(838.00006, 952)
 rotation = 1.3075144
 
-[node name="TitleStarD4" parent="Stars" instance=ExtResource("7_vauuf")]
-position = Vector2(1534, 745)
-rotation = -1.8143587
-
 [node name="TitleStarD7" parent="Stars" instance=ExtResource("7_vauuf")]
-position = Vector2(1203, 666)
+position = Vector2(1366, 686.99994)
 rotation = -3.403392
-
-[node name="TitleStarD2" parent="Stars" instance=ExtResource("7_vauuf")]
-position = Vector2(447, 377)
-rotation = 0.30129564
-
-[node name="TitleStarE" parent="Stars" instance=ExtResource("8_g4kwf")]
-position = Vector2(275, 423)
-rotation = 0.24846326
-
-[node name="TitleStarE6" parent="Stars" instance=ExtResource("8_g4kwf")]
-position = Vector2(1049, 888)
-rotation = -0.5235988
+scale = Vector2(1, 1)
 
 [node name="TitleStarE3" parent="Stars" instance=ExtResource("8_g4kwf")]
 position = Vector2(505, 550)
 rotation = -2.183125
+scale = Vector2(2, 2)
 
 [node name="TitleStarE5" parent="Stars" instance=ExtResource("8_g4kwf")]
 position = Vector2(651, 639)
 rotation = -2.901379
+scale = Vector2(1, 1)
+
+[node name="TitleStarE6" parent="Stars" instance=ExtResource("8_g4kwf")]
+position = Vector2(1059, 747)
+rotation = -3.6651917
+scale = Vector2(1, 1)
 
 [node name="TitleStarE4" parent="Stars" instance=ExtResource("8_g4kwf")]
 position = Vector2(1806, 983)
@@ -292,6 +245,7 @@ rotation = 3.0508356
 [node name="TitleStarE2" parent="Stars" instance=ExtResource("8_g4kwf")]
 position = Vector2(145, 661)
 rotation = 1.097812
+scale = Vector2(1, 1)
 
 [node name="TitleStarF" parent="Stars" instance=ExtResource("9_rdf5d")]
 position = Vector2(218, 523)
@@ -300,26 +254,16 @@ rotation = -0.43110862
 [node name="TitleStarF17" parent="Stars" instance=ExtResource("9_rdf5d")]
 position = Vector2(829, 523.00006)
 rotation = -0.7853982
-
-[node name="TitleStarF9" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(334, 291)
-rotation = -1.2662534
+scale = Vector2(1.5, 1.5)
 
 [node name="TitleStarF20" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1031, 269.00003)
-rotation = -1.8325958
+position = Vector2(473.00003, 842)
+rotation = -1.3089969
+scale = Vector2(1.5, 1.5)
 
-[node name="TitleStarF14" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1331, 797)
-rotation = -2.3561945
-
-[node name="TitleStarF10" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(816.00006, 73)
-rotation = 0.13932174
-
-[node name="TitleStarF7" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1403, 364)
-rotation = 0.5555145
+[node name="TitleStarF9" parent="Stars" instance=ExtResource("9_rdf5d")]
+position = Vector2(355.00003, 372)
+rotation = -1.2662534
 
 [node name="TitleStarF13" parent="Stars" instance=ExtResource("9_rdf5d")]
 position = Vector2(1208, 870.99994)
@@ -333,20 +277,13 @@ rotation = 0.16580628
 position = Vector2(1194, 87.00003)
 rotation = -3.9233327
 
-[node name="TitleStarF8" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1358, 625)
-rotation = -1.181322
-
-[node name="TitleStarF3" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(842.99994, 322.99994)
-rotation = 1.486054
-
 [node name="TitleStarF21" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(612, 149.99994)
+position = Vector2(680.99994, 139.00002)
 rotation = -0.5235988
+scale = Vector2(2, 2)
 
 [node name="TitleStarF19" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1364, 232.99994)
+position = Vector2(1390.0001, 190.99995)
 rotation = 0.7853982
 
 [node name="TitleStarF6" parent="Stars" instance=ExtResource("9_rdf5d")]
@@ -354,26 +291,19 @@ position = Vector2(90, 68)
 rotation = 1.3539327
 
 [node name="TitleStarF5" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1825, 336)
+position = Vector2(1736, 282.99994)
 rotation = 1.0464532
 
 [node name="TitleStarF16" parent="Stars" instance=ExtResource("9_rdf5d")]
 position = Vector2(929, 163.99991)
 rotation = 0.7853982
-
-[node name="TitleStarF15" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(577, 757.9999)
-rotation = 1.5707964
+scale = Vector2(2.5, 2.5)
 
 [node name="TitleStarF18" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(1435, 910.99994)
+position = Vector2(1547.0001, 823.00006)
 rotation = 0.7853982
 
-[node name="TitleStarF11" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(957, 821)
-rotation = -0.49769855
-
 [node name="TitleStarF2" parent="Stars" instance=ExtResource("9_rdf5d")]
-position = Vector2(141, 875)
+position = Vector2(104, 879.00006)
 
 [connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
